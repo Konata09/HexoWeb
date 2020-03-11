@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>生命不息 折腾不止</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://konata.tech/"/>
+  <updated>2019-07-24T16:08:22.235Z</updated>
+  <id>http://konata.tech/</id>
+  
+  <author>
+    <name>Konata</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://konata.tech/2019/08/13/hello-world/"/>
+    <id>http://konata.tech/2019/08/13/hello-world/</id>
+    <published>2019-08-13T14:24:07.099Z</published>
+    <updated>2019-07-24T16:08:22.235Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>中文</title>
+    <link href="http://konata.tech/2019/08/07/ch/"/>
+    <id>http://konata.tech/2019/08/07/ch/</id>
+    <published>2019-08-07T14:21:23.000Z</published>
+    <updated>2019-08-10T08:25:04.638Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;ios13 beta4
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>更新日志</title>
+    <link href="http://konata.tech/2019/08/06/UpdateLog/"/>
+    <id>http://konata.tech/2019/08/06/UpdateLog/</id>
+    <published>2019-08-06T13:51:00.000Z</published>
+    <updated>2020-01-01T04:28:18.134Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;ul&gt;
+&lt;li&gt;2019.07.25 框架搭建完成&lt;/li&gt;
+&lt;li&gt;2019.08.02 主题修改完成&lt;/li&gt;
+&lt;li&gt;2019.08.06 崩坏学园2 LIVE2D上线
+        
+      
+    
+    </summary>
+    
+      <category term="Blog" scheme="http://konata.tech/categories/Blog/"/>
+    
+    
+      <category term="LIVE2D" scheme="http://konata.tech/tags/LIVE2D/"/>
+    
+  </entry>
+  
+</feed>
