@@ -361,7 +361,7 @@ header .go-back i {
 }
 
 .post-cover {
-    height: 40vh !important;
+    height: 50vh !important;
 }
 
 .bg-cover:after {
@@ -404,6 +404,7 @@ header .go-back i {
 
 .bg-cover .post-title {
     font-size: 1.9rem;
+    text-shadow: 0px 0px 10px black;
 }
 
 /*
