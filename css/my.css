@@ -24,6 +24,10 @@
 nav ul a:hover {
   background-color: rgba(0, 0, 0, 0.18);
 }
+
+.toast .toast-action{
+  color: #0ad3ff;
+}
 .mute{
   position: fixed;
   left: 50px;

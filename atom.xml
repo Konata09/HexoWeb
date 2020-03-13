@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://konata.tech/"/>
-  <updated>2019-07-24T16:08:22.235Z</updated>
+  <updated>2020-03-13T15:11:16.085Z</updated>
   <id>http://konata.tech/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JSP生命周期</title>
+    <link href="http://konata.tech/2020/03/13/Life-cycle-of-JSP/"/>
+    <id>http://konata.tech/2020/03/13/Life-cycle-of-JSP/</id>
+    <published>2020-03-13T14:32:00.000Z</published>
+    <updated>2020-03-13T15:11:16.085Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;/images/pasted-0.png&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="JAVA" scheme="http://konata.tech/categories/JAVA/"/>
+    
+      <category term="JSP" scheme="http://konata.tech/categories/JAVA/JSP/"/>
+    
+    
+      <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
+    
+      <category term="JAVA" scheme="http://konata.tech/tags/JAVA/"/>
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>
