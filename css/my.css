@@ -18,7 +18,7 @@
 }
 
 .fa-hover:hover{
-  color: #e141e9;
+  color: #43CBFF ;
   transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, color 0.2s ease-in-out;
 }
 nav ul a:hover {
@@ -36,7 +36,7 @@ nav ul a:hover {
 }
 
 #nprogress .bar {
-  background: #9345f4;
+  background: #0396FF;
 
   position: fixed;
   z-index: 1031;
@@ -54,7 +54,7 @@ nav ul a:hover {
   right: 0px;
   width: 100px;
   height: 100%;
-  box-shadow: 0 0 10px #9345f4, 0 0 5px #b64cf4;
+  box-shadow: 0 0 10px #0396FF, 0 0 5px #43CBFF ;
   opacity: 1.0;
 
   -webkit-transform: rotate(3deg) translate(0px, -4px);
