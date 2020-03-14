@@ -15,8 +15,6 @@
           
           <category> JAVA </category>
           
-          <category> JSP </category>
-          
       </categories>
       
       
@@ -25,6 +23,8 @@
             <tag> JSP </tag>
             
             <tag> JAVA </tag>
+            
+            <tag> 生命周期 </tag>
             
         </tags>
       
@@ -63,7 +63,7 @@
       <link href="/2019/08/06/UpdateLog/"/>
       <url>/2019/08/06/UpdateLog/</url>
       
-        <content type="html"><![CDATA[<ul><li>2019.07.25 框架搭建完成</li><li>2019.08.02 主题修改完成</li><li>2019.08.06 崩坏学园2 LIVE2D上线 <del>那么崩坏3的看板娘什么时候能放上Web呢</del></li><li>2019.08.07 部署 Hexo Admin</li><li>2019.08.10 部署 HTTPS</li><li>2019.08.15 更新 favicon</li><li>2020.02.25 迁移至阿里云</li><li>2020.03.01 更新 nginx 1.17.8  支持HTTP/3(不完善)及TLS1.3 停用TLS1.1及TLS1.2协议<br>nginx编译参数:  <pre><code>--add-module=../ngx_brotli --with-openssl=../quiche/deps/boringssl --with-quiche=../quiche --with-http_v2_module --with-http_v3_module --with-http_ssl_module --with-http_gzip_static_module --with-http_v2_hpack_enc --with-http_realip_module --with-threads --with-stream --with-stream_realip_module --with-stream_ssl_module --with-stream_ssl_preread_module --with-zlib=../zlib-cf --add-module=../ngx_devel_kit --add-module=../headers-more-nginx-module --add-module=../lua-nginx-module-0.10.16rc4 --with-file-aio --add-module=../ngx_http_geoip2_module --add-module=../ngx-fancyindex --add-module=../nginx-dav-ext-module --add-module=../ngx_http_substitutions_filter_module --with-libatomic --with-http_dav_module --with-http_stub_status_module</code></pre></li><li>2020.03.05 优化 加载速度 Live2D音频替换为opus 通过webp server替换所有图片为webp 非首屏图片懒加载</li><li>2020.03.12 新增 服务器webhook自动部署</li></ul>]]></content>
+        <content type="html"><![CDATA[<ul><li><p>2019.07.25 框架搭建完成</p></li><li><p>2019.08.02 主题修改完成</p></li><li><p>2019.08.06 崩坏学园2 LIVE2D上线 <del>那么崩坏3的看板娘什么时候能放上Web呢</del></p></li><li><p>2019.08.07 部署 Hexo Admin</p></li><li><p>2019.08.10 </p><ul><li>部署 HTTPS</li><li>支持 HSTS</li></ul></li><li><p>2019.08.15 更新 favicon</p></li><li><p>2020.02.25 迁移至阿里云</p></li><li><p>2020.03.01 </p><ul><li>更新 nginx 1.17.8 </li><li>支持 HTTP/3(不完善)</li><li>支持 TLS1.3 </li><li>停用 TLS1.1 TLS1.2 协议  </li></ul><p>nginx编译参数:  </p><pre><code>--add-module=../ngx_brotli --with-openssl=../quiche/deps/boringssl --with-quiche=../quiche --with-http_v2_module --with-http_v3_module --with-http_ssl_module --with-http_gzip_static_module --with-http_v2_hpack_enc --with-http_realip_module --with-threads --with-stream --with-stream_realip_module --with-stream_ssl_module --with-stream_ssl_preread_module --with-zlib=../zlib-cf --add-module=../ngx_devel_kit --add-module=../headers-more-nginx-module --add-module=../lua-nginx-module-0.10.16rc4 --with-file-aio --add-module=../ngx_http_geoip2_module --add-module=../ngx-fancyindex --add-module=../nginx-dav-ext-module --add-module=../ngx_http_substitutions_filter_module --with-libatomic --with-http_dav_module --with-http_stub_status_module</code></pre></li><li><p>2020.03.05 </p><ul><li>优化 加载速度</li><li>Live2D音频替换为opus </li><li>通过webp server替换所有图片为webp </li><li>非首屏图片懒加载</li></ul></li><li><p>2020.03.12 新增 服务器webhook自动部署</p></li><li><p>2020.03.13  </p><ul><li>修复 懒加载导致的首页图片错位</li><li>更新 全局配色</li></ul></li></ul>]]></content>
       
       
       <categories>

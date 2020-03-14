@@ -4,8 +4,8 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="分类: JSP, 生命不息 折腾不止">
-    <meta name="description" content="分类: JSP | 生命不息 折腾不止">
+    <meta name="keywords" content="标签: 生命周期, 生命不息 折腾不止">
+    <meta name="description" content="标签: 生命周期 | 生命不息 折腾不止">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -21,7 +21,7 @@
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#7312ff">
     <meta name="msapplication-TileColor" content="#8a46cc">
     <meta name="theme-color" content="#ffffff">
-    <title>分类: JSP | 生命不息 折腾不止</title>
+    <title>标签: 生命周期 | 生命不息 折腾不止</title>
     <script type="application/javascript" src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
     <script type="application/javascript" src="https://cdn.jsdelivr.net/npm/jquery-ui-dist@1.12.1/jquery-ui.min.js"></script>
     <script type="application/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.0/lazysizes.min.js" async></script>
@@ -312,42 +312,49 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/1.jpg)');
 
     
 
-<div id="category-cloud" class="container chip-container">
+<div id="tags" class="container chip-container">
     <div class="card">
         <div class="card-content">
             <div class="tag-title center-align">
-                <i class="fa fa-bookmark"></i>&nbsp;&nbsp;文章分类
+                <i class="fa fa-tags"></i>&nbsp;&nbsp;文章标签
             </div>
             <div class="tag-chips">
                 
                 
-                
-                <a href="/categories/Blog/" title="Blog: 1">
+                <a href="/tags/LIVE2D/" title="LIVE2D: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F9EBEA;">Blog
+                            data-tagname="LIVE2D" style="background-color: #F9EBEA;">LIVE2D
                         <span class="tag-length">1</span>
                     </span>
                 </a>
                 
                 
-                <a href="/categories/JAVA/" title="JAVA: 1">
+                <a href="/tags/JSP/" title="JSP: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F5EEF8;">JAVA
+                            data-tagname="JSP" style="background-color: #F5EEF8;">JSP
                         <span class="tag-length">1</span>
                     </span>
                 </a>
                 
                 
-                <a href="/categories/JAVA/JSP/" title="JSP: 1">
+                <a href="/tags/JAVA/" title="JAVA: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="JAVA" style="background-color: #D5F5E3;">JAVA
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/生命周期/" title="生命周期: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-active "
-                            style="background-color: #D5F5E3;">JSP
+                            data-tagname="生命周期" style="background-color: #E8F8F5;">生命周期
                         <span class="tag-length">1</span>
                     </span>
                 </a>
-                
                 
             </div>
         </div>
@@ -359,7 +366,8 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/1.jpg)');
     <article id="articles" class="container articles">
         <div class="row tags-posts">
             
-            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
+            
+            <div class="article tag-post col s12 m6 l4" data-tags="JSP, JAVA, 生命周期" data-aos="fade-up">
                 <div class="card">
                     <a href="/2020/03/13/Life-cycle-of-JSP/">
                         <div class="card-image tag-image">
@@ -371,17 +379,6 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/1.jpg)');
                         </div>
                     </a>
                     <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                
-
-将JSP页面文件翻译为servlet代码;
-编译servlet代码为class文件;
-将servlet载入容器并实例化类;
-调用jspInit()方法初始化,在servlet实例化后只执行一次;
-使用_jspService()方法处理请
-                            
-                        </div>
                         <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2020-03-13
@@ -391,31 +388,13 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/1.jpg)');
                                 <i class="fa fa-bookmark fa-fw icon-category"></i>
                                 
                                 <a href="/categories/JAVA/" class="post-category" target="_blank">
-                                    JAVA
-                                </a>
-                                
-                                <a href="/categories/JAVA/JSP/" class="post-category" target="_blank">
-                                    JSP
+                                JAVA
                                 </a>
                                 
                                 
                             </span>
                         </div>
                     </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/JSP/" target="_blank">
-                            <span class="chip bg-color">JSP</span>
-                        </a>
-                        
-                        <a href="/tags/JAVA/" target="_blank">
-                            <span class="chip bg-color">JAVA</span>
-                        </a>
-                        
-                    </div>
-                    
                 </div>
             </div>
             

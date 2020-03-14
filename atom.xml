@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://konata.tech/"/>
-  <updated>2020-03-13T15:11:16.085Z</updated>
+  <updated>2020-03-13T15:57:48.695Z</updated>
   <id>http://konata.tech/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://konata.tech/2020/03/13/Life-cycle-of-JSP/"/>
     <id>http://konata.tech/2020/03/13/Life-cycle-of-JSP/</id>
     <published>2020-03-13T14:32:00.000Z</published>
-    <updated>2020-03-13T15:11:16.085Z</updated>
+    <updated>2020-03-13T15:57:48.695Z</updated>
     
     <summary type="html">
     
@@ -37,12 +37,12 @@
     
       <category term="JAVA" scheme="http://konata.tech/categories/JAVA/"/>
     
-      <category term="JSP" scheme="http://konata.tech/categories/JAVA/JSP/"/>
-    
     
       <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
     
       <category term="JAVA" scheme="http://konata.tech/tags/JAVA/"/>
+    
+      <category term="生命周期" scheme="http://konata.tech/tags/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/"/>
     
   </entry>
   
@@ -95,7 +95,7 @@
     <link href="http://konata.tech/2019/08/06/UpdateLog/"/>
     <id>http://konata.tech/2019/08/06/UpdateLog/</id>
     <published>2019-08-06T13:51:00.000Z</published>
-    <updated>2020-03-13T11:40:11.178Z</updated>
+    <updated>2020-03-13T15:46:29.554Z</updated>
     
     <summary type="html">
     
@@ -104,9 +104,11 @@
         
         
           &lt;ul&gt;
-&lt;li&gt;2019.07.25 框架搭建完成&lt;/li&gt;
-&lt;li&gt;2019.08.02 主题修改完成&lt;/li&gt;
-&lt;li&gt;2019.08.06 崩坏学园2 LIVE2D上线
+&lt;li&gt;&lt;p&gt;2019.07.25 框架搭建完成&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;2019.08.02 主题修改完成&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;2019.08.06 崩坏学园2 LIVE2D上线
         
       
     
