@@ -28,6 +28,11 @@ nav ul a:hover {
 .toast .toast-action{
   color: #0ad3ff;
 }
+
+.btn:focus, .btn-large:focus, .btn-small:focus, .btn-floating:focus{
+  background: transparent;
+}
+
 .mute{
   position: fixed;
   left: 50px;
