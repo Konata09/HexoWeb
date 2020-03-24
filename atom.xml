@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://konata.tech/"/>
-  <updated>2020-03-13T15:57:48.695Z</updated>
+  <updated>2020-03-16T06:23:35.885Z</updated>
   <id>http://konata.tech/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>动态规划</title>
+    <link href="http://konata.tech/2020/03/16/dp/"/>
+    <id>http://konata.tech/2020/03/16/dp/</id>
+    <published>2020-03-16T03:44:00.000Z</published>
+    <updated>2020-03-16T06:23:35.885Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;strong&gt;神奇口袋问题&lt;/strong&gt;&lt;br&gt;有一个神奇的口袋总的容积是40，用这个口袋可以变出一些物品，这些物品的总体积必须是40。&lt;br&gt;&lt;strong&gt;DP(动态规划)思路：&lt;/strong&gt;&lt;br&gt;k种物品凑成体积w的方法：k-1种物品凑成体积w
+        
+      
+    
+    </summary>
+    
+      <category term="算法" scheme="http://konata.tech/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="动态规划" scheme="http://konata.tech/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+    
+      <category term="算法" scheme="http://konata.tech/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
   
   <entry>
     <title>JSP生命周期</title>
