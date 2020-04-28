@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://konata.tech/"/>
-  <updated>2020-03-16T06:23:35.885Z</updated>
+  <updated>2020-04-28T10:16:36.859Z</updated>
   <id>http://konata.tech/</id>
   
   <author>
@@ -15,6 +15,97 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Misaka Dances</title>
+    <link href="http://konata.tech/2020/04/28/Misaka-Dances/"/>
+    <id>http://konata.tech/2020/04/28/Misaka-Dances/</id>
+    <published>2020-04-28T02:33:00.000Z</published>
+    <updated>2020-04-28T10:16:36.859Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;AV1-8bit&quot;&gt;&lt;a href=&quot;#AV1-8bit&quot; class=&quot;headerlink&quot; title=&quot;AV1 8bit&quot;&gt;&lt;/a&gt;AV1 8bit&lt;/h3&gt;&lt;pre class=&quot; language-sh&quot;&gt;&lt;code
+        
+      
+    
+    </summary>
+    
+    
+      <category term="AV1" scheme="http://konata.tech/tags/AV1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>codec</title>
+    <link href="http://konata.tech/2020/04/27/codec/"/>
+    <id>http://konata.tech/2020/04/27/codec/</id>
+    <published>2020-04-27T06:43:12.000Z</published>
+    <updated>2020-04-28T10:14:40.545Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;VapourSynth-输出-YUV4MPEG&quot;&gt;&lt;a href=&quot;#VapourSynth-输出-YUV4MPEG&quot; class=&quot;headerlink&quot; title=&quot;VapourSynth 输出 YUV4MPEG&quot;&gt;&lt;/a&gt;VapourSynth 输出
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>jsp-note</title>
+    <link href="http://konata.tech/2020/04/09/jsp-note/"/>
+    <id>http://konata.tech/2020/04/09/jsp-note/</id>
+    <published>2020-04-09T15:06:00.000Z</published>
+    <updated>2020-04-09T16:52:16.391Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;java强化&quot;&gt;&lt;a href=&quot;#java强化&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>To Do</title>
+    <link href="http://konata.tech/2020/04/04/To-Do/"/>
+    <id>http://konata.tech/2020/04/04/To-Do/</id>
+    <published>2020-04-04T08:43:22.000Z</published>
+    <updated>2020-04-04T09:03:22.979Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h4 id=&quot;feature&quot;&gt;&lt;a href=&quot;#feature&quot; class=&quot;headerlink&quot; title=&quot;feature&quot;&gt;&lt;/a&gt;feature&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;input disabled type=&quot;checkbox&quot;&gt;
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>动态规划</title>
@@ -123,7 +214,7 @@
     <link href="http://konata.tech/2019/08/06/UpdateLog/"/>
     <id>http://konata.tech/2019/08/06/UpdateLog/</id>
     <published>2019-08-06T13:51:00.000Z</published>
-    <updated>2020-03-15T08:49:49.333Z</updated>
+    <updated>2020-03-24T09:45:30.393Z</updated>
     
     <summary type="html">
     
