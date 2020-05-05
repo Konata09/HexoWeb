@@ -4,8 +4,8 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="标签, 生命不息 折腾不止">
-    <meta name="description" content="标签 | 生命不息 折腾不止">
+    <meta name="keywords" content="分类: JavaScript, 生命不息 折腾不止">
+    <meta name="description" content="分类: JavaScript | 生命不息 折腾不止">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -21,7 +21,7 @@
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#7312ff">
     <meta name="msapplication-TileColor" content="#8a46cc">
     <meta name="theme-color" content="#ffffff">
-    <title>标签 | 生命不息 折腾不止</title>
+    <title>分类: JavaScript | 生命不息 折腾不止</title>
     <script type="application/javascript" src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
     <script type="application/javascript" src="https://cdn.jsdelivr.net/npm/jquery-ui-dist@1.12.1/jquery-ui.min.js"></script>
     <script type="application/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.0/lazysizes.min.js" async></script>
@@ -311,94 +311,51 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/1.jpg)');
 
     
 
-<div id="tags" class="container chip-container">
+<div id="category-cloud" class="container chip-container">
     <div class="card">
         <div class="card-content">
             <div class="tag-title center-align">
-                <i class="fa fa-tags"></i>&nbsp;&nbsp;文章标签
+                <i class="fa fa-bookmark"></i>&nbsp;&nbsp;文章分类
             </div>
             <div class="tag-chips">
                 
                 
-                <a href="/tags/AV1/" title="AV1: 1">
+                
+                <a href="/categories/JAVA/" title="JAVA: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="AV1" style="background-color: #F9EBEA;">AV1
+                            style="background-color: #F9EBEA;">JAVA
                         <span class="tag-length">1</span>
                     </span>
                 </a>
                 
                 
-                <a href="/tags/JSP/" title="JSP: 1">
+                <a href="/categories/Blog/" title="Blog: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="JSP" style="background-color: #F5EEF8;">JSP
+                            style="background-color: #F5EEF8;">Blog
                         <span class="tag-length">1</span>
                     </span>
                 </a>
                 
                 
-                <a href="/tags/JAVA/" title="JAVA: 1">
+                <a href="/categories/算法/" title="算法: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="JAVA" style="background-color: #D5F5E3;">JAVA
+                            style="background-color: #D5F5E3;">算法
                         <span class="tag-length">1</span>
                     </span>
                 </a>
                 
                 
-                <a href="/tags/生命周期/" title="生命周期: 1">
+                <a href="/categories/JavaScript/" title="JavaScript: 1">
                     <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="生命周期" style="background-color: #E8F8F5;">生命周期
+                             chip-active "
+                            style="background-color: #E8F8F5;">JavaScript
                         <span class="tag-length">1</span>
                     </span>
                 </a>
                 
-                
-                <a href="/tags/LIVE2D/" title="LIVE2D: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="LIVE2D" style="background-color: #FEF9E7;">LIVE2D
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/动态规划/" title="动态规划: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="动态规划" style="background-color: #F8F9F9;">动态规划
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/算法/" title="算法: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="算法" style="background-color: #82E0AA;">算法
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/JavaScript/" title="JavaScript: 0">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="JavaScript" style="background-color: #D7BDE2;">JavaScript
-                        <span class="tag-length">0</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/ES6/" title="ES6: 0">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="ES6" style="background-color: #A3E4D7;">ES6
-                        <span class="tag-length">0</span>
-                    </span>
-                </a>
                 
             </div>
         </div>
@@ -406,31 +363,70 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/1.jpg)');
 </div>
 
     
-    <link rel="stylesheet" type="text/css" href="/libs/jqcloud/jqcloud.css">
-<style type="text/css">
-    #tag-wordcloud {
-        width: 100%;
-        height: 300px;
-    }
-</style>
 
-<div class="container" data-aos="fade-up">
-    <div class="card">
-        <div id="tag-wordcloud" class="card-content"></div>
-    </div>
-</div>
+    <article id="articles" class="container articles">
+        <div class="row tags-posts">
+            
+            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2020/05/03/Promise/">
+                        <div class="card-image tag-image">
+                            
+                            
+                            <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="Promise">
+                            
+                            <span class="card-title">Promise</span>
+                        </div>
+                    </a>
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                Promise 的三种状态
+Pending
+Fullfilled
+Rejected
 
-<script type="text/javascript" src="/libs/jqcloud/jqcloud-1.0.4.min.js"></script>
-<script type="text/javascript">
-    
+Promise 的状态一旦从 Pending 变为 Fullfilled 或 Rejected，就不会再发生改变。
+基本用法创建 Promisevar p
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-05-03
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/JavaScript/" class="post-category" target="_blank">
+                                    JavaScript
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
 
-    $('#tag-wordcloud').jQCloud([{"text":"AV1","weight":1,"link":"http://konata.tech/tags/AV1/"},{"text":"JSP","weight":1,"link":"http://konata.tech/tags/JSP/"},{"text":"JAVA","weight":1,"link":"http://konata.tech/tags/JAVA/"},{"text":"生命周期","weight":1,"link":"http://konata.tech/tags/生命周期/"},{"text":"LIVE2D","weight":1,"link":"http://konata.tech/tags/LIVE2D/"},{"text":"动态规划","weight":1,"link":"http://konata.tech/tags/动态规划/"},{"text":"算法","weight":1,"link":"http://konata.tech/tags/算法/"},{"text":"JavaScript","weight":0,"link":"http://konata.tech/tags/JavaScript/"},{"text":"ES6","weight":0,"link":"http://konata.tech/tags/ES6/"}], {
-        autoResize: true
-    });
-</script>
-    
-
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/JavaScript/" target="_blank">
+                            <span class="chip bg-color">JavaScript</span>
+                        </a>
+                        
+                        <a href="/tags/ES6/" target="_blank">
+                            <span class="chip bg-color">ES6</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+    </article>
 </main>
+
 
 <footer class="page-footer bg-color">
     <div class="container row center-align">
