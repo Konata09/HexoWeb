@@ -20,9 +20,9 @@ window.live2d_settings = Array(); /*
 
 
 // 后端接口
-live2d_settings['modelAPI'] = '//live2d.fghrsh.net/api/';   // 自建 API 修改这里
+live2d_settings['modelAPI'] = '';   // 自建 API 修改这里
 live2d_settings['tipsMessage'] = 'waifu-tips.json';            // 同目录下可省略路径
-live2d_settings['hitokotoAPI'] = 'lwl12.com';                  // 一言 API，可选 'lwl12.com', 'hitokoto.cn', 'jinrishici.com'(古诗词)
+live2d_settings['hitokotoAPI'] = '';                  // 一言 API，可选 'lwl12.com', 'hitokoto.cn', 'jinrishici.com'(古诗词)
 
 // 默认模型
 live2d_settings['modelId'] = 1;            // 默认模型 ID，可在 F12 控制台找到
@@ -68,7 +68,7 @@ live2d_settings['waifuDraggableRevert'] = true;         // 松开鼠标还原拖
 live2d_settings['l2dVersion'] = '1.4.2';        // 当前版本
 live2d_settings['l2dVerDate'] = '2018.11.12'; // 版本更新日期
 live2d_settings['homePageUrl'] = 'auto';       // 主页地址，可选 'auto'(自动), '{URL 网址}'
-live2d_settings['aboutPageUrl'] = 'https://ipv6.konata.tech';   // 关于页地址, '{URL 网址}'
+live2d_settings['aboutPageUrl'] = 'https://konata.tech';   // 关于页地址, '{URL 网址}'
 live2d_settings['screenshotCaptureName'] = 'HonkaiImpact.png'; // 看板娘截图文件名，例如 'live2d.png'
 
 /****************************************************************************************************/
@@ -129,6 +129,10 @@ function hideMessage(timeout) {
 }
 
 function initModel(waifuPath, type) {
+    if (sessionStorage.getItem('waifu-dsiplay') === 'none') {
+        $('.waifu').hide();
+        return;
+    }
     /* console welcome message */
     eval(function (p, a, c, k, e, r) {
         e = function (c) {
