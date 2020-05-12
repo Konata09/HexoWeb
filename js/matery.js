@@ -121,13 +121,14 @@ $(function () {
     /*回到顶部*/
     $('#backTop').click(function () {
         $('body,html').animate({scrollTop: 0}, 400);
-        showMessage("飞到顶啦",1300,true);
+        showMessage("飞到顶啦", 1300, true);
         return false;
     });
 
+
     /*监听滚动条位置*/
     let $nav = $('#headNav');
-    let $backTop = $('.top-scroll');
+    let $backTop = $('.top-scroll-btn');
     $(window).scroll(function () {
         /* 回到顶部按钮根据滚动条的位置的显示和隐藏.*/
         let scroll = $(window).scrollTop();
@@ -137,6 +138,20 @@ $(function () {
         } else {
             $nav.removeClass('nav-transparent');
             $backTop.slideDown(300);
+        }
+    });
+
+    /*显示看板娘*/
+    if (sessionStorage.getItem('waifu-dsiplay') === 'none') {
+        $('.show-live2d-btn').fadeIn(400);
+    }
+    $('.show-live2d-btn').click(function () {
+        if (sessionStorage.getItem('waifu-dsiplay') === 'none') {
+            sessionStorage.removeItem('waifu-dsiplay');
+            $('.waifu').show();
+            $('.show-live2d-btn').fadeOut(400);
+            showMessage("想我了吗？^_^", 1300, true);
+            initModel("/live2d/waifu-tips.json");
         }
     });
 });

@@ -86,3 +86,45 @@ pre[class*="language-"] {
 .nprogress-custom-parent #nprogress .bar {
     position: absolute;
 }
+.btn-floating {
+    background: linear-gradient(to bottom right, #43CBFF  0%, #0396FF 100%);
+    width: 48px!important;
+    height: 48px!important;
+}
+
+.btn-floating i {
+    line-height: 48px!important;
+    font-size: 1.6rem;
+}
+.top-scroll-btn .btn-floating i{
+    font-size: 1.8rem;
+}
+.show-live2d-btn {
+    display: none;
+    position: fixed;
+    right: 20px;
+    bottom: 78px;
+    padding-top: 15px;
+    margin-bottom: 0;
+    z-index: 99;
+}
+
+#floating-toc-btn {
+    display: none;
+    position: fixed;
+    right: 20px;
+    bottom: 141px;
+    padding-top: 15px;
+    margin-bottom: 0;
+    z-index: 95;
+}
+
+.top-scroll-btn {
+    display: none;
+    position: fixed;
+    right: 20px;
+    bottom: 15px;
+    padding-top: 15px;
+    margin-bottom: 0;
+    z-index: 90;
+}

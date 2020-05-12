@@ -121,15 +121,6 @@
         </a>
     </li>
     
-    <li class="hide-on-med-and-down">
-        <a href="/friends" class="waves-effect waves-light">
-            
-            <i class="fa fa-address-book"></i>
-            
-            <span>友情链接</span>
-        </a>
-    </li>
-    
     <li>
         <a href="#searchModal" class="modal-trigger waves-effect waves-light">
             <i id="searchIcon" class="fa fa-search" title="搜索"></i>
@@ -197,15 +188,6 @@
                 <i class="fa fa-fw fa-user-circle-o"></i>
                 
                 关于
-            </a>
-        </li>
-        
-        <li>
-            <a href="/friends" class="waves-effect waves-light">
-                
-                <i class="fa fa-fw fa-address-book"></i>
-                
-                友情链接
             </a>
         </li>
         
@@ -367,31 +349,13 @@
     }
 
     #toc-content .is-active-link {
-        color: #0396FF ;
+        color: #0396FF;
     }
 
     #toc-content .is-active-link::before {
         background-color: #0396FF;
     }
 
-    #floating-toc-btn {
-        position: fixed;
-        right: 20px;
-        bottom: 76px;
-        padding-top: 15px;
-        margin-bottom: 0;
-        z-index: 998;
-    }
-
-    #floating-toc-btn .btn-floating {
-        width: 48px;
-        height: 48px;
-    }
-
-    #floating-toc-btn .btn-floating i {
-        line-height: 48px;
-        font-size: 1.4rem;
-    }
 </style>
 <div class="row">
     <div id="main-content" class="col s12 m12 l9">
@@ -605,11 +569,14 @@
 
 <!-- TOC 悬浮按钮. -->
 
-<div id="floating-toc-btn" class="hide-on-med-and-down">
-    <a class="btn-floating btn-large bg-color">
-        <i class="fa fa-list"></i>
-    </a>
-</div>
+    <div id="floating-toc-btn" class="hide-on-med-and-down">
+        <a class="btn-floating btn-large bg-color">
+            <i class="fa fa-list"></i>
+        </a>
+    </div>
+<script>
+        $('#floating-toc-btn').fadeIn(400);
+</script>
 
 
 <script src="/libs/tocbot/tocbot.min.js"></script>
@@ -753,12 +720,21 @@ $(function () {
 });
 </script>
 <!-- 回到顶部按钮 -->
-<div id="backTop" class="top-scroll">
+<div id="backTop" class="top-scroll-btn">
     <a class="btn-floating btn-large waves-effect waves-light" href="#!">
         <i class="fa fa-angle-up"></i>
     </a>
 </div>
-
+<div id="show-live2d" class="show-live2d-btn">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#">
+        <svg viewBox="-75 -55 350 500"
+             xmlns="http://www.w3.org/2000/svg"
+             xmlns:xlink="http://www.w3.org/1999/xlink">
+            <path fill-rule="evenodd" fill="rgb(255,255,255)"
+                  d="M124.000,-0.000 L195.000,45.000 L195.000,196.000 L125.000,252.000 C125.000,252.000 124.333,252.000 124.000,252.000 C124.000,168.008 124.000,-0.000 124.000,-0.000 ZM36.000,31.000 L77.000,47.000 L77.000,196.000 L36.000,221.000 L36.000,31.000 ZM-0.000,67.000 C-0.000,67.000 16.001,71.000 24.000,73.000 C24.000,104.663 24.000,168.000 24.000,168.000 C24.000,168.000 7.999,176.667 -0.000,181.000 C-0.000,143.004 -0.000,67.000 -0.000,67.000 ZM124.000,-0.000 L195.000,45.000 L195.000,196.000 L125.000,252.000 C125.000,252.000 124.333,252.000 124.000,252.000 C124.000,168.008 124.000,-0.000 124.000,-0.000 ZM36.000,31.000 L77.000,47.000 L77.000,196.000 L36.000,221.000 L36.000,31.000 ZM-0.000,67.000 C-0.000,67.000 16.001,71.000 24.000,73.000 C24.000,104.663 24.000,168.000 24.000,168.000 C24.000,168.000 7.999,176.667 -0.000,181.000 C-0.000,143.004 -0.000,67.000 -0.000,67.000 ZM124.000,-0.000 L195.000,45.000 L195.000,196.000 L125.000,252.000 C125.000,252.000 124.333,252.000 124.000,252.000 C124.000,168.008 124.000,-0.000 124.000,-0.000 ZM36.000,31.000 L77.000,47.000 L77.000,196.000 L36.000,221.000 L36.000,31.000 ZM-0.000,67.000 C-0.000,67.000 16.001,71.000 24.000,73.000 C24.000,104.663 24.000,168.000 24.000,168.000 C24.000,168.000 7.999,176.667 -0.000,181.000 C-0.000,143.004 -0.000,67.000 -0.000,67.000 Z"/>
+        </svg>
+    </a>
+</div>
 
 <script src="/libs/materialize/materialize.min.js"></script>
 <script src="/libs/masonry/masonry.pkgd.min.js"></script>

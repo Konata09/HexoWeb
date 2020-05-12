@@ -120,15 +120,6 @@
         </a>
     </li>
     
-    <li class="hide-on-med-and-down">
-        <a href="/friends" class="waves-effect waves-light">
-            
-            <i class="fa fa-address-book"></i>
-            
-            <span>友情链接</span>
-        </a>
-    </li>
-    
     <li>
         <a href="#searchModal" class="modal-trigger waves-effect waves-light">
             <i id="searchIcon" class="fa fa-search" title="搜索"></i>
@@ -196,15 +187,6 @@
                 <i class="fa fa-fw fa-user-circle-o"></i>
                 
                 关于
-            </a>
-        </li>
-        
-        <li>
-            <a href="/friends" class="waves-effect waves-light">
-                
-                <i class="fa fa-fw fa-address-book"></i>
-                
-                友情链接
             </a>
         </li>
         
@@ -338,10 +320,19 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/1.jpg)');
                 </a>
                 
                 
-                <a href="/tags/生命周期/" title="生命周期: 1">
+                <a href="/tags/生命周期/" title="生命周期: 0">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             data-tagname="生命周期" style="background-color: #D5F5E3;">生命周期
+                        <span class="tag-length">0</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/Nginx/" title="Nginx: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="Nginx" style="background-color: #E8F8F5;">Nginx
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -350,17 +341,8 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/1.jpg)');
                 <a href="/tags/AV1/" title="AV1: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="AV1" style="background-color: #E8F8F5;">AV1
+                            data-tagname="AV1" style="background-color: #FEF9E7;">AV1
                         <span class="tag-length">2</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/LIVE2D/" title="LIVE2D: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="LIVE2D" style="background-color: #FEF9E7;">LIVE2D
-                        <span class="tag-length">1</span>
                     </span>
                 </a>
                 
@@ -383,10 +365,28 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/1.jpg)');
                 </a>
                 
                 
+                <a href="/tags/VapoVurSynth/" title="VapoVurSynth: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="VapoVurSynth" style="background-color: #D7BDE2;">VapoVurSynth
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/LIVE2D/" title="LIVE2D: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="LIVE2D" style="background-color: #A3E4D7;">LIVE2D
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/tags/动态规划/" title="动态规划: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="动态规划" style="background-color: #D7BDE2;">动态规划
+                            data-tagname="动态规划" style="background-color: #85C1E9;">动态规划
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -395,34 +395,16 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/1.jpg)');
                 <a href="/tags/算法/" title="算法: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="算法" style="background-color: #A3E4D7;">算法
+                            data-tagname="算法" style="background-color: #F8C471;">算法
                         <span class="tag-length">1</span>
                     </span>
                 </a>
                 
                 
-                <a href="/tags/建站/" title="建站: 0">
+                <a href="/tags/TODO/" title="TODO: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="建站" style="background-color: #85C1E9;">建站
-                        <span class="tag-length">0</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/Nginx/" title="Nginx: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="Nginx" style="background-color: #F8C471;">Nginx
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/VapoVurSynth/" title="VapoVurSynth: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="VapoVurSynth" style="background-color: #F9E79F;">VapoVurSynth
+                            data-tagname="TODO" style="background-color: #F9E79F;">TODO
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -535,12 +517,21 @@ $(function () {
 });
 </script>
 <!-- 回到顶部按钮 -->
-<div id="backTop" class="top-scroll">
+<div id="backTop" class="top-scroll-btn">
     <a class="btn-floating btn-large waves-effect waves-light" href="#!">
         <i class="fa fa-angle-up"></i>
     </a>
 </div>
-
+<div id="show-live2d" class="show-live2d-btn">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#">
+        <svg viewBox="-75 -55 350 500"
+             xmlns="http://www.w3.org/2000/svg"
+             xmlns:xlink="http://www.w3.org/1999/xlink">
+            <path fill-rule="evenodd" fill="rgb(255,255,255)"
+                  d="M124.000,-0.000 L195.000,45.000 L195.000,196.000 L125.000,252.000 C125.000,252.000 124.333,252.000 124.000,252.000 C124.000,168.008 124.000,-0.000 124.000,-0.000 ZM36.000,31.000 L77.000,47.000 L77.000,196.000 L36.000,221.000 L36.000,31.000 ZM-0.000,67.000 C-0.000,67.000 16.001,71.000 24.000,73.000 C24.000,104.663 24.000,168.000 24.000,168.000 C24.000,168.000 7.999,176.667 -0.000,181.000 C-0.000,143.004 -0.000,67.000 -0.000,67.000 ZM124.000,-0.000 L195.000,45.000 L195.000,196.000 L125.000,252.000 C125.000,252.000 124.333,252.000 124.000,252.000 C124.000,168.008 124.000,-0.000 124.000,-0.000 ZM36.000,31.000 L77.000,47.000 L77.000,196.000 L36.000,221.000 L36.000,31.000 ZM-0.000,67.000 C-0.000,67.000 16.001,71.000 24.000,73.000 C24.000,104.663 24.000,168.000 24.000,168.000 C24.000,168.000 7.999,176.667 -0.000,181.000 C-0.000,143.004 -0.000,67.000 -0.000,67.000 ZM124.000,-0.000 L195.000,45.000 L195.000,196.000 L125.000,252.000 C125.000,252.000 124.333,252.000 124.000,252.000 C124.000,168.008 124.000,-0.000 124.000,-0.000 ZM36.000,31.000 L77.000,47.000 L77.000,196.000 L36.000,221.000 L36.000,31.000 ZM-0.000,67.000 C-0.000,67.000 16.001,71.000 24.000,73.000 C24.000,104.663 24.000,168.000 24.000,168.000 C24.000,168.000 7.999,176.667 -0.000,181.000 C-0.000,143.004 -0.000,67.000 -0.000,67.000 Z"/>
+        </svg>
+    </a>
+</div>
 
 <script src="/libs/materialize/materialize.min.js"></script>
 <script src="/libs/masonry/masonry.pkgd.min.js"></script>

@@ -94,11 +94,11 @@
   </entry>
   
   <entry>
-    <title>AV1 编码测试</title>
+    <title>AV1 编码测试视频</title>
     <link href="http://konata.tech/2020/04/28/Misaka-Dances/"/>
     <id>http://konata.tech/2020/04/28/Misaka-Dances/</id>
     <published>2020-04-28T02:33:00.000Z</published>
-    <updated>2020-05-12T07:08:15.673Z</updated>
+    <updated>2020-05-12T13:25:28.106Z</updated>
     
     <summary type="html">
     
@@ -120,11 +120,11 @@
   </entry>
   
   <entry>
-    <title>VapoVurSynth 输出无损视频</title>
+    <title>VapourSynth 输出无损视频</title>
     <link href="http://konata.tech/2020/04/27/codec/"/>
     <id>http://konata.tech/2020/04/27/codec/</id>
     <published>2020-04-27T06:43:12.000Z</published>
-    <updated>2020-05-12T07:04:05.188Z</updated>
+    <updated>2020-05-12T13:25:28.112Z</updated>
     
     <summary type="html">
     
@@ -174,7 +174,7 @@
     <link href="http://konata.tech/2020/04/04/To-Do/"/>
     <id>http://konata.tech/2020/04/04/To-Do/</id>
     <published>2020-04-04T08:43:22.000Z</published>
-    <updated>2020-05-12T07:19:54.833Z</updated>
+    <updated>2020-05-12T13:25:28.114Z</updated>
     
     <summary type="html">
     
@@ -189,6 +189,8 @@
     
     </summary>
     
+    
+      <category term="TODO" scheme="http://konata.tech/tags/TODO/"/>
     
   </entry>
   
@@ -221,11 +223,11 @@
   </entry>
   
   <entry>
-    <title>JSP生命周期</title>
+    <title>JSP 生命周期</title>
     <link href="http://konata.tech/2020/03/13/Life-cycle-of-JSP/"/>
     <id>http://konata.tech/2020/03/13/Life-cycle-of-JSP/</id>
     <published>2020-03-13T14:32:00.000Z</published>
-    <updated>2020-03-13T15:57:48.695Z</updated>
+    <updated>2020-05-12T13:25:28.109Z</updated>
     
     <summary type="html">
     
@@ -245,8 +247,6 @@
       <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
     
       <category term="JAVA" scheme="http://konata.tech/tags/JAVA/"/>
-    
-      <category term="生命周期" scheme="http://konata.tech/tags/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/"/>
     
   </entry>
   
@@ -299,7 +299,7 @@
     <link href="http://konata.tech/2019/08/06/UpdateLog/"/>
     <id>http://konata.tech/2019/08/06/UpdateLog/</id>
     <published>2019-08-06T13:51:00.000Z</published>
-    <updated>2020-05-12T07:44:33.207Z</updated>
+    <updated>2020-05-12T16:19:36.013Z</updated>
     
     <summary type="html">
     

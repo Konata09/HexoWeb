@@ -132,6 +132,8 @@ function initModel(waifuPath, type) {
     if (sessionStorage.getItem('waifu-dsiplay') === 'none') {
         $('.waifu').hide();
         return;
+    }else{
+        $('.waifu').show();
     }
     /* console welcome message */
     eval(function (p, a, c, k, e, r) {
@@ -303,6 +305,7 @@ function loadTipsMessage(result) {
         showMessage(getRandText(result.waifu.hidden_message), 1300, true);
         window.setTimeout(function () {
             $('.waifu').hide();
+            $('.show-live2d-btn').fadeIn(400);
         }, 1300);
     });
 
