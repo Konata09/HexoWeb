@@ -48,7 +48,7 @@
     <link href="http://konata.tech/2020/05/06/move-inetpub/"/>
     <id>http://konata.tech/2020/05/06/move-inetpub/</id>
     <published>2020-05-06T08:28:33.000Z</published>
-    <updated>2020-05-12T07:32:21.087Z</updated>
+    <updated>2020-05-13T02:05:06.827Z</updated>
     
     <summary type="html">
     
@@ -62,15 +62,19 @@
     
     </summary>
     
+      <category term="Ops" scheme="http://konata.tech/categories/Ops/"/>
+    
+    
+      <category term="IIS" scheme="http://konata.tech/tags/IIS/"/>
     
   </entry>
   
   <entry>
-    <title>JavaScript Promise 笔记</title>
+    <title>Promise</title>
     <link href="http://konata.tech/2020/05/03/Promise/"/>
     <id>http://konata.tech/2020/05/03/Promise/</id>
     <published>2020-05-03T12:22:00.000Z</published>
-    <updated>2020-05-12T07:08:15.673Z</updated>
+    <updated>2020-05-13T02:03:26.910Z</updated>
     
     <summary type="html">
     
@@ -295,11 +299,11 @@
   </entry>
   
   <entry>
-    <title>更新日志</title>
+    <title>Changelog</title>
     <link href="http://konata.tech/2019/08/06/UpdateLog/"/>
     <id>http://konata.tech/2019/08/06/UpdateLog/</id>
     <published>2019-08-06T13:51:00.000Z</published>
-    <updated>2020-05-12T16:19:36.013Z</updated>
+    <updated>2020-05-13T02:03:55.375Z</updated>
     
     <summary type="html">
     

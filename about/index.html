@@ -214,6 +214,7 @@
         z-index: 10;
         top: 0;
         right: 0;
+        bottom: 0;
         border: 0;
         transform: scale(1.1);
     }
@@ -499,7 +500,7 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/1.jpg)');
                 type: 'pie',
                 radius: '50%',
                 color: ['#6772e5', '#ff9e0f', '#fa755a', '#3ecf8e', '#82d3f4', '#ab47bc', '#525f7f', '#f51c47', '#26A69A'],
-                data: [{"name":"JAVA","value":1},{"name":"Ops","value":1},{"name":"音视频编码","value":2},{"name":"JavaScript","value":1},{"name":"Blog","value":1},{"name":"算法","value":1}],
+                data: [{"name":"音视频编码","value":2},{"name":"JAVA","value":1},{"name":"JavaScript","value":1},{"name":"Ops","value":2},{"name":"Blog","value":1},{"name":"算法","value":1}],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
@@ -523,7 +524,7 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/1.jpg)');
         xAxis: [
             {
                 type: 'category',
-                data: ["AV1","ES6","算法","Nginx","JSP","JavaScript","JAVA","VapoVurSynth","LIVE2D","动态规划"]
+                data: ["AV1","IIS","JAVA","JavaScript","ES6","Nginx","JSP","TODO","LIVE2D","动态规划"]
             }
         ],
         yAxis: [
@@ -653,6 +654,12 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/1.jpg)');
         <div class="tag-chips center-align">
             
             
+            <a href="/tags/AV1/" target="_blank">
+                <span class="chip center-align waves-effect waves-light chip-default">AV1</span>
+            </a>
+            
+            
+            
             <a href="/tags/JSP/" target="_blank">
                 <span class="chip center-align waves-effect waves-light chip-default">JSP</span>
             </a>
@@ -665,8 +672,10 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/1.jpg)');
             
             
             
-            <a href="/tags/生命周期/" target="_blank">
-                <span class="chip center-align waves-effect waves-light chip-default">生命周期</span>
+            
+            
+            <a href="/tags/ES6/" target="_blank">
+                <span class="chip center-align waves-effect waves-light chip-default">ES6</span>
             </a>
             
             
@@ -677,22 +686,14 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/1.jpg)');
             
             
             
-            <a href="/tags/AV1/" target="_blank">
-                <span class="chip center-align waves-effect waves-light chip-default">AV1</span>
-            </a>
-            
-            
-            
-            
-            
-            <a href="/tags/ES6/" target="_blank">
-                <span class="chip center-align waves-effect waves-light chip-default">ES6</span>
-            </a>
-            
-            
-            
             <a href="/tags/VapoVurSynth/" target="_blank">
                 <span class="chip center-align waves-effect waves-light chip-default">VapoVurSynth</span>
+            </a>
+            
+            
+            
+            <a href="/tags/TODO/" target="_blank">
+                <span class="chip center-align waves-effect waves-light chip-default">TODO</span>
             </a>
             
             
@@ -715,8 +716,8 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/1.jpg)');
             
             
             
-            <a href="/tags/TODO/" target="_blank">
-                <span class="chip center-align waves-effect waves-light chip-default">TODO</span>
+            <a href="/tags/IIS/" target="_blank">
+                <span class="chip center-align waves-effect waves-light chip-default">IIS</span>
             </a>
             
             
@@ -800,7 +801,7 @@ $(function () {
     </a>
 </div>
 <div id="show-live2d" class="show-live2d-btn">
-    <a class="btn-floating btn-large waves-effect waves-light" href="#">
+    <a class="btn-floating btn-large waves-effect waves-light" href="##">
         <svg viewBox="-75 -55 350 500"
              xmlns="http://www.w3.org/2000/svg"
              xmlns:xlink="http://www.w3.org/1999/xlink">
