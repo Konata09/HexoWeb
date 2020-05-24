@@ -1,0 +1,1 @@
+FOR %%a IN (.\*.opus) DO ("ffmpeg" -i "%%a" -c:a copy "%%a.caf")
