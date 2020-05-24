@@ -367,129 +367,66 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/1.jpg)');
 
 <script>
     function playBGMByNavigator() {
-        var isSafari = /Safari/;
-        var isChrome = /Chrome/;
-        if (isSafari.test(navigator.userAgent) && !isChrome.test(navigator.userAgent)) {
-            window.ap1 = new APlayer({
-                container: document.getElementById('aplayer'),
-                fixed: 'true' === 'true',
-                autoplay: 'true' === 'true',
-                theme: '#3e3e3e',
-                loop: 'all',
-                order: 'list',
-                preload: 'auto',
-                volume: Number('0.5'),
-                listFolded: 'false' === 'true',
-                listMaxHeight: '',
-                audio: [
-                    {
-                        "url": "/media/Music8_2_index.opus.caf"
-                    },
-                    {
-                        "url": "/media/Music3_2.opus.caf"
-                    },
-                    {
-                        "url": "/media/Music0_1_index.opus.caf"
-                    },
-                    {
-                        "url": "/media/Music0_5_index.opus.caf"
-                    },
-                    {
-                        "url": "/media/Music5_3_index.opus.caf"
-                    },
-                    {
-                        "url": "/media/Music31_6_index.opus.caf"
-                    },
-                    {
-                        "url": "/media/Music15_4_index.opus.caf"
-                    },
-                    {
-                        "url": "/media/Music26_1_index.opus.caf"
-                    },
-                    {
-                        "url": "/media/Music19_5_index.opus.caf"
-                    },
-                    {
-                        "url": "/media/Music5_2_index.opus.caf"
-                    },
-                    {
-                        "url": "/media/Music1_2_index.opus.caf"
-                    },
-                    {
-                        "url": "/media/Music14_1.opus.caf"
-                    },
-                    {
-                        "url": "/media/Music27_3_index.opus.caf"
-                    },
-                    {
-                        "url": "/media/Music13_1_index.opus.caf"
-                    },
-                    {
-                        "url": "/media/Music26_9_index.opus.caf"
-                    }
-                ]
-            });
-        } else {
-            window.ap1 = new APlayer({
-                container: document.getElementById('aplayer'),
-                fixed: 'true' === 'true',
-                autoplay: 'true' === 'true',
-                theme: '#3e3e3e',
-                loop: 'all',
-                order: 'list',
-                preload: 'auto',
-                volume: Number('0.5'),
-                listFolded: 'false' === 'true',
-                listMaxHeight: '',
-                audio: [
-                    {
-                        "url": "/media/Music8_2_index.opus"
-                    },
-                    {
-                        "url": "/media/Music3_2.ogg"
-                    },
-                    {
-                        "url": "/media/Music0_1_index.ogg"
-                    },
-                    {
-                        "url": "/media/Music0_5_index.ogg"
-                    },
-                    {
-                        "url": "/media/Music5_3_index.ogg"
-                    },
-                    {
-                        "url": "/media/Music31_6_index.ogg"
-                    },
-                    {
-                        "url": "/media/Music15_4_index.ogg"
-                    },
-                    {
-                        "url": "/media/Music26_1_index.ogg"
-                    },
-                    {
-                        "url": "/media/Music19_5_index.ogg"
-                    },
-                    {
-                        "url": "/media/Music5_2_index.ogg"
-                    },
-                    {
-                        "url": "/media/Music1_2_index.ogg"
-                    },
-                    {
-                        "url": "/media/Music14_1.ogg"
-                    },
-                    {
-                        "url": "/media/Music27_3_index.ogg"
-                    },
-                    {
-                        "url": "/media/Music13_1_index.ogg"
-                    },
-                    {
-                        "url": "/media/Music26_9_index.ogg"
-                    }
-                ]
-            });
-        }
+        window.ap1 = new APlayer({
+            container: document.getElementById('aplayer'),
+            fixed: 'true' === 'true',
+            autoplay: 'true' === 'true',
+            theme: '#3e3e3e',
+            loop: 'all',
+            order: 'list',
+            preload: 'auto',
+            volume: Number('0.5'),
+            listFolded: 'false' === 'true',
+            listMaxHeight: '',
+            audio: [
+                {
+                    "url": "/media/Music8_2_index.opus"
+                },
+                {
+                    "url": "/media/Music3_2.ogg"
+                },
+                {
+                    "url": "/media/Music0_1_index.ogg"
+                },
+                {
+                    "url": "/media/Music0_5_index.ogg"
+                },
+                {
+                    "url": "/media/Music5_3_index.ogg"
+                },
+                {
+                    "url": "/media/Music31_6_index.ogg"
+                },
+                {
+                    "url": "/media/Music15_4_index.ogg"
+                },
+                {
+                    "url": "/media/Music26_1_index.ogg"
+                },
+                {
+                    "url": "/media/Music19_5_index.ogg"
+                },
+                {
+                    "url": "/media/Music5_2_index.ogg"
+                },
+                {
+                    "url": "/media/Music1_2_index.ogg"
+                },
+                {
+                    "url": "/media/Music14_1.ogg"
+                },
+                {
+                    "url": "/media/Music27_3_index.ogg"
+                },
+                {
+                    "url": "/media/Music13_1_index.ogg"
+                },
+                {
+                    "url": "/media/Music26_9_index.ogg"
+                }
+            ]
+        });
+
     }
 
     $(window).ready(function () {
