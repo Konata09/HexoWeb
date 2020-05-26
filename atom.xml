@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://konata.tech/"/>
-  <updated>2020-05-12T06:59:21.612Z</updated>
+  <updated>2020-05-26T04:09:58.417Z</updated>
   <id>http://konata.tech/</id>
   
   <author>
@@ -17,11 +17,43 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Safari 使用 Opus 编码</title>
+    <link href="http://konata.tech/2020/05/25/ProvideCAFForSAfari/"/>
+    <id>http://konata.tech/2020/05/25/ProvideCAFForSAfari/</id>
+    <published>2020-05-25T01:46:01.000Z</published>
+    <updated>2020-05-26T04:09:58.417Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;Vorbis-与-Opus-编码&quot;&gt;&lt;a href=&quot;#Vorbis-与-Opus-编码&quot; class=&quot;headerlink&quot; title=&quot;Vorbis 与 Opus 编码&quot;&gt;&lt;/a&gt;Vorbis 与 Opus 编码&lt;/h2&gt;&lt;p&gt;摘自
+        
+      
+    
+    </summary>
+    
+      <category term="Admin" scheme="http://konata.tech/categories/Admin/"/>
+    
+      <category term="音视频编码" scheme="http://konata.tech/categories/Admin/%E9%9F%B3%E8%A7%86%E9%A2%91%E7%BC%96%E7%A0%81/"/>
+    
+    
+      <category term="Nginx" scheme="http://konata.tech/tags/Nginx/"/>
+    
+      <category term="Vorbis" scheme="http://konata.tech/tags/Vorbis/"/>
+    
+      <category term="Opus" scheme="http://konata.tech/tags/Opus/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Nginx 1.18 with HTTP/3 编译记录</title>
     <link href="http://konata.tech/2020/05/09/Nginx-1-18-compile/"/>
     <id>http://konata.tech/2020/05/09/Nginx-1-18-compile/</id>
     <published>2020-05-08T16:46:49.000Z</published>
-    <updated>2020-05-12T06:59:21.612Z</updated>
+    <updated>2020-05-26T03:42:17.494Z</updated>
     
     <summary type="html">
     
@@ -36,7 +68,7 @@
     
     </summary>
     
-      <category term="Ops" scheme="http://konata.tech/categories/Ops/"/>
+      <category term="Admin" scheme="http://konata.tech/categories/Admin/"/>
     
     
       <category term="Nginx" scheme="http://konata.tech/tags/Nginx/"/>
@@ -48,7 +80,7 @@
     <link href="http://konata.tech/2020/05/06/move-inetpub/"/>
     <id>http://konata.tech/2020/05/06/move-inetpub/</id>
     <published>2020-05-06T08:28:33.000Z</published>
-    <updated>2020-05-13T02:05:06.827Z</updated>
+    <updated>2020-05-25T01:50:38.000Z</updated>
     
     <summary type="html">
     
@@ -62,7 +94,7 @@
     
     </summary>
     
-      <category term="Ops" scheme="http://konata.tech/categories/Ops/"/>
+      <category term="Admin" scheme="http://konata.tech/categories/Admin/"/>
     
     
       <category term="IIS" scheme="http://konata.tech/tags/IIS/"/>
@@ -74,7 +106,7 @@
     <link href="http://konata.tech/2020/05/03/Promise/"/>
     <id>http://konata.tech/2020/05/03/Promise/</id>
     <published>2020-05-03T12:22:00.000Z</published>
-    <updated>2020-05-13T02:03:26.910Z</updated>
+    <updated>2020-05-25T01:43:42.482Z</updated>
     
     <summary type="html">
     

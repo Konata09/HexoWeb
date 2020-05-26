@@ -381,8 +381,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Ops/" class="post-category" target="_blank">
-                                Ops
+                            <a href="/categories/Admin/" class="post-category" target="_blank">
+                                Admin
                             </a>
                         
                     </div>
@@ -503,25 +503,25 @@ make install</code></pre>
 <pre class=" language-sh"><code class="language-sh">systemctl daemon-reload
 systemctl enable nginx</code></pre>
 <h2 id="启动-Nginx"><a href="#启动-Nginx" class="headerlink" title="启动 Nginx"></a>启动 Nginx</h2><p>Nginx 配置文件在 <code>/etc/nginx</code><br>在配置文件中添加 HTTP/3 相关配置</p>
-<pre class=" language-conf"><code class="language-conf">server {
-    # Enable QUIC and HTTP/3.
-    listen 443 quic reuseport;
+<pre class=" language-nginx"><code class="language-nginx"><span class="token keyword">server</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true"># Enable QUIC and HTTP/3.</span>
+    <span class="token keyword">listen</span> <span class="token number">443</span> quic reuseport<span class="token punctuation">;</span>
 
-    # Enable HTTP/2 (optional).
-    listen 443 ssl http2;
+    <span class="token comment" spellcheck="true"># Enable HTTP/2 (optional).</span>
+    <span class="token keyword">listen</span> <span class="token number">443</span> <span class="token keyword">ssl</span> http2<span class="token punctuation">;</span>
 
-    ssl_certificate      cert.crt;
-    ssl_certificate_key  cert.key;
+    <span class="token keyword">ssl_certificate</span>      cert<span class="token punctuation">.</span>crt<span class="token punctuation">;</span>
+    <span class="token keyword">ssl_certificate_key</span>  cert<span class="token punctuation">.</span>key<span class="token punctuation">;</span>
 
-    # Enable all TLS versions (TLSv1.3 is required for QUIC).
-    ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3;
+    <span class="token comment" spellcheck="true"># Enable all TLS versions (TLSv1.3 is required for QUIC).</span>
+    <span class="token keyword">ssl_protocols</span> TLSv1 TLSv1<span class="token number">.1</span> TLSv1<span class="token number">.2</span> TLSv1<span class="token number">.3</span><span class="token punctuation">;</span>
 
-    # Request buffering in not currently supported for HTTP/3.
-    proxy_request_buffering off;
+    <span class="token comment" spellcheck="true"># Request buffering in not currently supported for HTTP/3.</span>
+    proxy_request_buffering off<span class="token punctuation">;</span>
 
-    # Add Alt-Svc header to negotiate HTTP/3.
-    add_header alt-svc 'h3-27=":443"; ma=86400';
-}</code></pre>
+    <span class="token comment" spellcheck="true"># Add Alt-Svc header to negotiate HTTP/3.</span>
+    <span class="token keyword">add_header</span> alt<span class="token operator">-</span>svc <span class="token string">'h3-27=":443"; ma=86400'</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
 <p>启动 Nginx</p>
 <pre class=" language-sh"><code class="language-sh">systemctl start nginx</code></pre>
 <h2 id="测试-HTTP-3"><a href="#测试-HTTP-3" class="headerlink" title="测试 HTTP/3"></a>测试 HTTP/3</h2><p>安装 Firefox Nightly，在 <code>about:config</code> 中打开 <code>network.http.http3.enabled</code> 选项<br><img src="/images/pasted-2.png" alt="Firefox nightly"><br>安装 Google Chrome Canary，添加启动参数 <code>--enable-quic --quic-version=h3-27</code><br><img src="/images/pasted-3.png" alt="Chrome Canary"><br><a href="https://http3check.net/?host=azure.konata.tech" target="_blank" rel="noopener">HTTP/3 CHECK</a><br><img src="/images/pasted-4.png" alt="HTTP/3 CHECK"></p>
@@ -583,51 +583,60 @@ systemctl enable nginx</code></pre>
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-            <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article col s12 m6" data-aos="fade-up">
                 <div class="article-badge left-badge text-color">
-                    <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
-                </div>
+                    <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
                 <div class="card">
-                    <a href="/2020/05/09/Nginx-1-18-compile/">
+                    <a href="/2020/05/25/ProvideCAFForSAfari/">
                         <div class="card-image">
                             
                                 
-                                <img data-src="/medias/featureimages/08.jpg" class="responsive-img lazyload"
-                                     alt="Nginx 1.18 with HTTP/3 编译记录">
+                                <img data-src="/medias/featureimages/14.jpg" class="responsive-img lazyload"
+                                     alt="Safari 使用 Opus 编码">
                             
-                            <span class="card-title">Nginx 1.18 with HTTP/3 编译记录</span>
+                            <span class="card-title">Safari 使用 Opus 编码</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                            <center>
-                                Nginx 1.18 with HTTP/3 编译记录
-                                
+                                利用 Nginx 给 Safiri 提供 CAF 封装
+                            
                             </center>
                         </div>
                         <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-05-09
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-05-25
+                        </span>
                             <span class="publish-author">
                                 
                                     <i class="fa fa-bookmark fa-fw icon-category"></i>
                                     
-                                        <a href="/categories/Ops/" class="post-category" target="_blank">
-                                    Ops
+                                        <a href="/categories/Admin/" class="post-category" target="_blank">
+                                    Admin
+                                </a>
+                                    
+                                        <a href="/categories/Admin/音视频编码/" class="post-category" target="_blank">
+                                    音视频编码
                                 </a>
                                     
                                 
                             </span>
                         </div>
                     </div>
-
                     
                         <div class="card-action article-tags">
                             
                                 <a href="/tags/Nginx/" target="_blank">
                                     <span class="chip bg-color">Nginx</span>
+                                </a>
+                            
+                                <a href="/tags/Vorbis/" target="_blank">
+                                    <span class="chip bg-color">Vorbis</span>
+                                </a>
+                            
+                                <a href="/tags/Opus/" target="_blank">
+                                    <span class="chip bg-color">Opus</span>
                                 </a>
                             
                         </div>
@@ -667,8 +676,8 @@ systemctl enable nginx</code></pre>
                                 
                                     <i class="fa fa-bookmark fa-fw icon-category"></i>
                                     
-                                        <a href="/categories/Ops/" class="post-category" target="_blank">
-                                    Ops
+                                        <a href="/categories/Admin/" class="post-category" target="_blank">
+                                    Admin
                                 </a>
                                     
                                 
