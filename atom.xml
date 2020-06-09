@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://konata.tech/"/>
-  <updated>2020-05-26T04:09:58.417Z</updated>
+  <updated>2020-06-09T05:46:18.289Z</updated>
   <id>http://konata.tech/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JavaBean</title>
+    <link href="http://konata.tech/2020/06/09/JavaBean/"/>
+    <id>http://konata.tech/2020/06/09/JavaBean/</id>
+    <published>2020-06-09T05:36:22.000Z</published>
+    <updated>2020-06-09T05:46:18.289Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;JavaBean 是 Java 语言编写类的一种标准规范。符合 JavaBean 的类，要求类必须是具体的和公共的，并且具有无参数的构造方法，提供用来操作成员变量的 set 和 get 方法。&lt;/p&gt;
+&lt;pre class=&quot; language-java&quot;&gt;&lt;code
+        
+      
+    
+    </summary>
+    
+      <category term="Java" scheme="http://konata.tech/categories/Java/"/>
+    
+    
+      <category term="Java" scheme="http://konata.tech/tags/Java/"/>
+    
+  </entry>
   
   <entry>
     <title>Safari 使用 Opus 编码</title>
@@ -235,7 +262,7 @@
     <link href="http://konata.tech/2020/03/16/dp/"/>
     <id>http://konata.tech/2020/03/16/dp/</id>
     <published>2020-03-16T03:44:00.000Z</published>
-    <updated>2020-03-16T06:23:35.885Z</updated>
+    <updated>2020-06-09T05:20:43.376Z</updated>
     
     <summary type="html">
     
@@ -243,7 +270,7 @@
       
         
         
-          &lt;p&gt;&lt;strong&gt;神奇口袋问题&lt;/strong&gt;&lt;br&gt;有一个神奇的口袋总的容积是40，用这个口袋可以变出一些物品，这些物品的总体积必须是40。&lt;br&gt;&lt;strong&gt;DP(动态规划)思路：&lt;/strong&gt;&lt;br&gt;k种物品凑成体积w的方法：k-1种物品凑成体积w
+          &lt;p&gt;&lt;strong&gt;神奇口袋问题&lt;/strong&gt;&lt;br&gt;有一个神奇的口袋总的容积是 40，用这个口袋可以变出一些物品，这些物品的总体积必须是 40。&lt;br&gt;&lt;strong&gt;DP（动态规划）思路：&lt;/strong&gt;&lt;br&gt;k 种物品凑成体积 w 的方法：k-1 种物品凑成体积
         
       
     
@@ -263,7 +290,7 @@
     <link href="http://konata.tech/2020/03/13/Life-cycle-of-JSP/"/>
     <id>http://konata.tech/2020/03/13/Life-cycle-of-JSP/</id>
     <published>2020-03-13T14:32:00.000Z</published>
-    <updated>2020-05-12T13:25:28.109Z</updated>
+    <updated>2020-06-09T05:20:57.013Z</updated>
     
     <summary type="html">
     
@@ -271,7 +298,11 @@
       
         
         
-          &lt;p&gt;&lt;img src=&quot;/images/pasted-0.png&quot;
+          &lt;p&gt;&lt;img src=&quot;/images/pasted-0.png&quot; alt&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;将 JSP 页面文件翻译为 servlet 代码；&lt;/li&gt;
+&lt;li&gt;编译 servlet 代码为 class 文件；&lt;/li&gt;
+&lt;li&gt;将 servlet
         
       
     
@@ -291,7 +322,7 @@
     <link href="http://konata.tech/2019/08/13/hello-world/"/>
     <id>http://konata.tech/2019/08/13/hello-world/</id>
     <published>2019-08-13T14:24:07.099Z</published>
-    <updated>2019-07-24T16:08:22.235Z</updated>
+    <updated>2020-06-09T05:27:41.584Z</updated>
     
     <summary type="html">
     
