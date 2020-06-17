@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://konata.tech/"/>
-  <updated>2020-06-09T05:46:18.289Z</updated>
+  <updated>2020-06-17T15:29:48.741Z</updated>
   <id>http://konata.tech/</id>
   
   <author>
@@ -15,6 +15,60 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>数据库范式</title>
+    <link href="http://konata.tech/2020/06/17/SQLNormalForm/"/>
+    <id>http://konata.tech/2020/06/17/SQLNormalForm/</id>
+    <published>2020-06-17T14:52:16.000Z</published>
+    <updated>2020-06-17T15:29:48.741Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;函数依赖&quot;&gt;&lt;a href=&quot;#函数依赖&quot; class=&quot;headerlink&quot; title=&quot;函数依赖&quot;&gt;&lt;/a&gt;函数依赖&lt;/h2&gt;&lt;h3 id=&quot;函数依赖-1&quot;&gt;&lt;a href=&quot;#函数依赖-1&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="数据库" scheme="http://konata.tech/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+      <category term="数据库" scheme="http://konata.tech/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JAVA 反射与注解</title>
+    <link href="http://konata.tech/2020/06/12/JSPBase/"/>
+    <id>http://konata.tech/2020/06/12/JSPBase/</id>
+    <published>2020-06-12T09:52:01.000Z</published>
+    <updated>2020-06-12T14:58:47.974Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;反射：框架设计的灵魂&quot;&gt;&lt;a href=&quot;#反射：框架设计的灵魂&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="JSP" scheme="http://konata.tech/categories/JSP/"/>
+    
+    
+      <category term="JAVA" scheme="http://konata.tech/tags/JAVA/"/>
+    
+      <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
+    
+  </entry>
   
   <entry>
     <title>JavaBean</title>
@@ -211,11 +265,11 @@
   </entry>
   
   <entry>
-    <title>jsp-note</title>
+    <title>Jsp Note</title>
     <link href="http://konata.tech/2020/04/09/jsp-note/"/>
     <id>http://konata.tech/2020/04/09/jsp-note/</id>
     <published>2020-04-09T15:06:00.000Z</published>
-    <updated>2020-04-09T16:52:16.391Z</updated>
+    <updated>2020-06-12T09:51:04.868Z</updated>
     
     <summary type="html">
     
@@ -223,7 +277,8 @@
       
         
         
-          &lt;h3 id=&quot;java强化&quot;&gt;&lt;a href=&quot;#java强化&quot; class=&quot;headerlink&quot;
+          &lt;h3 id=&quot;java-强化&quot;&gt;&lt;a href=&quot;#java-强化&quot; class=&quot;headerlink&quot; title=&quot;java 强化&quot;&gt;&lt;/a&gt;java 强化&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;获取 Class
         
       
     
@@ -311,9 +366,9 @@
       <category term="JAVA" scheme="http://konata.tech/categories/JAVA/"/>
     
     
-      <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
-    
       <category term="JAVA" scheme="http://konata.tech/tags/JAVA/"/>
+    
+      <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
     
   </entry>
   
