@@ -128,3 +128,26 @@ pre[class*="language-"] {
     margin-bottom: 0;
     z-index: 90;
 }
+h1{
+    font-size: 2.1rem;
+}
+h2{
+    font-size: 1.9rem;
+}
+h3{
+    font-size: 1.5rem;
+}
+h4{
+    font-size: 1.3rem;
+}
+.img-shadow{
+    box-shadow: none;
+}
+pre{
+    color: #9CD6FF;
+}
+code{
+    color: #0087FF;
+    font-family: "Jetbrains Mono", "Source Code Pro",  Inconsolata, Monaco, Consolas, "Sarasa Term SC", 'Courier New', Courier, monospace;
+    font-size: 1rem;
+}
