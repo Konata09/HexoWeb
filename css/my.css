@@ -33,10 +33,17 @@ nav ul a:hover {
 .line-numbers-rows {
     display: none;
 }
-
+pre{
+    color: #9CD6FF;
+}
+code{
+    color: #0087FF;
+    font-family: "Jetbrains Mono", "Source Code Pro",  Inconsolata, Monaco, Consolas, "Sarasa Term SC", 'Courier New', Courier, monospace;
+    font-size: 1rem;
+}
 code[class*="language-"],
 pre[class*="language-"] {
-    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', "Microsoft YaHei UI",monospace !important;
+    font-family: "Jetbrains Mono", "Source Code Pro",  Inconsolata, Monaco, Consolas, "Sarasa Term SC", 'Courier New', Courier, monospace !important;
 }
 
 .mute {
@@ -143,11 +150,6 @@ h4{
 .img-shadow{
     box-shadow: none;
 }
-pre{
-    color: #9CD6FF;
-}
-code{
-    color: #0087FF;
-    font-family: "Jetbrains Mono", "Source Code Pro",  Inconsolata, Monaco, Consolas, "Sarasa Term SC", 'Courier New', Courier, monospace;
-    font-size: 1rem;
+li::marker{
+    font-weight: 600;
 }

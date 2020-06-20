@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://konata.tech/"/>
-  <updated>2020-06-18T15:21:35.578Z</updated>
+  <updated>2020-06-19T05:50:44.538Z</updated>
   <id>http://konata.tech/</id>
   
   <author>
@@ -17,11 +17,124 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Filter 和 Listener</title>
+    <link href="http://konata.tech/2020/06/19/FilterAndListener/"/>
+    <id>http://konata.tech/2020/06/19/FilterAndListener/</id>
+    <published>2020-06-19T05:23:22.000Z</published>
+    <updated>2020-06-19T05:50:44.538Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;Filter-过滤器&quot;&gt;&lt;a href=&quot;#Filter-过滤器&quot; class=&quot;headerlink&quot; title=&quot;Filter 过滤器&quot;&gt;&lt;/a&gt;Filter 过滤器&lt;/h2&gt;&lt;h3 id=&quot;概念&quot;&gt;&lt;a href=&quot;#概念&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="JAVA" scheme="http://konata.tech/categories/JAVA/"/>
+    
+    
+      <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
+    
+      <category term="JAVA" scheme="http://konata.tech/tags/JAVA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>EL 表达式和 JSTL</title>
+    <link href="http://konata.tech/2020/06/19/ELAndJSTL/"/>
+    <id>http://konata.tech/2020/06/19/ELAndJSTL/</id>
+    <published>2020-06-19T03:08:37.000Z</published>
+    <updated>2020-06-19T05:22:32.437Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;JSP&quot;&gt;&lt;a href=&quot;#JSP&quot; class=&quot;headerlink&quot; title=&quot;JSP&quot;&gt;&lt;/a&gt;JSP&lt;/h2&gt;&lt;h3 id=&quot;指令&quot;&gt;&lt;a href=&quot;#指令&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="JAVA" scheme="http://konata.tech/categories/JAVA/"/>
+    
+    
+      <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
+    
+      <category term="JAVA" scheme="http://konata.tech/tags/JAVA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Cookie 和 Session</title>
+    <link href="http://konata.tech/2020/06/18/CookieAndSession/"/>
+    <id>http://konata.tech/2020/06/18/CookieAndSession/</id>
+    <published>2020-06-18T15:55:31.000Z</published>
+    <updated>2020-06-18T16:20:18.362Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;会话技术&quot;&gt;&lt;a href=&quot;#会话技术&quot; class=&quot;headerlink&quot; title=&quot;会话技术&quot;&gt;&lt;/a&gt;会话技术&lt;/h2&gt;&lt;h3 id=&quot;会话&quot;&gt;&lt;a href=&quot;#会话&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="JAVA" scheme="http://konata.tech/categories/JAVA/"/>
+    
+    
+      <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
+    
+      <category term="JAVA" scheme="http://konata.tech/tags/JAVA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Response 对象</title>
+    <link href="http://konata.tech/2020/06/18/ResponseObj/"/>
+    <id>http://konata.tech/2020/06/18/ResponseObj/</id>
+    <published>2020-06-18T15:29:50.000Z</published>
+    <updated>2020-06-18T15:54:09.025Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;2020-06-18T235353.png&quot; alt=&quot;request&amp;amp;response 对象原理&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;HTTP-响应消息&quot;&gt;&lt;a href=&quot;#HTTP-响应消息&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="JAVA" scheme="http://konata.tech/categories/JAVA/"/>
+    
+    
+      <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
+    
+      <category term="JAVA" scheme="http://konata.tech/tags/JAVA/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Request 对象</title>
     <link href="http://konata.tech/2020/06/18/RequestObj/"/>
     <id>http://konata.tech/2020/06/18/RequestObj/</id>
     <published>2020-06-18T14:46:35.000Z</published>
-    <updated>2020-06-18T15:21:35.578Z</updated>
+    <updated>2020-06-18T15:21:44.837Z</updated>
     
     <summary type="html">
     
@@ -38,9 +151,9 @@
       <category term="JAVA" scheme="http://konata.tech/categories/JAVA/"/>
     
     
-      <category term="JAVA" scheme="http://konata.tech/tags/JAVA/"/>
-    
       <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
+    
+      <category term="JAVA" scheme="http://konata.tech/tags/JAVA/"/>
     
   </entry>
   
@@ -66,9 +179,9 @@
       <category term="JAVA" scheme="http://konata.tech/categories/JAVA/"/>
     
     
-      <category term="JAVA" scheme="http://konata.tech/tags/JAVA/"/>
-    
       <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
+    
+      <category term="JAVA" scheme="http://konata.tech/tags/JAVA/"/>
     
   </entry>
   
@@ -168,9 +281,9 @@
       <category term="JAVA" scheme="http://konata.tech/categories/JAVA/"/>
     
     
-      <category term="JAVA" scheme="http://konata.tech/tags/JAVA/"/>
-    
       <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
+    
+      <category term="JAVA" scheme="http://konata.tech/tags/JAVA/"/>
     
   </entry>
   
@@ -441,69 +554,6 @@
       <category term="动态规划" scheme="http://konata.tech/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
     
       <category term="算法" scheme="http://konata.tech/tags/%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JSP 生命周期</title>
-    <link href="http://konata.tech/2020/03/13/Life-cycle-of-JSP/"/>
-    <id>http://konata.tech/2020/03/13/Life-cycle-of-JSP/</id>
-    <published>2020-03-13T14:32:00.000Z</published>
-    <updated>2020-06-09T05:20:57.013Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;&lt;img src=&quot;/images/pasted-0.png&quot; alt&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;将 JSP 页面文件翻译为 servlet 代码；&lt;/li&gt;
-&lt;li&gt;编译 servlet 代码为 class 文件；&lt;/li&gt;
-&lt;li&gt;将 servlet
-        
-      
-    
-    </summary>
-    
-      <category term="JAVA" scheme="http://konata.tech/categories/JAVA/"/>
-    
-    
-      <category term="JAVA" scheme="http://konata.tech/tags/JAVA/"/>
-    
-      <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Changelog</title>
-    <link href="http://konata.tech/2019/08/06/UpdateLog/"/>
-    <id>http://konata.tech/2019/08/06/UpdateLog/</id>
-    <published>2019-08-06T13:51:00.000Z</published>
-    <updated>2020-05-24T14:19:03.306Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;2019.07.25 框架搭建完成&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;2019.08.02 主题修改完成&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;2019.08.06 崩坏学园 2 LIVE2D 上线 &lt;del&gt;那么崩坏 3 的看板娘什么时候能放上 Web
-        
-      
-    
-    </summary>
-    
-      <category term="Blog" scheme="http://konata.tech/categories/Blog/"/>
-    
-    
-      <category term="LIVE2D" scheme="http://konata.tech/tags/LIVE2D/"/>
     
   </entry>
   
