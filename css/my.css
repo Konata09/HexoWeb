@@ -153,3 +153,6 @@ h4{
 li::marker{
     font-weight: 600;
 }
+.paging .page-info{
+    line-height: 1rem;
+}
