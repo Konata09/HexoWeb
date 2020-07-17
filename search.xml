@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>使用 javaScript 获取教务系统成绩并推送</title>
+      <link href="/2020/07/17/jsCheckGrade/"/>
+      <url>/2020/07/17/jsCheckGrade/</url>
+      
+        <content type="html"><![CDATA[<p><strong>适用于强智教务系统，不保证各个大学通用。</strong>  </p><h3 id="设计思路"><a href="#设计思路" class="headerlink" title="设计思路"></a>设计思路</h3><p>得到成绩查询页面的地址，使用 javaScript 脚本定时（为了避免 Session 过期，目前设定是 20 分钟）执行查询动作。<br>得到成绩后将所有成绩保存到文件，之后每次检查时进行比对，如果有新增的成绩就进行推送。<br>推送方案有多种选择，如方糖、Telegram Bot、邮件提醒、Bark 等。这里使用 <a href="https://github.com/Finb/Bark" target="_blank" rel="noopener">Bark</a> 进行推送。Bark 是一个十分简洁的 iOS 推送 App，利用 Apple 统一的推送通道，延迟很小，但不支持 Android 系统。Bark 也可以自已部署服务端，能保证隐私不被泄露。  </p><h3 id="安装使用"><a href="#安装使用" class="headerlink" title="安装使用"></a>安装使用</h3><p>以 Linux 系统为例</p><h4 id="安装-nodeJS-环境"><a href="#安装-nodeJS-环境" class="headerlink" title="安装 nodeJS 环境"></a>安装 nodeJS 环境</h4><pre class=" language-sh"><code class="language-sh">wget https://nodejs.org/dist/v12.18.2/node-v12.18.2-linux-x64.tar.xzsudo mkdir -p /usr/local/lib/nodejssudo tar -xJvf node-v12.18.2-linux-x64.tar.xz -C /usr/local/lib/nodejsvim /etc/profile//在最后一行加上如下内容export PATH=/usr/local/lib/nodejs/node-v12.18.2-linux-x64/bin:$PATHexport NODE_PATH=/usr/local/lib/nodejs/node-v12.18.2-linux-x64/lib/node_modules</code></pre><h4 id="安装-nodeJS-模块"><a href="#安装-nodeJS-模块" class="headerlink" title="安装 nodeJS 模块"></a>安装 nodeJS 模块</h4><pre class=" language-sh"><code class="language-sh">npm install -g pm2 cheerio node-schedule</code></pre><h4 id="修改脚本"><a href="#修改脚本" class="headerlink" title="修改脚本"></a>修改脚本</h4><p>首先下载脚本  </p><pre class=" language-sh"><code class="language-sh">git clone https://github.com/Konata09/GradeCheck.gitcd GradeCheck</code></pre><p>修改 <code>gradeCheck.js</code> 文件  </p><ol><li><p>安装 Bark App 得到推送地址，填入 pushUrl 中；</p></li><li><p>得到成绩查询结果页面的地址，应该是在 iframe 内，可能以 <code>/jsxsd/kscj/cjcx_lis</code> 结尾。将地址填入 url 中；</p></li><li><p>获取浏览器 Cookie 中的 JSESSIONID，填入 headers 的 Cookie 键值中。</p></li></ol><h4 id="运行脚本"><a href="#运行脚本" class="headerlink" title="运行脚本"></a>运行脚本</h4><pre class=" language-sh"><code class="language-sh">pm2 start gradeCheck.js</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> JavaScript </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> JavaScript </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Filter 和 Listener</title>
       <link href="/2020/06/19/FilterAndListener/"/>
       <url>/2020/06/19/FilterAndListener/</url>
@@ -20,9 +45,9 @@
       
         <tags>
             
-            <tag> JAVA </tag>
-            
             <tag> JSP </tag>
+            
+            <tag> JAVA </tag>
             
         </tags>
       
@@ -47,9 +72,9 @@
       
         <tags>
             
-            <tag> JAVA </tag>
-            
             <tag> JSP </tag>
+            
+            <tag> JAVA </tag>
             
         </tags>
       
@@ -74,9 +99,9 @@
       
         <tags>
             
-            <tag> JAVA </tag>
-            
             <tag> JSP </tag>
+            
+            <tag> JAVA </tag>
             
         </tags>
       
@@ -101,9 +126,9 @@
       
         <tags>
             
-            <tag> JAVA </tag>
-            
             <tag> JSP </tag>
+            
+            <tag> JAVA </tag>
             
         </tags>
       
@@ -128,9 +153,9 @@
       
         <tags>
             
-            <tag> JAVA </tag>
-            
             <tag> JSP </tag>
+            
+            <tag> JAVA </tag>
             
         </tags>
       
@@ -155,9 +180,9 @@
       
         <tags>
             
-            <tag> JAVA </tag>
-            
             <tag> JSP </tag>
+            
+            <tag> JAVA </tag>
             
         </tags>
       
@@ -245,9 +270,9 @@
       
         <tags>
             
-            <tag> JAVA </tag>
-            
             <tag> JSP </tag>
+            
+            <tag> JAVA </tag>
             
         </tags>
       
@@ -418,7 +443,7 @@
       <link href="/2020/04/27/codec/"/>
       <url>/2020/04/27/codec/</url>
       
-        <content type="html"><![CDATA[<h3 id="VapourSynth-输出-YUV4MPEG"><a href="#VapourSynth-输出-YUV4MPEG" class="headerlink" title="VapourSynth 输出 YUV4MPEG"></a>VapourSynth 输出 YUV4MPEG</h3><p><code>vspipe -y -p script.vpy out.y4m</code></p><h3 id="VapourSynth-输出-HuffYUV"><a href="#VapourSynth-输出-HuffYUV" class="headerlink" title="VapourSynth 输出 HuffYUV"></a>VapourSynth 输出 HuffYUV</h3><p><code>vspipe -y -p script.vpy - | ffmpeg -i pipe: -r 24 -c:v huffyuv out.avi</code></p>]]></content>
+        <content type="html"><![CDATA[<h3 id="VapourSynth-输出-YUV4MPEG"><a href="#VapourSynth-输出-YUV4MPEG" class="headerlink" title="VapourSynth 输出 YUV4MPEG"></a>VapourSynth 输出 YUV4MPEG</h3><p> <code>vspipe -y -p script.vpy out.y4m</code></p><h3 id="VapourSynth-输出-HuffYUV"><a href="#VapourSynth-输出-HuffYUV" class="headerlink" title="VapourSynth 输出 HuffYUV"></a>VapourSynth 输出 HuffYUV</h3><p> <code>vspipe -y -p script.vpy - | ffmpeg -i pipe: -r 24 -c:v huffyuv out.avi</code></p>]]></content>
       
       
       <categories>
@@ -516,9 +541,9 @@
       
         <tags>
             
-            <tag> JAVA </tag>
-            
             <tag> JSP </tag>
+            
+            <tag> JAVA </tag>
             
         </tags>
       
@@ -531,7 +556,7 @@
       <link href="/2019/08/06/UpdateLog/"/>
       <url>/2019/08/06/UpdateLog/</url>
       
-        <content type="html"><![CDATA[<ul><li><p>2019.07.25 框架搭建完成</p></li><li><p>2019.08.02 主题修改完成</p></li><li><p>2019.08.06 崩坏学园 2 LIVE2D 上线 <del>那么崩坏 3 的看板娘什么时候能放上 Web 呢</del></p></li><li><p>2019.08.07 部署 Hexo Admin</p></li><li><p>2019.08.10 </p><ul><li>部署 HTTPS</li><li>支持 HSTS</li></ul></li><li><p>2019.08.15 更新 favicon</p></li><li><p>2020.02.25 迁移至阿里云</p></li><li><p>2020.03.01 </p><ul><li>更新 nginx 1.17.8 </li><li>支持 HTTP/3 （不完善）</li><li>支持 TLS1.3 </li><li>停用 TLS1.1 TLS1.2 协议  </li></ul><p>nginx 编译参数：</p><pre><code>  --add-module=../ngx_brotli --with-openssl=../quiche/deps/boringssl --with-quiche=../quiche --with-http_v2_module --with-http_v3_module --with-http_ssl_module --with-http_gzip_static_module --with-http_v2_hpack_enc --with-http_realip_module --with-threads --with-stream --with-stream_realip_module --with-stream_ssl_module --with-stream_ssl_preread_module --with-zlib=../zlib-cf --add-module=../ngx_devel_kit --add-module=../headers-more-nginx-module --add-module=../lua-nginx-module-0.10.16rc4 --with-file-aio --add-module=../ngx_http_geoip2_module --add-module=../ngx-fancyindex --add-module=../nginx-dav-ext-module --add-module=../ngx_http_substitutions_filter_module --with-libatomic --with-http_dav_module --with-http_stub_status_module</code></pre></li><li><p>2020.03.05 </p><ul><li>优化 加载速度</li><li>Live2D 音频替换为 opus </li><li>通过 webp server 替换所有图片为 webp </li><li>非首屏图片懒加载</li></ul></li><li><p>2020.03.12 新增 服务器 webhook 自动部署</p></li><li><p>2020.03.13  </p><ul><li>修复 懒加载导致的首页图片错位</li><li>更新 全局配色</li></ul></li><li><p>2020.03.14</p><ul><li>部署 zabbix grafana</li></ul></li><li><p>2020.03.15</p><ul><li>申请提交 HSTS preload list</li></ul></li><li><p>2020.03.24</p><ul><li>移除主页轮播图相关代码</li></ul></li><li><p>2020.05.08</p><ul><li>更换 DNS 解析服务至 DNSPod</li><li>为网站增加 Cloudflare CDN</li></ul></li><li><p>2020.05.12</p><ul><li>鉴于 Cloudflare 在国内是减速 CDN 再次更换为百度云加速</li><li>修复 Live2D 关闭后刷新页面会再次出现的问题</li></ul></li><li><p>2020.05.13</p><ul><li>添加显示 Live2D 按钮</li></ul></li><li><p>2020.05.24</p><ul><li>背景音乐增加到15首，Safari 使用 CAF 封装 Opus 编码，其他浏览器使用 OGG 封装 Vorbis 编码</li></ul></li></ul>]]></content>
+        <content type="html"><![CDATA[<ul><li><p>2019.07.25 框架搭建完成</p></li><li><p>2019.08.02 主题修改完成</p></li><li><p>2019.08.06 崩坏学园 2 LIVE2D 上线 <del>那么崩坏 3 的看板娘什么时候能放上 Web 呢</del></p></li><li><p>2019.08.07 部署 Hexo Admin</p></li><li><p>2019.08.10 </p><ul><li>部署 HTTPS</li><li>支持 HSTS</li></ul></li><li><p>2019.08.15 更新 favicon</p></li><li><p>2020.02.25 迁移至阿里云</p></li><li><p>2020.03.01 </p><ul><li>更新 nginx 1.17.8 </li><li>支持 HTTP/3 （不完善）</li><li>支持 TLS1.3 </li><li>停用 TLS1.1 TLS1.2 协议  </li></ul><p>nginx 编译参数：</p><pre><code>  --add-module=../ngx_brotli --with-openssl=../quiche/deps/boringssl --with-quiche=../quiche --with-http_v2_module --with-http_v3_module --with-http_ssl_module --with-http_gzip_static_module --with-http_v2_hpack_enc --with-http_realip_module --with-threads --with-stream --with-stream_realip_module --with-stream_ssl_module --with-stream_ssl_preread_module --with-zlib=../zlib-cf --add-module=../ngx_devel_kit --add-module=../headers-more-nginx-module --add-module=../lua-nginx-module-0.10.16rc4 --with-file-aio --add-module=../ngx_http_geoip2_module --add-module=../ngx-fancyindex --add-module=../nginx-dav-ext-module --add-module=../ngx_http_substitutions_filter_module --with-libatomic --with-http_dav_module --with-http_stub_status_module</code></pre></li><li><p>2020.03.05 </p><ul><li>优化 加载速度</li><li>Live2D 音频替换为 opus </li><li>通过 webp server 替换所有图片为 webp </li><li>非首屏图片懒加载</li></ul></li><li><p>2020.03.12 新增 服务器 webhook 自动部署</p></li><li><p>2020.03.13  </p><ul><li>修复 懒加载导致的首页图片错位</li><li>更新 全局配色</li></ul></li><li><p>2020.03.14</p><ul><li>部署 zabbix grafana</li></ul></li><li><p>2020.03.15</p><ul><li>申请提交 HSTS preload list</li></ul></li><li><p>2020.03.24</p><ul><li>移除主页轮播图相关代码</li></ul></li><li><p>2020.05.08</p><ul><li>更换 DNS 解析服务至 DNSPod</li><li>为网站增加 Cloudflare CDN</li></ul></li><li><p>2020.05.12</p><ul><li>鉴于 Cloudflare 在国内是减速 CDN 再次更换为百度云加速</li><li>修复 Live2D 关闭后刷新页面会再次出现的问题</li></ul></li><li><p>2020.05.13</p><ul><li>添加显示 Live2D 按钮</li></ul></li><li><p>2020.05.24</p><ul><li>背景音乐增加到 15 首，Safari 使用 CAF 封装 Opus 编码，其他浏览器使用 OGG 封装 Vorbis 编码</li></ul></li></ul>]]></content>
       
       
       <categories>

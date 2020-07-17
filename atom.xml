@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://konata.tech/"/>
-  <updated>2020-06-19T05:52:05.898Z</updated>
+  <updated>2020-07-17T16:19:24.736Z</updated>
   <id>http://konata.tech/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用 javaScript 获取教务系统成绩并推送</title>
+    <link href="http://konata.tech/2020/07/17/jsCheckGrade/"/>
+    <id>http://konata.tech/2020/07/17/jsCheckGrade/</id>
+    <published>2020-07-17T14:50:46.000Z</published>
+    <updated>2020-07-17T16:19:24.736Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;strong&gt;适用于强智教务系统，不保证各个大学通用。&lt;/strong&gt;  &lt;/p&gt;
+&lt;h3 id=&quot;设计思路&quot;&gt;&lt;a href=&quot;#设计思路&quot; class=&quot;headerlink&quot; title=&quot;设计思路&quot;&gt;&lt;/a&gt;设计思路&lt;/h3&gt;&lt;p&gt;得到成绩查询页面的地址，使用
+        
+      
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://konata.tech/categories/JavaScript/"/>
+    
+    
+      <category term="JavaScript" scheme="http://konata.tech/tags/JavaScript/"/>
+    
+  </entry>
   
   <entry>
     <title>Filter 和 Listener</title>
@@ -38,9 +65,9 @@
       <category term="JAVA" scheme="http://konata.tech/categories/JAVA/"/>
     
     
-      <category term="JAVA" scheme="http://konata.tech/tags/JAVA/"/>
-    
       <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
+    
+      <category term="JAVA" scheme="http://konata.tech/tags/JAVA/"/>
     
   </entry>
   
@@ -66,9 +93,9 @@
       <category term="JAVA" scheme="http://konata.tech/categories/JAVA/"/>
     
     
-      <category term="JAVA" scheme="http://konata.tech/tags/JAVA/"/>
-    
       <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
+    
+      <category term="JAVA" scheme="http://konata.tech/tags/JAVA/"/>
     
   </entry>
   
@@ -94,9 +121,9 @@
       <category term="JAVA" scheme="http://konata.tech/categories/JAVA/"/>
     
     
-      <category term="JAVA" scheme="http://konata.tech/tags/JAVA/"/>
-    
       <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
+    
+      <category term="JAVA" scheme="http://konata.tech/tags/JAVA/"/>
     
   </entry>
   
@@ -123,9 +150,9 @@
       <category term="JAVA" scheme="http://konata.tech/categories/JAVA/"/>
     
     
-      <category term="JAVA" scheme="http://konata.tech/tags/JAVA/"/>
-    
       <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
+    
+      <category term="JAVA" scheme="http://konata.tech/tags/JAVA/"/>
     
   </entry>
   
@@ -151,9 +178,9 @@
       <category term="JAVA" scheme="http://konata.tech/categories/JAVA/"/>
     
     
-      <category term="JAVA" scheme="http://konata.tech/tags/JAVA/"/>
-    
       <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
+    
+      <category term="JAVA" scheme="http://konata.tech/tags/JAVA/"/>
     
   </entry>
   
@@ -179,9 +206,9 @@
       <category term="JAVA" scheme="http://konata.tech/categories/JAVA/"/>
     
     
-      <category term="JAVA" scheme="http://konata.tech/tags/JAVA/"/>
-    
       <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
+    
+      <category term="JAVA" scheme="http://konata.tech/tags/JAVA/"/>
     
   </entry>
   
@@ -281,9 +308,9 @@
       <category term="JAVA" scheme="http://konata.tech/categories/JAVA/"/>
     
     
-      <category term="JAVA" scheme="http://konata.tech/tags/JAVA/"/>
-    
       <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
+    
+      <category term="JAVA" scheme="http://konata.tech/tags/JAVA/"/>
     
   </entry>
   
@@ -458,7 +485,7 @@
     <link href="http://konata.tech/2020/04/27/codec/"/>
     <id>http://konata.tech/2020/04/27/codec/</id>
     <published>2020-04-27T06:43:12.000Z</published>
-    <updated>2020-05-12T13:25:28.112Z</updated>
+    <updated>2020-07-17T14:55:25.222Z</updated>
     
     <summary type="html">
     
@@ -526,34 +553,6 @@
     
     
       <category term="TODO" scheme="http://konata.tech/tags/TODO/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>动态规划</title>
-    <link href="http://konata.tech/2020/03/16/dp/"/>
-    <id>http://konata.tech/2020/03/16/dp/</id>
-    <published>2020-03-16T03:44:00.000Z</published>
-    <updated>2020-06-09T05:20:43.376Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;&lt;strong&gt;神奇口袋问题&lt;/strong&gt;&lt;br&gt;有一个神奇的口袋总的容积是 40，用这个口袋可以变出一些物品，这些物品的总体积必须是 40。&lt;br&gt;&lt;strong&gt;DP（动态规划）思路：&lt;/strong&gt;&lt;br&gt;k 种物品凑成体积 w 的方法：k-1 种物品凑成体积
-        
-      
-    
-    </summary>
-    
-      <category term="算法" scheme="http://konata.tech/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-      <category term="动态规划" scheme="http://konata.tech/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
-    
-      <category term="算法" scheme="http://konata.tech/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
