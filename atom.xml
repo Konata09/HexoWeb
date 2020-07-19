@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://konata.tech/"/>
-  <updated>2020-07-17T16:19:24.736Z</updated>
+  <updated>2020-07-19T13:56:36.581Z</updated>
   <id>http://konata.tech/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://konata.tech/2020/07/17/jsCheckGrade/"/>
     <id>http://konata.tech/2020/07/17/jsCheckGrade/</id>
     <published>2020-07-17T14:50:46.000Z</published>
-    <updated>2020-07-17T16:19:24.736Z</updated>
+    <updated>2020-07-19T13:56:36.581Z</updated>
     
     <summary type="html">
     
@@ -30,7 +30,7 @@
         
         
           &lt;p&gt;&lt;strong&gt;适用于强智教务系统，不保证各个大学通用。&lt;/strong&gt;  &lt;/p&gt;
-&lt;h3 id=&quot;设计思路&quot;&gt;&lt;a href=&quot;#设计思路&quot; class=&quot;headerlink&quot; title=&quot;设计思路&quot;&gt;&lt;/a&gt;设计思路&lt;/h3&gt;&lt;p&gt;得到成绩查询页面的地址，使用
+&lt;p&gt;&lt;a href=&quot;https://github.com/Konata09/GradeCheck&quot; target=&quot;_blank&quot;
         
       
     
@@ -40,6 +40,32 @@
     
     
       <category term="JavaScript" scheme="http://konata.tech/tags/JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用 Webhook 自动从 GitHub 更新博客</title>
+    <link href="http://konata.tech/2020/06/29/AutoUpdateBlog/"/>
+    <id>http://konata.tech/2020/06/29/AutoUpdateBlog/</id>
+    <published>2020-06-29T14:34:12.000Z</published>
+    <updated>2020-07-19T15:10:20.238Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;什么是-Webhook&quot;&gt;&lt;a href=&quot;#什么是-Webhook&quot; class=&quot;headerlink&quot; title=&quot;什么是 Webhook&quot;&gt;&lt;/a&gt;什么是 Webhook&lt;/h2&gt;&lt;p&gt;Webhook 就像一个回调函数，允许当设定的 GitHub
+        
+      
+    
+    </summary>
+    
+      <category term="Admin" scheme="http://konata.tech/categories/Admin/"/>
+    
+    
+      <category term="Shell" scheme="http://konata.tech/tags/Shell/"/>
     
   </entry>
   
@@ -65,9 +91,9 @@
       <category term="JAVA" scheme="http://konata.tech/categories/JAVA/"/>
     
     
-      <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
-    
       <category term="JAVA" scheme="http://konata.tech/tags/JAVA/"/>
+    
+      <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
     
   </entry>
   
@@ -93,9 +119,9 @@
       <category term="JAVA" scheme="http://konata.tech/categories/JAVA/"/>
     
     
-      <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
-    
       <category term="JAVA" scheme="http://konata.tech/tags/JAVA/"/>
+    
+      <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
     
   </entry>
   
@@ -121,9 +147,9 @@
       <category term="JAVA" scheme="http://konata.tech/categories/JAVA/"/>
     
     
-      <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
-    
       <category term="JAVA" scheme="http://konata.tech/tags/JAVA/"/>
+    
+      <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
     
   </entry>
   
@@ -150,9 +176,9 @@
       <category term="JAVA" scheme="http://konata.tech/categories/JAVA/"/>
     
     
-      <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
-    
       <category term="JAVA" scheme="http://konata.tech/tags/JAVA/"/>
+    
+      <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
     
   </entry>
   
@@ -178,9 +204,9 @@
       <category term="JAVA" scheme="http://konata.tech/categories/JAVA/"/>
     
     
-      <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
-    
       <category term="JAVA" scheme="http://konata.tech/tags/JAVA/"/>
+    
+      <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
     
   </entry>
   
@@ -206,9 +232,9 @@
       <category term="JAVA" scheme="http://konata.tech/categories/JAVA/"/>
     
     
-      <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
-    
       <category term="JAVA" scheme="http://konata.tech/tags/JAVA/"/>
+    
+      <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
     
   </entry>
   
@@ -308,9 +334,9 @@
       <category term="JAVA" scheme="http://konata.tech/categories/JAVA/"/>
     
     
-      <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
-    
       <category term="JAVA" scheme="http://konata.tech/tags/JAVA/"/>
+    
+      <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
     
   </entry>
   
@@ -485,7 +511,7 @@
     <link href="http://konata.tech/2020/04/27/codec/"/>
     <id>http://konata.tech/2020/04/27/codec/</id>
     <published>2020-04-27T06:43:12.000Z</published>
-    <updated>2020-07-17T14:55:25.222Z</updated>
+    <updated>2020-07-19T14:13:38.838Z</updated>
     
     <summary type="html">
     
@@ -504,7 +530,7 @@
     
       <category term="AV1" scheme="http://konata.tech/tags/AV1/"/>
     
-      <category term="VapoVurSynth" scheme="http://konata.tech/tags/VapoVurSynth/"/>
+      <category term="VapourSynth" scheme="http://konata.tech/tags/VapourSynth/"/>
     
   </entry>
   
@@ -528,31 +554,6 @@
     
     </summary>
     
-    
-  </entry>
-  
-  <entry>
-    <title>To Do List</title>
-    <link href="http://konata.tech/2020/04/04/To-Do/"/>
-    <id>http://konata.tech/2020/04/04/To-Do/</id>
-    <published>2020-04-04T08:43:22.000Z</published>
-    <updated>2020-05-12T13:25:28.114Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h4 id=&quot;feature&quot;&gt;&lt;a href=&quot;#feature&quot; class=&quot;headerlink&quot; title=&quot;feature&quot;&gt;&lt;/a&gt;feature&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;&lt;input disabled type=&quot;checkbox&quot;&gt;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="TODO" scheme="http://konata.tech/tags/TODO/"/>
     
   </entry>
   

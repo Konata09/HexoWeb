@@ -4,8 +4,8 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="AV1 编码测试视频, 生命不息 折腾不止">
-    <meta name="description" content="AV1 8bit.\aomenc.exe --webm -w 1920 -h 1440 --fps=30/1 --cpu-used=4 --bit-depth=8 --color-primaries=bt709 --end-usage=cq">
+    <meta name="keywords" content="使用 Webhook 自动从 GitHub 更新博客, 生命不息 折腾不止">
+    <meta name="description" content="什么是 WebhookWebhook 就像一个回调函数，允许当设定的 GitHub 事件被触发时，发送特定的请求到指定的 URL。利用这一点，我们可以在将本地博客提交至 GitHub 时，自动发送通知到博客服务器，执行 git pull 操">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -21,7 +21,7 @@
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#7312ff">
     <meta name="msapplication-TileColor" content="#8a46cc">
     <meta name="theme-color" content="#ffffff">
-    <title>AV1 编码测试视频 | 生命不息 折腾不止</title>
+    <title>使用 Webhook 自动从 GitHub 更新博客 | 生命不息 折腾不止</title>
     <script type="application/javascript" src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
     <script type="application/javascript" src="https://cdn.jsdelivr.net/npm/jquery-ui-dist@1.12.1/jquery-ui.min.js"></script>
     <script type="application/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.0/lazysizes.min.js" async></script>
@@ -269,13 +269,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/07.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        AV1 编码测试视频
+                        使用 Webhook 自动从 GitHub 更新博客
                     </div>
                 </div>
             </div>
@@ -368,8 +368,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/AV1/" target="_blank">
-                                <span class="chip bg-color">AV1</span>
+                            <a href="/tags/Shell/" target="_blank">
+                                <span class="chip bg-color">Shell</span>
                             </a>
                         
                     </div>
@@ -380,8 +380,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/音视频编码/" class="post-category" target="_blank">
-                                音视频编码
+                            <a href="/categories/Admin/" class="post-category" target="_blank">
+                                Admin
                             </a>
                         
                     </div>
@@ -392,14 +392,14 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-04-28
+                    2020-06-29
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        158
+                        345
                     </div>
                     
 
@@ -422,21 +422,49 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="AV1-8bit"><a href="#AV1-8bit" class="headerlink" title="AV1 8bit"></a>AV1 8bit</h3><pre class=" language-sh"><code class="language-sh">.\aomenc.exe --webm -w 1920 -h 1440 --fps=30/1 --cpu-used=4 --bit-depth=8 --color-primaries=bt709 --end-usage=cq --target-bitrate=1000 --passes=2 --pass=2 --fpf=8b.log -o 8b.webm y4m.y4m</code></pre>
-<video controls width="100%">
-    <source src="/media/AV1_8bit_HEAAC.mp4" type="video/webm">
-</video>
+                <h2 id="什么是-Webhook"><a href="#什么是-Webhook" class="headerlink" title="什么是 Webhook"></a>什么是 Webhook</h2><p>Webhook 就像一个回调函数，允许当设定的 GitHub 事件被触发时，发送特定的请求到指定的 URL。利用这一点，我们可以在将本地博客提交至 GitHub 时，自动发送通知到博客服务器，执行 git pull 操作来更新服务器上的文件。</p>
+<h2 id="使用-webhook-工具当作监听程序"><a href="#使用-webhook-工具当作监听程序" class="headerlink" title="使用 webhook 工具当作监听程序"></a>使用 webhook 工具当作监听程序</h2><p>有一个叫 <a href="https://github.com/adnanh/webhook" target="_blank" rel="noopener">webhook</a> 工具可以帮我们执行监听并执行脚本的工作。官方文档上有比较详细的安装与配置教程。<br>我的配置文件：</p>
+<pre class=" language-json"><code class="language-json">  <span class="token punctuation">{</span>
+    <span class="token property">"id"</span><span class="token operator">:</span> <span class="token string">"hexo-webhook"</span><span class="token punctuation">,</span>
+    <span class="token property">"execute-command"</span><span class="token operator">:</span> <span class="token string">"/home/hexo-redeploy-webhook.sh"</span><span class="token punctuation">,</span>
+    <span class="token property">"command-working-directory"</span><span class="token operator">:</span> <span class="token string">"/home"</span><span class="token punctuation">,</span>
+    <span class="token property">"trigger-rule"</span><span class="token operator">:</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">"and"</span><span class="token operator">:</span>
+      <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span>
+          <span class="token property">"match"</span><span class="token operator">:</span>
+          <span class="token punctuation">{</span>
+            <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"payload-hash-sha1"</span><span class="token punctuation">,</span>
+            <span class="token property">"secret"</span><span class="token operator">:</span> <span class="token string">"secret"</span><span class="token punctuation">,</span>
+            <span class="token property">"parameter"</span><span class="token operator">:</span>
+            <span class="token punctuation">{</span>
+              <span class="token property">"source"</span><span class="token operator">:</span> <span class="token string">"header"</span><span class="token punctuation">,</span>
+              <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"X-Hub-Signature"</span>
+            <span class="token punctuation">}</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">]</span></code></pre>
+<h2 id="打开-Github-的-Webhook-功能"><a href="#打开-Github-的-Webhook-功能" class="headerlink" title="打开 Github 的 Webhook 功能"></a>打开 Github 的 Webhook 功能</h2><p>在 GitHub 上相应仓库的 Settings 中找到 Webhook 功能，添加一个钩子，Payload URL 填入服务器监听地址，Content type 选择 application/x-www-form-urlencoded，Secret 填入上面配置文件中的 secret，钩子触发中选择 push 事件，勾选 Active，这样 GitHub 端就配置完成了。</p>
+<h2 id="编写自动更新脚本"><a href="#编写自动更新脚本" class="headerlink" title="编写自动更新脚本"></a>编写自动更新脚本</h2><p>因为服务器的 webhook 触发之后执行的是一个命令，还需要一个 shell 脚本来对部署目录进行更新。<br>脚本如下，因为国内网络到 GitHub 的连通性奇差，所以加入了拉取失败重试的机制。  </p>
+<pre class=" language-sh"><code class="language-sh">#!/bin/bash
+cd /srv/nginx/hexo_root
 
-<hr>
-<h3 id="AV1-10bit"><a href="#AV1-10bit" class="headerlink" title="AV1 10bit"></a>AV1 10bit</h3><p>1230V3 严重卡顿，8750H 卡顿，A12X 轻微卡顿，画质相比 8bit 提升极小</p>
-<pre class=" language-sh"><code class="language-sh">.\aomenc.exe --webm -w 1920 -h 1440 --fps=30/1 --cpu-used=4 --bit-depth=10 --color-primaries=bt709 --end-usage=cq --target-bitrate=1000 --passes=2 --pass=2 --fpf=10b.log -o 10b.webm y4m.y4m</code></pre>
-<video controls width="100%">
-    <source src="/media/AV1_10bit_HEAAC.mp4" type="video/webm">
-</video>
+retry=0
 
-<hr>
-<h3 id="AV1-12bit"><a href="#AV1-12bit" class="headerlink" title="AV1 12bit"></a>AV1 12bit</h3><pre class=" language-sh"><code class="language-sh">.\aomenc.exe --webm -w 1920 -h 1440 --fps=30/1 --cpu-used=1 --bit-depth=12 --color-primaries=bt709 --end-usage=cq --target-bitrate=1000 --passes=2 --pass=2 --fpf=12b.log -o 12b.webm y4m.y4m</code></pre>
-<p>解码压力更大且有马赛克，画质相比 10bit 提升极小<br><video controls width="100%"><br>    <source src="/media/AV1_12bit_HEAAC.mp4" type="video/webm"><br></video></p>
+while(( $retry<=5 ))
+do
+        git pull
+        if [ $? -eq 0 ]; then
+                echo "git pull SUCCESS."
+                break
+        fi
+        $retry=$retry + 1
+        echo "git pull FAIL. Retrying $retry time(s)."
+done</code></pre>
 
             </div>
             <hr/>
@@ -463,9 +491,9 @@
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《AV1 编码测试视频》
+                    《使用 Webhook 自动从 GitHub 更新博客》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2020/04/28/Misaka-Dances/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2020/06/29/AutoUpdateBlog/" property="cc:attributionName"
                rel="cc:attributionURL">
                 Konata
             </a> 采用
@@ -499,26 +527,27 @@
                 <div class="article-badge left-badge text-color">
                     <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
                 <div class="card">
-                    <a href="/2020/05/03/Promise/">
+                    <a href="/2020/07/17/jsCheckGrade/">
                         <div class="card-image">
                             
                                 
-                                <img data-src="/medias/featureimages/15.jpg" class="responsive-img lazyload"
-                                     alt="Promise">
+                                <img data-src="/medias/featureimages/02.jpg" class="responsive-img lazyload"
+                                     alt="使用 javaScript 获取教务系统成绩并推送">
                             
-                            <span class="card-title">Promise</span>
+                            <span class="card-title">使用 javaScript 获取教务系统成绩并推送</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                JavaScript Promise 笔记
-                            
+                            <center>
+                                使用 javaScript 获取教务系统成绩并推送
+                                
                             </center>
                         </div>
                         <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-05-03
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-07-17
                         </span>
                             <span class="publish-author">
                                 
@@ -539,10 +568,6 @@
                                     <span class="chip bg-color">JavaScript</span>
                                 </a>
                             
-                                <a href="/tags/ES6/" target="_blank">
-                                    <span class="chip bg-color">ES6</span>
-                                </a>
-                            
                         </div>
                     
                 </div>
@@ -554,34 +579,34 @@
                     下一篇&nbsp;<i class="fa fa-chevron-right"></i>
                 </div>
                 <div class="card">
-                    <a href="/2020/04/27/codec/">
+                    <a href="/2020/06/19/FilterAndListener/">
                         <div class="card-image">
                             
                                 
-                                <img data-src="/medias/featureimages/13.jpg" class="responsive-img lazyload"
-                                     alt="VapourSynth 输出无损视频">
+                                <img data-src="/medias/featureimages/09.jpg" class="responsive-img lazyload"
+                                     alt="Filter 和 Listener">
                             
-                            <span class="card-title">VapourSynth 输出无损视频</span>
+                            <span class="card-title">Filter 和 Listener</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
                             <center>
-                                VapourSynth 输出无损视频
+                                Filter 和 Listener
                                 
                             </center>
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-04-27
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-06-19
                             </span>
                             <span class="publish-author">
                                 
                                     <i class="fa fa-bookmark fa-fw icon-category"></i>
                                     
-                                        <a href="/categories/音视频编码/" class="post-category" target="_blank">
-                                    音视频编码
+                                        <a href="/categories/JAVA/" class="post-category" target="_blank">
+                                    JAVA
                                 </a>
                                     
                                 
@@ -591,12 +616,12 @@
                     
                         <div class="card-action article-tags">
                             
-                                <a href="/tags/AV1/" target="_blank">
-                                    <span class="chip bg-color">AV1</span>
+                                <a href="/tags/JAVA/" target="_blank">
+                                    <span class="chip bg-color">JAVA</span>
                                 </a>
                             
-                                <a href="/tags/VapourSynth/" target="_blank">
-                                    <span class="chip bg-color">VapourSynth</span>
+                                <a href="/tags/JSP/" target="_blank">
+                                    <span class="chip bg-color">JSP</span>
                                 </a>
                             
                         </div>
