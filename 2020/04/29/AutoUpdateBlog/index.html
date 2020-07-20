@@ -392,14 +392,14 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-06-29
+                    2020-04-29
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        345
+                        347
                     </div>
                     
 
@@ -448,8 +448,8 @@
     <span class="token punctuation">}</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">]</span></code></pre>
-<h2 id="打开-Github-的-Webhook-功能"><a href="#打开-Github-的-Webhook-功能" class="headerlink" title="打开 Github 的 Webhook 功能"></a>打开 Github 的 Webhook 功能</h2><p>在 GitHub 上相应仓库的 Settings 中找到 Webhook 功能，添加一个钩子，Payload URL 填入服务器监听地址，Content type 选择 application/x-www-form-urlencoded，Secret 填入上面配置文件中的 secret，钩子触发中选择 push 事件，勾选 Active，这样 GitHub 端就配置完成了。</p>
-<h2 id="编写自动更新脚本"><a href="#编写自动更新脚本" class="headerlink" title="编写自动更新脚本"></a>编写自动更新脚本</h2><p>因为服务器的 webhook 触发之后执行的是一个命令，还需要一个 shell 脚本来对部署目录进行更新。<br>脚本如下，因为国内网络到 GitHub 的连通性奇差，所以加入了拉取失败重试的机制。  </p>
+<h2 id="打开-Github-的-Webhook-功能"><a href="#打开-Github-的-Webhook-功能" class="headerlink" title="打开 Github 的 Webhook 功能"></a>打开 Github 的 Webhook 功能</h2><p>在 GitHub 上相应仓库的 Settings 中找到 Webhook 功能，添加一个钩子， <code>Payload URL</code> 填入服务器监听地址， <code>Content type</code> 选择 <code>application/x-www-form-urlencoded</code> ， <code>Secret</code> 填入上面配置文件中的 <code>secret</code> ，钩子触发中选择 push 事件，勾选 Active，这样 GitHub 端就配置完成了。</p>
+<h2 id="编写自动更新脚本"><a href="#编写自动更新脚本" class="headerlink" title="编写自动更新脚本"></a>编写自动更新脚本</h2><p>因为服务器的 webhook 触发之后执行的是一个命令，还需要一个 shell 脚本来对博客部署目录进行更新。<br>脚本如下，因为国内网络到 GitHub 的连通性奇差，所以加入了拉取失败重试的机制。  </p>
 <pre class=" language-sh"><code class="language-sh">#!/bin/bash
 cd /srv/nginx/hexo_root
 
@@ -465,6 +465,7 @@ do
         $retry=$retry + 1
         echo "git pull FAIL. Retrying $retry time(s)."
 done</code></pre>
+<p>之后每当博客更新执行 <code>hexo deploy</code> 的时候，服务器端就会自动更新页面了，免去了 SSH 进去手动更新的麻烦。</p>
 
             </div>
             <hr/>
@@ -493,7 +494,7 @@ done</code></pre>
                   property="dct:title" rel="dct:type">
                     《使用 Webhook 自动从 GitHub 更新博客》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2020/06/29/AutoUpdateBlog/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2020/04/29/AutoUpdateBlog/" property="cc:attributionName"
                rel="cc:attributionURL">
                 Konata
             </a> 采用
@@ -527,27 +528,26 @@ done</code></pre>
                 <div class="article-badge left-badge text-color">
                     <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
                 <div class="card">
-                    <a href="/2020/07/17/jsCheckGrade/">
+                    <a href="/2020/05/03/Promise/">
                         <div class="card-image">
                             
                                 
-                                <img data-src="/medias/featureimages/02.jpg" class="responsive-img lazyload"
-                                     alt="使用 javaScript 获取教务系统成绩并推送">
+                                <img data-src="/medias/featureimages/15.jpg" class="responsive-img lazyload"
+                                     alt="Promise">
                             
-                            <span class="card-title">使用 javaScript 获取教务系统成绩并推送</span>
+                            <span class="card-title">Promise</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                            <center>
-                                使用 javaScript 获取教务系统成绩并推送
-                                
+                                JavaScript Promise 笔记
+                            
                             </center>
                         </div>
                         <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-07-17
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-05-03
                         </span>
                             <span class="publish-author">
                                 
@@ -568,6 +568,10 @@ done</code></pre>
                                     <span class="chip bg-color">JavaScript</span>
                                 </a>
                             
+                                <a href="/tags/ES6/" target="_blank">
+                                    <span class="chip bg-color">ES6</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -579,34 +583,33 @@ done</code></pre>
                     下一篇&nbsp;<i class="fa fa-chevron-right"></i>
                 </div>
                 <div class="card">
-                    <a href="/2020/06/19/FilterAndListener/">
+                    <a href="/2020/04/28/Misaka-Dances/">
                         <div class="card-image">
                             
                                 
-                                <img data-src="/medias/featureimages/09.jpg" class="responsive-img lazyload"
-                                     alt="Filter 和 Listener">
+                                <img data-src="/medias/featureimages/07.jpg" class="responsive-img lazyload"
+                                     alt="AV1 编码测试视频">
                             
-                            <span class="card-title">Filter 和 Listener</span>
+                            <span class="card-title">AV1 编码测试视频</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                            <center>
-                                Filter 和 Listener
-                                
+                                Misaka Dances
+                            
                             </center>
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-06-19
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-04-28
                             </span>
                             <span class="publish-author">
                                 
                                     <i class="fa fa-bookmark fa-fw icon-category"></i>
                                     
-                                        <a href="/categories/JAVA/" class="post-category" target="_blank">
-                                    JAVA
+                                        <a href="/categories/音视频编码/" class="post-category" target="_blank">
+                                    音视频编码
                                 </a>
                                     
                                 
@@ -616,12 +619,8 @@ done</code></pre>
                     
                         <div class="card-action article-tags">
                             
-                                <a href="/tags/JAVA/" target="_blank">
-                                    <span class="chip bg-color">JAVA</span>
-                                </a>
-                            
-                                <a href="/tags/JSP/" target="_blank">
-                                    <span class="chip bg-color">JSP</span>
+                                <a href="/tags/AV1/" target="_blank">
+                                    <span class="chip bg-color">AV1</span>
                                 </a>
                             
                         </div>
