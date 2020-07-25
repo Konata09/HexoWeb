@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://konata.tech/"/>
-  <updated>2020-07-24T08:00:04.915Z</updated>
+  <updated>2020-07-25T13:49:09.733Z</updated>
   <id>http://konata.tech/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>ES6 Module 语法</title>
-    <link href="http://konata.tech/2020/07/23/ES6Module/"/>
-    <id>http://konata.tech/2020/07/23/ES6Module/</id>
-    <published>2020-07-23T15:42:02.000Z</published>
-    <updated>2020-07-24T08:00:04.915Z</updated>
+    <title>遍历数组时使用异步方法</title>
+    <link href="http://konata.tech/2020/07/25/UsingAsyncWithForEach/"/>
+    <id>http://konata.tech/2020/07/25/UsingAsyncWithForEach/</id>
+    <published>2020-07-25T11:08:16.000Z</published>
+    <updated>2020-07-25T13:49:09.733Z</updated>
     
     <summary type="html">
     
@@ -29,7 +29,8 @@
       
         
         
-          &lt;h2 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot; title=&quot;介绍&quot;&gt;&lt;/a&gt;介绍&lt;/h2&gt;&lt;p&gt;ES6 之前用于 JavaScript 的模块加载方案，是一些社区提供的，主要有 &lt;code&gt;CommonJS&lt;/code&gt; 和
+          &lt;p&gt;在遍历数组时，如果在对每个元素的回调中使用异步方法，&lt;b&gt;不能使用 forEach 遍历&lt;/b&gt;。&lt;br&gt;&lt;b style=&quot;color: red&quot;&gt;错误&lt;/b&gt;的例子：&lt;/p&gt;
+&lt;pre class=&quot; language-js&quot;&gt;&lt;code
         
       
     
@@ -38,7 +39,51 @@
       <category term="JavaScript" scheme="http://konata.tech/categories/JavaScript/"/>
     
     
-      <category term="ES6" scheme="http://konata.tech/tags/ES6/"/>
+      <category term="JavaScript" scheme="http://konata.tech/tags/JavaScript/"/>
+    
+      <category term="ES2017" scheme="http://konata.tech/tags/ES2017/"/>
+    
+      <category term="ES2018" scheme="http://konata.tech/tags/ES2018/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>git 常用命令</title>
+    <link href="http://konata.tech/2020/07/24/GitCheatSheet/"/>
+    <id>http://konata.tech/2020/07/24/GitCheatSheet/</id>
+    <published>2020-07-24T08:11:26.000Z</published>
+    <updated>2020-07-24T08:48:50.847Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;一般提交流程&quot;&gt;&lt;a href=&quot;#一般提交流程&quot; class=&quot;headerlink&quot; title=&quot;一般提交流程&quot;&gt;&lt;/a&gt;一般提交流程&lt;/h2&gt;&lt;p&gt;&lt;code&gt;git add .&lt;/code&gt; 将文件添加到暂存区&lt;br&gt;&lt;code&gt;git commit
+        
+      
+    
+    </summary>
+    
+      <category term="Tools" scheme="http://konata.tech/categories/Tools/"/>
+    
+    
+      <category term="git" scheme="http://konata.tech/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="http://konata.tech/2020/07/23/ES6Module/"/>
+    <id>http://konata.tech/2020/07/23/ES6Module/</id>
+    <published>2020-07-23T15:41:54.179Z</published>
+    <updated>2020-07-24T08:00:04.899Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
     
   </entry>
   
@@ -453,28 +498,16 @@
   </entry>
   
   <entry>
-    <title>ES6 Promise 对象</title>
-    <link href="http://konata.tech/2020/05/03/Promise/"/>
-    <id>http://konata.tech/2020/05/03/Promise/</id>
-    <published>2020-05-03T12:22:00.000Z</published>
-    <updated>2020-07-23T15:43:37.598Z</updated>
+    <title></title>
+    <link href="http://konata.tech/2020/05/05/Promise/"/>
+    <id>http://konata.tech/2020/05/05/Promise/</id>
+    <published>2020-05-05T09:40:21.097Z</published>
+    <updated>2020-07-23T15:43:37.583Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h2 id=&quot;Promise-的三种状态&quot;&gt;&lt;a href=&quot;#Promise-的三种状态&quot; class=&quot;headerlink&quot; title=&quot;Promise 的三种状态&quot;&gt;&lt;/a&gt;Promise
-        
-      
-    
     </summary>
     
-      <category term="JavaScript" scheme="http://konata.tech/categories/JavaScript/"/>
-    
-    
-      <category term="ES6" scheme="http://konata.tech/tags/ES6/"/>
     
   </entry>
   
@@ -501,60 +534,6 @@
     
     
       <category term="Shell" scheme="http://konata.tech/tags/Shell/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>AV1 编码测试视频</title>
-    <link href="http://konata.tech/2020/04/28/Misaka-Dances/"/>
-    <id>http://konata.tech/2020/04/28/Misaka-Dances/</id>
-    <published>2020-04-28T02:33:00.000Z</published>
-    <updated>2020-05-12T13:25:28.106Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h3 id=&quot;AV1-8bit&quot;&gt;&lt;a href=&quot;#AV1-8bit&quot; class=&quot;headerlink&quot; title=&quot;AV1 8bit&quot;&gt;&lt;/a&gt;AV1 8bit&lt;/h3&gt;&lt;pre class=&quot; language-sh&quot;&gt;&lt;code
-        
-      
-    
-    </summary>
-    
-      <category term="音视频编码" scheme="http://konata.tech/categories/%E9%9F%B3%E8%A7%86%E9%A2%91%E7%BC%96%E7%A0%81/"/>
-    
-    
-      <category term="AV1" scheme="http://konata.tech/tags/AV1/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>VapourSynth 输出无损视频</title>
-    <link href="http://konata.tech/2020/04/27/codec/"/>
-    <id>http://konata.tech/2020/04/27/codec/</id>
-    <published>2020-04-27T06:43:12.000Z</published>
-    <updated>2020-07-19T14:13:38.838Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h3 id=&quot;VapourSynth-输出-YUV4MPEG&quot;&gt;&lt;a href=&quot;#VapourSynth-输出-YUV4MPEG&quot; class=&quot;headerlink&quot; title=&quot;VapourSynth 输出 YUV4MPEG&quot;&gt;&lt;/a&gt;VapourSynth 输出
-        
-      
-    
-    </summary>
-    
-      <category term="音视频编码" scheme="http://konata.tech/categories/%E9%9F%B3%E8%A7%86%E9%A2%91%E7%BC%96%E7%A0%81/"/>
-    
-    
-      <category term="AV1" scheme="http://konata.tech/tags/AV1/"/>
-    
-      <category term="VapourSynth" scheme="http://konata.tech/tags/VapourSynth/"/>
     
   </entry>
   
