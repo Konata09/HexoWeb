@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://konata.tech/"/>
-  <updated>2020-07-25T13:49:09.733Z</updated>
+  <updated>2020-07-26T07:40:00.333Z</updated>
   <id>http://konata.tech/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JavaScript 中各种遍历方法对比</title>
+    <link href="http://konata.tech/2020/07/25/LoopMethodInJavaScript/"/>
+    <id>http://konata.tech/2020/07/25/LoopMethodInJavaScript/</id>
+    <published>2020-07-25T13:52:27.000Z</published>
+    <updated>2020-07-26T07:40:00.333Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;原文：&lt;a href=&quot;https://thecodebarbarian.com/for-vs-for-each-vs-for-in-vs-for-of-in-javascript.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;For vs
+        
+      
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://konata.tech/categories/JavaScript/"/>
+    
+    
+      <category term="JavaScript" scheme="http://konata.tech/tags/JavaScript/"/>
+    
+  </entry>
   
   <entry>
     <title>遍历数组时使用异步方法</title>
@@ -74,16 +100,28 @@
   </entry>
   
   <entry>
-    <title></title>
+    <title>ES6 Module 语法</title>
     <link href="http://konata.tech/2020/07/23/ES6Module/"/>
     <id>http://konata.tech/2020/07/23/ES6Module/</id>
-    <published>2020-07-23T15:41:54.179Z</published>
-    <updated>2020-07-24T08:00:04.899Z</updated>
+    <published>2020-07-23T15:42:02.000Z</published>
+    <updated>2020-07-24T08:00:04.915Z</updated>
     
     <summary type="html">
     
+      
+      
+        
+        
+          &lt;h2 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot; title=&quot;介绍&quot;&gt;&lt;/a&gt;介绍&lt;/h2&gt;&lt;p&gt;ES6 之前用于 JavaScript 的模块加载方案，是一些社区提供的，主要有 &lt;code&gt;CommonJS&lt;/code&gt; 和
+        
+      
+    
     </summary>
     
+      <category term="JavaScript" scheme="http://konata.tech/categories/JavaScript/"/>
+    
+    
+      <category term="ES6" scheme="http://konata.tech/tags/ES6/"/>
     
   </entry>
   
@@ -498,25 +536,11 @@
   </entry>
   
   <entry>
-    <title></title>
-    <link href="http://konata.tech/2020/05/05/Promise/"/>
-    <id>http://konata.tech/2020/05/05/Promise/</id>
-    <published>2020-05-05T09:40:21.097Z</published>
-    <updated>2020-07-23T15:43:37.583Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>使用 Webhook 自动从 GitHub 更新博客</title>
-    <link href="http://konata.tech/2020/04/29/AutoUpdateBlog/"/>
-    <id>http://konata.tech/2020/04/29/AutoUpdateBlog/</id>
-    <published>2020-04-29T14:34:12.000Z</published>
-    <updated>2020-07-19T15:16:14.812Z</updated>
+    <title>ES6 Promise 对象</title>
+    <link href="http://konata.tech/2020/05/03/Promise/"/>
+    <id>http://konata.tech/2020/05/03/Promise/</id>
+    <published>2020-05-03T12:22:00.000Z</published>
+    <updated>2020-07-23T15:43:37.598Z</updated>
     
     <summary type="html">
     
@@ -524,16 +548,16 @@
       
         
         
-          &lt;h2 id=&quot;什么是-Webhook&quot;&gt;&lt;a href=&quot;#什么是-Webhook&quot; class=&quot;headerlink&quot; title=&quot;什么是 Webhook&quot;&gt;&lt;/a&gt;什么是 Webhook&lt;/h2&gt;&lt;p&gt;Webhook 就像一个回调函数，允许当设定的 GitHub
+          &lt;h2 id=&quot;Promise-的三种状态&quot;&gt;&lt;a href=&quot;#Promise-的三种状态&quot; class=&quot;headerlink&quot; title=&quot;Promise 的三种状态&quot;&gt;&lt;/a&gt;Promise
         
       
     
     </summary>
     
-      <category term="Admin" scheme="http://konata.tech/categories/Admin/"/>
+      <category term="JavaScript" scheme="http://konata.tech/categories/JavaScript/"/>
     
     
-      <category term="Shell" scheme="http://konata.tech/tags/Shell/"/>
+      <category term="ES6" scheme="http://konata.tech/tags/ES6/"/>
     
   </entry>
   
