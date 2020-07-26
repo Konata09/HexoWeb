@@ -291,7 +291,7 @@
 </div>
 <script>
 //  banner 图
-$('.bg-cover').css('background-image', 'url(/medias/banner/1.jpg)');
+document.getElementsByClassName('bg-cover')[0].style.backgroundImage = "url('/medias/banner/1.jpg')";
 </script>
     </div>
 </div>
@@ -499,7 +499,7 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/1.jpg)');
                 type: 'pie',
                 radius: '50%',
                 color: ['#6772e5', '#ff9e0f', '#fa755a', '#3ecf8e', '#82d3f4', '#ab47bc', '#525f7f', '#f51c47', '#26A69A'],
-                data: [{"name":"Admin","value":4},{"name":"JAVA","value":9},{"name":"JavaScript","value":5},{"name":"Tools","value":1},{"name":"Java","value":1},{"name":"音视频编码","value":2},{"name":"音视频编码","value":1},{"name":"数据库","value":1},{"name":"Blog","value":1},{"name":"算法","value":1}],
+                data: [{"name":"Admin","value":4},{"name":"JAVA","value":9},{"name":"Java","value":1},{"name":"音视频编码","value":2},{"name":"音视频编码","value":1},{"name":"数据库","value":1},{"name":"Blog","value":1},{"name":"算法","value":1},{"name":"JavaScript","value":2},{"name":"Tools","value":1}],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
@@ -523,7 +523,7 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/1.jpg)');
         xAxis: [
             {
                 type: 'category',
-                data: ["JAVA","JSP","JavaScript","ES6","AV1","Nginx","Shell","git","Java","Vorbis"]
+                data: ["JAVA","JSP","Nginx","AV1","JavaScript","Shell","Java","Vorbis","Opus","数据库"]
             }
         ],
         yAxis: [
@@ -536,7 +536,7 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/1.jpg)');
                 type: 'bar',
                 color: ['#82d3f4'],
                 barWidth : 18,
-                data: [9,8,3,2,2,2,1,1,1,1],
+                data: [9,8,2,2,2,1,1,1,1,1],
                 markPoint: {
                     symbolSize: 45,
                     data: [{
@@ -675,11 +675,11 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/1.jpg)');
         <div class="tag-chips center-align">
             
             
+            
+            
             <a href="/tags/docsify/" target="_blank">
                 <span class="chip center-align waves-effect waves-light chip-default">docsify</span>
             </a>
-            
-            
             
             
             
@@ -695,30 +695,16 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/1.jpg)');
             
             
             
-            <a href="/tags/ES6/" target="_blank">
-                <span class="chip center-align waves-effect waves-light chip-default">ES6</span>
+            
+            
+            <a href="/tags/Nginx/" target="_blank">
+                <span class="chip center-align waves-effect waves-light chip-default">Nginx</span>
             </a>
-            
-            
-            
-            <a href="/tags/git/" target="_blank">
-                <span class="chip center-align waves-effect waves-light chip-default">git</span>
-            </a>
-            
-            
             
             
             
             <a href="/tags/AV1/" target="_blank">
                 <span class="chip center-align waves-effect waves-light chip-default">AV1</span>
-            </a>
-            
-            
-            
-            
-            
-            <a href="/tags/Nginx/" target="_blank">
-                <span class="chip center-align waves-effect waves-light chip-default">Nginx</span>
             </a>
             
             
@@ -759,18 +745,6 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/1.jpg)');
             
             
             
-            <a href="/tags/ES2017/" target="_blank">
-                <span class="chip center-align waves-effect waves-light chip-default">ES2017</span>
-            </a>
-            
-            
-            
-            <a href="/tags/ES2018/" target="_blank">
-                <span class="chip center-align waves-effect waves-light chip-default">ES2018</span>
-            </a>
-            
-            
-            
             <a href="/tags/动态规划/" target="_blank">
                 <span class="chip center-align waves-effect waves-light chip-default">动态规划</span>
             </a>
@@ -785,6 +759,32 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/1.jpg)');
             
             <a href="/tags/IIS/" target="_blank">
                 <span class="chip center-align waves-effect waves-light chip-default">IIS</span>
+            </a>
+            
+            
+            
+            
+            
+            <a href="/tags/ES6/" target="_blank">
+                <span class="chip center-align waves-effect waves-light chip-default">ES6</span>
+            </a>
+            
+            
+            
+            <a href="/tags/git/" target="_blank">
+                <span class="chip center-align waves-effect waves-light chip-default">git</span>
+            </a>
+            
+            
+            
+            <a href="/tags/ES2017/" target="_blank">
+                <span class="chip center-align waves-effect waves-light chip-default">ES2017</span>
+            </a>
+            
+            
+            
+            <a href="/tags/ES2018/" target="_blank">
+                <span class="chip center-align waves-effect waves-light chip-default">ES2018</span>
             </a>
             
             
@@ -843,6 +843,7 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/1.jpg)');
 </footer>
 
 
+<script src="/js/bundle.js"></script>
 <!-- 搜索遮罩框 -->
 <div id="searchModal" class="modal">
     <div class="modal-content">
@@ -883,7 +884,6 @@ $(function () {
 <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/scrollprogress@3.0.2/dist/scrollProgress.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.11/dist/js/lightgallery.min.js"></script>
-<script src="/js/matery.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-144875900-1"></script>
@@ -902,7 +902,6 @@ $(function () {
 
     <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-<script type="text/javascript" src="/js/canvas-nest.js" async></script>
 
 <div class="waifu">
     <div class="waifu-tips"></div>

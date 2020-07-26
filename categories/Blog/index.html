@@ -284,7 +284,7 @@
 </div>
 <script>
 //  banner 图
-$('.bg-cover').css('background-image', 'url(/medias/banner/1.jpg)');
+document.getElementsByClassName('bg-cover')[0].style.backgroundImage = "url('/medias/banner/1.jpg')";
 </script>
     </div>
 </div>
@@ -321,28 +321,10 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/1.jpg)');
                 </a>
                 
                 
-                <a href="/categories/JavaScript/" title="JavaScript: 5">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #D5F5E3;">JavaScript
-                        <span class="tag-length">5</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/Tools/" title="Tools: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #E8F8F5;">Tools
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/categories/Java/" title="Java: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #FEF9E7;">Java
+                            style="background-color: #D5F5E3;">Java
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -351,7 +333,7 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/1.jpg)');
                 <a href="/categories/音视频编码/" title="音视频编码: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F8F9F9;">音视频编码
+                            style="background-color: #E8F8F5;">音视频编码
                         <span class="tag-length">2</span>
                     </span>
                 </a>
@@ -360,7 +342,7 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/1.jpg)');
                 <a href="/categories/Admin/音视频编码/" title="音视频编码: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #82E0AA;">音视频编码
+                            style="background-color: #FEF9E7;">音视频编码
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -369,7 +351,7 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/1.jpg)');
                 <a href="/categories/数据库/" title="数据库: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #D7BDE2;">数据库
+                            style="background-color: #F8F9F9;">数据库
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -378,7 +360,7 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/1.jpg)');
                 <a href="/categories/Blog/" title="Blog: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-active "
-                            style="background-color: #A3E4D7;">Blog
+                            style="background-color: #82E0AA;">Blog
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -387,7 +369,25 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/1.jpg)');
                 <a href="/categories/算法/" title="算法: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #85C1E9;">算法
+                            style="background-color: #D7BDE2;">算法
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/JavaScript/" title="JavaScript: 2">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #A3E4D7;">JavaScript
+                        <span class="tag-length">2</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/Tools/" title="Tools: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #85C1E9;">Tools
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -496,6 +496,7 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/1.jpg)');
 </footer>
 
 
+<script src="/js/bundle.js"></script>
 <!-- 搜索遮罩框 -->
 <div id="searchModal" class="modal">
     <div class="modal-content">
@@ -536,7 +537,6 @@ $(function () {
 <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/scrollprogress@3.0.2/dist/scrollProgress.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.11/dist/js/lightgallery.min.js"></script>
-<script src="/js/matery.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-144875900-1"></script>
@@ -555,7 +555,6 @@ $(function () {
 
     <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-<script type="text/javascript" src="/js/canvas-nest.js" async></script>
 
 <div class="waifu">
     <div class="waifu-tips"></div>
