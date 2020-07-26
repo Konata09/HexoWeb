@@ -25,7 +25,8 @@
     <script type="application/javascript" src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
     <script type="application/javascript" src="https://cdn.jsdelivr.net/npm/jquery-ui-dist@1.12.1/jquery-ui.min.js"></script>
     <script type="application/javascript" src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
-    <script type="application/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.0/lazysizes.min.js" async></script>
+    <script async type="application/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.0/lazysizes.min.js"></script>
+    <script type="application/javascript" src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
@@ -52,8 +53,6 @@
     <style type="text/css">
         
     </style>
-
-    <script src></script>
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
@@ -275,9 +274,9 @@
 <div class="bg-cover pd-header about-cover">
     <div class="container" style="text-align: center;">
     <div class="row" style="display: inline-block">
-    <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
+    <div class="col">
         <div class="brand">
-            <div class="title center-align" style="width: max-content;">
+            <div class="title center-align">
                 
                         生命不息 折腾不止
                 
@@ -500,7 +499,7 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/1.jpg)');
                 type: 'pie',
                 radius: '50%',
                 color: ['#6772e5', '#ff9e0f', '#fa755a', '#3ecf8e', '#82d3f4', '#ab47bc', '#525f7f', '#f51c47', '#26A69A'],
-                data: [{"name":"Admin","value":4},{"name":"JavaScript","value":5},{"name":"JAVA","value":9},{"name":"Tools","value":1},{"name":"Java","value":1},{"name":"音视频编码","value":2},{"name":"音视频编码","value":1},{"name":"数据库","value":1},{"name":"Blog","value":1},{"name":"算法","value":1}],
+                data: [{"name":"Admin","value":4},{"name":"JAVA","value":9},{"name":"JavaScript","value":5},{"name":"Tools","value":1},{"name":"Java","value":1},{"name":"音视频编码","value":2},{"name":"数据库","value":1},{"name":"音视频编码","value":1},{"name":"Blog","value":1},{"name":"算法","value":1}],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
@@ -524,7 +523,7 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/1.jpg)');
         xAxis: [
             {
                 type: 'category',
-                data: ["JAVA","JSP","JavaScript","ES6","AV1","Nginx","Shell","git","Java","Vorbis"]
+                data: ["JAVA","JSP","JavaScript","ES6","Nginx","AV1","Shell","git","Java","数据库"]
             }
         ],
         yAxis: [
@@ -684,8 +683,8 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/1.jpg)');
             
             
             
-            <a href="/tags/ES6/" target="_blank">
-                <span class="chip center-align waves-effect waves-light chip-default">ES6</span>
+            <a href="/tags/JAVA/" target="_blank">
+                <span class="chip center-align waves-effect waves-light chip-default">JAVA</span>
             </a>
             
             
@@ -696,8 +695,8 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/1.jpg)');
             
             
             
-            <a href="/tags/JAVA/" target="_blank">
-                <span class="chip center-align waves-effect waves-light chip-default">JAVA</span>
+            <a href="/tags/ES6/" target="_blank">
+                <span class="chip center-align waves-effect waves-light chip-default">ES6</span>
             </a>
             
             
@@ -712,14 +711,20 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/1.jpg)');
             
             
             
+            <a href="/tags/Nginx/" target="_blank">
+                <span class="chip center-align waves-effect waves-light chip-default">Nginx</span>
+            </a>
+            
+            
+            
             <a href="/tags/AV1/" target="_blank">
                 <span class="chip center-align waves-effect waves-light chip-default">AV1</span>
             </a>
             
             
             
-            <a href="/tags/Nginx/" target="_blank">
-                <span class="chip center-align waves-effect waves-light chip-default">Nginx</span>
+            <a href="/tags/数据库/" target="_blank">
+                <span class="chip center-align waves-effect waves-light chip-default">数据库</span>
             </a>
             
             
@@ -736,12 +741,6 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/1.jpg)');
             
             
             
-            <a href="/tags/数据库/" target="_blank">
-                <span class="chip center-align waves-effect waves-light chip-default">数据库</span>
-            </a>
-            
-            
-            
             <a href="/tags/TODO/" target="_blank">
                 <span class="chip center-align waves-effect waves-light chip-default">TODO</span>
             </a>
@@ -754,6 +753,12 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/1.jpg)');
             
             
             
+            <a href="/tags/VapourSynth/" target="_blank">
+                <span class="chip center-align waves-effect waves-light chip-default">VapourSynth</span>
+            </a>
+            
+            
+            
             <a href="/tags/ES2017/" target="_blank">
                 <span class="chip center-align waves-effect waves-light chip-default">ES2017</span>
             </a>
@@ -762,12 +767,6 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/1.jpg)');
             
             <a href="/tags/ES2018/" target="_blank">
                 <span class="chip center-align waves-effect waves-light chip-default">ES2018</span>
-            </a>
-            
-            
-            
-            <a href="/tags/VapourSynth/" target="_blank">
-                <span class="chip center-align waves-effect waves-light chip-default">VapourSynth</span>
             </a>
             
             

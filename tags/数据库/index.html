@@ -25,7 +25,8 @@
     <script type="application/javascript" src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
     <script type="application/javascript" src="https://cdn.jsdelivr.net/npm/jquery-ui-dist@1.12.1/jquery-ui.min.js"></script>
     <script type="application/javascript" src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
-    <script type="application/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.0/lazysizes.min.js" async></script>
+    <script async type="application/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.0/lazysizes.min.js"></script>
+    <script type="application/javascript" src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
@@ -52,8 +53,6 @@
     <style type="text/css">
         
     </style>
-
-    <script src></script>
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
@@ -268,9 +267,9 @@
 <div class="bg-cover pd-header about-cover">
     <div class="container" style="text-align: center;">
     <div class="row" style="display: inline-block">
-    <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
+    <div class="col">
         <div class="brand">
-            <div class="title center-align" style="width: max-content;">
+            <div class="title center-align">
                 
                         生命不息 折腾不止
                 
@@ -321,11 +320,11 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/1.jpg)');
                 </a>
                 
                 
-                <a href="/tags/ES6/" title="ES6: 2">
+                <a href="/tags/JAVA/" title="JAVA: 9">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="ES6" style="background-color: #D5F5E3;">ES6
-                        <span class="tag-length">2</span>
+                            data-tagname="JAVA" style="background-color: #D5F5E3;">JAVA
+                        <span class="tag-length">9</span>
                     </span>
                 </a>
                 
@@ -339,11 +338,11 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/1.jpg)');
                 </a>
                 
                 
-                <a href="/tags/JAVA/" title="JAVA: 9">
+                <a href="/tags/ES6/" title="ES6: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="JAVA" style="background-color: #FEF9E7;">JAVA
-                        <span class="tag-length">9</span>
+                            data-tagname="ES6" style="background-color: #FEF9E7;">ES6
+                        <span class="tag-length">2</span>
                     </span>
                 </a>
                 
@@ -375,20 +374,29 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/1.jpg)');
                 </a>
                 
                 
-                <a href="/tags/AV1/" title="AV1: 2">
+                <a href="/tags/Nginx/" title="Nginx: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="AV1" style="background-color: #A3E4D7;">AV1
+                            data-tagname="Nginx" style="background-color: #A3E4D7;">Nginx
                         <span class="tag-length">2</span>
                     </span>
                 </a>
                 
                 
-                <a href="/tags/Nginx/" title="Nginx: 2">
+                <a href="/tags/AV1/" title="AV1: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="Nginx" style="background-color: #85C1E9;">Nginx
+                            data-tagname="AV1" style="background-color: #85C1E9;">AV1
                         <span class="tag-length">2</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/数据库/" title="数据库: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-active "
+                            data-tagname="数据库" style="background-color: #F8C471;">数据库
+                        <span class="tag-length">1</span>
                     </span>
                 </a>
                 
@@ -396,7 +404,7 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/1.jpg)');
                 <a href="/tags/Vorbis/" title="Vorbis: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="Vorbis" style="background-color: #F8C471;">Vorbis
+                            data-tagname="Vorbis" style="background-color: #F9E79F;">Vorbis
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -406,15 +414,6 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/1.jpg)');
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             data-tagname="Opus" style="background-color: #F9E79F;">Opus
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/数据库/" title="数据库: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-active "
-                            data-tagname="数据库" style="background-color: #F9E79F;">数据库
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -438,6 +437,15 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/1.jpg)');
                 </a>
                 
                 
+                <a href="/tags/VapourSynth/" title="VapourSynth: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="VapourSynth" style="background-color: #FEF9E7;">VapourSynth
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/tags/ES2017/" title="ES2017: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -451,15 +459,6 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/1.jpg)');
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             data-tagname="ES2018" style="background-color: #D5F5E3;">ES2018
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/VapourSynth/" title="VapourSynth: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="VapourSynth" style="background-color: #FEF9E7;">VapourSynth
                         <span class="tag-length">1</span>
                     </span>
                 </a>

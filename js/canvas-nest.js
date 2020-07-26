@@ -115,7 +115,6 @@ function loadnestbg() {
     bgnow = document.getElementById("BackgroundSwitch");
     bgnow_title = document.getElementById("BackgroundSwitchTitle");
 
-    bgnow.title = "暂停背景";
     bgnow.href = "javascript:switchbg()";
     bgnow_title.innerHTML = "暂停背景";
 }
