@@ -411,7 +411,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        826
+                        829
                     </div>
                     
 
@@ -481,9 +481,9 @@
 <li>回来执行过滤器放行代码下边的代码</li>
 </ol>
 <h3 id="过滤器生命周期"><a href="#过滤器生命周期" class="headerlink" title="过滤器生命周期"></a>过滤器生命周期</h3><ol>
-<li>init: 在服务器启动后，会创建 Filter 对象，然后调用 init 方法。只执行一次。用于加载资源</li>
-<li>doFilter: 每一次请求被拦截资源时，会执行。执行多次</li>
-<li>destroy: 在服务器关闭后，Filter 对象被销毁。如果服务器是正常关闭，则会执行 destroy 方法。只执行一次。用于释放资源</li>
+<li>init: 在服务器启动后，会创建 Filter 对象，然后调用 init 方法。只执行一次，用于加载资源。</li>
+<li>doFilter: 每一次请求被拦截资源时都会执行。执行多次。</li>
+<li>destroy: 在服务器关闭后，Filter 对象被销毁。如果服务器是正常关闭，则会执行 destroy 方法。只执行一次，一般用于释放资源。</li>
 </ol>
 <h4 id="过滤器配置详解"><a href="#过滤器配置详解" class="headerlink" title="过滤器配置详解"></a>过滤器配置详解</h4><ul>
 <li>拦截路径配置：<ol>
@@ -545,7 +545,7 @@
 <li><p>ServletContextListener: 监听 ServletContext 对象的创建和销毁</p>
 </li>
 </ul>
-<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><p><code>void contextDestroyed(ServletContextEvent sce)</code><br>ServletContext 对象被销毁之前会调用该方法<br><code>void contextInitialized(ServletContextEvent sce)</code><br>ServletContext 对象创建后会调用该方法</p>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><p> <code>void contextDestroyed(ServletContextEvent sce)</code><br>ServletContext 对象被销毁之前会调用该方法<br> <code>void contextInitialized(ServletContextEvent sce)</code><br>ServletContext 对象创建后会调用该方法</p>
 <h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><ol>
 <li>定义一个类，实现 <code>ServletContextListener</code> 接口</li>
 <li>复写方法</li>
@@ -555,7 +555,7 @@
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>listener-class</span><span class="token punctuation">></span></span>cn.itcast.web.listener.ContextLoaderListener<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>listener-class</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>listener</span><span class="token punctuation">></span></span></code></pre>
 <ul>
-<li>指定初始化参数 <code>&lt;context-param&gt;</code> </li>
+<li>指定初始化参数 <code>&lt;context-param&gt;</code></li>
 </ul>
 
             </div>
