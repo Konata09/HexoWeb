@@ -62,7 +62,7 @@
       <link href="/2020/07/24/GitCheatSheet/"/>
       <url>/2020/07/24/GitCheatSheet/</url>
       
-        <content type="html"><![CDATA[<h2 id="一般提交流程"><a href="#一般提交流程" class="headerlink" title="一般提交流程"></a>一般提交流程</h2><p><code>git add .</code> 将文件添加到暂存区<br><code>git commit -m &quot;说明&quot;</code> 将缓存区内容添加到仓库<br><code>git push</code> 将本地仓库同步到远程仓库</p><h2 id="查看修改情况"><a href="#查看修改情况" class="headerlink" title="查看修改情况"></a>查看修改情况</h2><h3 id="git-status"><a href="#git-status" class="headerlink" title="git status"></a>git status</h3><p><code>git status</code> 以查看在你上次提交之后是否有修改。  </p><h3 id="git-diff"><a href="#git-diff" class="headerlink" title="git diff"></a>git diff</h3><p>执行 <code>git diff</code> 来查看具体的文件修改。  </p><ul><li>尚未缓存的改动： <code>git diff</code></li><li>查看已缓存的改动： <code>git diff --cached</code></li><li>查看已缓存的与未缓存的所有改动： <code>git diff HEAD</code></li><li>显示摘要而非整个 diff： <code>git diff --stat</code></li></ul><h2 id="撤销提交"><a href="#撤销提交" class="headerlink" title="撤销提交"></a>撤销提交</h2><h3 id="查看提交记录"><a href="#查看提交记录" class="headerlink" title="查看提交记录"></a>查看提交记录</h3><p> <code>git log</code></p><h3 id="选择撤销记录"><a href="#选择撤销记录" class="headerlink" title="选择撤销记录"></a>选择撤销记录</h3><ul><li><code>git reset --soft commitID</code> 本地文件不会回滚，不撤销 <code>git add</code></li><li><code>git reset commitID</code> 本地文件不会回滚，同时撤销 <code>git add</code></li><li><code>git reset --hard commitID</code> 本地文件也会回滚，可能造成数据丢失  </li></ul><h3 id="强制推送到远程仓库"><a href="#强制推送到远程仓库" class="headerlink" title="强制推送到远程仓库"></a>强制推送到远程仓库</h3><p>如果还没有推送到远程仓库，就不必执行这一步。<br><code>git push origin master --force</code> 不加 <code>--force</code> 会报错，因为版本低于远端，无法直接提交。</p><h2 id="gitignore"><a href="#gitignore" class="headerlink" title="gitignore"></a>gitignore</h2><p>如果某些文件已经被纳入了版本管理中，之后再将其加入 <code>.gitignore</code> 会不起作用的，这时候需要把本地缓存删除，再进行 git add，这样就不会出现忽略的文件了。<br>git 清除本地缓存：<br> <code>git rm -r --cached .</code></p>]]></content>
+        <content type="html"><![CDATA[<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><p><code>git init</code> 创建本地仓库<br><code>git remote add origin https://github.com/user/repo.git</code> 关联远程仓库<br><code>git push -u origin master</code> 关联远程仓库之后的首次推送命令</p><h2 id="一般提交流程"><a href="#一般提交流程" class="headerlink" title="一般提交流程"></a>一般提交流程</h2><p><code>git add .</code> 将文件添加到暂存区<br><code>git commit -m &quot;说明&quot;</code> 将缓存区内容添加到仓库<br><code>git push</code> 将本地仓库同步到远程仓库</p><h2 id="查看修改情况"><a href="#查看修改情况" class="headerlink" title="查看修改情况"></a>查看修改情况</h2><h3 id="git-status"><a href="#git-status" class="headerlink" title="git status"></a>git status</h3><p><code>git status</code> 以查看在你上次提交之后是否有修改。  </p><h3 id="git-diff"><a href="#git-diff" class="headerlink" title="git diff"></a>git diff</h3><p>执行 <code>git diff</code> 来查看具体的文件修改。  </p><ul><li>尚未缓存的改动： <code>git diff</code></li><li>查看已缓存的改动： <code>git diff --cached</code></li><li>查看已缓存的与未缓存的所有改动： <code>git diff HEAD</code></li><li>显示摘要而非整个 diff： <code>git diff --stat</code></li></ul><h2 id="撤销提交"><a href="#撤销提交" class="headerlink" title="撤销提交"></a>撤销提交</h2><h3 id="查看提交记录"><a href="#查看提交记录" class="headerlink" title="查看提交记录"></a>查看提交记录</h3><p> <code>git log</code></p><h3 id="选择撤销记录"><a href="#选择撤销记录" class="headerlink" title="选择撤销记录"></a>选择撤销记录</h3><ul><li><code>git reset --soft commitID</code> 本地文件不会回滚，不撤销 <code>git add</code></li><li><code>git reset commitID</code> 本地文件不会回滚，同时撤销 <code>git add</code></li><li><code>git reset --hard commitID</code> 本地文件也会回滚，可能造成数据丢失  </li></ul><h3 id="强制推送到远程仓库"><a href="#强制推送到远程仓库" class="headerlink" title="强制推送到远程仓库"></a>强制推送到远程仓库</h3><p>如果还没有推送到远程仓库，就不必执行这一步。<br><code>git push origin master -f</code> 不加 <code>-f</code> 会报错，因为版本低于远端，无法直接提交。</p><h2 id="gitignore"><a href="#gitignore" class="headerlink" title="gitignore"></a>gitignore</h2><p>如果某些文件已经被纳入了版本管理中，之后再将其加入 <code>.gitignore</code> 会不起作用的，这时候需要把本地缓存删除，再进行 git add，这样就不会出现忽略的文件了。<br>git 清除本地缓存：<br> <code>git rm -r --cached .</code></p>]]></content>
       
       
       <categories>
@@ -149,9 +149,9 @@
       
         <tags>
             
-            <tag> JAVA </tag>
-            
             <tag> JSP </tag>
+            
+            <tag> JAVA </tag>
             
         </tags>
       
@@ -176,9 +176,9 @@
       
         <tags>
             
-            <tag> JAVA </tag>
-            
             <tag> JSP </tag>
+            
+            <tag> JAVA </tag>
             
         </tags>
       
@@ -203,9 +203,9 @@
       
         <tags>
             
-            <tag> JAVA </tag>
-            
             <tag> JSP </tag>
+            
+            <tag> JAVA </tag>
             
         </tags>
       
@@ -230,9 +230,9 @@
       
         <tags>
             
-            <tag> JAVA </tag>
-            
             <tag> JSP </tag>
+            
+            <tag> JAVA </tag>
             
         </tags>
       
@@ -257,9 +257,9 @@
       
         <tags>
             
-            <tag> JAVA </tag>
-            
             <tag> JSP </tag>
+            
+            <tag> JAVA </tag>
             
         </tags>
       
@@ -284,24 +284,11 @@
       
         <tags>
             
-            <tag> JAVA </tag>
-            
             <tag> JSP </tag>
             
+            <tag> JAVA </tag>
+            
         </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Hello World</title>
-      <link href="/2020/06/18/hello-world/"/>
-      <url>/2020/06/18/hello-world/</url>
-      
-        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span></code></pre><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class=" language-bash"><code class="language-bash">$ hexo server</code></pre><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class=" language-bash"><code class="language-bash">$ hexo generate</code></pre><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy</code></pre><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
-      
-      
       
     </entry>
     
@@ -374,9 +361,9 @@
       
         <tags>
             
-            <tag> JAVA </tag>
-            
             <tag> JSP </tag>
+            
+            <tag> JAVA </tag>
             
         </tags>
       
@@ -668,9 +655,9 @@
       
         <tags>
             
-            <tag> JAVA </tag>
-            
             <tag> JSP </tag>
+            
+            <tag> JAVA </tag>
             
         </tags>
       
@@ -683,7 +670,7 @@
       <link href="/2019/08/06/UpdateLog/"/>
       <url>/2019/08/06/UpdateLog/</url>
       
-        <content type="html"><![CDATA[<ul><li><p>2019.07.25 框架搭建完成</p></li><li><p>2019.08.02 主题修改完成</p></li><li><p>2019.08.06 崩坏学园 2 LIVE2D 上线 <del>那么崩坏 3 的看板娘什么时候能放上 Web 呢</del></p></li><li><p>2019.08.07 部署 Hexo Admin</p></li><li><p>2019.08.10 </p><ul><li>部署 HTTPS</li><li>支持 HSTS</li></ul></li><li><p>2019.08.15 更新 favicon</p></li><li><p>2020.02.25 迁移至阿里云</p></li><li><p>2020.03.01 </p><ul><li>更新 nginx 1.17.8 </li><li>支持 HTTP/3 （不完善）</li><li>支持 TLS1.3 </li><li>停用 TLS1.1 TLS1.2 协议  </li></ul><p>nginx 编译参数：</p><pre><code>  --add-module=../ngx_brotli --with-openssl=../quiche/deps/boringssl --with-quiche=../quiche --with-http_v2_module --with-http_v3_module --with-http_ssl_module --with-http_gzip_static_module --with-http_v2_hpack_enc --with-http_realip_module --with-threads --with-stream --with-stream_realip_module --with-stream_ssl_module --with-stream_ssl_preread_module --with-zlib=../zlib-cf --add-module=../ngx_devel_kit --add-module=../headers-more-nginx-module --add-module=../lua-nginx-module-0.10.16rc4 --with-file-aio --add-module=../ngx_http_geoip2_module --add-module=../ngx-fancyindex --add-module=../nginx-dav-ext-module --add-module=../ngx_http_substitutions_filter_module --with-libatomic --with-http_dav_module --with-http_stub_status_module</code></pre></li><li><p>2020.03.05 </p><ul><li>优化 加载速度</li><li>Live2D 音频替换为 opus </li><li>通过 webp server 替换所有图片为 webp </li><li>非首屏图片懒加载</li></ul></li><li><p>2020.03.12 新增 服务器 webhook 自动部署</p></li><li><p>2020.03.13  </p><ul><li>修复 懒加载导致的首页图片错位</li><li>更新 全局配色</li></ul></li><li><p>2020.03.14</p><ul><li>部署 zabbix grafana</li></ul></li><li><p>2020.03.15</p><ul><li>申请提交 HSTS preload list</li></ul></li><li><p>2020.03.24</p><ul><li>移除主页轮播图相关代码</li></ul></li><li><p>2020.05.08</p><ul><li>更换 DNS 解析服务至 DNSPod</li><li>为网站增加 Cloudflare CDN</li></ul></li><li><p>2020.05.12</p><ul><li>鉴于 Cloudflare 在国内是减速 CDN 再次更换为百度云加速</li><li>修复 Live2D 关闭后刷新页面会再次出现的问题</li></ul></li><li><p>2020.05.13</p><ul><li>添加显示看板娘按钮</li></ul></li><li><p>2020.05.24</p><ul><li>背景音乐增加到 15 首，Safari 使用 CAF 封装 Opus 编码，其他浏览器使用 OGG 封装 Vorbis 编码</li></ul></li><li><p>2020.07.26</p><ul><li>将大部分库替换为 jsDeliver 的 CDN 地址</li></ul></li><li><p>2020.07.27</p><ul><li>根据 PageSpeed Insights 又做了部分性能优化，1M带宽真是太难了</li></ul></li><li><p>2020.08.01</p><ul><li>图片懒加载使用 Aspect Ratio Boxes 方案</li></ul></li></ul>]]></content>
+        <content type="html"><![CDATA[<ul><li><p>2019.07.25 框架搭建完成</p></li><li><p>2019.08.02 主题修改完成</p></li><li><p>2019.08.06 崩坏学园 2 LIVE2D 上线 <del>那么崩坏 3 的看板娘什么时候能放上 Web 呢</del></p></li><li><p>2019.08.07 部署 Hexo Admin</p></li><li><p>2019.08.10 </p><ul><li>部署 HTTPS</li><li>支持 HSTS</li></ul></li><li><p>2019.08.15 更新 favicon</p></li><li><p>2020.02.25 迁移至阿里云</p></li><li><p>2020.03.01 </p><ul><li>更新 nginx 1.17.8 </li><li>支持 HTTP/3 （不完善）</li><li>支持 TLS1.3 </li><li>停用 TLS1.1 TLS1.2 协议  </li></ul><p>nginx 编译参数：</p><pre><code>  --add-module=../ngx_brotli --with-openssl=../quiche/deps/boringssl --with-quiche=../quiche --with-http_v2_module --with-http_v3_module --with-http_ssl_module --with-http_gzip_static_module --with-http_v2_hpack_enc --with-http_realip_module --with-threads --with-stream --with-stream_realip_module --with-stream_ssl_module --with-stream_ssl_preread_module --with-zlib=../zlib-cf --add-module=../ngx_devel_kit --add-module=../headers-more-nginx-module --add-module=../lua-nginx-module-0.10.16rc4 --with-file-aio --add-module=../ngx_http_geoip2_module --add-module=../ngx-fancyindex --add-module=../nginx-dav-ext-module --add-module=../ngx_http_substitutions_filter_module --with-libatomic --with-http_dav_module --with-http_stub_status_module</code></pre></li><li><p>2020.03.05 </p><ul><li>优化 加载速度</li><li>Live2D 音频替换为 opus </li><li>通过 webp server 替换所有图片为 webp </li><li>非首屏图片懒加载</li></ul></li><li><p>2020.03.12 新增 服务器 webhook 自动部署</p></li><li><p>2020.03.13  </p><ul><li>修复 懒加载导致的首页图片错位</li><li>更新 全局配色</li></ul></li><li><p>2020.03.14</p><ul><li>部署 zabbix grafana</li></ul></li><li><p>2020.03.15</p><ul><li>申请提交 HSTS preload list</li></ul></li><li><p>2020.03.24</p><ul><li>移除主页轮播图相关代码</li></ul></li><li><p>2020.05.08</p><ul><li>更换 DNS 解析服务至 DNSPod</li><li>为网站增加 Cloudflare CDN</li></ul></li><li><p>2020.05.12</p><ul><li>鉴于 Cloudflare 在国内是减速 CDN 再次更换为百度云加速</li><li>修复 Live2D 关闭后刷新页面会再次出现的问题</li></ul></li><li><p>2020.05.13</p><ul><li>添加显示看板娘按钮</li></ul></li><li><p>2020.05.24</p><ul><li>背景音乐增加到 15 首，Safari 使用 CAF 封装 Opus 编码，其他浏览器使用 OGG 封装 Vorbis 编码</li></ul></li><li><p>2020.07.26</p><ul><li>将大部分库替换为 jsDeliver 的 CDN 地址</li></ul></li><li><p>2020.07.27</p><ul><li>根据 PageSpeed Insights 又做了部分性能优化，1M带宽真是太难了</li></ul></li><li><p>2020.08.01</p><ul><li>图片懒加载使用 <a href="https://css-tricks.com/aspect-ratio-boxes/" target="_blank" rel="noopener">Aspect Ratio Boxes</a> 方案</li></ul></li></ul>]]></content>
       
       
       <categories>
@@ -698,6 +685,19 @@
             <tag> LIVE2D </tag>
             
         </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="/2019/06/18/hello-world/"/>
+      <url>/2019/06/18/hello-world/</url>
+      
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span></code></pre><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class=" language-bash"><code class="language-bash">$ hexo server</code></pre><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class=" language-bash"><code class="language-bash">$ hexo generate</code></pre><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy</code></pre><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+      
+      
       
     </entry>
     

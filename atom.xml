@@ -78,7 +78,7 @@
     <link href="http://konata.tech/2020/07/24/GitCheatSheet/"/>
     <id>http://konata.tech/2020/07/24/GitCheatSheet/</id>
     <published>2020-07-24T08:11:26.000Z</published>
-    <updated>2020-07-24T08:48:50.847Z</updated>
+    <updated>2020-08-01T11:37:22.469Z</updated>
     
     <summary type="html">
     
@@ -86,7 +86,7 @@
       
         
         
-          &lt;h2 id=&quot;一般提交流程&quot;&gt;&lt;a href=&quot;#一般提交流程&quot; class=&quot;headerlink&quot; title=&quot;一般提交流程&quot;&gt;&lt;/a&gt;一般提交流程&lt;/h2&gt;&lt;p&gt;&lt;code&gt;git add .&lt;/code&gt; 将文件添加到暂存区&lt;br&gt;&lt;code&gt;git commit
+          &lt;h2 id=&quot;初始化&quot;&gt;&lt;a href=&quot;#初始化&quot; class=&quot;headerlink&quot; title=&quot;初始化&quot;&gt;&lt;/a&gt;初始化&lt;/h2&gt;&lt;p&gt;&lt;code&gt;git init&lt;/code&gt; 创建本地仓库&lt;br&gt;&lt;code&gt;git remote add origin
         
       
     
@@ -174,9 +174,9 @@
       <category term="JAVA" scheme="http://konata.tech/categories/JAVA/"/>
     
     
-      <category term="JAVA" scheme="http://konata.tech/tags/JAVA/"/>
-    
       <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
+    
+      <category term="JAVA" scheme="http://konata.tech/tags/JAVA/"/>
     
   </entry>
   
@@ -202,9 +202,9 @@
       <category term="JAVA" scheme="http://konata.tech/categories/JAVA/"/>
     
     
-      <category term="JAVA" scheme="http://konata.tech/tags/JAVA/"/>
-    
       <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
+    
+      <category term="JAVA" scheme="http://konata.tech/tags/JAVA/"/>
     
   </entry>
   
@@ -230,9 +230,9 @@
       <category term="JAVA" scheme="http://konata.tech/categories/JAVA/"/>
     
     
-      <category term="JAVA" scheme="http://konata.tech/tags/JAVA/"/>
-    
       <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
+    
+      <category term="JAVA" scheme="http://konata.tech/tags/JAVA/"/>
     
   </entry>
   
@@ -259,9 +259,9 @@
       <category term="JAVA" scheme="http://konata.tech/categories/JAVA/"/>
     
     
-      <category term="JAVA" scheme="http://konata.tech/tags/JAVA/"/>
-    
       <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
+    
+      <category term="JAVA" scheme="http://konata.tech/tags/JAVA/"/>
     
   </entry>
   
@@ -287,9 +287,9 @@
       <category term="JAVA" scheme="http://konata.tech/categories/JAVA/"/>
     
     
-      <category term="JAVA" scheme="http://konata.tech/tags/JAVA/"/>
-    
       <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
+    
+      <category term="JAVA" scheme="http://konata.tech/tags/JAVA/"/>
     
   </entry>
   
@@ -315,31 +315,9 @@
       <category term="JAVA" scheme="http://konata.tech/categories/JAVA/"/>
     
     
-      <category term="JAVA" scheme="http://konata.tech/tags/JAVA/"/>
-    
       <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
     
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://konata.tech/2020/06/18/hello-world/"/>
-    <id>http://konata.tech/2020/06/18/hello-world/</id>
-    <published>2020-06-18T05:32:26.000Z</published>
-    <updated>2020-06-18T13:25:37.914Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a
-        
-      
-    
-    </summary>
-    
+      <category term="JAVA" scheme="http://konata.tech/tags/JAVA/"/>
     
   </entry>
   
@@ -417,9 +395,9 @@
       <category term="JAVA" scheme="http://konata.tech/categories/JAVA/"/>
     
     
-      <category term="JAVA" scheme="http://konata.tech/tags/JAVA/"/>
-    
       <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
+    
+      <category term="JAVA" scheme="http://konata.tech/tags/JAVA/"/>
     
   </entry>
   
@@ -558,6 +536,32 @@
     
     
       <category term="ES6" scheme="http://konata.tech/tags/ES6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用 Webhook 自动从 GitHub 更新博客</title>
+    <link href="http://konata.tech/2020/04/29/AutoUpdateBlog/"/>
+    <id>http://konata.tech/2020/04/29/AutoUpdateBlog/</id>
+    <published>2020-04-29T14:34:12.000Z</published>
+    <updated>2020-07-19T15:16:14.812Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;什么是-Webhook&quot;&gt;&lt;a href=&quot;#什么是-Webhook&quot; class=&quot;headerlink&quot; title=&quot;什么是 Webhook&quot;&gt;&lt;/a&gt;什么是 Webhook&lt;/h2&gt;&lt;p&gt;Webhook 就像一个回调函数，允许当设定的 GitHub
+        
+      
+    
+    </summary>
+    
+      <category term="Admin" scheme="http://konata.tech/categories/Admin/"/>
+    
+    
+      <category term="Shell" scheme="http://konata.tech/tags/Shell/"/>
     
   </entry>
   
