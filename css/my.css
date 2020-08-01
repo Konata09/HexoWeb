@@ -33,17 +33,20 @@ nav ul a:hover {
 .line-numbers-rows {
     display: none;
 }
-pre{
+
+pre {
     color: #9CD6FF;
 }
-code{
+
+code {
     color: #0087FF;
-    font-family: "Jetbrains Mono", "Source Code Pro",  Inconsolata, Monaco, Consolas, "Sarasa Term SC", 'Courier New', Courier, monospace;
+    font-family: "Jetbrains Mono", "Source Code Pro", Inconsolata, Monaco, Consolas, "Sarasa Term SC", 'Courier New', Courier, monospace;
     font-size: 1rem;
 }
+
 code[class*="language-"],
 pre[class*="language-"] {
-    font-family: "Jetbrains Mono", "Source Code Pro",  Inconsolata, Monaco, Consolas, "Sarasa Term SC", 'Courier New', Courier, monospace !important;
+    font-family: "Jetbrains Mono", "Source Code Pro", Inconsolata, Monaco, Consolas, "Sarasa Term SC", 'Courier New', Courier, monospace !important;
 }
 
 .mute {
@@ -93,19 +96,22 @@ pre[class*="language-"] {
 .nprogress-custom-parent #nprogress .bar {
     position: absolute;
 }
+
 .btn-floating {
-    background: linear-gradient(to bottom right, #43CBFF  0%, #0396FF 100%);
-    width: 48px!important;
-    height: 48px!important;
+    background: linear-gradient(to bottom right, #43CBFF 0%, #0396FF 100%);
+    width: 48px !important;
+    height: 48px !important;
 }
 
 .btn-floating i {
-    line-height: 48px!important;
+    line-height: 48px !important;
     font-size: 1.6rem;
 }
-.top-scroll-btn .btn-floating i{
+
+.top-scroll-btn .btn-floating i {
     font-size: 1.8rem;
 }
+
 .show-live2d-btn {
     display: none;
     position: fixed;
@@ -135,24 +141,37 @@ pre[class*="language-"] {
     margin-bottom: 0;
     z-index: 90;
 }
-h1{
+
+h1 {
     font-size: 2.1rem;
 }
-h2{
+
+h2 {
     font-size: 1.9rem;
 }
-h3{
+
+h3 {
     font-size: 1.5rem;
 }
-h4{
+
+h4 {
     font-size: 1.3rem;
 }
-.img-shadow{
+
+.img-shadow {
     box-shadow: none;
 }
-li::marker{
+
+li::marker {
     font-weight: 600;
 }
-.paging .page-info{
+
+.paging .page-info {
     line-height: 1rem;
+}
+
+.lazy-image-wrapper {
+    height: 0;
+    padding-bottom: 56.25%;
+    position: relative;
 }
