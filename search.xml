@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>CSS 选择器性能优化</title>
+      <link href="/2020/08/02/CSSPerformance/"/>
+      <url>/2020/08/02/CSSPerformance/</url>
+      
+        <content type="html"><![CDATA[<h2 id="浏览器计算样式的规则"><a href="#浏览器计算样式的规则" class="headerlink" title="浏览器计算样式的规则"></a>浏览器计算样式的规则</h2><p>通常来说，计算样式的第一步是创建一组匹配选择器，即浏览器计算出给指定元素应用哪些类、伪选择器和 ID；第二步涉及到从匹配选择器中获取所有样式规则，并计算出此元素的最终样式。</p><p>浏览器读取 CSS 选择器遵循从右到左的顺序，例如下面的 CSS 选择器：</p><pre class=" language-css"><code class="language-css"><span class="token selector"><span class="token class">.box</span><span class="token pseudo-class">:nth-last-child(-n+1)</span> h1 <span class="token class">.title</span> </span><span class="token punctuation">{</span>    <span class="token comment" spellcheck="true">/* styles */</span><span class="token punctuation">}</span></code></pre><p>那么浏览器要做的事情是：</p><ol><li>寻找所有包含 <code>title</code> 类的元素</li><li>在这些元素中，筛选出其父元素是 <code>&lt;h1&gt;</code> 标签的元素</li><li>接着再筛选出父元素是其父元素中第奇数个子元素的元素</li><li>对经过筛选后的元素应用样式</li></ol><h2 id="CSS-选择器性能排行"><a href="#CSS-选择器性能排行" class="headerlink" title="CSS 选择器性能排行"></a>CSS 选择器性能排行</h2><p>Steve Souders（Google Web 工程师，曾经写过三本 Web 性能为主题的 O’Reilly）曾于 2009 年总结了 CSS 选择器性能排行：</p><ol><li>ID 选择器（ <code>#id</code> ）</li><li>类选择器（ <code>.className</code> ）</li><li>标签选择器（ <code>div</code>  <code>h1</code>  <code>p</code> ）</li><li>相邻选择器（ <code>h1+p</code> ）</li><li>子选择器（ <code>ul &gt; li</code> ）</li><li>后代选择器（ <code>li a</code> ）</li><li>通配符选择器（ <code>*</code> ）</li><li>属性选择器（ <code>a[rel=&quot;external&quot;]</code> ）</li><li>伪类选择器（ <code>a:hover</code>  <code>li:nth-child</code> ）</li></ol><p>由于从右往左匹配，因此即使是同一类型的选择器之间的性能也有差异 —— 后代选择器中，最右侧是 ID 的选择器的性能就优于最右侧是类的选择器。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> CSS </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Performance </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>JavaScript 中各种遍历方法对比</title>
       <link href="/2020/07/25/LoopMethodInJavaScript/"/>
       <url>/2020/07/25/LoopMethodInJavaScript/</url>
@@ -670,7 +695,7 @@
       <link href="/2019/08/06/UpdateLog/"/>
       <url>/2019/08/06/UpdateLog/</url>
       
-        <content type="html"><![CDATA[<ul><li><p>2019.07.25 框架搭建完成</p></li><li><p>2019.08.02 主题修改完成</p></li><li><p>2019.08.06 崩坏学园 2 LIVE2D 上线 <del>那么崩坏 3 的看板娘什么时候能放上 Web 呢</del></p></li><li><p>2019.08.07 部署 Hexo Admin</p></li><li><p>2019.08.10 </p><ul><li>部署 HTTPS</li><li>支持 HSTS</li></ul></li><li><p>2019.08.15 更新 favicon</p></li><li><p>2020.02.25 迁移至阿里云</p></li><li><p>2020.03.01 </p><ul><li>更新 nginx 1.17.8 </li><li>支持 HTTP/3 （不完善）</li><li>支持 TLS1.3 </li><li>停用 TLS1.1 TLS1.2 协议  </li></ul><p>nginx 编译参数：</p><pre><code>  --add-module=../ngx_brotli --with-openssl=../quiche/deps/boringssl --with-quiche=../quiche --with-http_v2_module --with-http_v3_module --with-http_ssl_module --with-http_gzip_static_module --with-http_v2_hpack_enc --with-http_realip_module --with-threads --with-stream --with-stream_realip_module --with-stream_ssl_module --with-stream_ssl_preread_module --with-zlib=../zlib-cf --add-module=../ngx_devel_kit --add-module=../headers-more-nginx-module --add-module=../lua-nginx-module-0.10.16rc4 --with-file-aio --add-module=../ngx_http_geoip2_module --add-module=../ngx-fancyindex --add-module=../nginx-dav-ext-module --add-module=../ngx_http_substitutions_filter_module --with-libatomic --with-http_dav_module --with-http_stub_status_module</code></pre></li><li><p>2020.03.05 </p><ul><li>优化 加载速度</li><li>Live2D 音频替换为 opus </li><li>通过 webp server 替换所有图片为 webp </li><li>非首屏图片懒加载</li></ul></li><li><p>2020.03.12 新增 服务器 webhook 自动部署</p></li><li><p>2020.03.13  </p><ul><li>修复 懒加载导致的首页图片错位</li><li>更新 全局配色</li></ul></li><li><p>2020.03.14</p><ul><li>部署 zabbix grafana</li></ul></li><li><p>2020.03.15</p><ul><li>申请提交 HSTS preload list</li></ul></li><li><p>2020.03.24</p><ul><li>移除主页轮播图相关代码</li></ul></li><li><p>2020.05.08</p><ul><li>更换 DNS 解析服务至 DNSPod</li><li>为网站增加 Cloudflare CDN</li></ul></li><li><p>2020.05.12</p><ul><li>鉴于 Cloudflare 在国内是减速 CDN 再次更换为百度云加速</li><li>修复 Live2D 关闭后刷新页面会再次出现的问题</li></ul></li><li><p>2020.05.13</p><ul><li>添加显示看板娘按钮</li></ul></li><li><p>2020.05.24</p><ul><li>背景音乐增加到 15 首，Safari 使用 CAF 封装 Opus 编码，其他浏览器使用 OGG 封装 Vorbis 编码</li></ul></li><li><p>2020.07.26</p><ul><li>将大部分库替换为 jsDeliver 的 CDN 地址</li></ul></li><li><p>2020.07.27</p><ul><li>根据 PageSpeed Insights 又做了部分性能优化，1M带宽真是太难了</li></ul></li><li><p>2020.08.01</p><ul><li>图片懒加载使用 <a href="https://css-tricks.com/aspect-ratio-boxes/" target="_blank" rel="noopener">Aspect Ratio Boxes</a> 方案</li></ul></li></ul>]]></content>
+        <content type="html"><![CDATA[<ul><li><p>2019.07.25 框架搭建完成</p></li><li><p>2019.08.02 主题修改完成</p></li><li><p>2019.08.06 崩坏学园 2 LIVE2D 上线 <del>那么崩坏 3 的看板娘什么时候能放上 Web 呢</del></p></li><li><p>2019.08.07 部署 Hexo Admin</p></li><li><p>2019.08.10 </p><ul><li>部署 HTTPS</li><li>支持 HSTS</li></ul></li><li><p>2019.08.15 更新 favicon</p></li><li><p>2020.02.25 迁移至阿里云</p></li><li><p>2020.03.01 </p><ul><li>更新 nginx 1.17.8 </li><li>支持 HTTP/3 h3-25 h3-26 h3-27</li><li>支持 TLS1.3 </li><li>停用 TLS1.1 TLS1.2 协议  </li></ul><p>nginx 编译参数：</p><pre><code>  --add-module=../ngx_brotli --with-openssl=../quiche/deps/boringssl --with-quiche=../quiche --with-http_v2_module --with-http_v3_module --with-http_ssl_module --with-http_gzip_static_module --with-http_v2_hpack_enc --with-http_realip_module --with-threads --with-stream --with-stream_realip_module --with-stream_ssl_module --with-stream_ssl_preread_module --with-zlib=../zlib-cf --add-module=../ngx_devel_kit --add-module=../headers-more-nginx-module --add-module=../lua-nginx-module-0.10.16rc4 --with-file-aio --add-module=../ngx_http_geoip2_module --add-module=../ngx-fancyindex --add-module=../nginx-dav-ext-module --add-module=../ngx_http_substitutions_filter_module --with-libatomic --with-http_dav_module --with-http_stub_status_module</code></pre></li><li><p>2020.03.05 </p><ul><li>优化 加载速度</li><li>Live2D 音频替换为 opus </li><li>通过 webp server 替换所有图片为 webp </li><li>非首屏图片懒加载</li></ul></li><li><p>2020.03.12 新增 服务器 webhook 自动部署</p></li><li><p>2020.03.13  </p><ul><li>修复 懒加载导致的首页图片错位</li><li>更新 全局配色</li></ul></li><li><p>2020.03.14</p><ul><li>部署 zabbix grafana</li></ul></li><li><p>2020.03.15</p><ul><li>申请提交 HSTS preload list</li></ul></li><li><p>2020.03.24</p><ul><li>移除主页轮播图相关代码</li></ul></li><li><p>2020.05.08</p><ul><li>更换 DNS 解析服务至 DNSPod</li><li>为网站增加 Cloudflare CDN</li></ul></li><li><p>2020.05.12</p><ul><li>鉴于 Cloudflare 在国内是减速 CDN 再次更换为百度云加速</li><li>修复 Live2D 关闭后刷新页面会再次出现的问题</li></ul></li><li><p>2020.05.13</p><ul><li>添加显示看板娘按钮</li></ul></li><li><p>2020.05.24</p><ul><li>背景音乐增加到 15 首，Safari 使用 CAF 封装 Opus 编码，其他浏览器使用 OGG 封装 Vorbis 编码</li></ul></li><li><p>2020.07.26</p><ul><li>将大部分库替换为 jsDeliver 的 CDN 地址</li></ul></li><li><p>2020.07.27</p><ul><li>根据 PageSpeed Insights 又做了部分性能优化，1M带宽真是太难了</li></ul></li><li><p>2020.08.01</p><ul><li>图片懒加载使用 <a href="https://css-tricks.com/aspect-ratio-boxes/" target="_blank" rel="noopener">Aspect Ratio Boxes</a> 方案</li></ul></li><li><p>2020.08.04</p><ul><li>去除 <code>favicon-16x16.png</code> ，使 FireFox 默认加载 32x32 的 favicon </li></ul></li></ul>]]></content>
       
       
       <categories>

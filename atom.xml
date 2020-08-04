@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://konata.tech/"/>
-  <updated>2020-07-26T07:40:00.333Z</updated>
+  <updated>2020-08-02T08:39:17.821Z</updated>
   <id>http://konata.tech/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CSS 选择器性能优化</title>
+    <link href="http://konata.tech/2020/08/02/CSSPerformance/"/>
+    <id>http://konata.tech/2020/08/02/CSSPerformance/</id>
+    <published>2020-08-02T07:57:15.000Z</published>
+    <updated>2020-08-02T08:39:17.821Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;浏览器计算样式的规则&quot;&gt;&lt;a href=&quot;#浏览器计算样式的规则&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="CSS" scheme="http://konata.tech/categories/CSS/"/>
+    
+    
+      <category term="Performance" scheme="http://konata.tech/tags/Performance/"/>
+    
+  </entry>
   
   <entry>
     <title>JavaScript 中各种遍历方法对比</title>
@@ -536,32 +562,6 @@
     
     
       <category term="ES6" scheme="http://konata.tech/tags/ES6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>使用 Webhook 自动从 GitHub 更新博客</title>
-    <link href="http://konata.tech/2020/04/29/AutoUpdateBlog/"/>
-    <id>http://konata.tech/2020/04/29/AutoUpdateBlog/</id>
-    <published>2020-04-29T14:34:12.000Z</published>
-    <updated>2020-08-02T04:54:08.010Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;什么是-Webhook&quot;&gt;&lt;a href=&quot;#什么是-Webhook&quot; class=&quot;headerlink&quot; title=&quot;什么是 Webhook&quot;&gt;&lt;/a&gt;什么是 Webhook&lt;/h2&gt;&lt;p&gt;Webhook 就像一个回调函数，允许当设定的 GitHub
-        
-      
-    
-    </summary>
-    
-      <category term="Admin" scheme="http://konata.tech/categories/Admin/"/>
-    
-    
-      <category term="Shell" scheme="http://konata.tech/tags/Shell/"/>
     
   </entry>
   
