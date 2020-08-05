@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://konata.tech/"/>
-  <updated>2020-08-02T08:39:17.821Z</updated>
+  <updated>2020-08-05T15:57:54.139Z</updated>
   <id>http://konata.tech/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JavaScript 导出表格</title>
+    <link href="http://konata.tech/2020/08/05/JavaScriptExportSheet/"/>
+    <id>http://konata.tech/2020/08/05/JavaScriptExportSheet/</id>
+    <published>2020-08-05T14:13:35.000Z</published>
+    <updated>2020-08-05T15:57:54.139Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;导出-CSV&quot;&gt;&lt;a href=&quot;#导出-CSV&quot; class=&quot;headerlink&quot; title=&quot;导出 CSV&quot;&gt;&lt;/a&gt;导出 CSV&lt;/h2&gt;&lt;p&gt;JavaScript 导出 CSV 比较简单，只需要根据 CSV
+        
+      
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://konata.tech/categories/JavaScript/"/>
+    
+    
+      <category term="JavaScript" scheme="http://konata.tech/tags/JavaScript/"/>
+    
+  </entry>
   
   <entry>
     <title>CSS 选择器性能优化</title>
@@ -536,32 +562,6 @@
     
     
       <category term="IIS" scheme="http://konata.tech/tags/IIS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ES6 Promise 对象</title>
-    <link href="http://konata.tech/2020/05/03/Promise/"/>
-    <id>http://konata.tech/2020/05/03/Promise/</id>
-    <published>2020-05-03T12:22:00.000Z</published>
-    <updated>2020-07-23T15:43:37.598Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;Promise-的三种状态&quot;&gt;&lt;a href=&quot;#Promise-的三种状态&quot; class=&quot;headerlink&quot; title=&quot;Promise 的三种状态&quot;&gt;&lt;/a&gt;Promise
-        
-      
-    
-    </summary>
-    
-      <category term="JavaScript" scheme="http://konata.tech/categories/JavaScript/"/>
-    
-    
-      <category term="ES6" scheme="http://konata.tech/tags/ES6/"/>
     
   </entry>
   

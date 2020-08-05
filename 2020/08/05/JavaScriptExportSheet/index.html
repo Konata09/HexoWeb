@@ -4,9 +4,8 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="CSS 选择器性能优化, 生命不息 折腾不止">
-    <meta name="description" content="浏览器计算样式的规则通常来说，计算样式的第一步是创建一组匹配选择器，即浏览器计算出给指定元素应用哪些类、伪选择器和 ID；第二步涉及到从匹配选择器中获取所有样式规则，并计算出此元素的最终样式。
-浏览器读取 CSS 选择器遵循从右到左的顺序，">
+    <meta name="keywords" content="JavaScript 导出表格, 生命不息 折腾不止">
+    <meta name="description" content="导出 CSVJavaScript 导出 CSV 比较简单，只需要根据 CSV 的格式进行逗号分隔和换行，最后将文本保存成 CSV 文件即可。需要注意的是，Excel 默认使用 ANSI 编码来打开 CSV 文件，如果 CSV 文件使用 UT">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -20,7 +19,7 @@
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#7312ff">
     <meta name="msapplication-TileColor" content="#8a46cc">
     <meta name="theme-color" content="#ffffff">
-    <title>CSS 选择器性能优化 | 生命不息 折腾不止</title>
+    <title>JavaScript 导出表格 | 生命不息 折腾不止</title>
     <script type="application/javascript" src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
     <script type="application/javascript" src="https://cdn.jsdelivr.net/npm/jquery-ui-dist@1.12.1/jquery-ui.min.js"></script>
     <script type="application/javascript" src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
@@ -267,13 +266,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/09.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        CSS 选择器性能优化
+                        JavaScript 导出表格
                     </div>
                 </div>
             </div>
@@ -366,8 +365,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Performance/" target="_blank">
-                                <span class="chip bg-color">Performance</span>
+                            <a href="/tags/JavaScript/" target="_blank">
+                                <span class="chip bg-color">JavaScript</span>
                             </a>
                         
                     </div>
@@ -378,8 +377,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/CSS/" class="post-category" target="_blank">
-                                CSS
+                            <a href="/categories/JavaScript/" class="post-category" target="_blank">
+                                JavaScript
                             </a>
                         
                     </div>
@@ -390,21 +389,21 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-08-02
+                    2020-08-05
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        376
+                        1.3k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        1 分
+                        4 分
                     </div>
                     
                 
@@ -420,31 +419,86 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="浏览器计算样式的规则"><a href="#浏览器计算样式的规则" class="headerlink" title="浏览器计算样式的规则"></a>浏览器计算样式的规则</h2><p>通常来说，计算样式的第一步是创建一组匹配选择器，即浏览器计算出给指定元素应用哪些类、伪选择器和 ID；第二步涉及到从匹配选择器中获取所有样式规则，并计算出此元素的最终样式。</p>
-<p>浏览器读取 CSS 选择器遵循从右到左的顺序，例如下面的 CSS 选择器：</p>
-<pre class=" language-css"><code class="language-css"><span class="token selector"><span class="token class">.box</span><span class="token pseudo-class">:nth-last-child(-n+1)</span> h1 <span class="token class">.title</span> </span><span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">/* styles */</span>
+                <h2 id="导出-CSV"><a href="#导出-CSV" class="headerlink" title="导出 CSV"></a>导出 CSV</h2><p>JavaScript 导出 CSV 比较简单，只需要根据 CSV 的格式进行逗号分隔和换行，最后将文本保存成 CSV 文件即可。<br>需要注意的是，Excel 默认使用 ANSI 编码来打开 CSV 文件，如果 CSV 文件使用 UTF-8 编码，使用 Excel 打开就会乱码，解决方法是使用 Excel 中 <code>数据</code> - <code>导入自文件</code> 向导来导入 UTF-8 编码的 CSV 文件，这样就可以正常显示 Unicode 字符了。但这相比直接打开麻烦了很多，另一个办法是将 CSV 文件保存成 UTF-8 BOM 编码，这样 Excel 就会以 UTF-8 编码读取文件，不会出现乱码了。</p>
+<blockquote>
+<p>BOM(<a href="https://en.wikipedia.org/wiki/Byte_order_mark" target="_blank" rel="noopener">Byte Order Mark</a>) 是一段特定的十六进制序列，在 UTF-16 和 UTF-32 中用来标识该字节流的字节序，是高位在前还是低位在前，在 UTF-8 中 BOM 一般用来标识文件采用 UTF-8 编码，但并不是必要的。  </p>
+</blockquote>
+<p>UTF-8 的 BOM 的十六进制表示为 <code>EF BB BF</code> ，也可以用一个 Unicode 字符表示： <code>U+FEFF</code> 。所以我们只要在 CSV 文件开头加入 BOM 就可以将文件保存为 UTF-8 BOM 格式。可以直接在 <code>Buffer</code> 中先加入 <code>\xEF\xBB\xBF</code> 作为开头 ，也可以在字符串开头加入 <code>\uFEFF</code> 这个 Unicode 字符。  </p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">writeCSV</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> csvContent <span class="token operator">=</span> <span class="token string">'\uFEFF'</span><span class="token punctuation">;</span>
+    csvContent <span class="token operator">=</span> csvContent<span class="token punctuation">.</span><span class="token function">concat</span><span class="token punctuation">(</span><span class="token string">"布洛妮娅.萌,bronya.moe"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    fs<span class="token punctuation">.</span><span class="token function">writeFileSync</span><span class="token punctuation">(</span><span class="token string">'konata.csv'</span><span class="token punctuation">,</span> csvContent<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
-<p>那么浏览器要做的事情是：</p>
-<ol>
-<li>寻找所有包含 <code>title</code> 类的元素</li>
-<li>在这些元素中，筛选出其父元素是 <code>&lt;h1&gt;</code> 标签的元素</li>
-<li>接着再筛选出父元素是其父元素中第奇数个子元素的元素</li>
-<li>对经过筛选后的元素应用样式</li>
-</ol>
-<h2 id="CSS-选择器性能排行"><a href="#CSS-选择器性能排行" class="headerlink" title="CSS 选择器性能排行"></a>CSS 选择器性能排行</h2><p>Steve Souders（Google Web 工程师，曾经写过三本 Web 性能为主题的 O’Reilly）曾于 2009 年总结了 CSS 选择器性能排行：</p>
-<ol>
-<li>ID 选择器（ <code>#id</code> ）</li>
-<li>类选择器（ <code>.className</code> ）</li>
-<li>标签选择器（ <code>div</code>  <code>h1</code>  <code>p</code> ）</li>
-<li>相邻选择器（ <code>h1+p</code> ）</li>
-<li>子选择器（ <code>ul &gt; li</code> ）</li>
-<li>后代选择器（ <code>li a</code> ）</li>
-<li>通配符选择器（ <code>*</code> ）</li>
-<li>属性选择器（ <code>a[rel=&quot;external&quot;]</code> ）</li>
-<li>伪类选择器（ <code>a:hover</code>  <code>li:nth-child</code> ）</li>
-</ol>
-<p>由于从右往左匹配，因此即使是同一类型的选择器之间的性能也有差异 —— 后代选择器中，最右侧是 ID 的选择器的性能就优于最右侧是类的选择器。</p>
+<h2 id="导出-xls-和-xlsx"><a href="#导出-xls-和-xlsx" class="headerlink" title="导出 xls 和 xlsx"></a>导出 xls 和 xlsx</h2><p>导出 xls 和 xlsx，肯定要使用库了，目前比较好用的是 <a href="https://github.com/sheetjs/sheetjs" target="_blank" rel="noopener">SheetJS</a>，它分为专业版和社区版，专业版主要增加了样式设置、插入图片图表的功能，据说价格很贵，一般情况下社区版足够使用了。社区版也叫做 js-xlsx，支持数据读取、解析处理、数据导出，同时支持浏览器端和 Node 端。</p>
+<h3 id="SheetJS-常用-API"><a href="#SheetJS-常用-API" class="headerlink" title="SheetJS 常用 API"></a>SheetJS 常用 API</h3><h4 id="workbook-和-worksheet"><a href="#workbook-和-worksheet" class="headerlink" title="workbook 和 worksheet"></a><code>workbook</code> 和 <code>worksheet</code></h4><p>首先要明确的两个概念是 <code>workbook</code> 和 <code>worksheet</code> , 这两个对象分别对应了整个文件（工作簿）和一个文件中的一个表格（工作表）。</p>
+<h5 id="workbook"><a href="#workbook" class="headerlink" title="workbook"></a><code>workbook</code></h5><p><code>workbook</code> 有两种方式来获取：</p>
+<ul>
+<li>读取已有的文件，返回一个 <code>workbook</code> 对象。</li>
+<li>通过 <code>XLSX.utils.book_new()</code> 创建空白的 <code>workbook</code> 对象。</li>
+</ul>
+<p>常用到的 <code>workbook</code> 的属性有两个：</p>
+<ul>
+<li><p><code>Sheets</code> ：文件中的表格列表。</p>
+</li>
+<li><p><code>SheetNames</code> ：文件中的表格名列表，表现为数组。</p>
+<p>需要获取 <code>workbook</code> 中的某个表格时，可以这样获取：</p>
+</li>
+</ul>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">let</span> sheetname <span class="token operator">=</span> workbook<span class="token punctuation">.</span>SheetNames<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> worksheet <span class="token operator">=</span> workbook<span class="token punctuation">.</span>Sheets<span class="token punctuation">[</span>sheetname<span class="token punctuation">]</span><span class="token punctuation">;</span></code></pre>
+<h5 id="worksheet"><a href="#worksheet" class="headerlink" title="worksheet"></a><code>worksheet</code></h5><p><code>worksheet</code> 对象代表文件中的一个表格, 可以通过下标的形式访问表格中任意一小格的值：</p>
+<pre class=" language-js"><code class="language-js">worksheet<span class="token punctuation">[</span><span class="token string">'A1'</span><span class="token punctuation">]</span></code></pre>
+<p>其返回值为一个对象, 一般具有两个属性：</p>
+<ul>
+<li><code>v</code> ：当前小格的值。</li>
+<li><code>t</code> ：当前小格值的类型。</li>
+</ul>
+<h4 id="读取文件"><a href="#读取文件" class="headerlink" title="读取文件"></a>读取文件</h4><p>SheetJS通过两种方式读取文件内容：</p>
+<ul>
+<li><p>XLSX.read(data, read_options)：读取data并解析。</p>
+</li>
+<li><p>XLSX.readFile(filename, read_options)：读取filename文件并解析。</p>
+<p>有关read_options的内容详见<a href="https://github.com/SheetJS/sheetjs#parsing-options" target="_blank" rel="noopener">read_options</a>。</p>
+</li>
+</ul>
+<h4 id="写入数据"><a href="#写入数据" class="headerlink" title="写入数据"></a>写入数据</h4><p>SheetJS通过三种方法写入数据, 这两种方法均会对数字、字符串、null和undefined、日期等类型进行自动解析</p>
+<ul>
+<li><p>SheetJS通过三种方法写入数据, 这两种方法均会对数字、字符串、null和undefined、日期等类型进行自动解析：</p>
+</li>
+<li><p>XLSX.writeFile(workbook, filename[, write_options])：按照workbook对象生成文件。若在浏览器端, 会自动下载该文件。在Node端, 会自动生成该文件并保存到本地</p>
+</li>
+<li><p>XLSX.writeFileAsync(filename, workbook, o, cb): 按照workbook对象生成文件。当o执行完毕后, 调用cb回调函数。</p>
+<p>有关write_options的内容详见write_options。</p>
+</li>
+</ul>
+<pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">// XLSX.writeFile</span>
+<span class="token comment" spellcheck="true">// 第一个参数为一个workbook对象, 第二个参数为所要生成文件的文件名</span>
+XLSX<span class="token punctuation">.</span><span class="token function">writeFile</span><span class="token punctuation">(</span>workbook<span class="token punctuation">,</span> <span class="token string">'out.xlsb'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// XLSX.write</span>
+<span class="token comment" spellcheck="true">// 第一个参数为一个workbook对象, 第二个参数是对生成文件格式的一些设置</span>
+<span class="token comment" spellcheck="true">// 在本例中, 生成格式为xlsx的文件, 编码为base64</span>
+XLSX<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>workbook<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    bookType<span class="token punctuation">:</span> <span class="token string">'xlsx'</span><span class="token punctuation">,</span>
+    bookSST<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    type<span class="token punctuation">:</span> <span class="token string">'base64'</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">// 由于其不生成文件, 而只是返回组成文件的数据, 所以很适合一些需要通过异步请求来修改服务器上的文件等场景</span></code></pre>
+<h4 id="转换数据格式"><a href="#转换数据格式" class="headerlink" title="转换数据格式"></a>转换数据格式</h4><p>SheetJS支持读取文件并把数据导出成任意格式, 可通过以下几个API完成, 传入的参数均是一个worksheet对象</p>
+<ul>
+<li>XLSX.utils.sheet_to_csv(worksheet)：将表格数据转化为csv格式。</li>
+<li>XLSX.utils.sheet_to_txt(worksheet)：将表格数据转化为生成由utf16编码的txt格式。</li>
+<li>XLSX.utils.sheet_to_html(worksheet)：将表格转化为html文件。</li>
+<li>XLSX.utils.sheet_to_json(worksheet): 将表格数据转化为json格式。</li>
+</ul>
+<h4 id="表格操作"><a href="#表格操作" class="headerlink" title="表格操作"></a>表格操作</h4><ul>
+<li>XLSX.utils.aoa_to_sheet(Array[][])：将二维数组转化为worksheet对象。</li>
+<li>XLSX.utils.json_to_sheet(Object)：将js对象转化为worksheet对象。</li>
+<li>XLSX.utils.table_to_sheet(HTML)：将DOM节点转化为worksheet对象（一般为table元素、tr元素和th元素）。</li>
+<li>XLSX.utils.sheet_add_aoa(worksheet, Array[][])：将二维数组中的数据添加到已有的worksheet中。</li>
+<li>XLSX.utils.sheet_add_json(worksheet, Object)：将js对象中的数据添加到已有的worksheet中。</li>
+<li>XLSX.utils.book_append_sheet(workbook, worksheet, sheetname)：将worksheet对象添加到workbook中, 并命名为sheetname。</li>
+</ul>
 
             </div>
             <hr/>
@@ -471,9 +525,9 @@
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《CSS 选择器性能优化》
+                    《JavaScript 导出表格》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2020/08/02/CSSPerformance/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2020/08/05/JavaScriptExportSheet/" property="cc:attributionName"
                rel="cc:attributionURL">
                 Konata
             </a> 采用
@@ -503,9 +557,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-            <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
                 <div class="article-badge left-badge text-color">
-                    <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                    <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+                </div>
                 <div class="card">
                     <a href="/2020/08/05/JavaScriptExportSheet/">
                         <div class="card-image">
@@ -528,9 +583,9 @@
                             </center>
                         </div>
                         <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-08-05
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-08-05
+                            </span>
                             <span class="publish-author">
                                 
                                     <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -543,6 +598,7 @@
                             </span>
                         </div>
                     </div>
+
                     
                         <div class="card-action article-tags">
                             
@@ -561,36 +617,36 @@
                     下一篇&nbsp;<i class="fa fa-chevron-right"></i>
                 </div>
                 <div class="card">
-                    <a href="/2020/07/25/LoopMethodInJavaScript/">
+                    <a href="/2020/08/02/CSSPerformance/">
                         <div class="card-image">
                             
                                 
                                 <div class="lazy-image-wrapper">
-                                    <img data-src="/medias/featureimages/16.jpg" class="responsive-img lazyload"
-                                         alt="JavaScript 中各种遍历方法对比">
+                                    <img data-src="/medias/featureimages/11.jpg" class="responsive-img lazyload"
+                                         alt="CSS 选择器性能优化">
                                 </div>
                             
-                            <span class="card-title">JavaScript 中各种遍历方法对比</span>
+                            <span class="card-title">CSS 选择器性能优化</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
                             <center>
-                                JavaScript 中各种遍历方法对比
+                                CSS 选择器性能优化
                                 
                             </center>
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-07-25
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-08-02
                             </span>
                             <span class="publish-author">
                                 
                                     <i class="fa fa-bookmark fa-fw icon-category"></i>
                                     
-                                        <a href="/categories/JavaScript/" class="post-category" target="_blank">
-                                    JavaScript
+                                        <a href="/categories/CSS/" class="post-category" target="_blank">
+                                    CSS
                                 </a>
                                     
                                 
@@ -600,8 +656,8 @@
                     
                         <div class="card-action article-tags">
                             
-                                <a href="/tags/JavaScript/" target="_blank">
-                                    <span class="chip bg-color">JavaScript</span>
+                                <a href="/tags/Performance/" target="_blank">
+                                    <span class="chip bg-color">Performance</span>
                                 </a>
                             
                         </div>
