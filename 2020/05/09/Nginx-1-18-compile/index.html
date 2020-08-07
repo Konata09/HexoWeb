@@ -397,7 +397,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        772
+                        775
                     </div>
                     
 
@@ -421,57 +421,57 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="系统环境"><a href="#系统环境" class="headerlink" title="系统环境"></a>系统环境</h2><p><img src="/images/pasted-1.png" alt="Ubuntu 18.04"></p>
-<h2 id="安装必要软件包"><a href="#安装必要软件包" class="headerlink" title="安装必要软件包"></a>安装必要软件包</h2><pre class=" language-sh"><code class="language-sh">apt install build-essential cmake golang cargo mmdb-bin libmaxminddb-dev libxml2 libxslt-dev libatomic-ops-dev libunwind-dev libpcre3 libpcre3-dev</code></pre>
-<h2 id="拉取-Nginx-和相关模块源码"><a href="#拉取-Nginx-和相关模块源码" class="headerlink" title="拉取 Nginx 和相关模块源码"></a>拉取 Nginx 和相关模块源码</h2><pre class=" language-sh"><code class="language-sh">cd /home
-wget https://nginx.org/download/nginx-1.19.0.tar.gz
-wget https://github.com/openresty/lua-nginx-module/archive/v0.10.16rc5.tar.gz
-wget https://github.com/openresty/luajit2/archive/v2.1-20200102.tar.gz
-wget https://github.com/openresty/lua-resty-core/archive/v0.1.18rc4.tar.gz
-wget https://github.com/openresty/lua-resty-lrucache/archive/v0.10rc1.tar.gz
+<h2 id="安装必要软件包"><a href="#安装必要软件包" class="headerlink" title="安装必要软件包"></a>安装必要软件包</h2><pre class=" language-bash"><code class="language-bash">apt <span class="token function">install</span> build-essential cmake golang cargo mmdb-bin libmaxminddb-dev libxml2 libxslt-dev libatomic-ops-dev libunwind-dev libpcre3 libpcre3-dev</code></pre>
+<h2 id="拉取-Nginx-和相关模块源码"><a href="#拉取-Nginx-和相关模块源码" class="headerlink" title="拉取 Nginx 和相关模块源码"></a>拉取 Nginx 和相关模块源码</h2><pre class=" language-bash"><code class="language-bash"><span class="token function">cd</span> /home
+<span class="token function">wget</span> https://nginx.org/download/nginx-1.19.0.tar.gz
+<span class="token function">wget</span> https://github.com/openresty/lua-nginx-module/archive/v0.10.16rc5.tar.gz
+<span class="token function">wget</span> https://github.com/openresty/luajit2/archive/v2.1-20200102.tar.gz
+<span class="token function">wget</span> https://github.com/openresty/lua-resty-core/archive/v0.1.18rc4.tar.gz
+<span class="token function">wget</span> https://github.com/openresty/lua-resty-lrucache/archive/v0.10rc1.tar.gz
 
-git clone --recursive https://github.com/cloudflare/quiche
-git clone https://github.com/kn007/patch.git
-git clone https://github.com/cloudflare/zlib.git
-git clone https://github.com/google/ngx_brotli.git
-git clone https://github.com/openresty/headers-more-nginx-module.git
-git clone https://github.com/vision5/ngx_devel_kit.git
-git clone https://github.com/leev/ngx_http_geoip2_module.git
-git clone https://github.com/aperezdc/ngx-fancyindex.git
-git clone https://github.com/arut/nginx-dav-ext-module.git
-git clone https://github.com/yaoweibin/ngx_http_substitutions_filter_module.git
+<span class="token function">git</span> clone --recursive https://github.com/cloudflare/quiche
+<span class="token function">git</span> clone https://github.com/kn007/patch.git
+<span class="token function">git</span> clone https://github.com/cloudflare/zlib.git
+<span class="token function">git</span> clone https://github.com/google/ngx_brotli.git
+<span class="token function">git</span> clone https://github.com/openresty/headers-more-nginx-module.git
+<span class="token function">git</span> clone https://github.com/vision5/ngx_devel_kit.git
+<span class="token function">git</span> clone https://github.com/leev/ngx_http_geoip2_module.git
+<span class="token function">git</span> clone https://github.com/aperezdc/ngx-fancyindex.git
+<span class="token function">git</span> clone https://github.com/arut/nginx-dav-ext-module.git
+<span class="token function">git</span> clone https://github.com/yaoweibin/ngx_http_substitutions_filter_module.git
 
-cd ngx_brotli
-git submodule update --init</code></pre>
-<h2 id="解压缩"><a href="#解压缩" class="headerlink" title="解压缩"></a>解压缩</h2><pre class=" language-sh"><code class="language-sh">cd /home
-tar -xvf nginx-1.19.0.tar.gz
-tar -xvf v0.10.16rc5.tar.gz
-tar -xvf v2.1-20200102.tar.gz
-tar -xvf v0.1.18rc4.tar.gz
-tar -xvf v0.10rc1.tar.gz</code></pre>
-<h2 id="编译-LUAJIT2"><a href="#编译-LUAJIT2" class="headerlink" title="编译 LUAJIT2"></a>编译 LUAJIT2</h2><pre class=" language-sh"><code class="language-sh">cd /home/luajit2-2.1-20200102
-make -j4
-make install
-export LUAJIT_INC=/root/luajit2-2.1-20200102/src
-export LUAJIT_LIB=/root/luajit2-2.1-20200102/src
-cd /home/lua-resty-lrucache-0.10rc1
-make -j4
-make install
-cd /home/lua-resty-core-0.1.18rc4
-make -j4
-make install
-rm -rf /usr/local/share/lua/5.1
-ln -s /usr/local/lib/lua /usr/local/share/lua/5.1</code></pre>
-<h2 id="zlib-要清除之前的编译"><a href="#zlib-要清除之前的编译" class="headerlink" title="zlib 要清除之前的编译"></a>zlib 要清除之前的编译</h2><pre class=" language-sh"><code class="language-sh">cd /root/zlib
-make -f Makefile.in distclean</code></pre>
+<span class="token function">cd</span> ngx_brotli
+<span class="token function">git</span> submodule update --init</code></pre>
+<h2 id="解压缩"><a href="#解压缩" class="headerlink" title="解压缩"></a>解压缩</h2><pre class=" language-bash"><code class="language-bash"><span class="token function">cd</span> /home
+<span class="token function">tar</span> -xvf nginx-1.19.0.tar.gz
+<span class="token function">tar</span> -xvf v0.10.16rc5.tar.gz
+<span class="token function">tar</span> -xvf v2.1-20200102.tar.gz
+<span class="token function">tar</span> -xvf v0.1.18rc4.tar.gz
+<span class="token function">tar</span> -xvf v0.10rc1.tar.gz</code></pre>
+<h2 id="编译-LUAJIT2"><a href="#编译-LUAJIT2" class="headerlink" title="编译 LUAJIT2"></a>编译 LUAJIT2</h2><pre class=" language-bash"><code class="language-bash"><span class="token function">cd</span> /home/luajit2-2.1-20200102
+<span class="token function">make</span> -j4
+<span class="token function">make</span> <span class="token function">install</span>
+<span class="token function">export</span> LUAJIT_INC<span class="token operator">=</span>/root/luajit2-2.1-20200102/src
+<span class="token function">export</span> LUAJIT_LIB<span class="token operator">=</span>/root/luajit2-2.1-20200102/src
+<span class="token function">cd</span> /home/lua-resty-lrucache-0.10rc1
+<span class="token function">make</span> -j4
+<span class="token function">make</span> <span class="token function">install</span>
+<span class="token function">cd</span> /home/lua-resty-core-0.1.18rc4
+<span class="token function">make</span> -j4
+<span class="token function">make</span> <span class="token function">install</span>
+<span class="token function">rm</span> -rf /usr/local/share/lua/5.1
+<span class="token function">ln</span> -s /usr/local/lib/lua /usr/local/share/lua/5.1</code></pre>
+<h2 id="zlib-要清除之前的编译"><a href="#zlib-要清除之前的编译" class="headerlink" title="zlib 要清除之前的编译"></a>zlib 要清除之前的编译</h2><pre class=" language-bash"><code class="language-bash"><span class="token function">cd</span> /root/zlib
+<span class="token function">make</span> -f Makefile.in distclean</code></pre>
 <h2 id="编译-Nginx"><a href="#编译-Nginx" class="headerlink" title="编译 Nginx"></a>编译 Nginx</h2><p>先给 Nginx 打支持 HTTP/3 和 OCSP stapling 的补丁</p>
-<pre class=" language-sh"><code class="language-sh">cd /root/nginx-1.19.0
-patch -p1 < ../patch/nginx_with_quic.patch
-patch -p1 < ../patch/Enable_BoringSSL_OCSP.patch</code></pre>
-<pre class=" language-sh"><code class="language-sh">cd /root/nginx-1.19.0
-./configure --add-module=../ngx_brotli --with-openssl=../quiche/deps/boringssl --with-quiche=../quiche --with-http_v2_module --with-http_v3_module --with-http_ssl_module --with-http_gzip_static_module --with-http_v2_hpack_enc --with-http_realip_module --with-threads --with-stream --with-stream_realip_module --with-stream_ssl_module --with-stream_ssl_preread_module --with-zlib=../zlib --add-module=../ngx_devel_kit --add-module=../headers-more-nginx-module --add-module=../lua-nginx-module-0.10.16rc5 --with-file-aio --add-module=../ngx_http_geoip2_module --add-module=../ngx-fancyindex --add-module=../nginx-dav-ext-module --add-module=../ngx_http_substitutions_filter_module --with-libatomic --with-http_dav_module --with-http_stub_status_module
-make -j4
-make install</code></pre>
-<h2 id="添加-Nginx-到系统服务"><a href="#添加-Nginx-到系统服务" class="headerlink" title="添加 Nginx 到系统服务"></a>添加 Nginx 到系统服务</h2><pre class=" language-sh"><code class="language-sh">vim /lib/systemd/system/nginx.service</code></pre>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">cd</span> /root/nginx-1.19.0
+patch -p1 <span class="token operator">&lt;</span> <span class="token punctuation">..</span>/patch/nginx_with_quic.patch
+patch -p1 <span class="token operator">&lt;</span> <span class="token punctuation">..</span>/patch/Enable_BoringSSL_OCSP.patch</code></pre>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">cd</span> /root/nginx-1.19.0
+./configure --add-module<span class="token operator">=</span><span class="token punctuation">..</span>/ngx_brotli --with-openssl<span class="token operator">=</span><span class="token punctuation">..</span>/quiche/deps/boringssl --with-quiche<span class="token operator">=</span><span class="token punctuation">..</span>/quiche --with-http_v2_module --with-http_v3_module --with-http_ssl_module --with-http_gzip_static_module --with-http_v2_hpack_enc --with-http_realip_module --with-threads --with-stream --with-stream_realip_module --with-stream_ssl_module --with-stream_ssl_preread_module --with-zlib<span class="token operator">=</span><span class="token punctuation">..</span>/zlib --add-module<span class="token operator">=</span><span class="token punctuation">..</span>/ngx_devel_kit --add-module<span class="token operator">=</span><span class="token punctuation">..</span>/headers-more-nginx-module --add-module<span class="token operator">=</span><span class="token punctuation">..</span>/lua-nginx-module-0.10.16rc5 --with-file-aio --add-module<span class="token operator">=</span><span class="token punctuation">..</span>/ngx_http_geoip2_module --add-module<span class="token operator">=</span><span class="token punctuation">..</span>/ngx-fancyindex --add-module<span class="token operator">=</span><span class="token punctuation">..</span>/nginx-dav-ext-module --add-module<span class="token operator">=</span><span class="token punctuation">..</span>/ngx_http_substitutions_filter_module --with-libatomic --with-http_dav_module --with-http_stub_status_module
+<span class="token function">make</span> -j4
+<span class="token function">make</span> <span class="token function">install</span></code></pre>
+<h2 id="添加-Nginx-到系统服务"><a href="#添加-Nginx-到系统服务" class="headerlink" title="添加 Nginx 到系统服务"></a>添加 Nginx 到系统服务</h2><pre class=" language-bash"><code class="language-bash">vim /lib/systemd/system/nginx.service</code></pre>
 <p>添加以下内容</p>
 <pre class=" language-ini"><code class="language-ini"># Stop dance for nginx
 <span class="token constant">#</span> <span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">=</span><span class="token punctuation">=</span><span class="token punctuation">=</span><span class="token punctuation">=</span><span class="token punctuation">=</span><span class="token punctuation">=</span><span class="token punctuation">=</span><span class="token punctuation">=</span><span class="token punctuation">=</span><span class="token punctuation">=</span><span class="token punctuation">=</span><span class="token punctuation">=</span><span class="token punctuation">=</span><span class="token punctuation">=</span><span class="token punctuation">=</span><span class="token punctuation">=</span><span class="token punctuation">=</span><span class="token punctuation">=</span><span class="token punctuation">=</span><span class="token punctuation">=</span><span class="token punctuation">=</span><span class="token punctuation">=</span></span>
@@ -503,8 +503,8 @@ make install</code></pre>
 <span class="token selector">[Install]</span>
 <span class="token constant">WantedBy</span><span class="token attr-value"><span class="token punctuation">=</span>multi-user.target</span></code></pre>
 <p>启用 Nginx 服务</p>
-<pre class=" language-sh"><code class="language-sh">systemctl daemon-reload
-systemctl enable nginx</code></pre>
+<pre class=" language-bash"><code class="language-bash">systemctl daemon-reload
+systemctl <span class="token function">enable</span> nginx</code></pre>
 <h2 id="启动-Nginx"><a href="#启动-Nginx" class="headerlink" title="启动 Nginx"></a>启动 Nginx</h2><p>Nginx 配置文件在 <code>/etc/nginx</code><br>在配置文件中添加 HTTP/3 相关配置</p>
 <pre class=" language-nginx"><code class="language-nginx"><span class="token keyword">server</span> <span class="token punctuation">{</span>
     <span class="token comment" spellcheck="true"># Enable QUIC and HTTP/3.</span>
@@ -526,8 +526,13 @@ systemctl enable nginx</code></pre>
     <span class="token keyword">add_header</span> alt<span class="token operator">-</span>svc <span class="token string">'h3-28=":443"; ma=86400'</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
 <p>启动 Nginx</p>
-<pre class=" language-sh"><code class="language-sh">systemctl start nginx</code></pre>
-<h2 id="测试-HTTP-3"><a href="#测试-HTTP-3" class="headerlink" title="测试 HTTP/3"></a>测试 HTTP/3</h2><p>安装 Firefox Nightly，在 <code>about:config</code> 中打开 <code>network.http.http3.enabled</code> 选项<br><img src="/images/pasted-2.png" alt="Firefox nightly"><br>安装 Google Chrome Canary，添加启动参数 <code>--enable-quic --quic-version=h3-27</code><br><img src="/images/pasted-3.png" alt="Chrome Canary"><br><a href="https://http3check.net/?host=azure.konata.tech" target="_blank" rel="noopener">HTTP/3 CHECK</a><br><img src="/images/pasted-4.png" alt="HTTP/3 CHECK"></p>
+<pre class=" language-bash"><code class="language-bash">systemctl start nginx</code></pre>
+<h2 id="测试-HTTP-3"><a href="#测试-HTTP-3" class="headerlink" title="测试 HTTP/3"></a>测试 HTTP/3</h2><p>安装 Firefox Nightly，在 <code>about:config</code> 中打开 <code>network.http.http3.enabled</code> 选项</p>
+<p><img src="/images/pasted-2.png" alt="Firefox nightly"></p>
+<p>安装 Google Chrome Canary，添加启动参数 <code>--enable-quic --quic-version=h3-27</code></p>
+<p><img src="/images/pasted-3.png" alt="Chrome Canary"></p>
+<p><a href="https://http3check.net/?host=azure.konata.tech" target="_blank" rel="noopener">HTTP/3 CHECK</a></p>
+<p><img src="/images/pasted-4.png" alt="HTTP/3 CHECK"></p>
 
             </div>
             <hr/>
@@ -545,24 +550,21 @@ systemctl enable nginx</code></pre>
         </p>
         
             <div class="center-align">
-                <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
-                    <img alt=""
+                <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh">
+                    <img alt="知识共享许可协议"
                          style="border-width:0"
-                         src="https://i.creativecommons.org/l/by/4.0/88x31.png"/>
-                </a>
+                         src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png"/></a>
             </div>
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
-                  property="dct:title" rel="dct:type">
-                    《Nginx 1.19 with HTTP/3 编译记录》
-                </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2020/05/09/Nginx-1-18-compile/" property="cc:attributionName"
-               rel="cc:attributionURL">
-                Konata
-            </a> 采用
-            <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
-                知识共享署名 4.0 国际许可协议
-            </a>进行许可。
+                  property="dct:title" rel="dct:type">《Nginx 1.19 with HTTP/3 编译记录》</span> 由 <a
+                    xmlns:cc="http://creativecommons.org/ns#" href="/2020/05/09/Nginx-1-18-compile/"
+                    property="cc:attributionName"
+                    rel="cc:attributionURL">Konata</a> 采用
+            <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh">
+                知识共享署名-非商业性使用 4.0 国际许可协议
+            </a>
+            进行许可。
         
     </div>
     
