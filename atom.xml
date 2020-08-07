@@ -239,7 +239,7 @@
     <link href="http://konata.tech/2020/06/19/ELAndJSTL/"/>
     <id>http://konata.tech/2020/06/19/ELAndJSTL/</id>
     <published>2020-06-19T03:08:37.000Z</published>
-    <updated>2020-06-19T05:22:32.437Z</updated>
+    <updated>2020-08-07T11:10:41.905Z</updated>
     
     <summary type="html">
     
@@ -267,7 +267,7 @@
     <link href="http://konata.tech/2020/06/18/CookieAndSession/"/>
     <id>http://konata.tech/2020/06/18/CookieAndSession/</id>
     <published>2020-06-18T15:55:31.000Z</published>
-    <updated>2020-06-18T16:20:18.362Z</updated>
+    <updated>2020-08-07T11:10:42.587Z</updated>
     
     <summary type="html">
     
@@ -295,7 +295,7 @@
     <link href="http://konata.tech/2020/06/18/ResponseObj/"/>
     <id>http://konata.tech/2020/06/18/ResponseObj/</id>
     <published>2020-06-18T15:29:50.000Z</published>
-    <updated>2020-06-18T15:54:09.025Z</updated>
+    <updated>2020-08-07T11:10:39.483Z</updated>
     
     <summary type="html">
     
@@ -303,7 +303,7 @@
       
         
         
-          &lt;p&gt;&lt;img src=&quot;2020-06-18T235353.png&quot; alt=&quot;request&amp;amp;response 对象原理&quot;&gt;&lt;/p&gt;
+          &lt;p&gt;&lt;img src=&quot;/images/2020-06-18T235353.png&quot; alt=&quot;request&amp;amp;response 对象原理&quot;&gt;&lt;/p&gt;
 &lt;h2 id=&quot;HTTP-响应消息&quot;&gt;&lt;a href=&quot;#HTTP-响应消息&quot; class=&quot;headerlink&quot;
         
       
@@ -352,7 +352,7 @@
     <link href="http://konata.tech/2020/06/18/TomcatServletBase/"/>
     <id>http://konata.tech/2020/06/18/TomcatServletBase/</id>
     <published>2020-06-18T14:00:32.000Z</published>
-    <updated>2020-06-18T14:39:28.558Z</updated>
+    <updated>2020-08-07T11:11:41.755Z</updated>
     
     <summary type="html">
     

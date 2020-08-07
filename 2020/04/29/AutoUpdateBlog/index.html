@@ -443,8 +443,7 @@
         <span class="token punctuation">}</span>
       <span class="token punctuation">]</span>
     <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">]</span></code></pre>
+  <span class="token punctuation">}</span></code></pre>
 <h2 id="打开-Github-的-Webhook-功能"><a href="#打开-Github-的-Webhook-功能" class="headerlink" title="打开 Github 的 Webhook 功能"></a>打开 Github 的 Webhook 功能</h2><p>在 GitHub 上相应仓库的 Settings 中找到 Webhook 功能，添加一个钩子， <code>Payload URL</code> 填入服务器监听地址， <code>Content type</code> 选择 <code>application/x-www-form-urlencoded</code> ， <code>Secret</code> 填入上面配置文件中的 <code>secret</code> ，钩子触发中选择 push 事件，勾选 Active，这样 GitHub 端就配置完成了。</p>
 <h2 id="编写自动更新脚本"><a href="#编写自动更新脚本" class="headerlink" title="编写自动更新脚本"></a>编写自动更新脚本</h2><p>因为服务器的 webhook 触发之后执行的是一个命令，还需要一个 shell 脚本来对博客部署目录进行更新。<br>脚本如下，因为国内网络到 GitHub 的连通性奇差，所以加入了拉取失败重试的机制。  </p>
 <pre class=" language-sh"><code class="language-sh">#!/bin/bash
@@ -463,7 +462,7 @@ do
         echo "git pull FAIL. Retrying $retry time(s)."
 done</code></pre>
 <blockquote>
-<p> <strong>一个坑</strong><br> git 如果要设置代理的话，一定要使用 <code>git config --system https.proxy socks5://127.0.0.1:1080</code> 设置，不要使用 <code>--global</code> 参数设置  </p>
+<p><strong>一个坑</strong><br>git 如果要设置代理的话，一定要使用 <code>git config --system https.proxy socks5://127.0.0.1:1080</code> 设置，不要使用 <code>--global</code> 参数设置  </p>
 </blockquote>
 <p>之后每当博客更新执行 <code>hexo deploy</code> 的时候，服务器端就会自动更新页面了，免去了 SSH 进去手动更新的麻烦。</p>
 

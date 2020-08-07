@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="keywords" content="EL 表达式和 JSTL, 生命不息 折腾不止">
     <meta name="description" content="JSP指令作用用于配置 JSP 页面，导入资源文件
-格式&amp;lt;%@ 指令名称 属性名 1=属性值 1 属性名 2=属性值 2 ... %&amp;gt; 
+格式 &amp;lt;%@ 指令名称 属性名 1=属性值 1 属性名 2=属性值 2 ... %&amp;gt;
 分类page配置 JSP 页面
 
 contentType ：等同于 response.se">
@@ -428,10 +428,10 @@ contentType ：等同于 response.se">
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="JSP"><a href="#JSP" class="headerlink" title="JSP"></a>JSP</h2><h3 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h3><h4 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h4><p>用于配置 JSP 页面，导入资源文件</p>
-<h4 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h4><p><code>&lt;%@ 指令名称 属性名 1=属性值 1 属性名 2=属性值 2 ... %&gt;</code> </p>
+<h4 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h4><p> <code>&lt;%@ 指令名称 属性名 1=属性值 1 属性名 2=属性值 2 ... %&gt;</code></p>
 <h4 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h4><h5 id="page"><a href="#page" class="headerlink" title="page"></a>page</h5><p>配置 JSP 页面</p>
 <ul>
-<li><code>contentType</code> ：等同于 <code>response.setContentType()</code> <ol>
+<li><code>contentType</code> ：等同于 <code>response.setContentType()</code><ol>
 <li>设置响应体的 mime 类型以及字符集</li>
 <li>设置当前 jsp 页面的编码（只能是高级的 IDE 才能生效，如果使用低级工具，则需要设置 pageEncoding 属性设置当前页面的字符集）</li>
 </ol>
@@ -444,8 +444,8 @@ contentType ：等同于 response.se">
 </ul>
 </li>
 </ul>
-<h4 id="include"><a href="#include" class="headerlink" title="include"></a>include</h4><p>页面包含的。导入页面的资源文件<br><code>&lt;%@include file=&quot;top.jsp&quot;%&gt;</code> </p>
-<h4 id="taglib"><a href="#taglib" class="headerlink" title="taglib"></a>taglib</h4><p>导入资源<br><code>&lt;%@ taglib prefix=&quot;c&quot; uri=&quot;http://java.sun.com/jsp/jstl/core&quot; %&gt;</code> </p>
+<h4 id="include"><a href="#include" class="headerlink" title="include"></a>include</h4><p>页面包含的。导入页面的资源文件<br> <code>&lt;%@include file=&quot;top.jsp&quot;%&gt;</code></p>
+<h4 id="taglib"><a href="#taglib" class="headerlink" title="taglib"></a>taglib</h4><p>导入资源<br> <code>&lt;%@ taglib prefix=&quot;c&quot; uri=&quot;http://java.sun.com/jsp/jstl/core&quot; %&gt;</code></p>
 <ul>
 <li>prefix：前缀，自定义的</li>
 </ul>
@@ -519,17 +519,17 @@ contentType ：等同于 response.se">
 </ul>
 <h2 id="EL-表达式"><a href="#EL-表达式" class="headerlink" title="EL 表达式"></a>EL 表达式</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>Expression Language 表达式语言</p>
 <h3 id="作用-1"><a href="#作用-1" class="headerlink" title="作用"></a>作用</h3><p>替换和简化 jsp 页面中 java 代码的编写</p>
-<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><p><code>${表达式}</code> </p>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><p> <code>${表达式}</code></p>
 <h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p>jsp 默认支持 el 表达式，如果要忽略 el 表达式</p>
 <ol>
 <li>设置 jsp 中 page 指令中： <code>isELIgnored=&quot;true&quot;</code> 忽略当前 jsp 页面中所有的 el 表达式</li>
 <li><code>\${表达式}</code> ：忽略当前这个 el 表达式</li>
 </ol>
 <h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><h4 id="运算"><a href="#运算" class="headerlink" title="运算"></a>运算</h4><ol>
-<li>算数运算符： <code>+ - * /(div) %(mod)</code> </li>
-<li>比较运算符： <code>&gt; &lt; &gt;= &lt;= == !=</code> </li>
-<li>逻辑运算符： <code>&amp;&amp;(and) ||(or) !(not)</code> </li>
-<li>空运算符： <code>empty</code> <ul>
+<li>算数运算符： <code>+ - * /(div) %(mod)</code></li>
+<li>比较运算符： <code>&gt; &lt; &gt;= &lt;= == !=</code></li>
+<li>逻辑运算符： <code>&amp;&amp;(and) ||(or) !(not)</code></li>
+<li>空运算符： <code>empty</code><ul>
 <li>功能：用于判断字符串、集合、数组对象是否为 null 或者长度是否为 0</li>
 <li><code>${empty list}</code> : 判断字符串、集合、数组对象是否为 null 或者长度为 0</li>
 <li><code>${not empty str}</code> : 表示判断字符串、集合、数组对象是否不为 null 并且 长度&gt;0</li>
@@ -543,21 +543,21 @@ contentType ：等同于 response.se">
 <li><p><code>${域名称。键名}</code> ：从指定域中获取指定键的值</p>
 <ul>
 <li>域名称：<ol>
-<li>pageScope        –&gt; pageContext</li>
-<li>requestScope     –&gt; request</li>
-<li>sessionScope     –&gt; session</li>
+<li>pageScope  –&gt; pageContext</li>
+<li>requestScope  –&gt; request</li>
+<li>sessionScope  –&gt; session</li>
 <li>applicationScope –&gt; application（ServletContext）</li>
 </ol>
 </li>
 <li>举例：在 request 域中存储了 name=张三</li>
-<li>获取： <code>${requestScope.name}</code> </li>
+<li>获取： <code>${requestScope.name}</code></li>
 </ul>
 </li>
 <li><p><code>${键名}</code> ：表示依次从最小的域中查找是否有该键对应的值，直到找到为止。</p>
 </li>
 <li><p>获取对象、List 集合、Map 集合的值</p>
 <ol>
-<li><p>对象： <code>${域名称。键名。属性名}</code> </p>
+<li><p>对象： <code>${域名称。键名。属性名}</code></p>
 <ul>
 <li>本质上会去调用对象的 getter 方法</li>
 </ul>
@@ -566,8 +566,8 @@ contentType ：等同于 response.se">
 </li>
 <li><p>Map 集合：</p>
 <ul>
-<li><code>${域名称。键名。key 名称}</code> </li>
-<li><code>${域名称。键名 [&quot;key 名称&quot;]}</code> </li>
+<li><code>${域名称。键名。key 名称}</code></li>
+<li><code>${域名称。键名 [&quot;key 名称&quot;]}</code></li>
 </ul>
 </li>
 </ol>
@@ -583,11 +583,11 @@ contentType ：等同于 response.se">
 </ul>
 </li>
 </ul>
-<h2 id="JSTL"><a href="#JSTL" class="headerlink" title="JSTL"></a>JSTL</h2><h3 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h3><p>JavaServer Pages Tag Library  JSP 标准标签库<br>是由 Apache 组织提供的开源的免费的 jsp 标签        &lt;标签&gt;</p>
-<h3 id="作用-2"><a href="#作用-2" class="headerlink" title="作用"></a>作用</h3><p>用于简化和替换 jsp 页面上的 java 代码        </p>
+<h2 id="JSTL"><a href="#JSTL" class="headerlink" title="JSTL"></a>JSTL</h2><h3 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h3><p>JavaServer Pages Tag Library  JSP 标准标签库<br>是由 Apache 组织提供的开源的免费的 jsp 标签  &lt;标签&gt;</p>
+<h3 id="作用-2"><a href="#作用-2" class="headerlink" title="作用"></a>作用</h3><p>用于简化和替换 jsp 页面上的 java 代码  </p>
 <h3 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h3><ol>
 <li>导入 jstl 相关 jar 包</li>
-<li>引入标签库：taglib 指令： <code>&lt;%@ taglib %&gt;</code> </li>
+<li>引入标签库：taglib 指令： <code>&lt;%@ taglib %&gt;</code></li>
 <li>使用标签</li>
 </ol>
 <h3 id="常用的-JSTL-标签"><a href="#常用的-JSTL-标签" class="headerlink" title="常用的 JSTL 标签"></a>常用的 JSTL 标签</h3><ol>
@@ -609,13 +609,13 @@ contentType ：等同于 response.se">
 </li>
 <li><p><code>choose</code> : 相当于 java 代码的 switch 语句</p>
 <ol>
-<li><p>使用 choose 标签声明         </p>
+<li><p>使用 choose 标签声明</p>
 <p>相当于 switch 声明</p>
 </li>
-<li><p>使用 when 标签做判断         </p>
+<li><p>使用 when 标签做判断</p>
 <p>相当于 case</p>
 </li>
-<li><p>使用 otherwise 标签做其他情况的声明    </p>
+<li><p>使用 otherwise 标签做其他情况的声明</p>
 <p>相当于 default</p>
 </li>
 </ol>
@@ -628,7 +628,7 @@ contentType ：等同于 response.se">
 <li>后来又 jsp，简化了 Servlet 的开发，如果过度使用 jsp，在 jsp 中即写大量的 java 代码，有写 html 表，造成难于维护，难于分工协作</li>
 <li>再后来，java 的 web 开发，借鉴 MVC 开发模式，使得程序的设计更加合理性</li>
 </ol>
-<h3 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a>MVC</h3><p><img src="2020-06-19T130251.png" alt="MVC 开发模式"></p>
+<h3 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a>MVC</h3><p><img src="/images/2020-06-19T130251.png" alt="MVC 开发模式"></p>
 <ol>
 <li>M：Model，模型。JavaBean<ul>
 <li>完成具体的业务操作，如：查询数据库，封装对象</li>
@@ -662,7 +662,7 @@ contentType ：等同于 response.se">
 </ol>
 </li>
 </ul>
-<h3 id="三层架构"><a href="#三层架构" class="headerlink" title="三层架构"></a>三层架构</h3><p><img src="2020-06-19T131333.png" alt></p>
+<h3 id="三层架构"><a href="#三层架构" class="headerlink" title="三层架构"></a>三层架构</h3><p><img src="/images/2020-06-19T131333.png" alt></p>
 <ol>
 <li>界面层（表示层）：用户看的得界面。用户可以通过界面上的组件和服务器进行交互</li>
 <li>业务逻辑层：处理业务逻辑的。</li>
