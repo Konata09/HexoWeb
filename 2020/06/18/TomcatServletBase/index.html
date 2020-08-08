@@ -374,12 +374,12 @@ B/S：浏览器/服务器端
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/JAVA/" target="_blank">
-                                <span class="chip bg-color">JAVA</span>
-                            </a>
-                        
                             <a href="/tags/JSP/" target="_blank">
                                 <span class="chip bg-color">JSP</span>
+                            </a>
+                        
+                            <a href="/tags/Java/" target="_blank">
+                                <span class="chip bg-color">Java</span>
                             </a>
                         
                     </div>
@@ -390,8 +390,8 @@ B/S：浏览器/服务器端
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/JAVA/" class="post-category" target="_blank">
-                                JAVA
+                            <a href="/categories/Java/" class="post-category" target="_blank">
+                                Java
                             </a>
                         
                     </div>
@@ -409,7 +409,7 @@ B/S：浏览器/服务器端
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1.4k
+                        1.3k
                     </div>
                     
 
@@ -482,153 +482,151 @@ B/S：浏览器/服务器端
 <p><code>conf/server.xml</code></p>
 </li>
 </ol>
-<pre class=" language-xml"><code class="language-xml">        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Connector</span> <span class="token attr-name">port</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>8888<span class="token punctuation">"</span></span> <span class="token attr-name">protocol</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>HTTP/1.1<span class="token punctuation">"</span></span>
-            <span class="token attr-name">connectionTimeout</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>20000<span class="token punctuation">"</span></span>
-            <span class="token attr-name">redirectPort</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>8445<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
-            ```
+<pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Connector</span> <span class="token attr-name">port</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>8888<span class="token punctuation">"</span></span> <span class="token attr-name">protocol</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>HTTP/1.1<span class="token punctuation">"</span></span>
+    <span class="token attr-name">connectionTimeout</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>20000<span class="token punctuation">"</span></span>
+    <span class="token attr-name">redirectPort</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>8445<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span></code></pre>
+<h3 id="关闭"><a href="#关闭" class="headerlink" title="关闭"></a>关闭</h3><h4 id="正常关闭"><a href="#正常关闭" class="headerlink" title="正常关闭"></a>正常关闭</h4><ul>
+<li>bin/shutdown.bat  </li>
+<li>ctrl+c</li>
+</ul>
+<h4 id="强制关闭"><a href="#强制关闭" class="headerlink" title="强制关闭"></a>强制关闭</h4><p>点击启动窗口的×</p>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><h4 id="部署项目的方式"><a href="#部署项目的方式" class="headerlink" title="部署项目的方式"></a>部署项目的方式</h4><ol>
+<li><p>直接将项目放到 webapps 目录下即可。</p>
+<ul>
+<li>/hello：项目的访问路径–&gt;虚拟目录</li>
+<li>简化部署：将项目打成一个 war 包，再将 war 包放置到 webapps 目录下。<ul>
+<li>war 包会自动解压缩</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>配置 <code>conf/server.xml</code> 文件</p>
+<p> 在 <code>&lt;Host&gt;</code> 标签体中配置</p>
+<p><code>&lt;Context docBase=&quot;D:\hello&quot; path=&quot;/hehe&quot; /&gt;</code><br> *docBase: 项目存放的路径</p>
+<ul>
+<li>path：虚拟目录</li>
+</ul>
+</li>
+<li><p>在 <code>conf\Catalina\localhost</code> 创建任意名称的 xml 文件。在文件中编写</p>
+<p><code>&lt;Context docBase=&quot;D:\hello&quot; /&gt;</code></p>
+<ul>
+<li>虚拟目录：xml 文件的名称</li>
+</ul>
+</li>
+</ol>
+<h4 id="java-动态项目的目录结构"><a href="#java-动态项目的目录结构" class="headerlink" title="java 动态项目的目录结构"></a>java 动态项目的目录结构</h4><pre><code>-- 项目的根目录
+    -- WEB-INF 目录：
+        -- web.xml：web 项目的核心配置文件
+        -- classes 目录：放置字节码文件的目录
+        -- lib 目录：放置依赖的 jar 包
+</code></pre><p><img src="/images/2020-06-18T221243.png" alt></p>
+<h2 id="Servlet-Server-Applet"><a href="#Servlet-Server-Applet" class="headerlink" title="Servlet:  Server Applet"></a>Servlet:  Server Applet</h2><ul>
+<li>概念：运行在服务器端的小程序</li>
+<li>Servlet 就是一个接口，定义了 Java 类被浏览器访问到 (tomcat 识别）的规则。</li>
+<li>将来我们自定义一个类，实现 Servlet 接口，复写方法。</li>
+</ul>
+<h3 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h3><ol>
+<li><p>创建 JavaEE 项目</p>
+</li>
+<li><p>定义一个类，实现 Servlet 接口  </p>
+<p><code>public class ServletDemo1 implements Servlet</code></p>
+</li>
+<li><p>实现接口中的抽象方法</p>
+</li>
+<li><p>配置 Servlet  </p>
+<p> 在 web.xml 中配置：</p>
+</li>
+</ol>
+<pre class=" language-xml"><code class="language-xml"><span class="token comment" spellcheck="true">&lt;!--配置 Servlet --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>servlet</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>servlet-name</span><span class="token punctuation">></span></span>demo1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>servlet-name</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>servlet-class</span><span class="token punctuation">></span></span>cn.itcast.web.servlet.ServletDemo1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>servlet-class</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>servlet</span><span class="token punctuation">></span></span>
 
-### 关闭
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>servlet-mapping</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>servlet-name</span><span class="token punctuation">></span></span>demo1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>servlet-name</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>url-pattern</span><span class="token punctuation">></span></span>/demo1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>url-pattern</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>servlet-mapping</span><span class="token punctuation">></span></span></code></pre>
+<h3 id="执行原理"><a href="#执行原理" class="headerlink" title="执行原理"></a>执行原理</h3><ol>
+<li>当服务器接受到客户端浏览器的请求后，会解析请求 URL 路径，获取访问的 Servlet 的资源路径</li>
+<li>查找 web.xml 文件，是否有对应的 <code>&lt;url-pattern&gt;</code> 标签体内容。</li>
+<li>如果有，则在找到对应的 <code>&lt;servlet-class&gt;</code> 全类名</li>
+<li>tomcat 会将字节码文件加载进内存，并且创建其对象</li>
+<li>调用其方法</li>
+</ol>
+<p><img src="/images/2020-06-18T223910.png" alt></p>
+<h3 id="Servlet-生命周期"><a href="#Servlet-生命周期" class="headerlink" title="Servlet 生命周期"></a>Servlet 生命周期</h3><ol>
+<li>被创建：执行 <code>init</code> 方法，只执行一次</li>
+</ol>
+<ul>
+<li><p>Servlet 什么时候被创建？</p>
+<ul>
+<li>默认情况下，第一次被访问时，Servlet 被创建</li>
+<li>可以配置执行 Servlet 的创建时机。<ul>
+<li>在 <code>&lt;servlet&gt;</code> 标签下配置<ol>
+<li>第一次被访问时，创建： <code>&lt;load-on-startup&gt;</code> 的值为负数</li>
+<li>在服务器启动时，创建： <code>&lt;load-on-startup&gt;</code> 的值为 0 或正整数</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Servlet 的 <code>init</code> 方法，只执行一次，说明一个 Servlet 在内存中只存在一个对象，Servlet 是单例的</p>
+<ul>
+<li>多个用户同时访问时，可能存在线程安全问题。</li>
+<li>解决：尽量不要在 Servlet 中定义成员变量。即使定义了成员变量，也不要对修改值</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li><p>提供服务：执行 <code>service</code> 方法，执行多次</p>
+<ul>
+<li>每次访问 Servlet 时，Service 方法都会被调用一次。</li>
+</ul>
+</li>
+<li><p>被销毁：执行 <code>destroy</code> 方法，只执行一次</p>
+<ul>
+<li>Servlet 被销毁时执行。服务器关闭时，Servlet 被销毁</li>
+<li>只有服务器正常关闭时，才会执行 destroy 方法。</li>
+<li>destroy 方法在 Servlet 被销毁之前执行，一般用于释放资源</li>
+</ul>
+</li>
+</ol>
+<h3 id="Servlet-3-0"><a href="#Servlet-3-0" class="headerlink" title="Servlet 3.0"></a>Servlet 3.0</h3><p>支持注解配置。可以不需要 web.xml 了。</p>
+<ol>
+<li>创建 JavaEE 项目，选择 Servlet 的版本 3.0 以上，可以不创建 web.xml</li>
+<li>定义一个类，实现 Servlet 接口</li>
+<li>复写方法</li>
+<li>在类上使用 <code>@WebServlet</code> 注解，进行配置</li>
+</ol>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@WebServlet</span><span class="token punctuation">(</span><span class="token string">"资源路径"</span><span class="token punctuation">)</span>
 
-#### 正常关闭
+<span class="token annotation punctuation">@Target</span><span class="token punctuation">(</span><span class="token punctuation">{</span>ElementType<span class="token punctuation">.</span>TYPE<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token annotation punctuation">@Retention</span><span class="token punctuation">(</span>RetentionPolicy<span class="token punctuation">.</span>RUNTIME<span class="token punctuation">)</span>
+<span class="token annotation punctuation">@Documented</span>
+<span class="token keyword">public</span> @<span class="token keyword">interface</span> <span class="token class-name">WebServlet</span> <span class="token punctuation">{</span>
+    String <span class="token function">name</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">default</span> <span class="token string">""</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//相当于&lt;Servlet-name></span>
 
-- bin/shutdown.bat  
-- ctrl+c
+    String<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">default</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//代表 urlPatterns() 属性配置</span>
 
-#### 强制关闭
+    String<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">urlPatterns</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">default</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//相当于&lt;url-pattern></span>
 
-点击启动窗口的×
+    <span class="token keyword">int</span> <span class="token function">loadOnStartup</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">default</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//相当于&lt;load-on-startup></span>
 
-### 配置
+    WebInitParam<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">initParams</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">default</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-#### 部署项目的方式
+    <span class="token keyword">boolean</span> <span class="token function">asyncSupported</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">default</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
 
-1. 直接将项目放到 webapps 目录下即可。
-    * /hello：项目的访问路径-->虚拟目录
-    * 简化部署：将项目打成一个 war 包，再将 war 包放置到 webapps 目录下。
-        * war 包会自动解压缩
+    String <span class="token function">smallIcon</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">default</span> <span class="token string">""</span><span class="token punctuation">;</span>
 
-2. 配置 `conf/server.xml` 文件
+    String <span class="token function">largeIcon</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">default</span> <span class="token string">""</span><span class="token punctuation">;</span>
 
-    在 `<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Host</span><span class="token punctuation">></span></span>` 标签体中配置
- `<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Context</span> <span class="token attr-name">docBase</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>D:\hello<span class="token punctuation">"</span></span> <span class="token attr-name">path</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>/hehe<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>`
-    * docBase: 项目存放的路径
-    * path：虚拟目录
+    String <span class="token function">description</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">default</span> <span class="token string">""</span><span class="token punctuation">;</span>
 
-3. 在 `conf\Catalina\localhost` 创建任意名称的 xml 文件。在文件中编写
+    String <span class="token function">displayName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">default</span> <span class="token string">""</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
 
- `<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Context</span> <span class="token attr-name">docBase</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>D:\hello<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>`
-    * 虚拟目录：xml 文件的名称
-
-#### java 动态项目的目录结构
-</code></pre>
-<p>– 项目的根目录<br>    – WEB-INF 目录：<br>        – web.xml：web 项目的核心配置文件<br>        – classes 目录：放置字节码文件的目录<br>        – lib 目录：放置依赖的 jar 包</p>
-<pre><code>
-![](/images/2020-06-18T221243.png)
-
-## Servlet:  Server Applet
-
-* 概念：运行在服务器端的小程序
-* Servlet 就是一个接口，定义了 Java 类被浏览器访问到 (tomcat 识别）的规则。
-* 将来我们自定义一个类，实现 Servlet 接口，复写方法。
-
-### 快速入门
-
-1. 创建 JavaEE 项目
-2. 定义一个类，实现 Servlet 接口  
-
- `public class ServletDemo1 implements Servlet`
-3. 实现接口中的抽象方法
-4. 配置 Servlet  
-
-    在 web.xml 中配置：
-
-
-
-``` xml
-    &lt;!--配置 Servlet --&gt;
-    &lt;servlet&gt;
-        &lt;servlet-name&gt;demo1&lt;/servlet-name&gt;
-        &lt;servlet-class&gt;cn.itcast.web.servlet.ServletDemo1&lt;/servlet-class&gt;
-    &lt;/servlet&gt;
-
-    &lt;servlet-mapping&gt;
-        &lt;servlet-name&gt;demo1&lt;/servlet-name&gt;
-        &lt;url-pattern&gt;/demo1&lt;/url-pattern&gt;
-    &lt;/servlet-mapping&gt;
-    ```
-
-### 执行原理
-
-1. 当服务器接受到客户端浏览器的请求后，会解析请求 URL 路径，获取访问的 Servlet 的资源路径
-2. 查找 web.xml 文件，是否有对应的 `&lt;url-pattern&gt;` 标签体内容。
-3. 如果有，则在找到对应的 `&lt;servlet-class&gt;` 全类名
-4. tomcat 会将字节码文件加载进内存，并且创建其对象
-5. 调用其方法
-
-![](/images/2020-06-18T223910.png)
-
-### Servlet 生命周期
-
-1. 被创建：执行 `init` 方法，只执行一次
-
-* Servlet 什么时候被创建？
-  * 默认情况下，第一次被访问时，Servlet 被创建
-  * 可以配置执行 Servlet 的创建时机。
-    * 在 `&lt;servlet&gt;` 标签下配置
-        1. 第一次被访问时，创建： `&lt;load-on-startup&gt;` 的值为负数
-        2. 在服务器启动时，创建： `&lt;load-on-startup&gt;` 的值为 0 或正整数
-
-* Servlet 的 `init` 方法，只执行一次，说明一个 Servlet 在内存中只存在一个对象，Servlet 是单例的
-  * 多个用户同时访问时，可能存在线程安全问题。
-  * 解决：尽量不要在 Servlet 中定义成员变量。即使定义了成员变量，也不要对修改值
-
-2. 提供服务：执行 `service` 方法，执行多次
-    * 每次访问 Servlet 时，Service 方法都会被调用一次。
-
-3. 被销毁：执行 `destroy` 方法，只执行一次
-    * Servlet 被销毁时执行。服务器关闭时，Servlet 被销毁
-    * 只有服务器正常关闭时，才会执行 destroy 方法。
-    * destroy 方法在 Servlet 被销毁之前执行，一般用于释放资源
-
-### Servlet 3.0
-
-支持注解配置。可以不需要 web.xml 了。
-
-1. 创建 JavaEE 项目，选择 Servlet 的版本 3.0 以上，可以不创建 web.xml
-2. 定义一个类，实现 Servlet 接口
-3. 复写方法
-4. 在类上使用 `@WebServlet` 注解，进行配置
-
-
-
-``` java
-    @WebServlet(&quot;资源路径&quot;)
-
-    @Target({ElementType.TYPE})
-    @Retention(RetentionPolicy.RUNTIME)
-    @Documented
-    public @interface WebServlet {
-        String name() default &quot;&quot;;//相当于&lt;Servlet-name&gt;
-
-        String[] value() default {};//代表 urlPatterns() 属性配置
-
-        String[] urlPatterns() default {};//相当于&lt;url-pattern&gt;
-
-        int loadOnStartup() default -1;//相当于&lt;load-on-startup&gt;
-
-        WebInitParam[] initParams() default {};
-
-        boolean asyncSupported() default false;
-
-        String smallIcon() default &quot;&quot;;
-
-        String largeIcon() default &quot;&quot;;
-
-        String description() default &quot;&quot;;
-
-        String displayName() default &quot;&quot;;
-    }
-    ```</code></pre>
             </div>
             <hr/>
 
@@ -715,8 +713,8 @@ B/S：浏览器/服务器端
                                 
                                     <i class="fa fa-bookmark fa-fw icon-category"></i>
                                     
-                                        <a href="/categories/JAVA/" class="post-category" target="_blank">
-                                    JAVA
+                                        <a href="/categories/Java/" class="post-category" target="_blank">
+                                    Java
                                 </a>
                                     
                                 
@@ -726,12 +724,12 @@ B/S：浏览器/服务器端
                     
                         <div class="card-action article-tags">
                             
-                                <a href="/tags/JAVA/" target="_blank">
-                                    <span class="chip bg-color">JAVA</span>
-                                </a>
-                            
                                 <a href="/tags/JSP/" target="_blank">
                                     <span class="chip bg-color">JSP</span>
+                                </a>
+                            
+                                <a href="/tags/Java/" target="_blank">
+                                    <span class="chip bg-color">Java</span>
                                 </a>
                             
                         </div>
@@ -773,8 +771,8 @@ B/S：浏览器/服务器端
                                 
                                     <i class="fa fa-bookmark fa-fw icon-category"></i>
                                     
-                                        <a href="/categories/JAVA/" class="post-category" target="_blank">
-                                    JAVA
+                                        <a href="/categories/Java/" class="post-category" target="_blank">
+                                    Java
                                 </a>
                                     
                                 
@@ -784,8 +782,8 @@ B/S：浏览器/服务器端
                     
                         <div class="card-action article-tags">
                             
-                                <a href="/tags/JAVA/" target="_blank">
-                                    <span class="chip bg-color">JAVA</span>
+                                <a href="/tags/Java/" target="_blank">
+                                    <span class="chip bg-color">Java</span>
                                 </a>
                             
                         </div>

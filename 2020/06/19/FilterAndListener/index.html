@@ -374,12 +374,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/JAVA/" target="_blank">
-                                <span class="chip bg-color">JAVA</span>
-                            </a>
-                        
                             <a href="/tags/JSP/" target="_blank">
                                 <span class="chip bg-color">JSP</span>
+                            </a>
+                        
+                            <a href="/tags/Java/" target="_blank">
+                                <span class="chip bg-color">Java</span>
                             </a>
                         
                     </div>
@@ -390,8 +390,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/JAVA/" class="post-category" target="_blank">
-                                JAVA
+                            <a href="/categories/Java/" class="post-category" target="_blank">
+                                Java
                             </a>
                         
                     </div>
@@ -409,7 +409,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        829
+                        834
                     </div>
                     
 
@@ -486,21 +486,18 @@
 <h4 id="过滤器配置详解"><a href="#过滤器配置详解" class="headerlink" title="过滤器配置详解"></a>过滤器配置详解</h4><ul>
 <li>拦截路径配置：<ol>
 <li>具体资源路径： <code>/index.jsp</code> 只有访问 index.jsp 资源时，过滤器才会被执行</li>
-<li>拦截目录： <code>/user/*</code>     访问/user 下的所有资源时，过滤器都会被执行</li>
-<li>后缀名拦截： <code>*.jsp</code>         访问所有后缀名为 jsp 资源时，过滤器都会被执行</li>
-<li>拦截所有资源： <code>/*</code>         访问所有资源时，过滤器都会被执行</li>
+<li>拦截目录： <code>/user/*</code> 访问/user 下的所有资源时，过滤器都会被执行</li>
+<li>后缀名拦截： <code>*.jsp</code> 访问所有后缀名为 jsp 资源时，过滤器都会被执行</li>
+<li>拦截所有资源： <code>/*</code> 访问所有资源时，过滤器都会被执行</li>
 </ol>
 </li>
 <li>拦截方式配置：资源被访问的方式<ul>
 <li>注解配置：<ul>
-<li>设置 <code>dispatcherTypes</code> 属性<ol>
-<li><code>REQUEST</code> ：默认值。浏览器直接请求资源</li>
-<li><code>FORWARD</code> ：转发访问资源</li>
-<li><code>INCLUDE</code> ：包含访问资源</li>
-<li><code>ERROR</code> ：错误跳转资源</li>
-<li><code>ASYNC</code> ：异步访问资源</li>
-</ol>
-</li>
+<li>设置 <code>dispatcherTypes</code> 属性<pre><code>  1. `REQUEST` ：默认值。浏览器直接请求资源
+  2. `FORWARD` ：转发访问资源
+  3. `INCLUDE` ：包含访问资源
+  4. `ERROR` ：错误跳转资源
+  5. `ASYNC` ：异步访问资源</code></pre></li>
 </ul>
 </li>
 <li>web.xml 配置<ul>
@@ -517,7 +514,7 @@
 <li>过滤器 2</li>
 <li>资源执行</li>
 <li>过滤器 2</li>
-<li>过滤器 1 </li>
+<li>过滤器 1</li>
 </ol>
 </li>
 <li><p>过滤器先后顺序问题：</p>
@@ -532,7 +529,7 @@
 </ul>
 <h2 id="Listener-监听器"><a href="#Listener-监听器" class="headerlink" title="Listener 监听器"></a>Listener 监听器</h2><h3 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h3><p>web 的三大组件之一</p>
 <h3 id="事件监听机制"><a href="#事件监听机制" class="headerlink" title="事件监听机制"></a>事件监听机制</h3><ul>
-<li><p>事件    ：一件事情</p>
+<li><p>事件 ：一件事情</p>
 </li>
 <li><p>事件源 ：事件发生的地方</p>
 </li>
@@ -696,8 +693,8 @@
                                 
                                     <i class="fa fa-bookmark fa-fw icon-category"></i>
                                     
-                                        <a href="/categories/JAVA/" class="post-category" target="_blank">
-                                    JAVA
+                                        <a href="/categories/Java/" class="post-category" target="_blank">
+                                    Java
                                 </a>
                                     
                                 
@@ -707,12 +704,12 @@
                     
                         <div class="card-action article-tags">
                             
-                                <a href="/tags/JAVA/" target="_blank">
-                                    <span class="chip bg-color">JAVA</span>
-                                </a>
-                            
                                 <a href="/tags/JSP/" target="_blank">
                                     <span class="chip bg-color">JSP</span>
+                                </a>
+                            
+                                <a href="/tags/Java/" target="_blank">
+                                    <span class="chip bg-color">Java</span>
                                 </a>
                             
                         </div>

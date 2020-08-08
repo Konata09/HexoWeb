@@ -4,8 +4,10 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="AV1 编码测试视频, 生命不息 折腾不止">
-    <meta name="description" content="AV1 8bit.\aomenc.exe --webm -w 1920 -h 1440 --fps=30/1 --cpu-used=4 --bit-depth=8 --color-primaries=bt709 --end-usage=cq">
+    <meta name="keywords" content="AV1 编码测试, 生命不息 折腾不止">
+    <meta name="description" content="使用 Video2X 生成的 1440P Misaka Dances 作为源分辨率 1920*1440比特率 1000 kbps2pass 模式
+AV1 8bit解码压力不高，可以流畅播放。
+.\aomenc.exe --webm -w 1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +21,7 @@
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#7312ff">
     <meta name="msapplication-TileColor" content="#8a46cc">
     <meta name="theme-color" content="#ffffff">
-    <title>AV1 编码测试视频 | 生命不息 折腾不止</title>
+    <title>AV1 编码测试 | 生命不息 折腾不止</title>
     <script type="application/javascript" src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
     <script type="application/javascript" src="https://cdn.jsdelivr.net/npm/jquery-ui-dist@1.12.1/jquery-ui.min.js"></script>
     <script type="application/javascript" src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
@@ -266,13 +268,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/07.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        AV1 编码测试视频
+                        AV1 编码测试
                     </div>
                 </div>
             </div>
@@ -377,8 +379,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/音视频编码/" class="post-category" target="_blank">
-                                音视频编码
+                            <a href="/categories/Codec/" class="post-category" target="_blank">
+                                Codec
                             </a>
                         
                     </div>
@@ -396,7 +398,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        158
+                        195
                     </div>
                     
 
@@ -419,21 +421,17 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="AV1-8bit"><a href="#AV1-8bit" class="headerlink" title="AV1 8bit"></a>AV1 8bit</h3><pre class=" language-sh"><code class="language-sh">.\aomenc.exe --webm -w 1920 -h 1440 --fps=30/1 --cpu-used=4 --bit-depth=8 --color-primaries=bt709 --end-usage=cq --target-bitrate=1000 --passes=2 --pass=2 --fpf=8b.log -o 8b.webm y4m.y4m</code></pre>
-<video controls width="100%">
-    <source src="/media/AV1_8bit_HEAAC.mp4" type="video/webm">
-</video>
-
+                <p>使用 Video2X 生成的 1440P Misaka Dances 作为源<br>分辨率 1920*1440<br>比特率 1000 kbps<br>2pass 模式</p>
+<h3 id="AV1-8bit"><a href="#AV1-8bit" class="headerlink" title="AV1 8bit"></a>AV1 8bit</h3><p>解码压力不高，可以流畅播放。</p>
+<pre class=" language-bash"><code class="language-bash">.\aomenc.exe --webm -w 1920 -h 1440 --fps<span class="token operator">=</span>30/1 --cpu-used<span class="token operator">=</span>4 --bit-depth<span class="token operator">=</span>8 --color-primaries<span class="token operator">=</span>bt709 --end-usage<span class="token operator">=</span>cq --target-bitrate<span class="token operator">=</span>1000 --passes<span class="token operator">=</span>2 --pass<span class="token operator">=</span>2 --fpf<span class="token operator">=</span>8b.log -o 8b.webm y4m.y4m</code></pre>
+<p><video controls width="100%"><source src="/media/AV1_8bit_HEAAC.mp4" type="video/webm"><br></video></p>
 <hr>
 <h3 id="AV1-10bit"><a href="#AV1-10bit" class="headerlink" title="AV1 10bit"></a>AV1 10bit</h3><p>1230V3 严重卡顿，8750H 卡顿，A12X 轻微卡顿，画质相比 8bit 提升极小</p>
-<pre class=" language-sh"><code class="language-sh">.\aomenc.exe --webm -w 1920 -h 1440 --fps=30/1 --cpu-used=4 --bit-depth=10 --color-primaries=bt709 --end-usage=cq --target-bitrate=1000 --passes=2 --pass=2 --fpf=10b.log -o 10b.webm y4m.y4m</code></pre>
-<video controls width="100%">
-    <source src="/media/AV1_10bit_HEAAC.mp4" type="video/webm">
-</video>
-
+<pre class=" language-bash"><code class="language-bash">.\aomenc.exe --webm -w 1920 -h 1440 --fps<span class="token operator">=</span>30/1 --cpu-used<span class="token operator">=</span>4 --bit-depth<span class="token operator">=</span>10 --color-primaries<span class="token operator">=</span>bt709 --end-usage<span class="token operator">=</span>cq --target-bitrate<span class="token operator">=</span>1000 --passes<span class="token operator">=</span>2 --pass<span class="token operator">=</span>2 --fpf<span class="token operator">=</span>10b.log -o 10b.webm y4m.y4m</code></pre>
+<p><video controls width="100%"><source src="/media/AV1_10bit_HEAAC.mp4" type="video/webm"><br></video></p>
 <hr>
-<h3 id="AV1-12bit"><a href="#AV1-12bit" class="headerlink" title="AV1 12bit"></a>AV1 12bit</h3><pre class=" language-sh"><code class="language-sh">.\aomenc.exe --webm -w 1920 -h 1440 --fps=30/1 --cpu-used=1 --bit-depth=12 --color-primaries=bt709 --end-usage=cq --target-bitrate=1000 --passes=2 --pass=2 --fpf=12b.log -o 12b.webm y4m.y4m</code></pre>
-<p>解码压力更大且有马赛克，画质相比 10bit 提升极小<br><video controls width="100%"><br>    <source src="/media/AV1_12bit_HEAAC.mp4" type="video/webm"><br></video></p>
+<h3 id="AV1-12bit"><a href="#AV1-12bit" class="headerlink" title="AV1 12bit"></a>AV1 12bit</h3><pre class=" language-bash"><code class="language-bash">.\aomenc.exe --webm -w 1920 -h 1440 --fps<span class="token operator">=</span>30/1 --cpu-used<span class="token operator">=</span>1 --bit-depth<span class="token operator">=</span>12 --color-primaries<span class="token operator">=</span>bt709 --end-usage<span class="token operator">=</span>cq --target-bitrate<span class="token operator">=</span>1000 --passes<span class="token operator">=</span>2 --pass<span class="token operator">=</span>2 --fpf<span class="token operator">=</span>12b.log -o 12b.webm y4m.y4m</code></pre>
+<p>解码压力更大并且有马赛克，画质相比 10bit 提升极小<br><video controls width="100%"><source src="/media/AV1_12bit_HEAAC.mp4" type="video/webm"><br></video></p>
 
             </div>
             <hr/>
@@ -458,7 +456,7 @@
             </div>
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
-                  property="dct:title" rel="dct:type">《AV1 编码测试视频》</span> 由 <a
+                  property="dct:title" rel="dct:type">《AV1 编码测试》</span> 由 <a
                     xmlns:cc="http://creativecommons.org/ns#" href="/2020/04/28/Misaka-Dances/"
                     property="cc:attributionName"
                     rel="cc:attributionURL">Konata</a> 采用
@@ -521,8 +519,8 @@
                                 
                                     <i class="fa fa-bookmark fa-fw icon-category"></i>
                                     
-                                        <a href="/categories/Admin/" class="post-category" target="_blank">
-                                    Admin
+                                        <a href="/categories/Ops/" class="post-category" target="_blank">
+                                    Ops
                                 </a>
                                     
                                 
@@ -575,8 +573,8 @@
                                 
                                     <i class="fa fa-bookmark fa-fw icon-category"></i>
                                     
-                                        <a href="/categories/音视频编码/" class="post-category" target="_blank">
-                                    音视频编码
+                                        <a href="/categories/Codec/" class="post-category" target="_blank">
+                                    Codec
                                 </a>
                                     
                                 

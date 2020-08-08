@@ -4,12 +4,12 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="移动 IIS INETPUB 文件夹到其他分区, 生命不息 折腾不止">
+    <meta name="keywords" content="移动 IIS inetpub 文件夹, 生命不息 折腾不止">
     <meta name="description" content="下载脚本Move IIS to another drive
-更改 PowerShell 执行脚本策略运行Get-ExecutionPolicy，查看当前执行策略：
+更改 PowerShell 执行脚本策略运行 Get-ExecutionPolicy ，查看当前执行策略：
 
-Restricted——禁止执行脚本（Windows 默认）
-Remote">
+Restricted ——禁止执行脚本（Windows 默认）
+Rem">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -23,7 +23,7 @@ Remote">
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#7312ff">
     <meta name="msapplication-TileColor" content="#8a46cc">
     <meta name="theme-color" content="#ffffff">
-    <title>移动 IIS INETPUB 文件夹到其他分区 | 生命不息 折腾不止</title>
+    <title>移动 IIS inetpub 文件夹 | 生命不息 折腾不止</title>
     <script type="application/javascript" src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
     <script type="application/javascript" src="https://cdn.jsdelivr.net/npm/jquery-ui-dist@1.12.1/jquery-ui.min.js"></script>
     <script type="application/javascript" src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
@@ -270,13 +270,13 @@ Remote">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/02.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/05.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        移动 IIS INETPUB 文件夹到其他分区
+                        移动 IIS inetpub 文件夹
                     </div>
                 </div>
             </div>
@@ -381,8 +381,8 @@ Remote">
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Admin/" class="post-category" target="_blank">
-                                Admin
+                            <a href="/categories/Ops/" class="post-category" target="_blank">
+                                Ops
                             </a>
                         
                     </div>
@@ -424,11 +424,11 @@ Remote">
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="下载脚本"><a href="#下载脚本" class="headerlink" title="下载脚本"></a>下载脚本</h2><p><a href="https://social.technet.microsoft.com/Forums/de-DE/7df03b2f-44fa-4cd3-b8f4-5c5e573a1295/iis-85-whats-best-way-to-move-inetpub-directory-to-another-drive?forum=winserversetup" target="_blank" rel="noopener">Move IIS to another drive</a></p>
-<h2 id="更改-PowerShell-执行脚本策略"><a href="#更改-PowerShell-执行脚本策略" class="headerlink" title="更改 PowerShell 执行脚本策略"></a>更改 PowerShell 执行脚本策略</h2><p>运行<code>Get-ExecutionPolicy</code>，查看当前执行策略：</p>
+<h2 id="更改-PowerShell-执行脚本策略"><a href="#更改-PowerShell-执行脚本策略" class="headerlink" title="更改 PowerShell 执行脚本策略"></a>更改 PowerShell 执行脚本策略</h2><p>运行 <code>Get-ExecutionPolicy</code> ，查看当前执行策略：</p>
 <ul>
-<li><code>Restricted</code>——禁止执行脚本（Windows 默认）</li>
-<li><code>RemoteSigned</code>——可以执行在本机上写的脚本或者远程下载的带签名的脚本（Windows Server 默认）</li>
-<li><code>Unrestricted</code>——可以执行所有脚本</li>
+<li><code>Restricted</code> ——禁止执行脚本（Windows 默认）</li>
+<li><code>RemoteSigned</code> ——可以执行在本机上写的脚本或者远程下载的带签名的脚本（Windows Server 默认）</li>
+<li><code>Unrestricted</code> ——可以执行所有脚本</li>
 </ul>
 <p>允许执行所有脚本：</p>
 <pre class=" language-powershell"><code class="language-powershell"><span class="token function">Set</span><span class="token operator">-</span>ExecutionPolicy <span class="token operator">-</span>ExecutionPolicy Unrestricted</code></pre>
@@ -436,15 +436,15 @@ Remote">
 <pre class=" language-powershell"><code class="language-powershell"><span class="token punctuation">.</span>\Move_IIS<span class="token punctuation">.</span>ps1 D:</code></pre>
 <h2 id="附脚本内容"><a href="#附脚本内容" class="headerlink" title="附脚本内容"></a>附脚本内容</h2><pre class=" language-powershell"><code class="language-powershell"><span class="token comment" spellcheck="true">#// Get new drive letter from parameters</span>
 <span class="token keyword">PARAM</span> <span class="token punctuation">(</span>
-    <span class="token namespace">[Parameter(Mandatory=$True)]</span>
-    <span class="token namespace">[string]</span><span class="token variable">$NewDrive</span><span class="token punctuation">,</span>
-    <span class="token namespace">[Parameter(Mandatory=$False)]</span>
-    <span class="token namespace">[switch]</span><span class="token variable">$Force</span>
+ <span class="token namespace">[Parameter(Mandatory=$True)]</span>
+ <span class="token namespace">[string]</span><span class="token variable">$NewDrive</span><span class="token punctuation">,</span>
+ <span class="token namespace">[Parameter(Mandatory=$False)]</span>
+ <span class="token namespace">[switch]</span><span class="token variable">$Force</span>
 <span class="token punctuation">)</span>
 
 <span class="token comment" spellcheck="true">#// Ensure the parameter is a sinlge character</span>
 <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$NewDrive</span><span class="token punctuation">.</span>Length <span class="token operator">-ne</span> 1<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token variable">$NewDrive</span> = <span class="token variable">$NewDrive</span><span class="token punctuation">.</span>Substring<span class="token punctuation">(</span>0<span class="token punctuation">,</span>1<span class="token punctuation">)</span>
+ <span class="token variable">$NewDrive</span> = <span class="token variable">$NewDrive</span><span class="token punctuation">.</span>Substring<span class="token punctuation">(</span>0<span class="token punctuation">,</span>1<span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 
 <span class="token comment" spellcheck="true">#// Create variables</span>
@@ -453,20 +453,20 @@ Remote">
 
 <span class="token comment" spellcheck="true">#// Check new drive actually exists</span>
 <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span><span class="token function">Test-Path</span> <span class="token variable">$NewDrive</span><span class="token string">":\"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token function">Write-Host</span> <span class="token string">"ERROR:"</span><span class="token variable">$NewDrive</span><span class="token string">":\ drive does not exist, stopping"</span>
-    <span class="token keyword">Exit</span>
+ <span class="token function">Write-Host</span> <span class="token string">"ERROR:"</span><span class="token variable">$NewDrive</span><span class="token string">":\ drive does not exist, stopping"</span>
+ <span class="token keyword">Exit</span>
 <span class="token punctuation">}</span>
 
 <span class="token comment" spellcheck="true">#// Test if already exists or Force param present</span>
 <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span><span class="token variable">$Force</span><span class="token punctuation">)</span> <span class="token operator">-And</span> <span class="token punctuation">(</span><span class="token function">Test-Path</span> <span class="token variable">$NewPath</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token function">Write-Host</span> <span class="token string">"ERROR: <span class="token variable">$NewPath</span> already exists, halting move"</span>
-    <span class="token keyword">Exit</span>
+ <span class="token function">Write-Host</span> <span class="token string">"ERROR: <span class="token variable">$NewPath</span> already exists, halting move"</span>
+ <span class="token keyword">Exit</span>
 <span class="token punctuation">}</span>
 
 <span class="token comment" spellcheck="true">#// Check IIS Installed</span>
 <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>Get<span class="token operator">-</span>WindowsFeature <span class="token operator">-</span>Name Web<span class="token operator">-</span>Server<span class="token punctuation">)</span><span class="token punctuation">.</span>InstallState <span class="token operator">-ne</span> <span class="token string">"Installed"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token function">Write-Host</span> <span class="token string">"ERROR: IIS not installed, stopping"</span>
-    <span class="token keyword">Exit</span>
+ <span class="token function">Write-Host</span> <span class="token string">"ERROR: IIS not installed, stopping"</span>
+ <span class="token keyword">Exit</span>
 <span class="token punctuation">}</span>
 
 <span class="token comment" spellcheck="true">#// stop services</span>
@@ -530,7 +530,7 @@ Remote">
             </div>
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
-                  property="dct:title" rel="dct:type">《移动 IIS INETPUB 文件夹到其他分区》</span> 由 <a
+                  property="dct:title" rel="dct:type">《移动 IIS inetpub 文件夹》</span> 由 <a
                     xmlns:cc="http://creativecommons.org/ns#" href="/2020/05/06/move-inetpub/"
                     property="cc:attributionName"
                     rel="cc:attributionURL">Konata</a> 采用
@@ -593,8 +593,8 @@ Remote">
                                 
                                     <i class="fa fa-bookmark fa-fw icon-category"></i>
                                     
-                                        <a href="/categories/Admin/" class="post-category" target="_blank">
-                                    Admin
+                                        <a href="/categories/Ops/" class="post-category" target="_blank">
+                                    Ops
                                 </a>
                                     
                                 

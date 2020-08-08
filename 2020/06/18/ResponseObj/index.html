@@ -370,12 +370,12 @@ HTTP 响应消息响应行
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/JAVA/" target="_blank">
-                                <span class="chip bg-color">JAVA</span>
-                            </a>
-                        
                             <a href="/tags/JSP/" target="_blank">
                                 <span class="chip bg-color">JSP</span>
+                            </a>
+                        
+                            <a href="/tags/Java/" target="_blank">
+                                <span class="chip bg-color">Java</span>
                             </a>
                         
                     </div>
@@ -386,8 +386,8 @@ HTTP 响应消息响应行
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/JAVA/" class="post-category" target="_blank">
-                                JAVA
+                            <a href="/categories/Java/" class="post-category" target="_blank">
+                                Java
                             </a>
                         
                     </div>
@@ -405,7 +405,7 @@ HTTP 响应消息响应行
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        809
+                        800
                     </div>
                     
 
@@ -521,47 +521,42 @@ response<span class="token punctuation">.</span><span class="token function">sen
 </ul>
 </li>
 </ul>
-<pre class=" language-java"><code class="language-java">        <span class="token comment" spellcheck="true">//简单的形式，设置编码，是在获取流之前设置</span>
-        response<span class="token punctuation">.</span><span class="token function">setContentType</span><span class="token punctuation">(</span><span class="token string">"text/html;charset=utf-8"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        ```
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//简单的形式，设置编码，是在获取流之前设置</span>
+response<span class="token punctuation">.</span><span class="token function">setContentType</span><span class="token punctuation">(</span><span class="token string">"text/html;charset=utf-8"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h2 id="ServletContext-对象"><a href="#ServletContext-对象" class="headerlink" title="ServletContext 对象"></a>ServletContext 对象</h2><p>代表整个 web 应用，可以和程序的容器（服务器）来通信</p>
+<h3 id="获取"><a href="#获取" class="headerlink" title="获取"></a>获取</h3><ol>
+<li><p>通过 request 对象获取  </p>
+<p><code>request.getServletContext();</code></p>
+</li>
+<li><p>通过 HttpServlet 获取  </p>
+<p><code>this.getServletContext();</code></p>
+</li>
+</ol>
+<h3 id="功能-1"><a href="#功能-1" class="headerlink" title="功能"></a>功能</h3><ol>
+<li><p>获取 MIME 类型：</p>
+<p><code>String getMimeType(String file)</code></p>
+</li>
+<li><p>域对象：共享数据</p>
+<ol>
+<li><code>setAttribute(String name,Object value)</code></li>
+<li><code>getAttribute(String name)</code></li>
+<li><code>removeAttribute(String name)</code><blockquote>
+<p>ServletContext 对象范围：所有用户所有请求的数据</p>
+</blockquote>
+</li>
+</ol>
+</li>
+<li><p>获取文件的真实（服务器）路径 <code>String getRealPath(String path)</code></p>
+</li>
+</ol>
+<pre class=" language-java"><code class="language-java">String b <span class="token operator">=</span> context<span class="token punctuation">.</span><span class="token function">getRealPath</span><span class="token punctuation">(</span><span class="token string">"/b.txt"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//web 目录下资源访问</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-## ServletContext 对象
+String c <span class="token operator">=</span> context<span class="token punctuation">.</span><span class="token function">getRealPath</span><span class="token punctuation">(</span><span class="token string">"/WEB-INF/c.txt"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//WEB-INF 目录下的资源访问</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-代表整个 web 应用，可以和程序的容器（服务器）来通信
-
-### 获取
-
-<span class="token number">1</span><span class="token punctuation">.</span> 通过 request 对象获取  
-
- `request<span class="token punctuation">.</span><span class="token function">getServletContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>`
-<span class="token number">2</span><span class="token punctuation">.</span> 通过 HttpServlet 获取  
-
- `<span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getServletContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>`
-
-### 功能
-
-<span class="token number">1</span><span class="token punctuation">.</span> 获取 MIME 类型：
-
- `String <span class="token function">getMimeType</span><span class="token punctuation">(</span>String file<span class="token punctuation">)</span>`
-<span class="token number">2</span><span class="token punctuation">.</span> 域对象：共享数据
-    <span class="token number">1</span><span class="token punctuation">.</span> `<span class="token function">setAttribute</span><span class="token punctuation">(</span>String name<span class="token punctuation">,</span>Object value<span class="token punctuation">)</span>`
-    <span class="token number">2</span><span class="token punctuation">.</span> `<span class="token function">getAttribute</span><span class="token punctuation">(</span>String name<span class="token punctuation">)</span>`
-    <span class="token number">3</span><span class="token punctuation">.</span> `<span class="token function">removeAttribute</span><span class="token punctuation">(</span>String name<span class="token punctuation">)</span>`
-    <span class="token operator">></span> ServletContext 对象范围：所有用户所有请求的数据
-
-<span class="token number">3</span><span class="token punctuation">.</span> 获取文件的真实（服务器）路径 `String <span class="token function">getRealPath</span><span class="token punctuation">(</span>String path<span class="token punctuation">)</span>`
-
-
-``` java
-    String b <span class="token operator">=</span> context<span class="token punctuation">.</span><span class="token function">getRealPath</span><span class="token punctuation">(</span><span class="token string">"/b.txt"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//web 目录下资源访问</span>
-    System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    String c <span class="token operator">=</span> context<span class="token punctuation">.</span><span class="token function">getRealPath</span><span class="token punctuation">(</span><span class="token string">"/WEB-INF/c.txt"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//WEB-INF 目录下的资源访问</span>
-    System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    String a <span class="token operator">=</span> context<span class="token punctuation">.</span><span class="token function">getRealPath</span><span class="token punctuation">(</span><span class="token string">"/WEB-INF/classes/a.txt"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//src 目录下的资源访问</span>
-    System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    ```</code></pre>
+String a <span class="token operator">=</span> context<span class="token punctuation">.</span><span class="token function">getRealPath</span><span class="token punctuation">(</span><span class="token string">"/WEB-INF/classes/a.txt"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//src 目录下的资源访问</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 
             </div>
             <hr/>
@@ -649,8 +644,8 @@ response<span class="token punctuation">.</span><span class="token function">sen
                                 
                                     <i class="fa fa-bookmark fa-fw icon-category"></i>
                                     
-                                        <a href="/categories/JAVA/" class="post-category" target="_blank">
-                                    JAVA
+                                        <a href="/categories/Java/" class="post-category" target="_blank">
+                                    Java
                                 </a>
                                     
                                 
@@ -660,12 +655,12 @@ response<span class="token punctuation">.</span><span class="token function">sen
                     
                         <div class="card-action article-tags">
                             
-                                <a href="/tags/JAVA/" target="_blank">
-                                    <span class="chip bg-color">JAVA</span>
-                                </a>
-                            
                                 <a href="/tags/JSP/" target="_blank">
                                     <span class="chip bg-color">JSP</span>
+                                </a>
+                            
+                                <a href="/tags/Java/" target="_blank">
+                                    <span class="chip bg-color">Java</span>
                                 </a>
                             
                         </div>
@@ -707,8 +702,8 @@ response<span class="token punctuation">.</span><span class="token function">sen
                                 
                                     <i class="fa fa-bookmark fa-fw icon-category"></i>
                                     
-                                        <a href="/categories/JAVA/" class="post-category" target="_blank">
-                                    JAVA
+                                        <a href="/categories/Java/" class="post-category" target="_blank">
+                                    Java
                                 </a>
                                     
                                 
@@ -718,12 +713,12 @@ response<span class="token punctuation">.</span><span class="token function">sen
                     
                         <div class="card-action article-tags">
                             
-                                <a href="/tags/JAVA/" target="_blank">
-                                    <span class="chip bg-color">JAVA</span>
-                                </a>
-                            
                                 <a href="/tags/JSP/" target="_blank">
                                     <span class="chip bg-color">JSP</span>
+                                </a>
+                            
+                                <a href="/tags/Java/" target="_blank">
+                                    <span class="chip bg-color">Java</span>
                                 </a>
                             
                         </div>

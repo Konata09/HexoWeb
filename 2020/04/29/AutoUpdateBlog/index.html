@@ -377,8 +377,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Admin/" class="post-category" target="_blank">
-                                Admin
+                            <a href="/categories/Ops/" class="post-category" target="_blank">
+                                Ops
                             </a>
                         
                     </div>
@@ -396,7 +396,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        347
+                        455
                     </div>
                     
 
@@ -421,46 +421,46 @@
             <div id="articleContent">
                 <h2 id="什么是-Webhook"><a href="#什么是-Webhook" class="headerlink" title="什么是 Webhook"></a>什么是 Webhook</h2><p>Webhook 就像一个回调函数，允许当设定的 GitHub 事件被触发时，发送特定的请求到指定的 URL。利用这一点，我们可以在将本地博客提交至 GitHub 时，自动发送通知到博客服务器，执行 git pull 操作来更新服务器上的文件。</p>
 <h2 id="使用-webhook-工具当作监听程序"><a href="#使用-webhook-工具当作监听程序" class="headerlink" title="使用 webhook 工具当作监听程序"></a>使用 webhook 工具当作监听程序</h2><p>有一个叫 <a href="https://github.com/adnanh/webhook" target="_blank" rel="noopener">webhook</a> 工具可以帮我们执行监听并执行脚本的工作。官方文档上有比较详细的安装与配置教程。<br>我的配置文件：</p>
-<pre class=" language-json"><code class="language-json">  <span class="token punctuation">{</span>
-    <span class="token property">"id"</span><span class="token operator">:</span> <span class="token string">"hexo-webhook"</span><span class="token punctuation">,</span>
-    <span class="token property">"execute-command"</span><span class="token operator">:</span> <span class="token string">"/home/hexo-redeploy-webhook.sh"</span><span class="token punctuation">,</span>
-    <span class="token property">"command-working-directory"</span><span class="token operator">:</span> <span class="token string">"/home"</span><span class="token punctuation">,</span>
-    <span class="token property">"trigger-rule"</span><span class="token operator">:</span>
-    <span class="token punctuation">{</span>
-      <span class="token property">"and"</span><span class="token operator">:</span>
-      <span class="token punctuation">[</span>
+<pre class=" language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"id"</span><span class="token operator">:</span> <span class="token string">"hexo-webhook"</span><span class="token punctuation">,</span>
+  <span class="token property">"execute-command"</span><span class="token operator">:</span> <span class="token string">"/home/hexo-redeploy-webhook.sh"</span><span class="token punctuation">,</span>
+  <span class="token property">"command-working-directory"</span><span class="token operator">:</span> <span class="token string">"/home"</span><span class="token punctuation">,</span>
+  <span class="token property">"trigger-rule"</span><span class="token operator">:</span>
+  <span class="token punctuation">{</span>
+    <span class="token property">"and"</span><span class="token operator">:</span>
+    <span class="token punctuation">[</span>
+      <span class="token punctuation">{</span>
+        <span class="token property">"match"</span><span class="token operator">:</span>
         <span class="token punctuation">{</span>
-          <span class="token property">"match"</span><span class="token operator">:</span>
+          <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"payload-hash-sha1"</span><span class="token punctuation">,</span>
+          <span class="token property">"secret"</span><span class="token operator">:</span> <span class="token string">"secret"</span><span class="token punctuation">,</span>
+          <span class="token property">"parameter"</span><span class="token operator">:</span>
           <span class="token punctuation">{</span>
-            <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"payload-hash-sha1"</span><span class="token punctuation">,</span>
-            <span class="token property">"secret"</span><span class="token operator">:</span> <span class="token string">"secret"</span><span class="token punctuation">,</span>
-            <span class="token property">"parameter"</span><span class="token operator">:</span>
-            <span class="token punctuation">{</span>
-              <span class="token property">"source"</span><span class="token operator">:</span> <span class="token string">"header"</span><span class="token punctuation">,</span>
-              <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"X-Hub-Signature"</span>
-            <span class="token punctuation">}</span>
+            <span class="token property">"source"</span><span class="token operator">:</span> <span class="token string">"header"</span><span class="token punctuation">,</span>
+            <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"X-Hub-Signature"</span>
           <span class="token punctuation">}</span>
         <span class="token punctuation">}</span>
-      <span class="token punctuation">]</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span></code></pre>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
 <h2 id="打开-Github-的-Webhook-功能"><a href="#打开-Github-的-Webhook-功能" class="headerlink" title="打开 Github 的 Webhook 功能"></a>打开 Github 的 Webhook 功能</h2><p>在 GitHub 上相应仓库的 Settings 中找到 Webhook 功能，添加一个钩子， <code>Payload URL</code> 填入服务器监听地址， <code>Content type</code> 选择 <code>application/x-www-form-urlencoded</code> ， <code>Secret</code> 填入上面配置文件中的 <code>secret</code> ，钩子触发中选择 push 事件，勾选 Active，这样 GitHub 端就配置完成了。</p>
 <h2 id="编写自动更新脚本"><a href="#编写自动更新脚本" class="headerlink" title="编写自动更新脚本"></a>编写自动更新脚本</h2><p>因为服务器的 webhook 触发之后执行的是一个命令，还需要一个 shell 脚本来对博客部署目录进行更新。<br>脚本如下，因为国内网络到 GitHub 的连通性奇差，所以加入了拉取失败重试的机制。  </p>
-<pre class=" language-sh"><code class="language-sh">#!/bin/bash
-cd /srv/nginx/hexo_root
+<pre class=" language-bash"><code class="language-bash"><span class="token shebang important">#!/bin/bash</span>
+<span class="token function">cd</span> /srv/nginx/hexo_root
 
-retry=0
+retry<span class="token operator">=</span>0
 
-while(( $retry<=5 ))
-do
-        git pull
-        if [ $? -eq 0 ]; then
-                echo "git pull SUCCESS."
-                break
-        fi
-        $retry=$retry + 1
-        echo "git pull FAIL. Retrying $retry time(s)."
-done</code></pre>
+<span class="token keyword">while</span><span class="token variable"><span class="token punctuation">((</span> $retry<span class="token operator">&lt;=</span><span class="token number">5</span> <span class="token punctuation">))</span></span>
+<span class="token keyword">do</span>
+    <span class="token function">git</span> pull
+    <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token variable">$?</span> -eq 0 <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+            <span class="token keyword">echo</span> <span class="token string">"git pull SUCCESS."</span>
+            <span class="token keyword">break</span>
+    <span class="token keyword">fi</span>
+    <span class="token variable">$retry</span><span class="token operator">=</span><span class="token variable">$retry</span> + 1
+    <span class="token keyword">echo</span> <span class="token string">"git pull FAIL. Retrying <span class="token variable">$retry</span> time(s)."</span>
+<span class="token keyword">done</span></code></pre>
 <blockquote>
 <p><strong>一个坑</strong><br>git 如果要设置代理的话，一定要使用 <code>git config --system https.proxy socks5://127.0.0.1:1080</code> 设置，不要使用 <code>--global</code> 参数设置  </p>
 </blockquote>
@@ -582,11 +582,11 @@ done</code></pre>
                             
                                 
                                 <div class="lazy-image-wrapper">
-                                    <img data-src="/medias/featureimages/07.jpg" class="responsive-img lazyload"
-                                         alt="AV1 编码测试视频">
+                                    <img data-src="/medias/featureimages/17.jpg" class="responsive-img lazyload"
+                                         alt="AV1 编码测试">
                                 </div>
                             
-                            <span class="card-title">AV1 编码测试视频</span>
+                            <span class="card-title">AV1 编码测试</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
@@ -604,8 +604,8 @@ done</code></pre>
                                 
                                     <i class="fa fa-bookmark fa-fw icon-category"></i>
                                     
-                                        <a href="/categories/音视频编码/" class="post-category" target="_blank">
-                                    音视频编码
+                                        <a href="/categories/Codec/" class="post-category" target="_blank">
+                                    Codec
                                 </a>
                                     
                                 
