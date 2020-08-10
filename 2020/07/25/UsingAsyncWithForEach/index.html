@@ -5,9 +5,9 @@
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     <meta name="keywords" content="遍历数组时使用异步方法, 生命不息 折腾不止">
-    <meta name="description" content="在遍历数组时，如果在对每个元素的回调中使用异步方法，不能使用 forEach 遍历。错误的例子：
+    <meta name="description" content="在遍历数组时，如果在对每个元素的回调中使用异步方法，不能使用 forEach() 遍历。错误的例子：
 async function walkPath(path) {
-    let fileList = await fsPromises.rea">
+    let fileList = await fsPromises.r">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -429,7 +429,7 @@ async function walkPath(path) {
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>在遍历数组时，如果在对每个元素的回调中使用异步方法，<b>不能使用 forEach 遍历</b>。<br><b style="color: red">错误</b>的例子：</p>
+                <p>在遍历数组时，如果在对每个元素的回调中使用异步方法，<b>不能使用 <code>forEach()</code> 遍历</b>。<br><b style="color: red">错误</b>的例子：</p>
 <pre class=" language-js"><code class="language-js"><span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">walkPath</span><span class="token punctuation">(</span>path<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">let</span> fileList <span class="token operator">=</span> <span class="token keyword">await</span> fsPromises<span class="token punctuation">.</span><span class="token function">readdir</span><span class="token punctuation">(</span>path<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token punctuation">(</span>resolve<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
@@ -439,7 +439,7 @@ async function walkPath(path) {
         <span class="token function">resolve</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span></code></pre>
-<p><b style="color: green">正确</b>的例子：<br>可以使用 map 来代替 forEach：  </p>
+<p><b style="color: green">正确</b>的例子：<br>可以使用 <code>map()</code> 来代替 <code>forEach()</code> ：  </p>
 <pre class=" language-js"><code class="language-js"><span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">walkPath</span><span class="token punctuation">(</span>path<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">let</span> fileList <span class="token operator">=</span> <span class="token keyword">await</span> fsPromises<span class="token punctuation">.</span><span class="token function">readdir</span><span class="token punctuation">(</span>path<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token punctuation">(</span>resolve<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>

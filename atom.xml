@@ -101,7 +101,7 @@
     <link href="http://konata.tech/2020/07/25/UsingAsyncWithForEach/"/>
     <id>http://konata.tech/2020/07/25/UsingAsyncWithForEach/</id>
     <published>2020-07-25T11:08:16.000Z</published>
-    <updated>2020-07-25T13:49:09.733Z</updated>
+    <updated>2020-08-10T03:15:57.735Z</updated>
     
     <summary type="html">
     
@@ -109,7 +109,7 @@
       
         
         
-          &lt;p&gt;在遍历数组时，如果在对每个元素的回调中使用异步方法，&lt;b&gt;不能使用 forEach 遍历&lt;/b&gt;。&lt;br&gt;&lt;b style=&quot;color: red&quot;&gt;错误&lt;/b&gt;的例子：&lt;/p&gt;
+          &lt;p&gt;在遍历数组时，如果在对每个元素的回调中使用异步方法，&lt;b&gt;不能使用 &lt;code&gt;forEach()&lt;/code&gt; 遍历&lt;/b&gt;。&lt;br&gt;&lt;b style=&quot;color: red&quot;&gt;错误&lt;/b&gt;的例子：&lt;/p&gt;
 &lt;pre class=&quot; language-js&quot;&gt;&lt;code
         
       
@@ -228,9 +228,9 @@
       <category term="Java" scheme="http://konata.tech/categories/Java/"/>
     
     
-      <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
-    
       <category term="Java" scheme="http://konata.tech/tags/Java/"/>
+    
+      <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
     
   </entry>
   
@@ -256,9 +256,9 @@
       <category term="Java" scheme="http://konata.tech/categories/Java/"/>
     
     
-      <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
-    
       <category term="Java" scheme="http://konata.tech/tags/Java/"/>
+    
+      <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
     
   </entry>
   
@@ -284,9 +284,9 @@
       <category term="Java" scheme="http://konata.tech/categories/Java/"/>
     
     
-      <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
-    
       <category term="Java" scheme="http://konata.tech/tags/Java/"/>
+    
+      <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
     
   </entry>
   
@@ -313,9 +313,9 @@
       <category term="Java" scheme="http://konata.tech/categories/Java/"/>
     
     
-      <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
-    
       <category term="Java" scheme="http://konata.tech/tags/Java/"/>
+    
+      <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
     
   </entry>
   
@@ -341,9 +341,9 @@
       <category term="Java" scheme="http://konata.tech/categories/Java/"/>
     
     
-      <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
-    
       <category term="Java" scheme="http://konata.tech/tags/Java/"/>
+    
+      <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
     
   </entry>
   
@@ -369,9 +369,9 @@
       <category term="Java" scheme="http://konata.tech/categories/Java/"/>
     
     
-      <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
-    
       <category term="Java" scheme="http://konata.tech/tags/Java/"/>
+    
+      <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
     
   </entry>
   
@@ -449,9 +449,9 @@
       <category term="Java" scheme="http://konata.tech/categories/Java/"/>
     
     
-      <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
-    
       <category term="Java" scheme="http://konata.tech/tags/Java/"/>
+    
+      <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
     
   </entry>
   
