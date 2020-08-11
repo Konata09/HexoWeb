@@ -24,7 +24,6 @@
     <script type="application/javascript" src="https://cdn.jsdelivr.net/npm/jquery-ui-dist@1.12.1/jquery-ui.min.js"></script>
     <script type="application/javascript" src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
     <script async type="application/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.0/lazysizes.min.js"></script>
-    <script type="application/javascript" src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
@@ -348,105 +347,97 @@ document.getElementsByClassName('bg-cover')[0].style.backgroundImage = "url('/me
 </div>
                     
 
-                    
-                        
-
-<link rel="stylesheet" href="">
-<div class="music-player" style="display: none">
-    
-    <div class="row">
-        <div class="col l8 offset-l2 m10 offset-m1 s12">
-            <div id="aplayer" class="music"></div>
-        </div>
-    </div>
-</div>
-
+                        <iframe src="/media/silence.mp3" allow="autoplay" id="slience-audio" style="display: none"></iframe>
 <script>
-    function playBGMByNavigator() {
-        window.ap1 = new APlayer({
-            container: document.getElementById('aplayer'),
-            fixed: 'true' === 'true',
-            autoplay: 'true' === 'true',
-            theme: '#3e3e3e',
-            loop: 'all',
-            order: 'list',
-            preload: 'metadata',
-            volume: Number('0.5'),
-            listFolded: 'false' === 'true',
-            listMaxHeight: '',
-            audio: [
-                {
-                    "url": "/media/Music8_2_index.opus"
-                },
-                {
-                    "url": "/media/Music3_2.ogg"
-                },
-                {
-                    "url": "/media/Music0_1_index.ogg"
-                },
-                {
-                    "url": "/media/Music0_5_index.ogg"
-                },
-                {
-                    "url": "/media/Music5_3_index.ogg"
-                },
-                {
-                    "url": "/media/Music31_6_index.ogg"
-                },
-                {
-                    "url": "/media/Music15_4_index.ogg"
-                },
-                {
-                    "url": "/media/Music26_1_index.ogg"
-                },
-                {
-                    "url": "/media/Music19_5_index.ogg"
-                },
-                {
-                    "url": "/media/Music5_2_index.ogg"
-                },
-                {
-                    "url": "/media/Music1_2_index.ogg"
-                },
-                {
-                    "url": "/media/Music14_1.ogg"
-                },
-                {
-                    "url": "/media/Music27_3_index.ogg"
-                },
-                {
-                    "url": "/media/Music13_1_index.ogg"
-                },
-                {
-                    "url": "/media/Music26_9_index.ogg"
-                }
-            ]
+    const musicList = [
+        "/media/Music8_2_index.opus",
+        "/media/Music3_2.ogg",
+        "/media/Music0_1_index.ogg",
+        "/media/Music0_5_index.ogg",
+        "/media/Music5_3_index.ogg",
+        "/media/Music31_6_index.ogg",
+        "/media/Music15_4_index.ogg",
+        "/media/Music26_1_index.ogg",
+        "/media/Music19_5_index.ogg",
+        "/media/Music5_2_index.ogg",
+        "/media/Music1_2_index.ogg",
+        "/media/Music14_1.ogg",
+        "/media/Music27_3_index.ogg",
+        "/media/Music13_1_index.ogg",
+        "/media/Music26_9_index.ogg"
+    ];
+    let currentTrack = 0;
+    const audioObj = new Audio();
+
+    const getAudioUrl = (trackNo) => {
+        return musicList[trackNo];
+    }
+    const nextTrack = () => {
+        if (currentTrack >= musicList.length - 1) {
+            currentTrack = 0;
+        } else {
+            currentTrack++;
+        }
+        audioObj.src = getAudioUrl(currentTrack);
+    }
+
+    const initPlayer = () => {
+        audioObj.autoplay = true;
+        audioObj.volume = 0.7;
+        audioObj.src = getAudioUrl(0);
+        audioObj.addEventListener("canplay", () => {
+            console.log('Audio canplay')
+            audioObj.play().then(() => (console.log('canAutoplay True'))).catch(e => canNotAutoplay(e));
         });
-
     }
 
-    $(window).ready(function () {
-        playBGMByNavigator();
-        var unmute = document.getElementById("audioOff");
-        var mute = document.getElementById("audioOn");
-        mute.addEventListener("click", BGMmute);
-        unmute.addEventListener("click", BGMunmute);
-    })
-
-    function BGMmute() {
-        ap1.pause();
-        document.getElementById("audioOn").style.display = "none";
-        document.getElementById("audioOff").style.display = "block";
+    const canNotAutoplay = (e) => {
+        console.log('canAutoplay False');
+        console.log(e);
+        document.addEventListener("DOMContentLoaded", () => {
+            console.log('DOMContentLoaded')
+            // 触摸播放
+            document.addEventListener("touchstart", clickPlay, false);
+            // 点击播放
+            document.addEventListener("click", clickPlay, false);
+            // 指针移动播放
+            document.getElementsByClassName('bg-cover')[0].addEventListener('mousemove', clickPlay, false);
+        });
     }
 
-    function BGMunmute() {
-        document.getElementById("audioOn").style.display = "block";
-        document.getElementById("audioOff").style.display = "none";
-        ap1.play();
+    const clickPlay = () => {
+        if (audioObj.played.length === 0)
+            audioObj.play().then(() => {
+                document.removeEventListener("touchstart", clickPlay, false);
+                document.removeEventListener("click", clickPlay, false);
+                document.getElementsByClassName('bg-cover')[0].removeEventListener('mousemove', clickPlay, false);
+            }).catch(e => console.log(`can not autoplay: ${e}`));
     }
+
+    audioObj.addEventListener("ended", () => {
+        nextTrack();
+    });
+
+    initPlayer();
+
+    document.addEventListener("DOMContentLoaded", () => {
+        console.log('DOMContentLoaded')
+        const unmuteBtn = document.getElementById("audioOff");
+        const muteBtn = document.getElementById("audioOn");
+        muteBtn.addEventListener("click", () => {
+            audioObj.pause();
+            muteBtn.style.display = "none";
+            unmuteBtn.style.display = "block";
+        });
+        unmuteBtn.addEventListener("click", () => {
+            muteBtn.style.display = "block";
+            unmuteBtn.style.display = "none";
+            audioObj.play();
+        });
+    });
+
 </script>
 
-                    
 
                     
 
@@ -1239,67 +1230,15 @@ $(function () {
 <script src="/live2d/live2d.js" async></script>
 
 <script>
-    $(document).ready(() => {
-        NProgress.set(0.4);
-        NProgress.start();
-        //ios触摸播放
-        var paused = ap1.audio.paused;
-        document.addEventListener("touchstart", function () {
-            if (paused) {
-                ap1.play();
-                paused = false;
-            }
-        }, false);
-        //Chrome点击播放
-        document.addEventListener("click", function () {
-            if (paused) {
-                ap1.play();
-                paused = false;
-            }
-        }, false);
-        $('.bg-cover').mousemove(function(e){
-            if (paused) {
-                ap1.play();
-                paused = false;
-            }
-        });
-    })
-
-    $('.waifu-tool .fui-volume').click(() => {
-        let vol = ap1.audio.volume;
-        let volInt = ((vol + 0.1) * 100).toFixed(0);
-        if (vol < 1.0) {
-            ap1.volume(vol + 0.1);
-            showMessage("音量增大到" + volInt + "%了哦", 1300, true);
-        } else {
-            showMessage("声音不能再大啦", 1300, true);
-        }
-
-    });
-    $('.waifu-tool .fui-mute').click(() => {
-        let vol = ap1.audio.volume;
-        let volInt = ((vol - 0.1) * 100).toFixed(0);
-        if (vol > 0.1) {
-            ap1.volume(vol - 0.1);
-            showMessage("音量减小到" + volInt + "%了哦", 1300, true);
-        } else {
-            showMessage("声音不能再小啦", 1300, true);
-        }
-    });
-
     $('.fa-heart-o').click(() => {
         $('.bg-cover').css('background-image', 'url(/medias/banner/2.jpg)');
     });
+    document.addEventListener("DOMContentLoaded", () => {
+        NProgress.set(0.4);
+        NProgress.start();
+    });
     window.onload = function () {
         NProgress.done();
-        // ap1.play();
-        var paused = ap1.audio.paused;
-        $('.bg-cover').mousemove(function(e){
-            if (paused) {
-                ap1.play();
-                paused = false;
-            }
-        });
     }
 </script>
 </body>

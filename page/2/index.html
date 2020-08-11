@@ -24,7 +24,6 @@
     <script type="application/javascript" src="https://cdn.jsdelivr.net/npm/jquery-ui-dist@1.12.1/jquery-ui.min.js"></script>
     <script type="application/javascript" src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
     <script async type="application/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.0/lazysizes.min.js"></script>
-    <script type="application/javascript" src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
@@ -1063,67 +1062,15 @@ $(function () {
 <script src="/live2d/live2d.js" async></script>
 
 <script>
-    $(document).ready(() => {
-        NProgress.set(0.4);
-        NProgress.start();
-        //ios触摸播放
-        var paused = ap1.audio.paused;
-        document.addEventListener("touchstart", function () {
-            if (paused) {
-                ap1.play();
-                paused = false;
-            }
-        }, false);
-        //Chrome点击播放
-        document.addEventListener("click", function () {
-            if (paused) {
-                ap1.play();
-                paused = false;
-            }
-        }, false);
-        $('.bg-cover').mousemove(function(e){
-            if (paused) {
-                ap1.play();
-                paused = false;
-            }
-        });
-    })
-
-    $('.waifu-tool .fui-volume').click(() => {
-        let vol = ap1.audio.volume;
-        let volInt = ((vol + 0.1) * 100).toFixed(0);
-        if (vol < 1.0) {
-            ap1.volume(vol + 0.1);
-            showMessage("音量增大到" + volInt + "%了哦", 1300, true);
-        } else {
-            showMessage("声音不能再大啦", 1300, true);
-        }
-
-    });
-    $('.waifu-tool .fui-mute').click(() => {
-        let vol = ap1.audio.volume;
-        let volInt = ((vol - 0.1) * 100).toFixed(0);
-        if (vol > 0.1) {
-            ap1.volume(vol - 0.1);
-            showMessage("音量减小到" + volInt + "%了哦", 1300, true);
-        } else {
-            showMessage("声音不能再小啦", 1300, true);
-        }
-    });
-
     $('.fa-heart-o').click(() => {
         $('.bg-cover').css('background-image', 'url(/medias/banner/2.jpg)');
     });
+    document.addEventListener("DOMContentLoaded", () => {
+        NProgress.set(0.4);
+        NProgress.start();
+    });
     window.onload = function () {
         NProgress.done();
-        // ap1.play();
-        var paused = ap1.audio.paused;
-        $('.bg-cover').mousemove(function(e){
-            if (paused) {
-                ap1.play();
-                paused = false;
-            }
-        });
     }
 </script>
 </body>

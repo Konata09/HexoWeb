@@ -132,7 +132,7 @@ function initModel(waifuPath, type) {
     if (sessionStorage.getItem('waifu-dsiplay') === 'none') {
         $('.waifu').hide();
         return;
-    }else{
+    } else {
         $('.waifu').show();
     }
     /* console welcome message */
@@ -492,4 +492,27 @@ function loadTipsMessage(result) {
     $('.waifu-tool .fui-chat').click(function () {
         showHitokoto()
     });
+
+    document.querySelectorAll('.waifu-tool .fui-volume')[0].addEventListener('click', () => {
+        const vol = audioObj.volume;
+        const volInt = ((vol + 0.1) * 100).toFixed(0);
+        if (vol <= 0.9) {
+            audioObj.volume = vol + 0.1;
+            showMessage("音量增大到" + volInt + "%了哦", 1300, true);
+        } else {
+            audioObj.volume = 1;
+            showMessage("声音不能再大啦", 1300, true);
+        }
+    })
+
+    document.querySelectorAll('.waifu-tool .fui-mute')[0].addEventListener('click', () => {
+        const vol = audioObj.volume;
+        const volInt = ((vol - 0.1) * 100).toFixed(0);
+        if (vol > 0.1) {
+            audioObj.volume = vol - 0.1;
+            showMessage("音量减小到" + volInt + "%了哦", 1300, true);
+        } else {
+            showMessage("声音不能再小啦", 1300, true);
+        }
+    })
 }

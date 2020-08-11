@@ -24,7 +24,6 @@
     <script type="application/javascript" src="https://cdn.jsdelivr.net/npm/jquery-ui-dist@1.12.1/jquery-ui.min.js"></script>
     <script type="application/javascript" src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
     <script async type="application/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.0/lazysizes.min.js"></script>
-    <script type="application/javascript" src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
@@ -309,10 +308,19 @@ document.getElementsByClassName('bg-cover')[0].style.backgroundImage = "url('/me
                 </a>
                 
                 
+                <a href="/tags/Shell/" title="Shell: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="Shell" style="background-color: #F5EEF8;">Shell
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/tags/Java/" title="Java: 10">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="Java" style="background-color: #F5EEF8;">Java
+                            data-tagname="Java" style="background-color: #D5F5E3;">Java
                         <span class="tag-length">10</span>
                     </span>
                 </a>
@@ -321,7 +329,7 @@ document.getElementsByClassName('bg-cover')[0].style.backgroundImage = "url('/me
                 <a href="/tags/JSP/" title="JSP: 8">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="JSP" style="background-color: #D5F5E3;">JSP
+                            data-tagname="JSP" style="background-color: #E8F8F5;">JSP
                         <span class="tag-length">8</span>
                     </span>
                 </a>
@@ -330,16 +338,7 @@ document.getElementsByClassName('bg-cover')[0].style.backgroundImage = "url('/me
                 <a href="/tags/Performance/" title="Performance: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="Performance" style="background-color: #E8F8F5;">Performance
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/Shell/" title="Shell: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="Shell" style="background-color: #FEF9E7;">Shell
+                            data-tagname="Performance" style="background-color: #FEF9E7;">Performance
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -381,19 +380,10 @@ document.getElementsByClassName('bg-cover')[0].style.backgroundImage = "url('/me
                 </a>
                 
                 
-                <a href="/tags/AV1/" title="AV1: 2">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="AV1" style="background-color: #85C1E9;">AV1
-                        <span class="tag-length">2</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/tags/Nginx/" title="Nginx: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-active "
-                            data-tagname="Nginx" style="background-color: #F8C471;">Nginx
+                            data-tagname="Nginx" style="background-color: #85C1E9;">Nginx
                         <span class="tag-length">2</span>
                     </span>
                 </a>
@@ -402,7 +392,7 @@ document.getElementsByClassName('bg-cover')[0].style.backgroundImage = "url('/me
                 <a href="/tags/Vorbis/" title="Vorbis: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="Vorbis" style="background-color: #F9E79F;">Vorbis
+                            data-tagname="Vorbis" style="background-color: #F8C471;">Vorbis
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -413,6 +403,15 @@ document.getElementsByClassName('bg-cover')[0].style.backgroundImage = "url('/me
                              chip-default "
                             data-tagname="Opus" style="background-color: #F9E79F;">Opus
                         <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/AV1/" title="AV1: 2">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="AV1" style="background-color: #F9E79F;">AV1
+                        <span class="tag-length">2</span>
                     </span>
                 </a>
                 
@@ -701,67 +700,15 @@ $(function () {
 <script src="/live2d/live2d.js" async></script>
 
 <script>
-    $(document).ready(() => {
-        NProgress.set(0.4);
-        NProgress.start();
-        //ios触摸播放
-        var paused = ap1.audio.paused;
-        document.addEventListener("touchstart", function () {
-            if (paused) {
-                ap1.play();
-                paused = false;
-            }
-        }, false);
-        //Chrome点击播放
-        document.addEventListener("click", function () {
-            if (paused) {
-                ap1.play();
-                paused = false;
-            }
-        }, false);
-        $('.bg-cover').mousemove(function(e){
-            if (paused) {
-                ap1.play();
-                paused = false;
-            }
-        });
-    })
-
-    $('.waifu-tool .fui-volume').click(() => {
-        let vol = ap1.audio.volume;
-        let volInt = ((vol + 0.1) * 100).toFixed(0);
-        if (vol < 1.0) {
-            ap1.volume(vol + 0.1);
-            showMessage("音量增大到" + volInt + "%了哦", 1300, true);
-        } else {
-            showMessage("声音不能再大啦", 1300, true);
-        }
-
-    });
-    $('.waifu-tool .fui-mute').click(() => {
-        let vol = ap1.audio.volume;
-        let volInt = ((vol - 0.1) * 100).toFixed(0);
-        if (vol > 0.1) {
-            ap1.volume(vol - 0.1);
-            showMessage("音量减小到" + volInt + "%了哦", 1300, true);
-        } else {
-            showMessage("声音不能再小啦", 1300, true);
-        }
-    });
-
     $('.fa-heart-o').click(() => {
         $('.bg-cover').css('background-image', 'url(/medias/banner/2.jpg)');
     });
+    document.addEventListener("DOMContentLoaded", () => {
+        NProgress.set(0.4);
+        NProgress.start();
+    });
     window.onload = function () {
         NProgress.done();
-        // ap1.play();
-        var paused = ap1.audio.paused;
-        $('.bg-cover').mousemove(function(e){
-            if (paused) {
-                ap1.play();
-                paused = false;
-            }
-        });
     }
 </script>
 </body>

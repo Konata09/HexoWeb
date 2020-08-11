@@ -175,3 +175,7 @@ li::marker {
     padding-bottom: 56.25%;
     position: relative;
 }
+
+nav a.waves-effect{
+    top: -2px;
+}
