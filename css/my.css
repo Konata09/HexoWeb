@@ -54,6 +54,7 @@ pre[class*="language-"] {
     left: 50px;
     top: 80px;
     z-index: 3;
+    cursor: pointer;
 }
 
 #nprogress {
@@ -176,6 +177,12 @@ li::marker {
     position: relative;
 }
 
-nav a.waves-effect{
+nav a.waves-effect {
     top: -2px;
+}
+
+@media only screen and (max-width: 1040px) {
+    #c_n24 {
+        display: none;
+    }
 }

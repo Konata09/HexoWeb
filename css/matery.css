@@ -4,6 +4,7 @@
     .container {
         width: 95%;
     }
+
 }
 
 /*中等屏幕下(平板类)的样式*/
@@ -312,7 +313,7 @@ header .side-nav .social-link {
 
 .cover-btns a:hover {
     border: 1px solid #0ad3ff;
-    background: linear-gradient(135deg, #0396FF  0%, #43CBFF  100%);
+    background: linear-gradient(135deg, #0396FF 0%, #43CBFF 100%);
     box-shadow: 0 14px 26px -12px rgba(39, 88, 157, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(72, 196, 233, 0.2);
 }
 
@@ -540,7 +541,7 @@ header .go-back i {
 
 .music,
 .dplayer-video {
-    box-shadow: 0 5px 20px 0 rgba(0,0,0,.2), 0 10px 20px -12px rgba(0,0,0,.5) !important;
+    box-shadow: 0 5px 20px 0 rgba(0, 0, 0, .2), 0 10px 20px -12px rgba(0, 0, 0, .5) !important;
 }
 
 #recommend-sections {
@@ -825,7 +826,7 @@ article .article-tags .chip {
 
 /* 修改小屏幕下文章详情table样式. */
 @media only screen and (max-width: 550px) {
-    #articleContent table{
+    #articleContent table {
         table-layout: fixed;
     }
 }
@@ -974,7 +975,7 @@ article .article-tags .chip {
     color: #0396FF;
     font-weight: 500;
     text-decoration: underline;
-    word-wrap:break-word;
+    word-wrap: break-word;
 }
 
 #articleContent .img-item {
@@ -990,7 +991,7 @@ article .article-tags .chip {
 #articleContent video {
     display: block;
     margin: 30px auto;
-    box-shadow: 0 5px 35px 0 rgba(0,0,0,.2), 0 10px 35px -11px rgba(0,0,0,.6);
+    box-shadow: 0 5px 35px 0 rgba(0, 0, 0, .2), 0 10px 35px -11px rgba(0, 0, 0, .6);
     cursor: pointer;
 }
 
@@ -1082,7 +1083,7 @@ table tr:nth-child(2n), thead {
 
 .chip-container .chip-active {
     color: #FFF !important;
-    background: linear-gradient(to bottom right, #43CBFF  0%, #0396FF 100%) !important;
+    background: linear-gradient(to bottom right, #43CBFF 0%, #0396FF 100%) !important;
     box-shadow: 2px 5px 10px #aaa !important;
 }
 
@@ -1113,7 +1114,7 @@ table tr:nth-child(2n), thead {
 }
 
 .chip-default .tag-length {
-    color: #43CBFF ;
+    color: #43CBFF;
 }
 
 .chip-active .tag-length {
@@ -1178,7 +1179,7 @@ table tr:nth-child(2n), thead {
     left: 18px;
     height: 100%;
     width: 4px;
-    background: linear-gradient(#43CBFF , #0396FF);
+    background: linear-gradient(#43CBFF, #0396FF);
 }
 
 @media only screen and (min-width: 900px) {
@@ -1415,7 +1416,7 @@ table tr:nth-child(2n), thead {
     padding: 0;
     color: #fff;
     border: 1px solid #028ce7;
-    background: radial-gradient(#43CBFF , #0396FF);;
+    background: radial-gradient(#43CBFF, #0396FF);;
     font-size: 0.9rem;
     border-radius: 50%;
     box-shadow: 0 4px 6px rgba(50, 50, 93, .21), 0 2px 3px rgba(0, 0, 0, .1);
@@ -1590,7 +1591,7 @@ table tr:nth-child(2n), thead {
 
 .other-skills .chip:hover {
     color: #fff;
-    background: linear-gradient(to right, #43CBFF  0%, #0396FF 100%);;
+    background: linear-gradient(to right, #43CBFF 0%, #0396FF 100%);;
     border: 1px solid #43CBFF;
     box-shadow: 0 5px 5px rgba(0, 0, 0, .25)
 }
@@ -1676,7 +1677,6 @@ footer .copy-right {
 }
 
 
-
 @media screen and (min-width: 368px) and (max-width: 767px) {
     .info-break-policy {
         word-break: keep-all;
@@ -1714,7 +1714,7 @@ footer .copy-right {
 }
 
 .img-shadow {
-    box-shadow: 0 5px 25px 0 rgba(0,0,0,.2), 0 10px 30px -11px rgba(0,0,0,.6)
+    box-shadow: 0 5px 25px 0 rgba(0, 0, 0, .2), 0 10px 30px -11px rgba(0, 0, 0, .6)
 }
 
 .img-margin {

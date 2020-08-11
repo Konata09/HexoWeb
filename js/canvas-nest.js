@@ -1,6 +1,6 @@
-isStop = 0;
-tracking = 1;
-storetracking = 1;
+let isStop = 0;
+let tracking = 1;
+let storetracking = 1;
 
 function o(w, v, i) {
     return w.getAttribute(v) || i
@@ -37,29 +37,31 @@ function b() {
     var x, v, A, B, z, y;
 
     t.forEach(function (i) {
-            for (v = 0; v < w.length; v++) {
-                x = w[v];
-                savex = null;
-                if (i !== x && null !== x.x && null !== x.y) {
-                    B = i.x - x.x,
-                        z = i.y - x.y,
-                        prex = i.x + i.xa - x.x,
-                        prey = i.y + i.ya - x.y;
-                    y = B * B + z * z;
-                    if (x === f) {
-                        if (y < x.max) {
-                            i.xd = (Math.abs(prex) > Math.abs(B) && Math.abs(prex) * Math.abs(B) > 0 ? -1 : 1) * y / x.max * 2 * i.xa,
-                                i.yd = (Math.abs(prey) > Math.abs(z) && Math.abs(prey) * Math.abs(z) > 0 ? -1 : 1) * y / x.max * 2 * i.ya;
-                        } else {
-                            i.xd = 0;
-                            i.yd = 0;
-                        }
-                    }
+        let prex;
+        let prey;
+        for (v = 0; v < w.length; v++) {
+            x = w[v];
+            let savex = null;
+            if (i !== x && null !== x.x && null !== x.y) {
+                B = i.x - x.x,
+                    z = i.y - x.y,
+                    prex = i.x + i.xa - x.x,
+                    prey = i.y + i.ya - x.y;
+                y = B * B + z * z;
+                if (x === f) {
                     if (y < x.max) {
-                        A = (x.max - y) / x.max, e.beginPath(), e.lineWidth = A / 2, e.strokeStyle = "rgba(" + s.c + "," + (A + 0.2) + ")", e.moveTo(i.x, i.y), e.lineTo(x.x, x.y), e.stroke();
+                        i.xd = (Math.abs(prex) > Math.abs(B) && Math.abs(prex) * Math.abs(B) > 0 ? -1 : 1) * y / x.max * 2 * i.xa,
+                            i.yd = (Math.abs(prey) > Math.abs(z) && Math.abs(prey) * Math.abs(z) > 0 ? -1 : 1) * y / x.max * 2 * i.ya;
+                    } else {
+                        i.xd = 0;
+                        i.yd = 0;
                     }
                 }
+                if (y < x.max) {
+                    A = (x.max - y) / x.max, e.beginPath(), e.lineWidth = A / 2, e.strokeStyle = "rgba(" + s.c + "," + (A + 0.2) + ")", e.moveTo(i.x, i.y), e.lineTo(x.x, x.y), e.stroke();
+                }
             }
+        }
             i.x += i.xa + i.xd,
                 i.y += i.ya + i.yd,
                 i.xa *= i.x > r || i.x < 0 ? -1 : 1,
@@ -111,28 +113,9 @@ function loadnestbg() {
 
     tracking = storetracking;
     mousetrack();
-
-    bgnow = document.getElementById("BackgroundSwitch");
-    bgnow_title = document.getElementById("BackgroundSwitchTitle");
-
-    bgnow.href = "javascript:switchbg()";
-    bgnow_title.innerHTML = "暂停背景";
 }
 
-function switchbg() {
-    isStop = 1;
-    window.onresize = null;
 
-    mousetrack();
-    storetracking = tracking;
-
-    bgnow = document.getElementById("BackgroundSwitch");
-    bgnow_title = document.getElementById("BackgroundSwitchTitle");
-
-    bgnow.title = "播放背景";
-    bgnow.href = "javascript:loadnestbg()";
-    bgnow_title.innerHTML = "播放背景";
-}
 
 function mousetrack() {
     if (tracking == 0) {

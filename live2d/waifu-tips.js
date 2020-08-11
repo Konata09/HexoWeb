@@ -498,9 +498,11 @@ function loadTipsMessage(result) {
         const volInt = ((vol + 0.1) * 100).toFixed(0);
         if (vol <= 0.9) {
             audioObj.volume = vol + 0.1;
+            setVolume(vol + 0.1);
             showMessage("音量增大到" + volInt + "%了哦", 1300, true);
         } else {
             audioObj.volume = 1;
+            setVolume(1);
             showMessage("声音不能再大啦", 1300, true);
         }
     })
@@ -508,10 +510,13 @@ function loadTipsMessage(result) {
     document.querySelectorAll('.waifu-tool .fui-mute')[0].addEventListener('click', () => {
         const vol = audioObj.volume;
         const volInt = ((vol - 0.1) * 100).toFixed(0);
-        if (vol > 0.1) {
+        if (vol > 0.11) {
             audioObj.volume = vol - 0.1;
+            setVolume(vol - 0.1);
             showMessage("音量减小到" + volInt + "%了哦", 1300, true);
         } else {
+            audioObj.volume = 0;
+            setVolume(0);
             showMessage("声音不能再小啦", 1300, true);
         }
     })

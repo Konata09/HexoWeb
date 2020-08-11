@@ -40,7 +40,7 @@
     <!--百度统计-->
     <script>
         var _hmt = _hmt || [];
-        (function() {
+        (function () {
             var hm = document.createElement("script");
             hm.src = "https://hm.baidu.com/hm.js?9ddaf48fd2830c5e3ef6e7c09c5a914c";
             var s = document.getElementsByTagName("script")[0];
@@ -258,7 +258,6 @@
 </a>
         
     </nav>
-
 </header>
 
 
@@ -959,7 +958,16 @@ obj<span class="token punctuation">.</span>b <span class="token operator">=</spa
 </footer>
 
 
-<script src="/js/bundle.js"></script>
+<script type="module">
+    const getWidth = () => {
+        let width = window.innerWidth
+        if (width >= 1040)
+            import('/js/bundle.js');
+        else
+            import('/js/matery.js');
+    }
+    getWidth();
+</script>
 <!-- 搜索遮罩框 -->
 <div id="searchModal" class="modal">
     <div class="modal-content">
@@ -1036,6 +1044,186 @@ $(function () {
 </div>
 <script src="/live2d/waifu-tips.js" async></script>
 <script src="/live2d/live2d.js" async></script>
+<div class="mute">
+    <img id="audioOff"
+         src="data:image/png;base64,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"
+         class="controller__audio--off" style="display: block;">
+    <img id="audioOn"
+         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAMAAAC7IEhfAAAB5lBMVEUKCgoAAAD////39/f///8MDAwUFBRHcEz6+voNDQ339/cKCgodHR0YGBgXFxcMDAwWFhYLCwv///8VFRX///8TExM/Pz8ZGRn///9ISEgLCwsfHx8aGhr////w8PAbGxv///8tLS3///97e3vh4eHw8PD///8AAAD///////////////////////+np6ceHh4cHBz///8gICAJCQn///+xsbESEhIvLy+7u7vDw8P///9tbW1paWnU1NTa2todHR0RERESEhIeHh7////09PT19fWPj48RERG3t7fAwMBRUVHy8vJkZGTT09P6+vr4+Pj6+vojIyP39/fw8PDs7OxWVlbs7Oza2trq6uqRkZFTU1Py8vLu7u7Q0ND09PSSkpInJyenp6dOTk7w8PDw8PDW1tbu7u7g4ODT09Ps7Oz39/fX19fNzc3IyMiFhYU0NDT4+Pjq6uq8vLzc3NwYGBjY2Ni3t7fw8PDp6emXl5cJCQnm5ubIyMjX19c+Pj7///8AAADk5OTy8vJ9fX319fWlpaXc3NzU1NRpaWnm5uaioqJFRUWqqqrv7+/ExMTy8vLs7Oz4+PgjIyPh4eGqqqqurq56enokJCTz8/MfHx/39/eoqKjR0dHr6+v4+PgiIiLj4+O1tbUBW7mVAAAAonRSTlMZGiEjIBQZANATIhgaFRYVFxcfGBcaHB4UHBYgHQMjHB4cDB0jIgEZEh0cEBsIICEbBB8aEyEcGyIiAhwdJCMjHRsiFsDCPh4gXhy5MHTOz88kxLCnL6V+oEErt65yv0IgTCqxr3esjXWiy4BxbDsnyqNcfx9wUrKcRRuSY3opBRuRtTnESoR+NZ5QLFqydr6kzSuJYE84Krkox0p1qcsljFd+4J8aAAAC/UlEQVQ4y5WVZXPjMBCGFUdWbcd20jjYcBpmaFJm5vaYmZmZmZn5/ulJhsRJezN3+8mzfmZfebX7GrQ0RDY9mklarcmMLZ1tfAN0z8VEClIcZ8TBcRRMJYqrgr4OK+QGcr0O3m7nHb25AQ5aO3wrwXAQ+iszcQNQ41Z8puKHwXATGHNBqqtTo8rDw9XqlbKhs4uCrpge7LHBaLuCmQCyV6uT5yaHhsvA0B6Fth4daIMRh8y1tlkkVPB6Ri6cHxoqA2BwRKCtDrpgJCRjomBBAc/Jy8dPM4e9dkRyoQh0aWCYirpJro2lLXxp59GLCwzDXHIioY1k3VEqrIC+IEXOZzKztIh2XT/CyHHWKdGs2YTV26mgTwY7YDc5n5nFBQvXFIw5NVGw0Cxrxi8M3UQctBSt/pCsS8DAVYUbP4OVcYYl6iG/tYjBBKwQYVYB7y8yiy+fP7zrRCJNUiwRr8BEC4ilOLcijENE+QfM63dvlmucLO7mUjGQhf1x3BglS0vep7PM9895XuNYthWAeD/MgjSVM2gFWVpApd9LzLwexCUNOSoNRrk+fEItTYt8/i3z5YNXEjSQxqfs40ZBxuhQP0UOQQrMfWJ+eXQlMegwZkDSyNeOKJdEpfc/Fr56kaA7JG9MAqvR3gAKknf5G/NqRO63BtqN1iYQc3zp58fHzHSpVlIFG6SxcCD/6MmzF0t3bgS0kqq0/mMw5zxx+558icc8Wkn1Y2y69gjIuXmHOhVj69WSSnts+obTYmFuK6PFoZJE6xuuu0Jacs7XOOZAXtHWrlA3FALybKqDsyMyWBsKPGZT6phhcEMd3KZUJGM2RcZMN7g0Kh2sg/vJLmiDe7NhFfDc7q5xe7eQu9GvQn25cBs9G1Vu3wQZoMblqq8r3lbP9LqxNeNrt+/x4hlvWledAVgsyOsZHBzMOwuSKLY2G0DdUsomCfE4EJIsJoI1WYrOpMrAjuwIqba2wqSabE/DVtqeZqTuupEa4u7VjPQ/rPnfzV79fdj+8vv4A1Aef7RpmdATAAAAAElFTkSuQmCC"
+         class="controller__audio--on" style="display: none;">
+</div>
+<iframe src="/media/silence.mp3" allow="autoplay" id="slience-audio" style="display: none"></iframe>
+<script>
+    const setSS = (k, v) => {
+        try {
+            sessionStorage.setItem(k, v);
+        } catch (e) {
+        }
+    }
+    const removeSS = (k) => {
+        try {
+            sessionStorage.removeItem(k);
+        } catch (e) {
+        }
+    }
+    const getSS = (k) => {
+        try {
+            return sessionStorage.getItem(k);
+        } catch (e) {
+            return null
+        }
+    }
+    const musicList = [
+        "/media/Music8_2_index.opus",
+        "/media/Music3_2.ogg",
+        "/media/Music0_1_index.ogg",
+        "/media/Music0_5_index.ogg",
+        "/media/Music5_3_index.ogg",
+        "/media/Music31_6_index.ogg",
+        "/media/Music15_4_index.ogg",
+        "/media/Music26_1_index.ogg",
+        "/media/Music19_5_index.ogg",
+        "/media/Music5_2_index.ogg",
+        "/media/Music1_2_index.ogg",
+        "/media/Music14_1.ogg",
+        "/media/Music27_3_index.ogg",
+        "/media/Music13_1_index.ogg",
+        "/media/Music26_9_index.ogg"
+    ];
+    let currentTrack = 0;
+    const audioObj = new Audio();
+    const getAudioUrl = (trackNo) => {
+        const t = getSS('track');
+        if (t !== null && t >= 0 && t <= musicList.length - 1) {
+            currentTrack = t;
+            return musicList[t]
+        } else {
+            return musicList[trackNo || 0];
+        }
+    }
+    const getVolume = () => {
+        const vol = getSS('volume');
+        if (vol !== null && vol >= 0 && vol <= 1)
+            return vol;
+        else
+            return 0.7
+    }
+    const setVolume = (vol) => {
+        setSS('volume', vol);
+    }
+    const volumeFadein = () => {
+        const targetVol = getVolume();
+        const step = targetVol / 10;
+        const intervalId = setInterval(() => {
+            if (audioObj.volume + step < 1)
+                audioObj.volume = audioObj.volume + step;
+            if (Math.abs(targetVol - audioObj.volume) < 0.01) {
+                audioObj.volume = targetVol;
+                clearInterval(intervalId);
+            }
+        }, 20);
+    }
+    const getAudioTime = () => {
+        const t = getSS('audioTime');
+        if (t !== null) {
+            removeSS('audioTime');
+            return t;
+        } else {
+            return 0;
+        }
+    }
+    const setAudioTime = () => {
+        setInterval(() => {
+            if (audioObj.played.length !== 0) {
+                setSS('audioTime', audioObj.currentTime)
+            }
+        }, 700);
+    }
+    const canNotAutoplay = () => {
+        console.log('canAutoplay: False');
+        // 触摸播放
+        document.addEventListener("touchstart", clickPlay, false);
+        // 点击播放
+        document.addEventListener("click", clickPlay, false);
+        // 指针移动播放
+        document.addEventListener('mousemove', clickPlay, false);
+    }
+    const clickPlay = () => {
+        if (audioObj.played.length === 0)
+            audioObj.play().then(() => {
+                audioObj.currentTime = getAudioTime();
+                document.removeEventListener("touchstart", clickPlay, false);
+                document.removeEventListener("click", clickPlay, false);
+                document.removeEventListener('mousemove', clickPlay, false);
+                setMuteImg();
+                audioObj.removeEventListener('canplay', audioCanplay);
+            }).catch(e => console.log(`can not autoplay: ${e}`));
+    }
+    const nextTrack = () => {
+        if (currentTrack >= musicList.length - 1)
+            currentTrack = 0;
+        else
+            currentTrack++;
+        setSS('track', currentTrack);
+        audioObj.src = getAudioUrl(currentTrack);
+    }
+    const audioCanplay = () => {
+        console.log('audio canplay');
+        audioObj.autoplay = true;
+        audioObj.play().then(() => {
+            if (audioObj.played.length===0)
+                throw new Error();
+            audioObj.currentTime = getAudioTime();
+            console.log('canAutoplay: True');
+            setMuteImg();
+            audioObj.removeEventListener('canplay', audioCanplay);
+        }).catch(e => canNotAutoplay(e));
+    }
+    audioObj.addEventListener('playing', setAudioTime);
+    audioObj.addEventListener('playing', volumeFadein);
+
+    const initPlayer = () => {
+        audioObj.volume = 0;
+        audioObj.src = getAudioUrl();
+        if (getSS('mute') !== '1') {
+            audioObj.addEventListener("canplay", audioCanplay);
+        }
+    }
+    audioObj.addEventListener("ended", () => {
+        nextTrack();
+    });
+    document.addEventListener("DOMContentLoaded", () => {
+        console.log('DOMContentLoaded')
+        const unmuteBtn = document.getElementById("audioOff");
+        const muteBtn = document.getElementById("audioOn");
+        if (audioObj.paused === false) setMuteImg();
+        muteBtn.addEventListener("click", () => {
+            audioObj.pause();
+            setSS('mute', 1);
+            setUnmuteImg();
+            audioObj.removeEventListener('canplay', audioCanplay);
+        });
+        unmuteBtn.addEventListener("click", () => {
+            setMuteImg();
+            setSS('mute', 0);
+            audioCanplay();
+        });
+    });
+    initPlayer();
+    const setMuteImg = () => {
+        const unmuteBtn = document.getElementById("audioOff");
+        const muteBtn = document.getElementById("audioOn");
+        muteBtn.style.display = "block";
+        unmuteBtn.style.display = "none";
+    }
+    const setUnmuteImg = () => {
+        const unmuteBtn = document.getElementById("audioOff");
+        const muteBtn = document.getElementById("audioOn");
+        muteBtn.style.display = "none";
+        unmuteBtn.style.display = "block";
+    }
+
+</script>
 
 <script>
     $('.fa-heart-o').click(() => {
