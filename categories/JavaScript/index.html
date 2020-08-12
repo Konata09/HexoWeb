@@ -299,29 +299,11 @@ document.getElementsByClassName('bg-cover')[0].style.backgroundImage = "url('/me
                 
                 
                 
-                <a href="/categories/Ops/" title="Ops: 4">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #F9EBEA;">Ops
-                        <span class="tag-length">4</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/categories/Admin/" title="Admin: 0">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F5EEF8;">Admin
+                            style="background-color: #F9EBEA;">Admin
                         <span class="tag-length">0</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/Java/" title="Java: 10">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #D5F5E3;">Java
-                        <span class="tag-length">10</span>
                     </span>
                 </a>
                 
@@ -329,8 +311,26 @@ document.getElementsByClassName('bg-cover')[0].style.backgroundImage = "url('/me
                 <a href="/categories/CSS/" title="CSS: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #E8F8F5;">CSS
+                            style="background-color: #F5EEF8;">CSS
                         <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/Ops/" title="Ops: 4">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #D5F5E3;">Ops
+                        <span class="tag-length">4</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/Java/" title="Java: 10">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #E8F8F5;">Java
+                        <span class="tag-length">10</span>
                     </span>
                 </a>
                 
@@ -371,20 +371,20 @@ document.getElementsByClassName('bg-cover')[0].style.backgroundImage = "url('/me
                 </a>
                 
                 
-                <a href="/categories/Miscellaneous/" title="Miscellaneous: 2">
+                <a href="/categories/Database/" title="Database: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #A3E4D7;">Miscellaneous
-                        <span class="tag-length">2</span>
+                            style="background-color: #A3E4D7;">Database
+                        <span class="tag-length">1</span>
                     </span>
                 </a>
                 
                 
-                <a href="/categories/Database/" title="Database: 1">
+                <a href="/categories/Miscellaneous/" title="Miscellaneous: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #85C1E9;">Database
-                        <span class="tag-length">1</span>
+                            style="background-color: #85C1E9;">Miscellaneous
+                        <span class="tag-length">2</span>
                     </span>
                 </a>
                 
@@ -844,6 +844,7 @@ $(function () {
 </div>
 <iframe src="/media/silence.mp3" allow="autoplay" id="slience-audio" style="display: none"></iframe>
 <script>
+    // SessionStorage 操作
     const setSS = (k, v) => {
         try {
             sessionStorage.setItem(k, v);
@@ -863,6 +864,7 @@ $(function () {
             return null
         }
     }
+    // 音频 url 列表
     const musicList = [
         "/media/Music8_2_index.opus",
         "/media/Music3_2.ogg",
@@ -882,6 +884,7 @@ $(function () {
     ];
     let currentTrack = 0;
     const audioObj = new Audio();
+    // 根据 sessionStorage 或者给定曲目得到音频 url
     const getAudioUrl = (trackNo) => {
         const t = getSS('track');
         if (t !== null && t >= 0 && t <= musicList.length - 1) {
@@ -891,28 +894,35 @@ $(function () {
             return musicList[trackNo || 0];
         }
     }
+    // 读取音量值
     const getVolume = () => {
         const vol = getSS('volume');
-        if (vol !== null && vol >= 0 && vol <= 1)
+        if (vol !== null && vol >= 0 && vol <= 1) {
             return vol;
-        else
-            return 0.7
+        } else {
+            setVolume(0.7);
+            return 0.7;
+        }
     }
+    // 设置音量值
     const setVolume = (vol) => {
         setSS('volume', vol);
     }
+    // 音量淡入
     const volumeFadein = () => {
+        console.log('fadein')
         const targetVol = getVolume();
         const step = targetVol / 10;
         const intervalId = setInterval(() => {
             if (audioObj.volume + step < 1)
                 audioObj.volume = audioObj.volume + step;
-            if (Math.abs(targetVol - audioObj.volume) < 0.01) {
+            if (Math.abs(targetVol - audioObj.volume) < 0.05) {
                 audioObj.volume = targetVol;
                 clearInterval(intervalId);
             }
-        }, 20);
+        }, 30);
     }
+    // 读取播放位置
     const getAudioTime = () => {
         const t = getSS('audioTime');
         if (t !== null) {
@@ -922,6 +932,7 @@ $(function () {
             return 0;
         }
     }
+    // 存储播放位置
     const setAudioTime = () => {
         setInterval(() => {
             if (audioObj.played.length !== 0) {
@@ -929,8 +940,21 @@ $(function () {
             }
         }, 700);
     }
-    const canNotAutoplay = () => {
+    // 切换下一首
+    const nextTrack = () => {
+        if (currentTrack >= musicList.length - 1)
+            currentTrack = 0;
+        else
+            currentTrack++;
+        setSS('track', currentTrack);
+        setSS('audioTime', 0);
+        audioObj.addEventListener("canplay", audioCanplay);
+        audioObj.src = getAudioUrl(currentTrack);
+    }
+    // 不能自动播放 设置监听器
+    const canNotAutoplay = (e) => {
         console.log('canAutoplay: False');
+        console.log(e);
         // 触摸播放
         document.addEventListener("touchstart", clickPlay, false);
         // 点击播放
@@ -938,50 +962,52 @@ $(function () {
         // 指针移动播放
         document.addEventListener('mousemove', clickPlay, false);
     }
+    // 通过事件播放
     const clickPlay = () => {
         if (audioObj.played.length === 0)
             audioObj.play().then(() => {
-                audioObj.currentTime = getAudioTime();
+                console.log('clickPlay');
+                // 成功播放 移除监听器
+                audioObj.removeEventListener('canplay', audioCanplay); // 移除 canplay 监听器的原因：跳转到指定位置时也会触发 canplay 事件，造成循环
                 document.removeEventListener("touchstart", clickPlay, false);
                 document.removeEventListener("click", clickPlay, false);
                 document.removeEventListener('mousemove', clickPlay, false);
+                audioObj.currentTime = getAudioTime();
+                volumeFadein();
                 setMuteImg();
-                audioObj.removeEventListener('canplay', audioCanplay);
-            }).catch(e => console.log(`can not autoplay: ${e}`));
+            }).catch();
     }
-    const nextTrack = () => {
-        if (currentTrack >= musicList.length - 1)
-            currentTrack = 0;
-        else
-            currentTrack++;
-        setSS('track', currentTrack);
-        audioObj.src = getAudioUrl(currentTrack);
-    }
+    // 首次播放函数 缓冲足够时调用
     const audioCanplay = () => {
         console.log('audio canplay');
-        audioObj.autoplay = true;
         audioObj.play().then(() => {
-            if (audioObj.played.length===0)
-                throw new Error();
-            audioObj.currentTime = getAudioTime();
+            // if (audioObj.played.length === 0 && window.navigator.userAgent.indexOf('Firefox') > 0 && audioObj.allowedToPlay === false)
+            //     throw new Error('fake autoplay'); // 部分 Firefox 在没有自动播放仍然执行了 then ，再判断一下
             console.log('canAutoplay: True');
+            audioObj.removeEventListener('canplay', audioCanplay); // 移除 canplay 监听器的原因：跳转到指定位置时也会触发 canplay 事件，造成循环
+            audioObj.currentTime = getAudioTime();
+            volumeFadein();
             setMuteImg();
-            audioObj.removeEventListener('canplay', audioCanplay);
         }).catch(e => canNotAutoplay(e));
     }
-    audioObj.addEventListener('playing', setAudioTime);
-    audioObj.addEventListener('playing', volumeFadein);
-
+    // 初始化播放器
     const initPlayer = () => {
         audioObj.volume = 0;
         audioObj.src = getAudioUrl();
-        if (getSS('mute') !== '1') {
+        if (getSS('mute') !== '1') { // 之前已经静音的情况下不会自动播放
             audioObj.addEventListener("canplay", audioCanplay);
         }
     }
+    initPlayer();
+    // 监听当前曲目结束
     audioObj.addEventListener("ended", () => {
         nextTrack();
     });
+    // 开始播放时监听
+    audioObj.addEventListener('playing', setAudioTime);
+    // 暂停时将音量设为0
+    audioObj.addEventListener('pause', () => (audioObj.volume = 0));
+    // DOM 加载完成后给静音按钮添加事件
     document.addEventListener("DOMContentLoaded", () => {
         console.log('DOMContentLoaded')
         const unmuteBtn = document.getElementById("audioOff");
@@ -999,7 +1025,7 @@ $(function () {
             audioCanplay();
         });
     });
-    initPlayer();
+    // 静音按钮图标切换
     const setMuteImg = () => {
         const unmuteBtn = document.getElementById("audioOff");
         const muteBtn = document.getElementById("audioOn");
@@ -1012,7 +1038,6 @@ $(function () {
         muteBtn.style.display = "none";
         unmuteBtn.style.display = "block";
     }
-
 </script>
 
 <script>
