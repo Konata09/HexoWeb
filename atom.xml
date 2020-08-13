@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://konata.tech/"/>
-  <updated>2020-08-05T16:39:06.571Z</updated>
+  <updated>2020-08-12T08:59:20.993Z</updated>
   <id>http://konata.tech/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Fetch API</title>
+    <link href="http://konata.tech/2020/08/12/fetch/"/>
+    <id>http://konata.tech/2020/08/12/fetch/</id>
+    <published>2020-08-12T08:47:11.000Z</published>
+    <updated>2020-08-12T08:59:20.993Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;p&gt;&lt;code&gt;fetch()&lt;/code&gt; 方法定义在 &lt;code&gt;Window&lt;/code&gt; 对象以及
+        
+      
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://konata.tech/categories/JavaScript/"/>
+    
+    
+      <category term="JavaScript" scheme="http://konata.tech/tags/JavaScript/"/>
+    
+  </entry>
   
   <entry>
     <title>JavaScript 导出表格</title>
@@ -538,32 +564,6 @@
     
     
       <category term="Nginx" scheme="http://konata.tech/tags/Nginx/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>移动 IIS inetpub 文件夹</title>
-    <link href="http://konata.tech/2020/05/06/move-inetpub/"/>
-    <id>http://konata.tech/2020/05/06/move-inetpub/</id>
-    <published>2020-05-06T08:28:33.000Z</published>
-    <updated>2020-08-08T09:35:01.718Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;下载脚本&quot;&gt;&lt;a href=&quot;#下载脚本&quot; class=&quot;headerlink&quot; title=&quot;下载脚本&quot;&gt;&lt;/a&gt;下载脚本&lt;/h2&gt;&lt;p&gt;&lt;a
-        
-      
-    
-    </summary>
-    
-      <category term="Ops" scheme="http://konata.tech/categories/Ops/"/>
-    
-    
-      <category term="IIS" scheme="http://konata.tech/tags/IIS/"/>
     
   </entry>
   

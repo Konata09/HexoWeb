@@ -1,19 +1,20 @@
-var searchFunc = function (path, search_id, content_id) {
+const searchFunc = (path, search_id, content_id) => {
     'use strict';
-    $.ajax({
-        url: path,
-        dataType: "xml",
-        success: function (xmlResponse) {
+    window.fetch(path)
+        .then(res => res.text())
+        .then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
+        .then((xmlResponse) => {
+            const datas = [];
             // get the contents from search data
-            var datas = $("entry", xmlResponse).map(function () {
-                return {
-                    title: $("title", this).text(),
-                    content: $("content", this).text(),
-                    url: $("url", this).text()
-                };
-            }).get();
-            var $input = document.getElementById(search_id);
-            var $resultContent = document.getElementById(content_id);
+            for (let el of xmlResponse.getElementsByTagName('entry')){
+                datas.push({
+                    title: el.getElementsByTagName('title')[0].textContent,
+                    content: el.getElementsByTagName('content')[0].textContent,
+                    url: el.getElementsByTagName('url')[0].textContent
+                })
+            }
+            const $input = document.getElementById(search_id);
+            const $resultContent = document.getElementById(content_id);
             $input.addEventListener('input', function () {
                 var str = '<ul class=\"search-result-list\">';
                 var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
@@ -80,6 +81,5 @@ var searchFunc = function (path, search_id, content_id) {
                 str += "</ul>";
                 $resultContent.innerHTML = str;
             });
-        }
-    });
+        })
 }

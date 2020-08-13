@@ -26,10 +26,6 @@ nav ul a:hover {
     color: #0ad3ff;
 }
 
-.btn:focus, .btn-large:focus, .btn-small:focus, .btn-floating:focus {
-    background: transparent;
-}
-
 .line-numbers-rows {
     display: none;
 }
@@ -113,14 +109,17 @@ pre[class*="language-"] {
     font-size: 1.8rem;
 }
 
-.show-live2d-btn {
-    display: none;
+#show-live2d {
     position: fixed;
     right: 20px;
     bottom: 78px;
     padding-top: 15px;
     margin-bottom: 0;
     z-index: 99;
+    transition: all .3s ease;
+}
+#show-live2d.btnHide{
+    right: -50px;
 }
 
 #floating-toc-btn {
@@ -134,13 +133,17 @@ pre[class*="language-"] {
 }
 
 .top-scroll-btn {
-    display: none;
     position: fixed;
     right: 20px;
     bottom: 15px;
     padding-top: 15px;
     margin-bottom: 0;
     z-index: 90;
+    transition: all .3s ease;
+}
+
+#backTop.btnHide {
+    bottom: -50px;
 }
 
 h1 {

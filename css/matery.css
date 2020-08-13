@@ -213,6 +213,7 @@ header .nav-transparent {
     background-color: transparent !important;
     background-image: none;
     box-shadow: none;
+    position: absolute;
 }
 
 header nav .brand-span {
