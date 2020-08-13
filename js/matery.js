@@ -54,7 +54,7 @@ const articleCardHover = function () {
         })
     }
 };
-articleCardHover();
+if (window.innerWidth >= 1040) articleCardHover();
 
 /* 修复文章卡片 div 的宽度. */
 let fixPostCardWidth = function (srcId, targetId) {
@@ -98,16 +98,6 @@ if (document.getElementById('articles')) {
         itemSelector: '.article'
     });
 }
-// $('#articles').masonry({
-//
-// });
-
-AOS.init({
-    easing: 'ease-in-out-sine',
-    duration: 700,
-    delay: 100
-});
-
 /* 文章内容详情的一些初始化特性 */
 let articleInit = function () {
     const articleA = document.querySelectorAll('#articleContent a')[0];
@@ -380,7 +370,7 @@ document.querySelector('.waifu-tool .fui-mute').addEventListener('click', () => 
         showMessage("声音不能再小啦", 1300, true);
     }
 })
-const initSidebarNav = ()=>{
+const initSidebarNav = () => {
     const elems = document.querySelectorAll('.sidenav');
     const instances = M.Sidenav.init(elems);
 }

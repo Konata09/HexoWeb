@@ -1,4 +1,3 @@
-import {getSS, setSS, removeSS, getLS, setLS, removeLS} from '/js/matery.js';
 
 /*
     く__,.ヘヽ.　　　　/　,ー､ 〉
@@ -60,7 +59,45 @@ const live2d_settings = {
     'screenshotCaptureName': 'bronyaMoe.png',   // 看板娘截图文件名，例如 'live2d.png'
 }
 /****************************************************************************************************/
-
+// SessionStorage localStorage 操作
+const setSS = (k, v) => {
+    try {
+        sessionStorage.setItem(k, v);
+    } catch (e) {
+    }
+}
+const removeSS = (k) => {
+    try {
+        sessionStorage.removeItem(k);
+    } catch (e) {
+    }
+}
+const getSS = (k) => {
+    try {
+        return sessionStorage.getItem(k);
+    } catch (e) {
+        return null
+    }
+}
+const setLS = (k, v) => {
+    try {
+        localStorage.setItem(k, v);
+    } catch (e) {
+    }
+}
+const removeLS = (k) => {
+    try {
+        localStorage.removeItem(k);
+    } catch (e) {
+    }
+}
+const getLS = (k) => {
+    try {
+        return localStorage.getItem(k);
+    } catch (e) {
+        return null
+    }
+}
 String.prototype.render = function (context) {
     const tokenReg = /(\\)?{([^{}\\]+)(\\)?}/g;
     return this.replace(tokenReg, function (word, slash1, token, slash2) {
