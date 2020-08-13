@@ -1,6 +1,6 @@
 import {getSS, setSS, removeSS, getLS, setLS, removeLS} from '/js/matery.js';
 
-window.live2d_settings = Array(); /*
+/*
     く__,.ヘヽ.　　　　/　,ー､ 〉
     　　　　　＼ ', !-─‐-i　/　/´
     　　　 　 ／｀ｰ'　　　 L/／｀ヽ､             Live2D 看板娘 参数设置
@@ -19,54 +19,50 @@ window.live2d_settings = Array(); /*
     　　　　　 　　　ﾄ-,/　|___./
     　　　　　 　　　'ｰ'　　!_,.:*********************************************************************************/
 
-// 后端接口
-live2d_settings['modelAPI'] = '/live2d_api/';
-live2d_settings['tipsMessage'] = 'waifu-tips.json';            // 同目录下可省略路径
-live2d_settings['hitokotoAPI'] = '';                  // 一言 API，可选 'lwl12.com', 'hitokoto.cn', 'jinrishici.com'(古诗词)
-
-// 默认模型
-live2d_settings['modelId'] = 1;            // 默认模型 ID，可在 F12 控制台找到
-live2d_settings['modelTexturesId'] = 0;           // 默认材质 ID，可在 F12 控制台找到
-
-// 工具栏设置
-live2d_settings['showToolMenu'] = true;         // 显示 工具栏          ，可选 true(真), false(假)
-live2d_settings['canCloseLive2d'] = true;         // 显示 关闭看板娘  按钮，可选 true(真), false(假)
-live2d_settings['canSwitchModel'] = true;         // 显示 模型切换    按钮，可选 true(真), false(假)
-live2d_settings['canSwitchTextures'] = false;         // 显示 材质切换    按钮，可选 true(真), false(假)
-live2d_settings['canSwitchHitokoto'] = false;         // 显示 一言切换    按钮，可选 true(真), false(假)
-live2d_settings['canTakeScreenshot'] = true;         // 显示 看板娘截图  按钮，可选 true(真), false(假)
-live2d_settings['canTurnToHomePage'] = false;         // 显示 返回首页    按钮，可选 true(真), false(假)
-live2d_settings['canTurnToAboutPage'] = false;         // 显示 跳转关于页  按钮，可选 true(真), false(假)
-live2d_settings['volumeUp'] = true;
-live2d_settings['volumeDown'] = true;
-// 模型切换模式
-live2d_settings['modelStorage'] = true;         // 记录 ID (刷新后恢复)，可选 true(真), false(假)
-live2d_settings['modelRandMode'] = 'switch';     // 模型切换，可选 'rand'(随机), 'switch'(顺序)
-live2d_settings['modelTexturesRandMode'] = 'rand';       // 材质切换，可选 'rand'(随机), 'switch'(顺序)
-
-// 提示消息选项
-live2d_settings['showHitokoto'] = false;         // 显示一言
-live2d_settings['showF12Status'] = true;         // 显示加载状态
-live2d_settings['showF12Message'] = true;        // 显示看板娘消息
-live2d_settings['showF12OpenMsg'] = true;         // 显示控制台打开提示
-live2d_settings['showCopyMessage'] = true;         // 显示 复制内容 提示
-live2d_settings['showWelcomeMessage'] = true;         // 显示进入面页欢迎词
-
-//看板娘样式设置
-live2d_settings['waifuSize'] = '500x680';    // 看板娘大小，例如 '280x250', '600x535'
-live2d_settings['waifuMinWidth'] = '1040px';      // 面页小于 指定宽度 隐藏看板娘，例如 'disable'(禁用), '768px'
-live2d_settings['waifuEdgeSide'] = 'right:0';     // 看板娘贴边方向，例如 'left:0'(靠左 0px), 'right:30'(靠右 30px)
-
-// 其他杂项设置
-live2d_settings['l2dVersion'] = '2.0.0';        // 当前版本
-live2d_settings['homePageUrl'] = 'auto';       // 主页地址，可选 'auto'(自动), '{URL 网址}'
-live2d_settings['aboutPageUrl'] = 'https://konata.tech/';   // 关于页地址, '{URL 网址}'
-live2d_settings['screenshotCaptureName'] = 'HonkaiImpact.png'; // 看板娘截图文件名，例如 'live2d.png'
-
+const live2d_settings = {
+    // 后端接口
+    'modelAPI': '/live2d_api/',                 // 同目录下可省略路径
+    'tipsMessage': '/waifu-tips.json/',         // 一言 API，可选 'lwl12.com', 'hitokoto.cn', 'jinrishici.com'(古诗词)
+    'hitokotoAPI': '',                          // 默认模型 ID，可在 F12 控制台找到
+    // 默认模型
+    'modelId': 1,                               // 默认材质 ID，可在 F12 控制台找到
+    'modelTexturesId': 0,                       // 显示 工具栏，可选 true(真), false(假)
+    // 工具栏设置
+    'showToolMenu': true,                       // 工具栏设置// 显示 关闭看板娘  按钮，可选 true(真), false(假)
+    'canCloseLive2d': true,                     // 显示 关闭看板娘  按钮，可选 true(真), false(假)
+    'canSwitchModel': true,                     // 显示 模型切换    按钮，可选 true(真), false(假)
+    'canSwitchTextures': false,                 // 显示 材质切换    按钮，可选 true(真), false(假)
+    'canSwitchHitokoto': false,                 // 显示 一言切换    按钮，可选 true(真), false(假)
+    'canTakeScreenshot': true,                  // 显示 看板娘截图  按钮，可选 true(真), false(假)
+    'canTurnToHomePage': false,                 // 显示 返回首页    按钮，可选 true(真), false(假)
+    'canTurnToAboutPage': false,                // 显示 跳转关于页  按钮，可选 true(真), false(假)
+    'volumeUp': true,
+    'volumeDown': true,
+    // 模型切换模式
+    'modelStorage': true,                       // 记录 ID (刷新后恢复)，可选 true(真), false(假)
+    'modelRandMode': 'switch',                  // 模型切换，可选 'rand'(随机), 'switch'(顺序)
+    'modelTexturesRandMode': 'rand',            // 材质切换，可选 'rand'(随机), 'switch'(顺序)
+    // 提示消息选项
+    'showHitokoto': false,                      // 显示一言
+    'showF12Status': true,                      // 显示加载状态
+    'showF12Message': true,                     // 显示看板娘消息
+    'showF12OpenMsg': true,                     // 显示控制台打开提示
+    'showCopyMessage': true,                    // 显示 复制内容 提示
+    'showWelcomeMessage': true,                 // 显示进入面页欢迎词
+    //看板娘样式设置
+    'waifuSize': '500x680',                     // 看板娘大小，例如 '280x250', '600x535'
+    'waifuMinWidth': '1040px',                  // 面页小于 指定宽度 隐藏看板娘，例如 'disable'(禁用), '768px'
+    'waifuEdgeSide': 'right:0',                 // 看板娘贴边方向，例如 'left:0'(靠左 0px), 'right:30'(靠右 30px)
+    // 其他杂项设置
+    'l2dVersion': '2.0.0',                      // 当前版本
+    'homePageUrl': 'auto',                      // 主页地址，可选 'auto'(自动), '{URL 网址}'
+    'aboutPageUrl': 'https://konata.tech/',     // 关于页地址, '{URL 网址}'
+    'screenshotCaptureName': 'bronyaMoe.png',   // 看板娘截图文件名，例如 'live2d.png'
+}
 /****************************************************************************************************/
 
 String.prototype.render = function (context) {
-    const tokenReg = /(\\)?\{([^\{\}\\]+)(\\)?\}/g;
+    const tokenReg = /(\\)?{([^{}\\]+)(\\)?}/g;
     return this.replace(tokenReg, function (word, slash1, token, slash2) {
         if (slash1 || slash2) {
             return word.replace('\\', '');
@@ -101,18 +97,13 @@ const waifuTips = document.getElementById('waifu-message');
 const live2d = document.getElementById('live2d');
 const waifu = document.getElementById('waifu');
 
-
-function empty(obj) {
-    return typeof obj == "undefined" || obj == null || obj == "" ? true : false
-}
-
 function getRandText(text) {
     return Array.isArray(text) ? text[Math.floor(Math.random() * text.length + 1) - 1] : text
 }
 
 let timeoutID;
 
-export function showMessage(text, timeout, flag) {
+function showMessage(text, timeout, flag) {
     if (flag || getSS('waifu-text') === '' || getSS('waifu-text') === null) {
         if (timeoutID) window.clearTimeout(timeoutID);
         if (Array.isArray(text)) text = text[Math.floor(Math.random() * text.length + 1) - 1];
@@ -133,7 +124,7 @@ function hideMessage(timeout) {
     }, timeout);
 }
 
-export function initModel(waifuPath, type) {
+function initModel(waifuPath, type) {
     if (getSS('waifuHide') === '1') {
         $$('.waifu').classList.add('hide');
         return;
@@ -142,12 +133,12 @@ export function initModel(waifuPath, type) {
     }
     /* console welcome message */
     console.log("\u304f__,.\u30d8\u30fd.\u3000\u3000\u3000\u3000/\u3000,\u30fc\uff64 \u3009\n\u3000\u3000\u3000\u3000\u3000\uff3c ', !-\u2500\u2010-i\u3000/\u3000/\u00b4\n\u3000\u3000\u3000 \u3000 \uff0f\uff40\uff70'\u3000\u3000\u3000 L/\uff0f\uff40\u30fd\uff64\n\u3000\u3000 \u3000 /\u3000 \uff0f,\u3000 /|\u3000 ,\u3000 ,\u3000\u3000\u3000 ',\n\u3000\u3000\u3000\uff72 \u3000/ /-\u2010/\u3000\uff49\u3000L_ \uff8a \u30fd!\u3000 i\n\u3000\u3000\u3000 \uff9a \uff8d 7\uff72\uff40\uff84\u3000 \uff9a'\uff67-\uff84\uff64!\u30cf|\u3000 |\n\u3000\u3000\u3000\u3000 !,/7 '0'\u3000\u3000 \u00b40i\u30bd| \u3000 |\u3000\u3000\u3000\n\u3000\u3000\u3000\u3000 |.\u4ece\"\u3000\u3000_\u3000\u3000 ,,,, / |./ \u3000 |\n\u3000\u3000\u3000\u3000 \uff9a'| i\uff1e.\uff64,,__\u3000_,.\u30a4 / \u3000.i \u3000|\n\u3000\u3000\u3000\u3000\u3000 \uff9a'| | / k_\uff17_/\uff9a'\u30fd,\u3000\uff8a.\u3000|\n\u3000\u3000\u3000\u3000\u3000\u3000 | |/i \u3008|/\u3000 i\u3000,.\uff8d |\u3000i\u3000|\n\u3000\u3000\u3000\u3000\u3000\u3000.|/ /\u3000\uff49\uff1a \u3000 \uff8d!\u3000\u3000\uff3c\u3000|\n\u3000\u3000\u3000 \u3000 \u3000 k\u30fd>\uff64\uff8a \u3000 _,.\uff8d\uff64 \u3000 /\uff64!\n\u3000\u3000\u3000\u3000\u3000\u3000 !'\u3008//\uff40\uff34\u00b4', \uff3c \uff40'7'\uff70r'\n\u3000\u3000\u3000\u3000\u3000\u3000 \uff9a'\u30fdL__|___i,___,\u30f3\uff9a|\u30ce\n\u3000\u3000\u3000\u3000\u3000 \u3000\u3000\u3000\uff84-,/\u3000|___./\n\u3000\u3000\u3000\u3000\u3000 \u3000\u3000\u3000'\uff70'\u3000\u3000!_,.:\nLive2D \u770b\u677f\u5a18 v" + live2d_settings.l2dVersion + " / Konata");
-    /* 判断 JQuery */
-    // if (typeof ($.ajax) != 'function') typeof (jQuery.ajax) == 'function' ? window.$ = jQuery : console.log('[Error] JQuery is not defined.');
 
     /* 加载看板娘样式 */
-    live2d_settings.waifuSize = live2d_settings.waifuSize.split('x');
-    live2d_settings.waifuEdgeSide = live2d_settings.waifuEdgeSide.split(':');
+    if (typeof live2d_settings.waifuSize === 'string') {
+        live2d_settings.waifuSize = live2d_settings.waifuSize.split('x');
+        live2d_settings.waifuEdgeSide = live2d_settings.waifuEdgeSide.split(':');
+    }
     live2d.setAttribute('width', live2d_settings.waifuSize[0]);
     live2d.setAttribute('height', live2d_settings.waifuSize[1]);
 
@@ -187,12 +178,12 @@ export function initModel(waifuPath, type) {
     if (!live2d_settings.volumeUp) $$('.waifu-tool .fui-volume').classList.add('hide');
     if (!live2d_settings.volumeDown) $$('.waifu-tool .fui-mute').classList.add('hide');
 
-    var modelId = localStorage.getItem('modelId');
-    var modelTexturesId = localStorage.getItem('modelTexturesId');
+    let modelId = localStorage.getItem('modelId');
+    let modelTexturesId = localStorage.getItem('modelTexturesId');
 
     if (!live2d_settings.modelStorage || modelId == null) {
-        var modelId = live2d_settings.modelId;
-        var modelTexturesId = live2d_settings.modelTexturesId;
+        modelId = live2d_settings.modelId;
+        modelTexturesId = live2d_settings.modelTexturesId;
     }
     loadModel(modelId, modelTexturesId);
 }
@@ -387,9 +378,9 @@ function loadTipsMessage(result) {
                 window.fetch('https://api.lwl12.com/hitokoto/v1?encode=realjson')
                     .then(res => res.json())
                     .then(resJson => {
-                        if (!empty(resJson.source)) {
+                        if (!resJson.source) {
                             let text = waifu_tips.hitokoto_api_message['lwl12.com'][0];
-                            if (!empty(resJson.author)) text += waifu_tips.hitokoto_api_message['lwl12.com'][1];
+                            if (!resJson.author) text += waifu_tips.hitokoto_api_message['lwl12.com'][1];
                             text = text.render({source: resJson.source, creator: resJson.author});
                             window.setTimeout(function () {
                                 showMessage(text + waifu_tips.hitokoto_api_message['lwl12.com'][2], 3000, true);
@@ -402,7 +393,7 @@ function loadTipsMessage(result) {
                 window.fetch('https://api.fghrsh.net/hitokoto/rand/?encode=jsc&uid=3335')
                     .then(res => res.json())
                     .then(resJson => {
-                        if (!empty(resJson.source)) {
+                        if (!resJson.source) {
                             let text = waifu_tips.hitokoto_api_message['fghrsh.net'][0];
                             text = text.render({source: resJson.source, date: resJson.date});
                             window.setTimeout(function () {
@@ -416,7 +407,7 @@ function loadTipsMessage(result) {
                 window.fetch('https://v2.jinrishici.com/one.json')
                     .then(res => res.json())
                     .then(resJson => {
-                        if (!empty(resJson.data.origin.title)) {
+                        if (!resJson.data.origin.title) {
                             let text = waifu_tips.hitokoto_api_message['jinrishici.com'][0];
                             text = text.render({
                                 title: resJson.data.origin.title,
@@ -434,7 +425,7 @@ function loadTipsMessage(result) {
                 window.fetch('https://v1.hitokoto.cn')
                     .then(res => res.json())
                     .then(resJson => {
-                        if (!empty(resJson.from)) {
+                        if (!resJson.from) {
                             let text = waifu_tips.hitokoto_api_message['hitokoto.cn'][0];
                             text = text.render({source: resJson.from, creator: resJson.creator});
                             window.setTimeout(function () {
@@ -467,3 +458,5 @@ function loadTipsMessage(result) {
 }
 
 initModel("/live2d/waifu-tips.json");
+
+export {showMessage, initModel}
