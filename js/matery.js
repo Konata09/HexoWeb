@@ -310,7 +310,7 @@ audioObj.addEventListener("ended", () => {
     nextTrack();
 });
 // 开始播放时监听
-audioObj.addEventListener('playing', setAudioTime);
+// audioObj.addEventListener('playing', setAudioTime);
 // 暂停时将音量设为0
 audioObj.addEventListener('pause', () => (audioObj.volume = 0));
 // 静音按钮图标切换
@@ -387,4 +387,11 @@ if (document.readyState === "interactive") {
     window.addEventListener("DOMContentLoaded", checkLive2DHide);
     window.addEventListener("DOMContentLoaded", addMuteBtnListener);
     window.addEventListener("DOMContentLoaded", initSidebarNav);
+}
+
+// 页面切换前将音频时间存储到 SessionStorage
+window.onbeforeunload = () => {
+    if (audioObj.played.length !== 0) {
+        setSS('audioTime', audioObj.currentTime)
+    }
 }

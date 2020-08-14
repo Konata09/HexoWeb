@@ -519,8 +519,8 @@
 }, function (t, i, e) {
     "use strict";
     var r = {
-        DEBUG_LOG: !1,
-        DEBUG_MOUSE_LOG: !1,
+        DEBUG_LOG: 1,
+        DEBUG_MOUSE_LOG: 1,
         DEBUG_DRAW_HIT_AREA: !1,
         DEBUG_DRAW_ALPHA_MODEL: !1,
         VIEW_MAX_SCALE: 2,

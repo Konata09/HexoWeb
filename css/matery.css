@@ -790,7 +790,7 @@ article .article-tags .chip {
 
 .prev-next .right-badge {
     border-radius: 5px 0 0 5px;
-    right: 10px;
+    align-self: flex-end;
 }
 
 .paging {
