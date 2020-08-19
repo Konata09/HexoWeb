@@ -26,7 +26,6 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.1/animate.min.css">
     <link rel="stylesheet" type="text/css" href="/css/matery.css">
     <link rel="stylesheet" type="text/css" href="/css/my.css">
-    <link rel="stylesheet" type="text/css" href="/live2d/waifu.css">
     <!--百度统计-->
     <script>
         var _hmt = _hmt || [];
@@ -287,20 +286,11 @@ document.getElementsByClassName('bg-cover')[0].style.backgroundImage = "url('/me
                 
                 
                 
-                <a href="/categories/Ops/" title="Ops: 4">
+                <a href="/categories/Java/" title="Java: 10">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F9EBEA;">Ops
-                        <span class="tag-length">4</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/Admin/" title="Admin: 0">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #F5EEF8;">Admin
-                        <span class="tag-length">0</span>
+                            style="background-color: #F9EBEA;">Java
+                        <span class="tag-length">10</span>
                     </span>
                 </a>
                 
@@ -308,17 +298,17 @@ document.getElementsByClassName('bg-cover')[0].style.backgroundImage = "url('/me
                 <a href="/categories/CSS/" title="CSS: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #D5F5E3;">CSS
+                            style="background-color: #F5EEF8;">CSS
                         <span class="tag-length">1</span>
                     </span>
                 </a>
                 
                 
-                <a href="/categories/Java/" title="Java: 10">
+                <a href="/categories/Ops/" title="Ops: 4">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #E8F8F5;">Java
-                        <span class="tag-length">10</span>
+                            style="background-color: #D5F5E3;">Ops
+                        <span class="tag-length">4</span>
                     </span>
                 </a>
                 
@@ -326,7 +316,7 @@ document.getElementsByClassName('bg-cover')[0].style.backgroundImage = "url('/me
                 <a href="/categories/Tools/" title="Tools: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #FEF9E7;">Tools
+                            style="background-color: #E8F8F5;">Tools
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -335,7 +325,7 @@ document.getElementsByClassName('bg-cover')[0].style.backgroundImage = "url('/me
                 <a href="/categories/JavaScript/" title="JavaScript: 7">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F8F9F9;">JavaScript
+                            style="background-color: #FEF9E7;">JavaScript
                         <span class="tag-length">7</span>
                     </span>
                 </a>
@@ -344,7 +334,7 @@ document.getElementsByClassName('bg-cover')[0].style.backgroundImage = "url('/me
                 <a href="/categories/Codec/" title="Codec: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-active "
-                            style="background-color: #82E0AA;">Codec
+                            style="background-color: #F8F9F9;">Codec
                         <span class="tag-length">2</span>
                     </span>
                 </a>
@@ -353,7 +343,7 @@ document.getElementsByClassName('bg-cover')[0].style.backgroundImage = "url('/me
                 <a href="/categories/Ops/Codec/" title="Codec: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-active "
-                            style="background-color: #D7BDE2;">Codec
+                            style="background-color: #82E0AA;">Codec
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -362,7 +352,7 @@ document.getElementsByClassName('bg-cover')[0].style.backgroundImage = "url('/me
                 <a href="/categories/Miscellaneous/" title="Miscellaneous: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #A3E4D7;">Miscellaneous
+                            style="background-color: #D7BDE2;">Miscellaneous
                         <span class="tag-length">2</span>
                     </span>
                 </a>
@@ -371,7 +361,7 @@ document.getElementsByClassName('bg-cover')[0].style.backgroundImage = "url('/me
                 <a href="/categories/Database/" title="Database: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #85C1E9;">Database
+                            style="background-color: #A3E4D7;">Database
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -380,8 +370,17 @@ document.getElementsByClassName('bg-cover')[0].style.backgroundImage = "url('/me
                 <a href="/categories/Algorithm/" title="Algorithm: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F8C471;">Algorithm
+                            style="background-color: #85C1E9;">Algorithm
                         <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/Admin/" title="Admin: 0">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #F8C471;">Admin
+                        <span class="tag-length">0</span>
                     </span>
                 </a>
                 
@@ -558,23 +557,23 @@ document.getElementsByClassName('bg-cover')[0].style.backgroundImage = "url('/me
     <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 <iframe src="/media/silence.mp3" allow="autoplay" id="slience-audio" style="display: none"></iframe>
-<div class="waifu" id="waifu">
-    <div class="waifu-tips" id="waifu-message"></div>
-    <canvas id="live2d" class="live2d"></canvas>
+<div id="waifu">
+    <div id="waifu-message"></div>
     <div class="waifu-tool">
-        <span class="fui-home"></span>
-        <span class="fui-chat"></span>
-        <span class="fui-eye"></span>
-        <span class="fui-user"></span>
-        <span class="fui-info-circle"></span>
-        <span class="fui-volume"></span>
-        <span class="fui-mute"></span>
-        <span class="fui-photo"></span>
-        <span class="fui-cross"></span>
+        <span class="icon-next"></span>
+        <span class="icon-home"></span>
+        <span class="icon-message"></span>
+        <span class="icon-camera"></span>
+        <span class="icon-volumeup"></span>
+        <span class="icon-volumedown"></span>
+        <span class="icon-about"></span>
+        <span class="icon-cross"></span>
     </div>
+    <canvas id="live2d2"></canvas>
+    <canvas id="live2d4"></canvas>
 </div>
-<script src="/live2d/live2d.js"></script>
-<script type="module" src="/live2d/waifu-tips.js" async></script>
+<script src="/live2d/live2d_bundle.js"></script>
+<script async type="module" src="/live2d/waifu-tips.js"></script>
 <script type="module">
     const getWidth = () => {
         let width = window.innerWidth

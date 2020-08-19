@@ -98,6 +98,7 @@ pre[class*="language-"] {
     background: linear-gradient(to bottom right, #43CBFF 0%, #0396FF 100%);
     width: 48px !important;
     height: 48px !important;
+    z-index: 998;
 }
 
 .btn-floating i {
@@ -129,7 +130,7 @@ pre[class*="language-"] {
     bottom: 141px;
     padding-top: 15px;
     margin-bottom: 0;
-    z-index: 95;
+    z-index: 999;
 }
 
 .top-scroll-btn {
@@ -138,7 +139,7 @@ pre[class*="language-"] {
     bottom: 15px;
     padding-top: 15px;
     margin-bottom: 0;
-    z-index: 90;
+    z-index: 999;
     transition: all .3s ease;
 }
 

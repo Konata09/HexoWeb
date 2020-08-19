@@ -155,14 +155,14 @@ const showLive2Dbtn = document.getElementById('show-live2d');
 const checkLive2DHide = () => {
     if (getSS('waifuHide') === '1') {
         showLive2Dbtn.classList.remove('btnHide');
-        document.querySelector('.waifu').classList.add('hide');
+        document.querySelector('#waifu').classList.add('hide');
     }
 }
-
+// 为显示看板娘按钮添加事件
 showLive2Dbtn.addEventListener('click', () => {
     if (getSS('waifuHide') === '1') {
         removeSS('waifuHide');
-        document.querySelector('.waifu').classList.remove('hide');
+        document.querySelector('#waifu').classList.remove('hide');
         showLive2Dbtn.classList.add('btnHide');
         showMessage("想我了吗？^_^", 1300, true);
         initModel("/live2d/waifu-tips.json");
@@ -238,13 +238,13 @@ const getAudioTime = () => {
         return 0;
     }
 }
-// 存储播放位置
+// 每隔1.5秒存储当前播放位置，防止 window.onbeforeunload 不执行的情况
 const setAudioTime = () => {
     setInterval(() => {
         if (audioObj.played.length !== 0) {
             setSS('audioTime', audioObj.currentTime)
         }
-    }, 700);
+    }, 1500);
 }
 // 切换下一首
 const nextTrack = () => {
@@ -310,7 +310,7 @@ audioObj.addEventListener("ended", () => {
     nextTrack();
 });
 // 开始播放时监听
-// audioObj.addEventListener('playing', setAudioTime);
+audioObj.addEventListener('playing', setAudioTime);
 // 暂停时将音量设为0
 audioObj.addEventListener('pause', () => (audioObj.volume = 0));
 // 静音按钮图标切换
@@ -344,7 +344,7 @@ const addMuteBtnListener = () => {
     });
 }
 // 音量调整按钮
-document.querySelector('.waifu-tool .fui-volume').addEventListener('click', () => {
+document.querySelector('.waifu-tool .icon-volumeup').addEventListener('click', () => {
     const vol = audioObj.volume;
     const volInt = ((vol + 0.1) * 100).toFixed(0);
     if (vol <= 0.9) {
@@ -357,7 +357,7 @@ document.querySelector('.waifu-tool .fui-volume').addEventListener('click', () =
         showMessage("声音不能再大啦", 1300, true);
     }
 })
-document.querySelector('.waifu-tool .fui-mute').addEventListener('click', () => {
+document.querySelector('.waifu-tool .icon-volumedown').addEventListener('click', () => {
     const vol = audioObj.volume;
     const volInt = ((vol - 0.1) * 100).toFixed(0);
     if (vol > 0.11) {

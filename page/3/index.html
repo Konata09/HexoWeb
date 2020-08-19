@@ -26,7 +26,6 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.1/animate.min.css">
     <link rel="stylesheet" type="text/css" href="/css/matery.css">
     <link rel="stylesheet" type="text/css" href="/css/my.css">
-    <link rel="stylesheet" type="text/css" href="/live2d/waifu.css">
     <!--百度统计-->
     <script>
         var _hmt = _hmt || [];
@@ -706,23 +705,23 @@ document.getElementsByClassName('bg-cover')[0].style.backgroundImage = "url('/me
     <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 <iframe src="/media/silence.mp3" allow="autoplay" id="slience-audio" style="display: none"></iframe>
-<div class="waifu" id="waifu">
-    <div class="waifu-tips" id="waifu-message"></div>
-    <canvas id="live2d" class="live2d"></canvas>
+<div id="waifu">
+    <div id="waifu-message"></div>
     <div class="waifu-tool">
-        <span class="fui-home"></span>
-        <span class="fui-chat"></span>
-        <span class="fui-eye"></span>
-        <span class="fui-user"></span>
-        <span class="fui-info-circle"></span>
-        <span class="fui-volume"></span>
-        <span class="fui-mute"></span>
-        <span class="fui-photo"></span>
-        <span class="fui-cross"></span>
+        <span class="icon-next"></span>
+        <span class="icon-home"></span>
+        <span class="icon-message"></span>
+        <span class="icon-camera"></span>
+        <span class="icon-volumeup"></span>
+        <span class="icon-volumedown"></span>
+        <span class="icon-about"></span>
+        <span class="icon-cross"></span>
     </div>
+    <canvas id="live2d2"></canvas>
+    <canvas id="live2d4"></canvas>
 </div>
-<script src="/live2d/live2d.js"></script>
-<script type="module" src="/live2d/waifu-tips.js" async></script>
+<script src="/live2d/live2d_bundle.js"></script>
+<script async type="module" src="/live2d/waifu-tips.js"></script>
 <script type="module">
     const getWidth = () => {
         let width = window.innerWidth

@@ -28,7 +28,6 @@ Vorbis 是一種有損音訊壓縮格式，由 Xiph. Org 基金會所領導並�
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.1/animate.min.css">
     <link rel="stylesheet" type="text/css" href="/css/matery.css">
     <link rel="stylesheet" type="text/css" href="/css/my.css">
-    <link rel="stylesheet" type="text/css" href="/live2d/waifu.css">
     <!--百度统计-->
     <script>
         var _hmt = _hmt || [];
@@ -637,13 +636,13 @@ Vorbis 是一種有損音訊壓縮格式，由 Xiph. Org 基金會所領導並�
 
 <!-- TOC 悬浮按钮. -->
 
-    <div id="floating-toc-btn" class="hide-on-med-and-down">
+    <div id="floating-toc-btn">
         <a class="btn-floating btn-large bg-color">
             <i class="fa fa-list"></i>
         </a>
     </div>
     <script>
-        $('#floating-toc-btn').fadeIn(400);
+        document.getElementById('floating-toc-btn').style.display = 'block';
     </script>
 
 
@@ -653,24 +652,25 @@ Vorbis 是一種有損音訊壓縮格式，由 Xiph. Org 基金會所領導並�
         tocbot.init({
             tocSelector: '#toc-content',
             contentSelector: '#articleContent',
-            headingsOffset: -($(window).height() * 0.4 - 45),
-            // headingsOffset: -205,
+            headingsOffset: -(window.innerHeight * 0.4 - 45),
             headingSelector: 'h2, h3, h4'
         });
 
         // Set scroll toc fixed.
-        let tocHeight = parseInt($(window).height() * 0.4 - 64);
-        let $tocWidget = $('.toc-widget');
-        $(window).scroll(function () {
-            let scroll = $(window).scrollTop();
+        const tocWidget = document.querySelector('.toc-widget');
+
+        const tocFixed = () =>{
+            const tocHeight = document.querySelector('.bg-cover.pd-header.post-cover').scrollHeight - 64; // title image height - TOC top
+            const scroll = window.scrollY;
             /* add post toc fixed. */
             if (scroll > tocHeight) {
-                $tocWidget.addClass('toc-fixed');
+                tocWidget.classList.add('toc-fixed');
             } else {
-                $tocWidget.removeClass('toc-fixed');
+                tocWidget.classList.remove('toc-fixed');
             }
-        });
-
+        }
+        tocFixed();
+        window.addEventListener("scroll", () => tocFixed());
         
         /* 修复文章卡片 div 的宽度. */
         let fixPostCardWidth = function (srcId, targetId) {
@@ -812,23 +812,23 @@ Vorbis 是一種有損音訊壓縮格式，由 Xiph. Org 基金會所領導並�
     <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 <iframe src="/media/silence.mp3" allow="autoplay" id="slience-audio" style="display: none"></iframe>
-<div class="waifu" id="waifu">
-    <div class="waifu-tips" id="waifu-message"></div>
-    <canvas id="live2d" class="live2d"></canvas>
+<div id="waifu">
+    <div id="waifu-message"></div>
     <div class="waifu-tool">
-        <span class="fui-home"></span>
-        <span class="fui-chat"></span>
-        <span class="fui-eye"></span>
-        <span class="fui-user"></span>
-        <span class="fui-info-circle"></span>
-        <span class="fui-volume"></span>
-        <span class="fui-mute"></span>
-        <span class="fui-photo"></span>
-        <span class="fui-cross"></span>
+        <span class="icon-next"></span>
+        <span class="icon-home"></span>
+        <span class="icon-message"></span>
+        <span class="icon-camera"></span>
+        <span class="icon-volumeup"></span>
+        <span class="icon-volumedown"></span>
+        <span class="icon-about"></span>
+        <span class="icon-cross"></span>
     </div>
+    <canvas id="live2d2"></canvas>
+    <canvas id="live2d4"></canvas>
 </div>
-<script src="/live2d/live2d.js"></script>
-<script type="module" src="/live2d/waifu-tips.js" async></script>
+<script src="/live2d/live2d_bundle.js"></script>
+<script async type="module" src="/live2d/waifu-tips.js"></script>
 <script type="module">
     const getWidth = () => {
         let width = window.innerWidth
