@@ -104,7 +104,7 @@ const live2d_models = [
     },
     {
         name: 'Seele',
-        message: '舰长是来和希儿一起玩儿的吗?<br><font color=DarkBlue>点击希儿的头发可以更换表情哦</font>',
+        message: '舰长是来和希儿一起玩儿的吗?',
         version: 2
     },
     {
@@ -132,11 +132,11 @@ const live2d_models = [
         message: '灵依娘',
         version: 2
     },
-    {
-        name: '01niang',
-        message: '01娘',
-        version: 2
-    },
+    // {
+    //     name: '01niang',
+    //     message: '01娘',
+    //     version: 2
+    // },
     {
         name: 'houraiji',
         message: '蓬莱寺九霄',
