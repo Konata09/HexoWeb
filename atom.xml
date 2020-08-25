@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://konata.tech/"/>
-  <updated>2020-08-12T08:59:20.993Z</updated>
+  <updated>2020-08-25T05:03:50.680Z</updated>
   <id>http://konata.tech/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>GCC Toolset 的安装和使用</title>
+    <link href="http://konata.tech/2020/08/25/InstallGCCToolset/"/>
+    <id>http://konata.tech/2020/08/25/InstallGCCToolset/</id>
+    <published>2020-08-25T04:24:19.000Z</published>
+    <updated>2020-08-25T05:03:50.680Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;常用的 Linux 发行版一般不会自带最新的 GCC 等编译工具，如果我们想体验最新的 C++ 语法特性，就免不了要自己编译 GCC
+        
+      
+    
+    </summary>
+    
+      <category term="Ops" scheme="http://konata.tech/categories/Ops/"/>
+    
+    
+      <category term="gcc" scheme="http://konata.tech/tags/gcc/"/>
+    
+  </entry>
   
   <entry>
     <title>Fetch API</title>
@@ -537,32 +563,6 @@
       <category term="Vorbis" scheme="http://konata.tech/tags/Vorbis/"/>
     
       <category term="Opus" scheme="http://konata.tech/tags/Opus/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Nginx 1.19.2 with HTTP/3 编译记录</title>
-    <link href="http://konata.tech/2020/05/09/Nginx-1-18-compile/"/>
-    <id>http://konata.tech/2020/05/09/Nginx-1-18-compile/</id>
-    <published>2020-05-08T16:46:49.000Z</published>
-    <updated>2020-08-25T04:18:43.997Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;系统环境&quot;&gt;&lt;a href=&quot;#系统环境&quot; class=&quot;headerlink&quot; title=&quot;系统环境&quot;&gt;&lt;/a&gt;系统环境&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;/images/pasted-1.png&quot; alt=&quot;Ubuntu
-        
-      
-    
-    </summary>
-    
-      <category term="Ops" scheme="http://konata.tech/categories/Ops/"/>
-    
-    
-      <category term="Nginx" scheme="http://konata.tech/tags/Nginx/"/>
     
   </entry>
   
