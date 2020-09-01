@@ -410,15 +410,15 @@ GitHub
 <p><a href="https://github.com/Konata09/GradeCheck" target="_blank" rel="noopener">GitHub</a></p>
 <h2 id="设计思路"><a href="#设计思路" class="headerlink" title="设计思路"></a>设计思路</h2><p>通过教务系统成绩查询网页或者 api，使用 javaScript 脚本定时（默认定是 20 分钟）执行查询动作。<br>得到成绩后将所有成绩保存到文件，之后每次检查时进行比对，如果有新增的成绩就进行推送。<br>推送方案有多种选择，如方糖、Telegram Bot、邮件提醒、Bark 等。这里使用 <a href="https://github.com/Finb/Bark" target="_blank" rel="noopener">Bark</a> 进行推送。Bark 是一个十分简洁的 iOS 推送 App，利用 Apple 统一的推送通道，延迟很小，但不支持 Android 系统。Bark 也可以自已部署服务端，能保证隐私不被泄露。<br>网页登录好像有定时强制注销用户的设定，即使一直访问也会出现需要登录的情况，出现 session 失效的情况可以在网页端重新登录一次，SessionId 不需要修改。</p>
 <h2 id="安装使用"><a href="#安装使用" class="headerlink" title="安装使用"></a>安装使用</h2><p>以 Linux 系统为例</p>
-<h3 id="安装-nodeJS-环境"><a href="#安装-nodeJS-环境" class="headerlink" title="安装 nodeJS 环境"></a>安装 nodeJS 环境</h3><pre class=" language-sh"><code class="language-sh">wget https://nodejs.org/dist/v12.18.2/node-v12.18.2-linux-x64.tar.xz
-sudo mkdir -p /usr/local/lib/nodejs
-sudo tar -xJvf node-v12.18.2-linux-x64.tar.xz -C /usr/local/lib/nodejs</code></pre>
+<h3 id="安装-nodeJS-环境"><a href="#安装-nodeJS-环境" class="headerlink" title="安装 nodeJS 环境"></a>安装 nodeJS 环境</h3><pre class=" language-bash"><code class="language-bash"><span class="token function">wget</span> https://nodejs.org/dist/v12.18.2/node-v12.18.2-linux-x64.tar.xz
+<span class="token function">sudo</span> <span class="token function">mkdir</span> -p /usr/local/lib/nodejs
+<span class="token function">sudo</span> <span class="token function">tar</span> -xJvf node-v12.18.2-linux-x64.tar.xz -C /usr/local/lib/nodejs</code></pre>
 <p>执行 <code>vim /etc/profile</code> ，在文件最后加上以下内容：</p>
-<pre class=" language-sh"><code class="language-sh">export PATH=/usr/local/lib/nodejs/node-v12.18.2-linux-x64/bin:$PATH
-export NODE_PATH=/usr/local/lib/nodejs/node-v12.18.2-linux-x64/lib/node_modules</code></pre>
-<h3 id="安装-nodeJS-模块"><a href="#安装-nodeJS-模块" class="headerlink" title="安装 nodeJS 模块"></a>安装 nodeJS 模块</h3><pre class=" language-sh"><code class="language-sh">npm install -g pm2 cheerio node-schedule iconv-lite axios socks-proxy-agent</code></pre>
-<h3 id="下载脚本"><a href="#下载脚本" class="headerlink" title="下载脚本"></a>下载脚本</h3><pre class=" language-sh"><code class="language-sh">git clone https://github.com/Konata09/GradeCheck.git
-cd GradeCheck</code></pre>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">export</span> PATH<span class="token operator">=</span>/usr/local/lib/nodejs/node-v12.18.2-linux-x64/bin:<span class="token variable">$PATH</span>
+<span class="token function">export</span> NODE_PATH<span class="token operator">=</span>/usr/local/lib/nodejs/node-v12.18.2-linux-x64/lib/node_modules</code></pre>
+<h3 id="安装-nodeJS-模块"><a href="#安装-nodeJS-模块" class="headerlink" title="安装 nodeJS 模块"></a>安装 nodeJS 模块</h3><pre class=" language-bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> -g pm2 cheerio node-schedule iconv-lite axios socks-proxy-agent</code></pre>
+<h3 id="下载脚本"><a href="#下载脚本" class="headerlink" title="下载脚本"></a>下载脚本</h3><pre class=" language-bash"><code class="language-bash"><span class="token function">git</span> clone https://github.com/Konata09/GradeCheck.git
+<span class="token function">cd</span> GradeCheck</code></pre>
 <h3 id="修改配置"><a href="#修改配置" class="headerlink" title="修改配置"></a>修改配置</h3><p>打开 <code>config.json</code> 文件<br>填写示例如下：</p>
 <pre class=" language-json"><code class="language-json"><span class="token punctuation">{</span>
     <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"api"</span><span class="token punctuation">,</span>
@@ -437,8 +437,8 @@ cd GradeCheck</code></pre>
 <h4 id="JSESSIONID"><a href="#JSESSIONID" class="headerlink" title="JSESSIONID"></a>JSESSIONID</h4><p>用浏览器登录教务管理系统，将浏览器 Cookie 中的 <code>JSESSIONID=</code> 的后边内容填入。当 <code>type</code> 为 <code>api</code> 时，此项不必填写。</p>
 <h4 id="pushUrl"><a href="#pushUrl" class="headerlink" title="pushUrl"></a>pushUrl</h4><p>Bark 的推送地址。<br>从 App Store 安装 Bark，即可得到推送地址，当然也可以是自己部署的服务端地址。</p>
 <h4 id="proxy"><a href="#proxy" class="headerlink" title="proxy"></a>proxy</h4><p>对教务系统进行代理访问的代理服务器地址，支持 Socks4 和 Socks5 代理。不使用留空即可。</p>
-<h3 id="运行脚本"><a href="#运行脚本" class="headerlink" title="运行脚本"></a>运行脚本</h3><pre class=" language-sh"><code class="language-sh">pm2 start gradeCheck.js</code></pre>
-<h3 id="查看日志"><a href="#查看日志" class="headerlink" title="查看日志"></a>查看日志</h3><pre class=" language-sh"><code class="language-sh">pm2 logs gradeCheck</code></pre>
+<h3 id="运行脚本"><a href="#运行脚本" class="headerlink" title="运行脚本"></a>运行脚本</h3><pre class=" language-bash"><code class="language-bash">pm2 start gradeCheck.js</code></pre>
+<h3 id="查看日志"><a href="#查看日志" class="headerlink" title="查看日志"></a>查看日志</h3><pre class=" language-bash"><code class="language-bash">pm2 logs gradeCheck</code></pre>
 
             </div>
             <hr/>
@@ -591,12 +591,12 @@ cd GradeCheck</code></pre>
                     
                         <div class="card-action article-tags">
                             
-                                <a href="/tags/Java/" target="_blank">
-                                    <span class="chip bg-color">Java</span>
-                                </a>
-                            
                                 <a href="/tags/JSP/" target="_blank">
                                     <span class="chip bg-color">JSP</span>
+                                </a>
+                            
+                                <a href="/tags/Java/" target="_blank">
+                                    <span class="chip bg-color">Java</span>
                                 </a>
                             
                         </div>

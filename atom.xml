@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://konata.tech/"/>
-  <updated>2020-08-25T05:03:50.680Z</updated>
+  <updated>2020-09-01T12:14:55.508Z</updated>
   <id>http://konata.tech/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Ajax</title>
+    <link href="http://konata.tech/2020/09/01/ajax/"/>
+    <id>http://konata.tech/2020/09/01/ajax/</id>
+    <published>2020-09-01T06:33:01.000Z</published>
+    <updated>2020-09-01T12:14:55.508Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;p&gt;&lt;code&gt;Ajax (Asynchronous JavaScript and XML)&lt;/code&gt;
+        
+      
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://konata.tech/categories/JavaScript/"/>
+    
+    
+      <category term="JavaScript" scheme="http://konata.tech/tags/JavaScript/"/>
+    
+  </entry>
   
   <entry>
     <title>GCC Toolset 的安装和使用</title>
@@ -236,7 +262,7 @@
     <link href="http://konata.tech/2020/07/17/jsCheckGrade/"/>
     <id>http://konata.tech/2020/07/17/jsCheckGrade/</id>
     <published>2020-07-17T14:50:46.000Z</published>
-    <updated>2020-07-20T15:58:28.772Z</updated>
+    <updated>2020-08-26T07:59:21.399Z</updated>
     
     <summary type="html">
     
@@ -280,9 +306,9 @@
       <category term="Java" scheme="http://konata.tech/categories/Java/"/>
     
     
-      <category term="Java" scheme="http://konata.tech/tags/Java/"/>
-    
       <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
+    
+      <category term="Java" scheme="http://konata.tech/tags/Java/"/>
     
   </entry>
   
@@ -308,9 +334,9 @@
       <category term="Java" scheme="http://konata.tech/categories/Java/"/>
     
     
-      <category term="Java" scheme="http://konata.tech/tags/Java/"/>
-    
       <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
+    
+      <category term="Java" scheme="http://konata.tech/tags/Java/"/>
     
   </entry>
   
@@ -336,9 +362,9 @@
       <category term="Java" scheme="http://konata.tech/categories/Java/"/>
     
     
-      <category term="Java" scheme="http://konata.tech/tags/Java/"/>
-    
       <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
+    
+      <category term="Java" scheme="http://konata.tech/tags/Java/"/>
     
   </entry>
   
@@ -365,9 +391,9 @@
       <category term="Java" scheme="http://konata.tech/categories/Java/"/>
     
     
-      <category term="Java" scheme="http://konata.tech/tags/Java/"/>
-    
       <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
+    
+      <category term="Java" scheme="http://konata.tech/tags/Java/"/>
     
   </entry>
   
@@ -393,9 +419,9 @@
       <category term="Java" scheme="http://konata.tech/categories/Java/"/>
     
     
-      <category term="Java" scheme="http://konata.tech/tags/Java/"/>
-    
       <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
+    
+      <category term="Java" scheme="http://konata.tech/tags/Java/"/>
     
   </entry>
   
@@ -421,9 +447,9 @@
       <category term="Java" scheme="http://konata.tech/categories/Java/"/>
     
     
-      <category term="Java" scheme="http://konata.tech/tags/Java/"/>
-    
       <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
+    
+      <category term="Java" scheme="http://konata.tech/tags/Java/"/>
     
   </entry>
   
@@ -501,9 +527,9 @@
       <category term="Java" scheme="http://konata.tech/categories/Java/"/>
     
     
-      <category term="Java" scheme="http://konata.tech/tags/Java/"/>
-    
       <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
+    
+      <category term="Java" scheme="http://konata.tech/tags/Java/"/>
     
   </entry>
   
@@ -531,38 +557,6 @@
     
     
       <category term="Java" scheme="http://konata.tech/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Safari 使用 Opus 编码</title>
-    <link href="http://konata.tech/2020/05/25/ProvideCAFForSAfari/"/>
-    <id>http://konata.tech/2020/05/25/ProvideCAFForSAfari/</id>
-    <published>2020-05-25T01:46:01.000Z</published>
-    <updated>2020-08-08T09:26:46.162Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;Vorbis-与-Opus-编码&quot;&gt;&lt;a href=&quot;#Vorbis-与-Opus-编码&quot; class=&quot;headerlink&quot; title=&quot;Vorbis 与 Opus 编码&quot;&gt;&lt;/a&gt;Vorbis 与 Opus 编码&lt;/h2&gt;&lt;p&gt;摘自
-        
-      
-    
-    </summary>
-    
-      <category term="Ops" scheme="http://konata.tech/categories/Ops/"/>
-    
-      <category term="Codec" scheme="http://konata.tech/categories/Ops/Codec/"/>
-    
-    
-      <category term="Nginx" scheme="http://konata.tech/tags/Nginx/"/>
-    
-      <category term="Vorbis" scheme="http://konata.tech/tags/Vorbis/"/>
-    
-      <category term="Opus" scheme="http://konata.tech/tags/Opus/"/>
     
   </entry>
   
