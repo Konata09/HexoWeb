@@ -4,8 +4,9 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Ajax, 生命不息 折腾不止">
-    <meta name="description" content="简介Ajax (Asynchronous JavaScript and XML) 主要用来加载数据，避免刷新整个页面。XMLHttpRequest 是 Ajax 的基础。所有现代浏览器均支持 XMLHttpRequest 对象（IE5 和 ">
+    <meta name="keywords" content="Set 与 WeakSet, 生命不息 折腾不止">
+    <meta name="description" content="Set 对象允许存储任何类型的唯一值，无论是原始值或者是对象引用，Set 对象中的值不会重复。WeakSet 对象允许存储对象弱引用的唯一值，WeakSet 对象中的值同样不会重复，且只能保存对象的弱引用。  
+Set描述Set 对象是值的">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +20,7 @@
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#7312ff">
     <meta name="msapplication-TileColor" content="#8a46cc">
     <meta name="theme-color" content="#ffffff">
-    <title>Ajax | 生命不息 折腾不止</title>
+    <title>Set 与 WeakSet | 生命不息 折腾不止</title>
     <script async type="application/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.0/lazysizes.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
@@ -251,13 +252,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Ajax
+                        Set 与 WeakSet
                     </div>
                 </div>
             </div>
@@ -350,6 +351,10 @@
                     
                     <div class="article-tag">
                         
+                            <a href="/tags/ES6/" target="_blank">
+                                <span class="chip bg-color">ES6</span>
+                            </a>
+                        
                             <a href="/tags/JavaScript/" target="_blank">
                                 <span class="chip bg-color">JavaScript</span>
                             </a>
@@ -374,21 +379,21 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-09-01
+                    2020-09-02
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        537
+                        1.4k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        2 分
+                        6 分
                     </div>
                     
                 
@@ -404,57 +409,223 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><code>Ajax (Asynchronous JavaScript and XML)</code> 主要用来加载数据，避免刷新整个页面。<br><code>XMLHttpRequest</code> 是 <code>Ajax</code> 的基础。所有现代浏览器均支持 <code>XMLHttpRequest</code> 对象（IE5 和 IE6 使用 <code>ActiveXObject</code> ）。  </p>
-<h3 id="创建-XMLHttpRequest-对象"><a href="#创建-XMLHttpRequest-对象" class="headerlink" title="创建 XMLHttpRequest 对象"></a>创建 XMLHttpRequest 对象</h3><pre class=" language-js"><code class="language-js">myAjax <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">XMLHttpRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<h3 id="发送请求"><a href="#发送请求" class="headerlink" title="发送请求"></a>发送请求</h3><p><code>XMLHttpRequest</code> 对象进行 HTTP 请求前必须通过 <code>open</code> 初始化， <code>open</code> 接受五个参数，分别为请求方法、请求链接、异步标识、账号和密码用以服务端验证  </p>
-<pre class=" language-js"><code class="language-js">myAjax<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span>Method<span class="token punctuation">,</span> URL<span class="token punctuation">,</span> Asynchronous<span class="token punctuation">,</span> UserName<span class="token punctuation">,</span> Password<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<ul>
-<li><code>method</code> ：请求的类型；GET 或 POST。</li>
-<li><code>url</code> ：文件在服务器上的位置。</li>
-<li><code>async</code> ：true（异步）或 false（同步）。</li>
-</ul>
-<p>在成功初始化请求之后， <code>XMLHttpRequest</code> 对象的 <code>setRequestHeader</code> 方法可以用来设置请求头：</p>
-<pre class=" language-js"><code class="language-js">myAjax<span class="token punctuation">.</span><span class="token function">setRequestHeader</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<p>调用 <code>open</code> 方法后，就可以通过调用 <code>send</code> 方法按照 <code>open</code> 方法设定的参数将请求进行发送  </p>
-<pre class=" language-js"><code class="language-js">myAjax<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<p>当 <code>open</code> 方法设定发送的方式为异步请求时， <code>onreadystatechange</code> 事件监听器将自动在 <code>XMLHttpRequest</code> 对象的 <code>readyState</code> 属性改变时被触发</p>
-<pre class=" language-js"><code class="language-js"><span class="token keyword">switch</span> <span class="token punctuation">(</span>readyState<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">case</span> <span class="token number">1</span><span class="token punctuation">:</span>
-        <span class="token keyword">break</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//当 open 方法被成功调用，readyState 为 1</span>
-    <span class="token keyword">case</span> <span class="token number">2</span><span class="token punctuation">:</span>
-        <span class="token keyword">break</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//当 send 方法被调用，readyState 属性被置为 2</span>
-    <span class="token keyword">case</span> <span class="token number">3</span><span class="token punctuation">:</span>
-        <span class="token keyword">break</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//HTTP 响应内容开始加载，readyState 属性被置为 3</span>
-    <span class="token keyword">case</span> <span class="token number">4</span><span class="token punctuation">:</span>
-        <span class="token keyword">break</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//HTTP 响应内容结束加载，readyState 属性被置为 4</span>
-<span class="token punctuation">}</span></code></pre>
-<p>如果 <code>XMLHttpRequest</code> 对象的 <code>readyState</code> 属性还没有变成 4， <code>abort</code> 可以终止请求。这个方法可以确保异步请求中的回调不被执行。  </p>
-<pre class=" language-js"><code class="language-js">myAjax<span class="token punctuation">.</span><span class="token function">abort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><pre class=" language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">ajax</span><span class="token punctuation">(</span>url<span class="token punctuation">,</span> method <span class="token operator">=</span> <span class="token string">"GET"</span><span class="token punctuation">,</span> data <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token keyword">async</span> <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">// 声明 XMLHttpRequest </span>
-    <span class="token comment" spellcheck="true">// 在 IE5 和 IE6 中需要使用 ActiveXObject</span>
-    <span class="token keyword">const</span> XHR <span class="token operator">=</span> XMLHttpRequest<span class="token punctuation">;</span>
-    <span class="token comment" spellcheck="true">// 创建 XMLHttqRequest</span>
-    XHR <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">XMLHttpRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token comment" spellcheck="true">// 设置请求状态改变时执行的函数</span>
-    XHR<span class="token punctuation">.</span>onreadystatechange <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>XHR<span class="token punctuation">.</span>readyState <span class="token operator">===</span> <span class="token number">4</span><span class="token punctuation">)</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span> <span class="token template-string"><span class="token string">`响应状态：</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>XHR<span class="token punctuation">.</span>status<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">`</span></span> <span class="token punctuation">,</span> <span class="token string">"FINISH"</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//XHR.responseText 为响应体</span>
-    <span class="token punctuation">}</span>
-    <span class="token comment" spellcheck="true">// 初始化请求参数</span>
-    XHR<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span>method<span class="token punctuation">,</span> url<span class="token punctuation">,</span> <span class="token keyword">async</span><span class="token punctuation">)</span>
-    <span class="token comment" spellcheck="true">// 发起请求</span>
-    XHR<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
+                <p>Set 对象允许存储任何类型的唯一值，无论是原始值或者是对象引用，Set 对象中的值不会重复。<br>WeakSet 对象允许存储对象弱引用的唯一值，WeakSet 对象中的值同样不会重复，且只能保存对象的弱引用。  </p>
+<h2 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h2><h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><p>Set 对象是值的集合，可以按照<strong>插入的顺序</strong>迭代它的元素，Set 中的元素只会出现一次，即 Set 中的元素是唯一的，常用来作数组去重。</p>
+<h3 id="属性与方法"><a href="#属性与方法" class="headerlink" title="属性与方法"></a>属性与方法</h3><table>
+<thead>
+<tr>
+<th>属性和方法</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Set.prototype.constructor</td>
+<td>返回构造函数。</td>
+</tr>
+<tr>
+<td>Set.prototype.size</td>
+<td>返回 Set 对象的值的个数。</td>
+</tr>
+<tr>
+<td>Set.prototype.add(value)</td>
+<td>在 Set 对象尾部添加一个元素，返回该 Set 对象。</td>
+</tr>
+<tr>
+<td>Set.prototype.clear()</td>
+<td>移除 Set 对象内的所有元素。</td>
+</tr>
+<tr>
+<td>Set.prototype.delete(value)</td>
+<td>移除 Set 的中与这个值相等的元素。</td>
+</tr>
+<tr>
+<td>Set.prototype.entries()</td>
+<td>返回一个新的迭代器对象，该对象包含 Set 对象中的按插入顺序排列的所有元素的值的 [value, value] 数组，为了使这个方法和 Map 对象保持相似， 每个值的键和值相等。</td>
+</tr>
+<tr>
+<td>Set.prototype.forEach(callbackFn[, thisArg])</td>
+<td>按照插入顺序，为 Set 对象中的每一个值调用一次 callback，如果提供了 thisArg 参数，回调中的 this 会是这个参数。</td>
+</tr>
+<tr>
+<td>Set.prototype.has(value)</td>
+<td>返回一个布尔值，表示该值在 Set 中存在与否。</td>
+</tr>
+<tr>
+<td>Set.prototype.keys()</td>
+<td>返回一个新的迭代器对象，该对象包含 Set 对象中的按插入顺序排列的所有元素的值。</td>
+</tr>
+<tr>
+<td>Set.prototype<a href>@@iterator</a></td>
+<td>返回一个新的迭代器对象，该对象包含 Set 对象中的按插入顺序排列的所有元素的值。</td>
+</tr>
+</tbody></table>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> s <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token function">ajax</span><span class="token punctuation">(</span><span class="token string">"https://www.baidu.com"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">ajax</span><span class="token punctuation">(</span><span class="token string">"https://www.baidu.com"</span><span class="token punctuation">,</span> <span class="token string">"POST"</span><span class="token punctuation">,</span> <span class="token string">"s=str"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<h3 id="服务器响应"><a href="#服务器响应" class="headerlink" title="服务器响应"></a>服务器响应</h3><p>使用 <code>XMLHttpRequest</code> 对象的 <code>responseText</code> 或 <code>responseXML</code> 属性获取响应数据。  </p>
-<ul>
-<li><code>responseText</code> ：获得字符串形式的响应数据。</li>
-<li><code>responseXML</code> ：获得 XML 形式的响应数据。</li>
-</ul>
-<p>当服务端的响应不是 XML 时，使用 <code>responseText</code> 属性。</p>
-<pre class=" language-js"><code class="language-js">document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"id"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>inndeHTML <span class="token operator">=</span> myAjax<span class="token punctuation">.</span>responseText<span class="token punctuation">;</span></code></pre>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// Set(3) {3, 2, 1}</span>
+
+s<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// Set(3) {3, 2, 1}</span>
+
+<span class="token keyword">const</span> setIterator <span class="token operator">=</span> s<span class="token punctuation">[</span>Symbol<span class="token punctuation">.</span>iterator<span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>setIterator<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// SetIterator {3, 2, 1}</span>
+
+<span class="token keyword">let</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">...</span><span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 去重</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// (3) [3, 2, 1]</span></code></pre>
+<h2 id="WeakSet"><a href="#WeakSet" class="headerlink" title="WeakSet"></a>WeakSet</h2><h3 id="描述-1"><a href="#描述-1" class="headerlink" title="描述"></a>描述</h3><p>WeakSet 的值只能是 Object 类型，持有的是 Object 弱引用，原始数据类型不能作为值。WeakSet 持有的是对象的弱引用，这意味着在没有其他引用存在时垃圾回收能正确进行，WeakSet 用于存储的对象引用只有在其没有被回收时才是有效的，正由于弱引用，WeakSet 是不可枚举的。<br>简单来说，有时需要在某个数组上面存放一些对象，但是这会形成对于这个对象的引用，一旦不再需要这个对象，我们就必须手动删除这个引用，否则垃圾回收机制无法释放对象占用的内存，WeakSet 的设计就是解决这个问题的，其所引用的对象都是弱引用，垃圾回收机制不将该引用考虑在内，因此，只要所引用的对象的其他引用都被清除，垃圾回收机制就会释放该对象所占用的内存，此时 WeakSet 里边所对应的对象引用会消失，不需要手动删除引用。如果需要在数组上添加对象而又不想干扰垃圾回收机制的话，就可以使用 WeakSet，此外 WeakSet 非常适合于对象引用的跟踪，尤其是在涉及大量对象时。</p>
+<h3 id="属性与方法-1"><a href="#属性与方法-1" class="headerlink" title="属性与方法"></a>属性与方法</h3><table>
+<thead>
+<tr>
+<th>属性和方法</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>WeakSet.prototype.constructor</td>
+<td>返回构造函数。</td>
+</tr>
+<tr>
+<td>WeakSet.prototype.add(value)</td>
+<td>在该 WeakSet 对象中添加一个新元素 value。</td>
+</tr>
+<tr>
+<td>WeakSet.prototype.delete(value)</td>
+<td>从该 WeakSet 对象中删除 value 这个元素。</td>
+</tr>
+<tr>
+<td>WeakSet.prototype.has(value)</td>
+<td>返回一个布尔值，表示给定的值 value 是否存在于这个 WeakSet 中。</td>
+</tr>
+</tbody></table>
+<h3 id="内存回收实例"><a href="#内存回收实例" class="headerlink" title="内存回收实例"></a>内存回收实例</h3><h4 id="WeakSet-示例"><a href="#WeakSet-示例" class="headerlink" title="WeakSet 示例"></a>WeakSet 示例</h4><pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> ws <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WeakSet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> value <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span><span class="token number">6</span> <span class="token operator">*</span> <span class="token number">1024</span> <span class="token operator">*</span> <span class="token number">1024</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 开辟一个大数组</span>
+ws<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>ws<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// true</span>
+value <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 解除应用</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>ws<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// false</span></code></pre>
+<h4 id="WeakSet-内存回收"><a href="#WeakSet-内存回收" class="headerlink" title="WeakSet 内存回收"></a>WeakSet 内存回收</h4><pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">/** node --expose-gc **/</span> <span class="token comment" spellcheck="true">// 启动 node 环境 手动调用垃圾回收机制</span>
+global<span class="token punctuation">.</span><span class="token function">gc</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 首先调用一次垃圾回收</span>
+process<span class="token punctuation">.</span><span class="token function">memoryUsage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 查看内存占用 heapUsed 约 3M</span>
+<span class="token comment" spellcheck="true">/*
+{
+  rss: 24272896,
+  heapTotal: 5222400,
+  heapUsed: 3124632,
+  external: 1568727,
+  arrayBuffers: 140472
+}
+*/</span>
+<span class="token keyword">const</span> ws <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WeakSet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> value <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span><span class="token number">6</span> <span class="token operator">*</span> <span class="token number">1024</span> <span class="token operator">*</span> <span class="token number">1024</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 开辟一个大数组 </span>
+ws<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>ws<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// true</span>
+process<span class="token punctuation">.</span><span class="token function">memoryUsage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// heapUsed 约 53M</span>
+<span class="token comment" spellcheck="true">/*
+{
+  rss: 75153408,
+  heapTotal: 55558144,
+  heapUsed: 53554632,
+  external: 1568730,
+  arrayBuffers: 337083
+}
+*/</span>
+global<span class="token punctuation">.</span><span class="token function">gc</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 手动执行一次垃圾回收</span>
+process<span class="token punctuation">.</span><span class="token function">memoryUsage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// heapUsed 约 53M</span>
+<span class="token comment" spellcheck="true">/*
+{
+  rss: 75390976,
+  heapTotal: 55558144,
+  heapUsed: 53376552,
+  external: 1568728,
+  arrayBuffers: 378041
+}
+*/</span>
+value <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 解除引用</span>
+global<span class="token punctuation">.</span><span class="token function">gc</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 执行垃圾回收</span>
+process<span class="token punctuation">.</span><span class="token function">memoryUsage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// heapUsed 约 3M 内存已回收</span>
+<span class="token comment" spellcheck="true">/*
+{
+  rss: 25178112,
+  heapTotal: 5222400,
+  heapUsed: 3063152,
+  external: 1568731,
+  arrayBuffers: 435388
+}
+*/</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>ws<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// false</span></code></pre>
+<h4 id="Set-示例"><a href="#Set-示例" class="headerlink" title="Set 示例"></a>Set 示例</h4><pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> s <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> value <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span><span class="token number">6</span> <span class="token operator">*</span> <span class="token number">1024</span> <span class="token operator">*</span> <span class="token number">1024</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 开辟一个大数组 </span>
+s<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// true</span>
+value <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 解除引用</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// false</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// Set(1) {Array(6291456)}</span>
+s<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 回收内存</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// Set(0) {}</span></code></pre>
+<h4 id="Set-内存回收"><a href="#Set-内存回收" class="headerlink" title="Set 内存回收"></a>Set 内存回收</h4><pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">/** node --expose-gc **/</span> <span class="token comment" spellcheck="true">// 启动 node 环境 手动调用垃圾回收机制</span>
+global<span class="token punctuation">.</span><span class="token function">gc</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 首先调用一次垃圾回收</span>
+process<span class="token punctuation">.</span><span class="token function">memoryUsage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 查看内存占用 heapUsed 约 3M</span>
+<span class="token comment" spellcheck="true">/*
+{
+  rss: 24641536,
+  heapTotal: 5222400,
+  heapUsed: 3475568,
+  external: 1568695,
+  arrayBuffers: 115904
+}
+*/</span>
+<span class="token keyword">const</span> s <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> value <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span><span class="token number">6</span> <span class="token operator">*</span> <span class="token number">1024</span> <span class="token operator">*</span> <span class="token number">1024</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 开辟一个大数组 </span>
+s<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// true</span>
+process<span class="token punctuation">.</span><span class="token function">memoryUsage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// heapUsed 约 53M</span>
+<span class="token comment" spellcheck="true">/*
+{
+  rss: 75141120,
+  heapTotal: 55558144,
+  heapUsed: 53454992,
+  external: 1568730,
+  arrayBuffers: 304315
+}
+*/</span>
+global<span class="token punctuation">.</span><span class="token function">gc</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 手动执行一次垃圾回收</span>
+process<span class="token punctuation">.</span><span class="token function">memoryUsage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// heapUsed 约 53M</span>
+<span class="token comment" spellcheck="true">/*
+{
+  rss: 75235328,
+  heapTotal: 55558144,
+  heapUsed: 53384240,
+  external: 1568728,
+  arrayBuffers: 320697
+}
+*/</span>
+value <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 解除引用</span>
+global<span class="token punctuation">.</span><span class="token function">gc</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 执行垃圾回收</span>
+process<span class="token punctuation">.</span><span class="token function">memoryUsage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// heapUsed 仍为 53M 内存未回收</span>
+<span class="token comment" spellcheck="true">/*
+{
+  rss: 75243520,
+  heapTotal: 55558144,
+  heapUsed: 53461528,
+  external: 1568737,
+  arrayBuffers: 369858
+}
+*/</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// false // 此处为 false，这是因为 value 值的改变，而在这个 Set 实例对象中依然存在对 Array 的强引用，内存未回收</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// Set(1) {Array(6291456)}</span>
+s<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 回收内存</span>
+global<span class="token punctuation">.</span><span class="token function">gc</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 执行垃圾回收</span>
+process<span class="token punctuation">.</span><span class="token function">memoryUsage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// heapUsed 约 2M 内存已回收</span>
+<span class="token comment" spellcheck="true">/*
+{
+  rss: 25055232,
+  heapTotal: 5222400,
+  heapUsed: 3167016,
+  external: 1568737,
+  arrayBuffers: 541890
+}
+*/</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// Set(0) {}</span></code></pre>
 
             </div>
             <hr/>
@@ -479,8 +650,8 @@
             </div>
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
-                  property="dct:title" rel="dct:type">《Ajax》</span> 由 <a
-                    xmlns:cc="http://creativecommons.org/ns#" href="/2020/09/01/ajax/"
+                  property="dct:title" rel="dct:type">《Set 与 WeakSet》</span> 由 <a
+                    xmlns:cc="http://creativecommons.org/ns#" href="/2020/09/02/setAndWeakset/"
                     property="cc:attributionName"
                     rel="cc:attributionURL">Konata</a> 采用
             <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh">
@@ -512,7 +683,8 @@
         
             <div class="article col s12 m6">
                 <div class="article-badge left-badge text-color">
-                    <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                    <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+                </div>
                 <div class="card">
                     <a href="/2020/09/02/setAndWeakset/">
                         <div class="card-image">
@@ -535,9 +707,9 @@
                             </center>
                         </div>
                         <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-09-02
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-09-02
+                            </span>
                             <span class="publish-author">
                                 
                                     <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -550,6 +722,7 @@
                             </span>
                         </div>
                     </div>
+
                     
                         <div class="card-action article-tags">
                             
@@ -572,36 +745,36 @@
                     下一篇&nbsp;<i class="fa fa-chevron-right"></i>
                 </div>
                 <div class="card">
-                    <a href="/2020/08/25/InstallGCCToolset/">
+                    <a href="/2020/09/01/ajax/">
                         <div class="card-image">
                             
                                 
                                 <div class="lazy-image-wrapper">
-                                    <img data-src="/medias/featureimages/06.jpg" class="responsive-img lazyload"
-                                         alt="GCC Toolset 的安装和使用">
+                                    <img data-src="/medias/featureimages/11.jpg" class="responsive-img lazyload"
+                                         alt="Ajax">
                                 </div>
                             
-                            <span class="card-title">GCC Toolset 的安装和使用</span>
+                            <span class="card-title">Ajax</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
                             <center>
-                                GCC Toolset 的安装和使用
+                                Ajax
                                 
                             </center>
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-08-25
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-09-01
                             </span>
                             <span class="publish-author">
                                 
                                     <i class="fa fa-bookmark fa-fw icon-category"></i>
                                     
-                                        <a href="/categories/Ops/" class="post-category" target="_blank">
-                                    Ops
+                                        <a href="/categories/JavaScript/" class="post-category" target="_blank">
+                                    JavaScript
                                 </a>
                                     
                                 
@@ -611,8 +784,8 @@
                     
                         <div class="card-action article-tags">
                             
-                                <a href="/tags/gcc/" target="_blank">
-                                    <span class="chip bg-color">gcc</span>
+                                <a href="/tags/JavaScript/" target="_blank">
+                                    <span class="chip bg-color">JavaScript</span>
                                 </a>
                             
                         </div>

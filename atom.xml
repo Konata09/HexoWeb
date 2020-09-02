@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://konata.tech/"/>
-  <updated>2020-09-01T12:14:55.508Z</updated>
+  <updated>2020-09-02T12:21:06.891Z</updated>
   <id>http://konata.tech/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Set 与 WeakSet</title>
+    <link href="http://konata.tech/2020/09/02/setAndWeakset/"/>
+    <id>http://konata.tech/2020/09/02/setAndWeakset/</id>
+    <published>2020-09-02T08:51:29.000Z</published>
+    <updated>2020-09-02T12:21:06.891Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Set 对象允许存储任何类型的唯一值，无论是原始值或者是对象引用，Set 对象中的值不会重复。&lt;br&gt;WeakSet 对象允许存储对象弱引用的唯一值，WeakSet 对象中的值同样不会重复，且只能保存对象的弱引用。  &lt;/p&gt;
+&lt;h2 id=&quot;Set&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://konata.tech/categories/JavaScript/"/>
+    
+    
+      <category term="ES6" scheme="http://konata.tech/tags/ES6/"/>
+    
+      <category term="JavaScript" scheme="http://konata.tech/tags/JavaScript/"/>
+    
+  </entry>
   
   <entry>
     <title>Ajax</title>
@@ -528,33 +557,6 @@
     
     
       <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
-    
-      <category term="Java" scheme="http://konata.tech/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JavaBean</title>
-    <link href="http://konata.tech/2020/06/09/JavaBean/"/>
-    <id>http://konata.tech/2020/06/09/JavaBean/</id>
-    <published>2020-06-09T05:36:22.000Z</published>
-    <updated>2020-06-09T05:46:18.289Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;JavaBean 是 Java 语言编写类的一种标准规范。符合 JavaBean 的类，要求类必须是具体的和公共的，并且具有无参数的构造方法，提供用来操作成员变量的 set 和 get 方法。&lt;/p&gt;
-&lt;pre class=&quot; language-java&quot;&gt;&lt;code
-        
-      
-    
-    </summary>
-    
-      <category term="Java" scheme="http://konata.tech/categories/Java/"/>
-    
     
       <category term="Java" scheme="http://konata.tech/tags/Java/"/>
     
