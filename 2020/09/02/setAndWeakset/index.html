@@ -5,8 +5,8 @@
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     <meta name="keywords" content="Set 与 WeakSet, 生命不息 折腾不止">
-    <meta name="description" content="Set 对象允许存储任何类型的唯一值，无论是原始值或者是对象引用，Set 对象中的值不会重复。WeakSet 对象允许存储对象弱引用的唯一值，WeakSet 对象中的值同样不会重复，且只能保存对象的弱引用。  
-Set描述Set 对象是值的">
+    <meta name="description" content="Set 对象允许存储任何类型的唯一值，无论是原始值或者是对象引用， Set 对象中的值不会重复。WeakSet 对象允许存储对象弱引用的唯一值， WeakSet 对象中的值同样不会重复，且只能保存对象的弱引用。  
+Set描述Set 对象是">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -409,8 +409,8 @@ Set描述Set 对象是值的">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Set 对象允许存储任何类型的唯一值，无论是原始值或者是对象引用，Set 对象中的值不会重复。<br>WeakSet 对象允许存储对象弱引用的唯一值，WeakSet 对象中的值同样不会重复，且只能保存对象的弱引用。  </p>
-<h2 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h2><h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><p>Set 对象是值的集合，可以按照<strong>插入的顺序</strong>迭代它的元素，Set 中的元素只会出现一次，即 Set 中的元素是唯一的，常用来作数组去重。</p>
+                <p><code>Set</code> 对象允许存储任何类型的唯一值，无论是原始值或者是对象引用， <code>Set</code> 对象中的值不会重复。<br><code>WeakSet</code> 对象允许存储对象弱引用的唯一值， <code>WeakSet</code> 对象中的值同样不会重复，且只能保存对象的弱引用。  </p>
+<h2 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h2><h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><p><code>Set</code> 对象是值的集合，可以按照<strong>插入的顺序</strong>迭代它的元素， <code>Set</code> 中的元素只会出现一次，即 <code>Set</code> 中的元素是唯一的，常用来作数组去重。</p>
 <h3 id="属性与方法"><a href="#属性与方法" class="headerlink" title="属性与方法"></a>属性与方法</h3><table>
 <thead>
 <tr>
@@ -419,44 +419,44 @@ Set描述Set 对象是值的">
 </tr>
 </thead>
 <tbody><tr>
-<td>Set.prototype.constructor</td>
+<td><code>Set.prototype.constructor</code></td>
 <td>返回构造函数。</td>
 </tr>
 <tr>
-<td>Set.prototype.size</td>
-<td>返回 Set 对象的值的个数。</td>
+<td><code>Set.prototype.size</code></td>
+<td>返回 <code>Set</code> 对象的值的个数。</td>
 </tr>
 <tr>
-<td>Set.prototype.add(value)</td>
-<td>在 Set 对象尾部添加一个元素，返回该 Set 对象。</td>
+<td><code>Set.prototype.add(value)</code></td>
+<td>在 <code>Set</code> 对象尾部添加一个元素，返回该 <code>Set</code> 对象。</td>
 </tr>
 <tr>
-<td>Set.prototype.clear()</td>
-<td>移除 Set 对象内的所有元素。</td>
+<td><code>Set.prototype.clear()</code></td>
+<td>移除 <code>Set</code> 对象内的所有元素。</td>
 </tr>
 <tr>
-<td>Set.prototype.delete(value)</td>
-<td>移除 Set 的中与这个值相等的元素。</td>
+<td><code>Set.prototype.delete(value)</code></td>
+<td>移除 <code>Set</code> 的中与这个值相等的元素。</td>
 </tr>
 <tr>
-<td>Set.prototype.entries()</td>
-<td>返回一个新的迭代器对象，该对象包含 Set 对象中的按插入顺序排列的所有元素的值的 [value, value] 数组，为了使这个方法和 Map 对象保持相似， 每个值的键和值相等。</td>
+<td><code>Set.prototype.entries()</code></td>
+<td>返回一个新的迭代器对象，该对象包含 <code>Set</code> 对象中的按插入顺序排列的所有元素的值的 <code>[value, value]</code> 数组，为了使这个方法和 <code>Map</code> 对象保持相似， 每个值的键和值相等。</td>
 </tr>
 <tr>
-<td>Set.prototype.forEach(callbackFn[, thisArg])</td>
-<td>按照插入顺序，为 Set 对象中的每一个值调用一次 callback，如果提供了 thisArg 参数，回调中的 this 会是这个参数。</td>
+<td><code>Set.prototype.forEach(callbackFn[, thisArg])</code></td>
+<td>按照插入顺序，为 <code>Set</code> 对象中的每一个值调用一次 <code>callback</code> ，如果提供了 <code>thisArg</code> 参数，回调中的 <code>this</code> 会是这个参数。</td>
 </tr>
 <tr>
-<td>Set.prototype.has(value)</td>
-<td>返回一个布尔值，表示该值在 Set 中存在与否。</td>
+<td><code>Set.prototype.has(value)</code></td>
+<td>返回一个布尔值，表示该值在 <code>Set</code> 中存在与否。</td>
 </tr>
 <tr>
-<td>Set.prototype.keys()</td>
-<td>返回一个新的迭代器对象，该对象包含 Set 对象中的按插入顺序排列的所有元素的值。</td>
+<td><code>Set.prototype.keys()</code></td>
+<td>返回一个新的迭代器对象，该对象包含 <code>Set</code> 对象中的按插入顺序排列的所有元素的值。</td>
 </tr>
 <tr>
-<td>Set.prototype<a href>@@iterator</a></td>
-<td>返回一个新的迭代器对象，该对象包含 Set 对象中的按插入顺序排列的所有元素的值。</td>
+<td><code>Set.prototype[@@iterator]()</code></td>
+<td>返回一个新的迭代器对象，该对象包含 <code>Set</code> 对象中的按插入顺序排列的所有元素的值。</td>
 </tr>
 </tbody></table>
 <h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> s <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -472,7 +472,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <span class="token keyword">let</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">...</span><span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 去重</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// (3) [3, 2, 1]</span></code></pre>
-<h2 id="WeakSet"><a href="#WeakSet" class="headerlink" title="WeakSet"></a>WeakSet</h2><h3 id="描述-1"><a href="#描述-1" class="headerlink" title="描述"></a>描述</h3><p>WeakSet 的值只能是 Object 类型，持有的是 Object 弱引用，原始数据类型不能作为值。WeakSet 持有的是对象的弱引用，这意味着在没有其他引用存在时垃圾回收能正确进行，WeakSet 用于存储的对象引用只有在其没有被回收时才是有效的，正由于弱引用，WeakSet 是不可枚举的。<br>简单来说，有时需要在某个数组上面存放一些对象，但是这会形成对于这个对象的引用，一旦不再需要这个对象，我们就必须手动删除这个引用，否则垃圾回收机制无法释放对象占用的内存，WeakSet 的设计就是解决这个问题的，其所引用的对象都是弱引用，垃圾回收机制不将该引用考虑在内，因此，只要所引用的对象的其他引用都被清除，垃圾回收机制就会释放该对象所占用的内存，此时 WeakSet 里边所对应的对象引用会消失，不需要手动删除引用。如果需要在数组上添加对象而又不想干扰垃圾回收机制的话，就可以使用 WeakSet，此外 WeakSet 非常适合于对象引用的跟踪，尤其是在涉及大量对象时。</p>
+<h2 id="WeakSet"><a href="#WeakSet" class="headerlink" title="WeakSet"></a>WeakSet</h2><h3 id="描述-1"><a href="#描述-1" class="headerlink" title="描述"></a>描述</h3><p><code>WeakSet</code> 的值只能是 <code>Object</code> 类型，持有的是 <code>Object</code> 弱引用，原始数据类型不能作为值。 <code>WeakSet</code> 持有的是对象的弱引用，这意味着在没有其他引用存在时垃圾回收能正确进行， <code>WeakSet</code> 用于存储的对象引用只有在其没有被回收时才是有效的，正由于弱引用， <code>WeakSet</code> 是不可枚举的。<br>简单来说，有时需要在某个数组上面存放一些对象，但是这会形成对于这个对象的引用，一旦不再需要这个对象，我们就必须手动删除这个引用，否则垃圾回收机制无法释放对象占用的内存， <code>WeakSet</code> 的设计就是解决这个问题的，其所引用的对象都是弱引用，垃圾回收机制不将该引用考虑在内，因此，只要所引用的对象的其他引用都被清除，垃圾回收机制就会释放该对象所占用的内存，此时 <code>WeakSet</code> 里边所对应的对象引用会消失，不需要手动删除引用。如果需要在数组上添加对象而又不想干扰垃圾回收机制的话，就可以使用 <code>WeakSet</code> ，此外 <code>WeakSet</code> 非常适合于对象引用的跟踪，尤其是在涉及大量对象时。</p>
 <h3 id="属性与方法-1"><a href="#属性与方法-1" class="headerlink" title="属性与方法"></a>属性与方法</h3><table>
 <thead>
 <tr>
@@ -481,20 +481,20 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </tr>
 </thead>
 <tbody><tr>
-<td>WeakSet.prototype.constructor</td>
+<td><code>WeakSet.prototype.constructor</code></td>
 <td>返回构造函数。</td>
 </tr>
 <tr>
-<td>WeakSet.prototype.add(value)</td>
-<td>在该 WeakSet 对象中添加一个新元素 value。</td>
+<td><code>WeakSet.prototype.add(value)</code></td>
+<td>在该 <code>WeakSet</code> 对象中添加一个新元素 <code>value</code> 。</td>
 </tr>
 <tr>
-<td>WeakSet.prototype.delete(value)</td>
-<td>从该 WeakSet 对象中删除 value 这个元素。</td>
+<td><code>WeakSet.prototype.delete(value)</code></td>
+<td>从该 <code>WeakSet</code> 对象中删除 <code>value</code> 这个元素。</td>
 </tr>
 <tr>
-<td>WeakSet.prototype.has(value)</td>
-<td>返回一个布尔值，表示给定的值 value 是否存在于这个 WeakSet 中。</td>
+<td><code>WeakSet.prototype.has(value)</code></td>
+<td>返回一个布尔值，表示给定的值 <code>value</code> 是否存在于这个 <code>WeakSet</code> 中。</td>
 </tr>
 </tbody></table>
 <h3 id="内存回收实例"><a href="#内存回收实例" class="headerlink" title="内存回收实例"></a>内存回收实例</h3><h4 id="WeakSet-示例"><a href="#WeakSet-示例" class="headerlink" title="WeakSet 示例"></a>WeakSet 示例</h4><pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> ws <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WeakSet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>

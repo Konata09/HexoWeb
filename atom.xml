@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://konata.tech/"/>
-  <updated>2020-09-02T12:21:06.891Z</updated>
+  <updated>2020-09-02T12:35:01.904Z</updated>
   <id>http://konata.tech/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://konata.tech/2020/09/02/setAndWeakset/"/>
     <id>http://konata.tech/2020/09/02/setAndWeakset/</id>
     <published>2020-09-02T08:51:29.000Z</published>
-    <updated>2020-09-02T12:21:06.891Z</updated>
+    <updated>2020-09-02T12:35:01.904Z</updated>
     
     <summary type="html">
     
@@ -29,8 +29,7 @@
       
         
         
-          &lt;p&gt;Set 对象允许存储任何类型的唯一值，无论是原始值或者是对象引用，Set 对象中的值不会重复。&lt;br&gt;WeakSet 对象允许存储对象弱引用的唯一值，WeakSet 对象中的值同样不会重复，且只能保存对象的弱引用。  &lt;/p&gt;
-&lt;h2 id=&quot;Set&quot;&gt;&lt;a
+          &lt;p&gt;&lt;code&gt;Set&lt;/code&gt; 对象允许存储任何类型的唯一值，无论是原始值或者是对象引用， &lt;code&gt;Set&lt;/code&gt; 对象中的值不会重复。&lt;br&gt;&lt;code&gt;WeakSet&lt;/code&gt; 对象允许存储对象弱引用的唯一值， &lt;code&gt;WeakSet&lt;/code&gt;
         
       
     
