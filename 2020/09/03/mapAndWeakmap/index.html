@@ -4,9 +4,9 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Set 与 WeakSet, 生命不息 折腾不止">
-    <meta name="description" content="Set 对象允许存储任何类型的唯一值，无论是原始值或者是对象引用， Set 对象中的值不会重复。WeakSet 对象允许存储对象弱引用的唯一值， WeakSet 对象中的值同样不会重复，且只能保存对象的弱引用。  
-Set描述Set 对象是">
+    <meta name="keywords" content="生命不息 折腾不止">
+    <meta name="description" content="Map 对象用来保存键值对，并且能够记住键的原始插入顺序，任何对象或者原始值都可以作为键或者是值。WeakMap 对象同样用来保存键值对，对于键是弱引用的而且必须为一个对象，而值可以是任意的对象或者原始值。  
+Map描述Map 对象类似于">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -20,7 +20,7 @@ Set描述Set 对象是">
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#7312ff">
     <meta name="msapplication-TileColor" content="#8a46cc">
     <meta name="theme-color" content="#ffffff">
-    <title>Set 与 WeakSet | 生命不息 折腾不止</title>
+    <title>生命不息 折腾不止</title>
     <script async type="application/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.0/lazysizes.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
@@ -253,13 +253,13 @@ Set描述Set 对象是">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/01.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Set 与 WeakSet
+                        
                     </div>
                 </div>
             </div>
@@ -350,29 +350,12 @@ Set描述Set 对象是">
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/ES6/" target="_blank">
-                                <span class="chip bg-color">ES6</span>
-                            </a>
-                        
-                            <a href="/tags/JavaScript/" target="_blank">
-                                <span class="chip bg-color">JavaScript</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fa fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/JavaScript/" class="post-category" target="_blank">
-                                JavaScript
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -380,21 +363,21 @@ Set描述Set 对象是">
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-09-02
+                    2020-09-03
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1.4k
+                        1.8k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        6 分
+                        7 分
                     </div>
                     
                 
@@ -410,223 +393,241 @@ Set描述Set 对象是">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><code>Set</code> 对象允许存储任何类型的唯一值，无论是原始值或者是对象引用， <code>Set</code> 对象中的值不会重复。<br><code>WeakSet</code> 对象允许存储对象弱引用的唯一值， <code>WeakSet</code> 对象中的值同样不会重复，且只能保存对象的弱引用。  </p>
-<h2 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h2><h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><p><code>Set</code> 对象是值的集合，可以按照<strong>插入的顺序</strong>迭代它的元素， <code>Set</code> 中的元素只会出现一次，即 <code>Set</code> 中的元素是唯一的，常用来作数组去重。</p>
+                <p><code>Map</code> 对象用来保存键值对，并且能够记住键的原始插入顺序，任何对象或者原始值都可以作为键或者是值。<br><code>WeakMap</code> 对象同样用来保存键值对，对于键是弱引用的而且必须为一个对象，而值可以是任意的对象或者原始值。  </p>
+<h2 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h2><h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><p><code>Map</code> 对象类似于一个普通的键值对的 <code>Object</code> 对象，也是键值对的集合，但是他们之间有一些重要的区别：<br>| 描述 | Map | Object |<br>|——-|——-|——–|<br>| 意外的键 | <code>Map</code> 默认情况不包含任何键，只包含显式插入的键。 | 一个 <code>Object</code> 有一个原型，原型链上的键名有可能和在对象上的设置的键名产生冲突。 |<br>| 键的类型 | 一个 <code>Map</code> 的键可以是任意值，包括函数、对象或任意基本类型。 | 一个 <code>Object</code> 的键必须是一个 <code>String</code> 或是 <code>Symbol。</code> |<br>| 键的顺序 | <code>Map</code> 中的 <code>key</code> 是有序的，当迭代的时候，一个 <code>Map</code> 对象以插入的顺序返回键值。| 一个 <code>Object</code> 的键的迭代顺序需要通过键的类型与创建的顺序来确定。 |<br>| 键值数量 | <code>Map</code> 的键值对个数可以轻易地通过 <code>size</code> 属性获取。| <code>Object</code> 的键值对个数只能手动计算。 |<br>| 迭代 | <code>Map</code> 是 <code>iterable</code> 的，所以可以直接被迭代。 | 迭代一个 <code>Object</code> 需要以某种方式获取它的键然后才能迭代。 |<br>| 性能 | <code>Map</code> 在频繁增删键值对的场景下表现更好。 | <code>Object</code> 在频繁添加和删除键值对的场景下未作出优化。 |<br>注：关于一个 <code>Object</code> 的键的迭代顺序问题，在 ES6 以后，对象保留了 <code>String</code> 与 <code>Symbol</code> 的创建顺序，当创建的对象仅有 <code>String</code> 或者 <code>Symbol</code> 时，迭代顺序与创建顺序相同，当对象中两种类型都存在时， <code>String</code> 总是在前，当 <code>String</code> 可以被转换为 <code>Number</code> 时，这些键在迭代时处于最前，且会按照数字的顺序进行迭代。</p>
 <h3 id="属性与方法"><a href="#属性与方法" class="headerlink" title="属性与方法"></a>属性与方法</h3><table>
 <thead>
 <tr>
 <th>属性和方法</th>
-<th>功能</th>
+<th>描述</th>
 </tr>
 </thead>
 <tbody><tr>
-<td><code>Set.prototype.constructor</code></td>
-<td>返回构造函数。</td>
+<td><code>Map.prototype.constructor</code></td>
+<td>返回构造函数</td>
 </tr>
 <tr>
-<td><code>Set.prototype.size</code></td>
-<td>返回 <code>Set</code> 对象的值的个数。</td>
+<td><code>Map.prototype.size</code></td>
+<td>返回 <code>Map</code> 对象的键值对的数量。</td>
 </tr>
 <tr>
-<td><code>Set.prototype.add(value)</code></td>
-<td>在 <code>Set</code> 对象尾部添加一个元素，返回该 <code>Set</code> 对象。</td>
+<td><code>Map.prototype.clear()</code></td>
+<td>移除 <code>Map</code> 对象的所有键值对 。</td>
 </tr>
 <tr>
-<td><code>Set.prototype.clear()</code></td>
-<td>移除 <code>Set</code> 对象内的所有元素。</td>
+<td><code>Map.prototype.delete(key)</code></td>
+<td>如果 <code>Map</code> 对象中存在该元素，则移除它并返回 <code>true</code> ，否则如果该元素不存在则返回 <code>false</code> 。</td>
 </tr>
 <tr>
-<td><code>Set.prototype.delete(value)</code></td>
-<td>移除 <code>Set</code> 的中与这个值相等的元素。</td>
+<td><code>Map.prototype.entries()</code></td>
+<td>返回一个新的 <code>Iterator</code> 对象，它按插入顺序包含了 <code>Map</code> 对象中每个元素的 <code>[key, value]</code> 数组。</td>
 </tr>
 <tr>
-<td><code>Set.prototype.entries()</code></td>
-<td>返回一个新的迭代器对象，该对象包含 <code>Set</code> 对象中的按插入顺序排列的所有元素的值的 <code>[value, value]</code> 数组，为了使这个方法和 <code>Map</code> 对象保持相似， 每个值的键和值相等。</td>
+<td><code>Map.prototype.forEach(callback[, thisArg])</code></td>
+<td>按插入顺序，为 <code>Map</code> 对象里的每一键值对调用一次 <code>callback</code> 函数，如果为 <code>forEach</code> 提供了 <code>thisArg</code> ，它将在每次回调中作为 <code>this</code> 值。</td>
 </tr>
 <tr>
-<td><code>Set.prototype.forEach(callbackFn[, thisArg])</code></td>
-<td>按照插入顺序，为 <code>Set</code> 对象中的每一个值调用一次 <code>callback</code> ，如果提供了 <code>thisArg</code> 参数，回调中的 <code>this</code> 会是这个参数。</td>
+<td><code>Map.prototype.get(key)</code></td>
+<td>返回键对应的值，如果不存在，则返回 <code>undefined</code> 。</td>
 </tr>
 <tr>
-<td><code>Set.prototype.has(value)</code></td>
-<td>返回一个布尔值，表示该值在 <code>Set</code> 中存在与否。</td>
+<td><code>Map.prototype.has(key)</code></td>
+<td>返回一个布尔值，表示 <code>Map</code> 实例是否包含键对应的值。</td>
 </tr>
 <tr>
-<td><code>Set.prototype.keys()</code></td>
-<td>返回一个新的迭代器对象，该对象包含 <code>Set</code> 对象中的按插入顺序排列的所有元素的值。</td>
+<td><code>Map.prototype.keys()</code></td>
+<td>返回一个新的 <code>Iterator</code> 对象，它按插入顺序包含了 <code>Map</code> 对象中每个元素的键。</td>
 </tr>
 <tr>
-<td><code>Set.prototype[@@iterator]()</code></td>
-<td>返回一个新的迭代器对象，该对象包含 <code>Set</code> 对象中的按插入顺序排列的所有元素的值。</td>
+<td><code>Map.prototype.set(key, value)</code></td>
+<td>设置 <code>Map</code> 对象中键的值，返回该 <code>Map</code> 对象。</td>
+</tr>
+<tr>
+<td><code>Map.prototype.values()</code></td>
+<td>返回一个新的 <code>Iterator</code> 对象，它按插入顺序包含了 <code>Map</code> 对象中每个元素的值。</td>
+</tr>
+<tr>
+<td><code>Map.prototype[@@iterator]()</code></td>
+<td>返回一个新的 <code>Iterator</code> 对象，它按插入顺序包含了 <code>Map</code> 对象中每个元素的 <code>[key, value]</code> 数组。</td>
 </tr>
 </tbody></table>
-<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> s <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// Set(3) {3, 2, 1}</span>
-
-s<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// Set(3) {3, 2, 1}</span>
-
-<span class="token keyword">const</span> setIterator <span class="token operator">=</span> s<span class="token punctuation">[</span>Symbol<span class="token punctuation">.</span>iterator<span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>setIterator<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// SetIterator {3, 2, 1}</span>
-
-<span class="token keyword">let</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">...</span><span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 去重</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// (3) [3, 2, 1]</span></code></pre>
-<h2 id="WeakSet"><a href="#WeakSet" class="headerlink" title="WeakSet"></a>WeakSet</h2><h3 id="描述-1"><a href="#描述-1" class="headerlink" title="描述"></a>描述</h3><p><code>WeakSet</code> 的值只能是 <code>Object</code> 类型，持有的是 <code>Object</code> 弱引用，原始数据类型不能作为值。 <code>WeakSet</code> 持有的是对象的弱引用，这意味着在没有其他引用存在时垃圾回收能正确进行， <code>WeakSet</code> 用于存储的对象引用只有在其没有被回收时才是有效的，正由于弱引用， <code>WeakSet</code> 是不可枚举的。<br>简单来说，有时需要在某个数组上面存放一些对象，但是这会形成对于这个对象的引用，一旦不再需要这个对象，我们就必须手动删除这个引用，否则垃圾回收机制无法释放对象占用的内存， <code>WeakSet</code> 的设计就是解决这个问题的，其所引用的对象都是弱引用，垃圾回收机制不将该引用考虑在内，因此，只要所引用的对象的其他引用都被清除，垃圾回收机制就会释放该对象所占用的内存，此时 <code>WeakSet</code> 里边所对应的对象引用会消失，不需要手动删除引用。如果需要在数组上添加对象而又不想干扰垃圾回收机制的话，就可以使用 <code>WeakSet</code> ，此外 <code>WeakSet</code> 非常适合于对象引用的跟踪，尤其是在涉及大量对象时。</p>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> m <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> stringKey <span class="token operator">=</span> <span class="token string">"s"</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> objectKey <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+m<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span>stringKey<span class="token punctuation">,</span> <span class="token string">"stringValue"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+m<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span>objectKey<span class="token punctuation">,</span> <span class="token string">"objectValue"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>m<span class="token punctuation">.</span>size<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 2</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>m<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span>stringKey<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// stringValue</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>m<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span>objectKey<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// objectValue</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> <span class="token punctuation">[</span>key<span class="token punctuation">,</span> value<span class="token punctuation">]</span> <span class="token keyword">of</span> m<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true">/*
+ s stringValue
+ {} objectValue
+*/</span>
+<span class="token keyword">const</span> m2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+    <span class="token punctuation">[</span><span class="token string">"stringKey"</span><span class="token punctuation">,</span> <span class="token string">"stringValue"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">[</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token string">"objectValue"</span><span class="token punctuation">]</span>
+<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>m2<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// Map(2) {"stringKey" => "stringValue", {…} => "objectValue"}</span>
+<span class="token keyword">const</span> m3 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+    <span class="token operator">...</span>m<span class="token punctuation">,</span>
+    <span class="token operator">...</span>m2<span class="token punctuation">,</span>
+    <span class="token punctuation">[</span><span class="token string">"stringKey"</span><span class="token punctuation">,</span> <span class="token string">"coverStringValue"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">[</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token string">"{} !== {}"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">[</span><span class="token number">NaN</span><span class="token punctuation">,</span> <span class="token string">"NaN !== NaN But key(NaN) === key(NaN)"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>m3<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// Map(6) {"s" => "stringValue", {…} => "objectValue", "stringKey" => "coverStringValue", {…} => "objectValue", {…} => "{} !== {}", NaN => "NaN !== NaN But key(NaN) === key(NaN)"}</span></code></pre>
+<h2 id="WeakMap"><a href="#WeakMap" class="headerlink" title="WeakMap"></a>WeakMap</h2><h3 id="描述-1"><a href="#描述-1" class="headerlink" title="描述"></a>描述</h3><p><code>WeakMap</code> 的 <code>key</code> 只能是 <code>Object</code> 类型，原始数据类型不能作为 <code>key</code> 。 <code>WeakMap</code> 持有的是每个键对象的弱引用，这意味着在没有其他引用存在时垃圾回收能正确进行， <code>WeakMap</code> 用于映射的 <code>key</code> 只有在其没有被回收时才是有效的，正由于弱引用， <code>WeakMap</code> 的 <code>key</code> 是不可枚举的，没有方法能给出所有的 <code>key</code> 。 简单来说，有时需要在某个对象上面存放一些对象，但是这会形成对于这个对象的引用，一旦不再需要这个对象，我们就必须手动删除这个引用，否则垃圾回收机制无法释放对象占用的内存， <code>WeakMap</code> 的设计就是解决这个问题的，它的键所引用的对象都是弱引用，垃圾回收机制不将该引用考虑在内，因此，只要所引用的对象的其他引用都被清除，垃圾回收机制就会释放该对象所占用的内存，此时 <code>WeakMap</code> 里边所对应的键值都会消失，不需要手动删除引用。如果需要在对象上添加对象而又不想干扰垃圾回收机制的话，就可以使用 <code>WeakMap</code> 。</p>
 <h3 id="属性与方法-1"><a href="#属性与方法-1" class="headerlink" title="属性与方法"></a>属性与方法</h3><table>
 <thead>
 <tr>
 <th>属性和方法</th>
-<th>功能</th>
+<th>描述</th>
 </tr>
 </thead>
 <tbody><tr>
-<td><code>WeakSet.prototype.constructor</code></td>
+<td><code>WeakMap.prototype.constructor</code></td>
 <td>返回构造函数。</td>
 </tr>
 <tr>
-<td><code>WeakSet.prototype.add(value)</code></td>
-<td>在该 <code>WeakSet</code> 对象中添加一个新元素 <code>value</code> 。</td>
+<td><code>WeakMap.prototype.delete(key)</code></td>
+<td>移除 key 的关联对象。</td>
 </tr>
 <tr>
-<td><code>WeakSet.prototype.delete(value)</code></td>
-<td>从该 <code>WeakSet</code> 对象中删除 <code>value</code> 这个元素。</td>
+<td><code>WeakMap.prototype.get(key)</code></td>
+<td>返回 <code>key</code> 关联对象，没有 <code>key</code> 关联对象时返回 <code>undefined</code> 。</td>
 </tr>
 <tr>
-<td><code>WeakSet.prototype.has(value)</code></td>
-<td>返回一个布尔值，表示给定的值 <code>value</code> 是否存在于这个 <code>WeakSet</code> 中。</td>
+<td><code>WeakMap.prototype.has(key)</code></td>
+<td>根据是否有 <code>key</code> 关联对象返回一个 <code>Boolean</code> 值。</td>
+</tr>
+<tr>
+<td><code>WeakMap.prototype.set(key, value)</code></td>
+<td>在 <code>WeakMap</code> 中设置一组 <code>key</code> 关联对象，返回这个 <code>WeakMap</code> 对象。</td>
 </tr>
 </tbody></table>
-<h3 id="内存回收实例"><a href="#内存回收实例" class="headerlink" title="内存回收实例"></a>内存回收实例</h3><h4 id="WeakSet-示例"><a href="#WeakSet-示例" class="headerlink" title="WeakSet 示例"></a>WeakSet 示例</h4><pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> ws <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WeakSet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">let</span> value <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span><span class="token number">6</span> <span class="token operator">*</span> <span class="token number">1024</span> <span class="token operator">*</span> <span class="token number">1024</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 开辟一个大数组</span>
-ws<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>ws<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// true</span>
-value <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 解除应用</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>ws<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// false</span></code></pre>
-<h4 id="WeakSet-内存回收"><a href="#WeakSet-内存回收" class="headerlink" title="WeakSet 内存回收"></a>WeakSet 内存回收</h4><pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">/** node --expose-gc **/</span> <span class="token comment" spellcheck="true">// 启动 node 环境 手动调用垃圾回收机制</span>
+<h3 id="内存回收实例"><a href="#内存回收实例" class="headerlink" title="内存回收实例"></a>内存回收实例</h3><h4 id="WeakMap-示例代码"><a href="#WeakMap-示例代码" class="headerlink" title="WeakMap 示例代码"></a>WeakMap 示例代码</h4><pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> wm <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WeakMap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> key <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+wm<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span><span class="token number">6</span> <span class="token operator">*</span> <span class="token number">1024</span> <span class="token operator">*</span> <span class="token number">1024</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 存放一个大数组</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>wm<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// (6291456) [empty × 6291456]</span>
+key <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>wm<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// undefined</span></code></pre>
+<h4 id="WeakMap-内存回收实例"><a href="#WeakMap-内存回收实例" class="headerlink" title="WeakMap 内存回收实例"></a>WeakMap 内存回收实例</h4><pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">/** node --expose-gc **/</span> <span class="token comment" spellcheck="true">// 启动 node 环境 手动调用垃圾回收机制</span>
 global<span class="token punctuation">.</span><span class="token function">gc</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 首先调用一次垃圾回收</span>
 process<span class="token punctuation">.</span><span class="token function">memoryUsage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 查看内存占用 heapUsed 约 3M</span>
 <span class="token comment" spellcheck="true">/*
 {
-  rss: 24272896,
+  rss: 24076288,
   heapTotal: 5222400,
-  heapUsed: 3124632,
-  external: 1568727,
-  arrayBuffers: 140472
+  heapUsed: 3027360,
+  external: 1568683,
+  arrayBuffers: 99508
 }
 */</span>
-<span class="token keyword">const</span> ws <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WeakSet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">let</span> value <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span><span class="token number">6</span> <span class="token operator">*</span> <span class="token number">1024</span> <span class="token operator">*</span> <span class="token number">1024</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 开辟一个大数组 </span>
-ws<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>ws<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// true</span>
+<span class="token keyword">const</span> wm <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WeakMap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> key <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+wm<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span><span class="token number">6</span> <span class="token operator">*</span> <span class="token number">1024</span> <span class="token operator">*</span> <span class="token number">1024</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 存放一个大数组</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>wm<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// (6291456) [empty × 6291456]</span>
 process<span class="token punctuation">.</span><span class="token function">memoryUsage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// heapUsed 约 53M</span>
 <span class="token comment" spellcheck="true">/*
 {
-  rss: 75153408,
+  rss: 75124736,
   heapTotal: 55558144,
-  heapUsed: 53554632,
-  external: 1568730,
-  arrayBuffers: 337083
+  heapUsed: 53937808,
+  external: 1568930,
+  arrayBuffers: 140675
 }
 */</span>
 global<span class="token punctuation">.</span><span class="token function">gc</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 手动执行一次垃圾回收</span>
 process<span class="token punctuation">.</span><span class="token function">memoryUsage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// heapUsed 约 53M</span>
 <span class="token comment" spellcheck="true">/*
 {
-  rss: 75390976,
+  rss: 74907648,
   heapTotal: 55558144,
-  heapUsed: 53376552,
-  external: 1568728,
-  arrayBuffers: 378041
+  heapUsed: 53360392,
+  external: 1568810,
+  arrayBuffers: 156939
 }
 */</span>
-value <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 解除引用</span>
+key <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 解除引用</span>
 global<span class="token punctuation">.</span><span class="token function">gc</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 执行垃圾回收</span>
 process<span class="token punctuation">.</span><span class="token function">memoryUsage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// heapUsed 约 3M 内存已回收</span>
 <span class="token comment" spellcheck="true">/*
 {
-  rss: 25178112,
-  heapTotal: 5222400,
-  heapUsed: 3063152,
-  external: 1568731,
-  arrayBuffers: 435388
+  rss: 24391680,
+  heapTotal: 4960256,
+  heapUsed: 2960104,
+  external: 1568814,
+  arrayBuffers: 181519
 }
 */</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>ws<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// false</span></code></pre>
-<h4 id="Set-示例"><a href="#Set-示例" class="headerlink" title="Set 示例"></a>Set 示例</h4><pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> s <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">let</span> value <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span><span class="token number">6</span> <span class="token operator">*</span> <span class="token number">1024</span> <span class="token operator">*</span> <span class="token number">1024</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 开辟一个大数组 </span>
-s<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// true</span>
-value <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 解除引用</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// false</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// Set(1) {Array(6291456)}</span>
-s<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 回收内存</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// Set(0) {}</span></code></pre>
-<h4 id="Set-内存回收"><a href="#Set-内存回收" class="headerlink" title="Set 内存回收"></a>Set 内存回收</h4><pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">/** node --expose-gc **/</span> <span class="token comment" spellcheck="true">// 启动 node 环境 手动调用垃圾回收机制</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>wm<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// undefined</span></code></pre>
+<h4 id="Map-内存回收实例"><a href="#Map-内存回收实例" class="headerlink" title="Map 内存回收实例"></a>Map 内存回收实例</h4><pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">/** node --expose-gc **/</span> <span class="token comment" spellcheck="true">// 启动 node 环境 手动调用垃圾回收机制</span>
 global<span class="token punctuation">.</span><span class="token function">gc</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 首先调用一次垃圾回收</span>
-process<span class="token punctuation">.</span><span class="token function">memoryUsage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 查看内存占用 heapUsed 约 3M</span>
+process<span class="token punctuation">.</span><span class="token function">memoryUsage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 查看内存占用 heapUsed 约 2.6M</span>
 <span class="token comment" spellcheck="true">/*
 {
-  rss: 24641536,
-  heapTotal: 5222400,
-  heapUsed: 3475568,
-  external: 1568695,
-  arrayBuffers: 115904
+  rss: 23097344,
+  heapTotal: 8052736,
+  heapUsed: 2672504,
+  external: 1531483,
+  arrayBuffers: 34073
 }
 */</span>
-<span class="token keyword">const</span> s <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">let</span> value <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span><span class="token number">6</span> <span class="token operator">*</span> <span class="token number">1024</span> <span class="token operator">*</span> <span class="token number">1024</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 开辟一个大数组 </span>
-s<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// true</span>
+<span class="token keyword">const</span> m <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> key <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+m<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span><span class="token number">6</span> <span class="token operator">*</span> <span class="token number">1024</span> <span class="token operator">*</span> <span class="token number">1024</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 存放一个大数组</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>m<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// (6291456) [empty × 6291456]</span>
 process<span class="token punctuation">.</span><span class="token function">memoryUsage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// heapUsed 约 53M</span>
 <span class="token comment" spellcheck="true">/*
 {
-  rss: 75141120,
+  rss: 73863168,
   heapTotal: 55558144,
-  heapUsed: 53454992,
-  external: 1568730,
-  arrayBuffers: 304315
+  heapUsed: 53622640,
+  external: 1531615,
+  arrayBuffers: 75125
 }
 */</span>
 global<span class="token punctuation">.</span><span class="token function">gc</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 手动执行一次垃圾回收</span>
 process<span class="token punctuation">.</span><span class="token function">memoryUsage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// heapUsed 约 53M</span>
 <span class="token comment" spellcheck="true">/*
 {
-  rss: 75235328,
+  rss: 73506816,
   heapTotal: 55558144,
-  heapUsed: 53384240,
-  external: 1568728,
-  arrayBuffers: 320697
+  heapUsed: 53239920,
+  external: 1531505,
+  arrayBuffers: 91399
 }
 */</span>
-value <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 解除引用</span>
+key <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 解除引用</span>
 global<span class="token punctuation">.</span><span class="token function">gc</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 执行垃圾回收</span>
-process<span class="token punctuation">.</span><span class="token function">memoryUsage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// heapUsed 仍为 53M 内存未回收</span>
+process<span class="token punctuation">.</span><span class="token function">memoryUsage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// heapUsed 约 53M 内存未回收</span>
 <span class="token comment" spellcheck="true">/*
 {
-  rss: 75243520,
-  heapTotal: 55558144,
-  heapUsed: 53461528,
-  external: 1568737,
-  arrayBuffers: 369858
+  rss: 73465856,
+  heapTotal: 55296000,
+  heapUsed: 53143568,
+  external: 1531510,
+  arrayBuffers: 115980
 }
 */</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// false // 此处为 false，这是因为 value 值的改变，而在这个 Set 实例对象中依然存在对 Array 的强引用，内存未回收</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// Set(1) {Array(6291456)}</span>
-s<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 回收内存</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>m<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// undefined // 此处是 undefined，这是因为 key 值的改变，而在这个 Map 实例对象中依然存在 {} => Array 的键值对，且键值对为强引用，内存未回收</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>m<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// Map(1) {{…} => Array(6291456)}</span>
+m<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 回收内存</span>
 global<span class="token punctuation">.</span><span class="token function">gc</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 执行垃圾回收</span>
-process<span class="token punctuation">.</span><span class="token function">memoryUsage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// heapUsed 约 2M 内存已回收</span>
+process<span class="token punctuation">.</span><span class="token function">memoryUsage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// heapUsed 约 2.8M 内存已回收</span>
 <span class="token comment" spellcheck="true">/*
 {
-  rss: 25055232,
-  heapTotal: 5222400,
-  heapUsed: 3167016,
-  external: 1568737,
-  arrayBuffers: 541890
+  rss: 23887872,
+  heapTotal: 4960256,
+  heapUsed: 2883592,
+  external: 1560363,
+  arrayBuffers: 156853
 }
 */</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// Set(0) {}</span></code></pre>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>m<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// Map(0) {}</span></code></pre>
 
             </div>
             <hr/>
@@ -651,8 +652,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
             </div>
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
-                  property="dct:title" rel="dct:type">《Set 与 WeakSet》</span> 由 <a
-                    xmlns:cc="http://creativecommons.org/ns#" href="/2020/09/02/setAndWeakset/"
+                  property="dct:title" rel="dct:type">《》</span> 由 <a
+                    xmlns:cc="http://creativecommons.org/ns#" href="/2020/09/03/mapAndWeakmap/"
                     property="cc:attributionName"
                     rel="cc:attributionURL">Konata</a> 采用
             <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh">
@@ -684,7 +685,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
         
             <div class="article col s12 m6">
                 <div class="article-badge left-badge text-color">
-                    <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                    <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+                </div>
                 <div class="card">
                     <a href="/2020/09/03/mapAndWeakmap/">
                         <div class="card-image">
@@ -707,9 +709,9 @@ console<span class="token punctuation">.</span><span class="token function">log<
                             </center>
                         </div>
                         <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-09-03
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-09-03
+                            </span>
                             <span class="publish-author">
                                 
                                     <i class="fa fa-user fa-fw"></i>
@@ -718,6 +720,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
                             </span>
                         </div>
                     </div>
+
                     
                 </div>
             </div>
@@ -728,29 +731,29 @@ console<span class="token punctuation">.</span><span class="token function">log<
                     下一篇&nbsp;<i class="fa fa-chevron-right"></i>
                 </div>
                 <div class="card">
-                    <a href="/2020/09/01/ajax/">
+                    <a href="/2020/09/02/setAndWeakset/">
                         <div class="card-image">
                             
                                 
                                 <div class="lazy-image-wrapper">
-                                    <img data-src="/medias/featureimages/11.jpg" class="responsive-img lazyload"
-                                         alt="Ajax">
+                                    <img data-src="/medias/featureimages/14.jpg" class="responsive-img lazyload"
+                                         alt="Set 与 WeakSet">
                                 </div>
                             
-                            <span class="card-title">Ajax</span>
+                            <span class="card-title">Set 与 WeakSet</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
                             <center>
-                                Ajax
+                                Set 与 WeakSet
                                 
                             </center>
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-09-01
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-09-02
                             </span>
                             <span class="publish-author">
                                 
@@ -766,6 +769,10 @@ console<span class="token punctuation">.</span><span class="token function">log<
                     </div>
                     
                         <div class="card-action article-tags">
+                            
+                                <a href="/tags/ES6/" target="_blank">
+                                    <span class="chip bg-color">ES6</span>
+                                </a>
                             
                                 <a href="/tags/JavaScript/" target="_blank">
                                     <span class="chip bg-color">JavaScript</span>

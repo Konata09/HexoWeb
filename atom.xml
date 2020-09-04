@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://konata.tech/"/>
-  <updated>2020-09-02T12:35:01.904Z</updated>
+  <updated>2020-09-04T01:45:46.499Z</updated>
   <id>http://konata.tech/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="http://konata.tech/2020/09/03/mapAndWeakmap/"/>
+    <id>http://konata.tech/2020/09/03/mapAndWeakmap/</id>
+    <published>2020-09-03T14:19:22.731Z</published>
+    <updated>2020-09-04T01:45:46.499Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;code&gt;Map&lt;/code&gt; 对象用来保存键值对，并且能够记住键的原始插入顺序，任何对象或者原始值都可以作为键或者是值。&lt;br&gt;&lt;code&gt;WeakMap&lt;/code&gt; 对象同样用来保存键值对，对于键是弱引用的而且必须为一个对象，而值可以是任意的对象或者原始值。 
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Set 与 WeakSet</title>
@@ -530,34 +552,6 @@
     
     
       <category term="Database" scheme="http://konata.tech/tags/Database/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JAVA 反射与注解</title>
-    <link href="http://konata.tech/2020/06/12/JSPBase/"/>
-    <id>http://konata.tech/2020/06/12/JSPBase/</id>
-    <published>2020-06-12T09:52:01.000Z</published>
-    <updated>2020-08-08T10:11:49.415Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;反射&quot;&gt;&lt;a href=&quot;#反射&quot; class=&quot;headerlink&quot; title=&quot;反射&quot;&gt;&lt;/a&gt;反射&lt;/h2&gt;&lt;p&gt;框架：半成品软件。可以在框架的基础上进行软件开发，简化编码&lt;br&gt;反射：将类的各个组成部分封装为其他对象&lt;br&gt;使用反射的好处： 
-        
-      
-    
-    </summary>
-    
-      <category term="Java" scheme="http://konata.tech/categories/Java/"/>
-    
-    
-      <category term="Java" scheme="http://konata.tech/tags/Java/"/>
-    
-      <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
     
   </entry>
   
