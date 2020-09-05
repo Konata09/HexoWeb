@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://konata.tech/"/>
-  <updated>2020-09-04T03:01:10.985Z</updated>
+  <updated>2020-09-05T14:29:51.734Z</updated>
   <id>http://konata.tech/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JavaScript 中的原型</title>
+    <link href="http://konata.tech/2020/09/05/prototypeInJS/"/>
+    <id>http://konata.tech/2020/09/05/prototypeInJS/</id>
+    <published>2020-09-05T08:37:23.000Z</published>
+    <updated>2020-09-05T14:29:51.734Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;code&gt;JavaScript&lt;/code&gt; 常被描述为一种基于原型的语言 (prototype-based
+        
+      
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://konata.tech/categories/JavaScript/"/>
+    
+    
+      <category term="JavaScript" scheme="http://konata.tech/tags/JavaScript/"/>
+    
+  </entry>
   
   <entry>
     <title>Map 与 WeakMap</title>
@@ -532,32 +558,6 @@
     
     
       <category term="Java" scheme="http://konata.tech/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>数据库范式</title>
-    <link href="http://konata.tech/2020/06/17/SQLNormalForm/"/>
-    <id>http://konata.tech/2020/06/17/SQLNormalForm/</id>
-    <published>2020-06-17T14:52:16.000Z</published>
-    <updated>2020-08-08T09:27:07.761Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;函数依赖&quot;&gt;&lt;a href=&quot;#函数依赖&quot; class=&quot;headerlink&quot; title=&quot;函数依赖&quot;&gt;&lt;/a&gt;函数依赖&lt;/h2&gt;&lt;h3 id=&quot;函数依赖-1&quot;&gt;&lt;a href=&quot;#函数依赖-1&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="Database" scheme="http://konata.tech/categories/Database/"/>
-    
-    
-      <category term="Database" scheme="http://konata.tech/tags/Database/"/>
     
   </entry>
   
