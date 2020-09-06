@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://konata.tech/"/>
-  <updated>2020-09-05T14:29:51.734Z</updated>
+  <updated>2020-09-06T05:24:32.972Z</updated>
   <id>http://konata.tech/</id>
   
   <author>
@@ -17,11 +17,37 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Apply(), Call(), Bind() 的区别</title>
+    <link href="http://konata.tech/2020/09/06/differenceBetweenApplyCallBind/"/>
+    <id>http://konata.tech/2020/09/06/differenceBetweenApplyCallBind/</id>
+    <published>2020-09-06T05:06:25.000Z</published>
+    <updated>2020-09-06T05:24:32.972Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;每个 &lt;code&gt;Function&lt;/code&gt; 对象都存在 &lt;code&gt;apply()&lt;/code&gt; , &lt;code&gt;call()&lt;/code&gt; , &lt;code&gt;bind()&lt;/code&gt; 方法，其作用都是可以在特定的作用域中调用函数，等于设置函数体内
+        
+      
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://konata.tech/categories/JavaScript/"/>
+    
+    
+      <category term="JavaScript" scheme="http://konata.tech/tags/JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
     <title>JavaScript 中的原型</title>
     <link href="http://konata.tech/2020/09/05/prototypeInJS/"/>
     <id>http://konata.tech/2020/09/05/prototypeInJS/</id>
     <published>2020-09-05T08:37:23.000Z</published>
-    <updated>2020-09-05T14:29:51.734Z</updated>
+    <updated>2020-09-05T14:31:10.756Z</updated>
     
     <summary type="html">
     
@@ -532,32 +558,6 @@
       <category term="Java" scheme="http://konata.tech/tags/Java/"/>
     
       <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JDBC</title>
-    <link href="http://konata.tech/2020/06/18/JDBC/"/>
-    <id>http://konata.tech/2020/06/18/JDBC/</id>
-    <published>2020-06-18T05:06:01.000Z</published>
-    <updated>2020-08-08T10:12:25.176Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;JDBC&quot;&gt;&lt;a href=&quot;#JDBC&quot; class=&quot;headerlink&quot; title=&quot;JDBC&quot;&gt;&lt;/a&gt;JDBC&lt;/h2&gt;&lt;h3 id=&quot;概念&quot;&gt;&lt;a href=&quot;#概念&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="Java" scheme="http://konata.tech/categories/Java/"/>
-    
-    
-      <category term="Java" scheme="http://konata.tech/tags/Java/"/>
     
   </entry>
   
