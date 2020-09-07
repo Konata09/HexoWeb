@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>JS 中的变量提升</title>
+      <link href="/2020/09/07/hoistedVariablesInJs/"/>
+      <url>/2020/09/07/hoistedVariablesInJs/</url>
+      
+        <content type="html"><![CDATA[<p>JavaScript 中的一切声明 ( <code>var</code> , <code>let</code> , <code>const</code> , <code>function</code> , <code>function*</code> , <code>class</code> ) 均存在变量提升 (hoisted)。<br>下面的例子中，变量 a 的声明被隐式提升到作用域最顶端并被初始化为 <code>undefined</code> ， <code>a</code> 并未抛出异常，而未声明的变量 <code>b</code> 抛出 <code>ReferenceError</code> 异常。  </p><pre class=" language-js"><code class="language-js">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// undefined</span><span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 1</span>console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// ReferenceError: b is not defined</span></code></pre><p><code>var</code> / <code>function</code> / <code>function*</code> 与 <code>let</code> / <code>const</code> / <code>class</code> 的不同在于是否初始化。  </p><p><code>var</code> 、 <code>let</code> 和 <code>const</code> 的「创建」过程都被提升了，但是 <code>let</code> 和 <code>const</code> 并没有初始化， <code>var</code> 被初始化为 <code>undefined</code> 。<br>因此访问 <code>var</code> 声明的变量时，不会报 <code>ReferenceError</code> 异常，而使用 <code>let</code> , <code>const</code> , <code>class</code> 声明的变量，被提升后不会被初始化，这些变量所处的状态被称为暂时性死区 (Temporal Dead Zone, TDZ)，此时如果访问这些变量会抛出 <code>ReferenceError</code> 异常，看上去就像没被提升一样。</p><pre class=" language-js"><code class="language-js">x <span class="token operator">=</span> y <span class="token operator">=</span> <span class="token string">"global"</span><span class="token punctuation">;</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>    x<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// undefined</span>    y<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// Reference error: y is not defined</span>    <span class="token keyword">var</span> x <span class="token operator">=</span> <span class="token string">"local"</span><span class="token punctuation">;</span>    <span class="token keyword">let</span> y <span class="token operator">=</span> <span class="token string">"local"</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre><h2 id="函数声明提升"><a href="#函数声明提升" class="headerlink" title="函数声明提升"></a>函数声明提升</h2><p>函数声明会将声明和赋值都提前，也就是整个函数体都会被提升到作用域顶部：</p><pre class=" language-js"><code class="language-js"><span class="token function">s</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 1</span><span class="token keyword">function</span> <span class="token function">s</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span></code></pre><p>需要注意的是，只有函数声明形式才能被提升，下面的这种声明形式并不会提升：</p><pre class=" language-js"><code class="language-js">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// undefined</span><span class="token keyword">var</span> s <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token function">s</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span>console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// f s(){console.log(1);}</span></code></pre><h2 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h2><pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> s <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token keyword">function</span> <span class="token function">s</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token function">s</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 0</span></code></pre><p>在 JS 引擎中的执行优先级是 <code>变量声明--&gt;函数声明--&gt;变量赋值</code></p><pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> s<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 变量声明</span><span class="token keyword">function</span> <span class="token function">s</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">//函数声明</span>    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span>s <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">// 变量赋值</span>    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token function">s</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 0</span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> JavaScript </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> JavaScript </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Apply(), Call(), Bind() 的区别</title>
       <link href="/2020/09/06/differenceBetweenApplyCallBind/"/>
       <url>/2020/09/06/differenceBetweenApplyCallBind/</url>
@@ -380,9 +405,9 @@
       
         <tags>
             
-            <tag> Java </tag>
-            
             <tag> JSP </tag>
+            
+            <tag> Java </tag>
             
         </tags>
       
@@ -407,9 +432,9 @@
       
         <tags>
             
-            <tag> Java </tag>
-            
             <tag> JSP </tag>
+            
+            <tag> Java </tag>
             
         </tags>
       
@@ -434,9 +459,9 @@
       
         <tags>
             
-            <tag> Java </tag>
-            
             <tag> JSP </tag>
+            
+            <tag> Java </tag>
             
         </tags>
       
@@ -461,9 +486,9 @@
       
         <tags>
             
-            <tag> Java </tag>
-            
             <tag> JSP </tag>
+            
+            <tag> Java </tag>
             
         </tags>
       
@@ -488,9 +513,9 @@
       
         <tags>
             
-            <tag> Java </tag>
-            
             <tag> JSP </tag>
+            
+            <tag> Java </tag>
             
         </tags>
       
@@ -515,9 +540,9 @@
       
         <tags>
             
-            <tag> Java </tag>
-            
             <tag> JSP </tag>
+            
+            <tag> Java </tag>
             
         </tags>
       
@@ -592,9 +617,9 @@
       
         <tags>
             
-            <tag> Java </tag>
-            
             <tag> JSP </tag>
+            
+            <tag> Java </tag>
             
         </tags>
       
@@ -879,9 +904,9 @@
       
         <tags>
             
-            <tag> Java </tag>
-            
             <tag> JSP </tag>
+            
+            <tag> Java </tag>
             
         </tags>
       
