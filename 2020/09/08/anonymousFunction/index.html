@@ -4,8 +4,8 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="JS 中的变量提升, 生命不息 折腾不止">
-    <meta name="description" content="JavaScript 中的一切声明 ( var , let , const , function , function* , class ) 均存在变量提升 (hoisted)。下面的例子中，变量 a 的声明被隐式提升到作用域最顶端并被初始">
+    <meta name="keywords" content="匿名函数与自执行函数, 生命不息 折腾不止">
+    <meta name="description" content="匿名函数匿名函数就是指的没有名字的函数，即定义函数对象时不定义函数体名字，但是必须将匿名函数作为表达式赋予一定操作，比如将其作为变量值或者让其自执行，否则这次定义将无意义，解释器也会抛出异常。函数表达式中的 function 则不会出现函数">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +19,7 @@
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#7312ff">
     <meta name="msapplication-TileColor" content="#8a46cc">
     <meta name="theme-color" content="#ffffff">
-    <title>JS 中的变量提升 | 生命不息 折腾不止</title>
+    <title>匿名函数与自执行函数 | 生命不息 折腾不止</title>
     <script async type="application/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.0/lazysizes.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
@@ -252,13 +252,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        JS 中的变量提升
+                        匿名函数与自执行函数
                     </div>
                 </div>
             </div>
@@ -375,14 +375,14 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-09-07
+                    2020-09-08
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        569
+                        555
                     </div>
                     
 
@@ -405,53 +405,77 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>JavaScript 中的一切声明 ( <code>var</code> , <code>let</code> , <code>const</code> , <code>function</code> , <code>function*</code> , <code>class</code> ) 均存在变量提升 (hoisted)。<br>下面的例子中，变量 a 的声明被隐式提升到作用域最顶端并被初始化为 <code>undefined</code> ， <code>a</code> 并未抛出异常，而未声明的变量 <code>b</code> 抛出 <code>ReferenceError</code> 异常。  </p>
-<pre class=" language-js"><code class="language-js">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// undefined</span>
-<span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 1</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// ReferenceError: b is not defined</span></code></pre>
-<p><code>var</code> / <code>function</code> / <code>function*</code> 与 <code>let</code> / <code>const</code> / <code>class</code> 的不同在于是否初始化。  </p>
-<p><code>var</code> 、 <code>let</code> 和 <code>const</code> 的「创建」过程都被提升了，但是 <code>let</code> 和 <code>const</code> 并没有初始化， <code>var</code> 被初始化为 <code>undefined</code> 。<br>因此访问 <code>var</code> 声明的变量时，不会报 <code>ReferenceError</code> 异常，而使用 <code>let</code> , <code>const</code> , <code>class</code> 声明的变量，被提升后不会被初始化，这些变量所处的状态被称为暂时性死区 (Temporal Dead Zone, TDZ)，此时如果访问这些变量会抛出 <code>ReferenceError</code> 异常，看上去就像没被提升一样。</p>
-<pre class=" language-js"><code class="language-js">x <span class="token operator">=</span> y <span class="token operator">=</span> <span class="token string">"global"</span><span class="token punctuation">;</span>
-<span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    x<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// undefined</span>
-    y<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// Reference error: y is not defined</span>
-
-    <span class="token keyword">var</span> x <span class="token operator">=</span> <span class="token string">"local"</span><span class="token punctuation">;</span>
-    <span class="token keyword">let</span> y <span class="token operator">=</span> <span class="token string">"local"</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<h2 id="函数声明提升"><a href="#函数声明提升" class="headerlink" title="函数声明提升"></a>函数声明提升</h2><h3 id="定义函数-声明式"><a href="#定义函数-声明式" class="headerlink" title="定义函数 声明式"></a>定义函数 声明式</h3><p>声明式会导致函数提升，function 会被解释器优先编译。即我们用声明式写函数，可以在任何区域声明，不会影响我们调用<br>函数声明会将声明和赋值都提前，也就是整个函数体都会被提升到作用域顶部：</p>
-<pre class=" language-js"><code class="language-js"><span class="token function">s</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 1</span>
-<span class="token keyword">function</span> <span class="token function">s</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <h2 id="匿名函数"><a href="#匿名函数" class="headerlink" title="匿名函数"></a>匿名函数</h2><p>匿名函数就是指的没有名字的函数，即定义函数对象时不定义函数体名字，但是必须将匿名函数作为表达式赋予一定操作，比如将其作为变量值或者让其自执行，否则这次定义将无意义，解释器也会抛出异常。<br>函数表达式中的 function 则不会出现函数提升（但是赋予的变量会提升）。经由 JS 解释器逐行解释，到了这一句才会赋值函数表达式。因此如果调用在函数表达式之前，则会调用失败。  </p>
+<pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">// 定义匿名函数 函数表达式</span>
+<span class="token keyword">var</span> s <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
-<h3 id="定义匿名函数-函数表达式"><a href="#定义匿名函数-函数表达式" class="headerlink" title="定义匿名函数 函数表达式"></a>定义匿名函数 函数表达式</h3><p>函数表达式中的 function 则不会出现函数提升（但是赋予的变量会提升）。经由 JS 解释器逐行解释，到了这一句才会赋值函数表达式。因此如果调用在函数表达式之前，则会调用失败。</p>
-<pre class=" language-js"><code class="language-js">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// undefined</span>
-<span class="token keyword">var</span> s <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token function">s</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<h2 id="自执行函数"><a href="#自执行函数" class="headerlink" title="自执行函数"></a>自执行函数</h2><p>自执行即函数定义与创建合用为一体，创建完成即调用。</p>
+<pre class=" language-js"><code class="language-js"><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 1</span></code></pre>
+<p><strong>包围函数的第一段括号返回一个匿名函数，随后第二个括号将其调用。</strong>这种方式可以缩小作用域，ES6 之前 JS 仅有全局作用域与函数作用域，显然将所有变量交予全局作用域是不合适的，而定义函数再调用再销毁函数操作了三步，使用自执行匿名函数可以将上述三步操作定义后即完成。</p>
+<pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">/**
+ * 自执行的一些方式
+ * 只要能够将匿名函数作为一个表达式出现，在后边加入 () 就能够将其自执行
+ */</span>
+
+<span class="token comment" spellcheck="true">// 这种经常用来构建沙箱模式</span>
+<span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 常用方式 传参操作</span>
+<span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 由于括弧 () 和 JS 的 &amp;&amp;、异或、逗号等操作符在函数表达式和函数声明上是没有歧义的  </span>
+<span class="token comment" spellcheck="true">// 所以一旦解析器知道其中一个已经是表达式了，其它的也都默认为表达式了  </span>
+<span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token boolean">true</span> <span class="token operator">&amp;&amp;</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token boolean">false</span> <span class="token operator">||</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token number">0</span><span class="token punctuation">,</span>
+<span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 如果你不在意返回值，或者不怕难以阅读</span>
+<span class="token comment" spellcheck="true">// 你甚至可以在 function 前面加一元操作符号  </span>
+<span class="token operator">!</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token operator">~</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token operator">-</span>
+<span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token operator">+</span>
+<span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 使用 new 关键字</span>
+<span class="token keyword">new</span> <span class="token class-name">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// f s(){console.log(1);}</span></code></pre>
-<p>对于上述定义方式调用 s() 并无区别，但是定义函数会存在函数体的提升，而定义匿名函数时只会将定义变量提升，赋值部分不会提升。</p>
-<h2 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h2><pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> s <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">function</span> <span class="token function">s</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token function">s</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 0</span></code></pre>
-<p>在 JS 引擎中的执行优先级是 <code>变量声明--&gt;函数声明--&gt;变量赋值</code></p>
-<pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> s<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 变量声明</span>
-
-<span class="token keyword">function</span> <span class="token function">s</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">//函数声明</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-s <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">// 变量赋值</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token function">s</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 0</span></code></pre>
+<span class="token keyword">new</span> <span class="token class-name">function</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 
             </div>
             <hr/>
@@ -476,8 +500,8 @@ s <span class="token operator">=</span> <span class="token keyword">function</sp
             </div>
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
-                  property="dct:title" rel="dct:type">《JS 中的变量提升》</span> 由 <a
-                    xmlns:cc="http://creativecommons.org/ns#" href="/2020/09/07/hoistedVariablesInJs/"
+                  property="dct:title" rel="dct:type">《匿名函数与自执行函数》</span> 由 <a
+                    xmlns:cc="http://creativecommons.org/ns#" href="/2020/09/08/anonymousFunction/"
                     property="cc:attributionName"
                     rel="cc:attributionURL">Konata</a> 采用
             <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh">
@@ -509,7 +533,8 @@ s <span class="token operator">=</span> <span class="token keyword">function</sp
         
             <div class="article col s12 m6">
                 <div class="article-badge left-badge text-color">
-                    <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                    <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+                </div>
                 <div class="card">
                     <a href="/2020/09/08/anonymousFunction/">
                         <div class="card-image">
@@ -532,9 +557,9 @@ s <span class="token operator">=</span> <span class="token keyword">function</sp
                             </center>
                         </div>
                         <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-09-08
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-09-08
+                            </span>
                             <span class="publish-author">
                                 
                                     <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -547,6 +572,7 @@ s <span class="token operator">=</span> <span class="token keyword">function</sp
                             </span>
                         </div>
                     </div>
+
                     
                         <div class="card-action article-tags">
                             
@@ -565,29 +591,29 @@ s <span class="token operator">=</span> <span class="token keyword">function</sp
                     下一篇&nbsp;<i class="fa fa-chevron-right"></i>
                 </div>
                 <div class="card">
-                    <a href="/2020/09/06/differenceBetweenApplyCallBind/">
+                    <a href="/2020/09/07/hoistedVariablesInJs/">
                         <div class="card-image">
                             
                                 
                                 <div class="lazy-image-wrapper">
                                     <img data-src="/medias/featureimages/12.jpg" class="responsive-img lazyload"
-                                         alt="Apply(), Call(), Bind() 的区别">
+                                         alt="JS 中的变量提升">
                                 </div>
                             
-                            <span class="card-title">Apply(), Call(), Bind() 的区别</span>
+                            <span class="card-title">JS 中的变量提升</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
                             <center>
-                                Apply(), Call(), Bind() 的区别
+                                JS 中的变量提升
                                 
                             </center>
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-09-06
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-09-07
                             </span>
                             <span class="publish-author">
                                 
