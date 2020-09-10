@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://konata.tech/"/>
-  <updated>2020-09-08T23:46:32.306Z</updated>
+  <updated>2020-09-10T12:28:06.091Z</updated>
   <id>http://konata.tech/</id>
   
   <author>
@@ -17,11 +17,37 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>闭包</title>
+    <link href="http://konata.tech/2020/09/10/closures/"/>
+    <id>http://konata.tech/2020/09/10/closures/</id>
+    <published>2020-09-10T02:52:40.000Z</published>
+    <updated>2020-09-10T12:28:06.091Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;函数和对其词法环境 (lexical environment) 的引用捆绑在一起构成&lt;strong&gt;闭包 (closure)&lt;/strong&gt;，也就是说，闭包可以让你从内部函数访问外部函数作用域。在
+        
+      
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://konata.tech/categories/JavaScript/"/>
+    
+    
+      <category term="JavaScript" scheme="http://konata.tech/tags/JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
     <title>匿名函数与自执行函数</title>
     <link href="http://konata.tech/2020/09/08/anonymousFunction/"/>
     <id>http://konata.tech/2020/09/08/anonymousFunction/</id>
     <published>2020-09-08T10:02:37.000Z</published>
-    <updated>2020-09-08T23:46:32.306Z</updated>
+    <updated>2020-09-10T01:12:00.257Z</updated>
     
     <summary type="html">
     
@@ -466,9 +492,9 @@
       <category term="Java" scheme="http://konata.tech/categories/Java/"/>
     
     
-      <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
-    
       <category term="Java" scheme="http://konata.tech/tags/Java/"/>
+    
+      <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
     
   </entry>
   
@@ -494,9 +520,9 @@
       <category term="Java" scheme="http://konata.tech/categories/Java/"/>
     
     
-      <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
-    
       <category term="Java" scheme="http://konata.tech/tags/Java/"/>
+    
+      <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
     
   </entry>
   
@@ -522,38 +548,9 @@
       <category term="Java" scheme="http://konata.tech/categories/Java/"/>
     
     
-      <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
-    
       <category term="Java" scheme="http://konata.tech/tags/Java/"/>
     
-  </entry>
-  
-  <entry>
-    <title>Response 对象</title>
-    <link href="http://konata.tech/2020/06/18/ResponseObj/"/>
-    <id>http://konata.tech/2020/06/18/ResponseObj/</id>
-    <published>2020-06-18T15:29:50.000Z</published>
-    <updated>2020-08-08T10:13:49.411Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;&lt;img src=&quot;/images/2020-06-18T235353.png&quot; alt=&quot;request&amp;amp;response 对象原理&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;HTTP-响应消息&quot;&gt;&lt;a href=&quot;#HTTP-响应消息&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="Java" scheme="http://konata.tech/categories/Java/"/>
-    
-    
       <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
-    
-      <category term="Java" scheme="http://konata.tech/tags/Java/"/>
     
   </entry>
   

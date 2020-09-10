@@ -382,7 +382,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        555
+                        554
                     </div>
                     
 
@@ -405,7 +405,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="匿名函数"><a href="#匿名函数" class="headerlink" title="匿名函数"></a>匿名函数</h2><p>匿名函数就是指的没有名字的函数，即定义函数对象时不定义函数体名字，但是必须将匿名函数作为表达式赋予一定操作，比如将其作为变量值或者让其自执行，否则这次定义将无意义，解释器也会抛出异常。<br>函数表达式中的 function 则不会出现函数提升（但是赋予的变量会提升）。经由 JS 解释器逐行解释，到了这一句才会赋值函数表达式。因此如果调用在函数表达式之前，则会调用失败。  </p>
+                <h2 id="匿名函数"><a href="#匿名函数" class="headerlink" title="匿名函数"></a>匿名函数</h2><p>匿名函数就是指的没有名字的函数，即定义函数对象时不定义函数体名字，但是必须将匿名函数作为表达式赋予一定操作，比如将其作为变量值或者让其自执行，否则这次定义将无意义，解释器也会抛出异常。<br>函数表达式中的 <code>function</code> 则不会出现函数提升（但是赋予的变量会提升）。经由 JS 解释器逐行解释，到了这一句才会赋值函数表达式。因此如果调用在函数表达式之前，则会调用失败。  </p>
 <pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">// 定义匿名函数 函数表达式</span>
 <span class="token keyword">var</span> s <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -415,12 +415,8 @@
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 1</span></code></pre>
 <p><strong>包围函数的第一段括号返回一个匿名函数，随后第二个括号将其调用。</strong>这种方式可以缩小作用域，ES6 之前 JS 仅有全局作用域与函数作用域，显然将所有变量交予全局作用域是不合适的，而定义函数再调用再销毁函数操作了三步，使用自执行匿名函数可以将上述三步操作定义后即完成。</p>
-<pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">/**
- * 自执行的一些方式
- * 只要能够将匿名函数作为一个表达式出现，在后边加入 () 就能够将其自执行
- */</span>
-
-<span class="token comment" spellcheck="true">// 这种经常用来构建沙箱模式</span>
+<h3 id="常用的自执行方式"><a href="#常用的自执行方式" class="headerlink" title="常用的自执行方式"></a>常用的自执行方式</h3><p>只要能够将匿名函数作为一个表达式出现，在后边加入 <code>()</code> 就能够将其自执行</p>
+<pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">// 这种经常用来构建沙箱模式</span>
 <span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -428,11 +424,9 @@
 <span class="token comment" spellcheck="true">// 常用方式 传参操作</span>
 <span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token comment" spellcheck="true">// 由于括弧 () 和 JS 的 &amp;&amp;、异或、逗号等操作符在函数表达式和函数声明上是没有歧义的  </span>
-<span class="token comment" spellcheck="true">// 所以一旦解析器知道其中一个已经是表达式了，其它的也都默认为表达式了  </span>
-<span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>由于括号 <code>()</code> 和 JS 的 <code>&amp;&amp;</code> 、异或、逗号等操作符在函数表达式和函数声明上是没有歧义的，所以一旦解析器知道其中一个已经是表达式了，其它的也都默认为表达式了  </p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -447,11 +441,9 @@
 <span class="token number">0</span><span class="token punctuation">,</span>
 <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token comment" spellcheck="true">// 如果你不在意返回值，或者不怕难以阅读</span>
-<span class="token comment" spellcheck="true">// 你甚至可以在 function 前面加一元操作符号  </span>
-<span class="token operator">!</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>如果你不在意返回值，或者不怕难以阅读，甚至可以在 <code>function</code> 前面加一元操作符号  </p>
+<pre class=" language-js"><code class="language-js"><span class="token operator">!</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -467,10 +459,9 @@
 <span class="token operator">+</span>
 <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token comment" spellcheck="true">// 使用 new 关键字</span>
-<span class="token keyword">new</span> <span class="token class-name">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>使用 new 关键字</p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">new</span> <span class="token class-name">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 <span class="token keyword">new</span> <span class="token class-name">function</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -533,33 +524,32 @@
         
             <div class="article col s12 m6">
                 <div class="article-badge left-badge text-color">
-                    <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
-                </div>
+                    <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
                 <div class="card">
-                    <a href="/2020/09/08/anonymousFunction/">
+                    <a href="/2020/09/10/closures/">
                         <div class="card-image">
                             
                                 
                                 <div class="lazy-image-wrapper">
-                                    <img data-src="/medias/featureimages/11.jpg" class="responsive-img lazyload"
-                                         alt="匿名函数与自执行函数">
+                                    <img data-src="/medias/featureimages/05.jpg" class="responsive-img lazyload"
+                                         alt="闭包">
                                 </div>
                             
-                            <span class="card-title">匿名函数与自执行函数</span>
+                            <span class="card-title">闭包</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
                             <center>
-                                匿名函数与自执行函数
+                                闭包
                                 
                             </center>
                         </div>
                         <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-09-08
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-09-10
+                        </span>
                             <span class="publish-author">
                                 
                                     <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -572,7 +562,6 @@
                             </span>
                         </div>
                     </div>
-
                     
                         <div class="card-action article-tags">
                             
