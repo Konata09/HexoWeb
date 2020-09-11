@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://konata.tech/"/>
-  <updated>2020-09-10T12:28:06.091Z</updated>
+  <updated>2020-09-11T13:13:18.696Z</updated>
   <id>http://konata.tech/</id>
   
   <author>
@@ -17,11 +17,37 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>事件流模型</title>
+    <link href="http://konata.tech/2020/09/11/eventStreamModel/"/>
+    <id>http://konata.tech/2020/09/11/eventStreamModel/</id>
+    <published>2020-09-11T12:31:43.000Z</published>
+    <updated>2020-09-11T13:13:18.696Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;事件捕获 (Event Capturing) 是一种从上而下的传播方式，以 &lt;code&gt;click&lt;/code&gt; 事件为例，其会从最外层根节向内传播到达点击的节点，为从最外层节点逐渐向内传播直到目标节点的方式。&lt;br&gt;事件冒泡 (Event Bubbling)
+        
+      
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://konata.tech/categories/JavaScript/"/>
+    
+    
+      <category term="JavaScript" scheme="http://konata.tech/tags/JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
     <title>闭包</title>
     <link href="http://konata.tech/2020/09/10/closures/"/>
     <id>http://konata.tech/2020/09/10/closures/</id>
     <published>2020-09-10T02:52:40.000Z</published>
-    <updated>2020-09-10T12:28:06.091Z</updated>
+    <updated>2020-09-10T12:31:49.091Z</updated>
     
     <summary type="html">
     
@@ -492,9 +518,9 @@
       <category term="Java" scheme="http://konata.tech/categories/Java/"/>
     
     
-      <category term="Java" scheme="http://konata.tech/tags/Java/"/>
-    
       <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
+    
+      <category term="Java" scheme="http://konata.tech/tags/Java/"/>
     
   </entry>
   
@@ -520,37 +546,9 @@
       <category term="Java" scheme="http://konata.tech/categories/Java/"/>
     
     
-      <category term="Java" scheme="http://konata.tech/tags/Java/"/>
-    
       <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
     
-  </entry>
-  
-  <entry>
-    <title>Cookie 和 Session</title>
-    <link href="http://konata.tech/2020/06/18/CookieAndSession/"/>
-    <id>http://konata.tech/2020/06/18/CookieAndSession/</id>
-    <published>2020-06-18T15:55:31.000Z</published>
-    <updated>2020-08-08T09:24:59.308Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;会话技术&quot;&gt;&lt;a href=&quot;#会话技术&quot; class=&quot;headerlink&quot; title=&quot;会话技术&quot;&gt;&lt;/a&gt;会话技术&lt;/h2&gt;&lt;h3 id=&quot;会话&quot;&gt;&lt;a href=&quot;#会话&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="Java" scheme="http://konata.tech/categories/Java/"/>
-    
-    
       <category term="Java" scheme="http://konata.tech/tags/Java/"/>
-    
-      <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
     
   </entry>
   

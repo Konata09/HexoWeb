@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>事件流模型</title>
+      <link href="/2020/09/11/eventStreamModel/"/>
+      <url>/2020/09/11/eventStreamModel/</url>
+      
+        <content type="html"><![CDATA[<p>事件捕获 (Event Capturing) 是一种从上而下的传播方式，以 <code>click</code> 事件为例，其会从最外层根节向内传播到达点击的节点，为从最外层节点逐渐向内传播直到目标节点的方式。<br>事件冒泡 (Event Bubbling) 是一种从下往上的传播方式，同样以 <code>click</code> 事件为例，事件最开始由点击的节点，然后逐渐向上传播直至最高层节点。  </p><h2 id="DOM0-级模型"><a href="#DOM0-级模型" class="headerlink" title="DOM0 级模型"></a>DOM0 级模型</h2><p>也称为原始事件模型，这种方式较为简单且兼容所有浏览器，但是却将界面与逻辑耦合在一起，可维护性差。  </p><pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>i1<span class="token punctuation">"</span></span> <span class="token attr-name">onclick</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>alert(0)<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>i2<span class="token punctuation">"</span></span> <span class="token attr-name">onclick</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>alert(1)<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>i3<span class="token punctuation">"</span></span> <span class="token attr-name">onclick</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>alert(2)<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span></code></pre><p>上面的示例中，当点击 <code>id</code> 为 <code>i3</code> 的 <code>&lt;div&gt;</code> 时，浏览器会依次弹出 <code>2 1 0</code> 。  </p><h2 id="IE-事件模型"><a href="#IE-事件模型" class="headerlink" title="IE 事件模型"></a>IE 事件模型</h2><p>IE8 及之前的版本是不支持捕获事件的，IE 事件模型共有两个过程：<br>事件处理阶段 (target phase)，事件到达目标元素，触发目标元素的监听事件。<br>事件冒泡阶段 (bubbling phase) 事件从目标元素冒泡到 <code>document</code> ，依次执行经过的节点绑定的事件。 </p><h2 id="DOM2-级模型"><a href="#DOM2-级模型" class="headerlink" title="DOM2 级模型"></a>DOM2 级模型</h2><p>DOM2 事件模型是 W3C 制定的标准模型，支持捕获型事件和冒泡型事件，调用事件的处理阶段依次为捕获、目标、冒泡。  </p><pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>i1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>i2<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>            &lt;div id="i3""><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script language-javascript">    document<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> e <span class="token operator">=</span><span class="token operator">></span> <span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'i1'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> e <span class="token operator">=</span><span class="token operator">></span> <span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'i2'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> e <span class="token operator">=</span><span class="token operator">></span> <span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'i3'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> e <span class="token operator">=</span><span class="token operator">></span> <span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></code></pre><p>上面的示例中，当点击 <code>id</code> 为 <code>i3</code> 的 <code>&lt;div&gt;</code> 时，浏览器会依次弹出 <code>0 1 3 2</code> ， <code>addEventListener</code> 方法的第三个参数为声明绑定的事件为捕获型还是冒泡型，默认为 <code>false</code> ，也就是冒泡型。<br><code>document</code> 对象与 <code>i1</code> 节点绑定的是捕获型的监听事件， <code>i2</code> 与 <code>i3</code> 节点绑定的是冒泡型的事件，事件传递的顺序为：</p><pre><code>window ── document ── html ── body ── i1 ── i2 ── i3 ── i2 ── i1 ── body ── html ── document ── window|                                                  |                                                 |└──────────────────────────────────────────────────┴─────────────────────────────────────────────────┘                     捕获阶段                     目标阶段                    冒泡阶段</code></pre><p>从 <code>window</code> 到 <code>i3</code> 的过程为捕获阶段，依次执行了过程中绑定的事件，本例中执行了 <code>alert(0)</code> 与 <code>alert(1)</code> ，然后到达目标阶段的 <code>i3</code> , 执行 <code>i3</code> 绑定的事件 <code>alert(3)</code> ，然后从 <code>i3</code> 到 <code>window</code> 的阶段为冒泡阶段，执行了绑定的 <code>alert(2)</code> ，执行顺序即为 <code>0 1 3 2</code> 。</p><h2 id="绑定监听事件使用的区别"><a href="#绑定监听事件使用的区别" class="headerlink" title="绑定监听事件使用的区别"></a>绑定监听事件使用的区别</h2><p>在 DOM0 中直接绑定函数执行时，后定义的函数会覆盖前边绑定的函数，下面这个例子只执行 <code>alert(1)</code> 而不执行 <code>alert(0)</code> 。 <code>click()</code> 是一个对象事件，点击即触发 <code>onclick()</code> 绑定的方法， <code>onclick()</code> 是对象的属性，将其绑定函数后即为 <code>click()</code> 事件触发后执行的方法。  </p><pre class=" language-js"><code class="language-js">document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"i1"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>onclick <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>    <span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span> <span class="token comment" spellcheck="true">// 被覆盖</span>document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"i1"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>onclick <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>    <span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span> <span class="token comment" spellcheck="true">// 执行</span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> JavaScript </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> JavaScript </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>闭包</title>
       <link href="/2020/09/10/closures/"/>
       <url>/2020/09/10/closures/</url>
@@ -455,9 +480,9 @@
       
         <tags>
             
-            <tag> Java </tag>
-            
             <tag> JSP </tag>
+            
+            <tag> Java </tag>
             
         </tags>
       
@@ -482,9 +507,9 @@
       
         <tags>
             
-            <tag> Java </tag>
-            
             <tag> JSP </tag>
+            
+            <tag> Java </tag>
             
         </tags>
       
@@ -509,9 +534,9 @@
       
         <tags>
             
-            <tag> Java </tag>
-            
             <tag> JSP </tag>
+            
+            <tag> Java </tag>
             
         </tags>
       
@@ -536,9 +561,9 @@
       
         <tags>
             
-            <tag> Java </tag>
-            
             <tag> JSP </tag>
+            
+            <tag> Java </tag>
             
         </tags>
       
@@ -563,9 +588,9 @@
       
         <tags>
             
-            <tag> Java </tag>
-            
             <tag> JSP </tag>
+            
+            <tag> Java </tag>
             
         </tags>
       
@@ -590,9 +615,9 @@
       
         <tags>
             
-            <tag> Java </tag>
-            
             <tag> JSP </tag>
+            
+            <tag> Java </tag>
             
         </tags>
       
@@ -667,9 +692,9 @@
       
         <tags>
             
-            <tag> Java </tag>
-            
             <tag> JSP </tag>
+            
+            <tag> Java </tag>
             
         </tags>
       
@@ -954,9 +979,9 @@
       
         <tags>
             
-            <tag> Java </tag>
-            
             <tag> JSP </tag>
+            
+            <tag> Java </tag>
             
         </tags>
       
