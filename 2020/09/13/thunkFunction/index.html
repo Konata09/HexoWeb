@@ -1,0 +1,983 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Thunk 函数, 生命不息 折腾不止">
+    <meta name="description" content="编译器的求值策略通常分为传值调用以及传名调用，Thunk 函数是应用于编译器的传名调用实现，往往是将参数放到一个临时函数之中，再将这个临时函数传入函数体，这个临时函数就叫做 Thunk 函数。  
+求值策略编译器的求值策略通常分为传值调用以">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#7312ff">
+    <meta name="msapplication-TileColor" content="#8a46cc">
+    <meta name="theme-color" content="#ffffff">
+    <title>Thunk 函数 | 生命不息 折腾不止</title>
+    <script async type="application/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.0/lazysizes.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.1/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <script async defer data-website-id="4873cf0d-ee04-4c6c-85e1-5c2f72f5b538" src="https://umami.konata.tech/umami.js"></script>
+    <!--百度统计-->
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?9ddaf48fd2830c5e3ef6e7c09c5a914c";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    <style type="text/css">
+        
+    </style>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<body>
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+<!--                <a href="/" class="waves-effect waves-light">-->
+<!--                    -->
+<!--                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">-->
+<!--                    -->
+<!--                    <span class="logo-span">生命不息 折腾不止</span>-->
+<!--                </a>-->
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img data-src="/medias/logo.png" class="logo-img circle responsive-img lazyload">
+        
+        <div class="logo-name">生命不息 折腾不止</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/Konata09" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #221f23;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/Konata09" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+</header>
+
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/07.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        Thunk 函数
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #0396FF;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #0396FF;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #0396FF;
+    }
+
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/JavaScript/" target="_blank">
+                                <span class="chip bg-color">JavaScript</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/JavaScript/" class="post-category" target="_blank">
+                                JavaScript
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-09-13
+                </div>
+
+                
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                        2k
+                    </div>
+                    
+
+                    
+                    <div class="info-break-policy">
+                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                        7 分
+                    </div>
+                    
+                
+				
+				
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>编译器的求值策略通常分为传值调用以及传名调用，Thunk 函数是应用于编译器的传名调用实现，往往是将参数放到一个临时函数之中，再将这个临时函数传入函数体，这个临时函数就叫做 Thunk 函数。  </p>
+<h2 id="求值策略"><a href="#求值策略" class="headerlink" title="求值策略"></a>求值策略</h2><p>编译器的求值策略通常分为传值调用以及传名调用，在下面的例子中，将一个表达式作为参数进行传递，传值调用以及传名调用中实现的方式有所不同。</p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> x <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">s</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>y <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 3</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">s</span><span class="token punctuation">(</span>x <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>在上述的例子中，无论是使用传值调用还是使用传名调用，执行的结果都是一样的，但是其调用过程不同：  </p>
+<ul>
+<li>传值调用：首先计算 <code>x + 1</code> ，然后将计算结果 <code>2</code> 传递到 <code>s</code> 函数，即相当于调用 <code>s(2)</code> 。</li>
+<li>传名调用：直接将 <code>x + 1</code> 表达式传递给 <code>y</code> ，使用时再计算 <code>x + 1</code> ，即相当于计算 <code>(x + 1) + 1</code> 。  </li>
+</ul>
+<p>传值调用与传名调用各有利弊，传值调用比较简单，但是对参数求值的时候，实际上还没用到这个参数，有可能造成没有必要的计算。传名调用可以解决这个问题，但是实现相对来说比较复杂。  </p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> x <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">s</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>y <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 3</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">s</span><span class="token punctuation">(</span>x <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> x <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>在上面这个例子中，函数 <code>s</code> 并没有用到 <code>x + 2</code> 这个表达式求得的值，使用传名调用的话只将表达式传入而并未计算，只要在函数中没有用到 x + 2 这个表达式就不会计算，使用传值调用的话就会首先将 <code>x + 2</code> 的值计算然后传入，如果没有用到这个值，那么就多了一次没有必要的计算。Thunk 函数就是作为传名调用的实现而构建的，往往是将参数放到一个临时函数之中，再将这个临时函数传入函数体，这个临时函数就叫做 Thunk 函数。  </p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> x <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">s</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>y <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 3</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">s</span><span class="token punctuation">(</span>x <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 等同于</span>
+
+<span class="token keyword">var</span> x <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">s</span><span class="token punctuation">(</span>thunk<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">thunk</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 3</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> thunk <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> x <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">s</span><span class="token punctuation">(</span>thunk<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h2 id="JavaScript-中的-Thunk-函数"><a href="#JavaScript-中的-Thunk-函数" class="headerlink" title="JavaScript 中的 Thunk 函数"></a>JavaScript 中的 Thunk 函数</h2><p>JavaScript 中的求值策略是是传值调用，在 JavaScript 中使用 Thunk 函数需要手动进行实现且含义有所不同，在 JavaScript 中，Thunk 函数替换的不是表达式，而是多参数函数，将其替换成单参数的版本，且只接受回调函数作为参数。  </p>
+<pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">// 假设一个延时函数需要传递一些参数</span>
+<span class="token comment" spellcheck="true">// 通常使用的版本如下</span>
+<span class="token keyword">var</span> delayAsync <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>time<span class="token punctuation">,</span> callback<span class="token punctuation">,</span> <span class="token operator">...</span>args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token function">callback</span><span class="token punctuation">(</span><span class="token operator">...</span>args<span class="token punctuation">)</span><span class="token punctuation">,</span> time<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> callback <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> z<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> z<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">delayAsync</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">,</span> callback<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 使用 Thunk 函数</span>
+
+<span class="token keyword">var</span> thunk <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>time<span class="token punctuation">,</span> <span class="token operator">...</span>args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">function</span><span class="token punctuation">(</span>callback<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token function">callback</span><span class="token punctuation">(</span><span class="token operator">...</span>args<span class="token punctuation">)</span><span class="token punctuation">,</span> time<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> callback <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> z<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> z<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> delayAsyncThunk <span class="token operator">=</span> <span class="token function">thunk</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">delayAsyncThunk</span><span class="token punctuation">(</span>callback<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>实现一个简单的 Thunk 函数转换器，对于任何函数，只要参数有回调函数，就能写成 Thunk 函数的形式。  </p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> convertToThunk <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>funct<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token operator">...</span>args<span class="token punctuation">)</span><span class="token punctuation">{</span>
+
+    <span class="token keyword">return</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>callback<span class="token punctuation">)</span><span class="token punctuation">{</span>
+      <span class="token keyword">return</span> funct<span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+  <span class="token punctuation">}</span><span class="token punctuation">;</span> 
+<span class="token punctuation">}</span><span class="token punctuation">;</span> 
+
+<span class="token keyword">var</span> callback <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> z<span class="token punctuation">)</span><span class="token punctuation">{</span>
+
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> z<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> delayAsyncThunk <span class="token operator">=</span> <span class="token function">convertToThunk</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>time<span class="token punctuation">,</span> <span class="token operator">...</span>args<span class="token punctuation">)</span><span class="token punctuation">{</span>
+
+    <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token function">callback</span><span class="token punctuation">(</span><span class="token operator">...</span>args<span class="token punctuation">)</span><span class="token punctuation">,</span> time<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+
+thunkFunct <span class="token operator">=</span> <span class="token function">delayAsyncThunk</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+<span class="token function">thunkFunct</span><span class="token punctuation">(</span>callback<span class="token punctuation">)</span><span class="token punctuation">;</span> 
+</code></pre>
+<p>Thunk 函数在 ES6 之前可能应用比较少，但是在 ES6 之后，出现了 Generator 函数，通过使用 Thunk 函数就可以可以用于 Generator 函数的自动流程管理。首先是关于 Generator 函数的基本使用，调用一个生成器函数并不会马上执行它里面的语句，而是返回一个这个生成器的迭代器 <code>iterator</code> 对象，他是一个指向内部状态对象的指针。当这个迭代器的 <code>next()</code> 方法被首次（后续）调用时，其内的语句会执行到第一个（后续）出现 <code>yield</code> 的位置为止，<code>yield</code> 后紧跟迭代器要返回的值，也就是指针就会从函数头部或者上一次停下来的地方开始执行到下一个 <code>yield</code>。或者如果用的是 <code>yield*</code>，则表示将执行权移交给另一个生成器函数（当前生成器暂停执行）。  </p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">f</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">yield</span> x <span class="token operator">+</span> <span class="token number">10</span><span class="token punctuation">;</span>
+    <span class="token keyword">yield</span> x <span class="token operator">+</span> <span class="token number">20</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> x <span class="token operator">+</span> <span class="token number">30</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">var</span> g <span class="token operator">=</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>g<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// f {&lt;suspended>}</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>g<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// {value: 11, done: false}</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>g<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// {value: 21, done: false}</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>g<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// {value: 31, done: true}</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>g<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// {value: undefined, done: true} // 可以无限 next()，但是 value 总为 undefined，done 总为 true</span></code></pre>
+<p>由于 Generator 函数能够将函数的执行暂时挂起，那么他就完全可以操作一个异步任务，当上一个任务完成之后再继续下一个任务，下面这个例子就是将一个异步任务同步化表达，当上一个延时定时器完成之后才会进行下一个定时器任务，可以通过这种方式解决一个异步嵌套的问题，例如利用回调的方式需要在一个网络请求之后加入一次回调进行下一次请求，很容易造成回调地狱，而通过 Generator 函数就可以解决这个问题，事实上 async/await 就是利用的 Generator 函数以及 Promise 实现的异步解决方案。  </p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> it <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> rand <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">;</span>
+    <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>it<span class="token punctuation">)</span> it<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span>rand<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">g</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> r1 <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>r1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> r2 <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>r2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> r3 <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>r3<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+it <span class="token operator">=</span> <span class="token function">g</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+it<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>虽然上边的例子能够自动执行，但是不够方便，现在实现一个 Thunk 函数的自动流程管理，其自动帮我们进行回调函数的处理，只需要在 Thunk 函数中传递一些函数执行所需要的参数比如例子中的 <code>index</code>，然后就可以编写 Generator 函数的函数体，通过左边的变量接收 Thunk 函数中 <code>funct</code> 执行的参数，在使用 Thunk 函数进行自动流程管理时，必须保证 <code>yield</code> 后是一个 Thunk 函数。<br>关于自动流程管理 <code>run</code> 函数，首先需要知道在调用 <code>next()</code> 方法时，如果传入了参数，那么这个参数会传给上一条执行的 <code>yield</code> 语句左边的变量，在这个函数中，第一次执行 <code>next</code> 时并未传递参数，而且在第一个 <code>yield</code> 上边也并不存在接收变量的语句，无需传递参数，接下来就是判断是否执行完这个生成器函数，在这里并没有执行完，那么将自定义的 <code>next</code> 函数传入 <code>res.value</code> 中，这里需要注意 <code>res.value</code> 是一个函数，可以在下边的例子中将注释的那一行执行，然后就可以看到这个值是 <code>f(funct){...}</code>，此时我们将自定义的 <code>next</code> 函数传递后，就将 <code>next</code> 的执行权限交予了 <code>f</code> 这个函数，在这个函数执行完异步任务后，会执行回调函数，在这个回调函数中会触发生成器的下一个 <code>next</code> 方法，并且这个 <code>next</code> 方法是传递了参数的，上文提到传入参数后会将其传递给上一条执行的 <code>yield</code> 语句左边的变量，那么在这一次执行中会将这个参数值传递给 <code>r1</code>，然后在继续执行 <code>next</code>，不断往复，直到生成器函数结束运行，这样就实现了流程的自动管理。  </p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">thunkFunct</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">function</span> <span class="token function">f</span><span class="token punctuation">(</span>funct<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">var</span> rand <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">;</span>
+        <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token function">funct</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+            rand<span class="token punctuation">:</span> rand<span class="token punctuation">,</span>
+            index<span class="token punctuation">:</span> index
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">g</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> r1 <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token function">thunkFunct</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>r1<span class="token punctuation">.</span>index<span class="token punctuation">,</span> r1<span class="token punctuation">.</span>rand<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> r2 <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token function">thunkFunct</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>r2<span class="token punctuation">.</span>index<span class="token punctuation">,</span> r2<span class="token punctuation">.</span>rand<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> r3 <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token function">thunkFunct</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>r3<span class="token punctuation">.</span>index<span class="token punctuation">,</span> r3<span class="token punctuation">.</span>rand<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">run</span><span class="token punctuation">(</span>generator<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> g <span class="token operator">=</span> <span class="token function">generator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">var</span> next <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">var</span> res <span class="token operator">=</span> g<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>res<span class="token punctuation">.</span>done<span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">// console.log(res.value);</span>
+        res<span class="token punctuation">.</span><span class="token function">value</span><span class="token punctuation">(</span>next<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">run</span><span class="token punctuation">(</span>g<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+
+            </div>
+            <hr/>
+
+            
+
+            
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        <p class="reprint-tip">
+            <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;
+            <span>转载规则</span>
+        </p>
+        
+            <div class="center-align">
+                <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh">
+                    <img alt="知识共享许可协议"
+                         style="border-width:0"
+                         src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png"/></a>
+            </div>
+            <br/>
+            <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
+                  property="dct:title" rel="dct:type">《Thunk 函数》</span> 由 <a
+                    xmlns:cc="http://creativecommons.org/ns#" href="/2020/09/13/thunkFunction/"
+                    property="cc:attributionName"
+                    rel="cc:attributionURL">Konata</a> 采用
+            <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh">
+                知识共享署名-非商业性使用 4.0 国际许可协议
+            </a>
+            进行许可。
+        
+    </div>
+    
+
+
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+            <div class="article col s12 m6">
+                <div class="article-badge left-badge text-color">
+                    <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+                </div>
+                <div class="card">
+                    <a href="/2020/09/13/thunkFunction/">
+                        <div class="card-image">
+                            
+                                
+                                <div class="lazy-image-wrapper">
+                                    <img data-src="/medias/featureimages/07.jpg" class="responsive-img lazyload"
+                                         alt="Thunk 函数">
+                                </div>
+                            
+                            <span class="card-title">Thunk 函数</span>
+                        </div>
+                    </a>
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                            <center>
+                                Thunk 函数
+                                
+                            </center>
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-09-13
+                            </span>
+                            <span class="publish-author">
+                                
+                                    <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                    
+                                        <a href="/categories/JavaScript/" class="post-category" target="_blank">
+                                    JavaScript
+                                </a>
+                                    
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                        <div class="card-action article-tags">
+                            
+                                <a href="/tags/JavaScript/" target="_blank">
+                                    <span class="chip bg-color">JavaScript</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+            </div>
+        
+        
+            <div class="article col s12 m6">
+                <div class="article-badge right-badge text-color">
+                    下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+                </div>
+                <div class="card">
+                    <a href="/2020/09/11/eventStreamModel/">
+                        <div class="card-image">
+                            
+                                
+                                <div class="lazy-image-wrapper">
+                                    <img data-src="/medias/featureimages/04.jpg" class="responsive-img lazyload"
+                                         alt="事件流模型">
+                                </div>
+                            
+                            <span class="card-title">事件流模型</span>
+                        </div>
+                    </a>
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                            <center>
+                                事件流模型
+                                
+                            </center>
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-09-11
+                            </span>
+                            <span class="publish-author">
+                                
+                                    <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                    
+                                        <a href="/categories/JavaScript/" class="post-category" target="_blank">
+                                    JavaScript
+                                </a>
+                                    
+                                
+                            </span>
+                        </div>
+                    </div>
+                    
+                        <div class="card-action article-tags">
+                            
+                                <a href="/tags/JavaScript/" target="_blank">
+                                    <span class="chip bg-color">JavaScript</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+            </div>
+        
+    </div>
+</article>
+</div>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+    <div id="floating-toc-btn">
+        <a class="btn-floating btn-large bg-color">
+            <i class="fa fa-list"></i>
+        </a>
+    </div>
+    <script>
+        document.getElementById('floating-toc-btn').style.display = 'block';
+    </script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -(window.innerHeight * 0.4 - 45),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        const tocWidget = document.querySelector('.toc-widget');
+
+        const tocFixed = () =>{
+            const tocHeight = document.querySelector('.bg-cover.pd-header.post-cover').scrollHeight - 64; // title image height - TOC top
+            const scroll = window.scrollY;
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                tocWidget.classList.add('toc-fixed');
+            } else {
+                tocWidget.classList.remove('toc-fixed');
+            }
+        }
+        tocFixed();
+        window.addEventListener("scroll", () => tocFixed());
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = document.getElementById(srcId);
+            if (!srcDiv) {
+                return;
+            }
+            let w = srcDiv.style.width;
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            document.getElementById(targetId).style.width = w;
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let tocAside = document.getElementById('toc-aside');
+        let mainContent = document.getElementById('main-content');
+        document.querySelectorAll('#floating-toc-btn .btn-floating')[0].addEventListener('click', () => {
+            if (tocAside.classList.contains(expandedClass)) {
+                tocAside.classList.remove(expandedClass);
+                tocAside.hidden = true;
+                mainContent.classList.remove('l9');
+            } else {
+                tocAside.hidden = false;
+                tocAside.classList.add(expandedClass);
+                mainContent.classList.add('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        })
+        
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right" style="width: -moz-available;width: -webkit-fill-available">
+            &copy;2019-2020 Konata<br>Proudly published with Hexo<br>Theme - <a href="https://github.com/blinkfox/hexo-theme-matery">matery</a>
+            
+            
+			
+                <br>
+                
+                <span id="busuanzi_container_site_pv">
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
+                
+            
+        </div>
+<!--        <div class="col s12 m4 l4 social-link social-statis">
+
+
+    <a href="mailto:konata#aliyun.com" class="tooltipped" target="_blank" data-tooltip="E-mail" data-position="top" data-delay="50">
+        <i class="fa fa-hover fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS" data-position="top" data-delay="50">
+        <i class="fa fa-hover fa-rss"></i>
+    </a>
+</div>-->
+    </div>
+
+</footer>
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", () => {
+        searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+    });
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll-btn">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+<div id="show-live2d" class="show-live2d-btn btnHide">
+    <a class="btn-floating btn-large waves-effect waves-light" href="##">
+        <svg viewBox="-75 -55 350 500"
+             xmlns="http://www.w3.org/2000/svg"
+             xmlns:xlink="http://www.w3.org/1999/xlink">
+            <path fill-rule="evenodd" fill="rgb(255,255,255)"
+                  d="M124.000,-0.000 L195.000,45.000 L195.000,196.000 L125.000,252.000 C125.000,252.000 124.333,252.000 124.000,252.000 C124.000,168.008 124.000,-0.000 124.000,-0.000 ZM36.000,31.000 L77.000,47.000 L77.000,196.000 L36.000,221.000 L36.000,31.000 ZM-0.000,67.000 C-0.000,67.000 16.001,71.000 24.000,73.000 C24.000,104.663 24.000,168.000 24.000,168.000 C24.000,168.000 7.999,176.667 -0.000,181.000 C-0.000,143.004 -0.000,67.000 -0.000,67.000 ZM124.000,-0.000 L195.000,45.000 L195.000,196.000 L125.000,252.000 C125.000,252.000 124.333,252.000 124.000,252.000 C124.000,168.008 124.000,-0.000 124.000,-0.000 ZM36.000,31.000 L77.000,47.000 L77.000,196.000 L36.000,221.000 L36.000,31.000 ZM-0.000,67.000 C-0.000,67.000 16.001,71.000 24.000,73.000 C24.000,104.663 24.000,168.000 24.000,168.000 C24.000,168.000 7.999,176.667 -0.000,181.000 C-0.000,143.004 -0.000,67.000 -0.000,67.000 ZM124.000,-0.000 L195.000,45.000 L195.000,196.000 L125.000,252.000 C125.000,252.000 124.333,252.000 124.000,252.000 C124.000,168.008 124.000,-0.000 124.000,-0.000 ZM36.000,31.000 L77.000,47.000 L77.000,196.000 L36.000,221.000 L36.000,31.000 ZM-0.000,67.000 C-0.000,67.000 16.001,71.000 24.000,73.000 C24.000,104.663 24.000,168.000 24.000,168.000 C24.000,168.000 7.999,176.667 -0.000,181.000 C-0.000,143.004 -0.000,67.000 -0.000,67.000 Z"/>
+        </svg>
+    </a>
+</div>
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/desandro/masonry@4.0.0/dist/masonry.pkgd.min.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-144875900-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'UA-144875900-1');
+</script>
+
+
+
+
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<iframe src="/media/silence.mp3" allow="autoplay" id="slience-audio" style="display: none"></iframe>
+<div id="waifu">
+    <div id="waifu-message"></div>
+    <div class="waifu-tool">
+        <span class="icon-next"></span>
+        <span class="icon-home"></span>
+        <span class="icon-message"></span>
+        <span class="icon-camera"></span>
+        <span class="icon-volumeup"></span>
+        <span class="icon-volumedown"></span>
+        <span class="icon-about"></span>
+        <span class="icon-cross"></span>
+    </div>
+    <canvas id="live2d2"></canvas>
+    <canvas id="live2d4"></canvas>
+</div>
+<script src="/live2d/live2d_bundle.js"></script>
+<script async type="module" src="/live2d/waifu-tips.js"></script>
+<script type="module">
+    const getWidth = () => {
+        let width = window.innerWidth
+        if (width >= 1040) {
+            // import('/js/bundle.js');
+            import('/js/matery.js');
+        } else {
+            import('/js/matery.js');
+        }
+    }
+    getWidth();
+</script>
+<div class="mute">
+    <img id="audioOff"
+         src="data:image/png;base64,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"
+         class="controller__audio--off" style="display: block;">
+    <img id="audioOn"
+         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAMAAAC7IEhfAAAB5lBMVEUKCgoAAAD////39/f///8MDAwUFBRHcEz6+voNDQ339/cKCgodHR0YGBgXFxcMDAwWFhYLCwv///8VFRX///8TExM/Pz8ZGRn///9ISEgLCwsfHx8aGhr////w8PAbGxv///8tLS3///97e3vh4eHw8PD///8AAAD///////////////////////+np6ceHh4cHBz///8gICAJCQn///+xsbESEhIvLy+7u7vDw8P///9tbW1paWnU1NTa2todHR0RERESEhIeHh7////09PT19fWPj48RERG3t7fAwMBRUVHy8vJkZGTT09P6+vr4+Pj6+vojIyP39/fw8PDs7OxWVlbs7Oza2trq6uqRkZFTU1Py8vLu7u7Q0ND09PSSkpInJyenp6dOTk7w8PDw8PDW1tbu7u7g4ODT09Ps7Oz39/fX19fNzc3IyMiFhYU0NDT4+Pjq6uq8vLzc3NwYGBjY2Ni3t7fw8PDp6emXl5cJCQnm5ubIyMjX19c+Pj7///8AAADk5OTy8vJ9fX319fWlpaXc3NzU1NRpaWnm5uaioqJFRUWqqqrv7+/ExMTy8vLs7Oz4+PgjIyPh4eGqqqqurq56enokJCTz8/MfHx/39/eoqKjR0dHr6+v4+PgiIiLj4+O1tbUBW7mVAAAAonRSTlMZGiEjIBQZANATIhgaFRYVFxcfGBcaHB4UHBYgHQMjHB4cDB0jIgEZEh0cEBsIICEbBB8aEyEcGyIiAhwdJCMjHRsiFsDCPh4gXhy5MHTOz88kxLCnL6V+oEErt65yv0IgTCqxr3esjXWiy4BxbDsnyqNcfx9wUrKcRRuSY3opBRuRtTnESoR+NZ5QLFqydr6kzSuJYE84Krkox0p1qcsljFd+4J8aAAAC/UlEQVQ4y5WVZXPjMBCGFUdWbcd20jjYcBpmaFJm5vaYmZmZmZn5/ulJhsRJezN3+8mzfmZfebX7GrQ0RDY9mklarcmMLZ1tfAN0z8VEClIcZ8TBcRRMJYqrgr4OK+QGcr0O3m7nHb25AQ5aO3wrwXAQ+iszcQNQ41Z8puKHwXATGHNBqqtTo8rDw9XqlbKhs4uCrpge7LHBaLuCmQCyV6uT5yaHhsvA0B6Fth4daIMRh8y1tlkkVPB6Ri6cHxoqA2BwRKCtDrpgJCRjomBBAc/Jy8dPM4e9dkRyoQh0aWCYirpJro2lLXxp59GLCwzDXHIioY1k3VEqrIC+IEXOZzKztIh2XT/CyHHWKdGs2YTV26mgTwY7YDc5n5nFBQvXFIw5NVGw0Cxrxi8M3UQctBSt/pCsS8DAVYUbP4OVcYYl6iG/tYjBBKwQYVYB7y8yiy+fP7zrRCJNUiwRr8BEC4ilOLcijENE+QfM63dvlmucLO7mUjGQhf1x3BglS0vep7PM9895XuNYthWAeD/MgjSVM2gFWVpApd9LzLwexCUNOSoNRrk+fEItTYt8/i3z5YNXEjSQxqfs40ZBxuhQP0UOQQrMfWJ+eXQlMegwZkDSyNeOKJdEpfc/Fr56kaA7JG9MAqvR3gAKknf5G/NqRO63BtqN1iYQc3zp58fHzHSpVlIFG6SxcCD/6MmzF0t3bgS0kqq0/mMw5zxx+558icc8Wkn1Y2y69gjIuXmHOhVj69WSSnts+obTYmFuK6PFoZJE6xuuu0Jacs7XOOZAXtHWrlA3FALybKqDsyMyWBsKPGZT6phhcEMd3KZUJGM2RcZMN7g0Kh2sg/vJLmiDe7NhFfDc7q5xe7eQu9GvQn25cBs9G1Vu3wQZoMblqq8r3lbP9LqxNeNrt+/x4hlvWledAVgsyOsZHBzMOwuSKLY2G0DdUsomCfE4EJIsJoI1WYrOpMrAjuwIqba2wqSabE/DVtqeZqTuupEa4u7VjPQ/rPnfzV79fdj+8vv4A1Aef7RpmdATAAAAAElFTkSuQmCC"
+         class="controller__audio--on" style="display: none;">
+</div>
+<script type="application/javascript" src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+<script>
+    NProgress.start();
+    NProgress.configure({trickle: true, trickleSpeed: 300, speed: 500});
+    NProgress.set(0.2);
+    document.getElementsByClassName('fa-heart-o')[0].addEventListener('click', () => {
+        document.getElementsByClassName('bg-cover')[0].style.backgroundImage = 'url(/medias/banner/2.jpg)';
+    })
+    document.addEventListener("DOMContentLoaded", () => {
+        NProgress.set(0.4);
+        NProgress.start();
+    });
+    window.onload = function () {
+        NProgress.done();
+    }
+</script>
+</body>
+</html>

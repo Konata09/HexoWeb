@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://konata.tech/"/>
-  <updated>2020-09-11T13:13:18.696Z</updated>
+  <updated>2020-09-13T14:57:03.539Z</updated>
   <id>http://konata.tech/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Thunk 函数</title>
+    <link href="http://konata.tech/2020/09/13/thunkFunction/"/>
+    <id>http://konata.tech/2020/09/13/thunkFunction/</id>
+    <published>2020-09-13T14:45:30.000Z</published>
+    <updated>2020-09-13T14:57:03.539Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;编译器的求值策略通常分为传值调用以及传名调用，Thunk 函数是应用于编译器的传名调用实现，往往是将参数放到一个临时函数之中，再将这个临时函数传入函数体，这个临时函数就叫做 Thunk 函数。  &lt;/p&gt;
+&lt;h2 id=&quot;求值策略&quot;&gt;&lt;a href=&quot;#求值策略&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://konata.tech/categories/JavaScript/"/>
+    
+    
+      <category term="JavaScript" scheme="http://konata.tech/tags/JavaScript/"/>
+    
+  </entry>
   
   <entry>
     <title>事件流模型</title>
@@ -518,37 +545,9 @@
       <category term="Java" scheme="http://konata.tech/categories/Java/"/>
     
     
-      <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
-    
       <category term="Java" scheme="http://konata.tech/tags/Java/"/>
     
-  </entry>
-  
-  <entry>
-    <title>EL 表达式和 JSTL</title>
-    <link href="http://konata.tech/2020/06/19/ELAndJSTL/"/>
-    <id>http://konata.tech/2020/06/19/ELAndJSTL/</id>
-    <published>2020-06-19T03:08:37.000Z</published>
-    <updated>2020-08-08T09:25:09.962Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;JSP&quot;&gt;&lt;a href=&quot;#JSP&quot; class=&quot;headerlink&quot; title=&quot;JSP&quot;&gt;&lt;/a&gt;JSP&lt;/h2&gt;&lt;h3 id=&quot;指令&quot;&gt;&lt;a href=&quot;#指令&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="Java" scheme="http://konata.tech/categories/Java/"/>
-    
-    
       <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
-    
-      <category term="Java" scheme="http://konata.tech/tags/Java/"/>
     
   </entry>
   
