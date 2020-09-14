@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>在 Liunx 中查找文件</title>
+      <link href="/2020/09/14/findCommand/"/>
+      <url>/2020/09/14/findCommand/</url>
+      
+        <content type="html"><![CDATA[<h2 id="locate"><a href="#locate" class="headerlink" title="locate"></a>locate</h2><p>使用 <code>locate</code> 命令需要安装 <code>mlocate</code> :</p><pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> dnf <span class="token function">install</span> mlocate</code></pre><p><code>locate</code> 命令维护一个 <code>/var/lib/mlocate/mlocate.db</code> 文件存放索引，该数据文件会定期更新，也可以运行 <code>updatedb</code> 命令立即更新索引：</p><pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> updatedb</code></pre><p>查找文件时使用 <code>locate 文件名</code> 搜索文件：</p><pre class=" language-bash"><code class="language-bash"><span class="token function">locate</span> my.ini</code></pre><h2 id="which"><a href="#which" class="headerlink" title="which"></a>which</h2><p><code>which</code> 命令查找 <code>$PATH</code> 中的目录中的可执行文件，并显示该可执行文件的完整路径。  </p><pre class=" language-bash"><code class="language-bash"><span class="token function">which</span> gcc</code></pre><h2 id="find"><a href="#find" class="headerlink" title="find"></a>find</h2><p><code>find</code> 命令用来在指定目录下查找文件，任何位于参数之前的字符串都将被视为要查找的目录名，如果使用该命令时，不设置任何参数，则 <code>find</code> 命令将在当前目录下查找子目录与文件，并且将查找到的子目录和文件全部进行显示。</p><h3 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h3><pre><code>find [-H] [-L] [-P] [-Olevel] [-D help|tree|search|stat|rates|opt|exec] [path...] [expression]</code></pre><h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p>查找 <code>/etc/</code> 目录及其子目录下所有扩展名为 <code>conf</code> 的文件。</p><pre class=" language-bash"><code class="language-bash"><span class="token function">find</span> /etc/ -name <span class="token string">'*.conf'</span></code></pre><p>查找 <code>/var/</code> 目录及其子目录下所有一般文件。</p><pre class=" language-bash"><code class="language-bash"><span class="token function">find</span> /var/ -type f</code></pre><p>查找 <code>/var/</code> 目录及其子目录下所有最近 1 天内更改过的文件，+1 则表示 1 天前更改过文件。</p><pre class=" language-bash"><code class="language-bash"><span class="token function">find</span> /var/ -ctime -1</code></pre><p>查找 <code>/var/</code> 目录及其子目录下所有更改时间在 7 日以前的普通文件，并在删除之前询问是否删除。</p><pre class=" language-bash"><code class="language-bash"><span class="token function">find</span> /var/ -type f -mtime +7 -ok <span class="token function">rm</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> \<span class="token punctuation">;</span> </code></pre><p>查找 <code>/var/</code> 目录及其子目录下所有文件属主具有读、写权限，并且文件所属组的用户和其他用户具有读权限的文件。</p><pre class=" language-bash"><code class="language-bash"><span class="token function">find</span> /var/  -type f -perm 644 -exec <span class="token function">ls</span> -l <span class="token punctuation">{</span><span class="token punctuation">}</span> \<span class="token punctuation">;</span> </code></pre><p>查找 <code>/var/</code> 目录及其子目录下所有文件长度为 0 的普通文件，并列出它们的完整路径。</p><pre class=" language-bash"><code class="language-bash"><span class="token function">find</span> /var/ -type f -size 0 -exec <span class="token function">ls</span> -l <span class="token punctuation">{</span><span class="token punctuation">}</span> \<span class="token punctuation">;</span> </code></pre><h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><ul><li><code>-amin&lt;minute&gt;</code> : 查找在指定时间曾被存取过的文件或目录，单位以分钟计算。</li><li><code>-anewer&lt;file or folder&gt;</code> : 查找其存取时间较指定文件或目录的存取时间更接近现在的文件或目录。</li><li><code>-atime&lt;day&gt;</code> : 查找在指定时间曾被存取过的文件或目录，单位以天计算。</li><li><code>-cmin&lt;minute&gt;</code> : 查找在指定时间之时被更改过的文件或目录。</li><li><code>-cnewer&lt;file or folder&gt;</code> 查找其更改时间较指定文件或目录的更改时间更接近现在的文件或目录。</li><li><code>-ctime&lt;day&gt;</code> : 查找在指定时间之时被更改的文件或目录，单位以天计算。</li><li><code>-daystart</code> : 从本日开始计算时间。</li><li><code>-depth</code> : 从指定目录下最深层的子目录开始查找。</li><li><code>-empty</code> : 寻找文件大小为 <code>0 Byte</code> 的文件，或目录下没有任何子目录或文件的空目录。</li><li><code>-exec&lt;command&gt;</code> : 假设 <code>find</code> 指令的回传值为 <code>True</code> ，就执行该指令。</li><li><code>-false</code> : 将 <code>find</code> 指令的回传值皆设为 <code>False</code> 。</li><li><code>-fls&lt;file list&gt;</code> : 此参数的效果和指定 <code>-ls</code> 参数类似，但会把结果保存为指定的列表文件。</li><li><code>-follow</code> : 排除符号连接。</li><li><code>-fprint&lt;file list&gt;</code> : 此参数的效果和指定 <code>-print</code> 参数类似，但会把结果保存成指定的列表文件。</li><li><code>-fprint0&lt;file list&gt;</code> : 此参数的效果和指定 <code>-print0</code> 参数类似，但会把结果保存成指定的列表文件。</li><li><code>-fprintf&lt;file list&gt;&lt;output format&gt;</code> : 此参数的效果和指定 <code>-printf</code> 参数类似，但会把结果保存成指定的列表文件。</li><li><code>-fstype&lt;file system type&gt;</code> : 只寻找该文件系统类型下的文件或目录。</li><li><code>-gid&lt;group id&gt;</code> : 查找符合指定之群组识别码的文件或目录。</li><li><code>-group&lt;group name&gt;</code> : 查找符合指定之群组名称的文件或目录。</li><li><code>-help, --help</code> : 在线帮助。</li><li><code>-ilname&lt;template style&gt;</code> : 此参数的效果和指定 <code>-lname</code> 参数类似，但忽略字符大小写的差别。</li><li><code>-iname&lt;template style&gt;</code> : 此参数的效果和指定 <code>-name</code> 参数类似，但忽略字符大小写的差别。</li><li><code>-inum&lt;inode num&gt;</code> : 查找符合指定的 inode 编号的文件或目录。</li><li><code>-ipath&lt;template style&gt;</code> : 此参数的效果和指定 <code>-path</code> 参数类似，但忽略字符大小写的差别。</li><li><code>-iregex&lt;template style&gt;</code> : 此参数的效果和指定 <code>-regexe</code> 参数类似，但忽略字符大小写的差别。</li><li><code>-links&lt;number of connections&gt;</code> : 查找符合指定的硬连接数目的文件或目录。</li><li><code>-iname&lt;template style&gt;</code> : 指定字符串作为寻找符号连接的范本样式。</li><li><code>-ls</code> : 假设 <code>find</code> 指令的回传值为 <code>Ture</code> ，就将文件或目录名称列出到标准输出。</li><li><code>-maxdepth&lt;directory level&gt;</code> : 设置最大目录层级。</li><li><code>-mindepth&lt;directory level&gt;</code> : 设置最小目录层级。</li><li><code>-mmin&lt;minute&gt;</code> : 查找在指定时间曾被更改过的文件或目录，单位以分钟计算。</li><li><code>-mount</code> : 此参数的效果和指定 <code>-xdev</code> 相同。</li><li><code>-mtime&lt;24 hour&gt;</code> : 查找在指定时间曾被更改过的文件或目录，单位以 <code>24</code> 小时计算。</li><li><code>-name&lt;template style&gt;</code> : 指定字符串作为寻找文件或目录的范本样式。</li><li><code>-newer&lt;file or folder&gt;</code> : 查找其更改时间较指定文件或目录的更改时间更接近现在的文件或目录。</li><li><code>-nogroup</code> : 找出不属于本地主机群组识别码的文件或目录。</li><li><code>-noleaf</code> : 不去考虑目录至少需拥有两个硬连接存在。</li><li><code>-nouser</code> : 找出不属于本地主机用户识别码的文件或目录。</li><li><code>-ok&lt;command&gt;</code> : 此参数的效果和指定 <code>-exec</code> 类似，但在执行指令之前会先询问用户，若回答 <code>y</code> 或 <code>Y</code> ，则放弃执行命令。</li><li><code>-path&lt;template style&gt;</code> : 指定字符串作为寻找目录的范本样式。</li><li><code>-perm&lt;permission value&gt;</code> : 查找符合指定的权限数值的文件或目录。</li><li><code>-print</code> : 假设 <code>find</code> 指令的回传值为 <code>Ture</code> ，就将文件或目录名称列出到标准输出。格式为每列一个名称，每个名称前皆有 <code>./</code> 字符串。</li><li><code>-print0</code> : 假设 <code>find</code> 指令的回传值为 <code>Ture</code> ，就将文件或目录名称列出到标准输出。格式为全部的名称皆在同一行。</li><li><code>-printf&lt;output format&gt;</code> : 假设 <code>find</code> 指令的回传值为 <code>Ture</code> ，就将文件或目录名称列出到标准输出。格式可以自行指定。</li><li><code>-prune</code> : 不寻找字符串作为寻找文件或目录的范本样式；</li><li><code>-regex&lt;template style&gt;</code> : 指定字符串作为寻找文件或目录的范本样式。</li><li><code>-size&lt;file size&gt;</code> : 查找符合指定的文件大小的文件。</li><li><code>-true</code> : 将 find 指令的回传值皆设为 <code>True</code> 。</li><li><code>-type&lt;file type&gt;</code> : 只寻找符合指定的文件类型的文件。</li><li><code>-uid&lt;user id&gt;</code> : 查找符合指定的用户识别码的文件或目录。</li><li><code>-used&lt;day&gt;</code> : 查找文件或目录被更改之后在指定时间曾被存取过的文件或目录，单位以日计算。</li><li><code>-user&lt;owner name&gt;</code> : 查找符和指定的拥有者名称的文件或目录。</li><li><code>-version, --version</code> : 显示版本信息。</li><li><code>-xdev</code> : 将范围局限在先行的文件系统中。</li><li><code>-xtype&lt;file type&gt;</code> : 此参数的效果和指定 <code>-type</code> 参数类似，差别在于它针对符号连接检查。</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Ops </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Thunk 函数</title>
       <link href="/2020/09/13/thunkFunction/"/>
       <url>/2020/09/13/thunkFunction/</url>
@@ -505,9 +530,9 @@
       
         <tags>
             
-            <tag> Java </tag>
-            
             <tag> JSP </tag>
+            
+            <tag> Java </tag>
             
         </tags>
       
@@ -532,9 +557,9 @@
       
         <tags>
             
-            <tag> Java </tag>
-            
             <tag> JSP </tag>
+            
+            <tag> Java </tag>
             
         </tags>
       
@@ -559,9 +584,9 @@
       
         <tags>
             
-            <tag> Java </tag>
-            
             <tag> JSP </tag>
+            
+            <tag> Java </tag>
             
         </tags>
       
@@ -586,9 +611,9 @@
       
         <tags>
             
-            <tag> Java </tag>
-            
             <tag> JSP </tag>
+            
+            <tag> Java </tag>
             
         </tags>
       
@@ -613,9 +638,9 @@
       
         <tags>
             
-            <tag> Java </tag>
-            
             <tag> JSP </tag>
+            
+            <tag> Java </tag>
             
         </tags>
       
@@ -640,9 +665,9 @@
       
         <tags>
             
-            <tag> Java </tag>
-            
             <tag> JSP </tag>
+            
+            <tag> Java </tag>
             
         </tags>
       
@@ -717,9 +742,9 @@
       
         <tags>
             
-            <tag> Java </tag>
-            
             <tag> JSP </tag>
+            
+            <tag> Java </tag>
             
         </tags>
       
@@ -1004,9 +1029,9 @@
       
         <tags>
             
-            <tag> Java </tag>
-            
             <tag> JSP </tag>
+            
+            <tag> Java </tag>
             
         </tags>
       

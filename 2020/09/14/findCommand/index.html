@@ -4,12 +4,10 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="EL 表达式和 JSTL, 生命不息 折腾不止">
-    <meta name="description" content="JSP指令作用用于配置 JSP 页面，导入资源文件
-格式 &amp;lt;%@ 指令名称 属性名 1=属性值 1 属性名 2=属性值 2 ... %&amp;gt;
-分类page配置 JSP 页面
-
-contentType ：等同于 response.se">
+    <meta name="keywords" content="在 Liunx 中查找文件, 生命不息 折腾不止">
+    <meta name="description" content="locate使用 locate 命令需要安装 mlocate :
+sudo dnf install mlocate
+locate 命令维护一个 /var/lib/mlocate/mlocate.db 文件存放索引，该数据文件会定期更新，也可">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -23,7 +21,7 @@ contentType ：等同于 response.se">
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#7312ff">
     <meta name="msapplication-TileColor" content="#8a46cc">
     <meta name="theme-color" content="#ffffff">
-    <title>EL 表达式和 JSTL | 生命不息 折腾不止</title>
+    <title>在 Liunx 中查找文件 | 生命不息 折腾不止</title>
     <script async type="application/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.0/lazysizes.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
@@ -256,13 +254,13 @@ contentType ：等同于 response.se">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/09.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        EL 表达式和 JSTL
+                        在 Liunx 中查找文件
                     </div>
                 </div>
             </div>
@@ -355,12 +353,8 @@ contentType ：等同于 response.se">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/JSP/" target="_blank">
-                                <span class="chip bg-color">JSP</span>
-                            </a>
-                        
-                            <a href="/tags/Java/" target="_blank">
-                                <span class="chip bg-color">Java</span>
+                            <a href="/tags/Linux/" target="_blank">
+                                <span class="chip bg-color">Linux</span>
                             </a>
                         
                     </div>
@@ -371,8 +365,8 @@ contentType ：等同于 response.se">
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Java/" class="post-category" target="_blank">
-                                Java
+                            <a href="/categories/Ops/" class="post-category" target="_blank">
+                                Ops
                             </a>
                         
                     </div>
@@ -383,21 +377,21 @@ contentType ：等同于 response.se">
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-06-19
+                    2020-09-14
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1.3k
+                        1.8k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        5 分
+                        7 分
                     </div>
                     
                 
@@ -413,247 +407,84 @@ contentType ：等同于 response.se">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="JSP"><a href="#JSP" class="headerlink" title="JSP"></a>JSP</h2><h3 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h3><h4 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h4><p>用于配置 JSP 页面，导入资源文件</p>
-<h4 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h4><p> <code>&lt;%@ 指令名称 属性名 1=属性值 1 属性名 2=属性值 2 ... %&gt;</code></p>
-<h4 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h4><h5 id="page"><a href="#page" class="headerlink" title="page"></a>page</h5><p>配置 JSP 页面</p>
-<ul>
-<li><code>contentType</code> ：等同于 <code>response.setContentType()</code><ol>
-<li>设置响应体的 mime 类型以及字符集</li>
-<li>设置当前 jsp 页面的编码（只能是高级的 IDE 才能生效，如果使用低级工具，则需要设置 pageEncoding 属性设置当前页面的字符集）</li>
-</ol>
-</li>
-<li><code>import</code> ：导包</li>
-<li><code>errorPage</code> ：当前页面发生异常后，会自动跳转到指定的错误页面</li>
-<li><code>isErrorPage</code> ：标识当前也是是否是错误页面。<ul>
-<li>true：是，可以使用内置对象 exception</li>
-<li>false：否。默认值。不可以使用内置对象 exception</li>
+                <h2 id="locate"><a href="#locate" class="headerlink" title="locate"></a>locate</h2><p>使用 <code>locate</code> 命令需要安装 <code>mlocate</code> :</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> dnf <span class="token function">install</span> mlocate</code></pre>
+<p><code>locate</code> 命令维护一个 <code>/var/lib/mlocate/mlocate.db</code> 文件存放索引，该数据文件会定期更新，也可以运行 <code>updatedb</code> 命令立即更新索引：</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> updatedb</code></pre>
+<p>查找文件时使用 <code>locate 文件名</code> 搜索文件：</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">locate</span> my.ini</code></pre>
+<h2 id="which"><a href="#which" class="headerlink" title="which"></a>which</h2><p><code>which</code> 命令查找 <code>$PATH</code> 中的目录中的可执行文件，并显示该可执行文件的完整路径。  </p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">which</span> gcc</code></pre>
+<h2 id="find"><a href="#find" class="headerlink" title="find"></a>find</h2><p><code>find</code> 命令用来在指定目录下查找文件，任何位于参数之前的字符串都将被视为要查找的目录名，如果使用该命令时，不设置任何参数，则 <code>find</code> 命令将在当前目录下查找子目录与文件，并且将查找到的子目录和文件全部进行显示。</p>
+<h3 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h3><pre><code>find [-H] [-L] [-P] [-Olevel] [-D help|tree|search|stat|rates|opt|exec] [path...] [expression]</code></pre><h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p>查找 <code>/etc/</code> 目录及其子目录下所有扩展名为 <code>conf</code> 的文件。</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">find</span> /etc/ -name <span class="token string">'*.conf'</span></code></pre>
+<p>查找 <code>/var/</code> 目录及其子目录下所有一般文件。</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">find</span> /var/ -type f</code></pre>
+<p>查找 <code>/var/</code> 目录及其子目录下所有最近 1 天内更改过的文件，+1 则表示 1 天前更改过文件。</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">find</span> /var/ -ctime -1</code></pre>
+<p>查找 <code>/var/</code> 目录及其子目录下所有更改时间在 7 日以前的普通文件，并在删除之前询问是否删除。</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">find</span> /var/ -type f -mtime +7 -ok <span class="token function">rm</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> \<span class="token punctuation">;</span> </code></pre>
+<p>查找 <code>/var/</code> 目录及其子目录下所有文件属主具有读、写权限，并且文件所属组的用户和其他用户具有读权限的文件。</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">find</span> /var/  -type f -perm 644 -exec <span class="token function">ls</span> -l <span class="token punctuation">{</span><span class="token punctuation">}</span> \<span class="token punctuation">;</span> </code></pre>
+<p>查找 <code>/var/</code> 目录及其子目录下所有文件长度为 0 的普通文件，并列出它们的完整路径。</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">find</span> /var/ -type f -size 0 -exec <span class="token function">ls</span> -l <span class="token punctuation">{</span><span class="token punctuation">}</span> \<span class="token punctuation">;</span> </code></pre>
+<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><ul>
+<li><code>-amin&lt;minute&gt;</code> : 查找在指定时间曾被存取过的文件或目录，单位以分钟计算。</li>
+<li><code>-anewer&lt;file or folder&gt;</code> : 查找其存取时间较指定文件或目录的存取时间更接近现在的文件或目录。</li>
+<li><code>-atime&lt;day&gt;</code> : 查找在指定时间曾被存取过的文件或目录，单位以天计算。</li>
+<li><code>-cmin&lt;minute&gt;</code> : 查找在指定时间之时被更改过的文件或目录。</li>
+<li><code>-cnewer&lt;file or folder&gt;</code> 查找其更改时间较指定文件或目录的更改时间更接近现在的文件或目录。</li>
+<li><code>-ctime&lt;day&gt;</code> : 查找在指定时间之时被更改的文件或目录，单位以天计算。</li>
+<li><code>-daystart</code> : 从本日开始计算时间。</li>
+<li><code>-depth</code> : 从指定目录下最深层的子目录开始查找。</li>
+<li><code>-empty</code> : 寻找文件大小为 <code>0 Byte</code> 的文件，或目录下没有任何子目录或文件的空目录。</li>
+<li><code>-exec&lt;command&gt;</code> : 假设 <code>find</code> 指令的回传值为 <code>True</code> ，就执行该指令。</li>
+<li><code>-false</code> : 将 <code>find</code> 指令的回传值皆设为 <code>False</code> 。</li>
+<li><code>-fls&lt;file list&gt;</code> : 此参数的效果和指定 <code>-ls</code> 参数类似，但会把结果保存为指定的列表文件。</li>
+<li><code>-follow</code> : 排除符号连接。</li>
+<li><code>-fprint&lt;file list&gt;</code> : 此参数的效果和指定 <code>-print</code> 参数类似，但会把结果保存成指定的列表文件。</li>
+<li><code>-fprint0&lt;file list&gt;</code> : 此参数的效果和指定 <code>-print0</code> 参数类似，但会把结果保存成指定的列表文件。</li>
+<li><code>-fprintf&lt;file list&gt;&lt;output format&gt;</code> : 此参数的效果和指定 <code>-printf</code> 参数类似，但会把结果保存成指定的列表文件。</li>
+<li><code>-fstype&lt;file system type&gt;</code> : 只寻找该文件系统类型下的文件或目录。</li>
+<li><code>-gid&lt;group id&gt;</code> : 查找符合指定之群组识别码的文件或目录。</li>
+<li><code>-group&lt;group name&gt;</code> : 查找符合指定之群组名称的文件或目录。</li>
+<li><code>-help, --help</code> : 在线帮助。</li>
+<li><code>-ilname&lt;template style&gt;</code> : 此参数的效果和指定 <code>-lname</code> 参数类似，但忽略字符大小写的差别。</li>
+<li><code>-iname&lt;template style&gt;</code> : 此参数的效果和指定 <code>-name</code> 参数类似，但忽略字符大小写的差别。</li>
+<li><code>-inum&lt;inode num&gt;</code> : 查找符合指定的 inode 编号的文件或目录。</li>
+<li><code>-ipath&lt;template style&gt;</code> : 此参数的效果和指定 <code>-path</code> 参数类似，但忽略字符大小写的差别。</li>
+<li><code>-iregex&lt;template style&gt;</code> : 此参数的效果和指定 <code>-regexe</code> 参数类似，但忽略字符大小写的差别。</li>
+<li><code>-links&lt;number of connections&gt;</code> : 查找符合指定的硬连接数目的文件或目录。</li>
+<li><code>-iname&lt;template style&gt;</code> : 指定字符串作为寻找符号连接的范本样式。</li>
+<li><code>-ls</code> : 假设 <code>find</code> 指令的回传值为 <code>Ture</code> ，就将文件或目录名称列出到标准输出。</li>
+<li><code>-maxdepth&lt;directory level&gt;</code> : 设置最大目录层级。</li>
+<li><code>-mindepth&lt;directory level&gt;</code> : 设置最小目录层级。</li>
+<li><code>-mmin&lt;minute&gt;</code> : 查找在指定时间曾被更改过的文件或目录，单位以分钟计算。</li>
+<li><code>-mount</code> : 此参数的效果和指定 <code>-xdev</code> 相同。</li>
+<li><code>-mtime&lt;24 hour&gt;</code> : 查找在指定时间曾被更改过的文件或目录，单位以 <code>24</code> 小时计算。</li>
+<li><code>-name&lt;template style&gt;</code> : 指定字符串作为寻找文件或目录的范本样式。</li>
+<li><code>-newer&lt;file or folder&gt;</code> : 查找其更改时间较指定文件或目录的更改时间更接近现在的文件或目录。</li>
+<li><code>-nogroup</code> : 找出不属于本地主机群组识别码的文件或目录。</li>
+<li><code>-noleaf</code> : 不去考虑目录至少需拥有两个硬连接存在。</li>
+<li><code>-nouser</code> : 找出不属于本地主机用户识别码的文件或目录。</li>
+<li><code>-ok&lt;command&gt;</code> : 此参数的效果和指定 <code>-exec</code> 类似，但在执行指令之前会先询问用户，若回答 <code>y</code> 或 <code>Y</code> ，则放弃执行命令。</li>
+<li><code>-path&lt;template style&gt;</code> : 指定字符串作为寻找目录的范本样式。</li>
+<li><code>-perm&lt;permission value&gt;</code> : 查找符合指定的权限数值的文件或目录。</li>
+<li><code>-print</code> : 假设 <code>find</code> 指令的回传值为 <code>Ture</code> ，就将文件或目录名称列出到标准输出。格式为每列一个名称，每个名称前皆有 <code>./</code> 字符串。</li>
+<li><code>-print0</code> : 假设 <code>find</code> 指令的回传值为 <code>Ture</code> ，就将文件或目录名称列出到标准输出。格式为全部的名称皆在同一行。</li>
+<li><code>-printf&lt;output format&gt;</code> : 假设 <code>find</code> 指令的回传值为 <code>Ture</code> ，就将文件或目录名称列出到标准输出。格式可以自行指定。</li>
+<li><code>-prune</code> : 不寻找字符串作为寻找文件或目录的范本样式；</li>
+<li><code>-regex&lt;template style&gt;</code> : 指定字符串作为寻找文件或目录的范本样式。</li>
+<li><code>-size&lt;file size&gt;</code> : 查找符合指定的文件大小的文件。</li>
+<li><code>-true</code> : 将 find 指令的回传值皆设为 <code>True</code> 。</li>
+<li><code>-type&lt;file type&gt;</code> : 只寻找符合指定的文件类型的文件。</li>
+<li><code>-uid&lt;user id&gt;</code> : 查找符合指定的用户识别码的文件或目录。</li>
+<li><code>-used&lt;day&gt;</code> : 查找文件或目录被更改之后在指定时间曾被存取过的文件或目录，单位以日计算。</li>
+<li><code>-user&lt;owner name&gt;</code> : 查找符和指定的拥有者名称的文件或目录。</li>
+<li><code>-version, --version</code> : 显示版本信息。</li>
+<li><code>-xdev</code> : 将范围局限在先行的文件系统中。</li>
+<li><code>-xtype&lt;file type&gt;</code> : 此参数的效果和指定 <code>-type</code> 参数类似，差别在于它针对符号连接检查。</li>
 </ul>
-</li>
-</ul>
-<h4 id="include"><a href="#include" class="headerlink" title="include"></a>include</h4><p>页面包含的。导入页面的资源文件<br> <code>&lt;%@include file=&quot;top.jsp&quot;%&gt;</code></p>
-<h4 id="taglib"><a href="#taglib" class="headerlink" title="taglib"></a>taglib</h4><p>导入资源<br> <code>&lt;%@ taglib prefix=&quot;c&quot; uri=&quot;http://java.sun.com/jsp/jstl/core&quot; %&gt;</code></p>
-<ul>
-<li>prefix：前缀，自定义的</li>
-</ul>
-<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><ol>
-<li>html 注释：</li>
-</ol>
-<p><code>&lt;!-- --&gt;</code> : 只能注释 html 代码片段</p>
-<ol start="2">
-<li>jsp 注释：推荐使用</li>
-</ol>
-<p><code>&lt;%-- --%&gt;</code> ：可以注释所有</p>
-<h3 id="内置对象"><a href="#内置对象" class="headerlink" title="内置对象"></a>内置对象</h3><ul>
-<li><p>在 jsp 页面中不需要创建，直接使用的对象  </p>
-</li>
-<li><p>一共有 9 个：</p>
-<table>
-<thead>
-<tr>
-<th>变量名</th>
-<th>真实类型</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>pageContext</td>
-<td>PageContext</td>
-<td>当前页面共享数据，还可以获取其他八个内置对象</td>
-</tr>
-<tr>
-<td>request</td>
-<td>HttpServletRequest</td>
-<td>一次请求访问的多个资源（转发）</td>
-</tr>
-<tr>
-<td>session</td>
-<td>HttpSession</td>
-<td>一次会话的多个请求间</td>
-</tr>
-<tr>
-<td>application</td>
-<td>ServletContext</td>
-<td>所有用户间共享数据</td>
-</tr>
-<tr>
-<td>response</td>
-<td>HttpServletResponse</td>
-<td>响应对象</td>
-</tr>
-<tr>
-<td>page</td>
-<td>Object</td>
-<td>当前页面 (Servlet) 的对象  this</td>
-</tr>
-<tr>
-<td>out</td>
-<td>JspWriter</td>
-<td>输出对象，数据输出到页面上</td>
-</tr>
-<tr>
-<td>config</td>
-<td>ServletConfig</td>
-<td>Servlet 的配置对象</td>
-</tr>
-<tr>
-<td>exception</td>
-<td>Throwable</td>
-<td>异常对象</td>
-</tr>
-</tbody></table>
-</li>
-</ul>
-<h2 id="EL-表达式"><a href="#EL-表达式" class="headerlink" title="EL 表达式"></a>EL 表达式</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>Expression Language 表达式语言</p>
-<h3 id="作用-1"><a href="#作用-1" class="headerlink" title="作用"></a>作用</h3><p>替换和简化 jsp 页面中 java 代码的编写</p>
-<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><p> <code>${表达式}</code></p>
-<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p>jsp 默认支持 el 表达式，如果要忽略 el 表达式</p>
-<ol>
-<li>设置 jsp 中 page 指令中： <code>isELIgnored=&quot;true&quot;</code> 忽略当前 jsp 页面中所有的 el 表达式</li>
-<li><code>\${表达式}</code> ：忽略当前这个 el 表达式</li>
-</ol>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><h4 id="运算"><a href="#运算" class="headerlink" title="运算"></a>运算</h4><ol>
-<li>算数运算符： <code>+ - * /(div) %(mod)</code></li>
-<li>比较运算符： <code>&gt; &lt; &gt;= &lt;= == !=</code></li>
-<li>逻辑运算符： <code>&amp;&amp;(and) ||(or) !(not)</code></li>
-<li>空运算符： <code>empty</code><ul>
-<li>功能：用于判断字符串、集合、数组对象是否为 null 或者长度是否为 0</li>
-<li><code>${empty list}</code> : 判断字符串、集合、数组对象是否为 null 或者长度为 0</li>
-<li><code>${not empty str}</code> : 表示判断字符串、集合、数组对象是否不为 null 并且 长度&gt;0</li>
-</ul>
-</li>
-</ol>
-<h4 id="获取值"><a href="#获取值" class="headerlink" title="获取值"></a>获取值</h4><ul>
-<li>el 表达式只能从域对象中获取值</li>
-</ul>
-<ol>
-<li><p><code>${域名称。键名}</code> ：从指定域中获取指定键的值</p>
-<ul>
-<li>域名称：<ol>
-<li>pageScope  –&gt; pageContext</li>
-<li>requestScope  –&gt; request</li>
-<li>sessionScope  –&gt; session</li>
-<li>applicationScope –&gt; application（ServletContext）</li>
-</ol>
-</li>
-<li>举例：在 request 域中存储了 name=张三</li>
-<li>获取： <code>${requestScope.name}</code></li>
-</ul>
-</li>
-<li><p><code>${键名}</code> ：表示依次从最小的域中查找是否有该键对应的值，直到找到为止。</p>
-</li>
-<li><p>获取对象、List 集合、Map 集合的值</p>
-<ol>
-<li><p>对象： <code>${域名称。键名。属性名}</code></p>
-<ul>
-<li>本质上会去调用对象的 getter 方法</li>
-</ul>
-</li>
-<li><p>List 集合：${域名称。键名 [索引]}</p>
-</li>
-<li><p>Map 集合：</p>
-<ul>
-<li><code>${域名称。键名。key 名称}</code></li>
-<li><code>${域名称。键名 [&quot;key 名称&quot;]}</code></li>
-</ul>
-</li>
-</ol>
-</li>
-</ol>
-<h4 id="隐式对象"><a href="#隐式对象" class="headerlink" title="隐式对象"></a>隐式对象</h4><ul>
-<li>EL 表达式中有 11 个隐式对象</li>
-<li><code>pageContext</code> :<ul>
-<li>获取 jsp 其他八个内置对象<ul>
-<li><code>${pageContext.request.contextPath}</code> ：动态获取虚拟目录</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="JSTL"><a href="#JSTL" class="headerlink" title="JSTL"></a>JSTL</h2><h3 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h3><p>JavaServer Pages Tag Library  JSP 标准标签库<br>是由 Apache 组织提供的开源的免费的 jsp 标签  &lt;标签&gt;</p>
-<h3 id="作用-2"><a href="#作用-2" class="headerlink" title="作用"></a>作用</h3><p>用于简化和替换 jsp 页面上的 java 代码  </p>
-<h3 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h3><ol>
-<li>导入 jstl 相关 jar 包</li>
-<li>引入标签库：taglib 指令： <code>&lt;%@ taglib %&gt;</code></li>
-<li>使用标签</li>
-</ol>
-<h3 id="常用的-JSTL-标签"><a href="#常用的-JSTL-标签" class="headerlink" title="常用的 JSTL 标签"></a>常用的 JSTL 标签</h3><ol>
-<li><p><code>if</code> : 相当于 java 代码的 if 语句</p>
-<ol>
-<li>属性：<ul>
-<li>test 必须属性，接受 boolean 表达式<ul>
-<li>如果表达式为 true，则显示 if 标签体内容，如果为 false，则不显示标签体内容</li>
-<li>一般情况下，test 属性值会结合 el 表达式一起使用</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>注意：<ul>
-<li>c:if 标签没有 else 情况，想要 else 情况，则可以在定义一个 c:if 标签</li>
-</ul>
-</li>
-</ol>
-</li>
-<li><p><code>choose</code> : 相当于 java 代码的 switch 语句</p>
-<ol>
-<li><p>使用 choose 标签声明</p>
-<p>相当于 switch 声明</p>
-</li>
-<li><p>使用 when 标签做判断</p>
-<p>相当于 case</p>
-</li>
-<li><p>使用 otherwise 标签做其他情况的声明</p>
-<p>相当于 default</p>
-</li>
-</ol>
-</li>
-<li><p><code>foreach</code> : 相当于 java 代码的 for 语句</p>
-</li>
-</ol>
-<h2 id="MVC-开发模式"><a href="#MVC-开发模式" class="headerlink" title="MVC 开发模式"></a>MVC 开发模式</h2><h3 id="jsp-演变历史"><a href="#jsp-演变历史" class="headerlink" title="jsp 演变历史"></a>jsp 演变历史</h3><ol>
-<li>早期只有 servlet，只能使用 response 输出标签数据，非常麻烦</li>
-<li>后来又 jsp，简化了 Servlet 的开发，如果过度使用 jsp，在 jsp 中即写大量的 java 代码，有写 html 表，造成难于维护，难于分工协作</li>
-<li>再后来，java 的 web 开发，借鉴 MVC 开发模式，使得程序的设计更加合理性</li>
-</ol>
-<h3 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a>MVC</h3><p><img src="/images/2020-06-19T130251.png" alt="MVC 开发模式"></p>
-<ol>
-<li>M：Model，模型。JavaBean<ul>
-<li>完成具体的业务操作，如：查询数据库，封装对象</li>
-</ul>
-</li>
-<li>V：View，视图。JSP<ul>
-<li>展示数据</li>
-</ul>
-</li>
-<li>C：Controller，控制器。Servlet<ul>
-<li>获取用户的输入</li>
-<li>调用模型</li>
-<li>将数据交给视图进行展示</li>
-</ul>
-</li>
-</ol>
-<ul>
-<li><p>优缺点：</p>
-<ol>
-<li><p>优点：</p>
-<ol>
-<li>耦合性低，方便维护，可以利于分工协作</li>
-<li>重用性高</li>
-</ol>
-</li>
-<li><p>缺点：</p>
-<ol>
-<li>使得项目架构变得复杂，对开发人员要求高</li>
-</ol>
-</li>
-</ol>
-</li>
-</ul>
-<h3 id="三层架构"><a href="#三层架构" class="headerlink" title="三层架构"></a>三层架构</h3><p><img src="/images/2020-06-19T131333.png" alt></p>
-<ol>
-<li>界面层（表示层）：用户看的得界面。用户可以通过界面上的组件和服务器进行交互</li>
-<li>业务逻辑层：处理业务逻辑的。</li>
-<li>数据访问层：操作数据存储文件。</li>
-</ol>
 
             </div>
             <hr/>
@@ -678,8 +509,8 @@ contentType ：等同于 response.se">
             </div>
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
-                  property="dct:title" rel="dct:type">《EL 表达式和 JSTL》</span> 由 <a
-                    xmlns:cc="http://creativecommons.org/ns#" href="/2020/06/19/ELAndJSTL/"
+                  property="dct:title" rel="dct:type">《在 Liunx 中查找文件》</span> 由 <a
+                    xmlns:cc="http://creativecommons.org/ns#" href="/2020/09/14/findCommand/"
                     property="cc:attributionName"
                     rel="cc:attributionURL">Konata</a> 采用
             <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh">
@@ -711,53 +542,51 @@ contentType ：等同于 response.se">
         
             <div class="article col s12 m6">
                 <div class="article-badge left-badge text-color">
-                    <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                    <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+                </div>
                 <div class="card">
-                    <a href="/2020/06/19/FilterAndListener/">
+                    <a href="/2020/09/14/findCommand/">
                         <div class="card-image">
                             
                                 
                                 <div class="lazy-image-wrapper">
                                     <img data-src="/medias/featureimages/09.jpg" class="responsive-img lazyload"
-                                         alt="Filter 和 Listener">
+                                         alt="在 Liunx 中查找文件">
                                 </div>
                             
-                            <span class="card-title">Filter 和 Listener</span>
+                            <span class="card-title">在 Liunx 中查找文件</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
                             <center>
-                                Filter 和 Listener
+                                在 Liunx 中查找文件
                                 
                             </center>
                         </div>
                         <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-06-19
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-09-14
+                            </span>
                             <span class="publish-author">
                                 
                                     <i class="fa fa-bookmark fa-fw icon-category"></i>
                                     
-                                        <a href="/categories/Java/" class="post-category" target="_blank">
-                                    Java
+                                        <a href="/categories/Ops/" class="post-category" target="_blank">
+                                    Ops
                                 </a>
                                     
                                 
                             </span>
                         </div>
                     </div>
+
                     
                         <div class="card-action article-tags">
                             
-                                <a href="/tags/JSP/" target="_blank">
-                                    <span class="chip bg-color">JSP</span>
-                                </a>
-                            
-                                <a href="/tags/Java/" target="_blank">
-                                    <span class="chip bg-color">Java</span>
+                                <a href="/tags/Linux/" target="_blank">
+                                    <span class="chip bg-color">Linux</span>
                                 </a>
                             
                         </div>
@@ -771,36 +600,36 @@ contentType ：等同于 response.se">
                     下一篇&nbsp;<i class="fa fa-chevron-right"></i>
                 </div>
                 <div class="card">
-                    <a href="/2020/06/18/CookieAndSession/">
+                    <a href="/2020/09/13/thunkFunction/">
                         <div class="card-image">
                             
                                 
                                 <div class="lazy-image-wrapper">
-                                    <img data-src="/medias/featureimages/13.jpg" class="responsive-img lazyload"
-                                         alt="Cookie 和 Session">
+                                    <img data-src="/medias/featureimages/07.jpg" class="responsive-img lazyload"
+                                         alt="Thunk 函数">
                                 </div>
                             
-                            <span class="card-title">Cookie 和 Session</span>
+                            <span class="card-title">Thunk 函数</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
                             <center>
-                                Cookie 和 Session
+                                Thunk 函数
                                 
                             </center>
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-06-18
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-09-13
                             </span>
                             <span class="publish-author">
                                 
                                     <i class="fa fa-bookmark fa-fw icon-category"></i>
                                     
-                                        <a href="/categories/Java/" class="post-category" target="_blank">
-                                    Java
+                                        <a href="/categories/JavaScript/" class="post-category" target="_blank">
+                                    JavaScript
                                 </a>
                                     
                                 
@@ -810,12 +639,8 @@ contentType ：等同于 response.se">
                     
                         <div class="card-action article-tags">
                             
-                                <a href="/tags/JSP/" target="_blank">
-                                    <span class="chip bg-color">JSP</span>
-                                </a>
-                            
-                                <a href="/tags/Java/" target="_blank">
-                                    <span class="chip bg-color">Java</span>
+                                <a href="/tags/JavaScript/" target="_blank">
+                                    <span class="chip bg-color">JavaScript</span>
                                 </a>
                             
                         </div>

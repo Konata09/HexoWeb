@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://konata.tech/"/>
-  <updated>2020-09-13T14:57:03.539Z</updated>
+  <updated>2020-09-14T08:04:48.576Z</updated>
   <id>http://konata.tech/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>在 Liunx 中查找文件</title>
+    <link href="http://konata.tech/2020/09/14/findCommand/"/>
+    <id>http://konata.tech/2020/09/14/findCommand/</id>
+    <published>2020-09-14T07:31:39.000Z</published>
+    <updated>2020-09-14T08:04:48.576Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;locate&quot;&gt;&lt;a href=&quot;#locate&quot; class=&quot;headerlink&quot; title=&quot;locate&quot;&gt;&lt;/a&gt;locate&lt;/h2&gt;&lt;p&gt;使用 &lt;code&gt;locate&lt;/code&gt; 命令需要安装 &lt;code&gt;mlocate&lt;/code&gt;
+        
+      
+    
+    </summary>
+    
+      <category term="Ops" scheme="http://konata.tech/categories/Ops/"/>
+    
+    
+      <category term="Linux" scheme="http://konata.tech/tags/Linux/"/>
+    
+  </entry>
   
   <entry>
     <title>Thunk 函数</title>
@@ -520,34 +546,6 @@
     
     
       <category term="JavaScript" scheme="http://konata.tech/tags/JavaScript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Filter 和 Listener</title>
-    <link href="http://konata.tech/2020/06/19/FilterAndListener/"/>
-    <id>http://konata.tech/2020/06/19/FilterAndListener/</id>
-    <published>2020-06-19T05:23:22.000Z</published>
-    <updated>2020-08-08T09:25:29.502Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;Filter-过滤器&quot;&gt;&lt;a href=&quot;#Filter-过滤器&quot; class=&quot;headerlink&quot; title=&quot;Filter 过滤器&quot;&gt;&lt;/a&gt;Filter 过滤器&lt;/h2&gt;&lt;h3 id=&quot;概念&quot;&gt;&lt;a href=&quot;#概念&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="Java" scheme="http://konata.tech/categories/Java/"/>
-    
-    
-      <category term="Java" scheme="http://konata.tech/tags/Java/"/>
-    
-      <category term="JSP" scheme="http://konata.tech/tags/JSP/"/>
     
   </entry>
   
