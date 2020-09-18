@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://konata.tech/"/>
-  <updated>2020-09-14T08:04:48.576Z</updated>
+  <updated>2020-09-18T08:40:57.157Z</updated>
   <id>http://konata.tech/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JavaScript 中的堆栈</title>
+    <link href="http://konata.tech/2020/09/18/stackAndHeap/"/>
+    <id>http://konata.tech/2020/09/18/stackAndHeap/</id>
+    <published>2020-09-18T07:53:17.000Z</published>
+    <updated>2020-09-18T08:40:57.157Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;堆 (Heap) 是动态分配的内存，大小不定也不会自动释放，栈 (stack) 为自动分配的内存空间，在代码执行过程中自动释放。  &lt;/p&gt;
+&lt;h2 id=&quot;栈&quot;&gt;&lt;a href=&quot;#栈&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://konata.tech/categories/JavaScript/"/>
+    
+    
+      <category term="JavaScript" scheme="http://konata.tech/tags/JavaScript/"/>
+    
+  </entry>
   
   <entry>
     <title>在 Liunx 中查找文件</title>
@@ -519,33 +546,6 @@
     
     
       <category term="ES6" scheme="http://konata.tech/tags/ES6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>使用 javaScript 获取教务系统成绩并推送</title>
-    <link href="http://konata.tech/2020/07/17/jsCheckGrade/"/>
-    <id>http://konata.tech/2020/07/17/jsCheckGrade/</id>
-    <published>2020-07-17T14:50:46.000Z</published>
-    <updated>2020-08-26T07:59:21.399Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;&lt;strong&gt;适用于强智教务系统，不保证各个大学通用。&lt;/strong&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://github.com/Konata09/GradeCheck&quot; target=&quot;_blank&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="JavaScript" scheme="http://konata.tech/categories/JavaScript/"/>
-    
-    
-      <category term="JavaScript" scheme="http://konata.tech/tags/JavaScript/"/>
     
   </entry>
   
