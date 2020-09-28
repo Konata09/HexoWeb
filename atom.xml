@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://konata.tech/"/>
-  <updated>2020-09-24T03:36:39.389Z</updated>
+  <updated>2020-09-28T00:30:20.337Z</updated>
   <id>http://konata.tech/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>浏览器事件总结</title>
+    <link href="http://konata.tech/2020/09/28/browserEvent/"/>
+    <id>http://konata.tech/2020/09/28/browserEvent/</id>
+    <published>2020-09-28T00:11:31.000Z</published>
+    <updated>2020-09-28T00:30:20.337Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;常用浏览器事件与 DOM 事件，包括鼠标事件、键盘事件、框架/对象事件、表单事件、剪贴板事件、打印事件、拖动事件、多媒体事件、动画事件、过渡事件。&lt;/p&gt;
+&lt;h2 id=&quot;浏览器事件&quot;&gt;&lt;a href=&quot;#浏览器事件&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Browser" scheme="http://konata.tech/categories/Browser/"/>
+    
+    
+      <category term="JavaScript" scheme="http://konata.tech/tags/JavaScript/"/>
+    
+      <category term="Browser" scheme="http://konata.tech/tags/Browser/"/>
+    
+  </entry>
   
   <entry>
     <title>防抖与节流</title>
@@ -515,37 +544,6 @@
     
     
       <category term="JavaScript" scheme="http://konata.tech/tags/JavaScript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>遍历数组时使用异步方法</title>
-    <link href="http://konata.tech/2020/07/25/UsingAsyncWithForEach/"/>
-    <id>http://konata.tech/2020/07/25/UsingAsyncWithForEach/</id>
-    <published>2020-07-25T11:08:16.000Z</published>
-    <updated>2020-08-10T03:15:57.735Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;在遍历数组时，如果在对每个元素的回调中使用异步方法，&lt;b&gt;不能使用 &lt;code&gt;forEach()&lt;/code&gt; 遍历&lt;/b&gt;。&lt;br&gt;&lt;b style=&quot;color: red&quot;&gt;错误&lt;/b&gt;的例子：&lt;/p&gt;
-&lt;pre class=&quot; language-js&quot;&gt;&lt;code
-        
-      
-    
-    </summary>
-    
-      <category term="JavaScript" scheme="http://konata.tech/categories/JavaScript/"/>
-    
-    
-      <category term="JavaScript" scheme="http://konata.tech/tags/JavaScript/"/>
-    
-      <category term="ES2017" scheme="http://konata.tech/tags/ES2017/"/>
-    
-      <category term="ES2018" scheme="http://konata.tech/tags/ES2018/"/>
     
   </entry>
   
