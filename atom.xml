@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://konata.tech/"/>
-  <updated>2020-09-28T00:30:20.337Z</updated>
+  <updated>2020-10-01T10:00:14.845Z</updated>
   <id>http://konata.tech/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JavaScript 中的继承</title>
+    <link href="http://konata.tech/2020/10/01/inheritanceInJavaScript/"/>
+    <id>http://konata.tech/2020/10/01/inheritanceInJavaScript/</id>
+    <published>2020-10-01T05:36:36.000Z</published>
+    <updated>2020-10-01T10:00:14.845Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;继承是面向对象软件技术当中的一个概念，与多态、封装共为面向对象的三个基本特征。继承可以使得子类具有父类的属性和方法或者重新定义、追加属性和方法等。  &lt;/p&gt;
+&lt;h2 id=&quot;原型链继承&quot;&gt;&lt;a href=&quot;#原型链继承&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://konata.tech/categories/JavaScript/"/>
+    
+    
+      <category term="JavaScript" scheme="http://konata.tech/tags/JavaScript/"/>
+    
+  </entry>
   
   <entry>
     <title>浏览器事件总结</title>
@@ -518,32 +545,6 @@
     
     
       <category term="Performance" scheme="http://konata.tech/tags/Performance/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JavaScript 中各种遍历方法对比</title>
-    <link href="http://konata.tech/2020/07/25/LoopMethodInJavaScript/"/>
-    <id>http://konata.tech/2020/07/25/LoopMethodInJavaScript/</id>
-    <published>2020-07-25T13:52:27.000Z</published>
-    <updated>2020-07-26T07:40:00.333Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;原文：&lt;a href=&quot;https://thecodebarbarian.com/for-vs-for-each-vs-for-in-vs-for-of-in-javascript.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;For vs
-        
-      
-    
-    </summary>
-    
-      <category term="JavaScript" scheme="http://konata.tech/categories/JavaScript/"/>
-    
-    
-      <category term="JavaScript" scheme="http://konata.tech/tags/JavaScript/"/>
     
   </entry>
   
