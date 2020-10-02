@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>XML 与 JSON</title>
+      <link href="/2020/10/02/jsonAndXml/"/>
+      <url>/2020/10/02/jsonAndXml/</url>
+      
+        <content type="html"><![CDATA[<p>XML 与 JSON 都可以用来描述或者存储数据，两者都有各自的优点，使用场景取决于需求。  </p><h2 id="XML"><a href="#XML" class="headerlink" title="XML"></a>XML</h2><blockquote><p>可扩展标记语言 (Extensible Markup Language)，是一种用于标记电子文件使其具有结构性的标记语言，可以用来标记数据、定义数据类型、存储数据等，是一种允许用户对自己的标记语言进行定义的源语言，并提供统一的方法来描述和交换独立于应用程序或供应商的结构化数据。 XML 基于标准通用标记语言 SGML 与超文本标记语言 HTML 发展而来，使用 DTD 文档类型定义 (Document Type Definition) 来组织数据，格式统一，跨平台和语言，目前的版本标准为 XML 1.0。  </p></blockquote><h2 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h2><blockquote><p>JSON 即 (JavaScript Object Notation)，是一种轻量级的数据交换格式，其是 ECMAScript 规范的一个子集，采用兼容性很高的、完全独立于编程语言的文本格式来存储和表示数据，简洁和清晰的层次结构使得 JSON 成为比较理想的数据交换语言，易于阅读和编写，同时也易于机器解析和生成，并有效地提升网络传输效率。</p></blockquote><h2 id="比较"><a href="#比较" class="headerlink" title="比较"></a>比较</h2><h3 id="可读性"><a href="#可读性" class="headerlink" title="可读性"></a>可读性</h3><p>可读性方面，JSON 与 XML 都作为标准的规范，可读性都比较不错，对于可读性的比较其实还是应该取决于应用场景，对于将完整的 XML 映射为 JSON 格式的话，XML 的可读性更好一些，对于单纯的数据描述而言，其可读性不相上下。</p><pre class=" language-xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="utf-8" ?></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>block</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>demo<span class="token punctuation">"</span></span> <span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>content</span><span class="token punctuation">></span></span>Hello World<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>content</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>block</span><span class="token punctuation">></span></span></code></pre><pre class=" language-json"><code class="language-json"><span class="token punctuation">{</span>    tag<span class="token operator">:</span> <span class="token string">"block"</span><span class="token punctuation">,</span>    name<span class="token operator">:</span> <span class="token string">"demo"</span><span class="token punctuation">,</span>    children<span class="token operator">:</span><span class="token punctuation">[</span>        <span class="token punctuation">{</span>            tag<span class="token operator">:</span> <span class="token string">"content"</span><span class="token punctuation">,</span>            children<span class="token operator">:</span><span class="token punctuation">[</span>                <span class="token string">"Hello World"</span>            <span class="token punctuation">]</span>        <span class="token punctuation">}</span>    <span class="token punctuation">]</span><span class="token punctuation">}</span></code></pre><h3 id="可扩展性"><a href="#可扩展性" class="headerlink" title="可扩展性"></a>可扩展性</h3><p>XML 与 JSON 都有很好的扩展性，没有什么是 XML 能扩展而 JSON 不能的，同样也没有什么是 JOSN 能扩展而 XML 不能的。  </p><h3 id="编码难度"><a href="#编码难度" class="headerlink" title="编码难度"></a>编码难度</h3><p>无论是 XML 还是 JSON 都有丰富的编码工具，但是对于 JSON 来说即使不借助工具也能轻易地实现对应格式的编码，相反 XML 的编码不借助工具的话就比较难以实现了。  </p><h3 id="数据体积"><a href="#数据体积" class="headerlink" title="数据体积"></a>数据体积</h3><p>XML 格式的数据的冗余度是大于 JSON 格式的数据的，通常而言，XML 比较适合于标记文档，而 JSON 却更适于进行数据交换处理。  </p><h3 id="数据解析"><a href="#数据解析" class="headerlink" title="数据解析"></a>数据解析</h3><p>无论是 XML 还是 JSON 都有丰富的解析工具，对于 XML 而言设计了两种解析方式：DOM 和 SAX，DOM 方式就是将整个 XML 读入内存，全部解析；SAX 方式是一种逐步解析的方法，不需要读入整个 XML 就可以对解析的内容逐步处理，SAX 适合于大型文档的解析。JSON 只提供整体解析方案，对于数据量较少的文档处理效果比较好。  </p><h3 id="数据交互"><a href="#数据交互" class="headerlink" title="数据交互"></a>数据交互</h3><p>对于 JSON 格式的数据，很多语言都在标准库中提供了支持，直接调用库函数即可解析，特别是对于前端，JSON 是 ECMAScript 规范的一个子集，与 JavaScript 的交互更加方便，在前端的应用更加广泛，对于 XML 格式的数据解析一般都需要借助第三方工具库实现。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Tools </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> JSON </tag>
+            
+            <tag> XML </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>JavaScript 中的继承</title>
       <link href="/2020/10/01/inheritanceInJavaScript/"/>
       <url>/2020/10/01/inheritanceInJavaScript/</url>
