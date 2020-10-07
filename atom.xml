@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://konata.tech/"/>
-  <updated>2020-10-04T07:59:22.609Z</updated>
+  <updated>2020-10-07T11:21:45.499Z</updated>
   <id>http://konata.tech/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JSON Web Token</title>
+    <link href="http://konata.tech/2020/10/07/JSONWebToken/"/>
+    <id>http://konata.tech/2020/10/07/JSONWebToken/</id>
+    <published>2020-10-07T10:51:27.000Z</published>
+    <updated>2020-10-07T11:21:45.499Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;JWT(JSON Web Token) 是一个基于 JSON 的开放标准，用于通信双方之间传递安全信息的简洁的、URL 安全的表述性声明规范，经常用于身份验证。  &lt;/p&gt;
+&lt;h2 id=&quot;结构&quot;&gt;&lt;a href=&quot;#结构&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Tools" scheme="http://konata.tech/categories/Tools/"/>
+    
+    
+      <category term="Tools" scheme="http://konata.tech/tags/Tools/"/>
+    
+  </entry>
   
   <entry>
     <title>事件冒泡</title>
@@ -520,32 +547,6 @@
     
     
       <category term="gcc" scheme="http://konata.tech/tags/gcc/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Fetch API</title>
-    <link href="http://konata.tech/2020/08/12/fetch/"/>
-    <id>http://konata.tech/2020/08/12/fetch/</id>
-    <published>2020-08-12T08:47:11.000Z</published>
-    <updated>2020-08-12T08:59:20.993Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;p&gt;&lt;code&gt;fetch()&lt;/code&gt; 方法定义在 &lt;code&gt;Window&lt;/code&gt; 对象以及
-        
-      
-    
-    </summary>
-    
-      <category term="JavaScript" scheme="http://konata.tech/categories/JavaScript/"/>
-    
-    
-      <category term="JavaScript" scheme="http://konata.tech/tags/JavaScript/"/>
     
   </entry>
   
