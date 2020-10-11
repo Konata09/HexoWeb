@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>逻辑位移</title>
+      <link href="/2020/10/11/logicalShift/"/>
+      <url>/2020/10/11/logicalShift/</url>
+      
+        <content type="html"><![CDATA[<h2 id="逻辑左移"><a href="#逻辑左移" class="headerlink" title="逻辑左移"></a>逻辑左移</h2><p>左移运算符 <code>&lt;&lt;</code> 是双目运算符。<strong>左移 <code>n</code> 位就是乘以 2 的 <code>n</code> 次方</strong>。 其功能把 <code>&lt;&lt;</code> 左边的运算数的各二进位全部左移若干位，由 <code>&lt;&lt;</code> 右边的数指定移动的位数，高位丢弃，低位补 0。</p><h2 id="逻辑右移"><a href="#逻辑右移" class="headerlink" title="逻辑右移"></a>逻辑右移</h2><p>右移运算符 <code>&gt;&gt;</code> 是双目运算符。<strong>右移 <code>n</code> 位就是除以 2 的 <code>n</code> 次方</strong>。 其功能是把 <code>&gt;&gt;</code> 左边的运算数的各二进位全部右移若干位， <code>&gt;&gt;</code> 右边的数指定移动的位数。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Algorithm </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Algorithm </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>JSON Web Token</title>
       <link href="/2020/10/07/JSONWebToken/"/>
       <url>/2020/10/07/JSONWebToken/</url>
