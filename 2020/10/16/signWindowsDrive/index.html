@@ -421,23 +421,23 @@ Export<span class="token operator">-</span>PfxCertificate <span class="token ope
 <h2 id="给驱动签名"><a href="#给驱动签名" class="headerlink" title="给驱动签名"></a>给驱动签名</h2><ol>
 <li><p>下载 <a href="https://www.wosign.com/marketing/2015_WoSign_sign_tools/index.htm" target="_blank" rel="noopener">沃通代码签名工具</a>（虽然沃通名声很臭，但这个工具挺好用的）。  </p>
 </li>
-<li><p>打开代码签名工具，选择 <code>CAB/CAT</code> 标签。  </p>
+<li><p>打开代码签名工具，选择 <code>CAB/CAT</code> 标签  </p>
 </li>
-<li><p>打开要签名的 <code>INF</code> 文件，将 <code>SourceDisksFiles</code> 等项目内使用到的驱动文件都添加到窗口中。  </p>
+<li><p>打开要签名的 <code>INF</code> 文件，将 <code>SourceDisksFiles</code> 等项目内使用到的驱动文件都添加到窗口中  </p>
 </li>
-<li><p>点击创建 <code>CAT</code> 按钮，将 <code>CAT</code> 文件保存到 <code>INF</code> 文件同目录下。  </p>
+<li><p>点击创建 <code>CAT</code> 按钮，将 <code>CAT</code> 文件保存到 <code>INF</code> 文件同目录下  </p>
 </li>
-<li><p>点击代码签名标签，选择刚刚生成的 <code>pfx</code> 证书，并输入密码 <code>mypass</code> 。  </p>
+<li><p>点击代码签名标签，选择刚刚生成的 <code>pfx</code> 证书，并输入密码 <code>mypass</code></p>
 </li>
-<li><p>点击签名按钮，完成后可以看到生成的 <code>CAT</code> 文件。  </p>
+<li><p>点击签名按钮，完成后可以看到生成的 <code>CAT</code> 文件  </p>
 </li>
 </ol>
 <h2 id="安装证书和驱动"><a href="#安装证书和驱动" class="headerlink" title="安装证书和驱动"></a>安装证书和驱动</h2><p>如果你现在打开上面生成的 <code>CAT</code> 文件，会提示证书目录无效，这是因为我们自己生成的证书还没被信任，需要手动添加证书到信任列表。</p>
 <ol>
-<li>打开第一步生成的 <code>pfx</code> 证书，选择存储位置为 <code>Local Machine</code> 。</li>
-<li>点击下一步输入密码 <code>mypass</code> 。</li>
-<li>点击下一步选择证书存储区域，选择 <code>Place all certificates in the following store</code> ，单击浏览选择 <code>Trusted Root Cerification Authorities</code> 。</li>
-<li>点击下一步完成，我们自己创建的证书就被系统信任了。  </li>
+<li>打开第一步生成的 <code>pfx</code> 证书，选择存储位置为 <code>Local Machine</code></li>
+<li>点击下一步输入密码 <code>mypass</code></li>
+<li>点击下一步选择证书存储区域，选择 <code>Place all certificates in the following store</code> ，单击浏览选择 <code>Trusted Root Cerification Authorities</code></li>
+<li>点击下一步完成，我们自己创建的证书就被系统信任了  </li>
 </ol>
 <p>接下来就可以安装驱动了，右键点击 <code>INF</code> 文件选择安装，如果驱动安装成功会显示操作成功完成，这时可以愉快的使用新硬件啦。</p>
 
