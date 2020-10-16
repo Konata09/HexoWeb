@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://konata.tech/"/>
-  <updated>2020-10-11T09:22:00.687Z</updated>
+  <updated>2020-10-16T12:22:22.139Z</updated>
   <id>http://konata.tech/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>给 Windows 驱动签名</title>
+    <link href="http://konata.tech/2020/10/16/signWindowsDrive/"/>
+    <id>http://konata.tech/2020/10/16/signWindowsDrive/</id>
+    <published>2020-10-16T09:03:01.000Z</published>
+    <updated>2020-10-16T12:22:22.139Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;从 Windows 8
+        
+      
+    
+    </summary>
+    
+      <category term="Ops" scheme="http://konata.tech/categories/Ops/"/>
+    
+    
+      <category term="驱动" scheme="http://konata.tech/tags/%E9%A9%B1%E5%8A%A8/"/>
+    
+      <category term="证书" scheme="http://konata.tech/tags/%E8%AF%81%E4%B9%A6/"/>
+    
+      <category term="签名" scheme="http://konata.tech/tags/%E7%AD%BE%E5%90%8D/"/>
+    
+  </entry>
   
   <entry>
     <title>逻辑位移</title>
@@ -519,32 +549,6 @@
     
     
       <category term="ES6" scheme="http://konata.tech/tags/ES6/"/>
-    
-      <category term="JavaScript" scheme="http://konata.tech/tags/JavaScript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Ajax</title>
-    <link href="http://konata.tech/2020/09/01/ajax/"/>
-    <id>http://konata.tech/2020/09/01/ajax/</id>
-    <published>2020-09-01T06:33:01.000Z</published>
-    <updated>2020-09-01T12:14:55.508Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;p&gt;&lt;code&gt;Ajax (Asynchronous JavaScript and XML)&lt;/code&gt;
-        
-      
-    
-    </summary>
-    
-      <category term="JavaScript" scheme="http://konata.tech/categories/JavaScript/"/>
-    
     
       <category term="JavaScript" scheme="http://konata.tech/tags/JavaScript/"/>
     
