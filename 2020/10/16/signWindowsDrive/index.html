@@ -416,7 +416,9 @@
                 <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>从 Windows 8 开始，微软在操作系统中引入了驱动程序强制签名的安全特性，没有正确签名的驱动将直接无法安装。这毫无疑问的增强了系统的安全性，但同时你可能会遇到老设备装不上驱动、自己修改 <code>INF</code> 文件后校验错误等问题。一个常用的解决方法是禁用驱动程序强制签名，这需要修改引导参数并重新启动系统，而且启动后你会发现屏幕右下角有 <code>Test mode</code> 字样（虽然有办法去除）。最麻烦的是有些游戏厂商<del>miHoYo</del>的反作弊机制会禁止使用测试模式开始游戏，如果你的未签名驱动是阵列卡之类的重要硬件的话，这就很蛋疼了。这时唯一解决办法就是自己给驱动签名，一劳永逸，彻底摆脱测试模式。</p>
 <h2 id="创建证书"><a href="#创建证书" class="headerlink" title="创建证书"></a>创建证书</h2><p>从 Windows PowerShell 3.0 版本（Windows Server 2012、Windows 8 自带）开始你可以执行 <code>New-SelfSignedCertificate</code> 命令来创建自签名证书：</p>
 <pre class=" language-powershell"><code class="language-powershell"><span class="token variable">$cert</span> = New<span class="token operator">-</span>SelfSignedCertificate <span class="token operator">-</span>DnsName konata<span class="token punctuation">.</span>tech <span class="token operator">-</span><span class="token function">Type</span> CodeSigning <span class="token operator">-</span>CertStoreLocation Cert:\CurrentUser\My
+
 <span class="token variable">$CertPassword</span> = ConvertTo<span class="token operator">-</span>SecureString <span class="token operator">-</span>String mypass <span class="token operator">-</span>Force <span class="token operator">-</span>AsPlainText
+
 Export<span class="token operator">-</span>PfxCertificate <span class="token operator">-</span>Cert <span class="token string">"cert:\CurrentUser\My<span class="token function">\$<span class="token punctuation">(</span><span class="token variable">$cert</span><span class="token punctuation">.</span>Thumbprint<span class="token punctuation">)</span></span>"</span> <span class="token operator">-</span>FilePath <span class="token string">"C:\konatacodecer.pfx"</span> <span class="token operator">-</span>Password <span class="token variable">$CertPassword</span></code></pre>
 <h2 id="给驱动签名"><a href="#给驱动签名" class="headerlink" title="给驱动签名"></a>给驱动签名</h2><ol>
 <li><p>下载 <a href="https://www.wosign.com/marketing/2015_WoSign_sign_tools/index.htm" target="_blank" rel="noopener">沃通代码签名工具</a>（虽然沃通名声很臭，但这个工具挺好用的）。  </p>
@@ -497,33 +499,32 @@ Export<span class="token operator">-</span>PfxCertificate <span class="token ope
         
             <div class="article col s12 m6">
                 <div class="article-badge left-badge text-color">
-                    <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
-                </div>
+                    <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
                 <div class="card">
-                    <a href="/2020/10/16/signWindowsDrive/">
+                    <a href="/2020/10/25/routeCommand/">
                         <div class="card-image">
                             
                                 
                                 <div class="lazy-image-wrapper">
-                                    <img data-src="/medias/featureimages/13.jpg" class="responsive-img lazyload"
-                                         alt="给 Windows 驱动签名">
+                                    <img data-src="/medias/featureimages/15.jpg" class="responsive-img lazyload"
+                                         alt="Linux 中配置路由">
                                 </div>
                             
-                            <span class="card-title">给 Windows 驱动签名</span>
+                            <span class="card-title">Linux 中配置路由</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
                             <center>
-                                给 Windows 驱动签名
+                                Linux 中配置路由
                                 
                             </center>
                         </div>
                         <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-10-16
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-10-25
+                        </span>
                             <span class="publish-author">
                                 
                                     <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -536,20 +537,15 @@ Export<span class="token operator">-</span>PfxCertificate <span class="token ope
                             </span>
                         </div>
                     </div>
-
                     
                         <div class="card-action article-tags">
                             
-                                <a href="/tags/驱动/" target="_blank">
-                                    <span class="chip bg-color">驱动</span>
+                                <a href="/tags/Linux/" target="_blank">
+                                    <span class="chip bg-color">Linux</span>
                                 </a>
                             
-                                <a href="/tags/证书/" target="_blank">
-                                    <span class="chip bg-color">证书</span>
-                                </a>
-                            
-                                <a href="/tags/签名/" target="_blank">
-                                    <span class="chip bg-color">签名</span>
+                                <a href="/tags/route/" target="_blank">
+                                    <span class="chip bg-color">route</span>
                                 </a>
                             
                         </div>

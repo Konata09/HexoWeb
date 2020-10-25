@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://konata.tech/"/>
-  <updated>2020-10-16T13:07:53.123Z</updated>
+  <updated>2020-10-25T05:43:15.585Z</updated>
   <id>http://konata.tech/</id>
   
   <author>
@@ -17,11 +17,40 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Linux 中配置路由</title>
+    <link href="http://konata.tech/2020/10/25/routeCommand/"/>
+    <id>http://konata.tech/2020/10/25/routeCommand/</id>
+    <published>2020-10-25T04:26:36.000Z</published>
+    <updated>2020-10-25T05:43:15.585Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;查看路由表&quot;&gt;&lt;a href=&quot;#查看路由表&quot; class=&quot;headerlink&quot; title=&quot;查看路由表&quot;&gt;&lt;/a&gt;查看路由表&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;netstat
+        
+      
+    
+    </summary>
+    
+      <category term="Ops" scheme="http://konata.tech/categories/Ops/"/>
+    
+    
+      <category term="Linux" scheme="http://konata.tech/tags/Linux/"/>
+    
+      <category term="route" scheme="http://konata.tech/tags/route/"/>
+    
+  </entry>
+  
+  <entry>
     <title>给 Windows 驱动签名</title>
     <link href="http://konata.tech/2020/10/16/signWindowsDrive/"/>
     <id>http://konata.tech/2020/10/16/signWindowsDrive/</id>
     <published>2020-10-16T09:03:01.000Z</published>
-    <updated>2020-10-16T13:07:53.123Z</updated>
+    <updated>2020-10-16T13:25:28.721Z</updated>
     
     <summary type="html">
     
@@ -512,34 +541,6 @@
         
         
           &lt;p&gt;&lt;code&gt;Map&lt;/code&gt; 对象用来保存键值对，并且能够记住键的原始插入顺序，任何对象或者原始值都可以作为键或者是值。&lt;br&gt;&lt;code&gt;WeakMap&lt;/code&gt; 对象同样用来保存键值对，对于键是弱引用的而且必须为一个对象，而值可以是任意的对象或者原始值。 
-        
-      
-    
-    </summary>
-    
-      <category term="JavaScript" scheme="http://konata.tech/categories/JavaScript/"/>
-    
-    
-      <category term="ES6" scheme="http://konata.tech/tags/ES6/"/>
-    
-      <category term="JavaScript" scheme="http://konata.tech/tags/JavaScript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Set 与 WeakSet</title>
-    <link href="http://konata.tech/2020/09/02/setAndWeakset/"/>
-    <id>http://konata.tech/2020/09/02/setAndWeakset/</id>
-    <published>2020-09-02T08:51:29.000Z</published>
-    <updated>2020-09-02T12:35:01.904Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;&lt;code&gt;Set&lt;/code&gt; 对象允许存储任何类型的唯一值，无论是原始值或者是对象引用， &lt;code&gt;Set&lt;/code&gt; 对象中的值不会重复。&lt;br&gt;&lt;code&gt;WeakSet&lt;/code&gt; 对象允许存储对象弱引用的唯一值， &lt;code&gt;WeakSet&lt;/code&gt;
         
       
     

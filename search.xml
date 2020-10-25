@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Linux 中配置路由</title>
+      <link href="/2020/10/25/routeCommand/"/>
+      <url>/2020/10/25/routeCommand/</url>
+      
+        <content type="html"><![CDATA[<h2 id="查看路由表"><a href="#查看路由表" class="headerlink" title="查看路由表"></a>查看路由表</h2><ul><li><code>netstat -r</code></li><li><code>route</code></li></ul><pre><code>Kernel IP routing tableDestination     Gateway         Genmask         Flags Metric Ref    Use Ifacedefault         _gateway        0.0.0.0         UG    101    0        0 ens224172.31.112.0    0.0.0.0         255.255.240.0   U     101    0        0 ens224192.168.122.0   0.0.0.0         255.255.255.0   U     0      0        0 virbr0192.168.248.0   0.0.0.0         255.255.255.0   U     100    0        0 ens160</code></pre><h3 id="Flags"><a href="#Flags" class="headerlink" title="Flags"></a>Flags</h3><ul><li><code>U</code> : 路由是活动的</li><li><code>H</code> : 目标是一个主机</li><li><code>G</code> : 路由指向网关</li><li><code>R</code> : 恢复动态路由产生的表项</li><li><code>D</code> : 由路由的后台程序动态地安装</li><li><code>M</code> : 由路由的后台程序修改</li><li><code>!</code> : 拒绝路由</li></ul><h3 id="Metric"><a href="#Metric" class="headerlink" title="Metric"></a>Metric</h3><p>路由度量，内核用它来在多条可行路径中选择一条最佳路径。数值越低，优先级越高。</p><h3 id="Iface"><a href="#Iface" class="headerlink" title="Iface"></a>Iface</h3><p>该路由表项对应的输出接口。</p><h2 id="添加路由"><a href="#添加路由" class="headerlink" title="添加路由"></a>添加路由</h2><h3 id="添加到主机的路由"><a href="#添加到主机的路由" class="headerlink" title="添加到主机的路由"></a>添加到主机的路由</h3><pre class=" language-sh"><code class="language-sh">route add -host 192.168.0.4 dev ens160 route add -host 172.31.160.1 gw 172.31.112.1</code></pre><h3 id="添加到网络的路由"><a href="#添加到网络的路由" class="headerlink" title="添加到网络的路由"></a>添加到网络的路由</h3><pre class=" language-sh"><code class="language-sh">route add -net 172.31.112.0 netmask 255.255.255.240 ens224route add -net 192.168.240.0 netmask 255.255.255.0 gw 192.168.240.1route add -net 172.31.112.0/20 ens224</code></pre><h3 id="添加默认路由"><a href="#添加默认路由" class="headerlink" title="添加默认路由"></a>添加默认路由</h3><pre class=" language-sh"><code class="language-sh">route add default gw 172.31.161.254 dev ens160</code></pre><h2 id="删除路由"><a href="#删除路由" class="headerlink" title="删除路由"></a>删除路由</h2><pre class=" language-sh"><code class="language-sh">route del -host 192.168.0.4 dev ens160route del -host 172.31.160.1 gw 172.31.112.1route del -net 172.31.112.0 netmask 255.255.255.240 ens224route del -net 192.168.240.0 netmask 255.255.255.0 gw 192.168.240.1route del -net 172.31.112.0/20 ens224route del default ens160route del default gw 172.31.161.254</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> Ops </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+            <tag> route </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>给 Windows 驱动签名</title>
       <link href="/2020/10/16/signWindowsDrive/"/>
       <url>/2020/10/16/signWindowsDrive/</url>
@@ -788,9 +815,9 @@
       
         <tags>
             
-            <tag> JSP </tag>
-            
             <tag> Java </tag>
+            
+            <tag> JSP </tag>
             
         </tags>
       
@@ -815,9 +842,9 @@
       
         <tags>
             
-            <tag> JSP </tag>
-            
             <tag> Java </tag>
+            
+            <tag> JSP </tag>
             
         </tags>
       
@@ -842,9 +869,9 @@
       
         <tags>
             
-            <tag> JSP </tag>
-            
             <tag> Java </tag>
+            
+            <tag> JSP </tag>
             
         </tags>
       
@@ -869,9 +896,9 @@
       
         <tags>
             
-            <tag> JSP </tag>
-            
             <tag> Java </tag>
+            
+            <tag> JSP </tag>
             
         </tags>
       
@@ -896,9 +923,9 @@
       
         <tags>
             
-            <tag> JSP </tag>
-            
             <tag> Java </tag>
+            
+            <tag> JSP </tag>
             
         </tags>
       
@@ -923,9 +950,9 @@
       
         <tags>
             
-            <tag> JSP </tag>
-            
             <tag> Java </tag>
+            
+            <tag> JSP </tag>
             
         </tags>
       
@@ -1000,9 +1027,9 @@
       
         <tags>
             
-            <tag> JSP </tag>
-            
             <tag> Java </tag>
+            
+            <tag> JSP </tag>
             
         </tags>
       
@@ -1287,9 +1314,9 @@
       
         <tags>
             
-            <tag> JSP </tag>
-            
             <tag> Java </tag>
+            
+            <tag> JSP </tag>
             
         </tags>
       
