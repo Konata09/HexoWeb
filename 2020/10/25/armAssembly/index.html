@@ -5,13 +5,13 @@
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     <meta name="keywords" content="ARM 汇编笔记, 生命不息 折腾不止">
-    <meta name="description" content="GNU ARM 汇编程序格式整体结构.section .mysection, &amp;quot;x&amp;quot;
+    <meta name="description" content="GNU ARM 汇编程序格式整体结构.section .mysection, &#34;x&#34;
 .text
 .global test
 test:
     ADD r0, r0, r1
     MOV pc, lr
-.data   ">
+.data   /*定义数据段，即程">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -415,22 +415,23 @@ test:
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="GNU-ARM-汇编程序格式"><a href="#GNU-ARM-汇编程序格式" class="headerlink" title="GNU ARM 汇编程序格式"></a>GNU ARM 汇编程序格式</h2><h3 id="整体结构"><a href="#整体结构" class="headerlink" title="整体结构"></a>整体结构</h3><pre><code>.section .mysection, &quot;x&quot;
+                <h2 id="GNU-ARM-汇编程序格式"><a href="#GNU-ARM-汇编程序格式" class="headerlink" title="GNU ARM 汇编程序格式"></a>GNU ARM 汇编程序格式</h2><h3 id="整体结构"><a href="#整体结构" class="headerlink" title="整体结构"></a>整体结构</h3><pre class=" language-nasm"><code class="language-nasm">.section .mysection, <span class="token string">"x"</span>
 .text
-.global test
-test:
-    ADD r0, r0, r1
+.<span class="token keyword">global test</span>
+<span class="token label function">test:</span>
+    ADD <span class="token register variable">r0</span>, <span class="token register variable">r0</span>, <span class="token register variable">r1</span>
     MOV pc, lr
-.data   /*定义数据段，即程序运行需要用到的数据*/
-stack:  .space 4*512    @分配 4*512 大小的数据空间，缺省值为 0
-.end                    @汇编文件结束标志，常常省略不用</code></pre><ul>
+.data   <span class="token operator">/</span><span class="token operator">*</span>定义数据段，即程序运行需要用到的数据<span class="token operator">*</span><span class="token operator">/</span>
+<span class="token label function">stack:</span>  .space <span class="token number">4</span><span class="token operator">*</span><span class="token number">512</span>    @分配 <span class="token number">4</span><span class="token operator">*</span><span class="token number">512</span> 大小的数据空间，缺省值为 <span class="token number">0</span>
+.end                    @汇编文件结束标志，常常省略不用</code></pre>
+<ul>
 <li>在 GNU ARM 汇编语言程序中，以段 <code>section</code> 为单位组织代码。段是相对独立的指令或数据序列，可以具有特定的名称。</li>
 <li><code>a</code>允许段，<code>w</code>可写段，<code>x</code>执行段</li>
-<li>每个 section 段又可以包含代码段 <code>.text</code> 、数据段 <code>.data</code> 及未初始化的数据段 <code>.bss</code> 等子段。</li>
+<li>每个 <code>section</code> 段又可以包含代码段 <code>.text</code> 、数据段 <code>.data</code> 及未初始化的数据段 <code>.bss</code> 等子段。</li>
 <li>每一个段以段名为开始，以下一个段名或者文件结尾为结束。</li>
-<li>绝大多数汇编程序只有一个 section 段，可省略。section 的声明。</li>
+<li>绝大多数汇编程序只有一个 <code>section</code> 段，可省略<code>.section</code> 的声明。</li>
 </ul>
-<p>只有一个 section 段的简单汇编程序：</p>
+<p>只有一个 <code>section</code> 段的简单汇编程序：</p>
 <pre class=" language-nasm"><code class="language-nasm">.text
 .<span class="token keyword">global _start</span>
 <span class="token label function">_start:</span>
@@ -441,15 +442,15 @@ stack:  .space 4*512    @分配 4*512 大小的数据空间，缺省值为 0
     b stop
 .data
 <span class="token label function">stack:</span> .space <span class="token number">4</span><span class="token operator">*</span><span class="token number">512</span> @分配 <span class="token number">4</span><span class="token operator">*</span><span class="token number">512</span> 大小的数据空间，缺省值为 <span class="token number">0</span></code></pre>
-<h3 id="语句格式"><a href="#语句格式" class="headerlink" title="语句格式"></a>语句格式</h3><pre class=" language-nasm"><code class="language-nasm"><span class="token operator">[</span><span class="token operator">&lt;</span>label<span class="token operator">></span>:<span class="token operator">]</span><span class="token operator">[</span><span class="token operator">&lt;</span>instruction or directive or pseudo<span class="token operator">-</span>instruction<span class="token operator">></span><span class="token operator">]</span> @comment</code></pre>
-<h4 id="lt-label-gt-：标号"><a href="#lt-label-gt-：标号" class="headerlink" title="&lt;label&gt;: ：标号"></a><code>&lt;label&gt;:</code> ：标号</h4><ul>
+<h3 id="语句格式"><a href="#语句格式" class="headerlink" title="语句格式"></a>语句格式</h3><pre class=" language-nasm"><code class="language-nasm"><span class="token operator">[</span><span class="token operator">&lt;</span>label<span class="token operator">></span>:<span class="token operator">]</span> <span class="token operator">[</span><span class="token operator">&lt;</span>instruction or directive or pseudo<span class="token operator">-</span>instruction<span class="token operator">></span><span class="token operator">]</span> @comment</code></pre>
+<h4 id="标号-label"><a href="#标号-label" class="headerlink" title="标号 (label)"></a>标号 (label)</h4><ul>
 <li>GNU 汇编中，任何以冒号结尾的标识符都被认为是一个标号，而不一定非要在一行的开始。</li>
 <li>在 ARM 汇编中，标号代表它所在的地址，因此也可以当作变量或者函数来使用。</li>
-<li>标号只能由 a～z，A～Z，0～9，“.”，_等（由点、字母、数字、下划线等组成，除局部标号外，不能以数字开头）字符组成。</li>
+<li>标号只能由 <code>a～z</code>，<code>A～Z</code>，<code>0～9</code>，<code>.</code>，<code>_</code>等（由点、字母、数字、下划线等组成，除局部标号外，不能以数字开头）字符组成。</li>
 <li>语句标号不能与寄存器名、指令助记符、伪指令（操作）助记符、变量名同名。</li>
 <li>标号可以单独一行，也可以与汇编语句在同一行。</li>
 </ul>
-<p>GNU 汇编语言需要定义入口点。汇编程序的缺省入口是_start 标号，用户也可以在连接脚本文件中用 ENTRY 标志指明其它入口点，例：</p>
+<p>GNU 汇编语言需要定义入口点。汇编程序的缺省入口是 <code>_start</code> 标号，用户也可以在连接脚本文件中用 <code>ENTRY</code> 标志指明其它入口点，例：</p>
 <pre class=" language-nasm"><code class="language-nasm">.section .data
     <span class="token operator">&lt;</span>initializeddatahere<span class="token operator">></span>
 .section .bss
@@ -465,26 +466,26 @@ stack:  .space 4*512    @分配 4*512 大小的数据空间，缺省值为 0
 </ul>
 <h4 id="操作数域-OPERAND"><a href="#操作数域-OPERAND" class="headerlink" title="操作数域 (OPERAND)"></a>操作数域 (OPERAND)</h4><p>操作数域表示操作的对象，操作数可以是常量、变量、标号、寄存器名或表达式，不同对象之间必须用逗号 <code>,</code> 分开，直接操作数前加 <code>#</code> 。<br>其中常量的表示方法如下：</p>
 <ul>
-<li>十进制数以非 0 数字开头，如：123 和 9876@</li>
-<li>二进制数以 0b 开头，其中字母也可以为大写@</li>
-<li>八进制数以 0 开始，如：0456, 0123@</li>
-<li>十六进制数以 0x 开头，如：0xabcd, 0X123f@</li>
+<li>十进制数以非 0 数字开头，如：<code>123</code> 和 <code>9876</code></li>
+<li>二进制数以 <code>0b</code> 开头，其中字母也可以为大写</li>
+<li>八进制数以 <code>0</code> 开始，如：<code>0456</code>,                      <code>0123</code></li>
+<li>十六进制数以 <code>0x</code> 开头，如：<code>0xabcd</code>,                      <code>0X123f</code></li>
 </ul>
-<h4 id="注释域-COMMENT"><a href="#注释域-COMMENT" class="headerlink" title="注释域 (COMMENT)"></a>注释域 (COMMENT)</h4><p>ARM 汇编使用@或者/<em>…</em>/标注注释。</p>
+<h4 id="注释域-COMMENT"><a href="#注释域-COMMENT" class="headerlink" title="注释域 (COMMENT)"></a>注释域 (COMMENT)</h4><p>ARM 汇编使用 <code>@</code> 或者 <code>/*...*/</code> 标注注释。</p>
 <h2 id="ARM-指令的基本格式"><a href="#ARM-指令的基本格式" class="headerlink" title="ARM 指令的基本格式"></a>ARM 指令的基本格式</h2><pre class=" language-nasm"><code class="language-nasm">opcode {<span class="token operator">&lt;</span>cond<span class="token operator">></span>}{S} <span class="token operator">&lt;</span>Rd<span class="token operator">></span>,<span class="token operator">&lt;</span>Rn<span class="token operator">></span> {,<span class="token operator">&lt;</span>shifter operand2<span class="token operator">></span>}</code></pre>
-<p>其中&lt;&gt;中的项是必须的，｛｝中的项是可选的。<br>opcode 表示指令助记符，比如 LDR、STR、ADD 等。  </p>
+<p>其中 <code>&lt;&gt;</code> 中的项是必须的， <code>｛｝</code> 中的项是可选的。<br><code>opcode</code> 表示指令助记符，比如 <code>LDR</code> 、 <code>STR</code> 、 <code>ADD</code> 等。  </p>
 <ul>
-<li>cond: 表示执行条件，如 EQ、NE 等。</li>
-<li>S: 表示是否影响 CPSR 寄存器的值。</li>
-<li>Rd: 表示目标寄存器</li>
-<li>Rn: 表示第一个操作数的寄存器</li>
-<li>Shifteroperand2: 表示第 2 个操作数</li>
+<li><code>cond</code>: 表示执行条件，如 <code>EQ</code>、<code>NE</code> 等。</li>
+<li><code>S</code>: 表示是否影响 <code>CPSR</code> 寄存器的值。</li>
+<li><code>Rd</code>: 表示目标寄存器</li>
+<li><code>Rn</code>: 表示第一个操作数的寄存器</li>
+<li><code>Shifteroperand2</code>: 表示第 2 个操作数</li>
 </ul>
-<h3 id="执行条件码"><a href="#执行条件码" class="headerlink" title="执行条件码"></a>执行条件码</h3><p>几乎所有的 ARM 指令均可包含一个可选的条件码，句法说明中以{cond}表示，只有在 CPSR 中的条件码标志满足指定的条件时，带条件码的指令才能执行。并使用后缀“S”来区分是否根据执行结果修改条件码标志。  </p>
+<h3 id="执行条件码"><a href="#执行条件码" class="headerlink" title="执行条件码"></a>执行条件码</h3><p>几乎所有的 ARM 指令均可包含一个可选的条件码，句法说明中以 <code>{cond}</code> 表示，只有在 CPSR 中的条件码标志满足指定的条件时，带条件码的指令才能执行。并使用后缀 <code>S</code> 来区分是否根据执行结果修改条件码标志。  </p>
 <table>
 <thead>
 <tr>
-<th>操作码 [31:28]</th>
+<th>操作码 <code>[31:28]</code></th>
 <th>助记符后缀</th>
 <th>标志</th>
 <th>含义</th>
@@ -617,9 +618,9 @@ AND <span class="token register variable">R8</span>,<span class="token register 
 <p><img src="/images/1605617062931.png" alt="ASR"></p>
 <h4 id="ROR"><a href="#ROR" class="headerlink" title="ROR"></a>ROR</h4><p>循环右移 (ROtate Right)<br>从字的最低端移出的位填入字的高端空出的位。</p>
 <p><img src="/images/1605617082040.png" alt="ROR"></p>
-<h4 id="RRX"><a href="#RRX" class="headerlink" title="RRX"></a>RRX</h4><p>扩展为 1 的循环右移 (Rotate Right eXtended by 1 place)<br>操作数右移一位，空位（位 [31]）用原 C 标志值填充。</p>
+<h4 id="RRX"><a href="#RRX" class="headerlink" title="RRX"></a>RRX</h4><p>扩展为 1 的循环右移 (Rotate Right eXtended by 1 place)<br>操作数右移一位，空位（位 <code>[31]</code> ）用原 <code>C</code> 标志值填充。</p>
 <p><img src="/images/1605617129287.png" alt="RRX"></p>
-<h3 id="寄存器间接寻址"><a href="#寄存器间接寻址" class="headerlink" title="寄存器间接寻址"></a>寄存器间接寻址</h3><p>指令中的地址码给出某一通用寄存器的编号。在被指定的寄存器中存放操作数的有效地址，而操作数则存放在存储单元中，即寄存器为地址指针。<br>指令为 LDR/STR</p>
+<h3 id="寄存器间接寻址"><a href="#寄存器间接寻址" class="headerlink" title="寄存器间接寻址"></a>寄存器间接寻址</h3><p>指令中的地址码给出某一通用寄存器的编号。在被指定的寄存器中存放操作数的有效地址，而操作数则存放在存储单元中，即寄存器为地址指针。<br>指令为 <code>LDR</code> / <code>STR</code></p>
 <h3 id="基址寻址"><a href="#基址寻址" class="headerlink" title="基址寻址"></a>基址寻址</h3><p>变址寻址就是将基址寄存器的内容与指令中给出的位移量相加，形成操作数有效地址。变址寻址用于访问基址附近的存储单元，包括基址加偏移和基址加索引寻址。寄存器间接寻址是偏移量为 0 的基址加偏移寻址。</p>
 <h4 id="前索引寻址方式"><a href="#前索引寻址方式" class="headerlink" title="前索引寻址方式"></a>前索引寻址方式</h4><p>基址需加（或减）最大 4KB 的偏移来计算访问的地址。</p>
 <pre class=" language-nasm"><code class="language-nasm">LDR <span class="token register variable">R0</span>,<span class="token operator">[</span><span class="token register variable">R1</span>,#<span class="token number">4</span><span class="token operator">]</span>       @<span class="token register variable">R0</span> <span class="token operator">&lt;</span><span class="token operator">-</span> <span class="token operator">[</span><span class="token register variable">R1</span><span class="token operator">+</span><span class="token number">4</span><span class="token operator">]</span></code></pre>
@@ -631,9 +632,9 @@ AND <span class="token register variable">R8</span>,<span class="token register 
                     @<span class="token register variable">R1</span> <span class="token operator">&lt;</span><span class="token operator">-</span> <span class="token register variable">R1</span><span class="token operator">+</span><span class="token number">4</span></code></pre>
 <h4 id="基址加索引寻址"><a href="#基址加索引寻址" class="headerlink" title="基址加索引寻址"></a>基址加索引寻址</h4><p>指令指定一个基址寄存器，再指定另一个寄存器（索引），其值作为位移加到基址上形成存储器地址。</p>
 <pre class=" language-nasm"><code class="language-nasm">LDR <span class="token register variable">R0</span>,<span class="token operator">[</span><span class="token register variable">R1</span>,<span class="token register variable">R2</span><span class="token operator">]</span>      @<span class="token register variable">R0</span> <span class="token operator">&lt;</span><span class="token operator">-</span> <span class="token operator">[</span><span class="token register variable">R1</span><span class="token operator">+</span><span class="token register variable">R2</span><span class="token operator">]</span></code></pre>
-<h3 id="多寄存器寻址"><a href="#多寄存器寻址" class="headerlink" title="多寄存器寻址"></a>多寄存器寻址</h3><p>该类指令支持批量数据加载/存储，可以一次在一片连续的存储器单元和多个寄存器之间传送数据。常用的加载/存储指令有 LDM（或 STM）指令，指令格式为：</p>
+<h3 id="多寄存器寻址"><a href="#多寄存器寻址" class="headerlink" title="多寄存器寻址"></a>多寄存器寻址</h3><p>该类指令支持批量数据加载/存储，可以一次在一片连续的存储器单元和多个寄存器之间传送数据。常用的加载/存储指令有 <code>LDM</code> （或 <code>STM</code> ）指令，指令格式为：</p>
 <pre class=" language-nasm"><code class="language-nasm">LDM(STM)    {类型}  基址寄存器{<span class="token operator">!</span>}, 寄存器列表{∧}</code></pre>
-<p>LDM（或 STM）指令用于从由基址寄存器所指示的一片连续存储器到寄存器列表所指示的多个寄存器之间传送数据，该指令的常见用途是将多个寄存器的内容入栈或出栈。</p>
+<p><code>LDM</code> （或 <code>STM</code> ）指令用于从由基址寄存器所指示的一片连续存储器到寄存器列表所指示的多个寄存器之间传送数据，该指令的常见用途是将多个寄存器的内容入栈或出栈。</p>
 <h4 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h4><table>
 <thead>
 <tr>
@@ -692,10 +693,10 @@ AND <span class="token register variable">R8</span>,<span class="token register 
 <p>条件后可跟加载模式：</p>
 <ul>
 <li>默认：字数据</li>
-<li>T: 用户模式</li>
-<li>S: 有符号数</li>
-<li>B: 字节数据（Rd[7:0] 有效，Rd[31:8]=0）</li>
-<li>H: 半字数据（Rd[15:0] 有效，Rd[31:16]=0）</li>
+<li><code>T</code>: 用户模式</li>
+<li><code>S</code>: 有符号数</li>
+<li><code>B</code>: 字节数据（Rd<code>[7:0]</code> 有效，Rd<code>[31:8]</code>=0）</li>
+<li><code>H</code>: 半字数据（Rd<code>[15:0]</code> 有效，Rd<code>[31:16]</code>=0）</li>
 </ul>
 <p>存储器地址的形式：</p>
 <table>
@@ -780,8 +781,8 @@ SWP <span class="token register variable">R1</span>,<span class="token register 
 <td>Rd &lt;- op2-Rn-C</td>
 </tr>
 </tbody></table>
-<p>带 <code>s</code> 时，影响 <code>NVCZ</code> 标志，除非 <code>Rd=R15</code> （异常模式下，恢复标志）  </p>
-<p>对标志 C 的影响：<br>ADD/ADC: C=1 有进位，C=0 无进位<br>SUB/SBC/RSC: C=1 无借位，C=0 有借位</p>
+<p>带 <code>s</code> 时，影响 <code>NVCZ</code> 标志，除非 Rd=R15 （异常模式下，恢复标志）  </p>
+<p>对标志 C 的影响：<br><code>ADD</code> / <code>ADC</code> : <code>C=1</code> 有进位， <code>C=0</code> 无进位<br><code>SUB</code> / <code>SBC</code> / <code>RSC</code> : <code>C=1</code> 无借位， <code>C=0</code> 有借位</p>
 <h3 id="逻辑运算指令"><a href="#逻辑运算指令" class="headerlink" title="逻辑运算指令"></a>逻辑运算指令</h3><table>
 <thead>
 <tr>
@@ -812,7 +813,13 @@ SWP <span class="token register variable">R1</span>,<span class="token register 
 </tr>
 </tbody></table>
 <blockquote>
-<p>AND 运算通常用于某些位置 0<br>ORR 运算通常用于某些位置 1<br>EOR 运算通常用于某些位取反</p>
+<p><code>AND</code> 运算通常用于某些位置 <code>0</code></p>
+</blockquote>
+<blockquote>
+<p><code>ORR</code> 运算通常用于某些位置 <code>1</code></p>
+</blockquote>
+<blockquote>
+<p><code>EOR</code> 运算通常用于某些位取反</p>
 </blockquote>
 <h3 id="比较运算指令"><a href="#比较运算指令" class="headerlink" title="比较运算指令"></a>比较运算指令</h3><table>
 <thead>
@@ -888,11 +895,11 @@ SWP <span class="token register variable">R1</span>,<span class="token register 
 </tbody></table>
 <ul>
 <li><code>coproc</code>: 协处理器名称（p0-p15）</li>
-<li><code>opc1</code> ：0-7 之间的处理器特定编码。</li>
+<li><code>opc1</code> ：<code>0-7</code> 之间的处理器特定编码。</li>
 <li><code>Rd</code> : 向协处理器传送值的 ARM 核寄存器（r0-r14）</li>
 <li><code>CRn</code> : 目的协处理器寄存器</li>
 <li><code>CRm</code> : 附加源或者目的协处理器寄存器</li>
-<li><code>opc2</code> : 0-7 之间的处理器特定编码，缺省为 0</li>
+<li><code>opc2</code> : <code>0-7</code> 之间的处理器特定编码，缺省为 <code>0</code></li>
 </ul>
 <h3 id="程序状态寄存器读写指令"><a href="#程序状态寄存器读写指令" class="headerlink" title="程序状态寄存器读写指令"></a>程序状态寄存器读写指令</h3><table>
 <thead>
@@ -920,24 +927,24 @@ SWP <span class="token register variable">R1</span>,<span class="token register 
 </tbody></table>
 <ul>
 <li>Rd ≠ R15</li>
-<li>psr = CPSR/SPSR</li>
-<li>fields = “f”      条件标志位域 PSR[31:24]</li>
-<li>fields = “s”      状态位域 PSR[23:16]</li>
-<li>fields = “x”      扩展位域 PSR[15:8]</li>
-<li>fields = “c”      控制位域 PSR[7:0]</li>
+<li>psr = <code>CPSR</code>/<code>SPSR</code></li>
+<li>fields = <code>f</code>      条件标志位域 PSR<code>[31:24]</code></li>
+<li>fields = <code>s</code>      状态位域 PSR<code>[23:16]</code></li>
+<li>fields = <code>x</code>      扩展位域 PSR<code>[15:8]</code></li>
+<li>fields = <code>c</code>      控制位域 PSR<code>[7:0]</code></li>
 </ul>
 <p><img src="/images/1605689788913.png" alt="PSR"></p>
 <blockquote>
-<p>特权模式下才能写 PSR，不能通过 MSR 指令直接修改 T 位实现 ARM/Thumb 切换，必须使用 BX 指令完成处理器状态的切换。</p>
+<p>特权模式下才能写 PSR，不能通过 MSR 指令直接修改 <code>T</code> 位实现 ARM/Thumb 切换，必须使用 <code>BX</code> 指令完成处理器状态的切换。</p>
 </blockquote>
 <h3 id="SWI"><a href="#SWI" class="headerlink" title="SWI"></a>SWI</h3><pre class=" language-nasm"><code class="language-nasm">SWI<span class="token operator">[</span><span class="token operator">&lt;</span>cond<span class="token operator">></span><span class="token operator">]</span>    immed_24</code></pre>
 <p>产生软中断，处理器进入管理模式</p>
 <h3 id="ADR-ADRL"><a href="#ADR-ADRL" class="headerlink" title="ADR/ADRL"></a>ADR/ADRL</h3><p>将程序相对偏移或寄存器相对偏移地址加载到寄存器中。</p>
 <pre class=" language-nasm"><code class="language-nasm">ADR<span class="token operator">[</span><span class="token operator">&lt;</span>cond<span class="token operator">></span><span class="token operator">]</span>    Rd, label</code></pre>
 <ul>
-<li>label 必须与 ADR 指令在同一个代码段中</li>
-<li>当地址是字对齐时，label 取值范围为 -1024~1024 字节</li>
-<li>当使用 ADRL 指令时，label 取值范围为 -256K~256K 字节</li>
+<li><code>label</code> 必须与 <code>ADR</code> 指令在同一个代码段中</li>
+<li>当地址是字对齐时，<code>label</code> 取值范围为 <code>-1024~1024</code> 字节</li>
+<li>当使用 <code>ADRL</code> 指令时，<code>label</code> 取值范围为 <code>-256K~256K</code> 字节</li>
 </ul>
 <h3 id="LDR-伪指令"><a href="#LDR-伪指令" class="headerlink" title="LDR 伪指令"></a>LDR 伪指令</h3><p>用 32 位常量或一个地址加载寄存器</p>
 <pre class=" language-nasm"><code class="language-nasm">LDR<span class="token operator">[</span><span class="token operator">&lt;</span>cond<span class="token operator">></span><span class="token operator">]</span>    register, <span class="token operator">=</span><span class="token operator">[</span>expr<span class="token operator">|</span>label<span class="token operator">-</span>expr<span class="token operator">]</span></code></pre>
@@ -950,7 +957,7 @@ SWP <span class="token register variable">R1</span>,<span class="token register 
 <pre class=" language-nasm"><code class="language-nasm">LDR     <span class="token register variable">R3</span>,<span class="token operator">=</span><span class="token number">0xFF0</span>   @把立即数 <span class="token number">0xFF0</span> 赋值给 <span class="token register variable">R3</span>
 LDR     <span class="token register variable">R3</span>,<span class="token operator">=</span>place   @把标号 place 对应的地址赋值给 <span class="token register variable">R2</span></code></pre>
 <blockquote>
-<p>从指令到文字池的偏移量必须小于 4KB<br>与 ARM 指令的 LDR 相比，伪指令的 LDR 的参数有 <code>=</code> 号</p>
+<p>从指令到文字池的偏移量必须小于 4KB<br>与 ARM 指令的 <code>LDR</code> 相比，伪指令的 <code>LDR</code> 的参数有 <code>=</code> 号</p>
 </blockquote>
 <h3 id="NOP"><a href="#NOP" class="headerlink" title="NOP"></a>NOP</h3><p>空操作，可用于延时操作。</p>
 <h2 id="数据定义伪操作"><a href="#数据定义伪操作" class="headerlink" title="数据定义伪操作"></a>数据定义伪操作</h2><p>数据定义伪操作一般用于为特定的数据分配存储单元，同时可完成已分配存储单元的初始化。</p>
@@ -998,19 +1005,19 @@ LDR     <span class="token register variable">R3</span>,<span class="token opera
 <td><code>.space   4*512,35</code> @分配 4*512 字节的内存空间并初始化为 35</td>
 </tr>
 </tbody></table>
-<h2 id="符号定义伪操作"><a href="#符号定义伪操作" class="headerlink" title="符号定义伪操作"></a>符号定义伪操作</h2><h3 id="equ"><a href="#equ" class="headerlink" title=".equ"></a>.equ</h3><p>.equ 伪指令用于为程序中的常量、标号等定义一个等效的字符名称，类似于 C 语言中的＃define。</p>
+<h2 id="符号定义伪操作"><a href="#符号定义伪操作" class="headerlink" title="符号定义伪操作"></a>符号定义伪操作</h2><h3 id="equ"><a href="#equ" class="headerlink" title=".equ"></a>.equ</h3><p><code>.equ</code> 伪指令用于为程序中的常量、标号等定义一个等效的字符名称，类似于 C 语言中的 <code>＃define</code> 。</p>
 <pre class=" language-nasm"><code class="language-nasm">.equ        symbol, expr</code></pre>
 <ul>
-<li>symbol: 等效字符</li>
-<li>expr: 常量或者标号</li>
+<li><code>symbol</code>: 等效字符</li>
+<li><code>expr</code>: 常量或者标号</li>
 </ul>
 <p>例：</p>
-<pre class=" language-nasm"><code class="language-nasm">.equ    x,<span class="token number">2019</span>      @将 x 定义为数值 <span class="token number">2019</span>
+<pre class=" language-nasm"><code class="language-nasm">.equ    x,<span class="token number">2020</span>      @将 x 定义为数值 <span class="token number">2020</span>
 .equ    y,_start    @ y<span class="token operator">=</span> 标号 _start 的值</code></pre>
 <blockquote>
-<p>使用等价伪指令 .equ 定义的符号名不会被系统分配存储空间。</p>
+<p>使用等价伪指令 <code>.equ</code> 定义的符号名不会被系统分配存储空间。</p>
 </blockquote>
-<h3 id="global"><a href="#global" class="headerlink" title=".global"></a>.global</h3><p>.glabal 伪指令用于在程序中声明一个全局的标号，该标号可在其他的文件中引用。</p>
+<h3 id="global"><a href="#global" class="headerlink" title=".global"></a>.global</h3><p><code>.glabal</code> 伪指令用于在程序中声明一个全局的标号，该标号可在其他的文件中引用。</p>
 <pre class=" language-nasm"><code class="language-nasm">.<span class="token keyword">global    label</span></code></pre>
 <p>例：</p>
 <pre class=" language-nasm"><code class="language-nasm">.glabal    _start   @将标号 _start 定义为全局标号</code></pre>
