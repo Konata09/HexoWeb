@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://konata.tech/"/>
-  <updated>2020-11-18T11:54:08.873Z</updated>
+  <updated>2020-11-18T11:55:58.282Z</updated>
   <id>http://konata.tech/</id>
   
   <author>
@@ -17,16 +17,30 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
+    <title>ARM 汇编笔记</title>
     <link href="http://konata.tech/2020/10/25/armAssembly/"/>
     <id>http://konata.tech/2020/10/25/armAssembly/</id>
-    <published>2020-10-25T05:49:13.323Z</published>
-    <updated>2020-11-18T11:54:08.873Z</updated>
+    <published>2020-10-25T05:49:56.000Z</published>
+    <updated>2020-11-18T11:55:58.282Z</updated>
     
     <summary type="html">
     
+      
+      
+        
+        
+          &lt;h2 id=&quot;GNU-ARM-汇编程序格式&quot;&gt;&lt;a href=&quot;#GNU-ARM-汇编程序格式&quot; class=&quot;headerlink&quot; title=&quot;GNU ARM 汇编程序格式&quot;&gt;&lt;/a&gt;GNU ARM 汇编程序格式&lt;/h2&gt;&lt;h3 id=&quot;整体结构&quot;&gt;&lt;a
+        
+      
+    
     </summary>
     
+      <category term="Ops" scheme="http://konata.tech/categories/Ops/"/>
+    
+    
+      <category term="arm" scheme="http://konata.tech/tags/arm/"/>
+    
+      <category term="assembly" scheme="http://konata.tech/tags/assembly/"/>
     
   </entry>
   
@@ -198,16 +212,29 @@
   </entry>
   
   <entry>
-    <title></title>
+    <title>JavaScript 中的继承</title>
     <link href="http://konata.tech/2020/10/01/inheritanceInJavaScript/"/>
     <id>http://konata.tech/2020/10/01/inheritanceInJavaScript/</id>
-    <published>2020-10-01T05:36:34.461Z</published>
-    <updated>2020-10-01T10:00:14.829Z</updated>
+    <published>2020-10-01T05:36:36.000Z</published>
+    <updated>2020-10-01T10:00:14.845Z</updated>
     
     <summary type="html">
     
+      
+      
+        
+        
+          &lt;p&gt;继承是面向对象软件技术当中的一个概念，与多态、封装共为面向对象的三个基本特征。继承可以使得子类具有父类的属性和方法或者重新定义、追加属性和方法等。  &lt;/p&gt;
+&lt;h2 id=&quot;原型链继承&quot;&gt;&lt;a href=&quot;#原型链继承&quot; class=&quot;headerlink&quot;
+        
+      
+    
     </summary>
     
+      <category term="JavaScript" scheme="http://konata.tech/categories/JavaScript/"/>
+    
+    
+      <category term="JavaScript" scheme="http://konata.tech/tags/JavaScript/"/>
     
   </entry>
   
@@ -503,16 +530,28 @@
   </entry>
   
   <entry>
-    <title></title>
+    <title>原型与原型链</title>
     <link href="http://konata.tech/2020/09/05/prototypeInJS/"/>
     <id>http://konata.tech/2020/09/05/prototypeInJS/</id>
-    <published>2020-09-05T08:37:22.769Z</published>
-    <updated>2020-09-19T11:30:29.972Z</updated>
+    <published>2020-09-05T08:37:23.000Z</published>
+    <updated>2020-09-19T11:30:29.998Z</updated>
     
     <summary type="html">
     
+      
+      
+        
+        
+          &lt;p&gt;&lt;code&gt;JavaScript&lt;/code&gt; 常被描述为一种基于原型的语言 (prototype-based
+        
+      
+    
     </summary>
     
+      <category term="JavaScript" scheme="http://konata.tech/categories/JavaScript/"/>
+    
+    
+      <category term="JavaScript" scheme="http://konata.tech/tags/JavaScript/"/>
     
   </entry>
   
