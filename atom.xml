@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://konata.tech/"/>
-  <updated>2020-10-25T05:43:15.585Z</updated>
+  <updated>2020-11-18T11:28:35.820Z</updated>
   <id>http://konata.tech/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ARM 汇编笔记</title>
+    <link href="http://konata.tech/2020/10/25/armAssembly/"/>
+    <id>http://konata.tech/2020/10/25/armAssembly/</id>
+    <published>2020-10-25T05:49:56.000Z</published>
+    <updated>2020-11-18T11:28:35.820Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;GNU-ARM-汇编程序格式&quot;&gt;&lt;a href=&quot;#GNU-ARM-汇编程序格式&quot; class=&quot;headerlink&quot; title=&quot;GNU ARM 汇编程序格式&quot;&gt;&lt;/a&gt;GNU ARM 汇编程序格式&lt;/h2&gt;&lt;h3 id=&quot;整体结构&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="OPs" scheme="http://konata.tech/categories/OPs/"/>
+    
+    
+      <category term="arm" scheme="http://konata.tech/tags/arm/"/>
+    
+      <category term="assembly" scheme="http://konata.tech/tags/assembly/"/>
+    
+  </entry>
   
   <entry>
     <title>Linux 中配置路由</title>
@@ -522,34 +550,6 @@
     
       <category term="JavaScript" scheme="http://konata.tech/categories/JavaScript/"/>
     
-    
-      <category term="JavaScript" scheme="http://konata.tech/tags/JavaScript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Map 与 WeakMap</title>
-    <link href="http://konata.tech/2020/09/04/mapAndWeakmap/"/>
-    <id>http://konata.tech/2020/09/04/mapAndWeakmap/</id>
-    <published>2020-09-04T03:00:28.000Z</published>
-    <updated>2020-09-04T03:01:10.985Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;&lt;code&gt;Map&lt;/code&gt; 对象用来保存键值对，并且能够记住键的原始插入顺序，任何对象或者原始值都可以作为键或者是值。&lt;br&gt;&lt;code&gt;WeakMap&lt;/code&gt; 对象同样用来保存键值对，对于键是弱引用的而且必须为一个对象，而值可以是任意的对象或者原始值。 
-        
-      
-    
-    </summary>
-    
-      <category term="JavaScript" scheme="http://konata.tech/categories/JavaScript/"/>
-    
-    
-      <category term="ES6" scheme="http://konata.tech/tags/ES6/"/>
     
       <category term="JavaScript" scheme="http://konata.tech/tags/JavaScript/"/>
     
