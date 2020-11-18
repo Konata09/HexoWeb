@@ -468,8 +468,8 @@ test:
 <ul>
 <li>十进制数以非 0 数字开头，如：<code>123</code> 和 <code>9876</code></li>
 <li>二进制数以 <code>0b</code> 开头，其中字母也可以为大写</li>
-<li>八进制数以 <code>0</code> 开始，如：<code>0456</code>,                      <code>0123</code></li>
-<li>十六进制数以 <code>0x</code> 开头，如：<code>0xabcd</code>,                      <code>0X123f</code></li>
+<li>八进制数以 <code>0</code> 开始，如：<code>0456</code>,                       <code>0123</code></li>
+<li>十六进制数以 <code>0x</code> 开头，如：<code>0xabcd</code>,                       <code>0X123f</code></li>
 </ul>
 <h4 id="注释域-COMMENT"><a href="#注释域-COMMENT" class="headerlink" title="注释域 (COMMENT)"></a>注释域 (COMMENT)</h4><p>ARM 汇编使用 <code>@</code> 或者 <code>/*...*/</code> 标注注释。</p>
 <h2 id="ARM-指令的基本格式"><a href="#ARM-指令的基本格式" class="headerlink" title="ARM 指令的基本格式"></a>ARM 指令的基本格式</h2><pre class=" language-nasm"><code class="language-nasm">opcode {<span class="token operator">&lt;</span>cond<span class="token operator">></span>}{S} <span class="token operator">&lt;</span>Rd<span class="token operator">></span>,<span class="token operator">&lt;</span>Rn<span class="token operator">></span> {,<span class="token operator">&lt;</span>shifter operand2<span class="token operator">></span>}</code></pre>
@@ -970,37 +970,37 @@ LDR     <span class="token register variable">R3</span>,<span class="token opera
 </tr>
 </thead>
 <tbody><tr>
-<td>.byte</td>
+<td><code>.byte</code></td>
 <td>定义单字节</td>
 <td><code>.byte0x12</code> @分配一个字节的空间并初始化为 0x12</td>
 </tr>
 <tr>
-<td>.short</td>
+<td><code>.short</code></td>
 <td>定义双字节数据</td>
 <td><code>.short   0x1234</code></td>
 </tr>
 <tr>
-<td>.long/.word</td>
+<td><code>.long</code> / <code>.word</code></td>
 <td>定义 4 字节数据</td>
 <td><code>.word    0x12345678</code></td>
 </tr>
 <tr>
-<td>.quad</td>
+<td><code>.quad</code></td>
 <td>定义 8 字节</td>
 <td><code>.quad  0x1234567812345678</code></td>
 </tr>
 <tr>
-<td>.float</td>
+<td><code>.float</code></td>
 <td>定义浮点数</td>
 <td><code>.float   0f3.2</code></td>
 </tr>
 <tr>
-<td>.string/.asciz/.ascii</td>
+<td><code>.string</code> / <code>.asciz</code> / <code>.ascii</code></td>
 <td>定义字符串</td>
 <td><code>.ascii    &quot;abcd\0&quot;</code></td>
 </tr>
 <tr>
-<td>.space</td>
+<td><code>.space</code></td>
 <td>分配任意的字节空间</td>
 <td><code>.space   4*512,35</code> @分配 4*512 字节的内存空间并初始化为 35</td>
 </tr>
