@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://konata.tech/"/>
-  <updated>2020-11-24T02:38:40.420Z</updated>
+  <updated>2020-12-06T09:22:44.508Z</updated>
   <id>http://konata.tech/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Windows 批处理中的变量</title>
+    <link href="http://konata.tech/2020/12/06/windowsBatchVariable/"/>
+    <id>http://konata.tech/2020/12/06/windowsBatchVariable/</id>
+    <published>2020-12-06T08:42:42.000Z</published>
+    <updated>2020-12-06T09:22:44.508Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;环境变量&quot;&gt;&lt;a href=&quot;#环境变量&quot; class=&quot;headerlink&quot; title=&quot;环境变量&quot;&gt;&lt;/a&gt;环境变量&lt;/h2&gt;&lt;p&gt;&lt;code&gt;%varname%&lt;/code&gt; ，例如 &lt;code&gt;%PATH%&lt;/code&gt; 
+        
+      
+    
+    </summary>
+    
+      <category term="Ops" scheme="http://konata.tech/categories/Ops/"/>
+    
+    
+      <category term="Windows" scheme="http://konata.tech/tags/Windows/"/>
+    
+  </entry>
   
   <entry>
     <title>ARM 汇编笔记</title>
@@ -78,7 +104,7 @@
     <link href="http://konata.tech/2020/10/16/signWindowsDrive/"/>
     <id>http://konata.tech/2020/10/16/signWindowsDrive/</id>
     <published>2020-10-16T09:03:01.000Z</published>
-    <updated>2020-10-16T13:25:28.721Z</updated>
+    <updated>2020-12-06T08:43:34.581Z</updated>
     
     <summary type="html">
     
@@ -100,6 +126,8 @@
       <category term="证书" scheme="http://konata.tech/tags/%E8%AF%81%E4%B9%A6/"/>
     
       <category term="签名" scheme="http://konata.tech/tags/%E7%AD%BE%E5%90%8D/"/>
+    
+      <category term="Windows" scheme="http://konata.tech/tags/Windows/"/>
     
   </entry>
   
@@ -517,32 +545,6 @@
         
         
           &lt;p&gt;每个 &lt;code&gt;Function&lt;/code&gt; 对象都存在 &lt;code&gt;apply()&lt;/code&gt; , &lt;code&gt;call()&lt;/code&gt; , &lt;code&gt;bind()&lt;/code&gt; 方法，其作用都是可以在特定的作用域中调用函数，等于设置函数体内
-        
-      
-    
-    </summary>
-    
-      <category term="JavaScript" scheme="http://konata.tech/categories/JavaScript/"/>
-    
-    
-      <category term="JavaScript" scheme="http://konata.tech/tags/JavaScript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>原型与原型链</title>
-    <link href="http://konata.tech/2020/09/05/prototypeInJS/"/>
-    <id>http://konata.tech/2020/09/05/prototypeInJS/</id>
-    <published>2020-09-05T08:37:23.000Z</published>
-    <updated>2020-09-19T11:30:29.998Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;&lt;code&gt;JavaScript&lt;/code&gt; 常被描述为一种基于原型的语言 (prototype-based
         
       
     

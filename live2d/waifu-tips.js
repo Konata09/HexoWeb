@@ -22,7 +22,7 @@ const live2d_settings = {
     'modelUrl': '/model',                       // 存放模型的文件夹路径，末尾不需要斜杠
     'tipsMessage': '/live2d/waifu-tips.json',   // 看板娘提示消息文件的路径，可以留空不加载
     // 模型设置
-    'modelName': 'paimeng',             // 默认加载的模型名称，仅在无本地记录的情况下有效
+    'modelName': 'paimon',                      // 默认加载的模型名称，仅在无本地记录的情况下有效
     'modelStorage': true,                       // 记忆模型，下次打开页面会加载上次选择的模型
     'modelRandMode': false,                     // 随机切换模型
     'preLoadMotion': false,                     // 是否预载动作数据，只对 model3 模型有效，不预载可以提高 model3 模型的加载速度，但可能导致首次触发动作时卡顿
@@ -45,7 +45,7 @@ const live2d_settings = {
     'live2dHeight': 680,                        // 看板娘高度，不需要单位
     'live2dWidth': 500,                         // 看板娘宽度，不需要单位
     'waifuMinWidth': '1040px',                  // 页面小于宽度小于指定数值时隐藏看板娘，例如 'disable'(禁用)，推荐 '1040px'
-    'waifuEdgeSide': 'right:0',                 // 看板娘贴边方向，例如 'left:0'(靠左 0px)，'right:30'(靠右 30px)
+    'waifuEdgeSide': 'right:0',                 // 看板娘贴边方向，例如 'left:0'(靠左 0px)，'right:30'(靠右 30px)，可以被下面的模型设置覆盖
     // 其他杂项设置
     'debug': true,                              // 全局 DEBUG 设置
     'debugMousemove': false,                    // 在控制台打印指针移动坐标，仅在 debug 为 true 时可用
@@ -58,9 +58,15 @@ const live2d_settings = {
 // 模型列表
 const live2d_models = [
     {
-        name: 'paimeng',
-        message: '派蒙 bilibili@根瘤菌rkzj',
+        name: 'paimon',
+        message: '应急食品 bilibili@根瘤菌rkzj',
         version: 3
+    },
+    {
+        name: 'klee',
+        message: '可莉 bilibili@根瘤菌rkzj',
+        version: 3,
+        position: 'left'
     },
     {
         name: 'bronyaXinZhiHua',
@@ -282,6 +288,26 @@ function hideMessage(timeout) {
     }, timeout);
 }
 
+function changePosition(position) {
+    if (position === 'left') {
+        $$('.waifu-tool').style.right = 'unset';
+        $$('.waifu-tool').style.left = '10px';
+        waifu.style.right = 'unset';
+        waifu.style.left = live2d_settings.waifuEdgeSide.split(":")[1];
+    } else if (position === 'right') {
+        $$('.waifu-tool').style.left = 'unset';
+        $$('.waifu-tool').style.right = '10px';
+        waifu.style.left = 'unset';
+        waifu.style.right = live2d_settings.waifuEdgeSide.split(":")[1];
+    } else {
+        $$('.waifu-tool').style.left = '';
+        $$('.waifu-tool').style.right = '';
+        waifu.style.left = '';
+        waifu.style.right = '';
+    }
+}
+
+
 function initModel() {
     /* Load style sheet */
     addStyle(waifuStyle);
@@ -361,6 +387,7 @@ function loadModel(modelName) {
     for (let model of live2d_models) {
         if (model.name === modelName) {
             modelVersion = model.version;
+            changePosition(model.position);
             break;
         }
     }
@@ -384,8 +411,10 @@ function loadModel(modelName) {
         $$(`#${live2dId4}`).style.display = 'block';
         window.live2dv4.load(live2dId4, `${live2d_settings.modelUrl}/${modelName}`, `${modelName}.model3.json`);
     }
+
     window.live2dCurrentVersion = modelVersion;
 }
+
 // 读取记忆的模型
 function modelStorageGetItem(key) {
     return live2d_settings.modelStorage ? getLS(key) : getSS(key);
@@ -694,7 +723,7 @@ z-index:997
 display:none;
 color:#d73b66;
 top:130px;
-right:10px;
+${live2d_settings.waifuEdgeSide.split(":")[0]}:10px;
 position:absolute;
 z-index:998
 }

@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Windows 批处理中的变量</title>
+      <link href="/2020/12/06/windowsBatchVariable/"/>
+      <url>/2020/12/06/windowsBatchVariable/</url>
+      
+        <content type="html"><![CDATA[<h2 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h2><p><code>%varname%</code> ，例如 <code>%PATH%</code>  <code>%USERNAME%</code>  <code>%APPDATA%</code> 等</p><h2 id="特殊变量"><a href="#特殊变量" class="headerlink" title="特殊变量"></a>特殊变量</h2><ul><li><code>%CD%</code> : 当前目录，不包含反斜线除非是在驱动器根目录下</li><li><code>%TIME%</code> : <code>HH:MM:SS.mm</code> 格式的系统时间</li><li><code>%DATE%</code> : 本地化的系统日期</li><li><code>%RANDOM%</code> : <code>0~32767</code> 之间的伪随机数</li><li><code>%ERRORLEVEL%</code> : 上一个执行命令的或批处理的错误等级</li><li><code>%CMDEXTVERSION%</code> : <code>cmd.exe</code> 的版本</li><li><code>%CMDCMDLINE%</code> : 启动 <code>cmd.exe</code> 的命令行</li></ul><h2 id="调用参数"><a href="#调用参数" class="headerlink" title="调用参数"></a>调用参数</h2><ul><li><code>%0</code>: bat 文件的路径</li><li><code>%1</code> - <code>%9</code> : 第 1~9 个参数（大于 9 个参数要循环<code>%*</code>获得）</li></ul><h2 id="变量处理"><a href="#变量处理" class="headerlink" title="变量处理"></a>变量处理</h2><ul><li><code>~d</code>: 驱动器号</li><li><code>~p</code>: 文件路径</li><li><code>~dp</code>: 驱动器号+文件路径</li><li><code>~n</code>: 文件名或文件夹名（不含扩展名）</li><li><code>~x</code>: 文件扩展名</li><li><code>~a</code>: 文件属性</li><li><code>~t</code>: 文件修改时间</li><li><code>~s</code>: 扩展短文件名</li><li><code>~z</code>: 文件大小（字节）</li><li><code>~$PATH:1</code> : 在 <code>PATH</code> 环境变量中查找 <code>%1</code> ，返回第一个含有 <code>%1</code> 的路径，如果没有找到，返回空字符串</li></ul><blockquote><p>在批处理中执行命令，需要使用双百分号 <code>%%</code> 转义出一个百分号 <code>%</code></p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> Ops </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Windows </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>ARM 汇编笔记</title>
       <link href="/2020/11/18/armAssembly/"/>
       <url>/2020/11/18/armAssembly/</url>
@@ -79,6 +104,8 @@
             <tag> 证书 </tag>
             
             <tag> 签名 </tag>
+            
+            <tag> Windows </tag>
             
         </tags>
       
