@@ -386,13 +386,16 @@ function initModel() {
     window.live2dv2.debugMousemove = live2d_settings.debug && live2d_settings.debugMousemove;
     window.live2dv4.debugMousemove = live2d_settings.debug && live2d_settings.debugMousemove;
     if (live2d_settings.tryWebp) {
-        testWebP().then(r => window.webpReady = r);
-        if (window.webpReady === true)
-            console.log("[WaifuTips] Your browser support WebP format. Try to load WebP texture first.")
-        else
-            console.log("[WaifuTips] Your browser do not support WebP format.")
+        testWebP().then(r => window.webpReady = r).then(() => {
+            if (window.webpReady === true)
+                console.log("[WaifuTips] Your browser support WebP format. Try to load WebP texture first.");
+            else
+                console.log("[WaifuTips] Your browser do not support WebP format.");
+            loadModel(modelName);
+        });
+    } else {
+        loadModel(modelName);
     }
-    loadModel(modelName);
 }
 
 function loadModel(modelName) {
@@ -400,7 +403,7 @@ function loadModel(modelName) {
         setLS('modelName', modelName);
     else
         setSS('modelName', modelName);
-    live2d_settings.debug && console.log(`[WaifuTips] 加载模型 ${modelName}`);
+    live2d_settings.debug && console.log(`[WaifuTips] load model: ${modelName}`);
     let modelVersion = 2;
     // 在配置中找到要加载模型的版本
     for (let model of live2d_models) {
