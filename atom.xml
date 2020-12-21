@@ -121,13 +121,13 @@
       <category term="Ops" scheme="http://konata.tech/categories/Ops/"/>
     
     
-      <category term="Windows" scheme="http://konata.tech/tags/Windows/"/>
-    
       <category term="驱动" scheme="http://konata.tech/tags/%E9%A9%B1%E5%8A%A8/"/>
     
       <category term="证书" scheme="http://konata.tech/tags/%E8%AF%81%E4%B9%A6/"/>
     
       <category term="签名" scheme="http://konata.tech/tags/%E7%AD%BE%E5%90%8D/"/>
+    
+      <category term="Windows" scheme="http://konata.tech/tags/Windows/"/>
     
   </entry>
   
