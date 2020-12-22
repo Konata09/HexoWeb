@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://konata.tech/"/>
-  <updated>2020-12-06T09:22:44.508Z</updated>
+  <updated>2020-12-22T08:50:46.462Z</updated>
   <id>http://konata.tech/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ffmpeg 命令整理</title>
+    <link href="http://konata.tech/2020/12/22/ffmpeg/"/>
+    <id>http://konata.tech/2020/12/22/ffmpeg/</id>
+    <published>2020-12-21T16:17:37.000Z</published>
+    <updated>2020-12-22T08:50:46.462Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;无损切割音频&quot;&gt;&lt;a href=&quot;#无损切割音频&quot; class=&quot;headerlink&quot; title=&quot;无损切割音频&quot;&gt;&lt;/a&gt;无损切割音频&lt;/h3&gt;&lt;p&gt;&lt;code&gt;ss&lt;/code&gt; : 起始秒&lt;br&gt;&lt;code&gt;t&lt;/code&gt; :
+        
+      
+    
+    </summary>
+    
+      <category term="Codec" scheme="http://konata.tech/categories/Codec/"/>
+    
+    
+      <category term="ffmpeg" scheme="http://konata.tech/tags/ffmpeg/"/>
+    
+  </entry>
   
   <entry>
     <title>Windows 批处理中的变量</title>
@@ -519,32 +545,6 @@
         
         
           &lt;p&gt;JavaScript 中的一切声明 ( &lt;code&gt;var&lt;/code&gt; , &lt;code&gt;let&lt;/code&gt; , &lt;code&gt;const&lt;/code&gt; , &lt;code&gt;function&lt;/code&gt; , &lt;code&gt;function*&lt;/code&gt; ,
-        
-      
-    
-    </summary>
-    
-      <category term="JavaScript" scheme="http://konata.tech/categories/JavaScript/"/>
-    
-    
-      <category term="JavaScript" scheme="http://konata.tech/tags/JavaScript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Apply(), Call(), Bind() 的区别</title>
-    <link href="http://konata.tech/2020/09/06/differenceBetweenApplyCallBind/"/>
-    <id>http://konata.tech/2020/09/06/differenceBetweenApplyCallBind/</id>
-    <published>2020-09-06T05:06:25.000Z</published>
-    <updated>2020-09-06T05:24:32.972Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;每个 &lt;code&gt;Function&lt;/code&gt; 对象都存在 &lt;code&gt;apply()&lt;/code&gt; , &lt;code&gt;call()&lt;/code&gt; , &lt;code&gt;bind()&lt;/code&gt; 方法，其作用都是可以在特定的作用域中调用函数，等于设置函数体内
         
       
     

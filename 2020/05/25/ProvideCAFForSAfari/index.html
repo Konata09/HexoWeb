@@ -365,6 +365,10 @@ Vorbis 是一種有損音訊壓縮格式，由 Xiph. Org 基金會所領導並�
                                 <span class="chip bg-color">Opus</span>
                             </a>
                         
+                            <a href="/tags/ffmpeg/" target="_blank">
+                                <span class="chip bg-color">ffmpeg</span>
+                            </a>
+                        
                     </div>
                     
                 </div>
@@ -431,7 +435,8 @@ Vorbis 是一種有損音訊壓縮格式，由 Xiph. Org 基金會所領導並�
 <h2 id="Vorbis-与-Opus-的浏览器支持情况"><a href="#Vorbis-与-Opus-的浏览器支持情况" class="headerlink" title="Vorbis 与 Opus 的浏览器支持情况"></a>Vorbis 与 Opus 的浏览器支持情况</h2><p><img src="/images/pasted-5.png" alt="Vorbis"></p>
 <p><img src="/images/pasted-6.jpg" alt="Opus"></p>
 <p>音频编码 Opus 与 Vorbis 中，Safari 完全不支持 Vorbis 编码，支持 CAF 封装的 Opus 编码文件。<br>但 CAF(Core Audio Format) 是苹果的专有格式，其他浏览器并不支持。因此，想要在网页中使用 Opus 编码，需要同时准备两份文件，一份 CAF 封装，一份 Ogg 封装（.ogg 或者 .opus）。</p>
-<h2 id="转换-Opus-格式"><a href="#转换-Opus-格式" class="headerlink" title="转换 Opus 格式"></a>转换 Opus 格式</h2><p>用 FFmpeg 可以很方便的转换 Opus 到 CAF：<br> <code>FOR %%a IN (.\*.opus) DO (&quot;ffmpeg&quot; -i &quot;%%a&quot; -c:a copy &quot;%%a.caf&quot;)</code><br>保存成批处理可以将当前文件夹下的所有 Opus 文件生成一份 caf 封装的副本。</p>
+<h2 id="转换-Opus-格式"><a href="#转换-Opus-格式" class="headerlink" title="转换 Opus 格式"></a>转换 Opus 格式</h2><p>用 FFmpeg 可以很方便的转换 Opus 到 CAF：<br> <code>FOR %%a IN (.\*.opus) DO (&quot;ffmpeg&quot; -i &quot;%%a&quot; -c:a copy &quot;%%a.caf&quot;)</code></p>
+<p>保存成批处理可以将当前文件夹下的所有 Opus 文件生成一份 caf 封装的副本。</p>
 <h2 id="使用-Nginx-分流提供不同格式文件"><a href="#使用-Nginx-分流提供不同格式文件" class="headerlink" title="使用 Nginx 分流提供不同格式文件"></a>使用 Nginx 分流提供不同格式文件</h2><p>这样做的好处是不需要修改前端代码，代码中统一使用 Opus 或者 Ogg 格式，但 Nginx 会根据不同的浏览器返回不同文件。<br>利用 Nginx 的内置变量和 URL 重写功能，对请求的 UserAgent 进行判断，符合条件的请求会被重写。<br>因为 Nginx 不支持在一个条件中判断多个表达式和 if 语句的嵌套，只能利用自定义变量实现多条件判断。<br>对于 Safari 浏览器，如果接收的文件不是以 .caf 结尾，则必须正确指定 Content-Type 才能播放。<br>另外，对于这种改写方法，由于请求地址是一样的，必须要在 Cache-Control 中指定为 private，否则 CDN 可能缓存错误的文件，导致浏览器无法播放。</p>
 <pre class=" language-nginx"><code class="language-nginx"><span class="token keyword">location</span> <span class="token operator">/</span>media<span class="token operator">/</span> <span class="token punctuation">{</span>
     <span class="token keyword">root</span>   <span class="token operator">/</span>srv<span class="token operator">/</span>nginx<span class="token operator">/</span>hexo_media<span class="token operator">/</span><span class="token punctuation">;</span>
