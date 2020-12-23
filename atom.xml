@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://konata.tech/"/>
-  <updated>2020-12-22T08:50:46.462Z</updated>
+  <updated>2020-12-22T10:29:01.013Z</updated>
   <id>http://konata.tech/</id>
   
   <author>
@@ -15,6 +15,40 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>KubeEdge 部署记录</title>
+    <link href="http://konata.tech/2020/12/22/KubeEdgeDeployLog/"/>
+    <id>http://konata.tech/2020/12/22/KubeEdgeDeployLog/</id>
+    <published>2020-12-22T08:52:59.000Z</published>
+    <updated>2020-12-22T10:29:01.013Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;云端-Cloud-Side&quot;&gt;&lt;a href=&quot;#云端-Cloud-Side&quot; class=&quot;headerlink&quot; title=&quot;云端 (Cloud Side)&quot;&gt;&lt;/a&gt;云端 (Cloud Side)&lt;/h2&gt;&lt;p&gt;此处安装云端的环境是 VMWare 安装
+        
+      
+    
+    </summary>
+    
+      <category term="Ops" scheme="http://konata.tech/categories/Ops/"/>
+    
+    
+      <category term="Kubernetes" scheme="http://konata.tech/tags/Kubernetes/"/>
+    
+      <category term="KubeEdge" scheme="http://konata.tech/tags/KubeEdge/"/>
+    
+      <category term="K8S" scheme="http://konata.tech/tags/K8S/"/>
+    
+      <category term="边缘云" scheme="http://konata.tech/tags/%E8%BE%B9%E7%BC%98%E4%BA%91/"/>
+    
+      <category term="Docker" scheme="http://konata.tech/tags/Docker/"/>
+    
+  </entry>
   
   <entry>
     <title>ffmpeg 命令整理</title>
@@ -519,32 +553,6 @@
         
         
           &lt;h2 id=&quot;匿名函数&quot;&gt;&lt;a href=&quot;#匿名函数&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="JavaScript" scheme="http://konata.tech/categories/JavaScript/"/>
-    
-    
-      <category term="JavaScript" scheme="http://konata.tech/tags/JavaScript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JS 中的变量提升</title>
-    <link href="http://konata.tech/2020/09/07/hoistedVariablesInJs/"/>
-    <id>http://konata.tech/2020/09/07/hoistedVariablesInJs/</id>
-    <published>2020-09-07T12:58:24.000Z</published>
-    <updated>2020-09-08T23:34:00.473Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;JavaScript 中的一切声明 ( &lt;code&gt;var&lt;/code&gt; , &lt;code&gt;let&lt;/code&gt; , &lt;code&gt;const&lt;/code&gt; , &lt;code&gt;function&lt;/code&gt; , &lt;code&gt;function*&lt;/code&gt; ,
         
       
     
