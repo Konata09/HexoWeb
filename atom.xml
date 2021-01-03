@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://konata.tech/"/>
-  <updated>2020-12-22T10:29:01.013Z</updated>
+  <updated>2021-01-03T09:08:49.417Z</updated>
   <id>http://konata.tech/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Linux 编程</title>
+    <link href="http://konata.tech/2021/01/01/LinuxProgramming/"/>
+    <id>http://konata.tech/2021/01/01/LinuxProgramming/</id>
+    <published>2021-01-01T09:23:35.000Z</published>
+    <updated>2021-01-03T09:08:49.417Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;Linux-进程存储管理&quot;&gt;&lt;a href=&quot;#Linux-进程存储管理&quot; class=&quot;headerlink&quot; title=&quot;Linux 进程存储管理&quot;&gt;&lt;/a&gt;Linux 进程存储管理&lt;/h2&gt;&lt;h3 id=&quot;存储类型比较&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="Miscellaneous" scheme="http://konata.tech/categories/Miscellaneous/"/>
+    
+    
+      <category term="Linux" scheme="http://konata.tech/tags/Linux/"/>
+    
+      <category term="C" scheme="http://konata.tech/tags/C/"/>
+    
+  </entry>
   
   <entry>
     <title>KubeEdge 部署记录</title>
@@ -527,32 +555,6 @@
         
         
           &lt;p&gt;函数和对其词法环境 (lexical environment) 的引用捆绑在一起构成&lt;strong&gt;闭包 (closure)&lt;/strong&gt;，也就是说，闭包可以让你从内部函数访问外部函数作用域。在
-        
-      
-    
-    </summary>
-    
-      <category term="JavaScript" scheme="http://konata.tech/categories/JavaScript/"/>
-    
-    
-      <category term="JavaScript" scheme="http://konata.tech/tags/JavaScript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>匿名函数与自执行函数</title>
-    <link href="http://konata.tech/2020/09/08/anonymousFunction/"/>
-    <id>http://konata.tech/2020/09/08/anonymousFunction/</id>
-    <published>2020-09-08T10:02:37.000Z</published>
-    <updated>2020-09-10T01:12:00.257Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;匿名函数&quot;&gt;&lt;a href=&quot;#匿名函数&quot; class=&quot;headerlink&quot;
         
       
     
