@@ -401,14 +401,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1k
+                        1.2k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        5 分
+                        6 分
                     </div>
                     
                 
@@ -601,6 +601,14 @@ kubernetes-dashboard   kubernetes-dashboard-74d688b6bc-x7fqm        1/1     Runn
   <span class="token key atrule">name</span><span class="token punctuation">:</span> admin<span class="token punctuation">-</span>user
   <span class="token key atrule">namespace</span><span class="token punctuation">:</span> kube<span class="token punctuation">-</span>system</code></pre>
 <pre class=" language-bash"><code class="language-bash">kubectl apply -f dashboard-adminuser.yaml</code></pre>
+<h5 id="修改-dashboard-服务"><a href="#修改-dashboard-服务" class="headerlink" title="修改 dashboard 服务"></a>修改 dashboard 服务</h5><pre class=" language-bash"><code class="language-bash">kubectl edit <span class="token function">service</span> kubernetes-dashboard -n kubernetes-dashboard</code></pre>
+<p>修改 <code>type: ClusterIP</code> 为 <code>type: NodePort</code> ，并在 <code>ports</code> 下增加 <code>nodePort: 30443</code></p>
+<h5 id="获取-Token"><a href="#获取-Token" class="headerlink" title="获取 Token"></a>获取 Token</h5><pre class=" language-bash"><code class="language-bash">kubectl -n kube-system describe secret <span class="token punctuation">$(</span>kubectl -n kube-system get secret <span class="token operator">|</span> <span class="token function">grep</span> admin-user <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'{print <span class="token variable">$1</span>}'</span><span class="token punctuation">)</span></code></pre>
+<p>可以将 Token 保存下来便于以后登录使用。</p>
+<h5 id="登录-dashboard"><a href="#登录-dashboard" class="headerlink" title="登录 dashboard"></a>登录 dashboard</h5><p>访问 <code>https://172.31.16.53:30443</code> ，选择使用 Token 登录，粘贴刚才得到的 Token 即可进入 Dashboard。</p>
+<h3 id="安装-KubeEdge"><a href="#安装-KubeEdge" class="headerlink" title="安装 KubeEdge"></a>安装 KubeEdge</h3><pre class=" language-bash"><code class="language-bash"><span class="token function">wget</span> https://github.com/kubeedge/kubeedge/releases/download/v1.5.0/keadm-v1.5.0-linux-amd64.tar.gz
+<span class="token function">tar</span> -xzf keadm-v1.5.0-linux-amd64.tar.gz <span class="token operator">&amp;&amp;</span>  <span class="token function">cd</span> keadm-v1.5.0-linux-amd64
+./keadm init --kube-config<span class="token operator">=</span>/etc/kubernetes/admin.conf</code></pre>
 <h2 id="边缘端-Edge-Side"><a href="#边缘端-Edge-Side" class="headerlink" title="边缘端 (Edge Side)"></a>边缘端 (Edge Side)</h2>
             </div>
             <hr/>

@@ -408,14 +408,14 @@ exte">
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        2.8k
+                        4.6k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        10 分
+                        17 分
                     </div>
                     
                 
@@ -786,10 +786,85 @@ exte">
 <p>从流中读取 n 个大小为 size 的对象存放于第一个参数 ptr 所指向的内存空间。<br>第一个参数为读取的对象的存放位置<br>第二个参数为读取对象的大小，例如读出一个结构体 buf，此参数可以设置为 sizeof（struct buf）<br>第三个参数为读取对象的个数<br>第四个参数为读取的流<br>返回实际读取到的对象个数（不是读写的字节大小）</p>
 <pre class=" language-c"><code class="language-c">size_t <span class="token function">fwrite</span> <span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">void</span> <span class="token operator">*</span>data<span class="token punctuation">,</span> size_t size<span class="token punctuation">,</span> size_t count<span class="token punctuation">,</span> FILE <span class="token operator">*</span>stream<span class="token punctuation">)</span></code></pre>
 <p>向流中写入 n 个大小为 size 的对象存储于 ptr 所指示的空间中。<br>第一个参数为指向欲写入的对象的数据空间指针，即写入的对象的存放位置<br>第二个参数为写入对象的大小，例如写入一个结构体 buf，此参数可以设置为 sizeof（struct buf）<br>第三个参数为写入的个数<br>第四个参数为写入的数据流<br>执行成功返回实际写入的对象个数，否则返回-1</p>
-<pre class=" language-c"><code class="language-c"></code></pre>
-<pre class=" language-c"><code class="language-c"></code></pre>
-<pre class=" language-c"><code class="language-c"></code></pre>
-<pre class=" language-c"><code class="language-c"></code></pre>
+<pre class=" language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">feof</span> <span class="token punctuation">(</span>FILE <span class="token operator">*</span>stream<span class="token punctuation">)</span></code></pre>
+<p>用于二进制文件流，如果读到文件结束，返回 1，否则返回 0。</p>
+<pre class=" language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">ferror</span> <span class="token punctuation">(</span>FILE <span class="token operator">*</span>stream<span class="token punctuation">)</span></code></pre>
+<p>判断给定的流是否出现了错误，如果没有出现错误，返回 0，否则表示出错</p>
+<pre class=" language-c"><code class="language-c"><span class="token keyword">void</span> <span class="token function">clearerr</span> <span class="token punctuation">(</span>FILE <span class="token operator">*</span>stream<span class="token punctuation">)</span></code></pre>
+<p>清除错误标识位</p>
+<pre class=" language-c"><code class="language-c"><span class="token keyword">long</span> <span class="token keyword">int</span> <span class="token function">ftell</span> <span class="token punctuation">(</span>FILE <span class="token operator">*</span>stream<span class="token punctuation">)</span></code></pre>
+<p>返回流的当前读写位置距离文件开始的字节数</p>
+<pre class=" language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">fseek</span> <span class="token punctuation">(</span>FILE <span class="token operator">*</span>stream<span class="token punctuation">,</span> <span class="token keyword">long</span> <span class="token keyword">int</span> offset<span class="token punctuation">,</span> <span class="token keyword">int</span> whence<span class="token punctuation">)</span></code></pre>
+<p>第一个参数为操作的流对象<br>第二个参数为针对第三个参数（修改基准）的偏移量<br>第三个参数为修改位置的基准： <code>SEEK_SET</code> 文件开头， <code>SEEK_CUR</code> 当前位置， <code>SEEK_END</code> 文件结尾</p>
+<pre class=" language-c"><code class="language-c"><span class="token keyword">void</span> <span class="token function">rewind</span> <span class="token punctuation">(</span>FILE <span class="token operator">*</span>stream<span class="token punctuation">)</span></code></pre>
+<p>将读写指针重置到文件开始位置</p>
+<h3 id="格式化输入输出"><a href="#格式化输入输出" class="headerlink" title="格式化输入输出"></a>格式化输入输出</h3><pre class=" language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">printf</span> <span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>template<span class="token punctuation">,</span> …<span class="token punctuation">)</span>
+<span class="token keyword">int</span> <span class="token function">scanf</span> <span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>template<span class="token punctuation">,</span> …<span class="token punctuation">)</span>
+<span class="token keyword">int</span> <span class="token function">fprintf</span> <span class="token punctuation">(</span>FILE <span class="token operator">*</span>stream<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>template<span class="token punctuation">,</span> …<span class="token punctuation">)</span>
+<span class="token keyword">int</span> <span class="token function">scanf</span> <span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>template<span class="token punctuation">,</span> …<span class="token punctuation">)</span></code></pre>
+<p>printf( )/scanf( ) 函数专门针对标准输入输出流<br>fprintf( )/fscanf( ) 可用于任意流</p>
+<pre class=" language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">sprintf</span> <span class="token punctuation">(</span><span class="token keyword">char</span> <span class="token operator">*</span>s<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>template<span class="token punctuation">,</span> …<span class="token punctuation">)</span></code></pre>
+<p>sprintf 是将列出的数据或者变量（第 3 个及后面多个参数）以 format 格式输出到以 buffer 为起始位置的内存空间中。<br>返回本次函数调用最终打印到字符缓冲区中的字符数目</p>
+<pre class=" language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">sscanf</span> <span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>s<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>template<span class="token punctuation">,</span> …<span class="token punctuation">)</span></code></pre>
+<p>与 scanf 类似，但以固定字符串为输入源</p>
+<h2 id="POSIX-文件与目录管理"><a href="#POSIX-文件与目录管理" class="headerlink" title="POSIX 文件与目录管理"></a>POSIX 文件与目录管理</h2><h3 id="文件流与文件描述符转换"><a href="#文件流与文件描述符转换" class="headerlink" title="文件流与文件描述符转换"></a>文件流与文件描述符转换</h3><pre class=" language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">fileno</span> <span class="token punctuation">(</span>FILE <span class="token operator">*</span>stream<span class="token punctuation">)</span></code></pre>
+<p>以某个流对象为参数，返回该流的文件描述符值。</p>
+<pre class=" language-c"><code class="language-c">FILE <span class="token operator">*</span> <span class="token function">fdopen</span> <span class="token punctuation">(</span><span class="token keyword">int</span> filedes<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>opentype<span class="token punctuation">)</span></code></pre>
+<p>将某个流与一个文件描述符相接。<br>第 1 个参数为一个文件描述符<br>第 2 个参数为封装该流的权限 (r(+), w(+), a(+))<br>成功返回一个流对象，失败返回 NULL</p>
+<h3 id="POSIX-标准下文件-I-O-管理"><a href="#POSIX-标准下文件-I-O-管理" class="headerlink" title="POSIX 标准下文件 I/O 管理"></a>POSIX 标准下文件 I/O 管理</h3><pre class=" language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">open</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>pathname<span class="token punctuation">,</span> <span class="token keyword">int</span> flags<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token function">open</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>pathname<span class="token punctuation">,</span> <span class="token keyword">int</span> flags<span class="token punctuation">,</span> mode_t mode<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>返回所打开的文件的文件描述符（int 类型）。<br>第 1 个参数是欲打开文件的文件路径<br>第 2 个参数打开文件的方式<br>如果欲打开的文件不存在，则可以使用 open 函数自动创建该文件，即 <code>O_CREAT</code> 打开方式，此时需要用到第 3 个参数，它约定了文件的权限，具体的计算方法为 <code>mode&amp;~umask</code></p>
+<pre class=" language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">close</span><span class="token punctuation">(</span><span class="token keyword">int</span> fd<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>关闭文件，参数为调用 open 函数打开文件时返回的文件描述符</p>
+<pre class=" language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">creat</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>pathname<span class="token punctuation">,</span> mode_t mode<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>创建文件，相当于 <code>int open(const char *pathname, (O_CREAT|O_WRONLY|O_TRUNC), mode_t mode);</code></p>
+<pre class=" language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">fcntl</span> <span class="token punctuation">(</span><span class="token keyword">int</span> filedes<span class="token punctuation">,</span> <span class="token keyword">int</span> command<span class="token punctuation">,</span> …<span class="token punctuation">)</span></code></pre>
+<p>用于修改某个文件描述符的特殊属性<br>第 1 个参数 filedes 为欲修改属性的文件描述符<br>第 2 个参数 command 为相应操作  </p>
+<pre class=" language-c"><code class="language-c">ssize_t <span class="token function">read</span> <span class="token punctuation">(</span><span class="token keyword">int</span> filedes<span class="token punctuation">,</span> <span class="token keyword">void</span> <span class="token operator">*</span>buffer<span class="token punctuation">,</span> size_t size<span class="token punctuation">)</span></code></pre>
+<p>从参数 filedes 所指的文件中读取 size 数据到 buffer 指针所指的内存中，此函数返回值为实际读取到的字数。如果返回 0，表示已到达文件尾部或无数据可读。</p>
+<pre class=" language-c"><code class="language-c">ssize_t <span class="token function">write</span> <span class="token punctuation">(</span><span class="token keyword">int</span> filedes<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">void</span> <span class="token operator">*</span>buffer<span class="token punctuation">,</span> size_t size<span class="token punctuation">)</span></code></pre>
+<p>尝试将以 buffer 为起始地址的缓冲区前 size 个字节写入与打开文件描述符 filedes 关联的文件内。如果执行成功，将返回真正写入数据的大小，如果失败，将返回-1，并置错误信息。</p>
+<pre class=" language-c"><code class="language-c">off_t <span class="token function">lseek</span> <span class="token punctuation">(</span><span class="token keyword">int</span> filedes<span class="token punctuation">,</span> off_t offset<span class="token punctuation">,</span> <span class="token keyword">int</span> whence<span class="token punctuation">)</span></code></pre>
+<p>第 1 个参数 filedes 为已经打开的文件<br>第 2 个参数 offset 为根据参考位置来移动读写位置的偏移数<br>第 3 个参数 whence 参考位置： <code>SEEK_SET</code> 文件开头， <code>SEEK_CUR</code> 当前位置， <code>SEEK_END</code> 文件结尾<br>返回当前读写位置距离文件头的字节数</p>
+<pre class=" language-c"><code class="language-c"><span class="token keyword">void</span> <span class="token function">sync</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token function">fsync</span><span class="token punctuation">(</span><span class="token keyword">int</span> fd<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token function">fdatasync</span><span class="token punctuation">(</span><span class="token keyword">int</span> fd<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>更新缓冲区。<br>sync 始终成功，但 sync 只是将所有修改过的块的缓存排入写队列，然后返回，不等待实际 I/O 操作结束。<br>fsync 等待 I/O 结束，然后返回<br>fdatasync 只更新内容，如果没有必要，并不更新元数据<br>成功时返回 0</p>
+<pre class=" language-c"><code class="language-c"><span class="token keyword">void</span> <span class="token operator">*</span><span class="token function">mmap</span><span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token operator">*</span>addr<span class="token punctuation">,</span> size_t length<span class="token punctuation">,</span> <span class="token keyword">int</span> prot<span class="token punctuation">,</span> <span class="token keyword">int</span> flags<span class="token punctuation">,</span> <span class="token keyword">int</span> fd<span class="token punctuation">,</span> off_t offset<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token function">munmap</span><span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token operator">*</span>addr<span class="token punctuation">,</span> size_t length<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>将某个文件的指定内容映射到内存空间中。  </p>
+<pre class=" language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">flock</span><span class="token punctuation">(</span><span class="token keyword">int</span> fd<span class="token punctuation">,</span> <span class="token keyword">int</span> operation<span class="token punctuation">)</span><span class="token punctuation">;</span>  </code></pre>
+<p>对文件的锁定和解锁操作，其锁定针对相应的文件表项（struct file），因此，复制的新文件描述符仍然受其影响。<br>第 1 个参数为欲操作的文件描述符<br>第 2 个参数为操作命令：  </p>
+<ul>
+<li>LOCK_SH：建立共享锁定。多个进程可同时对同一文件作共享读操作，但不能排它写锁定。</li>
+<li>LOCK_EX：建立文件互斥锁定。任意两进程不能同时操作文件。</li>
+<li>LOCK_UN：解除文件的锁定状态。</li>
+<li>LOCK_NB：无法建立锁定时，此操作可不被阻塞，马上返回进程，通常与前面的操作组合使用。</li>
+</ul>
+<h3 id="目录流基本操作"><a href="#目录流基本操作" class="headerlink" title="目录流基本操作"></a>目录流基本操作</h3><pre class=" language-c"><code class="language-c">DIR <span class="token operator">*</span><span class="token function">opendir</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token function">closedir</span><span class="token punctuation">(</span>DIR <span class="token operator">*</span>dirp<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>opendir( ) 打开路径为 name 的目录，并使用一个目录流指针，用来标识后续操作中的目录流。<br>closedir( ) 用于关闭指定的目录流，然后释放与 DIR 指针关联的结构。</p>
+<pre class=" language-c"><code class="language-c"><span class="token keyword">struct</span> dirent <span class="token operator">*</span><span class="token function">readdir</span><span class="token punctuation">(</span>DIR <span class="token operator">*</span>dirp<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>每调用一次 readdir( )，其将返回指向下一个目录条目的指针。如果到达目录的结尾，或者检测到无效的 seekdir( ) 操作，将返回 NULL 指针。</p>
+<pre class=" language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">readdir_r</span><span class="token punctuation">(</span>DIR <span class="token operator">*</span>dirp<span class="token punctuation">,</span> <span class="token keyword">struct</span> dirent <span class="token operator">*</span>entry<span class="token punctuation">,</span> <span class="token keyword">struct</span> dirent <span class="token operator">*</span><span class="token operator">*</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>readdir( ) 在多线程操作中会不安全，因此，Linux 提供了 readdir_r( ) 函数实现多线程读取目录内容操作。<br>第 1 个参数为打开的目录指针，它将初始化第 2 个参数（entry）引用的 dirent 结构，以表示第 1 个参数（dirp）所引用的目录流中的当前位置；然后在第 3 个参数（result）所指示的位置存储指向该结构的目录信息。<br>如果成功完成，将在第 3 个参数返回一个指向描述目录条目的 struct dirent 类型对象的指针。如果到达目录的结尾，则在第 3 个参数中返回 NULL 指针。并返回 0。</p>
+<pre class=" language-c"><code class="language-c"><span class="token keyword">long</span> <span class="token function">telldir</span><span class="token punctuation">(</span>DIR <span class="token operator">*</span>dirp<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>返回目录流相关联的当前位置。</p>
+<pre class=" language-c"><code class="language-c"><span class="token keyword">void</span> <span class="token function">seekdir</span><span class="token punctuation">(</span>DIR <span class="token operator">*</span>dirp<span class="token punctuation">,</span> <span class="token keyword">long</span> loc<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>在 dirp 引用的目录流上设置下一个 readdir( ) 操作的位置。loc 参数是从 telldir( ) 获取的目录流中的一个位置。只有当对应的 DIR 指针处于打开状态时，这些值才有效。如果将目录流关闭后再重新打开，其值可能无效。</p>
+<pre class=" language-c"><code class="language-c"><span class="token keyword">void</span> <span class="token function">rewinddir</span><span class="token punctuation">(</span>DIR <span class="token operator">*</span>dirp<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>将 dirp 引用的目录流的位置重置到目录的开头。</p>
+<pre class=" language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">mkdir</span> <span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>filename<span class="token punctuation">,</span> mode_t mode<span class="token punctuation">)</span>
+<span class="token keyword">int</span> <span class="token function">rmdir</span> <span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>filename<span class="token punctuation">)</span></code></pre>
+<p>第 1 个参数为欲创建的目录文件路径<br>第 2 个参数用于设置该目录的访问权限，新创建文件权限为 <code>mode &amp; ~umask &amp; 0777</code> 。</p>
+<pre class=" language-c"><code class="language-c"><span class="token keyword">char</span> <span class="token operator">*</span><span class="token function">getcwd</span><span class="token punctuation">(</span><span class="token keyword">char</span> <span class="token operator">*</span>buf<span class="token punctuation">,</span> size_t size<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">char</span> <span class="token operator">*</span><span class="token function">get_current_dir_name</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>将当前工作路径的绝对路径名置于由 buf 所指定的数组中，并返回 buf。size 的数值至少比所返回路径名的长度大 1，否则返回 NULL。</p>
+<pre class=" language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">chdir</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>path<span class="token punctuation">)</span><span class="token punctuation">;</span> 
+<span class="token keyword">int</span> <span class="token function">fchdir</span><span class="token punctuation">(</span><span class="token keyword">int</span> fd<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>修改当前进程工作路径</p>
+<pre class=" language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">chroot</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>path<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>修改一个进程可以访问的根目录路径</p>
 <pre class=" language-c"><code class="language-c"></code></pre>
 <pre class=" language-c"><code class="language-c"></code></pre>
 <pre class=" language-c"><code class="language-c"></code></pre>
