@@ -7,7 +7,7 @@
     <meta name="keywords" content="ffmpeg 命令整理, 生命不息 折腾不止">
     <meta name="description" content="无损切割音频ss : 起始秒t : 持续秒数
 ffmpeg -ss 5990  -i in.aac -t 181 -c copy out.m4a
-">
+输出 YUV4MPEG2ffmpeg -y -i input.mp4 -pix_fmt yuv">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -384,7 +384,7 @@ ffmpeg -ss 5990  -i in.aac -t 181 -c copy out.m4a
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        27
+                        38
                     </div>
                     
 
@@ -409,6 +409,7 @@ ffmpeg -ss 5990  -i in.aac -t 181 -c copy out.m4a
             <div id="articleContent">
                 <h3 id="无损切割音频"><a href="#无损切割音频" class="headerlink" title="无损切割音频"></a>无损切割音频</h3><p><code>ss</code> : 起始秒<br><code>t</code> : 持续秒数</p>
 <pre class=" language-bash"><code class="language-bash">ffmpeg -ss 5990  -i in.aac -t 181 -c copy out.m4a</code></pre>
+<h3 id="输出-YUV4MPEG2"><a href="#输出-YUV4MPEG2" class="headerlink" title="输出 YUV4MPEG2"></a>输出 YUV4MPEG2</h3><pre class=" language-bash"><code class="language-bash">ffmpeg -y -i input.mp4 -pix_fmt yuv420p output.y4m</code></pre>
 
             </div>
             <hr/>
