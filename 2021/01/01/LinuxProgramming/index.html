@@ -408,14 +408,14 @@ exte">
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        7.5k
+                        9.7k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        29 分
+                        37 分
                     </div>
                     
                 
@@ -999,7 +999,13 @@ pid_t <span class="token function">waitpid</span><span class="token punctuation"
 <pre class=" language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">sigaction</span> <span class="token punctuation">(</span><span class="token keyword">int</span> signum<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">struct</span> sigaction <span class="token operator">*</span>restrict action<span class="token punctuation">,</span> <span class="token keyword">struct</span> sigaction <span class="token operator">*</span>restrict old<span class="token operator">-</span>action<span class="token punctuation">)</span></code></pre>
 <p>第 1 个参数为接收到的信号<br>第 2 个参数用来指定欲设置的信号处理方式<br>第 3 个参数将存储执行此函数前针对此信号的安装信息<br>第 2、3 个参数均为信号结构 sigaction 变量。  </p>
 <pre class=" language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">sigprocmask</span><span class="token punctuation">(</span><span class="token keyword">int</span> how<span class="token punctuation">,</span> <span class="token keyword">const</span> sigset_t <span class="token operator">*</span>set<span class="token punctuation">,</span> sigset_t <span class="token operator">*</span>oldset<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<p>设置当前进程屏蔽的信号集合</p>
+<p>设置当前进程屏蔽的信号集合<br>第 1 个参数为更改该集的方式：</p>
+<ul>
+<li>SIG_BLOCK：将第 2 个参数所描述的集合添加到当前进程屏蔽的信号集中</li>
+<li>SIG_UNBLOCK：将第 2 个参数所描述的集合从当前进程屏蔽的信号集中删除</li>
+<li>SIG_SETMASK：无论之前屏蔽了哪些信号，设置当前进程屏蔽的集合为第 2 个参数描述的对象</li>
+</ul>
+<p>如果 set 是空指针，则参数 how 的值没有意义，且不会更改进程的屏蔽信号集，因此该调用可用于查询当前屏蔽的信号集合 (oldset)</p>
 <pre class=" language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">sigpending</span> <span class="token punctuation">(</span>sigset_t <span class="token operator">*</span>set<span class="token punctuation">)</span></code></pre>
 <p>获取当前未决的信号集合</p>
 <pre class=" language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">sigaddset</span><span class="token punctuation">(</span>sigset_t <span class="token operator">*</span>set<span class="token punctuation">,</span> <span class="token keyword">int</span> signum<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1011,6 +1017,99 @@ pid_t <span class="token function">waitpid</span><span class="token punctuation"
 <span class="token keyword">int</span> <span class="token function">sigandset</span><span class="token punctuation">(</span>sigset_t <span class="token operator">*</span>dest<span class="token punctuation">,</span> <span class="token keyword">const</span> sigset_t <span class="token operator">*</span>left<span class="token punctuation">,</span> <span class="token keyword">const</span> sigset_t <span class="token operator">*</span>right<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">int</span> <span class="token function">sigorset</span><span class="token punctuation">(</span>sigset_t <span class="token operator">*</span>dest<span class="token punctuation">,</span> <span class="token keyword">const</span> sigset_t <span class="token operator">*</span>left<span class="token punctuation">,</span> <span class="token keyword">const</span> sigset_t <span class="token operator">*</span>right<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>添加信号到信号集<br>从信号集中删除某个信号<br>清空信号集<br>填充所有信号到信号集<br>检测信号是否在信号集中<br>检测信号集是否为空信号集<br>按逻辑与方式将两个信号集合并<br>按逻辑或方式将两个信号集合并</p>
+<pre class=" language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">pause</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>使当前进程处于等待状态，直到当前进程屏蔽信号外的任意一个信号出现  </p>
+<pre class=" language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">sigsuspend</span><span class="token punctuation">(</span><span class="token keyword">const</span> sigset_t <span class="token operator">*</span>mask<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>将当前进程屏蔽的信号集替换为其参数所指定的信号集合，直到收到一个非指定集合中的信号后继续执行  </p>
+<h3 id="消息队列"><a href="#消息队列" class="headerlink" title="消息队列"></a>消息队列</h3><pre class=" language-c"><code class="language-c">key_t <span class="token function">ftok</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>pathname<span class="token punctuation">,</span> <span class="token keyword">int</span> proj_id<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>创建 IPC KEY<br>pathname 为文件路径，一般使用当前目录 <code>.</code></p>
+<p>proj_id 为一个 int 型变量</p>
+<pre class=" language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">msgget</span><span class="token punctuation">(</span>key_t key<span class="token punctuation">,</span> <span class="token keyword">int</span> msgflg<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>创建消息队列<br>第 1 个参数 key 为由 ftok 创建的 key 值<br>第 2 个参数 msgflg 的低位用来确定消息队列的访问权限，其最终权限为 perm &amp; ~umask , 其高位包含以下项：</p>
+<ul>
+<li><code>IPC_CREAT</code>: 如果 key 不存在则创建，存在则返回 ID</li>
+<li><code>IPC_EXCL</code>: 如果 key 存在，返回失败</li>
+<li><code>IPC_NOWAIT</code>: 如果需要等待，直接返回错误</li>
+</ul>
+<pre class=" language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">msgctl</span><span class="token punctuation">(</span><span class="token keyword">int</span> msqid<span class="token punctuation">,</span> <span class="token keyword">int</span> cmd<span class="token punctuation">,</span> <span class="token keyword">struct</span> msqid_ds <span class="token operator">*</span>buf<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>消息队列属性控制<br>第 1 个参数 msqid 为消息队列标识符，该值为使用 msgget 函数创建消息队列的返回值<br>第 2 个参数 cmd 为执行的控制命令，包括以下选项：</p>
+<ul>
+<li><code>IPC_STAT</code>：读取消息队列属性。取得此队列的 msqid _ds 结构，并将其存放在 buf 指向的结构中</li>
+<li><code>IPC_SET</code>：设置消息队列属性。按由 buf 指向的结构中的值，设置与此队列相关的结构中的下列 4 个字段：msg_perm.uid、msg_perm.gid、msg_perm、mode 和 msg_qbytes。此命令只能由下列两种进程执行：一种是其有效用户 ID 等于 msg_perm.cuid 或 msg_perm.uid 的进程，另一种是具有超级用户特权的进程。只有超级用户才能增加 msg_qbytes 的值。</li>
+<li><code>IPC_RMID</code>：删除消息队列。从系统中删除该消息队列以及仍在该队列上的所有数据，这种删除立即生效。仍在使用这一消息队列的其他进程在它们下一次试图对此队列进行操作时，将出错返回 EIDRM。此命令只能由下列两种进程执行：一种是其有效用户号（UID）等于 msg_perm.cuid 或 msg_perm.uid 的进程，另一种是具有超级用户特权的进程。</li>
+<li><code>IPC_INFO</code>：读取消息队列基本情况。  </li>
+</ul>
+<blockquote>
+<p>这 4 条选项（IPC_STAT、IPC_SET、IPC_INFO 和 IPC_RMID）也可用于信号量和共享内存  </p>
+</blockquote>
+<p>第 3 个参数是一个临时的 msqid_ds 结构体类型的变量。用于存储读取的消息队列属性或者需要修改的消息队列属性。</p>
+<pre class=" language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">msgsnd</span><span class="token punctuation">(</span><span class="token keyword">int</span> msqid<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">void</span> <span class="token operator">*</span>msgp<span class="token punctuation">,</span> size_t msgsz<span class="token punctuation">,</span> <span class="token keyword">int</span> msgflg<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>发送信息到消息队列<br>第 1 个参数 msqid 为指定的消息队列标识符（由 msgget 生成的消息队列标识符）<br>第 2 个参数 msgp 指向的用户定义缓冲区，结构为：</p>
+<pre class=" language-c"><code class="language-c"><span class="token keyword">struct</span> msgbuf <span class="token punctuation">{</span>
+    <span class="token keyword">long</span> mtype<span class="token punctuation">;</span>       <span class="token comment" spellcheck="true">/* message type, must be > 0 */</span>
+    <span class="token keyword">char</span> mtext<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">/* message data */</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<ul>
+<li>mtype 是一个正整数，表示消息的类型，接收进程可以用来进行消息选择（消息队列在存储信息时是按发送的先后顺序放置的）</li>
+<li>mtext 存储消息内容，在使用时自己重新定义此结构</li>
+</ul>
+<p>第 3 个参数为接收信息的大小，其数据类型为 size_t，即 unsigned int 类型。其大小为 0 到系统对消息队列的限制值<br>第 4 个参数用来指定在达到系统为消息队列所定的界限（如达到字数限制）时应采取的操作：  </p>
+<ul>
+<li>IPC_NOWAIT：如果需要等待，则不发送消息并且调用进程立即返回错误信息 EAGAIN</li>
+<li>0：如果需要等待，则阻塞调用进程</li>
+</ul>
+<pre class=" language-c"><code class="language-c">ssize_t <span class="token function">msgrcv</span><span class="token punctuation">(</span><span class="token keyword">int</span> msqid<span class="token punctuation">,</span> <span class="token keyword">void</span> <span class="token operator">*</span>msgp<span class="token punctuation">,</span> size_t msgsz<span class="token punctuation">,</span> <span class="token keyword">long</span> msgtyp<span class="token punctuation">,</span> <span class="token keyword">int</span> msgflg<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>从消息队列接收信息<br>第 1 个参数为读的消息队列<br>第 2 个参数为一个临时消息数据结构，用来保存读取的信息。其定义 msgbuf 如上<br>第 3 个参数 msgsz 用于指定 mtext 的大小（以字节为单位）<br>第 4 个参数 msgtyp 用于指定请求的消息类型，具体如下所示：</p>
+<ul>
+<li>msgtyp = 0：接收队列中的第一条消息，任意类型</li>
+<li>msgtyp &gt; 0：接收第一条 msgtyp 类型的消息</li>
+<li>msgtyp &lt; 0：接收第一条最低类型（小于或等于 msgtyp 的绝对值）的消息</li>
+</ul>
+<p>第 5 个参数 msgflg 用于指定所需类型消息不在队列上时将要采取的操作。具体如下所示：</p>
+<ul>
+<li>如果设置 IPC_NOWAIT，如果现在没有消息，调用进程立即返回，同时返回-1，并将 errno 设为［ENOMSG］  </li>
+<li>如果未设置 IPC_NOWAIT，则阻塞调用进程行，直至出现以下任何一种情况发生  <ul>
+<li>某一所需类型的消息被放置到队列中</li>
+<li>msqid 从系统中删除。当该情况发生时，将 errno 设为［EIDRM］，并返回-1</li>
+<li>调用进程收到一个要捕获的信号。在这种情况下，未收到消息，并且调用进程按 signal（SIGTRAP）中指定方式恢复执行</li>
+</ul>
+</li>
+</ul>
+<p>返回接收到的消息大小</p>
+<h3 id="信号量"><a href="#信号量" class="headerlink" title="信号量"></a>信号量</h3><pre class=" language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">semget</span><span class="token punctuation">(</span>key_t key<span class="token punctuation">,</span> <span class="token keyword">int</span> nsems<span class="token punctuation">,</span> <span class="token keyword">int</span> semflg<span class="token punctuation">)</span><span class="token punctuation">;</span>  </code></pre>
+<p>创建信号量集合<br>第 1 个参数为 key_t 类型的 key 值<br>第 2 个参数 nsems 为创建的信号量个数，以数组的方式存储<br>第 3 个参数 semflg 用来标识信号量集合的权限，与消息队列的相同  </p>
+<pre class=" language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">semctl</span><span class="token punctuation">(</span><span class="token keyword">int</span> semid<span class="token punctuation">,</span> <span class="token keyword">int</span> semnum<span class="token punctuation">,</span> <span class="token keyword">int</span> cmd<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>第 1 个参数 semid 为要操作的信号量集合标识符，该值一般由 semget 函数返回<br>第 2 个参数为集合中信号量的编号。如果标识某个信号量，此值为该信号量的下标（从 0 到 n-1）；如果操作整个信号量集合，此参数无意义。<br>第 3 个参数为要执行的操作，如果是对整个信号量集合操作，则包括 IPC_RMID、IPC_SET、IPC_STAT 和 IPC_INFO。如果是对信号量集合中的某个或某些信号量操作，则包括：</p>
+<ul>
+<li><code>GETPID</code>: 获取信号量拥有者的 pid</li>
+<li><code>GETVAL</code>: 获取信号量的值</li>
+<li><code>GETALL</code>: 获取所有信号量的值，第 2 个参数为 0，第 4 个参数为存储所有信号量值内存空间首地址</li>
+<li><code>GETNCNT</code>: 获取等待信号量的值递增的进程数</li>
+<li><code>GETZCNT</code>: 获取等待信号量的值递减的进程数</li>
+<li><code>SETVAL</code>: 设置信号量的值</li>
+<li><code>SETALL</code>: 设置所有信号量的值，第 2 个参数为 0，第 4 个参数为欲设置的信号量值所在数组首地址</li>
+</ul>
+<pre class=" language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">semop</span><span class="token punctuation">(</span><span class="token keyword">int</span> semid<span class="token punctuation">,</span> <span class="token keyword">struct</span> sembuf <span class="token operator">*</span>sops<span class="token punctuation">,</span> size_t nsops<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>操作信号量集合<br>第 1 个参数为要操作的信号量集合 ID<br>第 2 个参数为 struct sembuf 结构的变量  </p>
+<h3 id="共享内存"><a href="#共享内存" class="headerlink" title="共享内存"></a>共享内存</h3><pre class=" language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">shmget</span><span class="token punctuation">(</span>key_t key<span class="token punctuation">,</span> size_t size<span class="token punctuation">,</span> <span class="token keyword">int</span> shmflg<span class="token punctuation">)</span><span class="token punctuation">;</span>  </code></pre>
+<p>创建共享内存<br>第 1 个参数为 key_t 类型的 key 值<br>第 2 个参数 size 为欲创建的共享内存段大小（单位为字节）<br>第 3 个参数 shmflg 用来标识共享内存段的创建标识，包括：IPC_CREAT IPC_EXCL IPC_NOWAIT SHM_R（可读） SHM_W（可写）</p>
+<pre class=" language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">shmctl</span><span class="token punctuation">(</span><span class="token keyword">int</span> shmid<span class="token punctuation">,</span> <span class="token keyword">int</span> cmd<span class="token punctuation">,</span> <span class="token keyword">struct</span> shmid_ds <span class="token operator">*</span>buf<span class="token punctuation">)</span><span class="token punctuation">;</span>  </code></pre>
+<p>共享内存控制<br>第 1 个参数为要操作的共享内存标识符，该值一般由 shmget 函数返回<br>第 2 个参数为要执行的操作，包括 IPC_RMID、IPC_SET、IPC_STAT 和 IPC_INFO<br>第 3 个参数为 struct shmid_ds 结构的临时共享内存变量信息，此内容根据第 2 个参数的不同而改变  </p>
+<pre class=" language-c"><code class="language-c"><span class="token keyword">void</span> <span class="token operator">*</span><span class="token function">shmat</span><span class="token punctuation">(</span><span class="token keyword">int</span> shmid<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">void</span> <span class="token operator">*</span>shmaddr<span class="token punctuation">,</span> <span class="token keyword">int</span> shmflg<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>映射共享内存对象<br>将一个共享内存段映射到调用进程的数据段中，并返回该内存空间首地址<br>第 1 个参数 shmid 为要操作的共享内存标识符，该值一般由 shmget 函数返回<br>第 2 个参数 shmaddr 指定共享内存的映射地址。如果该值为非零，则将用此值作为映射共享内存的地址，如果此值为 0，则由系统来选择映射的地址。一般都将此值设置为 0<br>第 3 个参数用来指定共享内存段的访问权限和映射条件：0（读写） SHM_RND SHM_EXEC SHM_RDONLY SHM_REMAP</p>
+<pre class=" language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">shmdt</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">void</span> <span class="token operator">*</span>shmaddr<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>分离共享内存对象</p>
+<pre class=" language-c"><code class="language-c"></code></pre>
+<pre class=" language-c"><code class="language-c"></code></pre>
+<pre class=" language-c"><code class="language-c"></code></pre>
+<pre class=" language-c"><code class="language-c"></code></pre>
+<pre class=" language-c"><code class="language-c"></code></pre>
+<pre class=" language-c"><code class="language-c"></code></pre>
+<pre class=" language-c"><code class="language-c"></code></pre>
+<pre class=" language-c"><code class="language-c"></code></pre>
+<pre class=" language-c"><code class="language-c"></code></pre>
+<pre class=" language-c"><code class="language-c"></code></pre>
+<pre class=" language-c"><code class="language-c"></code></pre>
 <pre class=" language-c"><code class="language-c"></code></pre>
 <pre class=" language-c"><code class="language-c"></code></pre>
 <pre class=" language-c"><code class="language-c"></code></pre>

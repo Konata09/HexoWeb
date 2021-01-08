@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://konata.tech/"/>
-  <updated>2021-01-07T14:41:47.593Z</updated>
+  <updated>2021-01-07T17:29:01.110Z</updated>
   <id>http://konata.tech/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://konata.tech/2021/01/01/LinuxProgramming/"/>
     <id>http://konata.tech/2021/01/01/LinuxProgramming/</id>
     <published>2021-01-01T09:23:35.000Z</published>
-    <updated>2021-01-07T14:41:47.593Z</updated>
+    <updated>2021-01-07T17:29:01.110Z</updated>
     
     <summary type="html">
     
@@ -83,7 +83,7 @@
     <link href="http://konata.tech/2020/12/22/ffmpeg/"/>
     <id>http://konata.tech/2020/12/22/ffmpeg/</id>
     <published>2020-12-21T16:17:37.000Z</published>
-    <updated>2021-01-05T05:05:17.714Z</updated>
+    <updated>2021-01-07T15:38:18.196Z</updated>
     
     <summary type="html">
     
@@ -91,7 +91,7 @@
       
         
         
-          &lt;h3 id=&quot;无损切割音频&quot;&gt;&lt;a href=&quot;#无损切割音频&quot; class=&quot;headerlink&quot; title=&quot;无损切割音频&quot;&gt;&lt;/a&gt;无损切割音频&lt;/h3&gt;&lt;p&gt;&lt;code&gt;ss&lt;/code&gt; : 起始秒&lt;br&gt;&lt;code&gt;t&lt;/code&gt; :
+          &lt;h3 id=&quot;从-MP4-中提取-M4A&quot;&gt;&lt;a href=&quot;#从-MP4-中提取-M4A&quot; class=&quot;headerlink&quot; title=&quot;从 MP4 中提取 M4A&quot;&gt;&lt;/a&gt;从 MP4 中提取 M4A&lt;/h3&gt;&lt;pre class=&quot;
         
       
     

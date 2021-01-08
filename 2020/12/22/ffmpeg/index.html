@@ -5,9 +5,9 @@
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     <meta name="keywords" content="ffmpeg 命令整理, 生命不息 折腾不止">
-    <meta name="description" content="无损切割音频ss : 起始秒t : 持续秒数
-ffmpeg -ss 5990  -i in.aac -t 181 -c copy out.m4a
-输出 YUV4MPEG2ffmpeg -y -i input.mp4 -pix_fmt yuv">
+    <meta name="description" content="从 MP4 中提取 M4Affmpeg -i input.mp4 -vn -c:a copy output.m4a
+无损切割音频ss : 起始秒t : 持续秒数
+ffmpeg -ss 5990  -i in.aac -t 181 -c co">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -384,7 +384,7 @@ ffmpeg -ss 5990  -i in.aac -t 181 -c copy out.m4a
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        38
+                        53
                     </div>
                     
 
@@ -407,7 +407,8 @@ ffmpeg -ss 5990  -i in.aac -t 181 -c copy out.m4a
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="无损切割音频"><a href="#无损切割音频" class="headerlink" title="无损切割音频"></a>无损切割音频</h3><p><code>ss</code> : 起始秒<br><code>t</code> : 持续秒数</p>
+                <h3 id="从-MP4-中提取-M4A"><a href="#从-MP4-中提取-M4A" class="headerlink" title="从 MP4 中提取 M4A"></a>从 MP4 中提取 M4A</h3><pre class=" language-bash"><code class="language-bash">ffmpeg -i input.mp4 -vn -c:a copy output.m4a</code></pre>
+<h3 id="无损切割音频"><a href="#无损切割音频" class="headerlink" title="无损切割音频"></a>无损切割音频</h3><p><code>ss</code> : 起始秒<br><code>t</code> : 持续秒数</p>
 <pre class=" language-bash"><code class="language-bash">ffmpeg -ss 5990  -i in.aac -t 181 -c copy out.m4a</code></pre>
 <h3 id="输出-YUV4MPEG2"><a href="#输出-YUV4MPEG2" class="headerlink" title="输出 YUV4MPEG2"></a>输出 YUV4MPEG2</h3><pre class=" language-bash"><code class="language-bash">ffmpeg -y -i input.mp4 -pix_fmt yuv420p output.y4m</code></pre>
 
