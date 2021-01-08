@@ -408,14 +408,14 @@ exte">
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        9.7k
+                        10.8k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        37 分
+                        41 分
                     </div>
                     
                 
@@ -1099,17 +1099,39 @@ pid_t <span class="token function">waitpid</span><span class="token punctuation"
 <p>映射共享内存对象<br>将一个共享内存段映射到调用进程的数据段中，并返回该内存空间首地址<br>第 1 个参数 shmid 为要操作的共享内存标识符，该值一般由 shmget 函数返回<br>第 2 个参数 shmaddr 指定共享内存的映射地址。如果该值为非零，则将用此值作为映射共享内存的地址，如果此值为 0，则由系统来选择映射的地址。一般都将此值设置为 0<br>第 3 个参数用来指定共享内存段的访问权限和映射条件：0（读写） SHM_RND SHM_EXEC SHM_RDONLY SHM_REMAP</p>
 <pre class=" language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">shmdt</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">void</span> <span class="token operator">*</span>shmaddr<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>分离共享内存对象</p>
-<pre class=" language-c"><code class="language-c"></code></pre>
-<pre class=" language-c"><code class="language-c"></code></pre>
-<pre class=" language-c"><code class="language-c"></code></pre>
-<pre class=" language-c"><code class="language-c"></code></pre>
-<pre class=" language-c"><code class="language-c"></code></pre>
-<pre class=" language-c"><code class="language-c"></code></pre>
-<pre class=" language-c"><code class="language-c"></code></pre>
-<pre class=" language-c"><code class="language-c"></code></pre>
-<pre class=" language-c"><code class="language-c"></code></pre>
-<pre class=" language-c"><code class="language-c"></code></pre>
-<pre class=" language-c"><code class="language-c"></code></pre>
+<h2 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h2><pre class=" language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">pthread_create</span><span class="token punctuation">(</span>pthread_t <span class="token operator">*</span>thread<span class="token punctuation">,</span> <span class="token keyword">const</span> pthread_attr_t <span class="token operator">*</span>attr<span class="token punctuation">,</span> <span class="token keyword">void</span> <span class="token operator">*</span><span class="token punctuation">(</span><span class="token operator">*</span>start_routine<span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token keyword">void</span> <span class="token operator">*</span>arg<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>第 1 个参数用来存储线程 ID，参数为指向线程 ID 的指针，线程的 ID 在某个进程中是唯一的。如果创建成功，在此参数中返回新线程 ID；如果设置为 NULL，则不会返回生成的线程的标识值<br>第 2 个参数用来设置线程属性，一般设置为 NULL，新的线程将使用系统默认的属性<br>第 3 个参数是线程运行的代码起始地址<br>第 4 个参数是运行函数的参数地址。如果需要传入多个参数，则需要使用一个包含这些参数的结构体地址  </p>
+<pre class=" language-c"><code class="language-c"><span class="token keyword">void</span> <span class="token function">pthread_exit</span><span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token operator">*</span>retval<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>结束一个线程，与进程调用 exit( ) 函数类似。参数为线程退出状态</p>
+<pre class=" language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">pthread_join</span><span class="token punctuation">(</span>pthread_t thread<span class="token punctuation">,</span> <span class="token keyword">void</span> <span class="token operator">*</span><span class="token operator">*</span>retval<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>等待某线程结束，此函数将阻塞调用当前线程的线程，直到目标线程退出<br>第 1 个参数为被等待的线程 ID，此线程必须同调用它的进程相联系，而不能是独立的线程，默认情况下线程为关联线程，如果要设置某个线程为独立线程，则可以调用 pthread_detach( ) 函数<br>第 2 个参数为一个用户定义的指针，指向一个保存等待线程的完整退出状态的静态区域，它可以用来存储被等待线程的返回值  </p>
+<pre class=" language-c"><code class="language-c"><span class="token keyword">void</span> <span class="token function">pthread_cleanup_push</span><span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token punctuation">(</span><span class="token operator">*</span>routine<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token keyword">void</span> <span class="token operator">*</span>arg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token function">pthread_cleanup_pop</span><span class="token punctuation">(</span><span class="token keyword">int</span> execute<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>线程取消时自动释放资源，采用先入后出的栈结构管理<br>routine 是要执行的清理函数，arg 为函数参数<br>execute 表示执行到 pthread_cleanup_pop( ) 时，是否在弹出清理函数的同时执行该函数，0 表示不执行；非 0 为执行。  </p>
+<pre class=" language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">pthread_cancel</span><span class="token punctuation">(</span>pthread_t thread<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>取消线程<br>一个线程能够被取消并终止执行需要满足以下条件：  </p>
+<ul>
+<li>线程是否可以被其他取消，默认可以被取消。</li>
+<li>线程处于可取消点才能取消。也就是说，即使该线程被设置为可以取消状态，另一个线程发起取消操作，该线程也不是一定马上终止，只能在可取消点才终止执行。可以设置线程为立即取消或只能在取消点被取消。</li>
+</ul>
+<p>执行取消操作时，将调用线程的 pthread_cleanup_push 函数。pthread_cancel( ) 的调用者不会等待目标线程操作完成。</p>
+<pre class=" language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">pthread_setcancelstate</span><span class="token punctuation">(</span><span class="token keyword">int</span> state<span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token operator">*</span>oldstate<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token function">pthread_setcanceltype</span><span class="token punctuation">(</span><span class="token keyword">int</span> type<span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token operator">*</span>oldtype<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>设置和查询当前线程的可取消性状态或类型</p>
+<pre class=" language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">pthread_key_create</span><span class="token punctuation">(</span>pthread_key_t <span class="token operator">*</span>key<span class="token punctuation">,</span> <span class="token keyword">void</span> <span class="token punctuation">(</span><span class="token operator">*</span>destructor<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>创建线程私有数据<br>该函数从 TSD 池中分配一项，将其地址值赋给 key 供以后访问使用。如果第 2 个参数不为空，在线程退出（调用 pthread_exit( ) 函数）时将以 key 所关联的数据为参数调用其指向的资源释放函数，以释放分配的缓冲区。<br>不论哪个线程调用 pthread_key_create()，所创建的 key 都是所有线程可访问的，但各个线程可根据自己的需要往 key 中填入不同的值，相当于提供了一个同名而不同值的全局变量。  </p>
+<pre class=" language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">pthread_key_delete</span><span class="token punctuation">(</span>pthread_key_t key<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>注销一个 TSD<br>不检查当前是否有线程正使用该 TSD，也不会调用清理函数（destr_function），只是将 TSD 释放以供下一次调用 pthread_key_create( ) 使用  </p>
+<pre class=" language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">pthread_setspecific</span><span class="token punctuation">(</span>pthread_key_t key<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">void</span> <span class="token operator">*</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token operator">*</span><span class="token function">pthread_getspecific</span><span class="token punctuation">(</span>pthread_key_t key<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>读写线程私有数据<br>pthread_setspecific( ) 将 value 的值（不是所指的内容）与 key 相关联<br>pthread_getspecific( ) 函数将与 key 相关联的数据读出来<br>数据类型都设为 void*，因此可以指向任何类型的数据</p>
+<pre class=" language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">pthread_mutex_init</span><span class="token punctuation">(</span>pthread_mutex_t <span class="token operator">*</span>restrict mutex<span class="token punctuation">,</span> <span class="token keyword">const</span> pthread_mutexattr_t <span class="token operator">*</span>restrict attr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token function">pthread_mutex_destroy</span><span class="token punctuation">(</span>pthread_mutex_t <span class="token operator">*</span>mutex<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>初始化和销毁互斥锁<br>第 1 个参数 mutex 是指向要初始化的互斥锁的指针<br>第 2 个参数 attr 是指向属性对象的指针，该属性对象定义要初始化的互斥锁的属性。如果该指针为 NULL，则使用默认的属性  </p>
+<pre class=" language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">pthread_mutex_lock</span><span class="token punctuation">(</span>pthread_mutex_t <span class="token operator">*</span>mutex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token function">pthread_mutex_trylock</span><span class="token punctuation">(</span>pthread_mutex_t <span class="token operator">*</span>mutex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token function">pthread_mutex_unlock</span><span class="token punctuation">(</span>pthread_mutex_t <span class="token operator">*</span>mutex<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>pthread_mutex_lock( ) 函数以阻塞方式申请互斥锁<br>pthread_mutex_trylock( ) 函数以非阻塞方式申请互斥锁<br>pthread_mutex_unlock( ) 函数用来释放互斥锁  </p>
 <pre class=" language-c"><code class="language-c"></code></pre>
 <pre class=" language-c"><code class="language-c"></code></pre>
 <pre class=" language-c"><code class="language-c"></code></pre>
