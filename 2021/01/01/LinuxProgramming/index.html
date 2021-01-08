@@ -408,14 +408,14 @@ exte">
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        10.8k
+                        11.1k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        41 分
+                        43 分
                     </div>
                     
                 
@@ -1132,6 +1132,21 @@ pid_t <span class="token function">waitpid</span><span class="token punctuation"
 <span class="token keyword">int</span> <span class="token function">pthread_mutex_trylock</span><span class="token punctuation">(</span>pthread_mutex_t <span class="token operator">*</span>mutex<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">int</span> <span class="token function">pthread_mutex_unlock</span><span class="token punctuation">(</span>pthread_mutex_t <span class="token operator">*</span>mutex<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>pthread_mutex_lock( ) 函数以阻塞方式申请互斥锁<br>pthread_mutex_trylock( ) 函数以非阻塞方式申请互斥锁<br>pthread_mutex_unlock( ) 函数用来释放互斥锁  </p>
+<pre class=" language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">pthread_cond_init</span><span class="token punctuation">(</span>pthread_cond_t <span class="token operator">*</span>restrict cond<span class="token punctuation">,</span> <span class="token keyword">const</span> pthread_condattr_t <span class="token operator">*</span>restrict attr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token function">pthread_cond_destroy</span><span class="token punctuation">(</span>pthread_cond_t <span class="token operator">*</span>cond<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>初始化和销毁条件变量<br>第 1 个参数 cond 是指向要初始化或损坏的条件变量的指针。<br>第 2 个参数 cond_attr 是指向属性对象的指针，该属性对象定义要初始化的条件变量的特性，如果该指针为 NULL，则使用默认的属性。</p>
+<pre class=" language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">pthread_cond_signal</span><span class="token punctuation">(</span>pthread_cond_t <span class="token operator">*</span>cond<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token function">pthread_cond_broadcast</span><span class="token punctuation">(</span>pthread_cond_t <span class="token operator">*</span>cond<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>pthread_cond_signal( ) 函数用来通知等待条件变量的第 1 个线程。<br>pthread_cond_broadcast( ) 函数用来通知等待条件变量的所有线程。</p>
+<pre class=" language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">pthread_cond_wait</span><span class="token punctuation">(</span>pthread_cond_t <span class="token operator">*</span>restrict cond<span class="token punctuation">,</span> pthread_mutex_t <span class="token operator">*</span>restrict mutex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token function">pthread_cond_timedwait</span><span class="token punctuation">(</span>pthread_cond_t <span class="token operator">*</span>restrict cond<span class="token punctuation">,</span> pthread_mutex_t <span class="token operator">*</span>restrict mutex<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">struct</span> timespec <span class="token operator">*</span>restrict abstime<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>pthread_cond_wait( ) 函数用来阻塞等待某个条件变量<br>第 1 个参数 cond 是指向要等待的条件变量的指针。<br>第 2 个参数 mutex 是指向与条件变量 cond 关联的互斥锁的指针。  </p>
+<p>pthread_cond_timedwait( ) 函数将在指定的时间范围内等待条件变量<br>第 1 个参数 cond 是指向要等待的条件变量的指针。<br>第 2 个参数 mutex 是指向与条件变量 cond 关联的互斥锁的指针。<br>第 3 个参数 abstime 是等待过期时的绝对时间，如果在此时间范围内取到该条件变量函数将返回。该时间为从 1970-1-1:0:0:0 以来的秒数，即为一个绝对时间。</p>
+<pre class=" language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">pthread_kill</span><span class="token punctuation">(</span>pthread_t thread<span class="token punctuation">,</span> <span class="token keyword">int</span> sig<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token function">pthread_sigmask</span><span class="token punctuation">(</span><span class="token keyword">int</span> how<span class="token punctuation">,</span> <span class="token keyword">const</span> sigset_t <span class="token operator">*</span>set<span class="token punctuation">,</span> sigset_t <span class="token operator">*</span>oldset<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h2 id="网络编程"><a href="#网络编程" class="headerlink" title="网络编程"></a>网络编程</h2><pre class=" language-c"><code class="language-c"></code></pre>
+<pre class=" language-c"><code class="language-c"></code></pre>
 <pre class=" language-c"><code class="language-c"></code></pre>
 <pre class=" language-c"><code class="language-c"></code></pre>
 <pre class=" language-c"><code class="language-c"></code></pre>
