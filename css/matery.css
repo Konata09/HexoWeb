@@ -961,6 +961,16 @@ article .article-tags .chip {
     font-weight: 500;
 }
 
+.reprintDetail {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.reprintDetail > .reprintImg {
+    padding: 0 1.3rem;
+}
+
 #articleContent p {
     margin: 2px 2px 10px;
     font-size: 1.05rem;
