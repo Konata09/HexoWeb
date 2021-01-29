@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <meta charset="utf-8">
     <meta name="keywords" content="JSON Web Token, 生命不息 折腾不止">
     <meta name="description" content="JWT(JSON Web Token) 是一个基于 JSON 的开放标准，用于通信双方之间传递安全信息的简洁的、URL 安全的表述性声明规范，经常用于身份验证。  
@@ -14,14 +14,15 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="manifest" href="/site.webmanifest">
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#7312ff">
     <meta name="msapplication-TileColor" content="#8a46cc">
     <meta name="theme-color" content="#ffffff">
     <title>JSON Web Token | 生命不息 折腾不止</title>
-    <script async type="application/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.0/lazysizes.min.js"></script>
+    <script async type="application/javascript"
+            src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.0/lazysizes.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.1/animate.min.css">
@@ -41,7 +42,7 @@
     <style type="text/css">
         
     </style>
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 5.3.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 <body>
 <header class="navbar-fixed">
@@ -383,7 +384,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        985
+                        1k
                     </div>
                     
 
@@ -407,30 +408,30 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>JWT(JSON Web Token) 是一个基于 JSON 的开放标准，用于通信双方之间传递安全信息的简洁的、URL 安全的表述性声明规范，经常用于身份验证。  </p>
-<h2 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h2><p>JWT 有三部分组成，他们之间用 <code>.</code> 分隔，这三部分分别是 <code>Header</code> 、 <code>Payload</code> 、 <code>Signature</code> ，结构为 <code>Header.Payload.Signature</code><br><a href="https://jwt.io/" target="_blank" rel="noopener">示例</a>：  </p>
+<h2 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h2><p>JWT 有三部分组成，他们之间用 <code>.</code> 分隔，这三部分分别是 <code>Header</code> 、 <code>Payload</code> 、 <code>Signature</code> ，结构为 <code>Header.Payload.Signature</code><br><a target="_blank" rel="noopener" href="https://jwt.io/">示例</a>：  </p>
 <pre><code>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c</code></pre><p>对于这个例子，其三部分组成分别为：</p>
 <pre class=" language-json"><code class="language-json">// header
-<span class="token punctuation">{</span>
+&amp;#<span class="token number">123</span><span class="token punctuation">;</span>
   <span class="token property">"alg"</span><span class="token operator">:</span> <span class="token string">"HS256"</span><span class="token punctuation">,</span>
   <span class="token property">"typ"</span><span class="token operator">:</span> <span class="token string">"JWT"</span>
-<span class="token punctuation">}</span>
+&amp;#<span class="token number">125</span><span class="token punctuation">;</span>
 
 // Payload
-<span class="token punctuation">{</span>
+&amp;#<span class="token number">123</span><span class="token punctuation">;</span>
   <span class="token property">"sub"</span><span class="token operator">:</span> <span class="token string">"1234567890"</span><span class="token punctuation">,</span>
   <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"John Doe"</span><span class="token punctuation">,</span>
   <span class="token property">"iat"</span><span class="token operator">:</span> <span class="token number">1516239022</span>
-<span class="token punctuation">}</span>
+&amp;#<span class="token number">125</span><span class="token punctuation">;</span>
 
 // Signature
 HMACSHA256(
   base64UrlEncode(header<span class="token punctuation">)</span> + <span class="token string">"."</span> + base64UrlEncode(payload<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"your-256-bit-secret"</span>
 <span class="token punctuation">)</span></code></pre>
 <h2 id="Header"><a href="#Header" class="headerlink" title="Header"></a>Header</h2><p><code>Header</code> 头部，其由两部分组成：声明类型和算法名称，在本例中的 <code>Token</code> 类型为 <code>jwt</code> ，加密算法为 <code>HMAC-SHA256</code> 。将 <code>Header</code> 进行 <code>BASE64URL</code> 算法编码，即可得到 <code>jwt</code> 的第一部分，注意 <code>BASE64URL</code> 算法编码与 <code>BASE64</code> 编码略有不同， <code>BASE64URL</code> 需要将 <code>BASE64</code> 中输出中的 <code>+</code> 替换为减号 <code>-</code> ， <code>/</code> 替换为 <code>_</code> ，而且没有标准的 <code>BASE64</code> 填充，即把 <code>=</code> 去掉。  </p>
-<pre class=" language-js"><code class="language-js"><span class="token function">base64UrlEncode</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+<pre class=" language-js"><code class="language-js"><span class="token function">base64UrlEncode</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
     <span class="token string">"alg"</span><span class="token punctuation">:</span> <span class="token string">"HS256"</span><span class="token punctuation">,</span>
     <span class="token string">"typ"</span><span class="token punctuation">:</span> <span class="token string">"JWT"</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token string">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"</span><span class="token punctuation">;</span></code></pre>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token string">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"</span><span class="token punctuation">;</span></code></pre>
 <h2 id="Payload"><a href="#Payload" class="headerlink" title="Payload"></a>Payload</h2><p><code>Payload</code> 有效载荷，其为 <code>JWT</code> 的主体，这里可以存放主体数据信息， <code>Payload</code> 包含三个部分：标准中注册的声明、公共的声明、私有的声明。  </p>
 <h3 id="标准中注册的声明-（建议但不强制使用）"><a href="#标准中注册的声明-（建议但不强制使用）" class="headerlink" title="标准中注册的声明 （建议但不强制使用）"></a>标准中注册的声明 （建议但不强制使用）</h3><ul>
 <li><code>iss</code> : jwt 签发者</li>
@@ -443,16 +444,16 @@ HMACSHA256(
 </ul>
 <h3 id="公共声明"><a href="#公共声明" class="headerlink" title="公共声明"></a>公共声明</h3><p>可以在公共声明添加任何信息，我们一般会在里面添加用户信息和业务信息，但是不建议添加敏感信息，因为公共声明部分可以在客户端解密，除非此信息是加密的。  </p>
 <h3 id="私有声明"><a href="#私有声明" class="headerlink" title="私有声明"></a>私有声明</h3><p>私有声明是服务器和客户端共同定义的声明，同样这里不建议添加敏感信息。  </p>
-<pre class=" language-js"><code class="language-js"><span class="token function">base64UrlEncode</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+<pre class=" language-js"><code class="language-js"><span class="token function">base64UrlEncode</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
     <span class="token string">"sub"</span><span class="token punctuation">:</span> <span class="token string">"1234567890"</span><span class="token punctuation">,</span>
     <span class="token string">"name"</span><span class="token punctuation">:</span> <span class="token string">"John Doe"</span><span class="token punctuation">,</span>
     <span class="token string">"iat"</span><span class="token punctuation">:</span> <span class="token number">1516239022</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token string">"eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ"</span><span class="token punctuation">;</span></code></pre>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token string">"eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ"</span><span class="token punctuation">;</span></code></pre>
 <h2 id="Signature"><a href="#Signature" class="headerlink" title="Signature"></a>Signature</h2><p><code>Signature</code> 哈希签名，其通过 JWT 中 <code>Header</code> 定义的算法，将前两部分数据进行编码后哈希来生成签名，主要是确保数据不会被篡改。  </p>
 <pre class=" language-js"><code class="language-js"><span class="token function">HMACSHA256</span><span class="token punctuation">(</span><span class="token function">base64UrlEncode</span><span class="token punctuation">(</span>header<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"."</span> <span class="token operator">+</span> <span class="token function">base64UrlEncode</span><span class="token punctuation">(</span>payload<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"your-256-bit-secret"</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token string">"SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"</span></code></pre>
 <h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ul>
 <li>无状态和可拓展性，服务器将 JWT 存储到客户端以后不存在状态或者会话信息，易于拓展</li>
-<li>可以预防 CSRF 攻击，由于使用 JWT 一般放置于请求头的 <code>Authorization: Bearer ${JWT}</code> 字段中而不使用 Cookie 可以有效防止 CSRF 攻击</li>
+<li>可以预防 CSRF 攻击，由于使用 JWT 一般放置于请求头的 <code>Authorization: Bearer $&#123;JWT&#125;</code> 字段中而不使用 Cookie 可以有效防止 CSRF 攻击</li>
 <li><code>payload</code> 部分可以存储一些其他业务逻辑所必要的非敏感信息，可以减轻服务端压力</li>
 <li>JWT 的跨语言支持性，由于 json 与加密算法的通用性，在多数语言中都能得到支持</li>
 <li>相对于 OAuth2 更加轻量，但是其应用场景有所区别，OAuth2 是一种授权框架，通常用于第三方应用授权，JWT 是一种认证协议，用于前后端分离的用户认证以及后端 API 的保护</li>
@@ -488,13 +489,13 @@ HMACSHA256(
                     <a xmlns:cc="http://creativecommons.org/ns#" href="/2020/10/07/JSONWebToken/" property="cc:attributionName"
                        rel="cc:attributionURL">Konata</a>
                     采用
-                    <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh">
+                    <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh">
                         知识共享署名-非商业性使用 4.0 国际许可协议
                     </a>
                     进行许可。
                 </div>
                 <div class="reprintImg">
-                    <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh">
+                    <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh">
                         <img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png"/>
                     </a>
                 </div>
@@ -727,7 +728,7 @@ HMACSHA256(
 <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right" style="width: -moz-available;width: -webkit-fill-available">
-            &copy;2019-2021 Konata<br>Proudly published with Hexo<br>Theme - <a href="https://github.com/blinkfox/hexo-theme-matery">matery</a>
+            &copy;2019-2021 Konata<br>Proudly published with Hexo<br>Theme - <a target="_blank" rel="noopener" href="https://github.com/blinkfox/hexo-theme-matery">matery</a>
             
             
 			

@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <meta charset="utf-8">
     <meta name="keywords" content="Linux 编程, 生命不息 折腾不止">
     <meta name="description" content="Linux 进程存储管理存储类型比较
@@ -16,7 +16,7 @@
 
 
 auto 变量
-一对 {} 内
+一对 &amp;#123;&amp;#125; 内
 当前函数
 变量默认存储类型，存储在栈区
 
@@ -24,10 +24,7 @@ auto 变量
 extern 函数
 整个程序
 整个程序运行期
-函数默认存储类型，代码段
-
-
-exte">
+函数默认存储类型，">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -35,14 +32,15 @@ exte">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="manifest" href="/site.webmanifest">
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#7312ff">
     <meta name="msapplication-TileColor" content="#8a46cc">
     <meta name="theme-color" content="#ffffff">
     <title>Linux 编程 | 生命不息 折腾不止</title>
-    <script async type="application/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.0/lazysizes.min.js"></script>
+    <script async type="application/javascript"
+            src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.0/lazysizes.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.1/animate.min.css">
@@ -62,7 +60,7 @@ exte">
     <style type="text/css">
         
     </style>
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 5.3.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 <body>
 <header class="navbar-fixed">
@@ -442,7 +440,7 @@ exte">
 </thead>
 <tbody><tr>
 <td><code>auto</code> 变量</td>
-<td>一对 <code>{}</code> 内</td>
+<td>一对 <code>&#123;&#125;</code> 内</td>
 <td>当前函数</td>
 <td>变量默认存储类型，存储在栈区</td>
 </tr>
@@ -472,13 +470,13 @@ exte">
 </tr>
 <tr>
 <td><code>static</code> 局部变量</td>
-<td>一对 <code>{}</code> 内</td>
+<td>一对 <code>&#123;&#125;</code> 内</td>
 <td>整个程序运行期</td>
 <td>初始化在 data 段，未初始化在 BSS 段</td>
 </tr>
 <tr>
 <td><code>register</code> 变量</td>
-<td>一对 <code>{}</code> 内</td>
+<td>一对 <code>&#123;&#125;</code> 内</td>
 <td>当前函数</td>
 <td>运行时存储在 CPU 寄存器中</td>
 </tr>
@@ -1049,10 +1047,10 @@ pid_t <span class="token function">waitpid</span><span class="token punctuation"
 <p>第 3 个参数是一个临时的 <code>msqid_ds</code> 结构体类型的变量。用于存储读取的消息队列属性或者需要修改的消息队列属性。</p>
 <pre class=" language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">msgsnd</span><span class="token punctuation">(</span><span class="token keyword">int</span> msqid<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">void</span> <span class="token operator">*</span>msgp<span class="token punctuation">,</span> size_t msgsz<span class="token punctuation">,</span> <span class="token keyword">int</span> msgflg<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>发送信息到消息队列<br>第 1 个参数 <code>msqid</code> 为指定的消息队列标识符（由 <code>msgget</code> 生成的消息队列标识符）<br>第 2 个参数 <code>msgp</code> 指向的用户定义缓冲区，结构为：</p>
-<pre class=" language-c"><code class="language-c"><span class="token keyword">struct</span> msgbuf <span class="token punctuation">{</span>
+<pre class=" language-c"><code class="language-c"><span class="token keyword">struct</span> msgbuf <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
     <span class="token keyword">long</span> mtype<span class="token punctuation">;</span>       <span class="token comment" spellcheck="true">/* message type, must be > 0 */</span>
     <span class="token keyword">char</span> mtext<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">/* message data */</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">;</span></code></pre>
 <ul>
 <li><code>mtype</code> 是一个正整数，表示消息的类型，接收进程可以用来进行消息选择（消息队列在存储信息时是按发送的先后顺序放置的）</li>
 <li><code>mtext</code> 存储消息内容，在使用时自己重新定义此结构</li>
@@ -1174,13 +1172,13 @@ pid_t <span class="token function">waitpid</span><span class="token punctuation"
                     <a xmlns:cc="http://creativecommons.org/ns#" href="/2021/01/01/LinuxProgramming/" property="cc:attributionName"
                        rel="cc:attributionURL">Konata</a>
                     采用
-                    <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh">
+                    <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh">
                         知识共享署名-非商业性使用 4.0 国际许可协议
                     </a>
                     进行许可。
                 </div>
                 <div class="reprintImg">
-                    <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh">
+                    <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh">
                         <img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png"/>
                     </a>
                 </div>
@@ -1323,7 +1321,7 @@ pid_t <span class="token function">waitpid</span><span class="token punctuation"
                                     <span class="chip bg-color">K8S</span>
                                 </a>
                             
-                                <a href="/tags/边缘云/" target="_blank">
+                                <a href="/tags/%E8%BE%B9%E7%BC%98%E4%BA%91/" target="_blank">
                                     <span class="chip bg-color">边缘云</span>
                                 </a>
                             
@@ -1435,7 +1433,7 @@ pid_t <span class="token function">waitpid</span><span class="token punctuation"
 <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right" style="width: -moz-available;width: -webkit-fill-available">
-            &copy;2019-2021 Konata<br>Proudly published with Hexo<br>Theme - <a href="https://github.com/blinkfox/hexo-theme-matery">matery</a>
+            &copy;2019-2021 Konata<br>Proudly published with Hexo<br>Theme - <a target="_blank" rel="noopener" href="https://github.com/blinkfox/hexo-theme-matery">matery</a>
             
             
 			

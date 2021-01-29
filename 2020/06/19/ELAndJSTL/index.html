@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <meta charset="utf-8">
     <meta name="keywords" content="EL 表达式和 JSTL, 生命不息 折腾不止">
     <meta name="description" content="JSP指令作用用于配置 JSP 页面，导入资源文件
@@ -17,14 +17,15 @@ contentType ：等同于 response.se">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="manifest" href="/site.webmanifest">
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#7312ff">
     <meta name="msapplication-TileColor" content="#8a46cc">
     <meta name="theme-color" content="#ffffff">
     <title>EL 表达式和 JSTL | 生命不息 折腾不止</title>
-    <script async type="application/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.0/lazysizes.min.js"></script>
+    <script async type="application/javascript"
+            src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.0/lazysizes.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.1/animate.min.css">
@@ -44,7 +45,7 @@ contentType ：等同于 response.se">
     <style type="text/css">
         
     </style>
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 5.3.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 <body>
 <header class="navbar-fixed">
@@ -390,7 +391,7 @@ contentType ：等同于 response.se">
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1.3k
+                        1.4k
                     </div>
                     
 
@@ -505,11 +506,11 @@ contentType ：等同于 response.se">
 </ul>
 <h2 id="EL-表达式"><a href="#EL-表达式" class="headerlink" title="EL 表达式"></a>EL 表达式</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>Expression Language 表达式语言</p>
 <h3 id="作用-1"><a href="#作用-1" class="headerlink" title="作用"></a>作用</h3><p>替换和简化 jsp 页面中 java 代码的编写</p>
-<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><p> <code>${表达式}</code></p>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><p> <code>$&#123;表达式&#125;</code></p>
 <h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p>jsp 默认支持 el 表达式，如果要忽略 el 表达式</p>
 <ol>
 <li>设置 jsp 中 page 指令中： <code>isELIgnored=&quot;true&quot;</code> 忽略当前 jsp 页面中所有的 el 表达式</li>
-<li><code>\${表达式}</code> ：忽略当前这个 el 表达式</li>
+<li><code>\$&#123;表达式&#125;</code> ：忽略当前这个 el 表达式</li>
 </ol>
 <h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><h4 id="运算"><a href="#运算" class="headerlink" title="运算"></a>运算</h4><ol>
 <li>算数运算符： <code>+ - * /(div) %(mod)</code></li>
@@ -517,8 +518,8 @@ contentType ：等同于 response.se">
 <li>逻辑运算符： <code>&amp;&amp;(and) ||(or) !(not)</code></li>
 <li>空运算符： <code>empty</code><ul>
 <li>功能：用于判断字符串、集合、数组对象是否为 null 或者长度是否为 0</li>
-<li><code>${empty list}</code> : 判断字符串、集合、数组对象是否为 null 或者长度为 0</li>
-<li><code>${not empty str}</code> : 表示判断字符串、集合、数组对象是否不为 null 并且 长度&gt;0</li>
+<li><code>$&#123;empty list&#125;</code> : 判断字符串、集合、数组对象是否为 null 或者长度为 0</li>
+<li><code>$&#123;not empty str&#125;</code> : 表示判断字符串、集合、数组对象是否不为 null 并且 长度&gt;0</li>
 </ul>
 </li>
 </ol>
@@ -526,7 +527,7 @@ contentType ：等同于 response.se">
 <li>el 表达式只能从域对象中获取值</li>
 </ul>
 <ol>
-<li><p><code>${域名称。键名}</code> ：从指定域中获取指定键的值</p>
+<li><p><code>$&#123;域名称。键名&#125;</code> ：从指定域中获取指定键的值</p>
 <ul>
 <li>域名称：<ol>
 <li>pageScope  –&gt; pageContext</li>
@@ -536,14 +537,14 @@ contentType ：等同于 response.se">
 </ol>
 </li>
 <li>举例：在 request 域中存储了 name=张三</li>
-<li>获取： <code>${requestScope.name}</code></li>
+<li>获取： <code>$&#123;requestScope.name&#125;</code></li>
 </ul>
 </li>
-<li><p><code>${键名}</code> ：表示依次从最小的域中查找是否有该键对应的值，直到找到为止。</p>
+<li><p><code>$&#123;键名&#125;</code> ：表示依次从最小的域中查找是否有该键对应的值，直到找到为止。</p>
 </li>
 <li><p>获取对象、List 集合、Map 集合的值</p>
 <ol>
-<li><p>对象： <code>${域名称。键名。属性名}</code></p>
+<li><p>对象： <code>$&#123;域名称。键名。属性名&#125;</code></p>
 <ul>
 <li>本质上会去调用对象的 getter 方法</li>
 </ul>
@@ -552,8 +553,8 @@ contentType ：等同于 response.se">
 </li>
 <li><p>Map 集合：</p>
 <ul>
-<li><code>${域名称。键名。key 名称}</code></li>
-<li><code>${域名称。键名 [&quot;key 名称&quot;]}</code></li>
+<li><code>$&#123;域名称。键名。key 名称&#125;</code></li>
+<li><code>$&#123;域名称。键名 [&quot;key 名称&quot;]&#125;</code></li>
 </ul>
 </li>
 </ol>
@@ -563,7 +564,7 @@ contentType ：等同于 response.se">
 <li>EL 表达式中有 11 个隐式对象</li>
 <li><code>pageContext</code> :<ul>
 <li>获取 jsp 其他八个内置对象<ul>
-<li><code>${pageContext.request.contextPath}</code> ：动态获取虚拟目录</li>
+<li><code>$&#123;pageContext.request.contextPath&#125;</code> ：动态获取虚拟目录</li>
 </ul>
 </li>
 </ul>
@@ -648,7 +649,7 @@ contentType ：等同于 response.se">
 </ol>
 </li>
 </ul>
-<h3 id="三层架构"><a href="#三层架构" class="headerlink" title="三层架构"></a>三层架构</h3><p><img src="/images/2020-06-19T131333.png" alt></p>
+<h3 id="三层架构"><a href="#三层架构" class="headerlink" title="三层架构"></a>三层架构</h3><p><img src="/images/2020-06-19T131333.png" alt=""></p>
 <ol>
 <li>界面层（表示层）：用户看的得界面。用户可以通过界面上的组件和服务器进行交互</li>
 <li>业务逻辑层：处理业务逻辑的。</li>
@@ -677,13 +678,13 @@ contentType ：等同于 response.se">
                     <a xmlns:cc="http://creativecommons.org/ns#" href="/2020/06/19/ELAndJSTL/" property="cc:attributionName"
                        rel="cc:attributionURL">Konata</a>
                     采用
-                    <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh">
+                    <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh">
                         知识共享署名-非商业性使用 4.0 国际许可协议
                     </a>
                     进行许可。
                 </div>
                 <div class="reprintImg">
-                    <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh">
+                    <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh">
                         <img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png"/>
                     </a>
                 </div>
@@ -924,7 +925,7 @@ contentType ：等同于 response.se">
 <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right" style="width: -moz-available;width: -webkit-fill-available">
-            &copy;2019-2021 Konata<br>Proudly published with Hexo<br>Theme - <a href="https://github.com/blinkfox/hexo-theme-matery">matery</a>
+            &copy;2019-2021 Konata<br>Proudly published with Hexo<br>Theme - <a target="_blank" rel="noopener" href="https://github.com/blinkfox/hexo-theme-matery">matery</a>
             
             
 			

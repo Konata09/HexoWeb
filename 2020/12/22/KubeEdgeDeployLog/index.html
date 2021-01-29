@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <meta charset="utf-8">
     <meta name="keywords" content="KubeEdge 部署记录, 生命不息 折腾不止">
     <meta name="description" content="云端 (Cloud Side)此处安装云端的环境是 VMWare 安装 CentOS 7 虚拟机，登录用户为 root 用户
@@ -16,14 +16,15 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="manifest" href="/site.webmanifest">
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#7312ff">
     <meta name="msapplication-TileColor" content="#8a46cc">
     <meta name="theme-color" content="#ffffff">
     <title>KubeEdge 部署记录 | 生命不息 折腾不止</title>
-    <script async type="application/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.0/lazysizes.min.js"></script>
+    <script async type="application/javascript"
+            src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.0/lazysizes.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.1/animate.min.css">
@@ -43,7 +44,7 @@
     <style type="text/css">
         
     </style>
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 5.3.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 <body>
 <header class="navbar-fixed">
@@ -366,7 +367,7 @@
                                 <span class="chip bg-color">K8S</span>
                             </a>
                         
-                            <a href="/tags/边缘云/" target="_blank">
+                            <a href="/tags/%E8%BE%B9%E7%BC%98%E4%BA%91/" target="_blank">
                                 <span class="chip bg-color">边缘云</span>
                             </a>
                         
@@ -458,23 +459,23 @@ net.bridge.bridge-nf-call-iptables = 1</code></pre>
 yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 yum update -y <span class="token operator">&amp;&amp;</span> <span class="token function">sudo</span> yum <span class="token function">install</span> -y containerd.io-1.2.13 docker-ce-19.03.11 docker-ce-cli-19.03.11</code></pre>
 <blockquote>
-<p>docker 和 containerd 要使用 <a href="https://kubernetes.io/docs/setup/production-environment/container-runtimes/#docker" target="_blank" rel="noopener">官方文档</a> 指定的版本</p>
+<p>docker 和 containerd 要使用 <a target="_blank" rel="noopener" href="https://kubernetes.io/docs/setup/production-environment/container-runtimes/#docker">官方文档</a> 指定的版本</p>
 </blockquote>
 <p>配置 docker</p>
 <pre class=" language-bash"><code class="language-bash"><span class="token function">mkdir</span> /etc/docker
 vim /etc/docker/daemon.json</code></pre>
 <p>加入以下内容：</p>
-<pre class=" language-json"><code class="language-json"><span class="token punctuation">{</span>
+<pre class=" language-json"><code class="language-json">&amp;#<span class="token number">123</span><span class="token punctuation">;</span>
   <span class="token property">"exec-opts"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"native.cgroupdriver=systemd"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
   <span class="token property">"log-driver"</span><span class="token operator">:</span> <span class="token string">"json-file"</span><span class="token punctuation">,</span>
-  <span class="token property">"log-opts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token property">"log-opts"</span><span class="token operator">:</span> &amp;#<span class="token number">123</span><span class="token punctuation">;</span>
     <span class="token property">"max-size"</span><span class="token operator">:</span> <span class="token string">"100m"</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  &amp;#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span>
   <span class="token property">"storage-driver"</span><span class="token operator">:</span> <span class="token string">"overlay2"</span><span class="token punctuation">,</span>
   <span class="token property">"storage-opts"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
     <span class="token string">"overlay2.override_kernel_check=true"</span>
   <span class="token punctuation">]</span>
-<span class="token punctuation">}</span></code></pre>
+&amp;#<span class="token number">125</span><span class="token punctuation">;</span></code></pre>
 <pre class=" language-bash"><code class="language-bash"><span class="token function">mkdir</span> -p /etc/systemd/system/docker.service.d
 systemctl daemon-reload
 systemctl <span class="token function">enable</span> docker
@@ -527,7 +528,7 @@ systemctl <span class="token function">enable</span> kubelet <span class="token 
 <span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> kubeadm.k8s.io/v1beta2
 <span class="token key atrule">certificatesDir</span><span class="token punctuation">:</span> /etc/kubernetes/pki
 <span class="token key atrule">clusterName</span><span class="token punctuation">:</span> kubernetes
-<span class="token key atrule">controllerManager</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token key atrule">controllerManager</span><span class="token punctuation">:</span> &amp;<span class="token comment" spellcheck="true">#123;&amp;#125;</span>
 <span class="token key atrule">dns</span><span class="token punctuation">:</span>
   <span class="token key atrule">type</span><span class="token punctuation">:</span> CoreDNS
 <span class="token key atrule">etcd</span><span class="token punctuation">:</span>
@@ -539,7 +540,7 @@ systemctl <span class="token function">enable</span> kubelet <span class="token 
 <span class="token key atrule">networking</span><span class="token punctuation">:</span>
   <span class="token key atrule">dnsDomain</span><span class="token punctuation">:</span> cluster.local
   <span class="token key atrule">serviceSubnet</span><span class="token punctuation">:</span> 10.96.0.0/12
-<span class="token key atrule">scheduler</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></code></pre>
+<span class="token key atrule">scheduler</span><span class="token punctuation">:</span> &amp;<span class="token comment" spellcheck="true">#123;&amp;#125;</span></code></pre>
 <p>取消代理服务器</p>
 <pre class=" language-bash"><code class="language-bash"><span class="token function">export</span> http_proxy<span class="token operator">=</span>
 <span class="token function">export</span> https_proxy<span class="token operator">=</span></code></pre>
@@ -603,7 +604,7 @@ kubernetes-dashboard   kubernetes-dashboard-74d688b6bc-x7fqm        1/1     Runn
 <pre class=" language-bash"><code class="language-bash">kubectl apply -f dashboard-adminuser.yaml</code></pre>
 <h5 id="修改-dashboard-服务"><a href="#修改-dashboard-服务" class="headerlink" title="修改 dashboard 服务"></a>修改 dashboard 服务</h5><pre class=" language-bash"><code class="language-bash">kubectl edit <span class="token function">service</span> kubernetes-dashboard -n kubernetes-dashboard</code></pre>
 <p>修改 <code>type: ClusterIP</code> 为 <code>type: NodePort</code> ，并在 <code>ports</code> 下增加 <code>nodePort: 30443</code></p>
-<h5 id="获取-Token"><a href="#获取-Token" class="headerlink" title="获取 Token"></a>获取 Token</h5><pre class=" language-bash"><code class="language-bash">kubectl -n kube-system describe secret <span class="token punctuation">$(</span>kubectl -n kube-system get secret <span class="token operator">|</span> <span class="token function">grep</span> admin-user <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'{print <span class="token variable">$1</span>}'</span><span class="token punctuation">)</span></code></pre>
+<h5 id="获取-Token"><a href="#获取-Token" class="headerlink" title="获取 Token"></a>获取 Token</h5><pre class=" language-bash"><code class="language-bash">kubectl -n kube-system describe secret <span class="token punctuation">$(</span>kubectl -n kube-system get secret <span class="token operator">|</span> <span class="token function">grep</span> admin-user <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'&amp;#123;print <span class="token variable">$1</span>&amp;#125;'</span><span class="token punctuation">)</span></code></pre>
 <p>可以将 Token 保存下来便于以后登录使用。</p>
 <h5 id="登录-dashboard"><a href="#登录-dashboard" class="headerlink" title="登录 dashboard"></a>登录 dashboard</h5><p>访问 <code>https://172.31.16.53:30443</code> ，选择使用 Token 登录，粘贴刚才得到的 Token 即可进入 Dashboard。</p>
 <h3 id="安装-KubeEdge"><a href="#安装-KubeEdge" class="headerlink" title="安装 KubeEdge"></a>安装 KubeEdge</h3><pre class=" language-bash"><code class="language-bash"><span class="token function">wget</span> https://github.com/kubeedge/kubeedge/releases/download/v1.5.0/keadm-v1.5.0-linux-amd64.tar.gz
@@ -632,13 +633,13 @@ kubernetes-dashboard   kubernetes-dashboard-74d688b6bc-x7fqm        1/1     Runn
                     <a xmlns:cc="http://creativecommons.org/ns#" href="/2020/12/22/KubeEdgeDeployLog/" property="cc:attributionName"
                        rel="cc:attributionURL">Konata</a>
                     采用
-                    <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh">
+                    <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh">
                         知识共享署名-非商业性使用 4.0 国际许可协议
                     </a>
                     进行许可。
                 </div>
                 <div class="reprintImg">
-                    <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh">
+                    <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh">
                         <img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png"/>
                     </a>
                 </div>
@@ -875,7 +876,7 @@ kubernetes-dashboard   kubernetes-dashboard-74d688b6bc-x7fqm        1/1     Runn
 <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right" style="width: -moz-available;width: -webkit-fill-available">
-            &copy;2019-2021 Konata<br>Proudly published with Hexo<br>Theme - <a href="https://github.com/blinkfox/hexo-theme-matery">matery</a>
+            &copy;2019-2021 Konata<br>Proudly published with Hexo<br>Theme - <a target="_blank" rel="noopener" href="https://github.com/blinkfox/hexo-theme-matery">matery</a>
             
             
 			

@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <meta charset="utf-8">
     <meta name="keywords" content="在 Liunx 中查找文件, 生命不息 折腾不止">
     <meta name="description" content="locate使用 locate 命令需要安装 mlocate :
@@ -15,14 +15,15 @@ locate 命令维护一个 /var/lib/mlocate/mlocate.db 文件存放索引，该�
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="manifest" href="/site.webmanifest">
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#7312ff">
     <meta name="msapplication-TileColor" content="#8a46cc">
     <meta name="theme-color" content="#ffffff">
     <title>在 Liunx 中查找文件 | 生命不息 折腾不止</title>
-    <script async type="application/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.0/lazysizes.min.js"></script>
+    <script async type="application/javascript"
+            src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.0/lazysizes.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.1/animate.min.css">
@@ -42,7 +43,7 @@ locate 命令维护一个 /var/lib/mlocate/mlocate.db 文件存放索引，该�
     <style type="text/css">
         
     </style>
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 5.3.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 <body>
 <header class="navbar-fixed">
@@ -423,11 +424,11 @@ locate 命令维护一个 /var/lib/mlocate/mlocate.db 文件存放索引，该�
 <p>查找 <code>/var/</code> 目录及其子目录下所有最近 1 天内更改过的文件，+1 则表示 1 天前更改过文件。</p>
 <pre class=" language-bash"><code class="language-bash"><span class="token function">find</span> /var/ -ctime -1</code></pre>
 <p>查找 <code>/var/</code> 目录及其子目录下所有更改时间在 7 日以前的普通文件，并在删除之前询问是否删除。</p>
-<pre class=" language-bash"><code class="language-bash"><span class="token function">find</span> /var/ -type f -mtime +7 -ok <span class="token function">rm</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> \<span class="token punctuation">;</span> </code></pre>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">find</span> /var/ -type f -mtime +7 -ok <span class="token function">rm</span> <span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;&amp;#125; \; </span></code></pre>
 <p>查找 <code>/var/</code> 目录及其子目录下所有文件属主具有读、写权限，并且文件所属组的用户和其他用户具有读权限的文件。</p>
-<pre class=" language-bash"><code class="language-bash"><span class="token function">find</span> /var/  -type f -perm 644 -exec <span class="token function">ls</span> -l <span class="token punctuation">{</span><span class="token punctuation">}</span> \<span class="token punctuation">;</span> </code></pre>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">find</span> /var/  -type f -perm 644 -exec <span class="token function">ls</span> -l <span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;&amp;#125; \; </span></code></pre>
 <p>查找 <code>/var/</code> 目录及其子目录下所有文件长度为 0 的普通文件，并列出它们的完整路径。</p>
-<pre class=" language-bash"><code class="language-bash"><span class="token function">find</span> /var/ -type f -size 0 -exec <span class="token function">ls</span> -l <span class="token punctuation">{</span><span class="token punctuation">}</span> \<span class="token punctuation">;</span> </code></pre>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">find</span> /var/ -type f -size 0 -exec <span class="token function">ls</span> -l <span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;&amp;#125; \; </span></code></pre>
 <h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><ul>
 <li><code>-amin&lt;minute&gt;</code> : 查找在指定时间曾被存取过的文件或目录，单位以分钟计算。</li>
 <li><code>-anewer&lt;file or folder&gt;</code> : 查找其存取时间较指定文件或目录的存取时间更接近现在的文件或目录。</li>
@@ -508,13 +509,13 @@ locate 命令维护一个 /var/lib/mlocate/mlocate.db 文件存放索引，该�
                     <a xmlns:cc="http://creativecommons.org/ns#" href="/2020/09/14/findCommand/" property="cc:attributionName"
                        rel="cc:attributionURL">Konata</a>
                     采用
-                    <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh">
+                    <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh">
                         知识共享署名-非商业性使用 4.0 国际许可协议
                     </a>
                     进行许可。
                 </div>
                 <div class="reprintImg">
-                    <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh">
+                    <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh">
                         <img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png"/>
                     </a>
                 </div>
@@ -747,7 +748,7 @@ locate 命令维护一个 /var/lib/mlocate/mlocate.db 文件存放索引，该�
 <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right" style="width: -moz-available;width: -webkit-fill-available">
-            &copy;2019-2021 Konata<br>Proudly published with Hexo<br>Theme - <a href="https://github.com/blinkfox/hexo-theme-matery">matery</a>
+            &copy;2019-2021 Konata<br>Proudly published with Hexo<br>Theme - <a target="_blank" rel="noopener" href="https://github.com/blinkfox/hexo-theme-matery">matery</a>
             
             
 			
