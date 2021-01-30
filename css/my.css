@@ -190,7 +190,3 @@ nav a.waves-effect {
         display: none;
     }
 }
-.row .col.m6{
-    display: flex;
-    flex-direction: column;
-}

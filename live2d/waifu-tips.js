@@ -65,6 +65,9 @@ const live2d_models = [
         version: 3
     },
     {
+        name: 'klee2',
+        message: '可莉 bilibili@根瘤菌rkzj',
+        version: 3    },    {
         name: 'klee',
         message: '可莉 bilibili@根瘤菌rkzj',
         version: 3,
