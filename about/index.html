@@ -484,7 +484,7 @@ document.getElementsByClassName('bg-cover')[0].style.backgroundImage = "url('/me
                 type: 'pie',
                 radius: '50%',
                 color: ['#6772e5', '#ff9e0f', '#fa755a', '#3ecf8e', '#82d3f4', '#ab47bc', '#525f7f', '#f51c47', '#26A69A'],
-                data: [{"name":"Ops","value":11},{"name":"Java","value":10},{"name":"CSS","value":1},{"name":"JavaScript","value":22},{"name":"Tools","value":3},{"name":"Codec","value":3},{"name":"Codec","value":1},{"name":"Database","value":1},{"name":"Miscellaneous","value":3},{"name":"Algorithm","value":2},{"name":"Browser","value":1}],
+                data: [{"name":"CSS","value":1},{"name":"Ops","value":11},{"name":"Java","value":10},{"name":"JavaScript","value":22},{"name":"Tools","value":3},{"name":"Codec","value":3},{"name":"Codec","value":1},{"name":"Database","value":1},{"name":"Miscellaneous","value":3},{"name":"Browser","value":1},{"name":"Algorithm","value":2}],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
@@ -508,7 +508,7 @@ document.getElementsByClassName('bg-cover')[0].style.backgroundImage = "url('/me
         xAxis: [
             {
                 type: 'category',
-                data: ["JavaScript","Java","JSP","ES6","ffmpeg","Linux","AV1","Nginx","Windows","Shell"]
+                data: ["JavaScript","Java","JSP","ES6","ffmpeg","Linux","AV1","Nginx","Windows","Performance"]
             }
         ],
         yAxis: [
@@ -660,18 +660,18 @@ document.getElementsByClassName('bg-cover')[0].style.backgroundImage = "url('/me
         <div class="tag-chips center-align">
             
             
+            <a href="/tags/Performance/" target="_blank">
+                <span class="chip center-align waves-effect waves-light chip-default">Performance</span>
+            </a>
+            
+            
+            
             
             
             
             
             <a href="/tags/JSP/" target="_blank">
                 <span class="chip center-align waves-effect waves-light chip-default">JSP</span>
-            </a>
-            
-            
-            
-            <a href="/tags/Performance/" target="_blank">
-                <span class="chip center-align waves-effect waves-light chip-default">Performance</span>
             </a>
             
             
@@ -708,12 +708,6 @@ document.getElementsByClassName('bg-cover')[0].style.backgroundImage = "url('/me
             
             
             
-            <a href="/tags/AV1/" target="_blank">
-                <span class="chip center-align waves-effect waves-light chip-default">AV1</span>
-            </a>
-            
-            
-            
             <a href="/tags/Kubernetes/" target="_blank">
                 <span class="chip center-align waves-effect waves-light chip-default">Kubernetes</span>
             </a>
@@ -740,6 +734,12 @@ document.getElementsByClassName('bg-cover')[0].style.backgroundImage = "url('/me
             
             <a href="/tags/Docker/" target="_blank">
                 <span class="chip center-align waves-effect waves-light chip-default">Docker</span>
+            </a>
+            
+            
+            
+            <a href="/tags/AV1/" target="_blank">
+                <span class="chip center-align waves-effect waves-light chip-default">AV1</span>
             </a>
             
             
@@ -798,6 +798,12 @@ document.getElementsByClassName('bg-cover')[0].style.backgroundImage = "url('/me
             
             
             
+            <a href="/tags/Browser/" target="_blank">
+                <span class="chip center-align waves-effect waves-light chip-default">Browser</span>
+            </a>
+            
+            
+            
             <a href="/tags/VapourSynth/" target="_blank">
                 <span class="chip center-align waves-effect waves-light chip-default">VapourSynth</span>
             </a>
@@ -812,12 +818,6 @@ document.getElementsByClassName('bg-cover')[0].style.backgroundImage = "url('/me
             
             <a href="/tags/%E7%AE%97%E6%B3%95/" target="_blank">
                 <span class="chip center-align waves-effect waves-light chip-default">算法</span>
-            </a>
-            
-            
-            
-            <a href="/tags/Browser/" target="_blank">
-                <span class="chip center-align waves-effect waves-light chip-default">Browser</span>
             </a>
             
             
@@ -918,23 +918,22 @@ document.getElementsByClassName('bg-cover')[0].style.backgroundImage = "url('/me
             &copy;2019-2021 Konata<br>Proudly published with Hexo<br>Theme - <a target="_blank" rel="noopener" href="https://github.com/blinkfox/hexo-theme-matery">matery</a>
             
             
-			
+            
                 <br>
                 
-                <span id="busuanzi_container_site_pv">
+                    <span id="busuanzi_container_site_pv">
                     <i class="fa fa-heart-o"></i>
                     本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
                 </span>
                 
                 
-                <span id="busuanzi_container_site_uv">
-                    <i class="fa fa-users"></i>
-                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                    <span id="busuanzi_container_site_uv">
+                    次,&nbsp;<i class="fa fa-users"></i> 访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
                 </span>
                 
             
         </div>
-<!--        <div class="col s12 m4 l4 social-link social-statis">
+        <!--        <div class="col s12 m4 l4 social-link social-statis">
 
 
     <a href="mailto:konata#aliyun.com" class="tooltipped" target="_blank" data-tooltip="E-mail" data-position="top" data-delay="50">
@@ -964,13 +963,6 @@ document.getElementsByClassName('bg-cover')[0].style.backgroundImage = "url('/me
         <div id="searchResult"></div>
     </div>
 </div>
-
-<script src="/js/search.js"></script>
-<script type="text/javascript">
-    document.addEventListener("DOMContentLoaded", () => {
-        searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
-    });
-</script>
 <!-- 回到顶部按钮 -->
 <div id="backTop" class="top-scroll-btn">
     <a class="btn-floating btn-large waves-effect waves-light" href="#!">
@@ -987,7 +979,7 @@ document.getElementsByClassName('bg-cover')[0].style.backgroundImage = "url('/me
         </svg>
     </a>
 </div>
-<script src="/libs/materialize/materialize.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/materialize-css@1.0.0/dist/js/materialize.min.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/desandro/masonry@4.0.0/dist/masonry.pkgd.min.js"></script>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -1025,15 +1017,13 @@ document.getElementsByClassName('bg-cover')[0].style.backgroundImage = "url('/me
     <canvas id="live2d4"></canvas>
 </div>
 <script src="/live2d/live2d_bundle.js"></script>
-<script async type="module" src="/live2d/waifu-tips.js"></script>
 <script type="module">
     const getWidth = () => {
         let width = window.innerWidth
         if (width >= 1040) {
-            // import('/js/bundle.js');
-            import('/js/matery.js');
+            import('/js/bundle.js');
         } else {
-            import('/js/matery.js');
+            import('/js/bundle.js');
         }
     }
     getWidth();

@@ -771,23 +771,22 @@ console<span class="token punctuation">.</span><span class="token function">log<
             &copy;2019-2021 Konata<br>Proudly published with Hexo<br>Theme - <a target="_blank" rel="noopener" href="https://github.com/blinkfox/hexo-theme-matery">matery</a>
             
             
-			
+            
                 <br>
                 
-                <span id="busuanzi_container_site_pv">
+                    <span id="busuanzi_container_site_pv">
                     <i class="fa fa-heart-o"></i>
                     本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
                 </span>
                 
                 
-                <span id="busuanzi_container_site_uv">
-                    <i class="fa fa-users"></i>
-                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                    <span id="busuanzi_container_site_uv">
+                    次,&nbsp;<i class="fa fa-users"></i> 访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
                 </span>
                 
             
         </div>
-<!--        <div class="col s12 m4 l4 social-link social-statis">
+        <!--        <div class="col s12 m4 l4 social-link social-statis">
 
 
     <a href="mailto:konata#aliyun.com" class="tooltipped" target="_blank" data-tooltip="E-mail" data-position="top" data-delay="50">
@@ -817,13 +816,6 @@ console<span class="token punctuation">.</span><span class="token function">log<
         <div id="searchResult"></div>
     </div>
 </div>
-
-<script src="/js/search.js"></script>
-<script type="text/javascript">
-    document.addEventListener("DOMContentLoaded", () => {
-        searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
-    });
-</script>
 <!-- 回到顶部按钮 -->
 <div id="backTop" class="top-scroll-btn">
     <a class="btn-floating btn-large waves-effect waves-light" href="#!">
@@ -840,7 +832,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
         </svg>
     </a>
 </div>
-<script src="/libs/materialize/materialize.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/materialize-css@1.0.0/dist/js/materialize.min.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/desandro/masonry@4.0.0/dist/masonry.pkgd.min.js"></script>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -878,15 +870,13 @@ console<span class="token punctuation">.</span><span class="token function">log<
     <canvas id="live2d4"></canvas>
 </div>
 <script src="/live2d/live2d_bundle.js"></script>
-<script async type="module" src="/live2d/waifu-tips.js"></script>
 <script type="module">
     const getWidth = () => {
         let width = window.innerWidth
         if (width >= 1040) {
-            // import('/js/bundle.js');
-            import('/js/matery.js');
+            import('/js/bundle.js');
         } else {
-            import('/js/matery.js');
+            import('/js/bundle.js');
         }
     }
     getWidth();
