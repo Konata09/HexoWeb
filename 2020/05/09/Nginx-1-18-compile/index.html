@@ -22,13 +22,13 @@
     <meta name="msapplication-TileColor" content="#8a46cc">
     <meta name="theme-color" content="#ffffff">
     <title>Nginx 1.19.6 with HTTP/3 编译记录 | 生命不息 折腾不止</title>
-    <script async type="application/javascript"
-            src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.0/lazysizes.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.1/animate.min.css">
-    <link rel="stylesheet" type="text/css" href="/css/matery.css">
-    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <script async type="application/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.0/lazysizes.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.1/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/materialize.min.css">
+<!--    <link rel="stylesheet" type="text/css" href="/css/matery.css">-->
+<!--    <link rel="stylesheet" type="text/css" href="/css/my.css">-->
+    <link rel="stylesheet" type="text/css" href="/css/bundle.css">
     <script async defer data-website-id="4873cf0d-ee04-4c6c-85e1-5c2f72f5b538" src="https://umami.konata.tech/umami.js"></script>
     <!--百度统计-->
     <script>
@@ -43,9 +43,10 @@
     <style type="text/css">
         
     </style>
-<meta name="generator" content="Hexo 5.3.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 5.3.0"></head>
 
 <body>
+<img src="/medias/banner/1.jpg" style="display: none">
 <header class="navbar-fixed">
     <nav id="headNav" class="bg-color nav-transparent">
         <div id="navContainer" class="nav-wrapper container">
@@ -459,7 +460,7 @@ patch -p1 <span class="token operator">&lt;</span> <span class="token punctuatio
 <span class="token comment" spellcheck="true"># patch -p1 &lt; ../patch/nginx_with_quic.patch</span>
 <span class="token comment" spellcheck="true"># patch -p1 &lt; ../patch/Enable_BoringSSL_OCSP.patch</span></code></pre>
 <pre class=" language-bash"><code class="language-bash"><span class="token function">cd</span> /root/nginx-1.19.6
-./configure --add-module<span class="token operator">=</span><span class="token punctuation">..</span>/ngx_brotli --with-openssl<span class="token operator">=</span><span class="token punctuation">..</span>/quiche/deps/boringssl --with-quiche<span class="token operator">=</span><span class="token punctuation">..</span>/quiche --with-http_v2_module --with-http_v3_module --with-http_ssl_module --with-http_gzip_static_module --with-http_realip_module --with-threads --with-stream --with-stream_realip_module --with-stream_ssl_module --with-stream_ssl_preread_module --with-zlib<span class="token operator">=</span><span class="token punctuation">..</span>/zlib --add-module<span class="token operator">=</span><span class="token punctuation">..</span>/ngx_devel_kit --add-module<span class="token operator">=</span><span class="token punctuation">..</span>/headers-more-nginx-module --add-module<span class="token operator">=</span><span class="token punctuation">..</span>/lua-nginx-module-0.10.19 --with-file-aio --add-module<span class="token operator">=</span><span class="token punctuation">..</span>/ngx_http_geoip2_module --add-module<span class="token operator">=</span><span class="token punctuation">..</span>/ngx-fancyindex --add-module<span class="token operator">=</span><span class="token punctuation">..</span>/nginx-dav-ext-module --add-module<span class="token operator">=</span><span class="token punctuation">..</span>/ngx_http_substitutions_filter_module --with-libatomic --with-http_dav_module --with-http_stub_status_module
+./configure --add-module<span class="token operator">=</span><span class="token punctuation">..</span>/ngx_brotli --with-openssl<span class="token operator">=</span><span class="token punctuation">..</span>/quiche/deps/boringssl --with-quiche<span class="token operator">=</span><span class="token punctuation">..</span>/quiche --with-http_v2_module --with-http_v3_module --with-http_ssl_module --with-http_gzip_static_module --with-http_realip_module --with-threads --with-stream --with-stream_realip_module --with-stream_ssl_module --with-stream_ssl_preread_module --with-zlib<span class="token operator">=</span><span class="token punctuation">..</span>/zlib --add-module<span class="token operator">=</span><span class="token punctuation">..</span>/ngx_devel_kit --add-module<span class="token operator">=</span><span class="token punctuation">..</span>/headers-more-nginx-module --add-module<span class="token operator">=</span><span class="token punctuation">..</span>/lua-nginx-module-0.10.19 --with-file-aio --add-module<span class="token operator">=</span><span class="token punctuation">..</span>/ngx_http_geoip2_module --add-module<span class="token operator">=</span><span class="token punctuation">..</span>/ngx-fancyindex --add-module<span class="token operator">=</span><span class="token punctuation">..</span>/nginx-dav-ext-module --add-module<span class="token operator">=</span><span class="token punctuation">..</span>/ngx_http_substitutions_filter_module --with-libatomic --with-http_dav_module --with-http_stub_status_module 
 <span class="token function">make</span> -j4
 <span class="token function">make</span> <span class="token function">install</span></code></pre>
 <h2 id="配置动态链接库"><a href="#配置动态链接库" class="headerlink" title="配置动态链接库"></a>配置动态链接库</h2><pre class=" language-bash"><code class="language-bash">vim /etc/ld.so.conf.d/libc.conf</code></pre>

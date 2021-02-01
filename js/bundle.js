@@ -1,1 +1,1280 @@
-(()=>{"use strict";const e={modelUrl:"/model",tipsMessage:"/live2d/waifu-tips.json",modelName:"paimon",modelStorage:!0,modelRandMode:!1,preLoadMotion:!1,tryWebp:!0,showToolMenu:!0,canCloseLive2d:!0,canSwitchModel:!0,canSwitchHitokoto:!0,canTakeScreenshot:!0,canTurnToHomePage:!0,canTurnToAboutPage:!0,showVolumeBtn:!0,showHitokoto:!0,hitokotoAPI:"",showWelcomeMessage:!0,showCopyMessage:!0,showF12OpenMsg:!0,live2dHeight:680,live2dWidth:500,waifuMinWidth:"1040px",waifuEdgeSide:"right:0",debug:!0,debugMousemove:!1,logMessageToConsole:!0,l2dVersion:"2.0.0",homePageUrl:"auto",aboutPageUrl:"https://github.com/Konata09/Live2dOnWeb/",screenshotCaptureName:"bronyaMoe.png"},t=[{name:"paimon",message:"应急食品 bilibili@根瘤菌rkzj",version:3},{name:"klee2",message:"可莉 bilibili@根瘤菌rkzj",version:3},{name:"klee",message:"可莉 bilibili@根瘤菌rkzj",version:3,position:"left"},{name:"bronyaXinZhiHua",message:"布洛妮娅心之花 @GhastRiv",version:2},{name:"houmuya",message:"吼姆布洛妮娅 bilibili@呦克里斯汀娜呦",version:3},{name:"bronya",message:"Valkyrie System 启动",version:2},{name:"Kiana",message:"终于轮到我了么！",version:2},{name:"Mei",message:"烦死了，家里还有两个吃闲饭的等着我回去做晚餐呢",version:2},{name:"Lita",message:"丽塔·洛丝薇瑟",version:2},{name:"Sakura",message:"已经很久没有出场了呢",version:2},{name:"Theresa",message:"要和德丽莎一起睡午觉吗?",version:2},{name:"Himeko",message:"话说~休伯利安本来的舰长可是我呦 ~",version:2},{name:"Seele",message:"舰长是来和希儿一起玩儿的吗?",version:2},{name:"xilin2.1",message:"西琳小天使",version:2},{name:"SakuraQ",message:"信浓的春野已经开满了樱花了吧……",version:2},{name:"Sin",message:"杏·玛尔",version:2},{name:"kiro",message:"时雨绮罗",version:2},{name:"lingyiniang",message:"灵依娘",version:2},{name:"houraiji",message:"蓬莱寺九霄",version:2},{name:"kaguya",message:"耀夜姬",version:2},{name:"keluoyi",message:"柯罗伊",version:2},{name:"kika",message:"无色辉火",version:2},{name:"Nina",message:"妮娜",version:2},{name:"yiselin",message:"伊瑟琳·利维休斯",version:2},{name:"Nindi",message:"宁蒂·阿波卡利斯",version:2}],o=(e,t)=>{try{sessionStorage.setItem(e,t)}catch(e){}},n=e=>{try{return sessionStorage.getItem(e)}catch(e){return null}},a=e=>{try{return localStorage.getItem(e)}catch(e){return null}};String.prototype.render=function(e){return this.replace(/(\\)?{([^{}\\]+)(\\)?}/g,(function(t,o,n,a){if(o||a)return t.replace("\\","");const i=n.replace(/\s/g,"").split(".");let s,r,l,d=e;for(s=0,r=i.length;s<r;++s)if(l=i[s],d=d[l],null==d)return"";return d}))};const i=e=>{try{const t=document.querySelectorAll(e);return 1===t.length?t[0]:Array.from(t)}catch(e){return console.error(e),null}},s=/x/;console.log(s);const r=i("#waifu-message"),l=i("#waifu");function d(e){return Array.isArray(e)?e[Math.floor(Math.random()*e.length+1)-1]:e}let c;function u(t,a,i){(i||""===n("waifu-text")||null===n("waifu-text"))&&(c&&window.clearTimeout(c),Array.isArray(t)&&(t=t[Math.floor(Math.random()*t.length+1)-1]),e.logMessageToConsole&&console.log("[WaifuTips]",t.replace(/<[^<>]+>/g,"")),i&&o("waifu-text",t),r.style.opacity=1,r.innerHTML=t,void 0===a&&(a=5e3),function(e){void 0===e&&(e=5e3),c=window.setTimeout((function(){(e=>{try{sessionStorage.removeItem("waifu-text")}catch(e){}})(),r.style.opacity=0}),e)}(a))}function m(){if(f(p),"1"===n("waifuHide"))return void l.classList.add("hide");l.classList.remove("hide"),console.log("く__,.ヘヽ.　　　　/　,ー､ 〉\n　　　　　＼ ', !-─‐-i　/　/´\n　　　 　 ／｀ｰ'　　　 L/／｀ヽ､\n　　 　 /　 ／,　 /|　 ,　 ,　　　 ',\n　　　ｲ 　/ /-‐/　ｉ　L_ ﾊ ヽ!　 i\n　　　 ﾚ ﾍ 7ｲ｀ﾄ　 ﾚ'ｧ-ﾄ､!ハ|　 |\n　　　　 !,/7 '0'　　 ´0iソ| 　 |　　　\n　　　　 |.从\"　　_　　 ,,,, / |./ 　 |\n　　　　 ﾚ'| i＞.､,,__　_,.イ / 　.i 　|\n　　　　　 ﾚ'| | / k_７_/ﾚ'ヽ,　ﾊ.　|\n　　　　　　 | |/i 〈|/　 i　,.ﾍ |　i　|\n　　　　　　.|/ /　ｉ： 　 ﾍ!　　＼　|\n　　　 　 　 kヽ>､ﾊ 　 _,.ﾍ､ 　 /､!\n　　　　　　 !'〈//｀Ｔ´', ＼ ｀'7'ｰr'\n　　　　　　 ﾚ'ヽL__|___i,___,ンﾚ|ノ\n　　　　　 　　　ﾄ-,/　|___./\n　　　　　 　　　'ｰ'　　!_,.:\nLive2D 看板娘 v"+e.l2dVersion+" / Konata"),i("#live2d2").setAttribute("height",e.live2dHeight),i("#live2d2").setAttribute("width",e.live2dWidth),i("#live2d4").setAttribute("height",e.live2dHeight),i("#live2d4").setAttribute("width",e.live2dWidth),e.showToolMenu||i(".waifu-tool").classList.add("hide"),e.canCloseLive2d||i(".waifu-tool .icon-cross").classList.add("hide"),e.canSwitchModel||i(".waifu-tool .icon-next").classList.add("hide"),e.canSwitchHitokoto||i(".waifu-tool .icon-message").classList.add("hide"),e.canTakeScreenshot||i(".waifu-tool .icon-camera").classList.add("hide"),e.canTurnToHomePage||i(".waifu-tool .icon-home").classList.add("hide"),e.canTurnToAboutPage||i(".waifu-tool .icon-about").classList.add("hide"),e.showVolumeBtn||i(".waifu-tool .icon-volumeup").classList.add("hide")||i(".waifu-tool .icon-volumedown").classList.add("hide"),i(".waifu-tool .icon-next").addEventListener("click",(()=>function(){const o=(i="modelName",e.modelStorage?a(i):n(i));var i;let s=0;e.modelRandMode?s=Math.floor(Math.random()*t.length+1)-1:(s=t.findIndex((e=>e.name===o)),s<t.length-1?s++:s=0),t[s].message&&u(t[s].message,3e3,!0),g(t[s].name)}())),i(".waifu-tool .icon-home").addEventListener("click",(()=>window.location=e.homePageUrl)),i(".waifu-tool .icon-about").addEventListener("click",(()=>window.open(e.aboutPageUrl))),i(".waifu-tool .icon-camera").addEventListener("click",(()=>{3===window.live2dCurrentVersion?window.live2dv4.CaptureCanvas():window.live2dv2.captureFrame=!0})),i(".waifu-tool .icon-cross").addEventListener("click",(()=>{sessionStorage.setItem("waifuHide","1"),window.setTimeout((function(){l.classList.add("hide"),document.getElementById("show-live2d").classList.remove("btnHide")}),1e3)})),window.waifuResize=()=>{"1"!==n("waifuHide")&&(window.innerWidth<=Number(e.waifuMinWidth.replace("px",""))?l.classList.add("hide"):l.classList.remove("hide"))},"disable"!==e.waifuMinWidth&&(waifuResize(),window.addEventListener("resize",waifuResize)),e.homePageUrl="auto"===e.homePageUrl?window.location.protocol+"//"+window.location.hostname+"/":e.homePageUrl,e.tipsMessage&&window.fetch(e.tipsMessage).then((e=>e.json())).then((t=>function(t){window.waifu_tips=t;const o=(e,t)=>{e.addEventListener("mouseenter",(()=>{let o=d(t.text);o.indexOf("{text}")>0&&(o=o.replace(/{text}/,e.innerText)),u(o,3e3)}))},n=()=>{for(let n of t.mouseover){const t=i(n.selector);Array.isArray(t)?t.forEach((e=>o(e,n))):t?o(t,n):e.debug&&console.warn(`[WaifuTips] can not found element: ${n.selector}`)}},a=()=>{for(let o of t.click){const t=i(o.selector);Array.isArray(t)?t.forEach((e=>e.addEventListener("click",(()=>{u(d(o.text),3e3,!0)})))):t?t.addEventListener("click",(()=>{u(d(o.text),3e3,!0)})):e.debug&&console.warn(`[WaifuTips] can not found element: ${o.selector}`)}};for(let e of t.seasons){const t=new Date,o=e.date.split("-")[0],n=e.date.split("-")[1]||o;if(o.split("/")[0]<=t.getMonth()+1&&t.getMonth()+1<=n.split("/")[0]&&o.split("/")[1]<=t.getDate()&&t.getDate()<=n.split("/")[1]){let o=d(e.text);o.indexOf("{year}")>0&&(o=o.replace(/{year}/,t.getFullYear())),u(o,6e3,!0)}}e.showF12OpenMsg&&(s.toString=function(){return u(d(t.waifu.console_open_msg),5e3,!0),""});const r=()=>{0!==i("#articleContent").length&&i("#articleContent").addEventListener("copy",(()=>u(d(t.waifu.copy_message),5e3,!0)))};window.showWelcomeMessage=function(t){let o;if(window.location.href===e.homePageUrl){const e=(new Date).getHours();o=d(e>23||e<=5?t.waifu.hour_tips["t23-5"]:e>5&&e<=7?t.waifu.hour_tips["t5-7"]:e>7&&e<=11?t.waifu.hour_tips["t7-11"]:e>11&&e<=14?t.waifu.hour_tips["t11-14"]:e>14&&e<=17?t.waifu.hour_tips["t14-17"]:e>17&&e<=19?t.waifu.hour_tips["t17-19"]:e>19&&e<=21?t.waifu.hour_tips["t19-21"]:e>21&&e<=23?t.waifu.hour_tips["t21-23"]:t.waifu.hour_tips.default)}else{const e=t.waifu.referrer_message;if(""!==document.referrer){const n=document.createElement("a");n.href=document.referrer;const a=n.hostname.split(".")[1];if(window.location.hostname===n.hostname)o=e.localhost[0]+document.title.split(e.localhost[2])[0]+e.localhost[1];else if("baidu"===a)o=e.baidu[0]+n.search.split("&wd=")[1].split("&")[0]+e.baidu[1];else if("so"===a)o=e.so[0]+n.search.split("&q=")[1].split("&")[0]+e.so[1];else if("google"===a)o=e.google[0]+document.title.split(e.google[2])[0]+e.google[1];else{o=e.default[0]+n.hostname+e.default[1];for(let e in t.waifu.referrer_hostname)if(e===n.hostname){o=d(t.waifu.referrer_hostname[e]);break}}}else o=e.none[0]+document.title.split(e.none[2])[0]+e.none[1]}u(o,6e3)},e.showWelcomeMessage&&showWelcomeMessage(t);const l=t.waifu;e.showHitokoto&&(window.getActed=!1,window.hitokotoTimer=0,window.hitokotoInterval=!1,setInterval((function(){getActed?(getActed=hitokotoInterval=!1,window.clearInterval(hitokotoTimer)):hitokotoInterval||(hitokotoInterval=!0,hitokotoTimer=window.setInterval(m,3e4))}),1e3));const c=()=>{document.addEventListener("mousemove",(()=>getActed=!0)),document.addEventListener("keydown",(()=>getActed=!0))};function m(){"visible"===document.visibilityState&&g()}function g(){switch(e.hitokotoAPI){case"lwl12.com":window.fetch("https://api.lwl12.com/hitokoto/v1?encode=realjson").then((e=>e.json())).then((e=>{if(!e.source){let t=l.hitokoto_api_message["lwl12.com"][0];e.author||(t+=l.hitokoto_api_message["lwl12.com"][1]),t=t.render({source:e.source,creator:e.author}),window.setTimeout((function(){u(t+l.hitokoto_api_message["lwl12.com"][2],3e3,!0)}),5e3)}u(e.text,5e3,!0)}));break;case"fghrsh.net":window.fetch("https://api.fghrsh.net/hitokoto/rand/?encode=jsc&uid=3335").then((e=>e.json())).then((e=>{if(!e.source){let t=l.hitokoto_api_message["fghrsh.net"][0];t=t.render({source:e.source,date:e.date}),window.setTimeout((function(){u(t,3e3,!0)}),5e3),u(e.hitokoto,5e3,!0)}}));break;case"jinrishici.com":window.fetch("https://v2.jinrishici.com/one.json").then((e=>e.json())).then((e=>{if(!e.data.origin.title){let t=l.hitokoto_api_message["jinrishici.com"][0];t=t.render({title:e.data.origin.title,dynasty:e.data.origin.dynasty,author:e.data.origin.author}),window.setTimeout((function(){u(t,3e3,!0)}),5e3)}u(e.data.content,5e3,!0)}));break;default:window.fetch("https://v1.hitokoto.cn").then((e=>e.json())).then((e=>{if(!e.from){let t=l.hitokoto_api_message["hitokoto.cn"][0];t=t.render({source:e.from,creator:e.creator}),window.setTimeout((function(){u(t,3e3,!0)}),5e3)}u(e.hitokoto,5e3,!0)}))}}"interactive"===document.readyState||"complete"===document.readyState?(n(),a(),e.showCopyMessage&&r(),e.showHitokoto&&c()):(window.addEventListener("DOMContentLoaded",n),window.addEventListener("DOMContentLoaded",a),e.showCopyMessage&&window.addEventListener("DOMContentLoaded",r),e.showHitokoto&&window.addEventListener("DOMContentLoaded",c)),i(".waifu-tool .icon-message").addEventListener("click",(()=>g()))}(t)));let o=a("modelName");e.modelStorage&&null!=o||(o=e.modelName),window.live2dv4.setPreLoadMotion(e.preLoadMotion),window.live2dv2.debug=e.debug,window.live2dv4.debug=e.debug,window.live2dv2.debugMousemove=e.debug&&e.debugMousemove,window.live2dv4.debugMousemove=e.debug&&e.debugMousemove,e.tryWebp?new Promise((e=>{const t=new Image;t.src="data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA",t.onload=t.onerror=()=>{e(2===t.height)}})).then((e=>window.webpReady=e)).then((()=>{!0===window.webpReady?console.log("[WaifuTips] Your browser support WebP format. Try to load WebP texture first."):console.log("[WaifuTips] Your browser do not support WebP format."),g(o)})):g(o)}function g(n){e.modelStorage?((e,t)=>{try{localStorage.setItem("modelName",t)}catch(e){}})(0,n):o("modelName",n),e.debug&&console.log(`[WaifuTips] load model: ${n}`);let a=2;for(let o of t)if(o.name===n){a=o.version,"left"===(s=o.position)?(i(".waifu-tool").style.right="unset",i(".waifu-tool").style.left="10px",l.style.right="unset",l.style.left=e.waifuEdgeSide.split(":")[1]):"right"===s?(i(".waifu-tool").style.left="unset",i(".waifu-tool").style.right="10px",l.style.left="unset",l.style.right=e.waifuEdgeSide.split(":")[1]):(i(".waifu-tool").style.left="",i(".waifu-tool").style.right="",l.style.left="",l.style.right="");break}var s;window.live2dCurrentVersion!==a&&(2===window.live2dCurrentVersion?(window.live2dv2.release(),i("#live2d2").style.display="none"):(window.live2dv4.release(),i("#live2d4").style.display="none")),2===a?(i("#live2d2").style.display="block",window.live2dv2.load("live2d2",`${e.modelUrl}/${n}/model.json`)):window.live2dCurrentVersion===a?window.live2dv4.change(`${e.modelUrl}/${n}`,`${n}.model3.json`):(i("#live2d4").style.display="block",window.live2dv4.load("live2d4",`${e.modelUrl}/${n}`,`${n}.model3.json`)),window.live2dCurrentVersion=a}const f=(()=>{const e=document.createElement("style");return document.head.append(e),t=>e.textContent=t})(),p=`\n#waifu {\n${e.waifuEdgeSide}px;\nposition:fixed;\nbottom:0;\nz-index:998;\nfont-size:0\n}\n\n#waifu-message {\nfont-size:1rem;\nwidth:-moz-fit-content;\nwidth:fit-content;\nheight:auto;\nleft:2rem;\ntop:20px;\nopacity:0;\nz-index:998;\nmargin:auto;\npadding:5px 10px;\nborder:1px solid rgba(104,216,255,0.62);\nborder-radius:12px;\nbackground-color:rgba(76,191,255,0.8);\nbox-shadow:0 3px 15px 2px rgba(16,51,49,0.3);\ntext-overflow:ellipsis;\noverflow:hidden;\nposition:relative;\nanimation-delay:5s;\nanimation-duration:50s;\nanimation-iteration-count:infinite;\nanimation-name:shake;\nanimation-timing-function:ease-in-out;\ntransition:opacity .3s ease\n}\n\n#waifu-message>a {\ncolor:#7500b7;\n}\n\n#live2d2,#live2d4 {\nposition:relative;\ndisplay:none;\nz-index:997\n}\n\n.waifu-tool {\ndisplay:none;\ncolor:#d73b66;\ntop:130px;\n${e.waifuEdgeSide.split(":")[0]}:10px;\nposition:absolute;\nz-index:998\n}\n\n#waifu:hover > .waifu-tool {\ndisplay:block\n}\n\n.waifu-tool > span {\nfont-family:"waifuico"!important;\ndisplay:block;\ncursor:pointer;\ncolor:#0396FF;\ntransition:.2s;\nfont-size:18px;\nfont-style:normal;\n-webkit-font-smoothing:antialiased;\n-moz-osx-font-smoothing:grayscale\n}\n\n.waifu-tool > span:hover {\ncolor:#43CBFF\n}\n\n.waifu-tool > .icon-next:before{padding-left:1px;content:"\\e6ba"}.waifu-tool > .icon-message:before{content:"\\e632"}.waifu-tool > .icon-cross:before{content:"\\e606"}.waifu-tool > .icon-about:before{content:"\\e60c"}.waifu-tool > .icon-home:before{content:"\\e604"}.waifu-tool > .icon-camera:before{content:"\\e635"}.waifu-tool > .icon-volumedown:before{content:"\\e6c2"}.waifu-tool > .icon-volumeup:before{content:"\\e6c3"}#waifu.hide,.waifu-tool > span.hide{display:none}@font-face{font-family:"waifuico";src:url(data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAWcAAsAAAAAC0gAAAVNAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCEAgqIVIcCATYCJAMkCxQABCAFhG0HchuYCVGUT06K7OeB7R6lCBOgbWnZzIYDWz+EMHANCwis4uG/tdf7dmbx/wC6VAGqgCuhAwBFIEwVsNJVwEb21LKO3q1lyz+tCZvx3+UrWlPV795l73pusllKVXgcRqIMCNk9wkGaA/IP1K2mWg6WmlnR1Qqa7lwLoaYD/FpfOAE/f7i06QU2n2W5rPV/cy2K44ACGrcnLqDD0wI/YTkL68xspUBnvQo9T6CzQkdr1/bhCczKuDJQdj1LDMwmDHIFPTTqquDavDGelJricfGKl+7w8d98zFIoE/6iA9e2Ylj9lX1P9TmTXns0nA3bm0jYCGTiTaHjmRQkNprQnXOzC8C4sE0w1P4qQ/OWvPO97zOkb72kik5d+CcPlJKsUAm1hqhw1ZCot5MNv7LiUvKr4pL4NVSqQvPQKYCWoNQMvYNOAH2DTg30HQ0a0JprJoEpEPsB4i2ON7lEyOJpoGWF9Uoz6iBtQmEZSR0YgyVVYPFeOIPN3GSY5uUOTjKmlLks4xwO30ihSfCIyrtB4/PlZurwHsUBoelpYahQGMsORi9mnmOcZ53Fz4BQ8IuaCKZRdi7BW+cZ52Szpw+ehI6b5uVwWNcZJrl5XEaG4Bld+DyO/5TGe5LbP7LAWhojkRiji8z5YcW4eTbOYXEZBO3YphYFXCQmlfO4fOOcAZytB5LH1+1A0uQ5B/DIGQ0gj8ejLuvzhMI4gSALZBJK9MFFEGbOK1D72SB4ZF2DPLFhL3v8OkqZ3MwXCOi1BHU/icfLYxIMLouDs5sWjxhRQR6VjJ+FINpJiKW8dBgVnzyUAzNnYNNHlnYjV2upFMVP6IFi1tXVmW8ihqPPJMWLn3H3seGju3ci3kxPEJTA0jrAQ0fD8Bh6dl1hXf0jKHdKaRsxTzcO0JWMCoNpvbEutxBvrD4E64xscguymJWl87Zjuz13sbN3o1/REc9hj2HPEfRfUA14VOUN+7FLSlHD9gF0AN/dJbxQrsdqTB3bWeDw0/XbbtrtD/xvuymCYSI3VzoM07Joq6QFcq1EreSY1AupY67wGmL52IowWn008LOtnCa+PdJrVOzu58O13kDd54MrhoRV1HZxf/zUr1jBGrG7pF/6h14kOo20kntvDF6kSO5t+TgvfqwJSQ/VSg0rQ5KRsjB/bGg60jQ9Ai1DI9N26w1XrItJXd3kYnKRURRvBJG8CHy8T2KLtC/qq2WL2gJ6vtlO77JfPuylAcBR1HTZpJf91SwxeD4oigJToj4caJer06uTaZep061vZt/78dVJJWe2AnU4gB5PDpTgyF6yu7ScXvf3eIak4yE/dIofEGczzzlM3ABqvZvHHD39P3t+ZdNyM/gthH9c/L6TBMMoWrqXvkajeBuRb7kuP60g/JddpNzY5pNEGfo/hx8k0VMSdQi2thsxVqATC3y7PZM+hsUzjVX+THgmgkJtDpLGSmKmboTSwCJUGluhs8HOzQNTxITILdZ7ZBDGvUBh1GdIxr0RM/UdSrN+oTIeE9A5FlP3HFgd2fxOIaMUo73CLOLaSbPO+/IjSkJpJC51jDMSn4Vx2Buk0ztUkwxxgT9PRqoOnXCF2+xlVJaMjXBOkfZS1Wbc77uib+pFXMG8nQQxFIkh6wrKRFjNmeVqPrP/IyQRlAyp6HvmPUOEl62PhnoGDYg7qrpR36XUeucSI0oxB7ltKaugbbKRUiQYaoqPypGI6kk7xBpjfZrnmqp60+PqsV6BDv+YNopIkaOMKupooo1OvkmXOnODvDcJTV0W9tVTFy0Hnb6Xmpwrmr5sqjtz7PwxLkNFMV/Us6E/NAAAAAA=) format("woff2"),url(waifuico.woff?t=1597741284606) format("woff")}@keyframes shake{2%{transform:translate(0.5px,-1.5px) rotate(-0.5deg)}4%{transform:translate(0.5px,1.5px) rotate(1.5deg)}6%{transform:translate(1.5px,1.5px) rotate(1.5deg)}8%{transform:translate(2.5px,1.5px) rotate(0.5deg)}10%{transform:translate(0.5px,2.5px) rotate(0.5deg)}12%{transform:translate(1.5px,1.5px) rotate(0.5deg)}14%{transform:translate(0.5px,0.5px) rotate(0.5deg)}16%{transform:translate(-1.5px,-0.5px) rotate(1.5deg)}18%{transform:translate(0.5px,0.5px) rotate(1.5deg)}20%{transform:translate(2.5px,2.5px) rotate(1.5deg)}22%{transform:translate(0.5px,-1.5px) rotate(1.5deg)}24%{transform:translate(-1.5px,1.5px) rotate(-0.5deg)}26%{transform:translate(1.5px,0.5px) rotate(1.5deg)}28%{transform:translate(-0.5px,-0.5px) rotate(-0.5deg)}30%{transform:translate(1.5px,-0.5px) rotate(-0.5deg)}32%{transform:translate(2.5px,-1.5px) rotate(1.5deg)}34%{transform:translate(2.5px,2.5px) rotate(-0.5deg)}36%{transform:translate(0.5px,-1.5px) rotate(0.5deg)}38%{transform:translate(2.5px,-0.5px) rotate(-0.5deg)}40%{transform:translate(-0.5px,2.5px) rotate(0.5deg)}42%{transform:translate(-1.5px,2.5px) rotate(0.5deg)}44%{transform:translate(-1.5px,1.5px) rotate(0.5deg)}46%{transform:translate(1.5px,-0.5px) rotate(-0.5deg)}48%{transform:translate(2.5px,-0.5px) rotate(0.5deg)}50%{transform:translate(-1.5px,1.5px) rotate(0.5deg)}52%{transform:translate(-0.5px,1.5px) rotate(0.5deg)}54%{transform:translate(-1.5px,1.5px) rotate(0.5deg)}56%{transform:translate(0.5px,2.5px) rotate(1.5deg)}58%{transform:translate(2.5px,2.5px) rotate(0.5deg)}60%{transform:translate(2.5px,-1.5px) rotate(1.5deg)}62%{transform:translate(-1.5px,0.5px) rotate(1.5deg)}64%{transform:translate(-1.5px,1.5px) rotate(1.5deg)}66%{transform:translate(0.5px,2.5px) rotate(1.5deg)}68%{transform:translate(2.5px,-1.5px) rotate(1.5deg)}70%{transform:translate(2.5px,2.5px) rotate(0.5deg)}72%{transform:translate(-0.5px,-1.5px) rotate(1.5deg)}74%{transform:translate(-1.5px,2.5px) rotate(1.5deg)}76%{transform:translate(-1.5px,2.5px) rotate(1.5deg)}78%{transform:translate(-1.5px,2.5px) rotate(0.5deg)}80%{transform:translate(-1.5px,0.5px) rotate(-0.5deg)}82%{transform:translate(-1.5px,0.5px) rotate(-0.5deg)}84%{transform:translate(-0.5px,0.5px) rotate(1.5deg)}86%{transform:translate(2.5px,1.5px) rotate(0.5deg)}88%{transform:translate(-1.5px,0.5px) rotate(1.5deg)}90%{transform:translate(-1.5px,-0.5px) rotate(-0.5deg)}92%{transform:translate(-1.5px,-1.5px) rotate(1.5deg)}94%{transform:translate(0.5px,0.5px) rotate(-0.5deg)}96%{transform:translate(2.5px,-0.5px) rotate(-0.5deg)}98%{transform:translate(-1.5px,-1.5px) rotate(-0.5deg)}0%,100%{transform:translate(0,0) rotate(0)}}\n`;m(),window.downloadCap=t=>{"object"==typeof t&&t instanceof Blob&&(t=URL.createObjectURL(t));const o=document.createElement("a");let n;o.href=t,o.download=e.screenshotCaptureName||"live2d.png",window.MouseEvent?n=new MouseEvent("click"):(n=document.createEvent("MouseEvents"),n.initMouseEvent("click",!0,!1,window,0,0,0,0,0,!1,!1,!1,!1,0,null)),o.dispatchEvent(n)},window.initModel=m;const w=(e,t)=>{try{sessionStorage.setItem(e,t)}catch(e){}},h=e=>{try{sessionStorage.removeItem(e)}catch(e){}},v=e=>{try{return sessionStorage.getItem(e)}catch(e){return null}};window.innerWidth>=1040&&function(){const e="animated",t="pulse";for(let o of document.querySelectorAll("article .article"))o.addEventListener("mouseover",(()=>{o.classList.add(e),o.classList.add(t)})),o.addEventListener("mouseleave",(()=>{o.classList.remove(e),o.classList.remove(t)}))}();let x=function(e,t){let o=document.getElementById(e);if(!o)return;let n=o.style.width;n+=n>=450?21:n>=350&&n<450?18:n>=300&&n<350?16:14;const a=document.getElementById(t);a&&(a.style.width=n)},y=function(){x("navContainer","articles"),x("artDetail","prenext-posts"),document.getElementsByClassName("content")[0].style.minHeight=window.innerHeight-165};y(),window.addEventListener("resize",(()=>y())),document.getElementById("articles")&&new Masonry(document.getElementById("articles"),{itemSelector:".article"}),function(){const e=document.querySelectorAll("#articleContent a")[0];e&&e.setAttribute("target","_blank");const t=document.querySelectorAll("#articleContent img");for(let e of t){const t=e.getAttribute("src");e.innerHTML=`<div class="img-item" data-src="${t}" data-sub-html=".caption">${e.innerHTML}</div>`;let o=e.getAttribute("alt"),n=e.getAttribute("title"),a="";if(void 0===o||""===o?void 0!==n&&""!==n&&(a=n):a=o,""!==a){let t=document.createElement("div");t.className="caption";let o=document.createElement("b");o.className="center-caption",o.innerText=a,t.appendChild(o),e.insertAdjacentElement("afterend",t)}}}(),M.Modal.init(document.querySelectorAll(".modal"));const A=document.getElementById("backTop");A.addEventListener("click",(()=>(window.scrollTo({top:0,behavior:"smooth"}),u("飞到顶啦",1300,!0),!1))),window.onscroll=()=>{window.scrollY<100?A.classList.add("btnHide"):A.classList.remove("btnHide")};const b=document.getElementById("show-live2d"),L=()=>{"1"===v("waifuHide")&&(b.classList.remove("btnHide"),document.querySelector("#waifu").classList.add("hide"))};b.addEventListener("click",(()=>{"1"===v("waifuHide")&&(h("waifuHide"),document.querySelector("#waifu").classList.remove("hide"),b.classList.add("btnHide"),u("想我了吗？^_^",1300,!0),m())}));const k=["/media/Music8_2_index.opus","/media/DawnWineryTheme.ogg","/media/Music0_1_index.ogg","/media/HappyJourney.ogg","/media/Music0_5_index.ogg","/media/Music5_3_index.ogg","/media/Music31_6_index.ogg","/media/Music15_4_index.ogg","/media/Music26_1_index.ogg","/media/Music19_5_index.ogg","/media/Music5_2_index.ogg","/media/Music1_2_index.ogg","/media/Music14_1.ogg","/media/PureSky.ogg","/media/Music27_3_index.ogg","/media/Music13_1_index.ogg","/media/Music26_9_index.ogg"];let E=0;const T=new Audio,I=e=>{const t=v("track");return null!==t&&t>=0&&t<=k.length-1?(E=t,k[t]):k[e||0]},C=e=>{w("volume",e)},_=()=>{console.log("fadein");const e=(()=>{const e=v("volume");return null!==e&&e>=0&&e<=1?e:(C(.7),.7)})(),t=e/10,o=setInterval((()=>{T.volume+t<1&&(T.volume=T.volume+t),Math.abs(e-T.volume)<.05&&(T.volume=e,clearInterval(o))}),30)},S=()=>{const e=v("audioTime");return null!==e?(h("audioTime"),e):0},O=()=>{0===T.played.length&&T.play().then((()=>{console.log("clickPlay"),T.removeEventListener("canplay",B),document.removeEventListener("touchstart",O,!1),document.removeEventListener("click",O,!1),document.removeEventListener("mousemove",O,!1),T.currentTime=S(),_(),P()})).catch()},B=()=>{console.log("audio canplay "+T.src),T.play().then((()=>{console.log("canAutoplay: True"),T.removeEventListener("canplay",B),T.currentTime=S(),_(),P()})).catch((e=>(e=>{console.log("canAutoplay: False"),console.log(e),document.addEventListener("touchstart",O,!1),document.addEventListener("click",O,!1),document.addEventListener("mousemove",O,!1)})(e)))};T.volume=0,T.src=I(),"1"!==v("mute")&&T.addEventListener("canplay",B),T.addEventListener("ended",(()=>{E>=k.length-1?E=0:E++,w("track",E),w("audioTime",0),T.addEventListener("canplay",B),T.src=I(E)})),T.addEventListener("playing",(()=>{setInterval((()=>{0!==T.played.length&&w("audioTime",T.currentTime)}),1500)})),T.addEventListener("pause",(()=>T.volume=0));const P=()=>{const e=document.getElementById("audioOff");document.getElementById("audioOn").style.display="block",e.style.display="none"},H=()=>{const e=document.getElementById("audioOff"),t=document.getElementById("audioOn");!1===T.paused&&P(),t.addEventListener("click",(()=>{T.pause(),w("mute",1),(()=>{const e=document.getElementById("audioOff");document.getElementById("audioOn").style.display="none",e.style.display="block"})(),T.removeEventListener("canplay",B)})),e.addEventListener("click",(()=>{P(),w("mute",0),B()}))};document.querySelector(".waifu-tool .icon-volumeup").addEventListener("click",(()=>{const e=T.volume,t=(100*(e+.1)).toFixed(0);e<=.9?(T.volume=e+.1,C(e+.1),u("音量增大到"+t+"%了哦",1300,!0)):(T.volume=1,C(1),u("声音不能再大啦",1300,!0))})),document.querySelector(".waifu-tool .icon-volumedown").addEventListener("click",(()=>{const e=T.volume,t=(100*(e-.1)).toFixed(0);e>.11?(T.volume=e-.1,C(e-.1),u("音量减小到"+t+"%了哦",1300,!0)):(T.volume=0,C(0),u("声音不能再小啦",1300,!0))}));const W=()=>{const e=document.querySelectorAll(".sidenav");M.Sidenav.init(e)};var j,D,N;"interactive"===document.readyState?(console.log("interactive"),W(),L(),H(),j="/search.xml",D="searchInput",N="searchResult",window.fetch(j).then((e=>e.text())).then((e=>(new window.DOMParser).parseFromString(e,"text/xml"))).then((e=>{const t=[];for(let o of e.getElementsByTagName("entry"))t.push({title:o.getElementsByTagName("title")[0].textContent,content:o.getElementsByTagName("content")[0].textContent,url:o.getElementsByTagName("url")[0].textContent});const o=document.getElementById(D),n=document.getElementById(N);o.addEventListener("input",(function(){var e='<ul class="search-result-list">',o=this.value.trim().toLowerCase().split(/[\s\-]+/);n.innerHTML="",this.value.trim().length<=0||(t.forEach((function(t){var n=!0,a=t.title.trim().toLowerCase(),i=t.content.trim().replace(/<[^>]+>/g,"").toLowerCase(),s=t.url,r=-1,l=-1,d=-1;if(""!=a&&""!=i&&o.forEach((function(e,t){r=a.indexOf(e),l=i.indexOf(e),r<0&&l<0?n=!1:(l<0&&(l=0),0==t&&(d=l))})),n){e+="<li><a href='"+s+"' class='search-result-title'>"+a+"</a>";var c=t.content.trim().replace(/<[^>]+>/g,"");if(d>=0){var u=d-20,m=d+80;u<0&&(u=0),0==u&&(m=100),m>c.length&&(m=c.length);var g=c.substr(u,m);o.forEach((function(e){var t=new RegExp(e,"gi");g=g.replace(t,'<em class="search-keyword">'+e+"</em>")})),e+='<p class="search-result">'+g+"...</p>"}e+="</li>"}})),e+="</ul>",n.innerHTML=e)}))}))):"complete"===document.readyState?console.log("complete"):(window.addEventListener("DOMContentLoaded",L),window.addEventListener("DOMContentLoaded",H),window.addEventListener("DOMContentLoaded",W)),window.onbeforeunload=()=>{0!==T.played.length&&w("audioTime",T.currentTime)}})();
+/******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
+
+// UNUSED EXPORTS: getLS, getSS, removeLS, removeSS, setLS, setSS
+
+;// CONCATENATED MODULE: ./themes/hexo-theme-matery/src/js/waifu-tips.js
+/*****************************************************************************************************
+ く__,.ヘヽ.　　　　/　,ー､ 〉
+ 　　　　　＼ ', !-─‐-i　/　/´
+ 　　　 　 ／｀ｰ'　　　 L/／｀ヽ､                 Live2D Widget Setting
+ 　　 　 /　 ／,　 /|　 ,　 ,　　　 ',               Version 2.0.0
+ 　　　ｲ 　/ /-‐/　ｉ　L_ ﾊ ヽ!　 i                     Konata
+ 　　　 ﾚ ﾍ 7ｲ｀ﾄ　 ﾚ'ｧ-ﾄ､!ハ|　 |
+ 　　　　 !,/7 '0'　　 ´0iソ| 　 |　　　
+ 　　　　 |.从"　　_　　 ,,,, / |./ 　 |      Add Live2D widget in your website.
+ 　　　　 ﾚ'| i＞.､,,__　_,.イ / 　.i 　|
+ 　　　　　 ﾚ'| | / k_７_/ﾚ'ヽ,　ﾊ.　|       Thanks:
+ 　　　　　　 | |/i 〈|/　 i　,.ﾍ |　i　|    fghrsh / https://www.fghrsh.net/post/123.html
+ 　　　　　　.|/ /　ｉ： 　 ﾍ!　　＼　|       journey-ad / https://github.com/journey-ad/live2d_src
+ 　　　 　 　 kヽ>､ﾊ 　 _,.ﾍ､ 　 /､!         xiazeyu / https://github.com/xiazeyu/live2d-widget.js
+ 　　　　　　 !'〈//｀Ｔ´', ＼ ｀'7'ｰr'      Cubism Web Framework & All model authors.
+ 　　　　　　 ﾚ'ヽL__|___i,___,ンﾚ|ノ
+ 　　　　　 　　　ﾄ-,/　|___./
+ 　　　　　 　　　'ｰ'　　!_,.
+ ****************************************************************************************************/
+const live2d_settings = {
+    // 基本设置
+    'modelUrl': '/model',                       // 存放模型的文件夹路径，末尾不需要斜杠
+    'tipsMessage': '/live2d/waifu-tips.json',   // 看板娘提示消息文件的路径，可以留空不加载
+    // 模型设置
+    'modelName': 'paimon',                      // 默认加载的模型名称，仅在无本地记录的情况下有效
+    'modelStorage': true,                       // 记忆模型，下次打开页面会加载上次选择的模型
+    'modelRandMode': false,                     // 随机切换模型
+    'preLoadMotion': false,                     // 是否预载动作数据，只对 model3 模型有效，不预载可以提高 model3 模型的加载速度，但可能导致首次触发动作时卡顿
+    'tryWebp': true,                            // 如果浏览器支持 WebP 格式，将优先加载 WebP 格式的贴图，例如默认贴图文件为 klee.8192/texture_00.png，
+                                                // 启用后将优先加载 klee.8192/texture_00.png.webp，文件不存在会自动 fallback
+    // 工具栏设置
+    'showToolMenu': true,                       // 显示 工具栏
+    'canCloseLive2d': true,                     // 显示 关闭看板娘 按钮
+    'canSwitchModel': true,                     // 显示 模型切换 按钮
+    'canSwitchHitokoto': true,                  // 显示 一言切换 按钮
+    'canTakeScreenshot': true,                  // 显示 看板娘截图 按钮
+    'canTurnToHomePage': true,                  // 显示 返回首页 按钮
+    'canTurnToAboutPage': true,                 // 显示 跳转关于页 按钮
+    'showVolumeBtn': true,                      // 显示 音量控制 按钮，仅作显示，相关逻辑需自己实现
+    // 提示消息设置
+    'showHitokoto': true,                       // 空闲时显示一言
+    'hitokotoAPI': '',                          // 一言 API，可选 'hitokoto.cn'(默认), 'lwl12.com', 'jinrishici.com'(古诗词), 'fghrsh.net'
+    'showWelcomeMessage': true,                 // 显示进入页面欢迎词
+    'showCopyMessage': true,                    // 显示复制内容提示，默认只对 '#articleContent' 元素内的复制进行监视，如果你的文章内容不在这个标签下，可以在下方搜索并修改
+    'showF12OpenMsg': true,                     // 显示控制台打开提示
+    //看板娘样式设置
+    'live2dHeight': 680,                        // 看板娘高度，不需要单位
+    'live2dWidth': 500,                         // 看板娘宽度，不需要单位
+    'waifuMinWidth': '1040px',                  // 页面小于宽度小于指定数值时隐藏看板娘，例如 'disable'(禁用)，推荐 '1040px'
+    'waifuEdgeSide': 'right:0',                 // 看板娘贴边方向，例如 'left:0'(靠左 0px)，'right:30'(靠右 30px)，可以被下面的模型设置覆盖
+    // 其他杂项设置
+    'debug': true,                              // 全局 DEBUG 设置
+    'debugMousemove': false,                    // 在控制台打印指针移动坐标，仅在 debug 为 true 时可用
+    'logMessageToConsole': true,                // 在控制台打印看板娘提示消息
+    'l2dVersion': '2.0.0',                      // 当前版本
+    'homePageUrl': 'auto',                      // 主页地址，可选 'auto'(自动), '{URL 网址}'
+    'aboutPageUrl': 'https://github.com/Konata09/Live2dOnWeb/', // 关于页地址, '{URL 网址}'
+    'screenshotCaptureName': 'bronyaMoe.png',   // 看板娘截图文件名，例如 'live2d.png'
+}
+// 模型列表
+const live2d_models = [
+    {
+        name: 'paimon',
+        message: '应急食品 bilibili@根瘤菌rkzj',
+        version: 3
+    },
+    {
+        name: 'klee2',
+        message: '可莉 bilibili@根瘤菌rkzj',
+        version: 3
+    },
+    {
+        name: 'klee',
+        message: '可莉 bilibili@根瘤菌rkzj',
+        version: 3,
+        position: 'left'
+    },
+    {
+        name: 'bronyaXinZhiHua',
+        message: '布洛妮娅心之花 @GhastRiv',
+        version: 2
+    },
+    {
+        name: 'houmuya',
+        message: '吼姆布洛妮娅 bilibili@呦克里斯汀娜呦',
+        version: 3
+    },
+    {
+        name: 'bronya',
+        message: 'Valkyrie System 启动',
+        version: 2
+    },
+    {
+        name: 'Kiana',
+        message: '终于轮到我了么！',
+        version: 2
+    },
+    {
+        name: 'Mei',
+        message: '烦死了，家里还有两个吃闲饭的等着我回去做晚餐呢',
+        version: 2
+    },
+    {
+        name: 'Lita',
+        message: '丽塔·洛丝薇瑟',
+        version: 2
+    },
+    {
+        name: 'Sakura',
+        message: '已经很久没有出场了呢',
+        version: 2
+    },
+    {
+        name: 'Theresa',
+        message: '要和德丽莎一起睡午觉吗?',
+        version: 2
+    },
+    {
+        name: 'Himeko',
+        message: '话说~休伯利安本来的舰长可是我呦 ~',
+        version: 2
+    },
+    {
+        name: 'Seele',
+        message: '舰长是来和希儿一起玩儿的吗?',
+        version: 2
+    },
+    {
+        name: 'xilin2.1',
+        message: '西琳小天使',
+        version: 2
+    },
+    {
+        name: 'SakuraQ',
+        message: '信浓的春野已经开满了樱花了吧……',
+        version: 2
+    },
+    {
+        name: 'Sin',
+        message: '杏·玛尔',
+        version: 2
+    },
+    {
+        name: 'kiro',
+        message: '时雨绮罗',
+        version: 2
+    },
+    {
+        name: 'lingyiniang',
+        message: '灵依娘',
+        version: 2
+    },
+    // {
+    //     name: '01niang',
+    //     message: '01娘',
+    //     version: 2
+    // },
+    {
+        name: 'houraiji',
+        message: '蓬莱寺九霄',
+        version: 2
+    },
+    {
+        name: 'kaguya',
+        message: '耀夜姬',
+        version: 2
+    },
+    {
+        name: 'keluoyi',
+        message: '柯罗伊',
+        version: 2
+    },
+    {
+        name: 'kika',
+        message: '无色辉火',
+        version: 2
+    },
+    {
+        name: 'Nina',
+        message: '妮娜',
+        version: 2
+    },
+    {
+        name: 'yiselin',
+        message: '伊瑟琳·利维休斯',
+        version: 2
+    },
+    {
+        name: 'Nindi',
+        message: '宁蒂·阿波卡利斯',
+        version: 2
+    },
+]
+/****************************************************************************************************/
+// SessionStorage LocalStorage 操作
+const setSS = (k, v) => {
+    try {
+        sessionStorage.setItem(k, v);
+    } catch (e) {
+    }
+}
+const removeSS = (k) => {
+    try {
+        sessionStorage.removeItem(k);
+    } catch (e) {
+    }
+}
+const getSS = (k) => {
+    try {
+        return sessionStorage.getItem(k);
+    } catch (e) {
+        return null
+    }
+}
+const setLS = (k, v) => {
+    try {
+        localStorage.setItem(k, v);
+    } catch (e) {
+    }
+}
+const removeLS = (k) => {
+    try {
+        localStorage.removeItem(k);
+    } catch (e) {
+    }
+}
+const getLS = (k) => {
+    try {
+        return localStorage.getItem(k);
+    } catch (e) {
+        return null
+    }
+}
+String.prototype.render = function (context) {
+    const tokenReg = /(\\)?{([^{}\\]+)(\\)?}/g;
+    return this.replace(tokenReg, function (word, slash1, token, slash2) {
+        if (slash1 || slash2) {
+            return word.replace('\\', '');
+        }
+        const variables = token.replace(/\s/g, '').split('.');
+        let currentObject = context;
+        let i, length, variable;
+
+        for (i = 0, length = variables.length; i < length; ++i) {
+            variable = variables[i];
+            currentObject = currentObject[variable];
+            if (currentObject === undefined || currentObject === null) return '';
+        }
+        return currentObject;
+    });
+};
+const $$ = (selector) => {
+    try {
+        const e = document.querySelectorAll(selector);
+        if (e.length === 1) {
+            return e[0];
+        } else
+            return Array.from(e);
+    } catch (e) {
+        console.error(e);
+        return null;
+    }
+}
+const re = /x/;
+console.log(re);
+const live2dId2 = 'live2d2';
+const live2dId4 = 'live2d4';
+const waifuTips = $$('#waifu-message');
+const waifu = $$('#waifu');
+
+function getRandText(text) {
+    return Array.isArray(text) ? text[Math.floor(Math.random() * text.length + 1) - 1] : text
+}
+
+let timeoutID;
+
+function testWebP() {
+    return new Promise(res => {
+        const webP = new Image();
+        webP.src = 'data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA';
+        webP.onload = webP.onerror = () => {
+            res(webP.height === 2);
+        };
+    })
+}
+
+function showMessage(text, timeout, flag) {
+    if (flag || getSS('waifu-text') === '' || getSS('waifu-text') === null) {
+        if (timeoutID) window.clearTimeout(timeoutID);
+        if (Array.isArray(text)) text = text[Math.floor(Math.random() * text.length + 1) - 1];
+        if (live2d_settings.logMessageToConsole) console.log('[WaifuTips]', text.replace(/<[^<>]+>/g, ''));
+        if (flag) setSS('waifu-text', text);
+        waifuTips.style.opacity = 1;
+        waifuTips.innerHTML = text;
+        if (timeout === undefined) timeout = 5000;
+        hideMessage(timeout);
+    }
+}
+
+function hideMessage(timeout) {
+    if (timeout === undefined) timeout = 5000;
+    timeoutID = window.setTimeout(function () {
+        removeSS('waifu-text');
+        waifuTips.style.opacity = 0;
+    }, timeout);
+}
+
+function changePosition(position) {
+    if (position === 'left') {
+        $$('.waifu-tool').style.right = 'unset';
+        $$('.waifu-tool').style.left = '10px';
+        waifu.style.right = 'unset';
+        waifu.style.left = live2d_settings.waifuEdgeSide.split(":")[1];
+    } else if (position === 'right') {
+        $$('.waifu-tool').style.left = 'unset';
+        $$('.waifu-tool').style.right = '10px';
+        waifu.style.left = 'unset';
+        waifu.style.right = live2d_settings.waifuEdgeSide.split(":")[1];
+    } else {
+        $$('.waifu-tool').style.left = '';
+        $$('.waifu-tool').style.right = '';
+        waifu.style.left = '';
+        waifu.style.right = '';
+    }
+}
+
+
+function initModel() {
+    /* Load style sheet */
+    addStyle(waifuStyle);
+    if (getSS('waifuHide') === '1') {
+        waifu.classList.add('hide');
+        return;
+    } else {
+        waifu.classList.remove('hide');
+    }
+    /* console welcome message */
+    console.log("\u304f__,.\u30d8\u30fd.\u3000\u3000\u3000\u3000/\u3000,\u30fc\uff64 \u3009\n\u3000\u3000\u3000\u3000\u3000\uff3c ', !-\u2500\u2010-i\u3000/\u3000/\u00b4\n\u3000\u3000\u3000 \u3000 \uff0f\uff40\uff70'\u3000\u3000\u3000 L/\uff0f\uff40\u30fd\uff64\n\u3000\u3000 \u3000 /\u3000 \uff0f,\u3000 /|\u3000 ,\u3000 ,\u3000\u3000\u3000 ',\n\u3000\u3000\u3000\uff72 \u3000/ /-\u2010/\u3000\uff49\u3000L_ \uff8a \u30fd!\u3000 i\n\u3000\u3000\u3000 \uff9a \uff8d 7\uff72\uff40\uff84\u3000 \uff9a'\uff67-\uff84\uff64!\u30cf|\u3000 |\n\u3000\u3000\u3000\u3000 !,/7 '0'\u3000\u3000 \u00b40i\u30bd| \u3000 |\u3000\u3000\u3000\n\u3000\u3000\u3000\u3000 |.\u4ece\"\u3000\u3000_\u3000\u3000 ,,,, / |./ \u3000 |\n\u3000\u3000\u3000\u3000 \uff9a'| i\uff1e.\uff64,,__\u3000_,.\u30a4 / \u3000.i \u3000|\n\u3000\u3000\u3000\u3000\u3000 \uff9a'| | / k_\uff17_/\uff9a'\u30fd,\u3000\uff8a.\u3000|\n\u3000\u3000\u3000\u3000\u3000\u3000 | |/i \u3008|/\u3000 i\u3000,.\uff8d |\u3000i\u3000|\n\u3000\u3000\u3000\u3000\u3000\u3000.|/ /\u3000\uff49\uff1a \u3000 \uff8d!\u3000\u3000\uff3c\u3000|\n\u3000\u3000\u3000 \u3000 \u3000 k\u30fd>\uff64\uff8a \u3000 _,.\uff8d\uff64 \u3000 /\uff64!\n\u3000\u3000\u3000\u3000\u3000\u3000 !'\u3008//\uff40\uff34\u00b4', \uff3c \uff40'7'\uff70r'\n\u3000\u3000\u3000\u3000\u3000\u3000 \uff9a'\u30fdL__|___i,___,\u30f3\uff9a|\u30ce\n\u3000\u3000\u3000\u3000\u3000 \u3000\u3000\u3000\uff84-,/\u3000|___./\n\u3000\u3000\u3000\u3000\u3000 \u3000\u3000\u3000'\uff70'\u3000\u3000!_,.:\nLive2D \u770b\u677f\u5a18 v" + live2d_settings.l2dVersion + " / Konata");
+
+    $$(`#${live2dId2}`).setAttribute('height', live2d_settings.live2dHeight);
+    $$(`#${live2dId2}`).setAttribute('width', live2d_settings.live2dWidth);
+    $$(`#${live2dId4}`).setAttribute('height', live2d_settings.live2dHeight);
+    $$(`#${live2dId4}`).setAttribute('width', live2d_settings.live2dWidth);
+    if (!live2d_settings.showToolMenu) $$('.waifu-tool').classList.add('hide');
+    if (!live2d_settings.canCloseLive2d) $$('.waifu-tool .icon-cross').classList.add('hide');
+    if (!live2d_settings.canSwitchModel) $$('.waifu-tool .icon-next').classList.add('hide');
+    if (!live2d_settings.canSwitchHitokoto) $$('.waifu-tool .icon-message').classList.add('hide');
+    if (!live2d_settings.canTakeScreenshot) $$('.waifu-tool .icon-camera').classList.add('hide');
+    if (!live2d_settings.canTurnToHomePage) $$('.waifu-tool .icon-home').classList.add('hide');
+    if (!live2d_settings.canTurnToAboutPage) $$('.waifu-tool .icon-about').classList.add('hide');
+    if (!live2d_settings.showVolumeBtn) $$('.waifu-tool .icon-volumeup').classList.add('hide') || $$('.waifu-tool .icon-volumedown').classList.add('hide');
+    $$('.waifu-tool .icon-next').addEventListener('click', () => loadOtherModel());
+    $$('.waifu-tool .icon-home').addEventListener('click', () => window.location = live2d_settings.homePageUrl)
+    $$('.waifu-tool .icon-about').addEventListener('click', () => window.open(live2d_settings.aboutPageUrl))
+    $$('.waifu-tool .icon-camera').addEventListener('click', () => {
+        window.live2dCurrentVersion === 3 ? window.live2dv4.CaptureCanvas() : window.live2dv2.captureFrame = true;
+    });
+    $$('.waifu-tool .icon-cross').addEventListener('click', () => {
+        sessionStorage.setItem('waifuHide', '1');
+        window.setTimeout(function () {
+            waifu.classList.add('hide');
+            document.getElementById('show-live2d').classList.remove('btnHide');
+        }, 1000);
+    })
+
+    window.waifuResize = () => {
+        if (getSS('waifuHide') !== '1')
+            window.innerWidth <= Number(live2d_settings.waifuMinWidth.replace('px', '')) ? waifu.classList.add('hide') : waifu.classList.remove('hide');
+    };
+
+    if (live2d_settings.waifuMinWidth !== 'disable') {
+        waifuResize();
+        window.addEventListener('resize', waifuResize)
+    }
+
+    live2d_settings.homePageUrl = live2d_settings.homePageUrl === 'auto' ? window.location.protocol + '//' + window.location.hostname + '/' : live2d_settings.homePageUrl;
+
+    if (live2d_settings.tipsMessage)
+        window.fetch(live2d_settings.tipsMessage)
+            .then(res => res.json())
+            .then(resjson => loadTipsMessage(resjson));
+
+    let modelName = getLS('modelName');
+
+    if (!live2d_settings.modelStorage || modelName == null)
+        modelName = live2d_settings.modelName;
+
+    window.live2dv4.setPreLoadMotion(live2d_settings.preLoadMotion);
+    window.live2dv2.debug = live2d_settings.debug;
+    window.live2dv4.debug = live2d_settings.debug;
+    window.live2dv2.debugMousemove = live2d_settings.debug && live2d_settings.debugMousemove;
+    window.live2dv4.debugMousemove = live2d_settings.debug && live2d_settings.debugMousemove;
+    if (live2d_settings.tryWebp) {
+        testWebP().then(r => window.webpReady = r).then(() => {
+            if (window.webpReady === true)
+                console.log("[WaifuTips] Your browser support WebP format. Try to load WebP texture first.");
+            else
+                console.log("[WaifuTips] Your browser do not support WebP format.");
+            loadModel(modelName);
+        });
+    } else {
+        loadModel(modelName);
+    }
+}
+
+function loadModel(modelName) {
+    if (live2d_settings.modelStorage)
+        setLS('modelName', modelName);
+    else
+        setSS('modelName', modelName);
+    live2d_settings.debug && console.log(`[WaifuTips] load model: ${modelName}`);
+    let modelVersion = 2;
+    // 在配置中找到要加载模型的版本
+    for (let model of live2d_models) {
+        if (model.name === modelName) {
+            modelVersion = model.version;
+            changePosition(model.position);
+            break;
+        }
+    }
+    // 如果要加载的模型版本不同，先释放之前的SDK并隐藏canvas
+    if (window.live2dCurrentVersion !== modelVersion) {
+        if (window.live2dCurrentVersion === 2) {
+            window.live2dv2.release();
+            $$(`#${live2dId2}`).style.display = 'none';
+        } else {
+            window.live2dv4.release();
+            $$(`#${live2dId4}`).style.display = 'none';
+        }
+    }
+    // 根据模型版本选择不同的SDK加载
+    if (modelVersion === 2) {
+        $$(`#${live2dId2}`).style.display = 'block';
+        window.live2dv2.load(live2dId2, `${live2d_settings.modelUrl}/${modelName}/model.json`);
+    } else if (window.live2dCurrentVersion === modelVersion) {
+        window.live2dv4.change(`${live2d_settings.modelUrl}/${modelName}`, `${modelName}.model3.json`);
+    } else {
+        $$(`#${live2dId4}`).style.display = 'block';
+        window.live2dv4.load(live2dId4, `${live2d_settings.modelUrl}/${modelName}`, `${modelName}.model3.json`);
+    }
+
+    window.live2dCurrentVersion = modelVersion;
+}
+
+// 读取记忆的模型
+function modelStorageGetItem(key) {
+    return live2d_settings.modelStorage ? getLS(key) : getSS(key);
+}
+
+function loadOtherModel() {
+    const modelName = modelStorageGetItem('modelName');
+    let modelIndex = 0;
+    if (live2d_settings.modelRandMode) {
+        modelIndex = Math.floor(Math.random() * live2d_models.length + 1) - 1;
+    } else {
+        modelIndex = live2d_models.findIndex(modelObj => modelObj.name === modelName)
+        if (modelIndex < live2d_models.length - 1)
+            modelIndex++;
+        else
+            modelIndex = 0;
+    }
+    if (live2d_models[modelIndex].message) showMessage(live2d_models[modelIndex].message, 3000, true);
+    loadModel(live2d_models[modelIndex].name);
+}
+
+
+function loadTipsMessage(result) {
+    window.waifu_tips = result;
+
+    const mouseenterListener = (e, tips) => {
+        e.addEventListener('mouseenter', () => {
+            let text = getRandText(tips.text);
+            if (text.indexOf("{text}") > 0)
+                text = text.replace(/{text}/, e.innerText);
+            showMessage(text, 3000);
+        });
+    }
+    const addMouseoverListener = () => {
+        for (let tips of result.mouseover) {
+            const select = $$(tips.selector);
+            if (Array.isArray(select))
+                select.forEach(e => mouseenterListener(e, tips));
+            else if (select)
+                mouseenterListener(select, tips);
+            else
+                live2d_settings.debug && console.warn(`[WaifuTips] can not found element: ${tips.selector}`)
+        }
+    }
+    const addClickListener = () => {
+        for (let tips of result.click) {
+            const select = $$(tips.selector);
+            if (Array.isArray(select))
+                select.forEach(e => e.addEventListener('click', () => {
+                    let text = getRandText(tips.text);
+                    showMessage(text, 3000, true);
+                }))
+            else if (select)
+                select.addEventListener('click', () => {
+                    let text = getRandText(tips.text);
+                    showMessage(text, 3000, true);
+                })
+            else
+                live2d_settings.debug && console.warn(`[WaifuTips] can not found element: ${tips.selector}`)
+        }
+    }
+    for (let tips of result.seasons) {
+        const now = new Date();
+        const after = tips.date.split('-')[0];
+        const before = tips.date.split('-')[1] || after;
+        if ((after.split('/')[0] <= now.getMonth() + 1 && now.getMonth() + 1 <= before.split('/')[0]) &&
+            (after.split('/')[1] <= now.getDate() && now.getDate() <= before.split('/')[1])) {
+            let text = getRandText(tips.text);
+            if (text.indexOf("{year}") > 0)
+                text = text.replace(/{year}/, now.getFullYear());
+            showMessage(text, 6000, true);
+        }
+    }
+    if (live2d_settings.showF12OpenMsg) {
+        re.toString = function () {
+            showMessage(getRandText(result.waifu.console_open_msg), 5000, true);
+            return '';
+        };
+    }
+    const addCopyListener = () => {
+        if ($$('#articleContent').length !== 0)
+            $$('#articleContent').addEventListener('copy', () => (showMessage(getRandText(result.waifu.copy_message), 5000, true)));
+    }
+    window.showWelcomeMessage = function (result) {
+        let text;
+        if (window.location.href === live2d_settings.homePageUrl) {
+            const now = (new Date()).getHours();
+            if (now > 23 || now <= 5) text = getRandText(result.waifu.hour_tips['t23-5']);
+            else if (now > 5 && now <= 7) text = getRandText(result.waifu.hour_tips['t5-7']);
+            else if (now > 7 && now <= 11) text = getRandText(result.waifu.hour_tips['t7-11']);
+            else if (now > 11 && now <= 14) text = getRandText(result.waifu.hour_tips['t11-14']);
+            else if (now > 14 && now <= 17) text = getRandText(result.waifu.hour_tips['t14-17']);
+            else if (now > 17 && now <= 19) text = getRandText(result.waifu.hour_tips['t17-19']);
+            else if (now > 19 && now <= 21) text = getRandText(result.waifu.hour_tips['t19-21']);
+            else if (now > 21 && now <= 23) text = getRandText(result.waifu.hour_tips['t21-23']);
+            else text = getRandText(result.waifu.hour_tips.default);
+        } else {
+            const referrer_message = result.waifu.referrer_message;
+            if (document.referrer !== '') {
+                const referrer = document.createElement('a');
+                referrer.href = document.referrer;
+                const domain = referrer.hostname.split('.')[1];
+                if (window.location.hostname === referrer.hostname)
+                    text = referrer_message.localhost[0] + document.title.split(referrer_message.localhost[2])[0] + referrer_message.localhost[1];
+                else if (domain === 'baidu')
+                    text = referrer_message.baidu[0] + referrer.search.split('&wd=')[1].split('&')[0] + referrer_message.baidu[1];
+                else if (domain === 'so')
+                    text = referrer_message.so[0] + referrer.search.split('&q=')[1].split('&')[0] + referrer_message.so[1];
+                else if (domain === 'google')
+                    text = referrer_message.google[0] + document.title.split(referrer_message.google[2])[0] + referrer_message.google[1];
+                else {
+                    text = referrer_message.default[0] + referrer.hostname + referrer_message.default[1];
+                    for (let host in result.waifu.referrer_hostname)
+                        if (host === referrer.hostname) {
+                            text = getRandText(result.waifu.referrer_hostname[host]);
+                            break;
+                        }
+                }
+            } else text = referrer_message.none[0] + document.title.split(referrer_message.none[2])[0] + referrer_message.none[1];
+        }
+        showMessage(text, 6000);
+    };
+    if (live2d_settings.showWelcomeMessage) showWelcomeMessage(result);
+
+    const waifu_tips = result.waifu;
+
+    if (live2d_settings.showHitokoto) {
+        window.getActed = false;
+        window.hitokotoTimer = 0;
+        window.hitokotoInterval = false;
+        setInterval(function () {
+            if (!getActed) ifActed();
+            else elseActed();
+        }, 1000);
+    }
+    /* 检测用户活动状态，并在空闲时显示一言 */
+    const addHitokotoListener = () => {
+        document.addEventListener('mousemove', () => (getActed = true))
+        document.addEventListener('keydown', () => (getActed = true))
+    }
+
+    if (document.readyState === "interactive" || document.readyState === "complete") {
+        addMouseoverListener();
+        addClickListener();
+        if (live2d_settings.showCopyMessage) addCopyListener();
+        if (live2d_settings.showHitokoto) addHitokotoListener();
+    } else {
+        window.addEventListener("DOMContentLoaded", addMouseoverListener);
+        window.addEventListener("DOMContentLoaded", addClickListener);
+        if (live2d_settings.showCopyMessage) window.addEventListener("DOMContentLoaded", addCopyListener);
+        if (live2d_settings.showHitokoto) window.addEventListener("DOMContentLoaded", addHitokotoListener);
+    }
+
+    function ifActed() {
+        if (!hitokotoInterval) {
+            hitokotoInterval = true;
+            hitokotoTimer = window.setInterval(showHitokotoActed, 30000);
+        }
+    }
+
+    function elseActed() {
+        getActed = hitokotoInterval = false;
+        window.clearInterval(hitokotoTimer);
+    }
+
+    function showHitokotoActed() {
+        if (document.visibilityState === 'visible') showHitokoto();
+    }
+
+    function showHitokoto() {
+        switch (live2d_settings.hitokotoAPI) {
+            case 'lwl12.com':
+                window.fetch('https://api.lwl12.com/hitokoto/v1?encode=realjson')
+                    .then(res => res.json())
+                    .then(resJson => {
+                        if (!resJson.source) {
+                            let text = waifu_tips.hitokoto_api_message['lwl12.com'][0];
+                            if (!resJson.author) text += waifu_tips.hitokoto_api_message['lwl12.com'][1];
+                            text = text.render({source: resJson.source, creator: resJson.author});
+                            window.setTimeout(function () {
+                                showMessage(text + waifu_tips.hitokoto_api_message['lwl12.com'][2], 3000, true);
+                            }, 5000);
+                        }
+                        showMessage(resJson.text, 5000, true);
+                    })
+                break;
+            case 'fghrsh.net':
+                window.fetch('https://api.fghrsh.net/hitokoto/rand/?encode=jsc&uid=3335')
+                    .then(res => res.json())
+                    .then(resJson => {
+                        if (!resJson.source) {
+                            let text = waifu_tips.hitokoto_api_message['fghrsh.net'][0];
+                            text = text.render({source: resJson.source, date: resJson.date});
+                            window.setTimeout(function () {
+                                showMessage(text, 3000, true);
+                            }, 5000);
+                            showMessage(resJson.hitokoto, 5000, true);
+                        }
+                    })
+                break;
+            case 'jinrishici.com':
+                window.fetch('https://v2.jinrishici.com/one.json')
+                    .then(res => res.json())
+                    .then(resJson => {
+                        if (!resJson.data.origin.title) {
+                            let text = waifu_tips.hitokoto_api_message['jinrishici.com'][0];
+                            text = text.render({
+                                title: resJson.data.origin.title,
+                                dynasty: resJson.data.origin.dynasty,
+                                author: resJson.data.origin.author
+                            });
+                            window.setTimeout(function () {
+                                showMessage(text, 3000, true);
+                            }, 5000);
+                        }
+                        showMessage(resJson.data.content, 5000, true);
+                    })
+                break;
+            default:
+                window.fetch('https://v1.hitokoto.cn')
+                    .then(res => res.json())
+                    .then(resJson => {
+                        if (!resJson.from) {
+                            let text = waifu_tips.hitokoto_api_message['hitokoto.cn'][0];
+                            text = text.render({source: resJson.from, creator: resJson.creator});
+                            window.setTimeout(function () {
+                                showMessage(text, 3000, true);
+                            }, 5000);
+                        }
+                        showMessage(resJson.hitokoto, 5000, true);
+                    })
+        }
+    }
+
+    $$('.waifu-tool .icon-message').addEventListener('click', () => showHitokoto());
+}
+
+const addStyle = (() => {
+    const style = document.createElement('style');
+    document.head.append(style);
+    return (styleString) => style.textContent = styleString;
+})();
+
+const blobDownload = (blob) => {
+    if (typeof blob == 'object' && blob instanceof Blob) {
+        blob = URL.createObjectURL(blob); // 创建blob地址
+    }
+    const aLink = document.createElement('a');
+    aLink.href = blob;
+    aLink.download = live2d_settings.screenshotCaptureName || 'live2d.png'; // HTML5新增的属性，指定保存文件名，可以不要后缀，注意，file:///模式下不会生效
+    let event;
+    if (window.MouseEvent) event = new MouseEvent('click');
+    else {
+        event = document.createEvent('MouseEvents');
+        event.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+    }
+    aLink.dispatchEvent(event);
+}
+
+const waifuStyle = `
+#waifu {
+${live2d_settings.waifuEdgeSide}px;
+position:fixed;
+bottom:0;
+z-index:998;
+font-size:0
+}
+
+#waifu-message {
+font-size:1rem;
+width:-moz-fit-content;
+width:fit-content;
+height:auto;
+left:2rem;
+top:20px;
+opacity:0;
+z-index:998;
+margin:auto;
+padding:5px 10px;
+border:1px solid rgba(104,216,255,0.62);
+border-radius:12px;
+background-color:rgba(76,191,255,0.8);
+box-shadow:0 3px 15px 2px rgba(16,51,49,0.3);
+text-overflow:ellipsis;
+overflow:hidden;
+position:relative;
+animation-delay:5s;
+animation-duration:50s;
+animation-iteration-count:infinite;
+animation-name:shake;
+animation-timing-function:ease-in-out;
+transition:opacity .3s ease
+}
+
+#waifu-message>a {
+color:#7500b7;
+}
+
+#live2d2,#live2d4 {
+position:relative;
+display:none;
+z-index:997
+}
+
+.waifu-tool {
+display:none;
+color:#d73b66;
+top:130px;
+${live2d_settings.waifuEdgeSide.split(":")[0]}:10px;
+position:absolute;
+z-index:998
+}
+
+#waifu:hover > .waifu-tool {
+display:block
+}
+
+.waifu-tool > span {
+font-family:"waifuico"!important;
+display:block;
+cursor:pointer;
+color:#0396FF;
+transition:.2s;
+font-size:18px;
+font-style:normal;
+-webkit-font-smoothing:antialiased;
+-moz-osx-font-smoothing:grayscale
+}
+
+.waifu-tool > span:hover {
+color:#43CBFF
+}
+
+.waifu-tool > .icon-next:before{padding-left:1px;content:"\\e6ba"}.waifu-tool > .icon-message:before{content:"\\e632"}.waifu-tool > .icon-cross:before{content:"\\e606"}.waifu-tool > .icon-about:before{content:"\\e60c"}.waifu-tool > .icon-home:before{content:"\\e604"}.waifu-tool > .icon-camera:before{content:"\\e635"}.waifu-tool > .icon-volumedown:before{content:"\\e6c2"}.waifu-tool > .icon-volumeup:before{content:"\\e6c3"}#waifu.hide,.waifu-tool > span.hide{display:none}@font-face{font-family:"waifuico";src:url(data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAWcAAsAAAAAC0gAAAVNAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCEAgqIVIcCATYCJAMkCxQABCAFhG0HchuYCVGUT06K7OeB7R6lCBOgbWnZzIYDWz+EMHANCwis4uG/tdf7dmbx/wC6VAGqgCuhAwBFIEwVsNJVwEb21LKO3q1lyz+tCZvx3+UrWlPV795l73pusllKVXgcRqIMCNk9wkGaA/IP1K2mWg6WmlnR1Qqa7lwLoaYD/FpfOAE/f7i06QU2n2W5rPV/cy2K44ACGrcnLqDD0wI/YTkL68xspUBnvQo9T6CzQkdr1/bhCczKuDJQdj1LDMwmDHIFPTTqquDavDGelJricfGKl+7w8d98zFIoE/6iA9e2Ylj9lX1P9TmTXns0nA3bm0jYCGTiTaHjmRQkNprQnXOzC8C4sE0w1P4qQ/OWvPO97zOkb72kik5d+CcPlJKsUAm1hqhw1ZCot5MNv7LiUvKr4pL4NVSqQvPQKYCWoNQMvYNOAH2DTg30HQ0a0JprJoEpEPsB4i2ON7lEyOJpoGWF9Uoz6iBtQmEZSR0YgyVVYPFeOIPN3GSY5uUOTjKmlLks4xwO30ihSfCIyrtB4/PlZurwHsUBoelpYahQGMsORi9mnmOcZ53Fz4BQ8IuaCKZRdi7BW+cZ52Szpw+ehI6b5uVwWNcZJrl5XEaG4Bld+DyO/5TGe5LbP7LAWhojkRiji8z5YcW4eTbOYXEZBO3YphYFXCQmlfO4fOOcAZytB5LH1+1A0uQ5B/DIGQ0gj8ejLuvzhMI4gSALZBJK9MFFEGbOK1D72SB4ZF2DPLFhL3v8OkqZ3MwXCOi1BHU/icfLYxIMLouDs5sWjxhRQR6VjJ+FINpJiKW8dBgVnzyUAzNnYNNHlnYjV2upFMVP6IFi1tXVmW8ihqPPJMWLn3H3seGju3ci3kxPEJTA0jrAQ0fD8Bh6dl1hXf0jKHdKaRsxTzcO0JWMCoNpvbEutxBvrD4E64xscguymJWl87Zjuz13sbN3o1/REc9hj2HPEfRfUA14VOUN+7FLSlHD9gF0AN/dJbxQrsdqTB3bWeDw0/XbbtrtD/xvuymCYSI3VzoM07Joq6QFcq1EreSY1AupY67wGmL52IowWn008LOtnCa+PdJrVOzu58O13kDd54MrhoRV1HZxf/zUr1jBGrG7pF/6h14kOo20kntvDF6kSO5t+TgvfqwJSQ/VSg0rQ5KRsjB/bGg60jQ9Ai1DI9N26w1XrItJXd3kYnKRURRvBJG8CHy8T2KLtC/qq2WL2gJ6vtlO77JfPuylAcBR1HTZpJf91SwxeD4oigJToj4caJer06uTaZep061vZt/78dVJJWe2AnU4gB5PDpTgyF6yu7ScXvf3eIak4yE/dIofEGczzzlM3ABqvZvHHD39P3t+ZdNyM/gthH9c/L6TBMMoWrqXvkajeBuRb7kuP60g/JddpNzY5pNEGfo/hx8k0VMSdQi2thsxVqATC3y7PZM+hsUzjVX+THgmgkJtDpLGSmKmboTSwCJUGluhs8HOzQNTxITILdZ7ZBDGvUBh1GdIxr0RM/UdSrN+oTIeE9A5FlP3HFgd2fxOIaMUo73CLOLaSbPO+/IjSkJpJC51jDMSn4Vx2Buk0ztUkwxxgT9PRqoOnXCF2+xlVJaMjXBOkfZS1Wbc77uib+pFXMG8nQQxFIkh6wrKRFjNmeVqPrP/IyQRlAyp6HvmPUOEl62PhnoGDYg7qrpR36XUeucSI0oxB7ltKaugbbKRUiQYaoqPypGI6kk7xBpjfZrnmqp60+PqsV6BDv+YNopIkaOMKupooo1OvkmXOnODvDcJTV0W9tVTFy0Hnb6Xmpwrmr5sqjtz7PwxLkNFMV/Us6E/NAAAAAA=) format("woff2"),url(/live2d/waifuico.woff) format("woff")}@keyframes shake{2%{transform:translate(0.5px,-1.5px) rotate(-0.5deg)}4%{transform:translate(0.5px,1.5px) rotate(1.5deg)}6%{transform:translate(1.5px,1.5px) rotate(1.5deg)}8%{transform:translate(2.5px,1.5px) rotate(0.5deg)}10%{transform:translate(0.5px,2.5px) rotate(0.5deg)}12%{transform:translate(1.5px,1.5px) rotate(0.5deg)}14%{transform:translate(0.5px,0.5px) rotate(0.5deg)}16%{transform:translate(-1.5px,-0.5px) rotate(1.5deg)}18%{transform:translate(0.5px,0.5px) rotate(1.5deg)}20%{transform:translate(2.5px,2.5px) rotate(1.5deg)}22%{transform:translate(0.5px,-1.5px) rotate(1.5deg)}24%{transform:translate(-1.5px,1.5px) rotate(-0.5deg)}26%{transform:translate(1.5px,0.5px) rotate(1.5deg)}28%{transform:translate(-0.5px,-0.5px) rotate(-0.5deg)}30%{transform:translate(1.5px,-0.5px) rotate(-0.5deg)}32%{transform:translate(2.5px,-1.5px) rotate(1.5deg)}34%{transform:translate(2.5px,2.5px) rotate(-0.5deg)}36%{transform:translate(0.5px,-1.5px) rotate(0.5deg)}38%{transform:translate(2.5px,-0.5px) rotate(-0.5deg)}40%{transform:translate(-0.5px,2.5px) rotate(0.5deg)}42%{transform:translate(-1.5px,2.5px) rotate(0.5deg)}44%{transform:translate(-1.5px,1.5px) rotate(0.5deg)}46%{transform:translate(1.5px,-0.5px) rotate(-0.5deg)}48%{transform:translate(2.5px,-0.5px) rotate(0.5deg)}50%{transform:translate(-1.5px,1.5px) rotate(0.5deg)}52%{transform:translate(-0.5px,1.5px) rotate(0.5deg)}54%{transform:translate(-1.5px,1.5px) rotate(0.5deg)}56%{transform:translate(0.5px,2.5px) rotate(1.5deg)}58%{transform:translate(2.5px,2.5px) rotate(0.5deg)}60%{transform:translate(2.5px,-1.5px) rotate(1.5deg)}62%{transform:translate(-1.5px,0.5px) rotate(1.5deg)}64%{transform:translate(-1.5px,1.5px) rotate(1.5deg)}66%{transform:translate(0.5px,2.5px) rotate(1.5deg)}68%{transform:translate(2.5px,-1.5px) rotate(1.5deg)}70%{transform:translate(2.5px,2.5px) rotate(0.5deg)}72%{transform:translate(-0.5px,-1.5px) rotate(1.5deg)}74%{transform:translate(-1.5px,2.5px) rotate(1.5deg)}76%{transform:translate(-1.5px,2.5px) rotate(1.5deg)}78%{transform:translate(-1.5px,2.5px) rotate(0.5deg)}80%{transform:translate(-1.5px,0.5px) rotate(-0.5deg)}82%{transform:translate(-1.5px,0.5px) rotate(-0.5deg)}84%{transform:translate(-0.5px,0.5px) rotate(1.5deg)}86%{transform:translate(2.5px,1.5px) rotate(0.5deg)}88%{transform:translate(-1.5px,0.5px) rotate(1.5deg)}90%{transform:translate(-1.5px,-0.5px) rotate(-0.5deg)}92%{transform:translate(-1.5px,-1.5px) rotate(1.5deg)}94%{transform:translate(0.5px,0.5px) rotate(-0.5deg)}96%{transform:translate(2.5px,-0.5px) rotate(-0.5deg)}98%{transform:translate(-1.5px,-1.5px) rotate(-0.5deg)}0%,100%{transform:translate(0,0) rotate(0)}}
+`;
+initModel();
+window.downloadCap = blobDownload;
+window.initModel = initModel;
+
+;// CONCATENATED MODULE: ./themes/hexo-theme-matery/src/js/search.js
+const searchFunc = (path, search_id, content_id) => {
+    'use strict';
+    window.fetch(path)
+        .then(res => res.text())
+        .then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
+        .then((xmlResponse) => {
+            const datas = [];
+            // get the contents from search data
+            for (let el of xmlResponse.getElementsByTagName('entry')){
+                datas.push({
+                    title: el.getElementsByTagName('title')[0].textContent,
+                    content: el.getElementsByTagName('content')[0].textContent,
+                    url: el.getElementsByTagName('url')[0].textContent
+                })
+            }
+            const $input = document.getElementById(search_id);
+            const $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function () {
+                var str = '<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length <= 0) {
+                    return;
+                }
+                // perform local searching
+                datas.forEach(function (data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if (data_title != '' && data_content != '') {
+                        keywords.forEach(function (keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if (index_title < 0 && index_content < 0) {
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g, "");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if (start < 0) {
+                                start = 0;
+                            }
+                            if (start == 0) {
+                                end = 100;
+                            }
+                            if (end > content.length) {
+                                end = content.length;
+                            }
+                            var match_content = content.substr(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function (keyword) {
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                            });
+
+                            str += "<p class=\"search-result\">" + match_content + "...</p>"
+                        }
+                        str += "</li>";
+                    }
+                });
+                str += "</ul>";
+                $resultContent.innerHTML = str;
+            });
+        })
+}
+;// CONCATENATED MODULE: ./themes/hexo-theme-matery/src/js/hexo.js
+
+
+
+
+
+
+// SessionStorage localStorage 操作
+const hexo_setSS = (k, v) => {
+    try {
+        sessionStorage.setItem(k, v);
+    } catch (e) {
+    }
+}
+const hexo_removeSS = (k) => {
+    try {
+        sessionStorage.removeItem(k);
+    } catch (e) {
+    }
+}
+const hexo_getSS = (k) => {
+    try {
+        return sessionStorage.getItem(k);
+    } catch (e) {
+        return null
+    }
+}
+const hexo_setLS = (k, v) => {
+    try {
+        localStorage.setItem(k, v);
+    } catch (e) {
+    }
+}
+const hexo_removeLS = (k) => {
+    try {
+        localStorage.removeItem(k);
+    } catch (e) {
+    }
+}
+const hexo_getLS = (k) => {
+    try {
+        return localStorage.getItem(k);
+    } catch (e) {
+        return null
+    }
+}
+
+/* 添加文章卡片 hover 效果 */
+const articleCardHover = function () {
+    const animateClass1 = 'animated';
+    const animateClass2 = 'pulse';
+    for (let el of document.querySelectorAll('article .article')) {
+        el.addEventListener('mouseover', () => {
+            el.classList.add(animateClass1);
+            el.classList.add(animateClass2);
+        })
+        el.addEventListener('mouseleave', () => {
+            el.classList.remove(animateClass1);
+            el.classList.remove(animateClass2);
+        })
+    }
+};
+if (window.innerWidth >= 1040) articleCardHover();
+
+/* 修复文章卡片 div 的宽度. */
+let fixPostCardWidth = function (srcId, targetId) {
+    let srcDiv = document.getElementById(srcId);
+    if (!srcDiv) {
+        return;
+    }
+    let w = srcDiv.style.width;
+    if (w >= 450) {
+        w = w + 21;
+    } else if (w >= 350 && w < 450) {
+        w = w + 18;
+    } else if (w >= 300 && w < 350) {
+        w = w + 16;
+    } else {
+        w = w + 14;
+    }
+    const target = document.getElementById(targetId);
+    if (target) target.style.width = w;
+};
+
+/* 修复 footer 部分的位置，使得在内容比较少时，footer也会在底部 */
+let fixFooterPosition = function () {
+    document.getElementsByClassName('content')[0].style.minHeight = window.innerHeight - 165;
+};
+
+/* 修复样式 */
+let fixStyles = function () {
+    fixPostCardWidth('navContainer', 'articles');
+    fixPostCardWidth('artDetail', 'prenext-posts');
+    fixFooterPosition();
+};
+fixStyles();
+
+/* 调整屏幕宽度时重新设置文章列的宽度，修复小间距问题 */
+window.addEventListener('resize', () => fixStyles());
+
+/* 初始化瀑布流布局 */
+if (document.getElementById('articles')) {
+    const msnry = new Masonry(document.getElementById('articles'), {
+        itemSelector: '.article'
+    });
+}
+/* 文章内容详情的一些初始化特性 */
+let articleInit = function () {
+    const articleA = document.querySelectorAll('#articleContent a')[0];
+    if (articleA) articleA.setAttribute('target', '_blank');
+    const artcleimg = document.querySelectorAll('#articleContent img');
+    for (let el of artcleimg) {
+        const imgPath = el.getAttribute('src');
+        el.innerHTML = `<div class="img-item" data-src="${imgPath}" data-sub-html=".caption">${el.innerHTML}</div>`
+        // 图片添加字幕
+        let alt = el.getAttribute('alt');
+        let title = el.getAttribute('title');
+        let captionText = "";
+        // 如果alt为空，title来替
+        if (alt === undefined || alt === "") {
+            if (title !== undefined && title !== "") {
+                captionText = title;
+            }
+        } else {
+            captionText = alt;
+        }
+        // 字幕不空，添加之
+        if (captionText !== "") {
+            let captionDiv = document.createElement('div');
+            captionDiv.className = 'caption';
+            let captionEle = document.createElement('b');
+            captionEle.className = 'center-caption';
+            captionEle.innerText = captionText;
+            captionDiv.appendChild(captionEle);
+            el.insertAdjacentElement('afterend', captionDiv);
+        }
+    }
+};
+articleInit();
+const modalInstance = M.Modal.init(document.querySelectorAll('.modal'));
+
+/* 回到顶部 */
+const backToTopBtn = document.getElementById('backTop');
+backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+    showMessage("飞到顶啦", 1300, true);
+    return false;
+})
+
+/* 监听页面滚动 */
+window.onscroll = () => {
+    if (window.scrollY < 100) {
+        backToTopBtn.classList.add('btnHide');
+    } else {
+        backToTopBtn.classList.remove('btnHide');
+    }
+}
+
+/* 是否显示看板娘 */
+const showLive2Dbtn = document.getElementById('show-live2d');
+const checkLive2DHide = () => {
+    if (hexo_getSS('waifuHide') === '1') {
+        showLive2Dbtn.classList.remove('btnHide');
+        document.querySelector('#waifu').classList.add('hide');
+    }
+}
+// 为显示看板娘按钮添加事件
+showLive2Dbtn.addEventListener('click', () => {
+    if (hexo_getSS('waifuHide') === '1') {
+        hexo_removeSS('waifuHide');
+        document.querySelector('#waifu').classList.remove('hide');
+        showLive2Dbtn.classList.add('btnHide');
+        showMessage("想我了吗？^_^", 1300, true);
+        initModel("/live2d/waifu-tips.json");
+    }
+})
+// 音频 url 列表
+const musicList = [
+    "/media/Music8_2_index.opus",
+    "/media/DawnWineryTheme.ogg",
+    "/media/Music0_1_index.ogg",
+    "/media/HappyJourney.ogg",
+    "/media/Music0_5_index.ogg",
+    "/media/Music5_3_index.ogg",
+    "/media/Music31_6_index.ogg",
+    "/media/Music15_4_index.ogg",
+    "/media/Music26_1_index.ogg",
+    "/media/Music19_5_index.ogg",
+    "/media/Music5_2_index.ogg",
+    "/media/Music1_2_index.ogg",
+    "/media/Music14_1.ogg",
+    "/media/PureSky.ogg",
+    "/media/Music27_3_index.ogg",
+    "/media/Music13_1_index.ogg",
+    "/media/Music26_9_index.ogg"
+];
+let currentTrack = 0;
+const audioObj = new Audio();
+// 根据 sessionStorage 或者给定曲目得到音频 url
+const getAudioUrl = (trackNo) => {
+    const t = hexo_getSS('track');
+    if (t !== null && t >= 0 && t <= musicList.length - 1) {
+        currentTrack = t;
+        return musicList[t]
+    } else {
+        return musicList[trackNo || 0];
+    }
+}
+// 读取音量值
+const getVolume = () => {
+    const vol = hexo_getSS('volume');
+    if (vol !== null && vol >= 0 && vol <= 1) {
+        return vol;
+    } else {
+        setVolume(0.7);
+        return 0.7;
+    }
+}
+// 设置音量值
+const setVolume = (vol) => {
+    hexo_setSS('volume', vol);
+}
+// 音量淡入
+const volumeFadein = () => {
+    console.log('fadein')
+    const targetVol = getVolume();
+    const step = targetVol / 10;
+    const intervalId = setInterval(() => {
+        if (audioObj.volume + step < 1)
+            audioObj.volume = audioObj.volume + step;
+        if (Math.abs(targetVol - audioObj.volume) < 0.05) {
+            audioObj.volume = targetVol;
+            clearInterval(intervalId);
+        }
+    }, 30);
+}
+// 读取播放位置
+const getAudioTime = () => {
+    const t = hexo_getSS('audioTime');
+    if (t !== null) {
+        hexo_removeSS('audioTime');
+        return t;
+    } else {
+        return 0;
+    }
+}
+// 每隔1.5秒存储当前播放位置，防止 window.onbeforeunload 不执行的情况
+const setAudioTime = () => {
+    setInterval(() => {
+        if (audioObj.played.length !== 0) {
+            hexo_setSS('audioTime', audioObj.currentTime)
+        }
+    }, 1500);
+}
+// 切换下一首
+const nextTrack = () => {
+    if (currentTrack >= musicList.length - 1)
+        currentTrack = 0;
+    else
+        currentTrack++;
+    hexo_setSS('track', currentTrack);
+    hexo_setSS('audioTime', 0);
+    audioObj.addEventListener("canplay", audioCanplay);
+    audioObj.src = getAudioUrl(currentTrack);
+}
+// 不能自动播放 设置监听器
+const canNotAutoplay = (e) => {
+    console.log('canAutoplay: False');
+    console.log(e);
+    // 触摸播放
+    document.addEventListener("touchstart", clickPlay, false);
+    // 点击播放
+    document.addEventListener("click", clickPlay, false);
+    // 指针移动播放
+    document.addEventListener('mousemove', clickPlay, false);
+}
+// 通过事件播放
+const clickPlay = () => {
+    if (audioObj.played.length === 0)
+        audioObj.play().then(() => {
+            console.log('clickPlay');
+            // 成功播放 移除监听器
+            audioObj.removeEventListener('canplay', audioCanplay); // 移除 canplay 监听器的原因：跳转到指定位置时也会触发 canplay 事件，造成循环
+            document.removeEventListener("touchstart", clickPlay, false);
+            document.removeEventListener("click", clickPlay, false);
+            document.removeEventListener('mousemove', clickPlay, false);
+            audioObj.currentTime = getAudioTime();
+            volumeFadein();
+            setMuteImg();
+        }).catch();
+}
+// 首次播放函数 缓冲足够时调用
+const audioCanplay = () => {
+    console.log('audio canplay ' + audioObj.src);
+    audioObj.play().then(() => {
+        // if (audioObj.played.length === 0 && window.navigator.userAgent.indexOf('Firefox') > 0 && audioObj.allowedToPlay === false)
+        //     throw new Error('fake autoplay'); // 部分 Firefox 在没有自动播放仍然执行了 then ，再判断一下
+        console.log('canAutoplay: True');
+        audioObj.removeEventListener('canplay', audioCanplay); // 移除 canplay 监听器的原因：跳转到指定位置时也会触发 canplay 事件，造成循环
+        audioObj.currentTime = getAudioTime();
+        volumeFadein();
+        setMuteImg();
+    }).catch(e => canNotAutoplay(e));
+}
+// 初始化播放器
+const initPlayer = () => {
+    audioObj.volume = 0;
+    audioObj.src = getAudioUrl();
+    if (hexo_getSS('mute') !== '1') { // 之前已经静音的情况下不会自动播放
+        audioObj.addEventListener("canplay", audioCanplay);
+    }
+}
+initPlayer();
+// 监听当前曲目结束
+audioObj.addEventListener("ended", () => {
+    nextTrack();
+});
+// 开始播放时监听
+audioObj.addEventListener('playing', setAudioTime);
+// 暂停时将音量设为0
+audioObj.addEventListener('pause', () => (audioObj.volume = 0));
+// 静音按钮图标切换
+const setMuteImg = () => {
+    const unmuteBtn = document.getElementById("audioOff");
+    const muteBtn = document.getElementById("audioOn");
+    muteBtn.style.display = "block";
+    unmuteBtn.style.display = "none";
+}
+const setUnmuteImg = () => {
+    const unmuteBtn = document.getElementById("audioOff");
+    const muteBtn = document.getElementById("audioOn");
+    muteBtn.style.display = "none";
+    unmuteBtn.style.display = "block";
+}
+// 为静音按钮添加事件
+const addMuteBtnListener = () => {
+    const unmuteBtn = document.getElementById("audioOff");
+    const muteBtn = document.getElementById("audioOn");
+    if (audioObj.paused === false) setMuteImg();
+    muteBtn.addEventListener("click", () => {
+        audioObj.pause();
+        hexo_setSS('mute', 1);
+        setUnmuteImg();
+        audioObj.removeEventListener('canplay', audioCanplay);
+    });
+    unmuteBtn.addEventListener("click", () => {
+        setMuteImg();
+        hexo_setSS('mute', 0);
+        audioCanplay();
+    });
+}
+// 音量调整按钮
+document.querySelector('.waifu-tool .icon-volumeup').addEventListener('click', () => {
+    const vol = audioObj.volume;
+    const volInt = ((vol + 0.1) * 100).toFixed(0);
+    if (vol <= 0.9) {
+        audioObj.volume = vol + 0.1;
+        setVolume(vol + 0.1);
+        showMessage("音量增大到" + volInt + "%了哦", 1300, true);
+    } else {
+        audioObj.volume = 1;
+        setVolume(1);
+        showMessage("声音不能再大啦", 1300, true);
+    }
+})
+document.querySelector('.waifu-tool .icon-volumedown').addEventListener('click', () => {
+    const vol = audioObj.volume;
+    const volInt = ((vol - 0.1) * 100).toFixed(0);
+    if (vol > 0.11) {
+        audioObj.volume = vol - 0.1;
+        setVolume(vol - 0.1);
+        showMessage("音量减小到" + volInt + "%了哦", 1300, true);
+    } else {
+        audioObj.volume = 0;
+        setVolume(0);
+        showMessage("声音不能再小啦", 1300, true);
+    }
+})
+const initSidebarNav = () => {
+    const elems = document.querySelectorAll('.sidenav');
+    const instances = M.Sidenav.init(elems);
+}
+// 检查页面加载状态
+if (document.readyState === "interactive") {
+    console.log('interactive')
+    initSidebarNav()
+    checkLive2DHide();
+    addMuteBtnListener();
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+} else if (document.readyState === "complete") {
+    console.log('complete')
+} else {
+    window.addEventListener("DOMContentLoaded", checkLive2DHide);
+    window.addEventListener("DOMContentLoaded", addMuteBtnListener);
+    window.addEventListener("DOMContentLoaded", initSidebarNav);
+}
+
+// 页面切换前将音频时间存储到 SessionStorage
+window.onbeforeunload = () => {
+    if (audioObj.played.length !== 0) {
+        hexo_setSS('audioTime', audioObj.currentTime)
+    }
+}
+/******/ })()
+;
