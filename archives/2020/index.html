@@ -21,7 +21,6 @@
     <meta name="theme-color" content="#ffffff">
     <title>归档: 2020 | 生命不息 折腾不止</title>
     <script async type="application/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.0/lazysizes.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.1/animate.min.css">
     <link rel="stylesheet" type="text/css" href="/css/bundle.css">
 <!--    <script async defer data-website-id="4873cf0d-ee04-4c6c-85e1-5c2f72f5b538" src="https://umami.konata.tech/umami.js"></script>-->
@@ -55,7 +54,7 @@
             </div>
             
 
-<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-bars"></i></a>
 <ul class="right">
     
     <li class="hide-on-med-and-down">
@@ -97,7 +96,7 @@
     <li class="hide-on-med-and-down">
         <a href="/about" class="waves-effect waves-light">
             
-            <i class="fa fa-user-circle-o"></i>
+            <i class="fa fa-user-circle"></i>
             
             <span>关于</span>
         </a>
@@ -167,7 +166,7 @@
         <li>
             <a href="/about" class="waves-effect waves-light">
                 
-                <i class="fa fa-fw fa-user-circle-o"></i>
+                <i class="fa fa-fw fa-user-circle"></i>
                 
                 关于
             </a>
@@ -247,7 +246,7 @@
     </nav>
 </header>
 
-<div class="bg-cover pd-header about-cover">
+<div class="bg-cover pd-header about-cover" style='background-image: url("/medias/banner/1.jpg");'>
     <div class="container" style="text-align: center;">
     <div class="row" style="display: inline-block">
     <div class="col">
@@ -400,16 +399,13 @@
                             </a>
                             <div class="card-content article-content">
                                 <div class="summary block-with-text">
-                                    
-                                        云端 (Cloud Side)此处安装云端的环境是 VMWare 安装 CentOS 7 虚拟机，登录用户为 root 用户
-
-安装 Kubernetes修改 Hostnamevim /etc/hostname # 修改 hostname
-
-                                    
+                                    <center>
+                                        KubeEdge 部署记录
+                                        </center>
                                 </div>
                                 <div class="publish-info">
                                 <span class="publish-date">
-                                    <i class="fa fa-clock-o fa-fw icon-date"></i>2020-12-22
+                                    <i class="fa fa-clock fa-fw icon-date"></i>2020-12-22
                                 </span>
                                     <span class="publish-author">
                                         
@@ -472,15 +468,13 @@
                             </a>
                             <div class="card-content article-content">
                                 <div class="summary block-with-text">
-                                    
-                                        从 MP4 中提取 M4Affmpeg -i input.mp4 -vn -c:a copy output.m4a
-无损切割音频ss : 起始秒t : 持续秒数
-ffmpeg -ss 5990  -i in.aac -t 181 -c co
-                                    
+                                    <center>
+                                        ffmpeg 命令整理
+                                        </center>
                                 </div>
                                 <div class="publish-info">
                                 <span class="publish-date">
-                                    <i class="fa fa-clock-o fa-fw icon-date"></i>2020-12-22
+                                    <i class="fa fa-clock fa-fw icon-date"></i>2020-12-22
                                 </span>
                                     <span class="publish-author">
                                         
@@ -535,17 +529,13 @@ ffmpeg -ss 5990  -i in.aac -t 181 -c co
                             </a>
                             <div class="card-content article-content">
                                 <div class="summary block-with-text">
-                                    
-                                        环境变量%varname% ，例如 %PATH%  %USERNAME%  %APPDATA% 等
-特殊变量
-%CD% : 当前目录，不包含反斜线除非是在驱动器根目录下
-%TIME% : HH:MM:SS.mm 格式的系统时间
-%DATE%
-                                    
+                                    <center>
+                                        Windows 批处理中的变量
+                                        </center>
                                 </div>
                                 <div class="publish-info">
                                 <span class="publish-date">
-                                    <i class="fa fa-clock-o fa-fw icon-date"></i>2020-12-06
+                                    <i class="fa fa-clock fa-fw icon-date"></i>2020-12-06
                                 </span>
                                     <span class="publish-author">
                                         
@@ -605,19 +595,13 @@ ffmpeg -ss 5990  -i in.aac -t 181 -c co
                             </a>
                             <div class="card-content article-content">
                                 <div class="summary block-with-text">
-                                    
-                                        GNU ARM 汇编程序格式整体结构.section .mysection, "x"
-.text
-.global test
-test:
-    ADD r0, r0, r1
-    MOV pc, lr
-.data   /*定义数据段，即程
-                                    
+                                    <center>
+                                        ARM 汇编笔记
+                                        </center>
                                 </div>
                                 <div class="publish-info">
                                 <span class="publish-date">
-                                    <i class="fa fa-clock-o fa-fw icon-date"></i>2020-11-18
+                                    <i class="fa fa-clock fa-fw icon-date"></i>2020-11-18
                                 </span>
                                     <span class="publish-author">
                                         
@@ -679,18 +663,13 @@ test:
                             </a>
                             <div class="card-content article-content">
                                 <div class="summary block-with-text">
-                                    
-                                        查看路由表
-netstat -r
-route
-
-Kernel IP routing table
-Destination     Gateway         Genmask         Flags Metric Ref    Use 
-                                    
+                                    <center>
+                                        Linux 中配置路由
+                                        </center>
                                 </div>
                                 <div class="publish-info">
                                 <span class="publish-date">
-                                    <i class="fa fa-clock-o fa-fw icon-date"></i>2020-10-25
+                                    <i class="fa fa-clock fa-fw icon-date"></i>2020-10-25
                                 </span>
                                     <span class="publish-author">
                                         
@@ -747,13 +726,13 @@ Destination     Gateway         Genmask         Flags Metric Ref    Use
                             </a>
                             <div class="card-content article-content">
                                 <div class="summary block-with-text">
-                                    
-                                        前言从 Windows 8 开始，微软在操作系统中引入了驱动程序强制签名的安全特性，没有正确签名的驱动将直接无法安装。这毫无疑问的增强了系统的安全性，但同时你可能会遇到老设备装不上驱动、自己修改 INF 文件后校验错误等问题。一个常用的解决
-                                    
+                                    <center>
+                                        给 Windows 驱动签名
+                                        </center>
                                 </div>
                                 <div class="publish-info">
                                 <span class="publish-date">
-                                    <i class="fa fa-clock-o fa-fw icon-date"></i>2020-10-16
+                                    <i class="fa fa-clock fa-fw icon-date"></i>2020-10-16
                                 </span>
                                     <span class="publish-author">
                                         
@@ -814,14 +793,13 @@ Destination     Gateway         Genmask         Flags Metric Ref    Use
                             </a>
                             <div class="card-content article-content">
                                 <div class="summary block-with-text">
-                                    
-                                        逻辑左移左移运算符 &lt;&lt; 是双目运算符。左移 n 位就是乘以 2 的 n 次方。 其功能把 &lt;&lt; 左边的运算数的各二进位全部左移若干位，由 &lt;&lt; 右边的数指定移动的位数，高位丢弃，低位补 0。
-逻辑右移右
-                                    
+                                    <center>
+                                        逻辑位移
+                                        </center>
                                 </div>
                                 <div class="publish-info">
                                 <span class="publish-date">
-                                    <i class="fa fa-clock-o fa-fw icon-date"></i>2020-10-11
+                                    <i class="fa fa-clock fa-fw icon-date"></i>2020-10-11
                                 </span>
                                     <span class="publish-author">
                                         
@@ -876,14 +854,13 @@ Destination     Gateway         Genmask         Flags Metric Ref    Use
                             </a>
                             <div class="card-content article-content">
                                 <div class="summary block-with-text">
-                                    
-                                        JWT(JSON Web Token) 是一个基于 JSON 的开放标准，用于通信双方之间传递安全信息的简洁的、URL 安全的表述性声明规范，经常用于身份验证。  
-结构JWT 有三部分组成，他们之间用 . 分隔，这三部分分别是 Heade
-                                    
+                                    <center>
+                                        JSON Web Token
+                                        </center>
                                 </div>
                                 <div class="publish-info">
                                 <span class="publish-date">
-                                    <i class="fa fa-clock-o fa-fw icon-date"></i>2020-10-07
+                                    <i class="fa fa-clock fa-fw icon-date"></i>2020-10-07
                                 </span>
                                     <span class="publish-author">
                                         
@@ -938,13 +915,13 @@ Destination     Gateway         Genmask         Flags Metric Ref    Use
                             </a>
                             <div class="card-content article-content">
                                 <div class="summary block-with-text">
-                                    
-                                        当一个元素接收到事件的时候，会把他接收到的事件传给自己的父级，一直到 window ，当然其传播的是事件，绑定的执行函数并不会传播，如果父级没有绑定事件函数，就算传递了事件，也不会有什么表现，但事件确实传递了。事件冒泡的原因是事件源本身可能
-                                    
+                                    <center>
+                                        事件冒泡
+                                        </center>
                                 </div>
                                 <div class="publish-info">
                                 <span class="publish-date">
-                                    <i class="fa fa-clock-o fa-fw icon-date"></i>2020-10-04
+                                    <i class="fa fa-clock fa-fw icon-date"></i>2020-10-04
                                 </span>
                                     <span class="publish-author">
                                         
@@ -999,15 +976,13 @@ Destination     Gateway         Genmask         Flags Metric Ref    Use
                             </a>
                             <div class="card-content article-content">
                                 <div class="summary block-with-text">
-                                    
-                                        XML 与 JSON 都可以用来描述或者存储数据，两者都有各自的优点，使用场景取决于需求。  
-XML
-可扩展标记语言 (Extensible Markup Language)，是一种用于标记电子文件使其具有结构性的标记语言，可以用来标记数
-                                    
+                                    <center>
+                                        XML 与 JSON
+                                        </center>
                                 </div>
                                 <div class="publish-info">
                                 <span class="publish-date">
-                                    <i class="fa fa-clock-o fa-fw icon-date"></i>2020-10-02
+                                    <i class="fa fa-clock fa-fw icon-date"></i>2020-10-02
                                 </span>
                                     <span class="publish-author">
                                         
@@ -1075,13 +1050,13 @@ XML
                 <br>
                 
                     <span id="busuanzi_container_site_pv">
-                    <i class="fa fa-heart-o"></i>
+                    <i class="fa fa-heart"></i>
                     本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
                 </span>
                 
                 
                     <span id="busuanzi_container_site_uv">
-                    次,&nbsp;<i class="fa fa-users"></i> 访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                    次&nbsp;&nbsp;<i class="fa fa-user-friends"></i> 访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
                 </span>
                 
             
@@ -1090,7 +1065,7 @@ XML
 
 
     <a href="mailto:konata#aliyun.com" class="tooltipped" target="_blank" data-tooltip="E-mail" data-position="top" data-delay="50">
-        <i class="fa fa-hover fa-envelope-open"></i>
+        <i class="fa fa-hover fa-envelope"></i>
     </a>
 
 

@@ -21,7 +21,6 @@
     <meta name="theme-color" content="#ffffff">
     <title>归档 | 生命不息 折腾不止</title>
     <script async type="application/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.0/lazysizes.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.1/animate.min.css">
     <link rel="stylesheet" type="text/css" href="/css/bundle.css">
 <!--    <script async defer data-website-id="4873cf0d-ee04-4c6c-85e1-5c2f72f5b538" src="https://umami.konata.tech/umami.js"></script>-->
@@ -55,7 +54,7 @@
             </div>
             
 
-<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-bars"></i></a>
 <ul class="right">
     
     <li class="hide-on-med-and-down">
@@ -97,7 +96,7 @@
     <li class="hide-on-med-and-down">
         <a href="/about" class="waves-effect waves-light">
             
-            <i class="fa fa-user-circle-o"></i>
+            <i class="fa fa-user-circle"></i>
             
             <span>关于</span>
         </a>
@@ -167,7 +166,7 @@
         <li>
             <a href="/about" class="waves-effect waves-light">
                 
-                <i class="fa fa-fw fa-user-circle-o"></i>
+                <i class="fa fa-fw fa-user-circle"></i>
                 
                 关于
             </a>
@@ -247,7 +246,7 @@
     </nav>
 </header>
 
-<div class="bg-cover pd-header about-cover">
+<div class="bg-cover pd-header about-cover" style='background-image: url("/medias/banner/1.jpg");'>
     <div class="container" style="text-align: center;">
     <div class="row" style="display: inline-block">
     <div class="col">
@@ -400,13 +399,13 @@
                             </a>
                             <div class="card-content article-content">
                                 <div class="summary block-with-text">
-                                    
-                                        匿名函数匿名函数就是指的没有名字的函数，即定义函数对象时不定义函数体名字，但是必须将匿名函数作为表达式赋予一定操作，比如将其作为变量值或者让其自执行，否则这次定义将无意义，解释器也会抛出异常。函数表达式中的 function 则不会出现函数
-                                    
+                                    <center>
+                                        匿名函数与自执行函数
+                                        </center>
                                 </div>
                                 <div class="publish-info">
                                 <span class="publish-date">
-                                    <i class="fa fa-clock-o fa-fw icon-date"></i>2020-09-08
+                                    <i class="fa fa-clock fa-fw icon-date"></i>2020-09-08
                                 </span>
                                     <span class="publish-author">
                                         
@@ -461,13 +460,13 @@
                             </a>
                             <div class="card-content article-content">
                                 <div class="summary block-with-text">
-                                    
-                                        JavaScript 中的一切声明 ( var , let , const , function , function* , class ) 均存在变量提升 (hoisted)。下面的例子中，变量 a 的声明被隐式提升到作用域最顶端并被初始
-                                    
+                                    <center>
+                                        JS 中的变量提升
+                                        </center>
                                 </div>
                                 <div class="publish-info">
                                 <span class="publish-date">
-                                    <i class="fa fa-clock-o fa-fw icon-date"></i>2020-09-07
+                                    <i class="fa fa-clock fa-fw icon-date"></i>2020-09-07
                                 </span>
                                     <span class="publish-author">
                                         
@@ -522,14 +521,13 @@
                             </a>
                             <div class="card-content article-content">
                                 <div class="summary block-with-text">
-                                    
-                                        每个 Function 对象都存在 apply() , call() , bind() 方法，其作用都是可以在特定的作用域中调用函数，等于设置函数体内 this 对象的值，以扩充函数赖以运行的作用域。
-作用apply() , call() 
-                                    
+                                    <center>
+                                        Apply(), Call(), Bind() 的区别
+                                        </center>
                                 </div>
                                 <div class="publish-info">
                                 <span class="publish-date">
-                                    <i class="fa fa-clock-o fa-fw icon-date"></i>2020-09-06
+                                    <i class="fa fa-clock fa-fw icon-date"></i>2020-09-06
                                 </span>
                                     <span class="publish-author">
                                         
@@ -584,13 +582,13 @@
                             </a>
                             <div class="card-content article-content">
                                 <div class="summary block-with-text">
-                                    
-                                        JavaScript 常被描述为一种基于原型的语言 (prototype-based language)——每个对象拥有一个原型对象，对象以其原型为模板、从原型继承方法和属性。原型对象也可能拥有原型，并从中继承方法和属性，一层一层、以此类推
-                                    
+                                    <center>
+                                        原型与原型链
+                                        </center>
                                 </div>
                                 <div class="publish-info">
                                 <span class="publish-date">
-                                    <i class="fa fa-clock-o fa-fw icon-date"></i>2020-09-05
+                                    <i class="fa fa-clock fa-fw icon-date"></i>2020-09-05
                                 </span>
                                     <span class="publish-author">
                                         
@@ -645,14 +643,13 @@
                             </a>
                             <div class="card-content article-content">
                                 <div class="summary block-with-text">
-                                    
-                                        Map 对象用来保存键值对，并且能够记住键的原始插入顺序，任何对象或者原始值都可以作为键或者是值。WeakMap 对象同样用来保存键值对，对于键是弱引用的而且必须为一个对象，而值可以是任意的对象或者原始值。  
-Map描述Map 对象类似于
-                                    
+                                    <center>
+                                        Map 与 WeakMap
+                                        </center>
                                 </div>
                                 <div class="publish-info">
                                 <span class="publish-date">
-                                    <i class="fa fa-clock-o fa-fw icon-date"></i>2020-09-04
+                                    <i class="fa fa-clock fa-fw icon-date"></i>2020-09-04
                                 </span>
                                     <span class="publish-author">
                                         
@@ -709,14 +706,13 @@ Map描述Map 对象类似于
                             </a>
                             <div class="card-content article-content">
                                 <div class="summary block-with-text">
-                                    
-                                        Set 对象允许存储任何类型的唯一值，无论是原始值或者是对象引用， Set 对象中的值不会重复。WeakSet 对象允许存储对象弱引用的唯一值， WeakSet 对象中的值同样不会重复，且只能保存对象的弱引用。  
-Set描述Set 对象是
-                                    
+                                    <center>
+                                        Set 与 WeakSet
+                                        </center>
                                 </div>
                                 <div class="publish-info">
                                 <span class="publish-date">
-                                    <i class="fa fa-clock-o fa-fw icon-date"></i>2020-09-02
+                                    <i class="fa fa-clock fa-fw icon-date"></i>2020-09-02
                                 </span>
                                     <span class="publish-author">
                                         
@@ -773,13 +769,13 @@ Set描述Set 对象是
                             </a>
                             <div class="card-content article-content">
                                 <div class="summary block-with-text">
-                                    
-                                        简介Ajax (Asynchronous JavaScript and XML) 主要用来加载数据，避免刷新整个页面。XMLHttpRequest 是 Ajax 的基础。所有现代浏览器均支持 XMLHttpRequest 对象（IE5 和 
-                                    
+                                    <center>
+                                        Ajax
+                                        </center>
                                 </div>
                                 <div class="publish-info">
                                 <span class="publish-date">
-                                    <i class="fa fa-clock-o fa-fw icon-date"></i>2020-09-01
+                                    <i class="fa fa-clock fa-fw icon-date"></i>2020-09-01
                                 </span>
                                     <span class="publish-author">
                                         
@@ -839,13 +835,13 @@ Set描述Set 对象是
                             </a>
                             <div class="card-content article-content">
                                 <div class="summary block-with-text">
-                                    
-                                        前言常用的 Linux 发行版一般不会自带最新的 GCC 等编译工具，如果我们想体验最新的 C++ 语法特性，就免不了要自己编译 GCC 或者下载预编译版本，这无疑使比较麻烦的。尤其时考虑到许多配套的编译和调试工具也需要升级，如 make、
-                                    
+                                    <center>
+                                        GCC Toolset 的安装和使用
+                                        </center>
                                 </div>
                                 <div class="publish-info">
                                 <span class="publish-date">
-                                    <i class="fa fa-clock-o fa-fw icon-date"></i>2020-08-25
+                                    <i class="fa fa-clock fa-fw icon-date"></i>2020-08-25
                                 </span>
                                     <span class="publish-author">
                                         
@@ -900,13 +896,13 @@ Set描述Set 对象是
                             </a>
                             <div class="card-content article-content">
                                 <div class="summary block-with-text">
-                                    
-                                        简介fetch() 方法定义在 Window 对象以及 WorkerGlobalScope 对象上，用于发起获取资源的请求，其返回一个 Promise 对象，这个 Promise 对象会在请求响应后被 resolve ，并传回 Respon
-                                    
+                                    <center>
+                                        Fetch API
+                                        </center>
                                 </div>
                                 <div class="publish-info">
                                 <span class="publish-date">
-                                    <i class="fa fa-clock-o fa-fw icon-date"></i>2020-08-12
+                                    <i class="fa fa-clock fa-fw icon-date"></i>2020-08-12
                                 </span>
                                     <span class="publish-author">
                                         
@@ -961,13 +957,13 @@ Set描述Set 对象是
                             </a>
                             <div class="card-content article-content">
                                 <div class="summary block-with-text">
-                                    
-                                        导出 CSVJavaScript 导出 CSV 比较简单，只需要根据 CSV 的格式进行逗号分隔和换行，最后将文本保存成 CSV 文件即可。需要注意的是，Excel 默认使用 ANSI 编码来打开 CSV 文件，如果 CSV 文件使用 UT
-                                    
+                                    <center>
+                                        JavaScript 导出表格
+                                        </center>
                                 </div>
                                 <div class="publish-info">
                                 <span class="publish-date">
-                                    <i class="fa fa-clock-o fa-fw icon-date"></i>2020-08-05
+                                    <i class="fa fa-clock fa-fw icon-date"></i>2020-08-05
                                 </span>
                                     <span class="publish-author">
                                         
@@ -1036,13 +1032,13 @@ Set描述Set 对象是
                 <br>
                 
                     <span id="busuanzi_container_site_pv">
-                    <i class="fa fa-heart-o"></i>
+                    <i class="fa fa-heart"></i>
                     本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
                 </span>
                 
                 
                     <span id="busuanzi_container_site_uv">
-                    次,&nbsp;<i class="fa fa-users"></i> 访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                    次&nbsp;&nbsp;<i class="fa fa-user-friends"></i> 访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
                 </span>
                 
             
@@ -1051,7 +1047,7 @@ Set描述Set 对象是
 
 
     <a href="mailto:konata#aliyun.com" class="tooltipped" target="_blank" data-tooltip="E-mail" data-position="top" data-delay="50">
-        <i class="fa fa-hover fa-envelope-open"></i>
+        <i class="fa fa-hover fa-envelope"></i>
     </a>
 
 

@@ -21,7 +21,6 @@
     <meta name="theme-color" content="#ffffff">
     <title>归档: 2020/7 | 生命不息 折腾不止</title>
     <script async type="application/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.0/lazysizes.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.1/animate.min.css">
     <link rel="stylesheet" type="text/css" href="/css/bundle.css">
 <!--    <script async defer data-website-id="4873cf0d-ee04-4c6c-85e1-5c2f72f5b538" src="https://umami.konata.tech/umami.js"></script>-->
@@ -55,7 +54,7 @@
             </div>
             
 
-<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-bars"></i></a>
 <ul class="right">
     
     <li class="hide-on-med-and-down">
@@ -97,7 +96,7 @@
     <li class="hide-on-med-and-down">
         <a href="/about" class="waves-effect waves-light">
             
-            <i class="fa fa-user-circle-o"></i>
+            <i class="fa fa-user-circle"></i>
             
             <span>关于</span>
         </a>
@@ -167,7 +166,7 @@
         <li>
             <a href="/about" class="waves-effect waves-light">
                 
-                <i class="fa fa-fw fa-user-circle-o"></i>
+                <i class="fa fa-fw fa-user-circle"></i>
                 
                 关于
             </a>
@@ -247,7 +246,7 @@
     </nav>
 </header>
 
-<div class="bg-cover pd-header about-cover">
+<div class="bg-cover pd-header about-cover" style='background-image: url("/medias/banner/1.jpg");'>
     <div class="container" style="text-align: center;">
     <div class="row" style="display: inline-block">
     <div class="col">
@@ -400,14 +399,13 @@
                             </a>
                             <div class="card-content article-content">
                                 <div class="summary block-with-text">
-                                    
-                                        原文：For vs forEach() vs for/in vs for/of in JavaScript  
-在 JavaScript 中有许多方法来遍历一个对象或者数组，他们之间的差别是一个令许多人人困惑的 问题。一些编码 规范 甚至禁
-                                    
+                                    <center>
+                                        JavaScript 中各种遍历方法对比
+                                        </center>
                                 </div>
                                 <div class="publish-info">
                                 <span class="publish-date">
-                                    <i class="fa fa-clock-o fa-fw icon-date"></i>2020-07-25
+                                    <i class="fa fa-clock fa-fw icon-date"></i>2020-07-25
                                 </span>
                                     <span class="publish-author">
                                         
@@ -462,15 +460,13 @@
                             </a>
                             <div class="card-content article-content">
                                 <div class="summary block-with-text">
-                                    
-                                        在遍历数组时，如果在对每个元素的回调中使用异步方法，不能使用 forEach() 遍历。错误的例子：
-async function walkPath(path) &amp;#123;
-    let fileList = await fsP
-                                    
+                                    <center>
+                                        遍历数组时使用异步方法
+                                        </center>
                                 </div>
                                 <div class="publish-info">
                                 <span class="publish-date">
-                                    <i class="fa fa-clock-o fa-fw icon-date"></i>2020-07-25
+                                    <i class="fa fa-clock fa-fw icon-date"></i>2020-07-25
                                 </span>
                                     <span class="publish-author">
                                         
@@ -529,13 +525,13 @@ async function walkPath(path) &amp;#123;
                             </a>
                             <div class="card-content article-content">
                                 <div class="summary block-with-text">
-                                    
-                                        初始化git init 创建本地仓库git remote add origin https://github.com/user/repo.git 关联远程仓库git push -u origin master 关联远程仓库之后的首次推送命令
-                                    
+                                    <center>
+                                        git 常用命令
+                                        </center>
                                 </div>
                                 <div class="publish-info">
                                 <span class="publish-date">
-                                    <i class="fa fa-clock-o fa-fw icon-date"></i>2020-07-24
+                                    <i class="fa fa-clock fa-fw icon-date"></i>2020-07-24
                                 </span>
                                     <span class="publish-author">
                                         
@@ -590,13 +586,13 @@ async function walkPath(path) &amp;#123;
                             </a>
                             <div class="card-content article-content">
                                 <div class="summary block-with-text">
-                                    
-                                        介绍ES6 之前用于 JavaScript 的模块加载方案，是一些社区提供的，主要有 CommonJS 和 AMD 两种，前者用于服务器，后者用于浏览器。ES6 提供了模块的实现，使用 export 命令对外暴露接口，使用 import 命
-                                    
+                                    <center>
+                                        ES6 Module 语法
+                                        </center>
                                 </div>
                                 <div class="publish-info">
                                 <span class="publish-date">
-                                    <i class="fa fa-clock-o fa-fw icon-date"></i>2020-07-23
+                                    <i class="fa fa-clock fa-fw icon-date"></i>2020-07-23
                                 </span>
                                     <span class="publish-author">
                                         
@@ -651,15 +647,13 @@ async function walkPath(path) &amp;#123;
                             </a>
                             <div class="card-content article-content">
                                 <div class="summary block-with-text">
-                                    
-                                        适用于强智教务系统，不保证各个大学通用。  
-GitHub
-设计思路通过教务系统成绩查询网页或者 api，使用 javaScript 脚本定时（默认定是 20 分钟）执行查询动作。得到成绩后将所有成绩保存到文件，之后每次检查时进行比对，如果
-                                    
+                                    <center>
+                                        使用 javaScript 获取教务系统成绩并推送
+                                        </center>
                                 </div>
                                 <div class="publish-info">
                                 <span class="publish-date">
-                                    <i class="fa fa-clock-o fa-fw icon-date"></i>2020-07-17
+                                    <i class="fa fa-clock fa-fw icon-date"></i>2020-07-17
                                 </span>
                                     <span class="publish-author">
                                         
@@ -701,13 +695,13 @@ GitHub
                 <br>
                 
                     <span id="busuanzi_container_site_pv">
-                    <i class="fa fa-heart-o"></i>
+                    <i class="fa fa-heart"></i>
                     本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
                 </span>
                 
                 
                     <span id="busuanzi_container_site_uv">
-                    次,&nbsp;<i class="fa fa-users"></i> 访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                    次&nbsp;&nbsp;<i class="fa fa-user-friends"></i> 访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
                 </span>
                 
             
@@ -716,7 +710,7 @@ GitHub
 
 
     <a href="mailto:konata#aliyun.com" class="tooltipped" target="_blank" data-tooltip="E-mail" data-position="top" data-delay="50">
-        <i class="fa fa-hover fa-envelope-open"></i>
+        <i class="fa fa-hover fa-envelope"></i>
     </a>
 
 

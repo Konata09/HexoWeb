@@ -21,7 +21,6 @@
     <meta name="theme-color" content="#ffffff">
     <title>归档 | 生命不息 折腾不止</title>
     <script async type="application/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.0/lazysizes.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.1/animate.min.css">
     <link rel="stylesheet" type="text/css" href="/css/bundle.css">
 <!--    <script async defer data-website-id="4873cf0d-ee04-4c6c-85e1-5c2f72f5b538" src="https://umami.konata.tech/umami.js"></script>-->
@@ -55,7 +54,7 @@
             </div>
             
 
-<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-bars"></i></a>
 <ul class="right">
     
     <li class="hide-on-med-and-down">
@@ -97,7 +96,7 @@
     <li class="hide-on-med-and-down">
         <a href="/about" class="waves-effect waves-light">
             
-            <i class="fa fa-user-circle-o"></i>
+            <i class="fa fa-user-circle"></i>
             
             <span>关于</span>
         </a>
@@ -167,7 +166,7 @@
         <li>
             <a href="/about" class="waves-effect waves-light">
                 
-                <i class="fa fa-fw fa-user-circle-o"></i>
+                <i class="fa fa-fw fa-user-circle"></i>
                 
                 关于
             </a>
@@ -247,7 +246,7 @@
     </nav>
 </header>
 
-<div class="bg-cover pd-header about-cover">
+<div class="bg-cover pd-header about-cover" style='background-image: url("/medias/banner/1.jpg");'>
     <div class="container" style="text-align: center;">
     <div class="row" style="display: inline-block">
     <div class="col">
@@ -400,14 +399,13 @@
                             </a>
                             <div class="card-content article-content">
                                 <div class="summary block-with-text">
-                                    
-                                        浏览器计算样式的规则通常来说，计算样式的第一步是创建一组匹配选择器，即浏览器计算出给指定元素应用哪些类、伪选择器和 ID；第二步涉及到从匹配选择器中获取所有样式规则，并计算出此元素的最终样式。
-浏览器读取 CSS 选择器遵循从右到左的顺序，
-                                    
+                                    <center>
+                                        CSS 选择器性能优化
+                                        </center>
                                 </div>
                                 <div class="publish-info">
                                 <span class="publish-date">
-                                    <i class="fa fa-clock-o fa-fw icon-date"></i>2020-08-02
+                                    <i class="fa fa-clock fa-fw icon-date"></i>2020-08-02
                                 </span>
                                     <span class="publish-author">
                                         
@@ -467,14 +465,13 @@
                             </a>
                             <div class="card-content article-content">
                                 <div class="summary block-with-text">
-                                    
-                                        原文：For vs forEach() vs for/in vs for/of in JavaScript  
-在 JavaScript 中有许多方法来遍历一个对象或者数组，他们之间的差别是一个令许多人人困惑的 问题。一些编码 规范 甚至禁
-                                    
+                                    <center>
+                                        JavaScript 中各种遍历方法对比
+                                        </center>
                                 </div>
                                 <div class="publish-info">
                                 <span class="publish-date">
-                                    <i class="fa fa-clock-o fa-fw icon-date"></i>2020-07-25
+                                    <i class="fa fa-clock fa-fw icon-date"></i>2020-07-25
                                 </span>
                                     <span class="publish-author">
                                         
@@ -529,15 +526,13 @@
                             </a>
                             <div class="card-content article-content">
                                 <div class="summary block-with-text">
-                                    
-                                        在遍历数组时，如果在对每个元素的回调中使用异步方法，不能使用 forEach() 遍历。错误的例子：
-async function walkPath(path) &amp;#123;
-    let fileList = await fsP
-                                    
+                                    <center>
+                                        遍历数组时使用异步方法
+                                        </center>
                                 </div>
                                 <div class="publish-info">
                                 <span class="publish-date">
-                                    <i class="fa fa-clock-o fa-fw icon-date"></i>2020-07-25
+                                    <i class="fa fa-clock fa-fw icon-date"></i>2020-07-25
                                 </span>
                                     <span class="publish-author">
                                         
@@ -596,13 +591,13 @@ async function walkPath(path) &amp;#123;
                             </a>
                             <div class="card-content article-content">
                                 <div class="summary block-with-text">
-                                    
-                                        初始化git init 创建本地仓库git remote add origin https://github.com/user/repo.git 关联远程仓库git push -u origin master 关联远程仓库之后的首次推送命令
-                                    
+                                    <center>
+                                        git 常用命令
+                                        </center>
                                 </div>
                                 <div class="publish-info">
                                 <span class="publish-date">
-                                    <i class="fa fa-clock-o fa-fw icon-date"></i>2020-07-24
+                                    <i class="fa fa-clock fa-fw icon-date"></i>2020-07-24
                                 </span>
                                     <span class="publish-author">
                                         
@@ -657,13 +652,13 @@ async function walkPath(path) &amp;#123;
                             </a>
                             <div class="card-content article-content">
                                 <div class="summary block-with-text">
-                                    
-                                        介绍ES6 之前用于 JavaScript 的模块加载方案，是一些社区提供的，主要有 CommonJS 和 AMD 两种，前者用于服务器，后者用于浏览器。ES6 提供了模块的实现，使用 export 命令对外暴露接口，使用 import 命
-                                    
+                                    <center>
+                                        ES6 Module 语法
+                                        </center>
                                 </div>
                                 <div class="publish-info">
                                 <span class="publish-date">
-                                    <i class="fa fa-clock-o fa-fw icon-date"></i>2020-07-23
+                                    <i class="fa fa-clock fa-fw icon-date"></i>2020-07-23
                                 </span>
                                     <span class="publish-author">
                                         
@@ -718,15 +713,13 @@ async function walkPath(path) &amp;#123;
                             </a>
                             <div class="card-content article-content">
                                 <div class="summary block-with-text">
-                                    
-                                        适用于强智教务系统，不保证各个大学通用。  
-GitHub
-设计思路通过教务系统成绩查询网页或者 api，使用 javaScript 脚本定时（默认定是 20 分钟）执行查询动作。得到成绩后将所有成绩保存到文件，之后每次检查时进行比对，如果
-                                    
+                                    <center>
+                                        使用 javaScript 获取教务系统成绩并推送
+                                        </center>
                                 </div>
                                 <div class="publish-info">
                                 <span class="publish-date">
-                                    <i class="fa fa-clock-o fa-fw icon-date"></i>2020-07-17
+                                    <i class="fa fa-clock fa-fw icon-date"></i>2020-07-17
                                 </span>
                                     <span class="publish-author">
                                         
@@ -786,22 +779,13 @@ GitHub
                             </a>
                             <div class="card-content article-content">
                                 <div class="summary block-with-text">
-                                    
-                                        Filter 过滤器概念
-当访问服务器的资源时，过滤器可以将请求拦截下来，完成一些特殊的功能。
-过滤器的作用：
-一般用于完成通用的操作。如：登录验证、统一编码处理、敏感字符过滤。..
-
-
-
-快速入门
-定义一个类，实现接口 Filter
-复写
-                                    
+                                    <center>
+                                        Filter 和 Listener
+                                        </center>
                                 </div>
                                 <div class="publish-info">
                                 <span class="publish-date">
-                                    <i class="fa fa-clock-o fa-fw icon-date"></i>2020-06-19
+                                    <i class="fa fa-clock fa-fw icon-date"></i>2020-06-19
                                 </span>
                                     <span class="publish-author">
                                         
@@ -858,17 +842,13 @@ GitHub
                             </a>
                             <div class="card-content article-content">
                                 <div class="summary block-with-text">
-                                    
-                                        JSP指令作用用于配置 JSP 页面，导入资源文件
-格式 &lt;%@ 指令名称 属性名 1=属性值 1 属性名 2=属性值 2 ... %&gt;
-分类page配置 JSP 页面
-
-contentType ：等同于 response.se
-                                    
+                                    <center>
+                                        EL 表达式和 JSTL
+                                        </center>
                                 </div>
                                 <div class="publish-info">
                                 <span class="publish-date">
-                                    <i class="fa fa-clock-o fa-fw icon-date"></i>2020-06-19
+                                    <i class="fa fa-clock fa-fw icon-date"></i>2020-06-19
                                 </span>
                                     <span class="publish-author">
                                         
@@ -925,22 +905,13 @@ contentType ：等同于 response.se
                             </a>
                             <div class="card-content article-content">
                                 <div class="summary block-with-text">
-                                    
-                                        会话技术会话一次会话中包含多次请求和响应。
-
-一次会话：浏览器第一次给服务器资源发送请求，会话建立，直到有一方断开为止
-
-功能在一次会话的范围内的多次请求间，共享数据
-方式
-客户端会话技术：Cookie
-服务器端会话技术：Session
-
-
-                                    
+                                    <center>
+                                        Cookie 和 Session
+                                        </center>
                                 </div>
                                 <div class="publish-info">
                                 <span class="publish-date">
-                                    <i class="fa fa-clock-o fa-fw icon-date"></i>2020-06-18
+                                    <i class="fa fa-clock fa-fw icon-date"></i>2020-06-18
                                 </span>
                                     <span class="publish-author">
                                         
@@ -997,18 +968,13 @@ contentType ：等同于 response.se
                             </a>
                             <div class="card-content article-content">
                                 <div class="summary block-with-text">
-                                    
-                                        
-HTTP 响应消息响应行
-组成：协议/版本 响应状态码 状态码描述
-响应状态码：服务器告诉客户端浏览器本次请求和响应的一个状态。
-1xx：服务器就收客户端消息，但没有接受完成，等待一段时间后，发送 1xx 多状态码
-2xx：成功。代表：2
-                                    
+                                    <center>
+                                        Response 对象
+                                        </center>
                                 </div>
                                 <div class="publish-info">
                                 <span class="publish-date">
-                                    <i class="fa fa-clock-o fa-fw icon-date"></i>2020-06-18
+                                    <i class="fa fa-clock fa-fw icon-date"></i>2020-06-18
                                 </span>
                                     <span class="publish-author">
                                         
@@ -1077,13 +1043,13 @@ HTTP 响应消息响应行
                 <br>
                 
                     <span id="busuanzi_container_site_pv">
-                    <i class="fa fa-heart-o"></i>
+                    <i class="fa fa-heart"></i>
                     本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
                 </span>
                 
                 
                     <span id="busuanzi_container_site_uv">
-                    次,&nbsp;<i class="fa fa-users"></i> 访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                    次&nbsp;&nbsp;<i class="fa fa-user-friends"></i> 访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
                 </span>
                 
             
@@ -1092,7 +1058,7 @@ HTTP 响应消息响应行
 
 
     <a href="mailto:konata#aliyun.com" class="tooltipped" target="_blank" data-tooltip="E-mail" data-position="top" data-delay="50">
-        <i class="fa fa-hover fa-envelope-open"></i>
+        <i class="fa fa-hover fa-envelope"></i>
     </a>
 
 
