@@ -178,7 +178,7 @@ GitHub
         <li><div class="divider"></div></li>
         <li>
             <a href="https://github.com/Konata09" class="waves-effect waves-light" target="_blank">
-                <i class="fa fa-github-square fa-fw"></i>Fork Me
+                <i class="fa fa-github fa-fw"></i>Fork Me
             </a>
         </li>
         
@@ -382,7 +382,7 @@ GitHub
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        678
+                        676
                     </div>
                     
 
@@ -409,17 +409,17 @@ GitHub
 <p><a target="_blank" rel="noopener" href="https://github.com/Konata09/GradeCheck">GitHub</a></p>
 <h2 id="设计思路"><a href="#设计思路" class="headerlink" title="设计思路"></a>设计思路</h2><p>通过教务系统成绩查询网页或者 api，使用 javaScript 脚本定时（默认定是 20 分钟）执行查询动作。<br>得到成绩后将所有成绩保存到文件，之后每次检查时进行比对，如果有新增的成绩就进行推送。<br>推送方案有多种选择，如方糖、Telegram Bot、邮件提醒、Bark 等。这里使用 <a target="_blank" rel="noopener" href="https://github.com/Finb/Bark">Bark</a> 进行推送。Bark 是一个十分简洁的 iOS 推送 App，利用 Apple 统一的推送通道，延迟很小，但不支持 Android 系统。Bark 也可以自已部署服务端，能保证隐私不被泄露。<br>网页登录好像有定时强制注销用户的设定，即使一直访问也会出现需要登录的情况，出现 session 失效的情况可以在网页端重新登录一次，SessionId 不需要修改。</p>
 <h2 id="安装使用"><a href="#安装使用" class="headerlink" title="安装使用"></a>安装使用</h2><p>以 Linux 系统为例</p>
-<h3 id="安装-nodeJS-环境"><a href="#安装-nodeJS-环境" class="headerlink" title="安装 nodeJS 环境"></a>安装 nodeJS 环境</h3><pre class=" language-bash"><code class="language-bash"><span class="token function">wget</span> https://nodejs.org/dist/v12.18.2/node-v12.18.2-linux-x64.tar.xz
+<h3 id="安装-nodeJS-环境"><a href="#安装-nodeJS-环境" class="headerlink" title="安装 nodeJS 环境"></a>安装 nodeJS 环境</h3><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">wget</span> https://nodejs.org/dist/v12.18.2/node-v12.18.2-linux-x64.tar.xz
 <span class="token function">sudo</span> <span class="token function">mkdir</span> -p /usr/local/lib/nodejs
 <span class="token function">sudo</span> <span class="token function">tar</span> -xJvf node-v12.18.2-linux-x64.tar.xz -C /usr/local/lib/nodejs</code></pre>
 <p>执行 <code>vim /etc/profile</code> ，在文件最后加上以下内容：</p>
-<pre class=" language-bash"><code class="language-bash"><span class="token function">export</span> PATH<span class="token operator">=</span>/usr/local/lib/nodejs/node-v12.18.2-linux-x64/bin:<span class="token variable">$PATH</span>
-<span class="token function">export</span> NODE_PATH<span class="token operator">=</span>/usr/local/lib/nodejs/node-v12.18.2-linux-x64/lib/node_modules</code></pre>
-<h3 id="安装-nodeJS-模块"><a href="#安装-nodeJS-模块" class="headerlink" title="安装 nodeJS 模块"></a>安装 nodeJS 模块</h3><pre class=" language-bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> -g pm2 cheerio node-schedule iconv-lite axios socks-proxy-agent</code></pre>
-<h3 id="下载脚本"><a href="#下载脚本" class="headerlink" title="下载脚本"></a>下载脚本</h3><pre class=" language-bash"><code class="language-bash"><span class="token function">git</span> clone https://github.com/Konata09/GradeCheck.git
-<span class="token function">cd</span> GradeCheck</code></pre>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">export</span> <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span>/usr/local/lib/nodejs/node-v12.18.2-linux-x64/bin:<span class="token environment constant">$PATH</span>
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">NODE_PATH</span><span class="token operator">=</span>/usr/local/lib/nodejs/node-v12.18.2-linux-x64/lib/node_modules</code></pre>
+<h3 id="安装-nodeJS-模块"><a href="#安装-nodeJS-模块" class="headerlink" title="安装 nodeJS 模块"></a>安装 nodeJS 模块</h3><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> -g pm2 cheerio node-schedule iconv-lite axios socks-proxy-agent</code></pre>
+<h3 id="下载脚本"><a href="#下载脚本" class="headerlink" title="下载脚本"></a>下载脚本</h3><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> clone https://github.com/Konata09/GradeCheck.git
+<span class="token builtin class-name">cd</span> GradeCheck</code></pre>
 <h3 id="修改配置"><a href="#修改配置" class="headerlink" title="修改配置"></a>修改配置</h3><p>打开 <code>config.json</code> 文件<br>填写示例如下：</p>
-<pre class=" language-json"><code class="language-json">&amp;#<span class="token number">123</span><span class="token punctuation">;</span>
+<pre class="language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
     <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"api"</span><span class="token punctuation">,</span>
     <span class="token property">"site"</span><span class="token operator">:</span> <span class="token string">"jwgl.xxxx.edu.cn"</span><span class="token punctuation">,</span>
     <span class="token property">"xh"</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
@@ -427,7 +427,7 @@ GitHub
     <span class="token property">"JSESSIONID"</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
     <span class="token property">"pushUrl"</span><span class="token operator">:</span> <span class="token string">"https://xxx/xxx/"</span><span class="token punctuation">,</span>
     <span class="token property">"proxy"</span><span class="token operator">:</span> <span class="token string">"socks5://127.0.0.1:1080"</span>
-&amp;#<span class="token number">125</span><span class="token punctuation">;</span></code></pre>
+<span class="token punctuation">&#125;</span></code></pre>
 <h4 id="type"><a href="#type" class="headerlink" title="type"></a>type</h4><p>可选 <code>web</code> 或者 <code>api</code> 。<br>代表成绩查询方法， <code>web</code> 代表从网页获取， <code>api</code> 代表从接口获取。  </p>
 <p>从网页获取成绩不需要学号和密码，只需填写 <code>JSESSIONID</code> ，但可能会有 session 过期的问题。<br>从接口获取成绩不需要 <code>JSESSIONID</code> ，需要填写学号和密码，相比从网页获取更加稳定。  </p>
 <h4 id="site"><a href="#site" class="headerlink" title="site"></a>site</h4><p>教务管理系统网址，不需要 http 前缀。</p>
@@ -436,9 +436,8 @@ GitHub
 <h4 id="JSESSIONID"><a href="#JSESSIONID" class="headerlink" title="JSESSIONID"></a>JSESSIONID</h4><p>用浏览器登录教务管理系统，将浏览器 Cookie 中的 <code>JSESSIONID=</code> 的后边内容填入。当 <code>type</code> 为 <code>api</code> 时，此项不必填写。</p>
 <h4 id="pushUrl"><a href="#pushUrl" class="headerlink" title="pushUrl"></a>pushUrl</h4><p>Bark 的推送地址。<br>从 App Store 安装 Bark，即可得到推送地址，当然也可以是自己部署的服务端地址。</p>
 <h4 id="proxy"><a href="#proxy" class="headerlink" title="proxy"></a>proxy</h4><p>对教务系统进行代理访问的代理服务器地址，支持 Socks4 和 Socks5 代理。不使用留空即可。</p>
-<h3 id="运行脚本"><a href="#运行脚本" class="headerlink" title="运行脚本"></a>运行脚本</h3><pre class=" language-bash"><code class="language-bash">pm2 start gradeCheck.js</code></pre>
-<h3 id="查看日志"><a href="#查看日志" class="headerlink" title="查看日志"></a>查看日志</h3><pre class=" language-bash"><code class="language-bash">pm2 logs gradeCheck</code></pre>
-
+<h3 id="运行脚本"><a href="#运行脚本" class="headerlink" title="运行脚本"></a>运行脚本</h3><pre class="language-bash" data-language="bash"><code class="language-bash">pm2 start gradeCheck.js</code></pre>
+<h3 id="查看日志"><a href="#查看日志" class="headerlink" title="查看日志"></a>查看日志</h3><pre class="language-bash" data-language="bash"><code class="language-bash">pm2 logs gradeCheck</code></pre>
             </div>
             <hr/>
 
@@ -821,28 +820,17 @@ GitHub
 <!--    getWidth();-->
 <!--</script>-->
 <div class="mute">
-    <img id="audioOff"
-         src="data:image/png;base64,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"
-         class="controller__audio--off" style="display: block;">
-    <img id="audioOn"
-         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAMAAAC7IEhfAAAB5lBMVEUKCgoAAAD////39/f///8MDAwUFBRHcEz6+voNDQ339/cKCgodHR0YGBgXFxcMDAwWFhYLCwv///8VFRX///8TExM/Pz8ZGRn///9ISEgLCwsfHx8aGhr////w8PAbGxv///8tLS3///97e3vh4eHw8PD///8AAAD///////////////////////+np6ceHh4cHBz///8gICAJCQn///+xsbESEhIvLy+7u7vDw8P///9tbW1paWnU1NTa2todHR0RERESEhIeHh7////09PT19fWPj48RERG3t7fAwMBRUVHy8vJkZGTT09P6+vr4+Pj6+vojIyP39/fw8PDs7OxWVlbs7Oza2trq6uqRkZFTU1Py8vLu7u7Q0ND09PSSkpInJyenp6dOTk7w8PDw8PDW1tbu7u7g4ODT09Ps7Oz39/fX19fNzc3IyMiFhYU0NDT4+Pjq6uq8vLzc3NwYGBjY2Ni3t7fw8PDp6emXl5cJCQnm5ubIyMjX19c+Pj7///8AAADk5OTy8vJ9fX319fWlpaXc3NzU1NRpaWnm5uaioqJFRUWqqqrv7+/ExMTy8vLs7Oz4+PgjIyPh4eGqqqqurq56enokJCTz8/MfHx/39/eoqKjR0dHr6+v4+PgiIiLj4+O1tbUBW7mVAAAAonRSTlMZGiEjIBQZANATIhgaFRYVFxcfGBcaHB4UHBYgHQMjHB4cDB0jIgEZEh0cEBsIICEbBB8aEyEcGyIiAhwdJCMjHRsiFsDCPh4gXhy5MHTOz88kxLCnL6V+oEErt65yv0IgTCqxr3esjXWiy4BxbDsnyqNcfx9wUrKcRRuSY3opBRuRtTnESoR+NZ5QLFqydr6kzSuJYE84Krkox0p1qcsljFd+4J8aAAAC/UlEQVQ4y5WVZXPjMBCGFUdWbcd20jjYcBpmaFJm5vaYmZmZmZn5/ulJhsRJezN3+8mzfmZfebX7GrQ0RDY9mklarcmMLZ1tfAN0z8VEClIcZ8TBcRRMJYqrgr4OK+QGcr0O3m7nHb25AQ5aO3wrwXAQ+iszcQNQ41Z8puKHwXATGHNBqqtTo8rDw9XqlbKhs4uCrpge7LHBaLuCmQCyV6uT5yaHhsvA0B6Fth4daIMRh8y1tlkkVPB6Ri6cHxoqA2BwRKCtDrpgJCRjomBBAc/Jy8dPM4e9dkRyoQh0aWCYirpJro2lLXxp59GLCwzDXHIioY1k3VEqrIC+IEXOZzKztIh2XT/CyHHWKdGs2YTV26mgTwY7YDc5n5nFBQvXFIw5NVGw0Cxrxi8M3UQctBSt/pCsS8DAVYUbP4OVcYYl6iG/tYjBBKwQYVYB7y8yiy+fP7zrRCJNUiwRr8BEC4ilOLcijENE+QfM63dvlmucLO7mUjGQhf1x3BglS0vep7PM9895XuNYthWAeD/MgjSVM2gFWVpApd9LzLwexCUNOSoNRrk+fEItTYt8/i3z5YNXEjSQxqfs40ZBxuhQP0UOQQrMfWJ+eXQlMegwZkDSyNeOKJdEpfc/Fr56kaA7JG9MAqvR3gAKknf5G/NqRO63BtqN1iYQc3zp58fHzHSpVlIFG6SxcCD/6MmzF0t3bgS0kqq0/mMw5zxx+558icc8Wkn1Y2y69gjIuXmHOhVj69WSSnts+obTYmFuK6PFoZJE6xuuu0Jacs7XOOZAXtHWrlA3FALybKqDsyMyWBsKPGZT6phhcEMd3KZUJGM2RcZMN7g0Kh2sg/vJLmiDe7NhFfDc7q5xe7eQu9GvQn25cBs9G1Vu3wQZoMblqq8r3lbP9LqxNeNrt+/x4hlvWledAVgsyOsZHBzMOwuSKLY2G0DdUsomCfE4EJIsJoI1WYrOpMrAjuwIqba2wqSabE/DVtqeZqTuupEa4u7VjPQ/rPnfzV79fdj+8vv4A1Aef7RpmdATAAAAAElFTkSuQmCC"
-         class="controller__audio--on" style="display: none;">
+    <img id="audioOff" src="" class="controller__audio--off" style="display: block;">
+    <img id="audioOn" src="" class="controller__audio--on" style="display: none;">
 </div>
 <script type="application/javascript" src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
 <script>
-    NProgress.start();
     NProgress.configure({trickle: true, trickleSpeed: 300, speed: 500});
+    NProgress.start();
     NProgress.set(0.2);
-    document.getElementsByClassName('fa-heart-o')[0].addEventListener('click', () => {
-        document.getElementsByClassName('bg-cover')[0].style.backgroundImage = 'url(/medias/banner/2.jpg)';
-    })
     document.addEventListener("DOMContentLoaded", () => {
         NProgress.set(0.4);
-        NProgress.start();
     });
-    window.onload = function () {
-        NProgress.done();
-    }
 </script>
 </body>
 </html>

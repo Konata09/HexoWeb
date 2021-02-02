@@ -176,7 +176,7 @@
         <li><div class="divider"></div></li>
         <li>
             <a href="https://github.com/Konata09" class="waves-effect waves-light" target="_blank">
-                <i class="fa fa-github-square fa-fw"></i>Fork Me
+                <i class="fa fa-github fa-fw"></i>Fork Me
             </a>
         </li>
         
@@ -353,8 +353,8 @@
                                 <span class="chip bg-color">JavaScript</span>
                             </a>
                         
-                            <a href="/tags/Excle/" target="_blank">
-                                <span class="chip bg-color">Excle</span>
+                            <a href="/tags/Excel/" target="_blank">
+                                <span class="chip bg-color">Excel</span>
                             </a>
                         
                     </div>
@@ -384,7 +384,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1.7k
+                        1.6k
                     </div>
                     
 
@@ -412,11 +412,11 @@
 <p>BOM (<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Byte_order_mark">Byte Order Mark</a>) 是一段特定的十六进制序列，在 UTF-16 和 UTF-32 中用来标识该字节流的字节序，是高位在前还是低位在前，在 UTF-8 中 BOM 一般用来标识文件采用 UTF-8 编码，但并不是必要的。  </p>
 </blockquote>
 <p>UTF-8 的 BOM 的十六进制表示为 <code>EF BB BF</code> ，也可以用一个 Unicode 字符表示： <code>U+FEFF</code> 。所以我们只要在 CSV 文件开头加入 BOM 就可以将文件保存为 UTF-8 BOM 格式。可以直接在 <code>Buffer</code> 中先加入 <code>\xEF\xBB\xBF</code> 作为开头 ，也可以在字符串开头加入 <code>\uFEFF</code> 这个 Unicode 字符。  </p>
-<pre class=" language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">writeCSV</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<pre class="language-js" data-language="js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">writeCSV</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
     <span class="token keyword">let</span> csvContent <span class="token operator">=</span> <span class="token string">'\uFEFF'</span><span class="token punctuation">;</span>
     csvContent <span class="token operator">=</span> csvContent<span class="token punctuation">.</span><span class="token function">concat</span><span class="token punctuation">(</span><span class="token string">"布洛妮娅萌"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     fs<span class="token punctuation">.</span><span class="token function">writeFileSync</span><span class="token punctuation">(</span><span class="token string">'konata.csv'</span><span class="token punctuation">,</span> csvContent<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span></code></pre>
+<span class="token punctuation">&#125;</span></code></pre>
 <h2 id="导出-xls-和-xlsx"><a href="#导出-xls-和-xlsx" class="headerlink" title="导出 xls 和 xlsx"></a>导出 xls 和 xlsx</h2><p>导出 xls 和 xlsx，肯定要使用库了，目前比较好用的是 <a target="_blank" rel="noopener" href="https://github.com/sheetjs/sheetjs">SheetJS</a>，它分为专业版和社区版，专业版主要增加了样式设置、插入图片图表的功能，据说价格很贵，一般情况下社区版足够使用了。社区版也叫做 js-xlsx，支持数据读取、解析处理、数据导出，同时支持浏览器端和 Node 端。</p>
 <h3 id="SheetJS-常用-API"><a href="#SheetJS-常用-API" class="headerlink" title="SheetJS 常用 API"></a>SheetJS 常用 API</h3><h4 id="workbook-和-worksheet"><a href="#workbook-和-worksheet" class="headerlink" title="workbook 和 worksheet"></a>workbook 和 worksheet</h4><p>首先要明确的两个概念是 <code>workbook</code> 和 <code>worksheet</code> , 这两个对象分别对应了整个文件（工作簿）和一个文件中的一个表格（工作表）。</p>
 <h5 id="workbook"><a href="#workbook" class="headerlink" title="workbook"></a>workbook</h5><p><code>workbook</code> 有两种方式来获取：</p>
@@ -432,10 +432,10 @@
 <p>需要获取 <code>workbook</code> 中的某个表格时，可以这样获取：</p>
 </li>
 </ul>
-<pre class=" language-js"><code class="language-js"><span class="token keyword">let</span> sheetname <span class="token operator">=</span> workbook<span class="token punctuation">.</span>SheetNames<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<pre class="language-js" data-language="js"><code class="language-js"><span class="token keyword">let</span> sheetname <span class="token operator">=</span> workbook<span class="token punctuation">.</span>SheetNames<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 <span class="token keyword">let</span> worksheet <span class="token operator">=</span> workbook<span class="token punctuation">.</span>Sheets<span class="token punctuation">[</span>sheetname<span class="token punctuation">]</span><span class="token punctuation">;</span></code></pre>
 <h5 id="worksheet"><a href="#worksheet" class="headerlink" title="worksheet"></a>worksheet</h5><p><code>worksheet</code> 对象代表文件中的一个表格，可以通过下标的形式访问表格中任意一小格的值：</p>
-<pre class=" language-js"><code class="language-js">worksheet<span class="token punctuation">[</span><span class="token string">'A1'</span><span class="token punctuation">]</span></code></pre>
+<pre class="language-js" data-language="js"><code class="language-js">worksheet<span class="token punctuation">[</span><span class="token string">'A1'</span><span class="token punctuation">]</span></code></pre>
 <p>其返回值为一个对象，一般具有两个属性：</p>
 <ul>
 <li><code>v</code> ：当前小格的值。</li>
@@ -457,19 +457,19 @@
 <p>有关 <code>read_options</code> 的内容详见 <a target="_blank" rel="noopener" href="https://github.com/SheetJS/sheetjs#parsing-options">read_options</a>。</p>
 </li>
 </ul>
-<pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">// XLSX.writeFile</span>
-<span class="token comment" spellcheck="true">// 第一个参数为一个 workbook 对象，第二个参数为所要生成文件的文件名</span>
-XLSX<span class="token punctuation">.</span><span class="token function">writeFile</span><span class="token punctuation">(</span>workbook<span class="token punctuation">,</span> <span class="token string">'out.xlsb'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class="language-js" data-language="js"><code class="language-js"><span class="token comment">// XLSX.writeFile</span>
+<span class="token comment">// 第一个参数为一个 workbook 对象，第二个参数为所要生成文件的文件名</span>
+<span class="token constant">XLSX</span><span class="token punctuation">.</span><span class="token function">writeFile</span><span class="token punctuation">(</span>workbook<span class="token punctuation">,</span> <span class="token string">'out.xlsb'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token comment" spellcheck="true">// XLSX.write</span>
-<span class="token comment" spellcheck="true">// 第一个参数为一个 workbook 对象，第二个参数是对生成文件格式的一些设置</span>
-<span class="token comment" spellcheck="true">// 在本例中，生成格式为 xlsx 的文件，编码为 base64</span>
-XLSX<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>workbook<span class="token punctuation">,</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token comment">// XLSX.write</span>
+<span class="token comment">// 第一个参数为一个 workbook 对象，第二个参数是对生成文件格式的一些设置</span>
+<span class="token comment">// 在本例中，生成格式为 xlsx 的文件，编码为 base64</span>
+<span class="token constant">XLSX</span><span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>workbook<span class="token punctuation">,</span> <span class="token punctuation">&#123;</span>
     bookType<span class="token punctuation">:</span> <span class="token string">'xlsx'</span><span class="token punctuation">,</span>
     bookSST<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
     type<span class="token punctuation">:</span> <span class="token string">'base64'</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">// 由于其不生成文件，而只是返回组成文件的数据，所以很适合一些需要通过异步请求来修改服务器上的文件等场景</span></code></pre>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+<span class="token comment">// 由于其不生成文件，而只是返回组成文件的数据，所以很适合一些需要通过异步请求来修改服务器上的文件等场景</span></code></pre>
 <h4 id="转换数据格式"><a href="#转换数据格式" class="headerlink" title="转换数据格式"></a>转换数据格式</h4><p>SheetJS 支持读取文件并把数据导出成任意格式，可通过以下几个 API 完成，传入的参数均是一个 worksheet 对象</p>
 <ul>
 <li><code>XLSX.utils.sheet_to_csv (worksheet)</code> ：将表格数据转化为 CSV 格式。</li>
@@ -486,66 +486,65 @@ XLSX<span class="token punctuation">.</span><span class="token function">write</
 <li><code>XLSX.utils.book_append_sheet (workbook, worksheet, sheetname)</code> ：将 <code>worksheet</code> 对象添加到 <code>workbook</code> 中，并命名为 <code>sheetname</code> 。</li>
 </ul>
 <h3 id="将网页中的-table-元素转换成-xlsx-并下载"><a href="#将网页中的-table-元素转换成-xlsx-并下载" class="headerlink" title="将网页中的 table 元素转换成 xlsx 并下载"></a>将网页中的 table 元素转换成 xlsx 并下载</h3><p>引入 SheetJS：</p>
-<pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>javascript<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>dist/xlsx.full.min.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script language-javascript"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre>
+<pre class="language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>javascript<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>dist/xlsx.full.min.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre>
 <p>JavaScript:</p>
-<pre class=" language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">exportExcel</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-    <span class="token keyword">const</span> sheet <span class="token operator">=</span> XLSX<span class="token punctuation">.</span>utils<span class="token punctuation">.</span><span class="token function">table_to_sheet</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span><span class="token function">getElementsByTagName</span><span class="token punctuation">(</span><span class="token string">"table"</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 将网页中第一个 table 元素转换为工作表对象</span>
-    <span class="token keyword">let</span> filename <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"table-title"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>innerText<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 得到文件名</span>
-    <span class="token function">openDownloadDialog</span><span class="token punctuation">(</span><span class="token function">sheet2blob</span><span class="token punctuation">(</span>sheet<span class="token punctuation">)</span><span class="token punctuation">,</span> filename <span class="token operator">+</span> <span class="token string">'.xlsx'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 文件下载</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<pre class="language-js" data-language="js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">exportExcel</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">const</span> sheet <span class="token operator">=</span> <span class="token constant">XLSX</span><span class="token punctuation">.</span>utils<span class="token punctuation">.</span><span class="token function">table_to_sheet</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span><span class="token function">getElementsByTagName</span><span class="token punctuation">(</span><span class="token string">"table"</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 将网页中第一个 table 元素转换为工作表对象</span>
+    <span class="token keyword">let</span> filename <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"table-title"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>innerText<span class="token punctuation">;</span> <span class="token comment">// 得到文件名</span>
+    <span class="token function">openDownloadDialog</span><span class="token punctuation">(</span><span class="token function">sheet2blob</span><span class="token punctuation">(</span>sheet<span class="token punctuation">)</span><span class="token punctuation">,</span> filename <span class="token operator">+</span> <span class="token string">'.xlsx'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 文件下载</span>
+<span class="token punctuation">&#125;</span>
 
-<span class="token comment" spellcheck="true">// 将一个 sheet 转成最终的 excel 文件的 blob 对象，然后利用 URL.createObjectURL 下载</span>
-<span class="token keyword">function</span> <span class="token function">sheet2blob</span><span class="token punctuation">(</span>sheet<span class="token punctuation">,</span> sheetName<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-    <span class="token keyword">let</span> workbook <span class="token operator">=</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token comment">// 将一个 sheet 转成最终的 excel 文件的 blob 对象，然后利用 URL.createObjectURL 下载</span>
+<span class="token keyword">function</span> <span class="token function">sheet2blob</span><span class="token punctuation">(</span><span class="token parameter">sheet<span class="token punctuation">,</span> sheetName</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">let</span> workbook <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
         SheetNames<span class="token punctuation">:</span> <span class="token punctuation">[</span>sheetName<span class="token punctuation">]</span><span class="token punctuation">,</span>
-        Sheets<span class="token punctuation">:</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span><span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">;</span>
+        Sheets<span class="token punctuation">:</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
     workbook<span class="token punctuation">.</span>Sheets<span class="token punctuation">[</span>sheetName<span class="token punctuation">]</span> <span class="token operator">=</span> sheet<span class="token punctuation">;</span>
-    <span class="token comment" spellcheck="true">// 生成 excel 的配置项</span>
-    <span class="token keyword">const</span> wopts <span class="token operator">=</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-        bookType<span class="token punctuation">:</span> <span class="token string">'xlsx'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// 要生成的文件类型</span>
-        bookSST<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// 是否生成 Shared String Table，官方解释是，如果开启生成速度会下降，但在低版本 IOS 设备上有更好的兼容性</span>
+    <span class="token comment">// 生成 excel 的配置项</span>
+    <span class="token keyword">const</span> wopts <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+        bookType<span class="token punctuation">:</span> <span class="token string">'xlsx'</span><span class="token punctuation">,</span> <span class="token comment">// 要生成的文件类型</span>
+        bookSST<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token comment">// 是否生成 Shared String Table，官方解释是，如果开启生成速度会下降，但在低版本 IOS 设备上有更好的兼容性</span>
         type<span class="token punctuation">:</span> <span class="token string">'binary'</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">;</span>
-    <span class="token keyword">let</span> wbout <span class="token operator">=</span> XLSX<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>workbook<span class="token punctuation">,</span> wopts<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">let</span> blob <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Blob</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token function">s2ab</span><span class="token punctuation">(</span>wbout<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+    <span class="token keyword">let</span> wbout <span class="token operator">=</span> <span class="token constant">XLSX</span><span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>workbook<span class="token punctuation">,</span> wopts<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">let</span> blob <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Blob</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token function">s2ab</span><span class="token punctuation">(</span>wbout<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span>
         type<span class="token punctuation">:</span> <span class="token string">"application/octet-stream"</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    <span class="token comment" spellcheck="true">// 字符串转 ArrayBuffer</span>
-    <span class="token keyword">function</span> <span class="token function">s2ab</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token comment">// 字符串转 ArrayBuffer</span>
+    <span class="token keyword">function</span> <span class="token function">s2ab</span><span class="token punctuation">(</span><span class="token parameter">s</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
         <span class="token keyword">let</span> buf <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayBuffer</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token keyword">let</span> view <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Uint8Array</span><span class="token punctuation">(</span>buf<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">!=</span> s<span class="token punctuation">.</span>length<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> view<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> s<span class="token punctuation">.</span><span class="token function">charCodeAt</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token operator">&amp;</span> <span class="token number">0xFF</span><span class="token punctuation">;</span>
         <span class="token keyword">return</span> buf<span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
     <span class="token keyword">return</span> blob<span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 
-<span class="token comment" spellcheck="true">/**
+<span class="token comment">/**
  * 通用的打开下载对话框方法，没有测试过具体兼容性
  * @param url 下载地址，也可以是一个 blob 对象，必选
  * @param saveName 保存文件名，可选
  */</span>
-<span class="token keyword">function</span> <span class="token function">openDownloadDialog</span><span class="token punctuation">(</span>url<span class="token punctuation">,</span> saveName<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token keyword">function</span> <span class="token function">openDownloadDialog</span><span class="token punctuation">(</span><span class="token parameter">url<span class="token punctuation">,</span> saveName</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> url <span class="token operator">==</span> <span class="token string">'object'</span> <span class="token operator">&amp;&amp;</span> url <span class="token keyword">instanceof</span> <span class="token class-name">Blob</span><span class="token punctuation">)</span>
-        url <span class="token operator">=</span> URL<span class="token punctuation">.</span><span class="token function">createObjectURL</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 创建 blob 地址</span>
+        url <span class="token operator">=</span> <span class="token constant">URL</span><span class="token punctuation">.</span><span class="token function">createObjectURL</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 创建 blob 地址</span>
     <span class="token keyword">const</span> aLink <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     aLink<span class="token punctuation">.</span>href <span class="token operator">=</span> url<span class="token punctuation">;</span>
-    aLink<span class="token punctuation">.</span>download <span class="token operator">=</span> saveName <span class="token operator">||</span> <span class="token string">''</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// HTML5 新增的属性，指定保存文件名，可以不要后缀，注意，file:///模式下不会生效</span>
+    aLink<span class="token punctuation">.</span>download <span class="token operator">=</span> saveName <span class="token operator">||</span> <span class="token string">''</span><span class="token punctuation">;</span> <span class="token comment">// HTML5 新增的属性，指定保存文件名，可以不要后缀，注意，file:///模式下不会生效</span>
     <span class="token keyword">let</span> event<span class="token punctuation">;</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span>window<span class="token punctuation">.</span>MouseEvent<span class="token punctuation">)</span> event <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MouseEvent</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">else</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
         event <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createEvent</span><span class="token punctuation">(</span><span class="token string">'MouseEvents'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         event<span class="token punctuation">.</span><span class="token function">initMouseEvent</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">,</span> window<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
     aLink<span class="token punctuation">.</span><span class="token function">dispatchEvent</span><span class="token punctuation">(</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span></code></pre>
+<span class="token punctuation">&#125;</span></code></pre>
 <p>HTML:</p>
-<pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>button is-link margin-btn<span class="token punctuation">"</span></span> <span class="token attr-name">onclick</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>exportExcel()<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<pre class="language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>button is-link margin-btn<span class="token punctuation">"</span></span> <span class="token attr-name">onclick</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>exportExcel()<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
     导出 Excel
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span></code></pre>
-
             </div>
             <hr/>
 
@@ -924,28 +923,17 @@ XLSX<span class="token punctuation">.</span><span class="token function">write</
 <!--    getWidth();-->
 <!--</script>-->
 <div class="mute">
-    <img id="audioOff"
-         src="data:image/png;base64,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"
-         class="controller__audio--off" style="display: block;">
-    <img id="audioOn"
-         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAMAAAC7IEhfAAAB5lBMVEUKCgoAAAD////39/f///8MDAwUFBRHcEz6+voNDQ339/cKCgodHR0YGBgXFxcMDAwWFhYLCwv///8VFRX///8TExM/Pz8ZGRn///9ISEgLCwsfHx8aGhr////w8PAbGxv///8tLS3///97e3vh4eHw8PD///8AAAD///////////////////////+np6ceHh4cHBz///8gICAJCQn///+xsbESEhIvLy+7u7vDw8P///9tbW1paWnU1NTa2todHR0RERESEhIeHh7////09PT19fWPj48RERG3t7fAwMBRUVHy8vJkZGTT09P6+vr4+Pj6+vojIyP39/fw8PDs7OxWVlbs7Oza2trq6uqRkZFTU1Py8vLu7u7Q0ND09PSSkpInJyenp6dOTk7w8PDw8PDW1tbu7u7g4ODT09Ps7Oz39/fX19fNzc3IyMiFhYU0NDT4+Pjq6uq8vLzc3NwYGBjY2Ni3t7fw8PDp6emXl5cJCQnm5ubIyMjX19c+Pj7///8AAADk5OTy8vJ9fX319fWlpaXc3NzU1NRpaWnm5uaioqJFRUWqqqrv7+/ExMTy8vLs7Oz4+PgjIyPh4eGqqqqurq56enokJCTz8/MfHx/39/eoqKjR0dHr6+v4+PgiIiLj4+O1tbUBW7mVAAAAonRSTlMZGiEjIBQZANATIhgaFRYVFxcfGBcaHB4UHBYgHQMjHB4cDB0jIgEZEh0cEBsIICEbBB8aEyEcGyIiAhwdJCMjHRsiFsDCPh4gXhy5MHTOz88kxLCnL6V+oEErt65yv0IgTCqxr3esjXWiy4BxbDsnyqNcfx9wUrKcRRuSY3opBRuRtTnESoR+NZ5QLFqydr6kzSuJYE84Krkox0p1qcsljFd+4J8aAAAC/UlEQVQ4y5WVZXPjMBCGFUdWbcd20jjYcBpmaFJm5vaYmZmZmZn5/ulJhsRJezN3+8mzfmZfebX7GrQ0RDY9mklarcmMLZ1tfAN0z8VEClIcZ8TBcRRMJYqrgr4OK+QGcr0O3m7nHb25AQ5aO3wrwXAQ+iszcQNQ41Z8puKHwXATGHNBqqtTo8rDw9XqlbKhs4uCrpge7LHBaLuCmQCyV6uT5yaHhsvA0B6Fth4daIMRh8y1tlkkVPB6Ri6cHxoqA2BwRKCtDrpgJCRjomBBAc/Jy8dPM4e9dkRyoQh0aWCYirpJro2lLXxp59GLCwzDXHIioY1k3VEqrIC+IEXOZzKztIh2XT/CyHHWKdGs2YTV26mgTwY7YDc5n5nFBQvXFIw5NVGw0Cxrxi8M3UQctBSt/pCsS8DAVYUbP4OVcYYl6iG/tYjBBKwQYVYB7y8yiy+fP7zrRCJNUiwRr8BEC4ilOLcijENE+QfM63dvlmucLO7mUjGQhf1x3BglS0vep7PM9895XuNYthWAeD/MgjSVM2gFWVpApd9LzLwexCUNOSoNRrk+fEItTYt8/i3z5YNXEjSQxqfs40ZBxuhQP0UOQQrMfWJ+eXQlMegwZkDSyNeOKJdEpfc/Fr56kaA7JG9MAqvR3gAKknf5G/NqRO63BtqN1iYQc3zp58fHzHSpVlIFG6SxcCD/6MmzF0t3bgS0kqq0/mMw5zxx+558icc8Wkn1Y2y69gjIuXmHOhVj69WSSnts+obTYmFuK6PFoZJE6xuuu0Jacs7XOOZAXtHWrlA3FALybKqDsyMyWBsKPGZT6phhcEMd3KZUJGM2RcZMN7g0Kh2sg/vJLmiDe7NhFfDc7q5xe7eQu9GvQn25cBs9G1Vu3wQZoMblqq8r3lbP9LqxNeNrt+/x4hlvWledAVgsyOsZHBzMOwuSKLY2G0DdUsomCfE4EJIsJoI1WYrOpMrAjuwIqba2wqSabE/DVtqeZqTuupEa4u7VjPQ/rPnfzV79fdj+8vv4A1Aef7RpmdATAAAAAElFTkSuQmCC"
-         class="controller__audio--on" style="display: none;">
+    <img id="audioOff" src="" class="controller__audio--off" style="display: block;">
+    <img id="audioOn" src="" class="controller__audio--on" style="display: none;">
 </div>
 <script type="application/javascript" src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
 <script>
-    NProgress.start();
     NProgress.configure({trickle: true, trickleSpeed: 300, speed: 500});
+    NProgress.start();
     NProgress.set(0.2);
-    document.getElementsByClassName('fa-heart-o')[0].addEventListener('click', () => {
-        document.getElementsByClassName('bg-cover')[0].style.backgroundImage = 'url(/medias/banner/2.jpg)';
-    })
     document.addEventListener("DOMContentLoaded", () => {
         NProgress.set(0.4);
-        NProgress.start();
     });
-    window.onload = function () {
-        NProgress.done();
-    }
 </script>
 </body>
 </html>

@@ -178,7 +178,7 @@ Vorbis 是一種有損音訊壓縮格式，由 Xiph. Org 基金會所領導並�
         <li><div class="divider"></div></li>
         <li>
             <a href="https://github.com/Konata09" class="waves-effect waves-light" target="_blank">
-                <i class="fa fa-github-square fa-fw"></i>Fork Me
+                <i class="fa fa-github fa-fw"></i>Fork Me
             </a>
         </li>
         
@@ -436,33 +436,32 @@ Vorbis 是一種有損音訊壓縮格式，由 Xiph. Org 基金會所領導並�
 <h2 id="转换-Opus-格式"><a href="#转换-Opus-格式" class="headerlink" title="转换 Opus 格式"></a>转换 Opus 格式</h2><p>用 FFmpeg 可以很方便的转换 Opus 到 CAF：<br> <code>FOR %%a IN (.\*.opus) DO (&quot;ffmpeg&quot; -i &quot;%%a&quot; -c:a copy &quot;%%a.caf&quot;)</code></p>
 <p>保存成批处理可以将当前文件夹下的所有 Opus 文件生成一份 caf 封装的副本。</p>
 <h2 id="使用-Nginx-分流提供不同格式文件"><a href="#使用-Nginx-分流提供不同格式文件" class="headerlink" title="使用 Nginx 分流提供不同格式文件"></a>使用 Nginx 分流提供不同格式文件</h2><p>这样做的好处是不需要修改前端代码，代码中统一使用 Opus 或者 Ogg 格式，但 Nginx 会根据不同的浏览器返回不同文件。<br>利用 Nginx 的内置变量和 URL 重写功能，对请求的 UserAgent 进行判断，符合条件的请求会被重写。<br>因为 Nginx 不支持在一个条件中判断多个表达式和 if 语句的嵌套，只能利用自定义变量实现多条件判断。<br>对于 Safari 浏览器，如果接收的文件不是以 .caf 结尾，则必须正确指定 Content-Type 才能播放。<br>另外，对于这种改写方法，由于请求地址是一样的，必须要在 Cache-Control 中指定为 private，否则 CDN 可能缓存错误的文件，导致浏览器无法播放。</p>
-<pre class=" language-nginx"><code class="language-nginx"><span class="token keyword">location</span> <span class="token operator">/</span>media<span class="token operator">/</span> <span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;</span>
+<pre class="language-nginx" data-language="nginx"><code class="language-nginx"><span class="token keyword">location</span> <span class="token operator">/</span>media<span class="token operator">/</span> <span class="token punctuation">&#123;</span>
     <span class="token keyword">root</span>   <span class="token operator">/</span>srv<span class="token operator">/</span>nginx<span class="token operator">/</span>hexo_media<span class="token operator">/</span><span class="token punctuation">;</span>
     <span class="token keyword">add_header</span> Cache<span class="token operator">-</span>Control <span class="token string">"private, max-age=31536000"</span><span class="token punctuation">;</span>
-    <span class="token keyword">types</span> <span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;</span>
+    <span class="token keyword">types</span> <span class="token punctuation">&#123;</span>
         audio<span class="token operator">/</span>x<span class="token operator">-</span>caf  caf<span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#125;</span>
+    <span class="token punctuation">&#125;</span>
     <span class="token keyword">set</span> <span class="token variable">$flag</span> <span class="token string">""</span><span class="token punctuation">;</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span> <span class="token variable">$http_user_agent</span> <span class="token operator">!</span><span class="token operator">~</span><span class="token operator">*</span> Chrome <span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;</span>
-        <span class="token keyword">set</span> <span class="token variable">$flag</span> <span class="token string">"$&amp;#123;flag&amp;#125;NotChrome"</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#125;</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span> <span class="token variable">$http_user_agent</span> <span class="token operator">~</span><span class="token operator">*</span> Safari <span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;</span>
-        <span class="token keyword">set</span> <span class="token variable">$flag</span> <span class="token string">"$&amp;#123;flag&amp;#125;IsSafari"</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#125;</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span> <span class="token variable">$uri</span> <span class="token operator">~</span><span class="token operator">*</span> \<span class="token punctuation">.</span>opus$ <span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;</span>
-        <span class="token keyword">set</span> <span class="token variable">$flag</span> <span class="token string">"$&amp;#123;flag&amp;#125;Opus"</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#125;</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span> <span class="token variable">$uri</span> <span class="token operator">~</span><span class="token operator">*</span> \<span class="token punctuation">.</span>ogg$ <span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;</span>
-        <span class="token keyword">set</span> <span class="token variable">$flag</span> <span class="token string">"$&amp;#123;flag&amp;#125;Ogg"</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#125;</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span> <span class="token variable">$flag</span> <span class="token operator">=</span> <span class="token string">"NotChromeIsSafariOpus"</span> <span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;</span>
-        <span class="token keyword">rewrite</span> <span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token operator">*</span><span class="token punctuation">)</span>\<span class="token punctuation">.</span>opus$ $<span class="token number">1</span><span class="token punctuation">.</span>opus<span class="token punctuation">.</span>caf<span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#125;</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span> <span class="token variable">$flag</span> <span class="token operator">=</span> <span class="token string">"NotChromeIsSafariOgg"</span> <span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;</span>
-        <span class="token keyword">rewrite</span> <span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token operator">*</span><span class="token punctuation">)</span>\<span class="token punctuation">.</span>ogg$ $<span class="token number">1</span><span class="token punctuation">.</span>opus<span class="token punctuation">.</span>caf<span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#125;</span>
-<span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#125;</span></code></pre>
-
+    <span class="token keyword">if</span> <span class="token punctuation">(</span> <span class="token variable">$http_user_agent</span> <span class="token operator">!</span><span class="token operator">~</span><span class="token operator">*</span> Chrome <span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">set</span> <span class="token variable">$flag</span> <span class="token string">"$&#123;flag&#125;NotChrome"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span> <span class="token variable">$http_user_agent</span> <span class="token operator">~</span><span class="token operator">*</span> Safari <span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">set</span> <span class="token variable">$flag</span> <span class="token string">"$&#123;flag&#125;IsSafari"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span> <span class="token variable">$uri</span> <span class="token operator">~</span><span class="token operator">*</span> \<span class="token punctuation">.</span>opus$ <span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">set</span> <span class="token variable">$flag</span> <span class="token string">"$&#123;flag&#125;Opus"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span> <span class="token variable">$uri</span> <span class="token operator">~</span><span class="token operator">*</span> \<span class="token punctuation">.</span>ogg$ <span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">set</span> <span class="token variable">$flag</span> <span class="token string">"$&#123;flag&#125;Ogg"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span> <span class="token variable">$flag</span> <span class="token operator">=</span> <span class="token string">"NotChromeIsSafariOpus"</span> <span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">rewrite</span> <span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token operator">*</span><span class="token punctuation">)</span>\<span class="token punctuation">.</span>opus$ $<span class="token number">1.</span>opus<span class="token punctuation">.</span>caf<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span> <span class="token variable">$flag</span> <span class="token operator">=</span> <span class="token string">"NotChromeIsSafariOgg"</span> <span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">rewrite</span> <span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token operator">*</span><span class="token punctuation">)</span>\<span class="token punctuation">.</span>ogg$ $<span class="token number">1.</span>opus<span class="token punctuation">.</span>caf<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span></code></pre>
             </div>
             <hr/>
 
@@ -841,28 +840,17 @@ Vorbis 是一種有損音訊壓縮格式，由 Xiph. Org 基金會所領導並�
 <!--    getWidth();-->
 <!--</script>-->
 <div class="mute">
-    <img id="audioOff"
-         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAMAAAC7IEhfAAAC9FBMVEUKCgoAAAAXFxcUFBT///8MDAwYGBhHcEwNDQ3r6+sWFhb39/f39/cKCgodHR3///8VFRX///8cHBwMDAwLCwsTExMJCQk/Pz////8bGxv///////////////////////////+np6f////w8PBISEj///////8SEhILCwvw8PD///8tLS3///97e3vh4eEAAAD///+xsbHr6+sSEhLq6uoRERFpaWltbW3k5OTU1NTa2toZGRnk5OT7lpYvLy+7u7vDw8P///+9vb0fHx/p6eni4uKXNTXwjIz0j4+SMjLXbm6sQUF+fn7IyMjf399RUVHU1NRSUlLk5OTp6emTk5POzs7c3NxnZ2eRkZHa2trW1tbo6OhbW1saGhoRERHr6+sAAADm5ubn5+c4ODj29vbi4uJMTEzk5OSqqqrq6urUn5/j4+PavLzVpaUwGxvDi4vbw8MHBwdvLS2qqqrBcXFxLS3ljo71lZX8mZmXU1OTNDTbfX2wR0f0k5PoiYmLMDCvZGSVNTX7mJidNzfYc3PngYH8mJjxi4v0jo7Wb2+oPDzjfX3ng4Pkfn7og4OqPz/mf3+LMDCOMTHog4ORMzPi4uLDw8PGxsba2trb29uysrLo6OiCgoIpKSl8fHyrq6vp6emlpaWhoaG1tbXBwcHd3d1wcHC3t7fKysrCwsLj4+OhoaGWlpbj4+MeHh7p6enOzs5ZWVn////l5eWNjY0eHh6UlJTm5uaysrLi4uKoqKjp6enp6enSzMza2tpuKytrLCzh29vMu7tHNTXQv7+8VVWtRUUzIiIuLi7wjIzbdnbXj4+wTk65VFTWlZWuTEx3MTF9MTG8VVXadXWZNTX5l5f9mZm4X1/riIjuiYm2XV2vT0+mX1/LcHD7l5fFZGTcdnanZGTZdHTXcHD5lZX9mpr6lpaqXFyXMzOmOzv1j4+iODjCWlqkNzfvioqmOzuCLi6QMTHshoagNzfAV1fngoKDLS3jfX2KMTGTMjKDLy//m5uZH4xFAAAA+3RSTlMZGhYZIBQVABOFFyMiGBohGB8bFRcaGhwXHB0QFBsIAxIgHCIcAQQbFiMeHAwdIxkTIYQchh4dHAIkIx6H+hsiIhZOH4YkW+jsoNSzL1RzHF8le4I2XGwqNGpmfgEdHQ0bGRYiH4geiCIlqSWZpSVAliAyJ5M93Pb9QFPob/PwVM1Q/Fe75Pzm7NWy4uXi5bLimZnmn3ZRVWhrQ3wxHy1AgT85SUtpKyBXVHo8Qncig1ooBXc4IT5/UH5BIyR5eDU5ii0rLIZxHiHnvMB1iLV1PjmDvVr7/tTs7dDEwN/80rvAutX5/frEp7PssMWu7bCVn+ivw+WR35uhkQfyHv8AAAPJSURBVDjLY2BHAXLSjrJSgoJSshLScqgyDEhsNQUlFn4eHm4g4OHhZ1FSUMOqUN5AkIXHStFcnE9UlE/cXNGKh0XQQB5ToY4Wi6ahvz4jAxQw6vsbarJo6aApVJVh4be3g6kSExNTVxcTY7Sz52eRUUVWaCHBoqwLUcbLwMssKmocZwxUycCoq8wiYYGkUIJFTxysTkSYiYlLgFlIctESUXUxoAPE9VgkEAplWPS0IcrYmLiYhebOWRzJuZRZgBckpq3HIgNTqMOvrAIS0+BgZRIQ8pnuZ8TJyRnFx8WmARJVUebXgSiU1+IHuY9XmIOVjUtoWjAnGPjyMbFyCAMNZdTl15IHKzRgcQC5T5gDZOAsiDLOBfMEgAo5hEEB5QCynIFdTVBTG2wvSCFzAETd7IVAm4EiHCDbtTUF1YAKFVgMQRZzQBRGGHEarfJbGQ5UxwoS4gBZbsiiwM6gqsSjArEYCNi4JFdwrl+zzhquDmy5Co+SKoMci6U+MGAgokAjk9dyhjlLCsDUcXCIMDDoW7LIMUjzKzLCDAR7e7URpxOyQqCRjIr80gyOPGZAF8KEWdkEJDdwRoczM7HBFLICXWnG48ggyy0O9QrElUzMgZs5Q4WQjAQqFOeWZZDi5oM7EWp5SLBRBDMXG5Ij+bilGAS5RVEVMjFbO3FGSjJzMbGxsbGyghWKcguiKQSqExCy3hrFuctaUoiZmVmAiY0VqhDFaqDFzJIbt2zb4bLv8IXG5ubGi8cFmHghViN7BqiOb1lANCeni01ByWUPW9tXD2qKmIHpEuQZCaTgAarzCQLGtIlNwena361eXhPutV8qilMHBo8EcoADAzFwKihJuBw8V3v1/gvPKW8//W6vyTNOAAU4UhSyMvE5gdOOTU7ZtbvPP0x8//33u7ZHpaaMoChEShTAIJwBUmeSnlted/3hj67e333eEzqqTNNAiQKYzJZDkxlQ4UywwtSsiuqGOy+7f/f1T+l8dqUwA5TMkBIuK5dQKFRhU3XD7d7fk70nfvSydUvOFNyEkhWAiSwEbvWtbqC6Sb9ef/WoL1aWQc1coHj2hXqm4sbvr/2Tvv388rSlMjtFHi27gnLr/LCg7Tv3lrj/vtnl6fn5zRP3M4f2xGMUAEyg/B8b6+x84OjJtlavxz2/3c/muyZhFiliIsACRUCAmU9y/7FTHrb3OlrO57smxmArpMQYRHmZeZmNTfNKq9zc6iuPuCZa4C72gOrVjU1NC08UZ+9OisFWkKogCtIExrSMTOWUePKLZuILe2j1IYGj+gAAxNbpQWyWeq4AAAAASUVORK5CYII="
-         class="controller__audio--off" style="display: block;">
-    <img id="audioOn"
-         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAMAAAC7IEhfAAAB5lBMVEUKCgoAAAD////39/f///8MDAwUFBRHcEz6+voNDQ339/cKCgodHR0YGBgXFxcMDAwWFhYLCwv///8VFRX///8TExM/Pz8ZGRn///9ISEgLCwsfHx8aGhr////w8PAbGxv///8tLS3///97e3vh4eHw8PD///8AAAD///////////////////////+np6ceHh4cHBz///8gICAJCQn///+xsbESEhIvLy+7u7vDw8P///9tbW1paWnU1NTa2todHR0RERESEhIeHh7////09PT19fWPj48RERG3t7fAwMBRUVHy8vJkZGTT09P6+vr4+Pj6+vojIyP39/fw8PDs7OxWVlbs7Oza2trq6uqRkZFTU1Py8vLu7u7Q0ND09PSSkpInJyenp6dOTk7w8PDw8PDW1tbu7u7g4ODT09Ps7Oz39/fX19fNzc3IyMiFhYU0NDT4+Pjq6uq8vLzc3NwYGBjY2Ni3t7fw8PDp6emXl5cJCQnm5ubIyMjX19c+Pj7///8AAADk5OTy8vJ9fX319fWlpaXc3NzU1NRpaWnm5uaioqJFRUWqqqrv7+/ExMTy8vLs7Oz4+PgjIyPh4eGqqqqurq56enokJCTz8/MfHx/39/eoqKjR0dHr6+v4+PgiIiLj4+O1tbUBW7mVAAAAonRSTlMZGiEjIBQZANATIhgaFRYVFxcfGBcaHB4UHBYgHQMjHB4cDB0jIgEZEh0cEBsIICEbBB8aEyEcGyIiAhwdJCMjHRsiFsDCPh4gXhy5MHTOz88kxLCnL6V+oEErt65yv0IgTCqxr3esjXWiy4BxbDsnyqNcfx9wUrKcRRuSY3opBRuRtTnESoR+NZ5QLFqydr6kzSuJYE84Krkox0p1qcsljFd+4J8aAAAC/UlEQVQ4y5WVZXPjMBCGFUdWbcd20jjYcBpmaFJm5vaYmZmZmZn5/ulJhsRJezN3+8mzfmZfebX7GrQ0RDY9mklarcmMLZ1tfAN0z8VEClIcZ8TBcRRMJYqrgr4OK+QGcr0O3m7nHb25AQ5aO3wrwXAQ+iszcQNQ41Z8puKHwXATGHNBqqtTo8rDw9XqlbKhs4uCrpge7LHBaLuCmQCyV6uT5yaHhsvA0B6Fth4daIMRh8y1tlkkVPB6Ri6cHxoqA2BwRKCtDrpgJCRjomBBAc/Jy8dPM4e9dkRyoQh0aWCYirpJro2lLXxp59GLCwzDXHIioY1k3VEqrIC+IEXOZzKztIh2XT/CyHHWKdGs2YTV26mgTwY7YDc5n5nFBQvXFIw5NVGw0Cxrxi8M3UQctBSt/pCsS8DAVYUbP4OVcYYl6iG/tYjBBKwQYVYB7y8yiy+fP7zrRCJNUiwRr8BEC4ilOLcijENE+QfM63dvlmucLO7mUjGQhf1x3BglS0vep7PM9895XuNYthWAeD/MgjSVM2gFWVpApd9LzLwexCUNOSoNRrk+fEItTYt8/i3z5YNXEjSQxqfs40ZBxuhQP0UOQQrMfWJ+eXQlMegwZkDSyNeOKJdEpfc/Fr56kaA7JG9MAqvR3gAKknf5G/NqRO63BtqN1iYQc3zp58fHzHSpVlIFG6SxcCD/6MmzF0t3bgS0kqq0/mMw5zxx+558icc8Wkn1Y2y69gjIuXmHOhVj69WSSnts+obTYmFuK6PFoZJE6xuuu0Jacs7XOOZAXtHWrlA3FALybKqDsyMyWBsKPGZT6phhcEMd3KZUJGM2RcZMN7g0Kh2sg/vJLmiDe7NhFfDc7q5xe7eQu9GvQn25cBs9G1Vu3wQZoMblqq8r3lbP9LqxNeNrt+/x4hlvWledAVgsyOsZHBzMOwuSKLY2G0DdUsomCfE4EJIsJoI1WYrOpMrAjuwIqba2wqSabE/DVtqeZqTuupEa4u7VjPQ/rPnfzV79fdj+8vv4A1Aef7RpmdATAAAAAElFTkSuQmCC"
-         class="controller__audio--on" style="display: none;">
+    <img id="audioOff" src="" class="controller__audio--off" style="display: block;">
+    <img id="audioOn" src="" class="controller__audio--on" style="display: none;">
 </div>
 <script type="application/javascript" src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
 <script>
-    NProgress.start();
     NProgress.configure({trickle: true, trickleSpeed: 300, speed: 500});
+    NProgress.start();
     NProgress.set(0.2);
-    document.getElementsByClassName('fa-heart-o')[0].addEventListener('click', () => {
-        document.getElementsByClassName('bg-cover')[0].style.backgroundImage = 'url(/medias/banner/2.jpg)';
-    })
     document.addEventListener("DOMContentLoaded", () => {
         NProgress.set(0.4);
-        NProgress.start();
     });
-    window.onload = function () {
-        NProgress.done();
-    }
 </script>
 </body>
 </html>

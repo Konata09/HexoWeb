@@ -179,7 +179,7 @@
         <li><div class="divider"></div></li>
         <li>
             <a href="https://github.com/Konata09" class="waves-effect waves-light" target="_blank">
-                <i class="fa fa-github-square fa-fw"></i>Fork Me
+                <i class="fa fa-github fa-fw"></i>Fork Me
             </a>
         </li>
         
@@ -424,63 +424,63 @@
             <div id="articleContent">
                 <h2 id="云端-Cloud-Side"><a href="#云端-Cloud-Side" class="headerlink" title="云端 (Cloud Side)"></a>云端 (Cloud Side)</h2><p>此处安装云端的环境是 VMWare 安装 CentOS 7 虚拟机，登录用户为 root 用户</p>
 <p><img src="/images/1608627604874.png" alt="系统环境"></p>
-<h3 id="安装-Kubernetes"><a href="#安装-Kubernetes" class="headerlink" title="安装 Kubernetes"></a>安装 Kubernetes</h3><h4 id="修改-Hostname"><a href="#修改-Hostname" class="headerlink" title="修改 Hostname"></a>修改 Hostname</h4><pre class=" language-bash"><code class="language-bash">vim /etc/hostname <span class="token comment" spellcheck="true"># 修改 hostname</span>
-vim /etc/hosts <span class="token comment" spellcheck="true"># 将本机 IP 指向 hostname</span></code></pre>
-<h4 id="确认-MAC-地址-和-product-uuid-唯一"><a href="#确认-MAC-地址-和-product-uuid-唯一" class="headerlink" title="确认 MAC 地址 和 product_uuid 唯一"></a>确认 MAC 地址 和 <code>product_uuid</code> 唯一</h4><pre class=" language-bash"><code class="language-bash">ifocnfig -a
+<h3 id="安装-Kubernetes"><a href="#安装-Kubernetes" class="headerlink" title="安装 Kubernetes"></a>安装 Kubernetes</h3><h4 id="修改-Hostname"><a href="#修改-Hostname" class="headerlink" title="修改 Hostname"></a>修改 Hostname</h4><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> /etc/hostname <span class="token comment"># 修改 hostname</span>
+<span class="token function">vim</span> /etc/hosts <span class="token comment"># 将本机 IP 指向 hostname</span></code></pre>
+<h4 id="确认-MAC-地址-和-product-uuid-唯一"><a href="#确认-MAC-地址-和-product-uuid-唯一" class="headerlink" title="确认 MAC 地址 和 product_uuid 唯一"></a>确认 MAC 地址 和 <code>product_uuid</code> 唯一</h4><pre class="language-bash" data-language="bash"><code class="language-bash">ifocnfig -a
 <span class="token function">cat</span> /sys/class/dmi/id/product_uuid</code></pre>
-<h4 id="关闭防火墙"><a href="#关闭防火墙" class="headerlink" title="关闭防火墙"></a>关闭防火墙</h4><pre class=" language-bash"><code class="language-bash">systemctl stop firewalld
+<h4 id="关闭防火墙"><a href="#关闭防火墙" class="headerlink" title="关闭防火墙"></a>关闭防火墙</h4><pre class="language-bash" data-language="bash"><code class="language-bash">systemctl stop firewalld
 systemctl disable firewalld</code></pre>
-<h4 id="禁用-SELinux"><a href="#禁用-SELinux" class="headerlink" title="禁用 SELinux"></a>禁用 SELinux</h4><pre class=" language-bash"><code class="language-bash">vim /etc/selinux/config </code></pre>
+<h4 id="禁用-SELinux"><a href="#禁用-SELinux" class="headerlink" title="禁用 SELinux"></a>禁用 SELinux</h4><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> /etc/selinux/config </code></pre>
 <p>修改其中的 <code>SELINUX=disabled</code></p>
-<h4 id="禁用-SWAP"><a href="#禁用-SWAP" class="headerlink" title="禁用 SWAP"></a>禁用 SWAP</h4><pre class=" language-bash"><code class="language-bash">vim /etc/fstab</code></pre>
+<h4 id="禁用-SWAP"><a href="#禁用-SWAP" class="headerlink" title="禁用 SWAP"></a>禁用 SWAP</h4><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> /etc/fstab</code></pre>
 <p>注释掉 swap:</p>
-<pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true">#/dev/mapper/centos-swap swap                    swap    defaults        0 0</span></code></pre>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#/dev/mapper/centos-swap swap                    swap    defaults        0 0</span></code></pre>
 <h4 id="使桥接流量经过-iptables"><a href="#使桥接流量经过-iptables" class="headerlink" title="使桥接流量经过 iptables"></a>使桥接流量经过 iptables</h4><p>确定内核模块 <code>br_netfilter</code> 已经加载</p>
-<pre class=" language-bash"><code class="language-bash">lsmod <span class="token operator">|</span> <span class="token function">grep</span> br_netfilter</code></pre>
+<pre class="language-bash" data-language="bash"><code class="language-bash">lsmod <span class="token operator">|</span> <span class="token function">grep</span> br_netfilter</code></pre>
 <p>创建 <code>sysctl</code> 配置</p>
-<pre class=" language-bash"><code class="language-bash">vim /etc/sysctl.d/k8s.conf</code></pre>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> /etc/sysctl.d/k8s.conf</code></pre>
 <p>加入下面两行内容：</p>
-<pre class=" language-conf"><code class="language-conf">net.bridge.bridge-nf-call-ip6tables = 1
-net.bridge.bridge-nf-call-iptables = 1</code></pre>
+<pre class="language-conf" data-language="conf"><code class="language-conf">net.bridge.bridge-nf-call-ip6tables &#x3D; 1
+net.bridge.bridge-nf-call-iptables &#x3D; 1</code></pre>
 <p>载入配置</p>
-<pre class=" language-bash"><code class="language-bash">sysctl --system</code></pre>
+<pre class="language-bash" data-language="bash"><code class="language-bash">sysctl --system</code></pre>
 <blockquote>
 <p>准备工作完成后重启一次系统 <code>reboot</code></p>
 </blockquote>
 <h4 id="安装-docker"><a href="#安装-docker" class="headerlink" title="安装 docker"></a>安装 docker</h4><p>此时可以设置代理服务器</p>
-<pre class=" language-bash"><code class="language-bash"><span class="token function">export</span> http_proxy<span class="token operator">=</span>http://172.31.1.1:1080
-<span class="token function">export</span> https_proxy<span class="token operator">=</span>http://172.31.1.1:1080
-<span class="token function">export</span> no_proxy<span class="token operator">=</span>172.31.16.53 <span class="token comment" spellcheck="true"># 本机 IP</span></code></pre>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">export</span> <span class="token assign-left variable">http_proxy</span><span class="token operator">=</span>http://172.31.1.1:1080
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">https_proxy</span><span class="token operator">=</span>http://172.31.1.1:1080
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">no_proxy</span><span class="token operator">=</span><span class="token number">172.31</span>.16.53 <span class="token comment"># 本机 IP</span></code></pre>
 <p>安装 docker</p>
-<pre class=" language-bash"><code class="language-bash">yum update -y <span class="token operator">&amp;&amp;</span> yum <span class="token function">install</span> -y yum-utils device-mapper-persistent-data lvm2
+<pre class="language-bash" data-language="bash"><code class="language-bash">yum update -y <span class="token operator">&amp;&amp;</span> yum <span class="token function">install</span> -y yum-utils device-mapper-persistent-data lvm2
 yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 yum update -y <span class="token operator">&amp;&amp;</span> <span class="token function">sudo</span> yum <span class="token function">install</span> -y containerd.io-1.2.13 docker-ce-19.03.11 docker-ce-cli-19.03.11</code></pre>
 <blockquote>
 <p>docker 和 containerd 要使用 <a target="_blank" rel="noopener" href="https://kubernetes.io/docs/setup/production-environment/container-runtimes/#docker">官方文档</a> 指定的版本</p>
 </blockquote>
 <p>配置 docker</p>
-<pre class=" language-bash"><code class="language-bash"><span class="token function">mkdir</span> /etc/docker
-vim /etc/docker/daemon.json</code></pre>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">mkdir</span> /etc/docker
+<span class="token function">vim</span> /etc/docker/daemon.json</code></pre>
 <p>加入以下内容：</p>
-<pre class=" language-json"><code class="language-json">&amp;#<span class="token number">123</span><span class="token punctuation">;</span>
+<pre class="language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
   <span class="token property">"exec-opts"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"native.cgroupdriver=systemd"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
   <span class="token property">"log-driver"</span><span class="token operator">:</span> <span class="token string">"json-file"</span><span class="token punctuation">,</span>
-  <span class="token property">"log-opts"</span><span class="token operator">:</span> &amp;#<span class="token number">123</span><span class="token punctuation">;</span>
+  <span class="token property">"log-opts"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
     <span class="token property">"max-size"</span><span class="token operator">:</span> <span class="token string">"100m"</span>
-  &amp;#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
   <span class="token property">"storage-driver"</span><span class="token operator">:</span> <span class="token string">"overlay2"</span><span class="token punctuation">,</span>
   <span class="token property">"storage-opts"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
     <span class="token string">"overlay2.override_kernel_check=true"</span>
   <span class="token punctuation">]</span>
-&amp;#<span class="token number">125</span><span class="token punctuation">;</span></code></pre>
-<pre class=" language-bash"><code class="language-bash"><span class="token function">mkdir</span> -p /etc/systemd/system/docker.service.d
+<span class="token punctuation">&#125;</span></code></pre>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">mkdir</span> -p /etc/systemd/system/docker.service.d
 systemctl daemon-reload
-systemctl <span class="token function">enable</span> docker
+systemctl <span class="token builtin class-name">enable</span> docker
 systemctl restart docker</code></pre>
 <h4 id="安装-kubeadm-、-kubelet-和-kubectl"><a href="#安装-kubeadm-、-kubelet-和-kubectl" class="headerlink" title="安装 kubeadm 、 kubelet 和 kubectl"></a>安装 <code>kubeadm</code> 、 <code>kubelet</code> 和 <code>kubectl</code></h4><p>配置源</p>
-<pre class=" language-bash"><code class="language-bash">vim /etc/yum.repos.d/kubernetes.repo</code></pre>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> /etc/yum.repos.d/kubernetes.repo</code></pre>
 <p>加入以下内容：</p>
-<pre class=" language-ini"><code class="language-ini"><span class="token selector">[kubernetes]</span>
+<pre class="language-ini" data-language="ini"><code class="language-ini"><span class="token selector">[kubernetes]</span>
 <span class="token constant">name</span><span class="token attr-value"><span class="token punctuation">=</span>Kubernetes</span>
 <span class="token constant">baseurl</span><span class="token attr-value"><span class="token punctuation">=</span>https://packages.cloud.google.com/yum/repos/kubernetes-el7-\$basearch</span>
 <span class="token constant">enabled</span><span class="token attr-value"><span class="token punctuation">=</span>1</span>
@@ -488,13 +488,13 @@ systemctl restart docker</code></pre>
 <span class="token constant">repo_gpgcheck</span><span class="token attr-value"><span class="token punctuation">=</span>1</span>
 <span class="token constant">gpgkey</span><span class="token attr-value"><span class="token punctuation">=</span>https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg</span>
 <span class="token constant">exclude</span><span class="token attr-value"><span class="token punctuation">=</span>kubelet kubeadm kubectl</span></code></pre>
-<pre class=" language-bash"><code class="language-bash">yum <span class="token function">install</span> -y kubelet kubeadm kubectl --disableexcludes<span class="token operator">=</span>kubernetes
-systemctl <span class="token function">enable</span> kubelet <span class="token operator">&amp;&amp;</span> systemctl start kubelet</code></pre>
+<pre class="language-bash" data-language="bash"><code class="language-bash">yum <span class="token function">install</span> -y kubelet kubeadm kubectl --disableexcludes<span class="token operator">=</span>kubernetes
+systemctl <span class="token builtin class-name">enable</span> kubelet <span class="token operator">&amp;&amp;</span> systemctl start kubelet</code></pre>
 <h4 id="初始化-Master-节点"><a href="#初始化-Master-节点" class="headerlink" title="初始化 Master 节点"></a>初始化 Master 节点</h4><p>生成初始化文件</p>
-<pre class=" language-bash"><code class="language-bash">kubeadm config print init-defaults <span class="token operator">></span> kubeadm-init.yaml</code></pre>
+<pre class="language-bash" data-language="bash"><code class="language-bash">kubeadm config print init-defaults <span class="token operator">></span> kubeadm-init.yaml</code></pre>
 <p>该文件有两处需要修改：<br>将 <code>advertiseAddress: 1.2.3.4</code> 修改为本机地址<br>将 <code>imageRepository: k8s.gcr.io 修改为 imageRepository: registry.cn-hangzhou.aliyuncs.com/google_containers</code></p>
 <p>修改完成后的文件如下：</p>
-<pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> kubeadm.k8s.io/v1beta2
+<pre class="language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> kubeadm.k8s.io/v1beta2
 <span class="token key atrule">bootstrapTokens</span><span class="token punctuation">:</span>
 
 <span class="token punctuation">-</span> <span class="token key atrule">groups</span><span class="token punctuation">:</span>
@@ -525,7 +525,7 @@ systemctl <span class="token function">enable</span> kubelet <span class="token 
 <span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> kubeadm.k8s.io/v1beta2
 <span class="token key atrule">certificatesDir</span><span class="token punctuation">:</span> /etc/kubernetes/pki
 <span class="token key atrule">clusterName</span><span class="token punctuation">:</span> kubernetes
-<span class="token key atrule">controllerManager</span><span class="token punctuation">:</span> &amp;<span class="token comment" spellcheck="true">#123;&amp;#125;</span>
+<span class="token key atrule">controllerManager</span><span class="token punctuation">:</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
 <span class="token key atrule">dns</span><span class="token punctuation">:</span>
   <span class="token key atrule">type</span><span class="token punctuation">:</span> CoreDNS
 <span class="token key atrule">etcd</span><span class="token punctuation">:</span>
@@ -537,48 +537,48 @@ systemctl <span class="token function">enable</span> kubelet <span class="token 
 <span class="token key atrule">networking</span><span class="token punctuation">:</span>
   <span class="token key atrule">dnsDomain</span><span class="token punctuation">:</span> cluster.local
   <span class="token key atrule">serviceSubnet</span><span class="token punctuation">:</span> 10.96.0.0/12
-<span class="token key atrule">scheduler</span><span class="token punctuation">:</span> &amp;<span class="token comment" spellcheck="true">#123;&amp;#125;</span></code></pre>
+<span class="token key atrule">scheduler</span><span class="token punctuation">:</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span></code></pre>
 <p>取消代理服务器</p>
-<pre class=" language-bash"><code class="language-bash"><span class="token function">export</span> http_proxy<span class="token operator">=</span>
-<span class="token function">export</span> https_proxy<span class="token operator">=</span></code></pre>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">export</span> <span class="token assign-left variable">http_proxy</span><span class="token operator">=</span>
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">https_proxy</span><span class="token operator">=</span></code></pre>
 <p>下载镜像</p>
-<pre class=" language-bash"><code class="language-bash">kubeadm config images pull --config kubeadm-init.yaml</code></pre>
+<pre class="language-bash" data-language="bash"><code class="language-bash">kubeadm config images pull --config kubeadm-init.yaml</code></pre>
 <p>执行初始化</p>
-<pre class=" language-bash"><code class="language-bash">kubeadm init --config kubeadm-init.yaml</code></pre>
+<pre class="language-bash" data-language="bash"><code class="language-bash">kubeadm init --config kubeadm-init.yaml</code></pre>
 <p>执行成功后，会输出以下内容：</p>
-<pre class=" language-bash"><code class="language-bash">Your Kubernetes control-plane has initialized successfully<span class="token operator">!</span>
+<pre class="language-bash" data-language="bash"><code class="language-bash">Your Kubernetes control-plane has initialized successfully<span class="token operator">!</span>
 
 <span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span>
 
 Then you can <span class="token function">join</span> any number of worker nodes by running the following on each as root:
 
-kubeadm <span class="token function">join</span> 172.31.16.53:6443 --token abcdef.0123456789abcdef \
+kubeadm <span class="token function">join</span> <span class="token number">172.31</span>.16.53:6443 --token abcdef.0123456789abcdef <span class="token punctuation">\</span>
     --discovery-token-ca-cert-hash sha256:c8aad7fdc9faa6dddc7d29dfd8af633afe996e07cad2e32617abc358faae4f63</code></pre>
 <p>最后两行需要保存下来， <code>kubeadm join</code> 是 <code>worker</code> 节点加入所需要执行的命令。<br>因为我们是 root 用户，执行以下命令，也可以加入 Shell 配置中。<br><code>KUBECONFIG</code> 即是 <code>Kubernetes</code> 的配置文件，之后安装 <code>KubeEdge</code> 也会用到。</p>
-<pre class=" language-bash"><code class="language-bash"><span class="token function">export</span> KUBECONFIG<span class="token operator">=</span>/etc/kubernetes/admin.conf</code></pre>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">export</span> <span class="token assign-left variable">KUBECONFIG</span><span class="token operator">=</span>/etc/kubernetes/admin.conf</code></pre>
 <p>简单测试<br>此处的 <code>NotReady</code> 是因为网络还没配置。</p>
-<pre class=" language-bash"><code class="language-bash">$ kubectl get node
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ kubectl get node
 NAME               STATUS     ROLES                  AGE     VERSION
 centos7vm-master   NotReady   control-plane,master   5d21h   v1.20.0</code></pre>
 <h4 id="安装网络插件"><a href="#安装网络插件" class="headerlink" title="安装网络插件"></a>安装网络插件</h4><p>网络插件有很多选择，这里使用 Calico</p>
-<pre class=" language-bash"><code class="language-bash"><span class="token function">wget</span> https://docs.projectcalico.org/manifests/calico.yaml
-vim calico.yaml</code></pre>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">wget</span> https://docs.projectcalico.org/manifests/calico.yaml
+<span class="token function">vim</span> calico.yaml</code></pre>
 <p>找到 <code>CALICO_IPV4POOL_CIDR</code> ，修改 value 为 <code>10.96.0.0/12</code></p>
 <p>应用网络配置</p>
-<pre class=" language-bash"><code class="language-bash">kubectl apply -f calico.yaml</code></pre>
+<pre class="language-bash" data-language="bash"><code class="language-bash">kubectl apply -f calico.yaml</code></pre>
 <p>此时查看 node 信息， master 的状态已经是 <code>Ready</code> 了</p>
-<pre class=" language-bash"><code class="language-bash">$ kubectl get node
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ kubectl get node
 NAME               STATUS   ROLES                  AGE     VERSION
 centos7vm-master   Ready    control-plane,master   5d21h   v1.20.0</code></pre>
-<h4 id="安装-Dashoard"><a href="#安装-Dashoard" class="headerlink" title="安装 Dashoard"></a>安装 Dashoard</h4><h5 id="部署-Dashboard"><a href="#部署-Dashboard" class="headerlink" title="部署 Dashboard"></a>部署 Dashboard</h5><pre class=" language-bash"><code class="language-bash">kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml</code></pre>
+<h4 id="安装-Dashoard"><a href="#安装-Dashoard" class="headerlink" title="安装 Dashoard"></a>安装 Dashoard</h4><h5 id="部署-Dashboard"><a href="#部署-Dashboard" class="headerlink" title="部署 Dashboard"></a>部署 Dashboard</h5><pre class="language-bash" data-language="bash"><code class="language-bash">kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml</code></pre>
 <p>部署完毕后，执行 <code>kubectl get pods --all-namespaces</code> 查看 pods 状态</p>
-<pre class=" language-bash"><code class="language-bash">$ kubectl get pods --all-namespaces <span class="token operator">|</span> <span class="token function">grep</span> dashboard
-kubernetes-dashboard   dashboard-metrics-scraper-7b59f7d4df-jjpvt   1/1     Running   1          5d1h
-kubernetes-dashboard   kubernetes-dashboard-74d688b6bc-x7fqm        1/1     Running   2          5d1h</code></pre>
+<pre class="language-bash" data-language="bash"><code class="language-bash">$ kubectl get pods --all-namespaces <span class="token operator">|</span> <span class="token function">grep</span> dashboard
+kubernetes-dashboard   dashboard-metrics-scraper-7b59f7d4df-jjpvt   <span class="token number">1</span>/1     Running   <span class="token number">1</span>          5d1h
+kubernetes-dashboard   kubernetes-dashboard-74d688b6bc-x7fqm        <span class="token number">1</span>/1     Running   <span class="token number">2</span>          5d1h</code></pre>
 <h5 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h5><p>创建一个用于登录 Dashboard 的用户</p>
-<pre class=" language-bash"><code class="language-bash">vim dashboard-adminuser.yaml</code></pre>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> dashboard-adminuser.yaml</code></pre>
 <p>加入以下内容：</p>
-<pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<pre class="language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
 <span class="token key atrule">kind</span><span class="token punctuation">:</span> ServiceAccount
 <span class="token key atrule">metadata</span><span class="token punctuation">:</span>
   <span class="token key atrule">name</span><span class="token punctuation">:</span> admin<span class="token punctuation">-</span>user
@@ -598,14 +598,14 @@ kubernetes-dashboard   kubernetes-dashboard-74d688b6bc-x7fqm        1/1     Runn
 
   <span class="token key atrule">name</span><span class="token punctuation">:</span> admin<span class="token punctuation">-</span>user
   <span class="token key atrule">namespace</span><span class="token punctuation">:</span> kube<span class="token punctuation">-</span>system</code></pre>
-<pre class=" language-bash"><code class="language-bash">kubectl apply -f dashboard-adminuser.yaml</code></pre>
-<h5 id="修改-dashboard-服务"><a href="#修改-dashboard-服务" class="headerlink" title="修改 dashboard 服务"></a>修改 dashboard 服务</h5><pre class=" language-bash"><code class="language-bash">kubectl edit <span class="token function">service</span> kubernetes-dashboard -n kubernetes-dashboard</code></pre>
+<pre class="language-bash" data-language="bash"><code class="language-bash">kubectl apply -f dashboard-adminuser.yaml</code></pre>
+<h5 id="修改-dashboard-服务"><a href="#修改-dashboard-服务" class="headerlink" title="修改 dashboard 服务"></a>修改 dashboard 服务</h5><pre class="language-bash" data-language="bash"><code class="language-bash">kubectl edit <span class="token function">service</span> kubernetes-dashboard -n kubernetes-dashboard</code></pre>
 <p>修改 <code>type: ClusterIP</code> 为 <code>type: NodePort</code> ，并在 <code>ports</code> 下增加 <code>nodePort: 30443</code></p>
-<h5 id="获取-Token"><a href="#获取-Token" class="headerlink" title="获取 Token"></a>获取 Token</h5><pre class=" language-bash"><code class="language-bash">kubectl -n kube-system describe secret <span class="token punctuation">$(</span>kubectl -n kube-system get secret <span class="token operator">|</span> <span class="token function">grep</span> admin-user <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'&amp;#123;print <span class="token variable">$1</span>&amp;#125;'</span><span class="token punctuation">)</span></code></pre>
+<h5 id="获取-Token"><a href="#获取-Token" class="headerlink" title="获取 Token"></a>获取 Token</h5><pre class="language-bash" data-language="bash"><code class="language-bash">kubectl -n kube-system describe secret <span class="token variable"><span class="token variable">$(</span>kubectl -n kube-system get secret <span class="token operator">|</span> <span class="token function">grep</span> admin-user <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'&#123;print <span class="token variable">$1</span>&#125;'</span><span class="token variable">)</span></span></code></pre>
 <p>可以将 Token 保存下来便于以后登录使用。</p>
 <h5 id="登录-dashboard"><a href="#登录-dashboard" class="headerlink" title="登录 dashboard"></a>登录 dashboard</h5><p>访问 <code>https://172.31.16.53:30443</code> ，选择使用 Token 登录，粘贴刚才得到的 Token 即可进入 Dashboard。</p>
-<h3 id="安装-KubeEdge"><a href="#安装-KubeEdge" class="headerlink" title="安装 KubeEdge"></a>安装 KubeEdge</h3><pre class=" language-bash"><code class="language-bash"><span class="token function">wget</span> https://github.com/kubeedge/kubeedge/releases/download/v1.5.0/keadm-v1.5.0-linux-amd64.tar.gz
-<span class="token function">tar</span> -xzf keadm-v1.5.0-linux-amd64.tar.gz <span class="token operator">&amp;&amp;</span>  <span class="token function">cd</span> keadm-v1.5.0-linux-amd64
+<h3 id="安装-KubeEdge"><a href="#安装-KubeEdge" class="headerlink" title="安装 KubeEdge"></a>安装 KubeEdge</h3><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">wget</span> https://github.com/kubeedge/kubeedge/releases/download/v1.5.0/keadm-v1.5.0-linux-amd64.tar.gz
+<span class="token function">tar</span> -xzf keadm-v1.5.0-linux-amd64.tar.gz <span class="token operator">&amp;&amp;</span>  <span class="token builtin class-name">cd</span> keadm-v1.5.0-linux-amd64
 ./keadm init --kube-config<span class="token operator">=</span>/etc/kubernetes/admin.conf</code></pre>
 <h2 id="边缘端-Edge-Side"><a href="#边缘端-Edge-Side" class="headerlink" title="边缘端 (Edge Side)"></a>边缘端 (Edge Side)</h2>
             </div>
@@ -990,28 +990,17 @@ kubernetes-dashboard   kubernetes-dashboard-74d688b6bc-x7fqm        1/1     Runn
 <!--    getWidth();-->
 <!--</script>-->
 <div class="mute">
-    <img id="audioOff"
-         src="data:image/png;base64,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"
-         class="controller__audio--off" style="display: block;">
-    <img id="audioOn"
-         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAMAAAC7IEhfAAAB5lBMVEUKCgoAAAD////39/f///8MDAwUFBRHcEz6+voNDQ339/cKCgodHR0YGBgXFxcMDAwWFhYLCwv///8VFRX///8TExM/Pz8ZGRn///9ISEgLCwsfHx8aGhr////w8PAbGxv///8tLS3///97e3vh4eHw8PD///8AAAD///////////////////////+np6ceHh4cHBz///8gICAJCQn///+xsbESEhIvLy+7u7vDw8P///9tbW1paWnU1NTa2todHR0RERESEhIeHh7////09PT19fWPj48RERG3t7fAwMBRUVHy8vJkZGTT09P6+vr4+Pj6+vojIyP39/fw8PDs7OxWVlbs7Oza2trq6uqRkZFTU1Py8vLu7u7Q0ND09PSSkpInJyenp6dOTk7w8PDw8PDW1tbu7u7g4ODT09Ps7Oz39/fX19fNzc3IyMiFhYU0NDT4+Pjq6uq8vLzc3NwYGBjY2Ni3t7fw8PDp6emXl5cJCQnm5ubIyMjX19c+Pj7///8AAADk5OTy8vJ9fX319fWlpaXc3NzU1NRpaWnm5uaioqJFRUWqqqrv7+/ExMTy8vLs7Oz4+PgjIyPh4eGqqqqurq56enokJCTz8/MfHx/39/eoqKjR0dHr6+v4+PgiIiLj4+O1tbUBW7mVAAAAonRSTlMZGiEjIBQZANATIhgaFRYVFxcfGBcaHB4UHBYgHQMjHB4cDB0jIgEZEh0cEBsIICEbBB8aEyEcGyIiAhwdJCMjHRsiFsDCPh4gXhy5MHTOz88kxLCnL6V+oEErt65yv0IgTCqxr3esjXWiy4BxbDsnyqNcfx9wUrKcRRuSY3opBRuRtTnESoR+NZ5QLFqydr6kzSuJYE84Krkox0p1qcsljFd+4J8aAAAC/UlEQVQ4y5WVZXPjMBCGFUdWbcd20jjYcBpmaFJm5vaYmZmZmZn5/ulJhsRJezN3+8mzfmZfebX7GrQ0RDY9mklarcmMLZ1tfAN0z8VEClIcZ8TBcRRMJYqrgr4OK+QGcr0O3m7nHb25AQ5aO3wrwXAQ+iszcQNQ41Z8puKHwXATGHNBqqtTo8rDw9XqlbKhs4uCrpge7LHBaLuCmQCyV6uT5yaHhsvA0B6Fth4daIMRh8y1tlkkVPB6Ri6cHxoqA2BwRKCtDrpgJCRjomBBAc/Jy8dPM4e9dkRyoQh0aWCYirpJro2lLXxp59GLCwzDXHIioY1k3VEqrIC+IEXOZzKztIh2XT/CyHHWKdGs2YTV26mgTwY7YDc5n5nFBQvXFIw5NVGw0Cxrxi8M3UQctBSt/pCsS8DAVYUbP4OVcYYl6iG/tYjBBKwQYVYB7y8yiy+fP7zrRCJNUiwRr8BEC4ilOLcijENE+QfM63dvlmucLO7mUjGQhf1x3BglS0vep7PM9895XuNYthWAeD/MgjSVM2gFWVpApd9LzLwexCUNOSoNRrk+fEItTYt8/i3z5YNXEjSQxqfs40ZBxuhQP0UOQQrMfWJ+eXQlMegwZkDSyNeOKJdEpfc/Fr56kaA7JG9MAqvR3gAKknf5G/NqRO63BtqN1iYQc3zp58fHzHSpVlIFG6SxcCD/6MmzF0t3bgS0kqq0/mMw5zxx+558icc8Wkn1Y2y69gjIuXmHOhVj69WSSnts+obTYmFuK6PFoZJE6xuuu0Jacs7XOOZAXtHWrlA3FALybKqDsyMyWBsKPGZT6phhcEMd3KZUJGM2RcZMN7g0Kh2sg/vJLmiDe7NhFfDc7q5xe7eQu9GvQn25cBs9G1Vu3wQZoMblqq8r3lbP9LqxNeNrt+/x4hlvWledAVgsyOsZHBzMOwuSKLY2G0DdUsomCfE4EJIsJoI1WYrOpMrAjuwIqba2wqSabE/DVtqeZqTuupEa4u7VjPQ/rPnfzV79fdj+8vv4A1Aef7RpmdATAAAAAElFTkSuQmCC"
-         class="controller__audio--on" style="display: none;">
+    <img id="audioOff" src="" class="controller__audio--off" style="display: block;">
+    <img id="audioOn" src="" class="controller__audio--on" style="display: none;">
 </div>
 <script type="application/javascript" src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
 <script>
-    NProgress.start();
     NProgress.configure({trickle: true, trickleSpeed: 300, speed: 500});
+    NProgress.start();
     NProgress.set(0.2);
-    document.getElementsByClassName('fa-heart-o')[0].addEventListener('click', () => {
-        document.getElementsByClassName('bg-cover')[0].style.backgroundImage = 'url(/medias/banner/2.jpg)';
-    })
     document.addEventListener("DOMContentLoaded", () => {
         NProgress.set(0.4);
-        NProgress.start();
     });
-    window.onload = function () {
-        NProgress.done();
-    }
 </script>
 </body>
 </html>

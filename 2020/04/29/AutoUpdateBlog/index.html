@@ -176,7 +176,7 @@
         <li><div class="divider"></div></li>
         <li>
             <a href="https://github.com/Konata09" class="waves-effect waves-light" target="_blank">
-                <i class="fa fa-github-square fa-fw"></i>Fork Me
+                <i class="fa fa-github fa-fw"></i>Fork Me
             </a>
         </li>
         
@@ -380,14 +380,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        486
+                        474
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        2 分
+                        1 分
                     </div>
                     
                 
@@ -405,45 +405,45 @@
             <div id="articleContent">
                 <h2 id="什么是-Webhook"><a href="#什么是-Webhook" class="headerlink" title="什么是 Webhook"></a>什么是 Webhook</h2><p>Webhook 就像一个回调函数，允许当设定的 GitHub 事件被触发时，发送特定的请求到指定的 URL。利用这一点，我们可以在将本地博客提交至 GitHub 时，自动发送通知到博客服务器，执行 git pull 操作来更新服务器上的文件。</p>
 <h2 id="使用-webhook-工具当作监听程序"><a href="#使用-webhook-工具当作监听程序" class="headerlink" title="使用 webhook 工具当作监听程序"></a>使用 webhook 工具当作监听程序</h2><p>有一个叫 <a target="_blank" rel="noopener" href="https://github.com/adnanh/webhook">webhook</a> 工具可以帮我们执行监听并执行脚本的工作。官方文档上有比较详细的安装与配置教程。<br>我的配置文件：</p>
-<pre class=" language-json"><code class="language-json">&amp;#<span class="token number">123</span><span class="token punctuation">;</span>
+<pre class="language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
   <span class="token property">"id"</span><span class="token operator">:</span> <span class="token string">"hexo-webhook"</span><span class="token punctuation">,</span>
   <span class="token property">"execute-command"</span><span class="token operator">:</span> <span class="token string">"/home/hexo-redeploy-webhook.sh"</span><span class="token punctuation">,</span>
   <span class="token property">"command-working-directory"</span><span class="token operator">:</span> <span class="token string">"/home"</span><span class="token punctuation">,</span>
   <span class="token property">"trigger-rule"</span><span class="token operator">:</span>
-  &amp;#<span class="token number">123</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#123;</span>
     <span class="token property">"and"</span><span class="token operator">:</span>
     <span class="token punctuation">[</span>
-      &amp;#<span class="token number">123</span><span class="token punctuation">;</span>
+      <span class="token punctuation">&#123;</span>
         <span class="token property">"match"</span><span class="token operator">:</span>
-        &amp;#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#123;</span>
           <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"payload-hash-sha1"</span><span class="token punctuation">,</span>
           <span class="token property">"secret"</span><span class="token operator">:</span> <span class="token string">"secret"</span><span class="token punctuation">,</span>
           <span class="token property">"parameter"</span><span class="token operator">:</span>
-          &amp;#<span class="token number">123</span><span class="token punctuation">;</span>
+          <span class="token punctuation">&#123;</span>
             <span class="token property">"source"</span><span class="token operator">:</span> <span class="token string">"header"</span><span class="token punctuation">,</span>
             <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"X-Hub-Signature"</span>
-          &amp;#<span class="token number">125</span><span class="token punctuation">;</span>
-        &amp;#<span class="token number">125</span><span class="token punctuation">;</span>
-      &amp;#<span class="token number">125</span><span class="token punctuation">;</span>
+          <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+      <span class="token punctuation">&#125;</span>
     <span class="token punctuation">]</span>
-  &amp;#<span class="token number">125</span><span class="token punctuation">;</span>
-&amp;#<span class="token number">125</span><span class="token punctuation">;</span></code></pre>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span></code></pre>
 <h2 id="打开-Github-的-Webhook-功能"><a href="#打开-Github-的-Webhook-功能" class="headerlink" title="打开 Github 的 Webhook 功能"></a>打开 Github 的 Webhook 功能</h2><p>在 GitHub 上相应仓库的 Settings 中找到 Webhook 功能，添加一个钩子， <code>Payload URL</code> 填入服务器监听地址， <code>Content type</code> 选择 <code>application/x-www-form-urlencoded</code> ， <code>Secret</code> 填入上面配置文件中的 <code>secret</code> ，钩子触发中选择 push 事件，勾选 Active，这样 GitHub 端就配置完成了。</p>
 <h2 id="编写自动更新脚本"><a href="#编写自动更新脚本" class="headerlink" title="编写自动更新脚本"></a>编写自动更新脚本</h2><p>因为服务器的 webhook 触发之后执行的是一个命令，还需要一个 shell 脚本来对博客部署目录进行更新。<br>脚本如下，因为国内网络到 GitHub 的连通性奇差，所以加入了拉取失败重试的机制。  </p>
-<pre class=" language-bash"><code class="language-bash"><span class="token shebang important">#! /bin/bash</span>
-<span class="token function">cd</span> /srv/nginx/hexo_root
-retry<span class="token operator">=</span>0
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#! /bin/bash</span>
+<span class="token builtin class-name">cd</span> /srv/nginx/hexo_root
+<span class="token assign-left variable">retry</span><span class="token operator">=</span><span class="token number">0</span>
 
-<span class="token keyword">while</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$retry</span>"</span> -lt 5 <span class="token punctuation">]</span><span class="token punctuation">]</span>
+<span class="token keyword">while</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$retry</span>"</span> -lt <span class="token number">5</span> <span class="token punctuation">]</span><span class="token punctuation">]</span>
 <span class="token keyword">do</span>
     <span class="token function">git</span> reset --hard HEAD
     <span class="token function">git</span> pull
-    <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token variable">$?</span> -eq 0 <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-        <span class="token keyword">echo</span> <span class="token string">"Hexo git pull SUCCESS."</span>
-        <span class="token keyword">break</span>
+    <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token variable">$?</span> -eq <span class="token number">0</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+        <span class="token builtin class-name">echo</span> <span class="token string">"Hexo git pull SUCCESS."</span>
+        <span class="token builtin class-name">break</span>
     <span class="token keyword">fi</span>
-    retry<span class="token operator">=</span> `expr $<span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;retry&amp;#125; + 1`</span>
-    <span class="token keyword">echo</span> <span class="token string">"Hexo git pull FAIL. Retrying <span class="token variable">$retry</span> time(s)."</span>
+    <span class="token assign-left variable">retry</span><span class="token operator">=</span> <span class="token variable"><span class="token variable">`</span><span class="token function">expr</span> $<span class="token punctuation">&#123;</span>retry<span class="token punctuation">&#125;</span> + <span class="token number">1</span><span class="token variable">`</span></span>
+    <span class="token builtin class-name">echo</span> <span class="token string">"Hexo git pull FAIL. Retrying <span class="token variable">$retry</span> time(s)."</span>
 <span class="token keyword">done</span>
 </code></pre>
 <blockquote>
@@ -827,28 +827,17 @@ retry<span class="token operator">=</span>0
 <!--    getWidth();-->
 <!--</script>-->
 <div class="mute">
-    <img id="audioOff"
-         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAMAAAC7IEhfAAAC9FBMVEUKCgoAAAAXFxcUFBT///8MDAwYGBhHcEwNDQ3r6+sWFhb39/f39/cKCgodHR3///8VFRX///8cHBwMDAwLCwsTExMJCQk/Pz////8bGxv///////////////////////////+np6f////w8PBISEj///////8SEhILCwvw8PD///8tLS3///97e3vh4eEAAAD///+xsbHr6+sSEhLq6uoRERFpaWltbW3k5OTU1NTa2toZGRnk5OT7lpYvLy+7u7vDw8P///+9vb0fHx/p6eni4uKXNTXwjIz0j4+SMjLXbm6sQUF+fn7IyMjf399RUVHU1NRSUlLk5OTp6emTk5POzs7c3NxnZ2eRkZHa2trW1tbo6OhbW1saGhoRERHr6+sAAADm5ubn5+c4ODj29vbi4uJMTEzk5OSqqqrq6urUn5/j4+PavLzVpaUwGxvDi4vbw8MHBwdvLS2qqqrBcXFxLS3ljo71lZX8mZmXU1OTNDTbfX2wR0f0k5PoiYmLMDCvZGSVNTX7mJidNzfYc3PngYH8mJjxi4v0jo7Wb2+oPDzjfX3ng4Pkfn7og4OqPz/mf3+LMDCOMTHog4ORMzPi4uLDw8PGxsba2trb29uysrLo6OiCgoIpKSl8fHyrq6vp6emlpaWhoaG1tbXBwcHd3d1wcHC3t7fKysrCwsLj4+OhoaGWlpbj4+MeHh7p6enOzs5ZWVn////l5eWNjY0eHh6UlJTm5uaysrLi4uKoqKjp6enp6enSzMza2tpuKytrLCzh29vMu7tHNTXQv7+8VVWtRUUzIiIuLi7wjIzbdnbXj4+wTk65VFTWlZWuTEx3MTF9MTG8VVXadXWZNTX5l5f9mZm4X1/riIjuiYm2XV2vT0+mX1/LcHD7l5fFZGTcdnanZGTZdHTXcHD5lZX9mpr6lpaqXFyXMzOmOzv1j4+iODjCWlqkNzfvioqmOzuCLi6QMTHshoagNzfAV1fngoKDLS3jfX2KMTGTMjKDLy//m5uZH4xFAAAA+3RSTlMZGhYZIBQVABOFFyMiGBohGB8bFRcaGhwXHB0QFBsIAxIgHCIcAQQbFiMeHAwdIxkTIYQchh4dHAIkIx6H+hsiIhZOH4YkW+jsoNSzL1RzHF8le4I2XGwqNGpmfgEdHQ0bGRYiH4geiCIlqSWZpSVAliAyJ5M93Pb9QFPob/PwVM1Q/Fe75Pzm7NWy4uXi5bLimZnmn3ZRVWhrQ3wxHy1AgT85SUtpKyBXVHo8Qncig1ooBXc4IT5/UH5BIyR5eDU5ii0rLIZxHiHnvMB1iLV1PjmDvVr7/tTs7dDEwN/80rvAutX5/frEp7PssMWu7bCVn+ivw+WR35uhkQfyHv8AAAPJSURBVDjLY2BHAXLSjrJSgoJSshLScqgyDEhsNQUlFn4eHm4g4OHhZ1FSUMOqUN5AkIXHStFcnE9UlE/cXNGKh0XQQB5ToY4Wi6ahvz4jAxQw6vsbarJo6aApVJVh4be3g6kSExNTVxcTY7Sz52eRUUVWaCHBoqwLUcbLwMssKmocZwxUycCoq8wiYYGkUIJFTxysTkSYiYlLgFlIctESUXUxoAPE9VgkEAplWPS0IcrYmLiYhebOWRzJuZRZgBckpq3HIgNTqMOvrAIS0+BgZRIQ8pnuZ8TJyRnFx8WmARJVUebXgSiU1+IHuY9XmIOVjUtoWjAnGPjyMbFyCAMNZdTl15IHKzRgcQC5T5gDZOAsiDLOBfMEgAo5hEEB5QCynIFdTVBTG2wvSCFzAETd7IVAm4EiHCDbtTUF1YAKFVgMQRZzQBRGGHEarfJbGQ5UxwoS4gBZbsiiwM6gqsSjArEYCNi4JFdwrl+zzhquDmy5Co+SKoMci6U+MGAgokAjk9dyhjlLCsDUcXCIMDDoW7LIMUjzKzLCDAR7e7URpxOyQqCRjIr80gyOPGZAF8KEWdkEJDdwRoczM7HBFLICXWnG48ggyy0O9QrElUzMgZs5Q4WQjAQqFOeWZZDi5oM7EWp5SLBRBDMXG5Ij+bilGAS5RVEVMjFbO3FGSjJzMbGxsbGyghWKcguiKQSqExCy3hrFuctaUoiZmVmAiY0VqhDFaqDFzJIbt2zb4bLv8IXG5ubGi8cFmHghViN7BqiOb1lANCeni01ByWUPW9tXD2qKmIHpEuQZCaTgAarzCQLGtIlNwena361eXhPutV8qilMHBo8EcoADAzFwKihJuBw8V3v1/gvPKW8//W6vyTNOAAU4UhSyMvE5gdOOTU7ZtbvPP0x8//33u7ZHpaaMoChEShTAIJwBUmeSnlted/3hj67e333eEzqqTNNAiQKYzJZDkxlQ4UywwtSsiuqGOy+7f/f1T+l8dqUwA5TMkBIuK5dQKFRhU3XD7d7fk70nfvSydUvOFNyEkhWAiSwEbvWtbqC6Sb9ef/WoL1aWQc1coHj2hXqm4sbvr/2Tvv388rSlMjtFHi27gnLr/LCg7Tv3lrj/vtnl6fn5zRP3M4f2xGMUAEyg/B8b6+x84OjJtlavxz2/3c/muyZhFiliIsACRUCAmU9y/7FTHrb3OlrO57smxmArpMQYRHmZeZmNTfNKq9zc6iuPuCZa4C72gOrVjU1NC08UZ+9OisFWkKogCtIExrSMTOWUePKLZuILe2j1IYGj+gAAxNbpQWyWeq4AAAAASUVORK5CYII="
-         class="controller__audio--off" style="display: block;">
-    <img id="audioOn"
-         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAMAAAC7IEhfAAAB5lBMVEUKCgoAAAD////39/f///8MDAwUFBRHcEz6+voNDQ339/cKCgodHR0YGBgXFxcMDAwWFhYLCwv///8VFRX///8TExM/Pz8ZGRn///9ISEgLCwsfHx8aGhr////w8PAbGxv///8tLS3///97e3vh4eHw8PD///8AAAD///////////////////////+np6ceHh4cHBz///8gICAJCQn///+xsbESEhIvLy+7u7vDw8P///9tbW1paWnU1NTa2todHR0RERESEhIeHh7////09PT19fWPj48RERG3t7fAwMBRUVHy8vJkZGTT09P6+vr4+Pj6+vojIyP39/fw8PDs7OxWVlbs7Oza2trq6uqRkZFTU1Py8vLu7u7Q0ND09PSSkpInJyenp6dOTk7w8PDw8PDW1tbu7u7g4ODT09Ps7Oz39/fX19fNzc3IyMiFhYU0NDT4+Pjq6uq8vLzc3NwYGBjY2Ni3t7fw8PDp6emXl5cJCQnm5ubIyMjX19c+Pj7///8AAADk5OTy8vJ9fX319fWlpaXc3NzU1NRpaWnm5uaioqJFRUWqqqrv7+/ExMTy8vLs7Oz4+PgjIyPh4eGqqqqurq56enokJCTz8/MfHx/39/eoqKjR0dHr6+v4+PgiIiLj4+O1tbUBW7mVAAAAonRSTlMZGiEjIBQZANATIhgaFRYVFxcfGBcaHB4UHBYgHQMjHB4cDB0jIgEZEh0cEBsIICEbBB8aEyEcGyIiAhwdJCMjHRsiFsDCPh4gXhy5MHTOz88kxLCnL6V+oEErt65yv0IgTCqxr3esjXWiy4BxbDsnyqNcfx9wUrKcRRuSY3opBRuRtTnESoR+NZ5QLFqydr6kzSuJYE84Krkox0p1qcsljFd+4J8aAAAC/UlEQVQ4y5WVZXPjMBCGFUdWbcd20jjYcBpmaFJm5vaYmZmZmZn5/ulJhsRJezN3+8mzfmZfebX7GrQ0RDY9mklarcmMLZ1tfAN0z8VEClIcZ8TBcRRMJYqrgr4OK+QGcr0O3m7nHb25AQ5aO3wrwXAQ+iszcQNQ41Z8puKHwXATGHNBqqtTo8rDw9XqlbKhs4uCrpge7LHBaLuCmQCyV6uT5yaHhsvA0B6Fth4daIMRh8y1tlkkVPB6Ri6cHxoqA2BwRKCtDrpgJCRjomBBAc/Jy8dPM4e9dkRyoQh0aWCYirpJro2lLXxp59GLCwzDXHIioY1k3VEqrIC+IEXOZzKztIh2XT/CyHHWKdGs2YTV26mgTwY7YDc5n5nFBQvXFIw5NVGw0Cxrxi8M3UQctBSt/pCsS8DAVYUbP4OVcYYl6iG/tYjBBKwQYVYB7y8yiy+fP7zrRCJNUiwRr8BEC4ilOLcijENE+QfM63dvlmucLO7mUjGQhf1x3BglS0vep7PM9895XuNYthWAeD/MgjSVM2gFWVpApd9LzLwexCUNOSoNRrk+fEItTYt8/i3z5YNXEjSQxqfs40ZBxuhQP0UOQQrMfWJ+eXQlMegwZkDSyNeOKJdEpfc/Fr56kaA7JG9MAqvR3gAKknf5G/NqRO63BtqN1iYQc3zp58fHzHSpVlIFG6SxcCD/6MmzF0t3bgS0kqq0/mMw5zxx+558icc8Wkn1Y2y69gjIuXmHOhVj69WSSnts+obTYmFuK6PFoZJE6xuuu0Jacs7XOOZAXtHWrlA3FALybKqDsyMyWBsKPGZT6phhcEMd3KZUJGM2RcZMN7g0Kh2sg/vJLmiDe7NhFfDc7q5xe7eQu9GvQn25cBs9G1Vu3wQZoMblqq8r3lbP9LqxNeNrt+/x4hlvWledAVgsyOsZHBzMOwuSKLY2G0DdUsomCfE4EJIsJoI1WYrOpMrAjuwIqba2wqSabE/DVtqeZqTuupEa4u7VjPQ/rPnfzV79fdj+8vv4A1Aef7RpmdATAAAAAElFTkSuQmCC"
-         class="controller__audio--on" style="display: none;">
+    <img id="audioOff" src="" class="controller__audio--off" style="display: block;">
+    <img id="audioOn" src="" class="controller__audio--on" style="display: none;">
 </div>
 <script type="application/javascript" src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
 <script>
-    NProgress.start();
     NProgress.configure({trickle: true, trickleSpeed: 300, speed: 500});
+    NProgress.start();
     NProgress.set(0.2);
-    document.getElementsByClassName('fa-heart-o')[0].addEventListener('click', () => {
-        document.getElementsByClassName('bg-cover')[0].style.backgroundImage = 'url(/medias/banner/2.jpg)';
-    })
     document.addEventListener("DOMContentLoaded", () => {
         NProgress.set(0.4);
-        NProgress.start();
     });
-    window.onload = function () {
-        NProgress.done();
-    }
 </script>
 </body>
 </html>

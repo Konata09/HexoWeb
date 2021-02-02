@@ -178,7 +178,7 @@
         <li><div class="divider"></div></li>
         <li>
             <a href="https://github.com/Konata09" class="waves-effect waves-light" target="_blank">
-                <i class="fa fa-github-square fa-fw"></i>Fork Me
+                <i class="fa fa-github fa-fw"></i>Fork Me
             </a>
         </li>
         
@@ -382,7 +382,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        866
+                        867
                     </div>
                     
 
@@ -407,9 +407,9 @@
             <div id="articleContent">
                 <h2 id="系统环境"><a href="#系统环境" class="headerlink" title="系统环境"></a>系统环境</h2><p><img src="/images/pasted-1.png" alt="Ubuntu 18.04"></p>
 <p><img src="/images/1598284747746.png" alt="CentOS 8.2"></p>
-<h2 id="安装必要软件包"><a href="#安装必要软件包" class="headerlink" title="安装必要软件包"></a>安装必要软件包</h2><pre class=" language-bash"><code class="language-bash">apt <span class="token function">install</span> build-essential cmake golang cargo mmdb-bin libmaxminddb-dev libxml2 libxslt-dev libatomic-ops-dev libunwind-dev libpcre3 libpcre3-dev</code></pre>
-<pre class=" language-bash"><code class="language-bash">dnf <span class="token function">install</span> cmake gcc gcc-c++ golang cargo libmaxminddb-devel libxml2-devel libxslt-devel libunwind-devel pcre-devel libatomic_ops-devel</code></pre>
-<h2 id="拉取-Nginx-和相关模块源码"><a href="#拉取-Nginx-和相关模块源码" class="headerlink" title="拉取 Nginx 和相关模块源码"></a>拉取 Nginx 和相关模块源码</h2><pre class=" language-bash"><code class="language-bash"><span class="token function">cd</span> /home
+<h2 id="安装必要软件包"><a href="#安装必要软件包" class="headerlink" title="安装必要软件包"></a>安装必要软件包</h2><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">apt</span> <span class="token function">install</span> build-essential cmake golang cargo mmdb-bin libmaxminddb-dev libxml2 libxslt-dev libatomic-ops-dev libunwind-dev libpcre3 libpcre3-dev</code></pre>
+<pre class="language-bash" data-language="bash"><code class="language-bash">dnf <span class="token function">install</span> cmake gcc gcc-c++ golang cargo libmaxminddb-devel libxml2-devel libxslt-devel libunwind-devel pcre-devel libatomic_ops-devel</code></pre>
+<h2 id="拉取-Nginx-和相关模块源码"><a href="#拉取-Nginx-和相关模块源码" class="headerlink" title="拉取 Nginx 和相关模块源码"></a>拉取 Nginx 和相关模块源码</h2><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> /home
 <span class="token function">wget</span> https://nginx.org/download/nginx-1.19.6.tar.gz
 <span class="token function">wget</span> https://github.com/openresty/lua-nginx-module/archive/v0.10.19.tar.gz
 <span class="token function">wget</span> https://github.com/openresty/luajit2/archive/v2.1-20201229.tar.gz
@@ -417,7 +417,7 @@
 <span class="token function">wget</span> https://github.com/openresty/lua-resty-lrucache/archive/v0.10.tar.gz
 
 <span class="token function">git</span> clone --recursive https://github.com/cloudflare/quiche
-<span class="token comment" spellcheck="true"># git clone https://github.com/kn007/patch.git</span>
+<span class="token comment"># git clone https://github.com/kn007/patch.git</span>
 <span class="token function">git</span> clone https://github.com/cloudflare/zlib.git
 <span class="token function">git</span> clone https://github.com/google/ngx_brotli.git
 <span class="token function">git</span> clone https://github.com/openresty/headers-more-nginx-module.git
@@ -427,58 +427,58 @@
 <span class="token function">git</span> clone https://github.com/arut/nginx-dav-ext-module.git
 <span class="token function">git</span> clone https://github.com/yaoweibin/ngx_http_substitutions_filter_module.git
 
-<span class="token function">cd</span> ngx_brotli
+<span class="token builtin class-name">cd</span> ngx_brotli
 <span class="token function">git</span> submodule update --init</code></pre>
-<h2 id="解压缩"><a href="#解压缩" class="headerlink" title="解压缩"></a>解压缩</h2><pre class=" language-bash"><code class="language-bash"><span class="token function">cd</span> /home
+<h2 id="解压缩"><a href="#解压缩" class="headerlink" title="解压缩"></a>解压缩</h2><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> /home
 <span class="token function">tar</span> -xvf nginx-1.19.6.tar.gz
 <span class="token function">tar</span> -xvf lua-nginx-module-0.10.19.tar.gz
 <span class="token function">tar</span> -xvf luajit2-2.1-20201229.tar.gz
 <span class="token function">tar</span> -xvf lua-resty-core-0.1.21.tar.gz
 <span class="token function">tar</span> -xvf lua-resty-lrucache-0.10.tar.gz</code></pre>
-<h2 id="编译-LUAJIT2"><a href="#编译-LUAJIT2" class="headerlink" title="编译 LUAJIT2"></a>编译 LUAJIT2</h2><pre class=" language-bash"><code class="language-bash"><span class="token function">cd</span> /home/luajit2-2.1-20201229
+<h2 id="编译-LUAJIT2"><a href="#编译-LUAJIT2" class="headerlink" title="编译 LUAJIT2"></a>编译 LUAJIT2</h2><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> /home/luajit2-2.1-20201229
 <span class="token function">make</span> -j4
 <span class="token function">make</span> <span class="token function">install</span>
-<span class="token function">cd</span> /home/lua-resty-lrucache-0.10
+<span class="token builtin class-name">cd</span> /home/lua-resty-lrucache-0.10
 <span class="token function">make</span> -j4
 <span class="token function">make</span> <span class="token function">install</span>
-<span class="token function">cd</span> /home/lua-resty-core-0.1.21
+<span class="token builtin class-name">cd</span> /home/lua-resty-core-0.1.21
 <span class="token function">make</span> -j4
 <span class="token function">make</span> <span class="token function">install</span>
 <span class="token function">rm</span> -rf /usr/local/share/lua/5.1
 <span class="token function">ln</span> -s /usr/local/lib/lua /usr/local/share/lua/5.1
-<span class="token function">export</span> LUAJIT_INC<span class="token operator">=</span>/usr/local/include/luajit-2.1
-<span class="token function">export</span> LUAJIT_LIB<span class="token operator">=</span>/usr/local/lib/</code></pre>
-<h2 id="zlib-要清除之前的编译"><a href="#zlib-要清除之前的编译" class="headerlink" title="zlib 要清除之前的编译"></a>zlib 要清除之前的编译</h2><pre class=" language-bash"><code class="language-bash"><span class="token function">cd</span> /root/zlib
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">LUAJIT_INC</span><span class="token operator">=</span>/usr/local/include/luajit-2.1
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">LUAJIT_LIB</span><span class="token operator">=</span>/usr/local/lib/</code></pre>
+<h2 id="zlib-要清除之前的编译"><a href="#zlib-要清除之前的编译" class="headerlink" title="zlib 要清除之前的编译"></a>zlib 要清除之前的编译</h2><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> /root/zlib
 <span class="token function">make</span> -f Makefile.in distclean</code></pre>
 <h2 id="编译-Nginx"><a href="#编译-Nginx" class="headerlink" title="编译 Nginx"></a>编译 Nginx</h2><p>先给 Nginx 打支持 HTTP/3 的补丁</p>
-<pre class=" language-bash"><code class="language-bash"><span class="token function">cd</span> /root/nginx-1.19.6
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> /root/nginx-1.19.6
 patch -p1 <span class="token operator">&lt;</span> <span class="token punctuation">..</span>/quiche/extras/nginx/nginx-1.16.patch
-<span class="token comment" spellcheck="true"># patch -p1 &lt; ../patch/nginx_with_quic.patch</span>
-<span class="token comment" spellcheck="true"># patch -p1 &lt; ../patch/Enable_BoringSSL_OCSP.patch</span></code></pre>
-<pre class=" language-bash"><code class="language-bash"><span class="token function">cd</span> /root/nginx-1.19.6
+<span class="token comment"># patch -p1 &lt; ../patch/nginx_with_quic.patch</span>
+<span class="token comment"># patch -p1 &lt; ../patch/Enable_BoringSSL_OCSP.patch</span></code></pre>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> /root/nginx-1.19.6
 ./configure --add-module<span class="token operator">=</span><span class="token punctuation">..</span>/ngx_brotli --with-openssl<span class="token operator">=</span><span class="token punctuation">..</span>/quiche/deps/boringssl --with-quiche<span class="token operator">=</span><span class="token punctuation">..</span>/quiche --with-http_v2_module --with-http_v3_module --with-http_ssl_module --with-http_gzip_static_module --with-http_realip_module --with-threads --with-stream --with-stream_realip_module --with-stream_ssl_module --with-stream_ssl_preread_module --with-zlib<span class="token operator">=</span><span class="token punctuation">..</span>/zlib --add-module<span class="token operator">=</span><span class="token punctuation">..</span>/ngx_devel_kit --add-module<span class="token operator">=</span><span class="token punctuation">..</span>/headers-more-nginx-module --add-module<span class="token operator">=</span><span class="token punctuation">..</span>/lua-nginx-module-0.10.19 --with-file-aio --add-module<span class="token operator">=</span><span class="token punctuation">..</span>/ngx_http_geoip2_module --add-module<span class="token operator">=</span><span class="token punctuation">..</span>/ngx-fancyindex --add-module<span class="token operator">=</span><span class="token punctuation">..</span>/nginx-dav-ext-module --add-module<span class="token operator">=</span><span class="token punctuation">..</span>/ngx_http_substitutions_filter_module --with-libatomic --with-http_dav_module --with-http_stub_status_module 
 <span class="token function">make</span> -j4
 <span class="token function">make</span> <span class="token function">install</span></code></pre>
-<h2 id="配置动态链接库"><a href="#配置动态链接库" class="headerlink" title="配置动态链接库"></a>配置动态链接库</h2><pre class=" language-bash"><code class="language-bash">vim /etc/ld.so.conf.d/libc.conf</code></pre>
+<h2 id="配置动态链接库"><a href="#配置动态链接库" class="headerlink" title="配置动态链接库"></a>配置动态链接库</h2><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> /etc/ld.so.conf.d/libc.conf</code></pre>
 <p>添加以下内容：</p>
-<pre class=" language-conf"><code class="language-conf"># libc default configuration
-/usr/local/lib</code></pre>
+<pre class="language-conf" data-language="conf"><code class="language-conf"># libc default configuration
+&#x2F;usr&#x2F;local&#x2F;lib</code></pre>
 <p>刷新链接缓存：</p>
-<pre class=" language-bash"><code class="language-bash">ldconfig</code></pre>
-<h2 id="添加-Nginx-到系统服务"><a href="#添加-Nginx-到系统服务" class="headerlink" title="添加 Nginx 到系统服务"></a>添加 Nginx 到系统服务</h2><pre class=" language-bash"><code class="language-bash">vim /lib/systemd/system/nginx.service</code></pre>
+<pre class="language-bash" data-language="bash"><code class="language-bash">ldconfig</code></pre>
+<h2 id="添加-Nginx-到系统服务"><a href="#添加-Nginx-到系统服务" class="headerlink" title="添加 Nginx 到系统服务"></a>添加 Nginx 到系统服务</h2><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> /lib/systemd/system/nginx.service</code></pre>
 <p>添加以下内容：</p>
-<pre class=" language-ini"><code class="language-ini"># Stop dance for nginx
-<span class="token constant">#</span> <span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">=</span><span class="token punctuation">=</span><span class="token punctuation">=</span><span class="token punctuation">=</span><span class="token punctuation">=</span><span class="token punctuation">=</span><span class="token punctuation">=</span><span class="token punctuation">=</span><span class="token punctuation">=</span><span class="token punctuation">=</span><span class="token punctuation">=</span><span class="token punctuation">=</span><span class="token punctuation">=</span><span class="token punctuation">=</span><span class="token punctuation">=</span><span class="token punctuation">=</span><span class="token punctuation">=</span><span class="token punctuation">=</span><span class="token punctuation">=</span><span class="token punctuation">=</span><span class="token punctuation">=</span><span class="token punctuation">=</span></span>
-#
-# ExecStop sends SIGSTOP (graceful stop) to the nginx process.
-# If, after 5s (--retry QUIT/5) nginx is still running, systemd takes control
-# and sends SIGTERM (fast shutdown) to the main process.
-# After another 5s (TimeoutStopSec<span class="token attr-value"><span class="token punctuation">=</span>5), and if nginx is alive, systemd sends</span>
-# SIGKILL to all the remaining processes in the process group (KillMode<span class="token attr-value"><span class="token punctuation">=</span>mixed).</span>
-#
-# nginx signals reference doc:
-# http://nginx.org/en/docs/control.html
-#
+<pre class="language-ini" data-language="ini"><code class="language-ini"><span class="token comment"># Stop dance for nginx</span>
+<span class="token comment"># =======================</span>
+<span class="token comment">#</span>
+<span class="token comment"># ExecStop sends SIGSTOP (graceful stop) to the nginx process.</span>
+<span class="token comment"># If, after 5s (--retry QUIT/5) nginx is still running, systemd takes control</span>
+<span class="token comment"># and sends SIGTERM (fast shutdown) to the main process.</span>
+<span class="token comment"># After another 5s (TimeoutStopSec=5), and if nginx is alive, systemd sends</span>
+<span class="token comment"># SIGKILL to all the remaining processes in the process group (KillMode=mixed).</span>
+<span class="token comment">#</span>
+<span class="token comment"># nginx signals reference doc:</span>
+<span class="token comment"># http://nginx.org/en/docs/control.html</span>
+<span class="token comment">#</span>
 <span class="token selector">[Unit]</span>
 <span class="token constant">Description</span><span class="token attr-value"><span class="token punctuation">=</span>A high performance web server and a reverse proxy server</span>
 <span class="token constant">Documentation</span><span class="token attr-value"><span class="token punctuation">=</span>man:nginx(8)</span>
@@ -497,33 +497,33 @@ patch -p1 <span class="token operator">&lt;</span> <span class="token punctuatio
 <span class="token selector">[Install]</span>
 <span class="token constant">WantedBy</span><span class="token attr-value"><span class="token punctuation">=</span>multi-user.target</span></code></pre>
 <p>创建日志文件夹</p>
-<pre class=" language-bash"><code class="language-bash"><span class="token function">mkdir</span> /var/log/nginx</code></pre>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">mkdir</span> /var/log/nginx</code></pre>
 <p>启用 Nginx 服务</p>
-<pre class=" language-bash"><code class="language-bash">systemctl daemon-reload
-systemctl <span class="token function">enable</span> nginx</code></pre>
+<pre class="language-bash" data-language="bash"><code class="language-bash">systemctl daemon-reload
+systemctl <span class="token builtin class-name">enable</span> nginx</code></pre>
 <h2 id="启动-Nginx"><a href="#启动-Nginx" class="headerlink" title="启动 Nginx"></a>启动 Nginx</h2><p>Nginx 配置文件在 <code>/etc/nginx</code></p>
 <p>在配置文件中添加 HTTP/3 相关配置</p>
-<pre class=" language-nginx"><code class="language-nginx"><span class="token keyword">server</span> <span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;</span>
-    <span class="token comment" spellcheck="true"># Enable QUIC and HTTP/3.</span>
+<pre class="language-nginx" data-language="nginx"><code class="language-nginx"><span class="token keyword">server</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment"># Enable QUIC and HTTP/3.</span>
     <span class="token keyword">listen</span> <span class="token number">443</span> quic reuseport<span class="token punctuation">;</span>
 
-    <span class="token comment" spellcheck="true"># Enable HTTP/2 (optional).</span>
+    <span class="token comment"># Enable HTTP/2 (optional).</span>
     <span class="token keyword">listen</span> <span class="token number">443</span> <span class="token keyword">ssl</span> http2<span class="token punctuation">;</span>
 
     <span class="token keyword">ssl_certificate</span>      cert<span class="token punctuation">.</span>crt<span class="token punctuation">;</span>
     <span class="token keyword">ssl_certificate_key</span>  cert<span class="token punctuation">.</span>key<span class="token punctuation">;</span>
 
-    <span class="token comment" spellcheck="true"># Enable all TLS versions (TLSv1.3 is required for QUIC).</span>
-    <span class="token keyword">ssl_protocols</span> TLSv1 TLSv1<span class="token number">.1</span> TLSv1<span class="token number">.2</span> TLSv1<span class="token number">.3</span><span class="token punctuation">;</span>
+    <span class="token comment"># Enable all TLS versions (TLSv1.3 is required for QUIC).</span>
+    <span class="token keyword">ssl_protocols</span> TLSv1 TLSv1<span class="token punctuation">.</span><span class="token number">1</span> TLSv1<span class="token punctuation">.</span><span class="token number">2</span> TLSv1<span class="token punctuation">.</span><span class="token number">3</span><span class="token punctuation">;</span>
 
-    <span class="token comment" spellcheck="true"># Request buffering in not currently supported for HTTP/3.</span>
+    <span class="token comment"># Request buffering in not currently supported for HTTP/3.</span>
     proxy_request_buffering off<span class="token punctuation">;</span>
 
-    <span class="token comment" spellcheck="true"># Add Alt-Svc header to negotiate HTTP/3.</span>
+    <span class="token comment"># Add Alt-Svc header to negotiate HTTP/3.</span>
     <span class="token keyword">add_header</span> alt<span class="token operator">-</span>svc <span class="token string">'h3-29=":443"; ma=86400, h3-28=":443"; ma=86400, h3-27=":443"; ma=86400'</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#125;</span></code></pre>
+<span class="token punctuation">&#125;</span></code></pre>
 <p>启动 Nginx</p>
-<pre class=" language-bash"><code class="language-bash">systemctl start nginx</code></pre>
+<pre class="language-bash" data-language="bash"><code class="language-bash">systemctl start nginx</code></pre>
 <h2 id="测试-HTTP-3"><a href="#测试-HTTP-3" class="headerlink" title="测试 HTTP/3"></a>测试 HTTP/3</h2><p><img src="/images/1598329086449.png" alt="查看编译参数"></p>
 <p>安装 Firefox Nightly，在 <code>about:config</code> 中打开 <code>network.http.http3.enabled</code> 选项</p>
 <p><img src="/images/pasted-2.png" alt="Firefox nightly"></p>
@@ -925,28 +925,17 @@ systemctl <span class="token function">enable</span> nginx</code></pre>
 <!--    getWidth();-->
 <!--</script>-->
 <div class="mute">
-    <img id="audioOff"
-         src="data:image/png;base64,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"
-         class="controller__audio--off" style="display: block;">
-    <img id="audioOn"
-         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAMAAAC7IEhfAAAB5lBMVEUKCgoAAAD////39/f///8MDAwUFBRHcEz6+voNDQ339/cKCgodHR0YGBgXFxcMDAwWFhYLCwv///8VFRX///8TExM/Pz8ZGRn///9ISEgLCwsfHx8aGhr////w8PAbGxv///8tLS3///97e3vh4eHw8PD///8AAAD///////////////////////+np6ceHh4cHBz///8gICAJCQn///+xsbESEhIvLy+7u7vDw8P///9tbW1paWnU1NTa2todHR0RERESEhIeHh7////09PT19fWPj48RERG3t7fAwMBRUVHy8vJkZGTT09P6+vr4+Pj6+vojIyP39/fw8PDs7OxWVlbs7Oza2trq6uqRkZFTU1Py8vLu7u7Q0ND09PSSkpInJyenp6dOTk7w8PDw8PDW1tbu7u7g4ODT09Ps7Oz39/fX19fNzc3IyMiFhYU0NDT4+Pjq6uq8vLzc3NwYGBjY2Ni3t7fw8PDp6emXl5cJCQnm5ubIyMjX19c+Pj7///8AAADk5OTy8vJ9fX319fWlpaXc3NzU1NRpaWnm5uaioqJFRUWqqqrv7+/ExMTy8vLs7Oz4+PgjIyPh4eGqqqqurq56enokJCTz8/MfHx/39/eoqKjR0dHr6+v4+PgiIiLj4+O1tbUBW7mVAAAAonRSTlMZGiEjIBQZANATIhgaFRYVFxcfGBcaHB4UHBYgHQMjHB4cDB0jIgEZEh0cEBsIICEbBB8aEyEcGyIiAhwdJCMjHRsiFsDCPh4gXhy5MHTOz88kxLCnL6V+oEErt65yv0IgTCqxr3esjXWiy4BxbDsnyqNcfx9wUrKcRRuSY3opBRuRtTnESoR+NZ5QLFqydr6kzSuJYE84Krkox0p1qcsljFd+4J8aAAAC/UlEQVQ4y5WVZXPjMBCGFUdWbcd20jjYcBpmaFJm5vaYmZmZmZn5/ulJhsRJezN3+8mzfmZfebX7GrQ0RDY9mklarcmMLZ1tfAN0z8VEClIcZ8TBcRRMJYqrgr4OK+QGcr0O3m7nHb25AQ5aO3wrwXAQ+iszcQNQ41Z8puKHwXATGHNBqqtTo8rDw9XqlbKhs4uCrpge7LHBaLuCmQCyV6uT5yaHhsvA0B6Fth4daIMRh8y1tlkkVPB6Ri6cHxoqA2BwRKCtDrpgJCRjomBBAc/Jy8dPM4e9dkRyoQh0aWCYirpJro2lLXxp59GLCwzDXHIioY1k3VEqrIC+IEXOZzKztIh2XT/CyHHWKdGs2YTV26mgTwY7YDc5n5nFBQvXFIw5NVGw0Cxrxi8M3UQctBSt/pCsS8DAVYUbP4OVcYYl6iG/tYjBBKwQYVYB7y8yiy+fP7zrRCJNUiwRr8BEC4ilOLcijENE+QfM63dvlmucLO7mUjGQhf1x3BglS0vep7PM9895XuNYthWAeD/MgjSVM2gFWVpApd9LzLwexCUNOSoNRrk+fEItTYt8/i3z5YNXEjSQxqfs40ZBxuhQP0UOQQrMfWJ+eXQlMegwZkDSyNeOKJdEpfc/Fr56kaA7JG9MAqvR3gAKknf5G/NqRO63BtqN1iYQc3zp58fHzHSpVlIFG6SxcCD/6MmzF0t3bgS0kqq0/mMw5zxx+558icc8Wkn1Y2y69gjIuXmHOhVj69WSSnts+obTYmFuK6PFoZJE6xuuu0Jacs7XOOZAXtHWrlA3FALybKqDsyMyWBsKPGZT6phhcEMd3KZUJGM2RcZMN7g0Kh2sg/vJLmiDe7NhFfDc7q5xe7eQu9GvQn25cBs9G1Vu3wQZoMblqq8r3lbP9LqxNeNrt+/x4hlvWledAVgsyOsZHBzMOwuSKLY2G0DdUsomCfE4EJIsJoI1WYrOpMrAjuwIqba2wqSabE/DVtqeZqTuupEa4u7VjPQ/rPnfzV79fdj+8vv4A1Aef7RpmdATAAAAAElFTkSuQmCC"
-         class="controller__audio--on" style="display: none;">
+    <img id="audioOff" src="" class="controller__audio--off" style="display: block;">
+    <img id="audioOn" src="" class="controller__audio--on" style="display: none;">
 </div>
 <script type="application/javascript" src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
 <script>
-    NProgress.start();
     NProgress.configure({trickle: true, trickleSpeed: 300, speed: 500});
+    NProgress.start();
     NProgress.set(0.2);
-    document.getElementsByClassName('fa-heart-o')[0].addEventListener('click', () => {
-        document.getElementsByClassName('bg-cover')[0].style.backgroundImage = 'url(/medias/banner/2.jpg)';
-    })
     document.addEventListener("DOMContentLoaded", () => {
         NProgress.set(0.4);
-        NProgress.start();
     });
-    window.onload = function () {
-        NProgress.done();
-    }
 </script>
 </body>
 </html>
