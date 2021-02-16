@@ -41,6 +41,27 @@
 
 <body>
 <img src="/medias/banner/1.jpg" style="display: none">
+<div id="waifu">
+    <div id="waifu-message"></div>
+    <div class="waifu-tool">
+        <span class="icon-next"></span>
+        <span class="icon-home"></span>
+        <span class="icon-message"></span>
+        <span class="icon-camera"></span>
+        <span class="icon-volumeup"></span>
+        <span class="icon-volumedown"></span>
+        <span class="icon-about"></span>
+        <span class="icon-cross"></span>
+    </div>
+    <canvas id="live2d2"></canvas>
+    <canvas id="live2d4"></canvas>
+</div>
+<script src="/live2d/live2d_bundle.js"></script>
+<div class="mute">
+    <img id="audioOff" src="" class="controller__audio--off" style="display: block;">
+    <img id="audioOn" src="" class="controller__audio--on" style="display: none;">
+</div>
+<iframe src="/media/silence.mp3" allow="autoplay" id="slience-audio" style="display: none"></iframe>
 <header class="navbar-fixed">
     <nav id="headNav" class="bg-color nav-transparent">
         <div id="navContainer" class="nav-wrapper container">
@@ -323,6 +344,14 @@
                     </span>
                     </a>
                 
+                    <a href="/tags/git/" title="git: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                          data-tagname="git">git
+                        <span class="tag-length">1</span>
+                    </span>
+                    </a>
+                
                     <a href="/tags/gcc/" title="gcc: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -335,14 +364,6 @@
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                           data-tagname="Tools">Tools
-                        <span class="tag-length">1</span>
-                    </span>
-                    </a>
-                
-                    <a href="/tags/git/" title="git: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                          data-tagname="git">git
                         <span class="tag-length">1</span>
                     </span>
                     </a>
@@ -643,7 +664,7 @@
 <script type="text/javascript">
     
 
-    $('#tag-wordcloud').jQCloud([{"text":"Shell","weight":1,"link":"http://konata.tech/tags/Shell/"},{"text":"Performance","weight":1,"link":"http://konata.tech/tags/Performance/"},{"text":"Java","weight":10,"link":"http://konata.tech/tags/Java/"},{"text":"JSP","weight":8,"link":"http://konata.tech/tags/JSP/"},{"text":"ES6","weight":4,"link":"http://konata.tech/tags/ES6/"},{"text":"gcc","weight":1,"link":"http://konata.tech/tags/gcc/"},{"text":"Tools","weight":1,"link":"http://konata.tech/tags/Tools/"},{"text":"git","weight":1,"link":"http://konata.tech/tags/git/"},{"text":"JavaScript","weight":21,"link":"http://konata.tech/tags/JavaScript/"},{"text":"Excel","weight":1,"link":"http://konata.tech/tags/Excel/"},{"text":"Kubernetes","weight":1,"link":"http://konata.tech/tags/Kubernetes/"},{"text":"KubeEdge","weight":1,"link":"http://konata.tech/tags/KubeEdge/"},{"text":"K8S","weight":1,"link":"http://konata.tech/tags/K8S/"},{"text":"边缘云","weight":1,"link":"http://konata.tech/tags/%E8%BE%B9%E7%BC%98%E4%BA%91/"},{"text":"Docker","weight":1,"link":"http://konata.tech/tags/Docker/"},{"text":"AV1","weight":2,"link":"http://konata.tech/tags/AV1/"},{"text":"Nginx","weight":2,"link":"http://konata.tech/tags/Nginx/"},{"text":"Vorbis","weight":1,"link":"http://konata.tech/tags/Vorbis/"},{"text":"Opus","weight":1,"link":"http://konata.tech/tags/Opus/"},{"text":"ffmpeg","weight":3,"link":"http://konata.tech/tags/ffmpeg/"},{"text":"Database","weight":1,"link":"http://konata.tech/tags/Database/"},{"text":"TODO","weight":1,"link":"http://konata.tech/tags/TODO/"},{"text":"UpdateLog","weight":1,"link":"http://konata.tech/tags/UpdateLog/"},{"text":"ES2017","weight":1,"link":"http://konata.tech/tags/ES2017/"},{"text":"ES2018","weight":1,"link":"http://konata.tech/tags/ES2018/"},{"text":"Browser","weight":1,"link":"http://konata.tech/tags/Browser/"},{"text":"VapourSynth","weight":1,"link":"http://konata.tech/tags/VapourSynth/"},{"text":"动态规划","weight":1,"link":"http://konata.tech/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"},{"text":"算法","weight":1,"link":"http://konata.tech/tags/%E7%AE%97%E6%B3%95/"},{"text":"Linux","weight":3,"link":"http://konata.tech/tags/Linux/"},{"text":"JSON","weight":1,"link":"http://konata.tech/tags/JSON/"},{"text":"XML","weight":1,"link":"http://konata.tech/tags/XML/"},{"text":"Algorithm","weight":1,"link":"http://konata.tech/tags/Algorithm/"},{"text":"IIS","weight":1,"link":"http://konata.tech/tags/IIS/"},{"text":"route","weight":1,"link":"http://konata.tech/tags/route/"},{"text":"驱动","weight":1,"link":"http://konata.tech/tags/%E9%A9%B1%E5%8A%A8/"},{"text":"证书","weight":1,"link":"http://konata.tech/tags/%E8%AF%81%E4%B9%A6/"},{"text":"签名","weight":1,"link":"http://konata.tech/tags/%E7%AD%BE%E5%90%8D/"},{"text":"Windows","weight":2,"link":"http://konata.tech/tags/Windows/"},{"text":"ARM","weight":1,"link":"http://konata.tech/tags/ARM/"},{"text":"Assembly","weight":1,"link":"http://konata.tech/tags/Assembly/"},{"text":"C","weight":1,"link":"http://konata.tech/tags/C/"}], {
+    $('#tag-wordcloud').jQCloud([{"text":"Shell","weight":1,"link":"http://konata.tech/tags/Shell/"},{"text":"Performance","weight":1,"link":"http://konata.tech/tags/Performance/"},{"text":"Java","weight":10,"link":"http://konata.tech/tags/Java/"},{"text":"JSP","weight":8,"link":"http://konata.tech/tags/JSP/"},{"text":"ES6","weight":4,"link":"http://konata.tech/tags/ES6/"},{"text":"git","weight":1,"link":"http://konata.tech/tags/git/"},{"text":"gcc","weight":1,"link":"http://konata.tech/tags/gcc/"},{"text":"Tools","weight":1,"link":"http://konata.tech/tags/Tools/"},{"text":"JavaScript","weight":21,"link":"http://konata.tech/tags/JavaScript/"},{"text":"Excel","weight":1,"link":"http://konata.tech/tags/Excel/"},{"text":"Kubernetes","weight":1,"link":"http://konata.tech/tags/Kubernetes/"},{"text":"KubeEdge","weight":1,"link":"http://konata.tech/tags/KubeEdge/"},{"text":"K8S","weight":1,"link":"http://konata.tech/tags/K8S/"},{"text":"边缘云","weight":1,"link":"http://konata.tech/tags/%E8%BE%B9%E7%BC%98%E4%BA%91/"},{"text":"Docker","weight":1,"link":"http://konata.tech/tags/Docker/"},{"text":"AV1","weight":2,"link":"http://konata.tech/tags/AV1/"},{"text":"Nginx","weight":2,"link":"http://konata.tech/tags/Nginx/"},{"text":"Vorbis","weight":1,"link":"http://konata.tech/tags/Vorbis/"},{"text":"Opus","weight":1,"link":"http://konata.tech/tags/Opus/"},{"text":"ffmpeg","weight":3,"link":"http://konata.tech/tags/ffmpeg/"},{"text":"Database","weight":1,"link":"http://konata.tech/tags/Database/"},{"text":"TODO","weight":1,"link":"http://konata.tech/tags/TODO/"},{"text":"UpdateLog","weight":1,"link":"http://konata.tech/tags/UpdateLog/"},{"text":"ES2017","weight":1,"link":"http://konata.tech/tags/ES2017/"},{"text":"ES2018","weight":1,"link":"http://konata.tech/tags/ES2018/"},{"text":"Browser","weight":1,"link":"http://konata.tech/tags/Browser/"},{"text":"VapourSynth","weight":1,"link":"http://konata.tech/tags/VapourSynth/"},{"text":"动态规划","weight":1,"link":"http://konata.tech/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"},{"text":"算法","weight":1,"link":"http://konata.tech/tags/%E7%AE%97%E6%B3%95/"},{"text":"Linux","weight":3,"link":"http://konata.tech/tags/Linux/"},{"text":"JSON","weight":1,"link":"http://konata.tech/tags/JSON/"},{"text":"XML","weight":1,"link":"http://konata.tech/tags/XML/"},{"text":"Algorithm","weight":1,"link":"http://konata.tech/tags/Algorithm/"},{"text":"IIS","weight":1,"link":"http://konata.tech/tags/IIS/"},{"text":"route","weight":1,"link":"http://konata.tech/tags/route/"},{"text":"驱动","weight":1,"link":"http://konata.tech/tags/%E9%A9%B1%E5%8A%A8/"},{"text":"证书","weight":1,"link":"http://konata.tech/tags/%E8%AF%81%E4%B9%A6/"},{"text":"签名","weight":1,"link":"http://konata.tech/tags/%E7%AD%BE%E5%90%8D/"},{"text":"Windows","weight":2,"link":"http://konata.tech/tags/Windows/"},{"text":"ARM","weight":1,"link":"http://konata.tech/tags/ARM/"},{"text":"Assembly","weight":1,"link":"http://konata.tech/tags/Assembly/"},{"text":"C","weight":1,"link":"http://konata.tech/tags/C/"}], {
         autoResize: true
     });
 </script>
@@ -725,23 +746,6 @@
 
 
 
-<iframe src="/media/silence.mp3" allow="autoplay" id="slience-audio" style="display: none"></iframe>
-<div id="waifu">
-    <div id="waifu-message"></div>
-    <div class="waifu-tool">
-        <span class="icon-next"></span>
-        <span class="icon-home"></span>
-        <span class="icon-message"></span>
-        <span class="icon-camera"></span>
-        <span class="icon-volumeup"></span>
-        <span class="icon-volumedown"></span>
-        <span class="icon-about"></span>
-        <span class="icon-cross"></span>
-    </div>
-    <canvas id="live2d2"></canvas>
-    <canvas id="live2d4"></canvas>
-</div>
-<script src="/live2d/live2d_bundle.js"></script>
 <script src="/js/bundle.js"></script>
 <!--<script type="module">-->
 <!--    const getWidth = () => {-->
@@ -754,10 +758,6 @@
 <!--    }-->
 <!--    getWidth();-->
 <!--</script>-->
-<div class="mute">
-    <img id="audioOff" src="" class="controller__audio--off" style="display: block;">
-    <img id="audioOn" src="" class="controller__audio--on" style="display: none;">
-</div>
 <script type="application/javascript" src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
 <script>
     NProgress.configure({trickle: true, trickleSpeed: 300, speed: 500});

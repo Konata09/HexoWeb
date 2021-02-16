@@ -41,6 +41,27 @@
 
 <body>
 <img src="/medias/banner/1.jpg" style="display: none">
+<div id="waifu">
+    <div id="waifu-message"></div>
+    <div class="waifu-tool">
+        <span class="icon-next"></span>
+        <span class="icon-home"></span>
+        <span class="icon-message"></span>
+        <span class="icon-camera"></span>
+        <span class="icon-volumeup"></span>
+        <span class="icon-volumedown"></span>
+        <span class="icon-about"></span>
+        <span class="icon-cross"></span>
+    </div>
+    <canvas id="live2d2"></canvas>
+    <canvas id="live2d4"></canvas>
+</div>
+<script src="/live2d/live2d_bundle.js"></script>
+<div class="mute">
+    <img id="audioOff" src="" class="controller__audio--off" style="display: block;">
+    <img id="audioOn" src="" class="controller__audio--on" style="display: none;">
+</div>
+<iframe src="/media/silence.mp3" allow="autoplay" id="slience-audio" style="display: none"></iframe>
 <header class="navbar-fixed">
     <nav id="headNav" class="bg-color nav-transparent">
         <div id="navContainer" class="nav-wrapper container">
@@ -736,23 +757,6 @@
 
 
 
-<iframe src="/media/silence.mp3" allow="autoplay" id="slience-audio" style="display: none"></iframe>
-<div id="waifu">
-    <div id="waifu-message"></div>
-    <div class="waifu-tool">
-        <span class="icon-next"></span>
-        <span class="icon-home"></span>
-        <span class="icon-message"></span>
-        <span class="icon-camera"></span>
-        <span class="icon-volumeup"></span>
-        <span class="icon-volumedown"></span>
-        <span class="icon-about"></span>
-        <span class="icon-cross"></span>
-    </div>
-    <canvas id="live2d2"></canvas>
-    <canvas id="live2d4"></canvas>
-</div>
-<script src="/live2d/live2d_bundle.js"></script>
 <script src="/js/bundle.js"></script>
 <!--<script type="module">-->
 <!--    const getWidth = () => {-->
@@ -765,10 +769,6 @@
 <!--    }-->
 <!--    getWidth();-->
 <!--</script>-->
-<div class="mute">
-    <img id="audioOff" src="" class="controller__audio--off" style="display: block;">
-    <img id="audioOn" src="" class="controller__audio--on" style="display: none;">
-</div>
 <script type="application/javascript" src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
 <script>
     NProgress.configure({trickle: true, trickleSpeed: 300, speed: 500});
