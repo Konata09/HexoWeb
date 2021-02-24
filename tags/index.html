@@ -289,15 +289,197 @@
 </div>
 
 <main class="content">
+    
+        <div id="wordcloud-container" class="container">
+    <div class="card">
+        <div class="tag-title center-align">
+            <i class="fa fa-tags"></i>&nbsp;&nbsp;文章标签
+        </div>
+        <div id="tag-wordcloud" class="card-content" style="padding: 12px"></div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/d3@3.5.17/d3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/d3-cloud@1.2.5/build/d3.layout.cloud.min.js"></script>
 
+<script>
+    
+    const frequency_list = [{
+        "text": "Shell",
+        "size": 20,
+        "link": "/tags/Shell/"
+    },{
+        "text": "Performance",
+        "size": 20,
+        "link": "/tags/Performance/"
+    },{
+        "text": "Java",
+        "size": 80,
+        "link": "/tags/Java/"
+    },{
+        "text": "JSP",
+        "size": 64,
+        "link": "/tags/JSP/"
+    },{
+        "text": "ES6",
+        "size": 48,
+        "link": "/tags/ES6/"
+    },{
+        "text": "git",
+        "size": 20,
+        "link": "/tags/git/"
+    },{
+        "text": "gcc",
+        "size": 20,
+        "link": "/tags/gcc/"
+    },{
+        "text": "Tools",
+        "size": 20,
+        "link": "/tags/Tools/"
+    },{
+        "text": "JavaScript",
+        "size": 80,
+        "link": "/tags/JavaScript/"
+    },{
+        "text": "Excel",
+        "size": 20,
+        "link": "/tags/Excel/"
+    },{
+        "text": "Kubernetes",
+        "size": 20,
+        "link": "/tags/Kubernetes/"
+    },{
+        "text": "KubeEdge",
+        "size": 20,
+        "link": "/tags/KubeEdge/"
+    },{
+        "text": "K8S",
+        "size": 20,
+        "link": "/tags/K8S/"
+    },{
+        "text": "边缘云",
+        "size": 20,
+        "link": "/tags/边缘云/"
+    },{
+        "text": "Docker",
+        "size": 20,
+        "link": "/tags/Docker/"
+    },{
+        "text": "AV1",
+        "size": 40,
+        "link": "/tags/AV1/"
+    },{
+        "text": "Nginx",
+        "size": 40,
+        "link": "/tags/Nginx/"
+    },{
+        "text": "Vorbis",
+        "size": 20,
+        "link": "/tags/Vorbis/"
+    },{
+        "text": "Opus",
+        "size": 20,
+        "link": "/tags/Opus/"
+    },{
+        "text": "ffmpeg",
+        "size": 48,
+        "link": "/tags/ffmpeg/"
+    },{
+        "text": "Database",
+        "size": 20,
+        "link": "/tags/Database/"
+    },{
+        "text": "TODO",
+        "size": 20,
+        "link": "/tags/TODO/"
+    },{
+        "text": "UpdateLog",
+        "size": 20,
+        "link": "/tags/UpdateLog/"
+    },{
+        "text": "ES2017",
+        "size": 20,
+        "link": "/tags/ES2017/"
+    },{
+        "text": "ES2018",
+        "size": 20,
+        "link": "/tags/ES2018/"
+    },{
+        "text": "Browser",
+        "size": 20,
+        "link": "/tags/Browser/"
+    },{
+        "text": "VapourSynth",
+        "size": 20,
+        "link": "/tags/VapourSynth/"
+    },{
+        "text": "动态规划",
+        "size": 20,
+        "link": "/tags/动态规划/"
+    },{
+        "text": "算法",
+        "size": 20,
+        "link": "/tags/算法/"
+    },{
+        "text": "Linux",
+        "size": 48,
+        "link": "/tags/Linux/"
+    },{
+        "text": "JSON",
+        "size": 20,
+        "link": "/tags/JSON/"
+    },{
+        "text": "XML",
+        "size": 20,
+        "link": "/tags/XML/"
+    },{
+        "text": "Algorithm",
+        "size": 20,
+        "link": "/tags/Algorithm/"
+    },{
+        "text": "IIS",
+        "size": 20,
+        "link": "/tags/IIS/"
+    },{
+        "text": "route",
+        "size": 20,
+        "link": "/tags/route/"
+    },{
+        "text": "驱动",
+        "size": 20,
+        "link": "/tags/驱动/"
+    },{
+        "text": "证书",
+        "size": 20,
+        "link": "/tags/证书/"
+    },{
+        "text": "签名",
+        "size": 20,
+        "link": "/tags/签名/"
+    },{
+        "text": "Windows",
+        "size": 40,
+        "link": "/tags/Windows/"
+    },{
+        "text": "ARM",
+        "size": 20,
+        "link": "/tags/ARM/"
+    },{
+        "text": "Assembly",
+        "size": 20,
+        "link": "/tags/Assembly/"
+    },{
+        "text": "C",
+        "size": 20,
+        "link": "/tags/C/"
+    },]
+    window.wordCloud = true
+</script>
+    
     
 
-<div id="tags" class="container chip-container">
+<div id="tags" class="container">
     <div class="card">
         <div class="card-content">
-            <div class="tag-title center-align">
-                <i class="fa fa-tags"></i>&nbsp;&nbsp;文章标签
-            </div>
             <div class="tag-chips">
                 
                     <a href="/tags/Shell/" title="Shell: 1">
@@ -640,32 +822,6 @@
         </div>
     </div>
 </div>
-
-    
-    <link rel="stylesheet" type="text/css" href="/libs/jqcloud/jqcloud.css">
-<style type="text/css">
-    #tag-wordcloud {
-        width: 100%;
-        height: 300px;
-    }
-</style>
-
-<div class="container">
-    <div class="card">
-        <div id="tag-wordcloud" class="card-content"></div>
-    </div>
-</div>
-
-<script type="text/javascript" src="/libs/jqcloud/jqcloud-1.0.4.min.js"></script>
-<script type="text/javascript">
-    
-
-    $('#tag-wordcloud').jQCloud([{"text":"Shell","weight":1,"link":"http://konata.tech/tags/Shell/"},{"text":"Performance","weight":1,"link":"http://konata.tech/tags/Performance/"},{"text":"Java","weight":10,"link":"http://konata.tech/tags/Java/"},{"text":"JSP","weight":8,"link":"http://konata.tech/tags/JSP/"},{"text":"ES6","weight":4,"link":"http://konata.tech/tags/ES6/"},{"text":"git","weight":1,"link":"http://konata.tech/tags/git/"},{"text":"gcc","weight":1,"link":"http://konata.tech/tags/gcc/"},{"text":"Tools","weight":1,"link":"http://konata.tech/tags/Tools/"},{"text":"JavaScript","weight":21,"link":"http://konata.tech/tags/JavaScript/"},{"text":"Excel","weight":1,"link":"http://konata.tech/tags/Excel/"},{"text":"Kubernetes","weight":1,"link":"http://konata.tech/tags/Kubernetes/"},{"text":"KubeEdge","weight":1,"link":"http://konata.tech/tags/KubeEdge/"},{"text":"K8S","weight":1,"link":"http://konata.tech/tags/K8S/"},{"text":"边缘云","weight":1,"link":"http://konata.tech/tags/%E8%BE%B9%E7%BC%98%E4%BA%91/"},{"text":"Docker","weight":1,"link":"http://konata.tech/tags/Docker/"},{"text":"AV1","weight":2,"link":"http://konata.tech/tags/AV1/"},{"text":"Nginx","weight":2,"link":"http://konata.tech/tags/Nginx/"},{"text":"Vorbis","weight":1,"link":"http://konata.tech/tags/Vorbis/"},{"text":"Opus","weight":1,"link":"http://konata.tech/tags/Opus/"},{"text":"ffmpeg","weight":3,"link":"http://konata.tech/tags/ffmpeg/"},{"text":"Database","weight":1,"link":"http://konata.tech/tags/Database/"},{"text":"TODO","weight":1,"link":"http://konata.tech/tags/TODO/"},{"text":"UpdateLog","weight":1,"link":"http://konata.tech/tags/UpdateLog/"},{"text":"ES2017","weight":1,"link":"http://konata.tech/tags/ES2017/"},{"text":"ES2018","weight":1,"link":"http://konata.tech/tags/ES2018/"},{"text":"Browser","weight":1,"link":"http://konata.tech/tags/Browser/"},{"text":"VapourSynth","weight":1,"link":"http://konata.tech/tags/VapourSynth/"},{"text":"动态规划","weight":1,"link":"http://konata.tech/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"},{"text":"算法","weight":1,"link":"http://konata.tech/tags/%E7%AE%97%E6%B3%95/"},{"text":"Linux","weight":3,"link":"http://konata.tech/tags/Linux/"},{"text":"JSON","weight":1,"link":"http://konata.tech/tags/JSON/"},{"text":"XML","weight":1,"link":"http://konata.tech/tags/XML/"},{"text":"Algorithm","weight":1,"link":"http://konata.tech/tags/Algorithm/"},{"text":"IIS","weight":1,"link":"http://konata.tech/tags/IIS/"},{"text":"route","weight":1,"link":"http://konata.tech/tags/route/"},{"text":"驱动","weight":1,"link":"http://konata.tech/tags/%E9%A9%B1%E5%8A%A8/"},{"text":"证书","weight":1,"link":"http://konata.tech/tags/%E8%AF%81%E4%B9%A6/"},{"text":"签名","weight":1,"link":"http://konata.tech/tags/%E7%AD%BE%E5%90%8D/"},{"text":"Windows","weight":2,"link":"http://konata.tech/tags/Windows/"},{"text":"ARM","weight":1,"link":"http://konata.tech/tags/ARM/"},{"text":"Assembly","weight":1,"link":"http://konata.tech/tags/Assembly/"},{"text":"C","weight":1,"link":"http://konata.tech/tags/C/"}], {
-        autoResize: true
-    });
-</script>
-    
-
 </main>
 
 <footer class="page-footer bg-color">

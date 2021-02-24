@@ -289,15 +289,197 @@
 </div>
 
 <main class="content">
+    
+        <div id="wordcloud-container" class="container">
+    <div class="card">
+        <div class="tag-title center-align">
+            <i class="fa fa-tags"></i>&nbsp;&nbsp;文章标签
+        </div>
+        <div id="tag-wordcloud" class="card-content" style="padding: 12px"></div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/d3@3.5.17/d3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/d3-cloud@1.2.5/build/d3.layout.cloud.min.js"></script>
 
+<script>
+    
+    const frequency_list = [{
+        "text": "Shell",
+        "size": 20,
+        "link": "/tags/Shell/"
+    },{
+        "text": "Performance",
+        "size": 20,
+        "link": "/tags/Performance/"
+    },{
+        "text": "Java",
+        "size": 80,
+        "link": "/tags/Java/"
+    },{
+        "text": "JSP",
+        "size": 64,
+        "link": "/tags/JSP/"
+    },{
+        "text": "ES6",
+        "size": 48,
+        "link": "/tags/ES6/"
+    },{
+        "text": "git",
+        "size": 20,
+        "link": "/tags/git/"
+    },{
+        "text": "gcc",
+        "size": 20,
+        "link": "/tags/gcc/"
+    },{
+        "text": "Tools",
+        "size": 20,
+        "link": "/tags/Tools/"
+    },{
+        "text": "JavaScript",
+        "size": 80,
+        "link": "/tags/JavaScript/"
+    },{
+        "text": "Excel",
+        "size": 20,
+        "link": "/tags/Excel/"
+    },{
+        "text": "Kubernetes",
+        "size": 20,
+        "link": "/tags/Kubernetes/"
+    },{
+        "text": "KubeEdge",
+        "size": 20,
+        "link": "/tags/KubeEdge/"
+    },{
+        "text": "K8S",
+        "size": 20,
+        "link": "/tags/K8S/"
+    },{
+        "text": "边缘云",
+        "size": 20,
+        "link": "/tags/边缘云/"
+    },{
+        "text": "Docker",
+        "size": 20,
+        "link": "/tags/Docker/"
+    },{
+        "text": "AV1",
+        "size": 40,
+        "link": "/tags/AV1/"
+    },{
+        "text": "Nginx",
+        "size": 40,
+        "link": "/tags/Nginx/"
+    },{
+        "text": "Vorbis",
+        "size": 20,
+        "link": "/tags/Vorbis/"
+    },{
+        "text": "Opus",
+        "size": 20,
+        "link": "/tags/Opus/"
+    },{
+        "text": "ffmpeg",
+        "size": 48,
+        "link": "/tags/ffmpeg/"
+    },{
+        "text": "Database",
+        "size": 20,
+        "link": "/tags/Database/"
+    },{
+        "text": "TODO",
+        "size": 20,
+        "link": "/tags/TODO/"
+    },{
+        "text": "UpdateLog",
+        "size": 20,
+        "link": "/tags/UpdateLog/"
+    },{
+        "text": "ES2017",
+        "size": 20,
+        "link": "/tags/ES2017/"
+    },{
+        "text": "ES2018",
+        "size": 20,
+        "link": "/tags/ES2018/"
+    },{
+        "text": "Browser",
+        "size": 20,
+        "link": "/tags/Browser/"
+    },{
+        "text": "VapourSynth",
+        "size": 20,
+        "link": "/tags/VapourSynth/"
+    },{
+        "text": "动态规划",
+        "size": 20,
+        "link": "/tags/动态规划/"
+    },{
+        "text": "算法",
+        "size": 20,
+        "link": "/tags/算法/"
+    },{
+        "text": "Linux",
+        "size": 48,
+        "link": "/tags/Linux/"
+    },{
+        "text": "JSON",
+        "size": 20,
+        "link": "/tags/JSON/"
+    },{
+        "text": "XML",
+        "size": 20,
+        "link": "/tags/XML/"
+    },{
+        "text": "Algorithm",
+        "size": 20,
+        "link": "/tags/Algorithm/"
+    },{
+        "text": "IIS",
+        "size": 20,
+        "link": "/tags/IIS/"
+    },{
+        "text": "route",
+        "size": 20,
+        "link": "/tags/route/"
+    },{
+        "text": "驱动",
+        "size": 20,
+        "link": "/tags/驱动/"
+    },{
+        "text": "证书",
+        "size": 20,
+        "link": "/tags/证书/"
+    },{
+        "text": "签名",
+        "size": 20,
+        "link": "/tags/签名/"
+    },{
+        "text": "Windows",
+        "size": 40,
+        "link": "/tags/Windows/"
+    },{
+        "text": "ARM",
+        "size": 20,
+        "link": "/tags/ARM/"
+    },{
+        "text": "Assembly",
+        "size": 20,
+        "link": "/tags/Assembly/"
+    },{
+        "text": "C",
+        "size": 20,
+        "link": "/tags/C/"
+    },]
+    window.wordCloud = true
+</script>
+    
     
 
-<div id="tags" class="container chip-container">
+<div id="tags" class="container">
     <div class="card">
         <div class="card-content">
-            <div class="tag-title center-align">
-                <i class="fa fa-tags"></i>&nbsp;&nbsp;文章标签
-            </div>
             <div class="tag-chips">
                 
                     <a href="/tags/Shell/" title="Shell: 1">
@@ -642,7 +824,9 @@
 </div>
 
     
-
+    <script>
+        const tagname = "gcc";
+    </script>
     <article id="articles" class="container articles">
         <div class="row tags-posts">
             
