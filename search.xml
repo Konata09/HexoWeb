@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>CentOS 连接 iSCSI 存储</title>
+      <link href="2021/03/07/linuxConnectiSCSI/"/>
+      <url>2021/03/07/linuxConnectiSCSI/</url>
+      
+        <content type="html"><![CDATA[<h2 id="系统环境"><a href="#系统环境" class="headerlink" title="系统环境"></a>系统环境</h2><p><img src="/images/1615090843482.png" alt="系统环境"></p><p>这里使用 CentOS 8 作为发起端，目标端为 Inspur 存储系统。</p><h2 id="连接步骤"><a href="#连接步骤" class="headerlink" title="连接步骤"></a>连接步骤</h2><h3 id="安装-iscsi-initiator-utils"><a href="#安装-iscsi-initiator-utils" class="headerlink" title="安装 iscsi-initiator-utils"></a>安装 <code>iscsi-initiator-utils</code></h3><pre class="language-bash" data-language="bash"><code class="language-bash">dnf <span class="token function">install</span> iscsi-initiator-utils</code></pre><h3 id="启动-iscsid-服务"><a href="#启动-iscsid-服务" class="headerlink" title="启动 iscsid 服务"></a>启动 <code>iscsid</code> 服务</h3><pre class="language-bash" data-language="bash"><code class="language-bash">systemctl start iscsid.service</code></pre><h3 id="修改发起端名称"><a href="#修改发起端名称" class="headerlink" title="修改发起端名称"></a>修改发起端名称</h3><blockquote><p>也可以使用系统默认的发起端名称</p></blockquote><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> /etc/iscsi/initiatorname.iscsi</code></pre><h3 id="查看发起端名称"><a href="#查看发起端名称" class="headerlink" title="查看发起端名称"></a>查看发起端名称</h3><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">cat</span> /etc/iscsi/initiatorname.iscsi</code></pre><p><img src="/images/1615093563548.png" alt="查看 Initiator Name"></p><p>本例中的发起端名称为 <code>iqn.1994-05.com.redhat:8f8291efd355</code></p><h3 id="在-iSCSI-目标端上添加发起端名称"><a href="#在-iSCSI-目标端上添加发起端名称" class="headerlink" title="在 iSCSI 目标端上添加发起端名称"></a>在 iSCSI 目标端上添加发起端名称</h3><p>根据目标端系统不同，添加方式略有区别。</p><h3 id="搜寻并登录目标端"><a href="#搜寻并登录目标端" class="headerlink" title="搜寻并登录目标端"></a>搜寻并登录目标端</h3><pre class="language-bash" data-language="bash"><code class="language-bash">iscsiadm -m discovery -t st -p <span class="token number">172.31</span>.1.1</code></pre><pre class="language-bash" data-language="bash"><code class="language-bash">iscsiadm -m node -T iqn.2006-04.example:444 -l</code></pre><p><img src="/images/1615093641189.png" alt="登录成功"></p><h3 id="找到连接的磁盘并格式化"><a href="#找到连接的磁盘并格式化" class="headerlink" title="找到连接的磁盘并格式化"></a>找到连接的磁盘并格式化</h3><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">grep</span> <span class="token string">"Attached SCSI"</span> /var/log/messages</code></pre><p><img src="/images/1615093853010.png" alt="找到连接的磁盘"></p><p>可以看到我们连接的磁盘分到了 <code>sdb</code> ，下面将 <code>/dev/sdb</code> 格式化为 ext4 文件系统：</p><pre class="language-bash" data-language="bash"><code class="language-bash">mkfs.ext4 /dev/sdb</code></pre><h3 id="将磁盘挂载到系统"><a href="#将磁盘挂载到系统" class="headerlink" title="将磁盘挂载到系统"></a>将磁盘挂载到系统</h3><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">mkdir</span> /mnt/san<span class="token function">mount</span> /dev/sdb /mnt/san</code></pre><h3 id="在系统启动时自动挂载分区"><a href="#在系统启动时自动挂载分区" class="headerlink" title="在系统启动时自动挂载分区"></a>在系统启动时自动挂载分区</h3><p>修改 <code>/etc/fstab</code></p><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> /etc/fstab</code></pre><p>在文件最后增加一行：</p><pre class="language-bash" data-language="bash"><code class="language-bash">/dev/sdb                /mnt/san                ext4    _netdev         <span class="token number">0</span> <span class="token number">0</span></code></pre><p>此时挂载的 iSCSI 卷即可正常使用了。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Ops </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+            <tag> iSCSI </tag>
+            
+            <tag> CentOS </tag>
+            
+            <tag> RedHat </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Linux 编程</title>
       <link href="2021/01/01/LinuxProgramming/"/>
       <url>2021/01/01/LinuxProgramming/</url>
