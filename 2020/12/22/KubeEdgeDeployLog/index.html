@@ -458,6 +458,10 @@ systemctl disable firewalld</code></pre>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#/dev/mapper/centos-swap swap                    swap    defaults        0 0</span></code></pre>
 <h4 id="使桥接流量经过-iptables"><a href="#使桥接流量经过-iptables" class="headerlink" title="使桥接流量经过 iptables"></a>使桥接流量经过 iptables</h4><p>确定内核模块 <code>br_netfilter</code> 已经加载</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">lsmod <span class="token operator">|</span> <span class="token function">grep</span> br_netfilter</code></pre>
+<p>如果命令没有输出，使用下面的命令加载</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">modprobe br_netfilter</code></pre>
+<p>并新建 <code>/etc/modules-load.d/k8s.conf</code> 文件加入下面的内容使 <code>br_netfilter</code> 模块在启动时自动加载</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">br_netfilter</code></pre>
 <p>创建 <code>sysctl</code> 配置</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> /etc/sysctl.d/k8s.conf</code></pre>
 <p>加入下面两行内容：</p>
