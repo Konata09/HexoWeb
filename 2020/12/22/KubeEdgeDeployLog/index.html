@@ -447,7 +447,7 @@
 <p><img src="/images/1608627604874.png" alt="系统环境"></p>
 <h3 id="安装-Kubernetes"><a href="#安装-Kubernetes" class="headerlink" title="安装 Kubernetes"></a>安装 Kubernetes</h3><h4 id="修改-Hostname"><a href="#修改-Hostname" class="headerlink" title="修改 Hostname"></a>修改 Hostname</h4><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> /etc/hostname <span class="token comment"># 修改 hostname</span>
 <span class="token function">vim</span> /etc/hosts <span class="token comment"># 将本机 IP 指向 hostname</span></code></pre>
-<h4 id="确认-MAC-地址-和-product-uuid-唯一"><a href="#确认-MAC-地址-和-product-uuid-唯一" class="headerlink" title="确认 MAC 地址 和 product_uuid 唯一"></a>确认 MAC 地址 和 <code>product_uuid</code> 唯一</h4><pre class="language-bash" data-language="bash"><code class="language-bash">ifocnfig -a
+<h4 id="确认-MAC-地址-和-product-uuid-唯一"><a href="#确认-MAC-地址-和-product-uuid-唯一" class="headerlink" title="确认 MAC 地址 和 product_uuid 唯一"></a>确认 MAC 地址 和 <code>product_uuid</code> 唯一</h4><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">ifconfig</span> -a
 <span class="token function">cat</span> /sys/class/dmi/id/product_uuid</code></pre>
 <h4 id="关闭防火墙"><a href="#关闭防火墙" class="headerlink" title="关闭防火墙"></a>关闭防火墙</h4><pre class="language-bash" data-language="bash"><code class="language-bash">systemctl stop firewalld
 systemctl disable firewalld</code></pre>
