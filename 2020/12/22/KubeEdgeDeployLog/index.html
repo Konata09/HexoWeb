@@ -518,7 +518,7 @@ systemctl <span class="token builtin class-name">enable</span> kubelet <span cla
 <h4 id="初始化-Master-节点"><a href="#初始化-Master-节点" class="headerlink" title="初始化 Master 节点"></a>初始化 Master 节点</h4><p>生成初始化文件</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">kubeadm config print init-defaults <span class="token operator">></span> kubeadm-init.yaml</code></pre>
 <p>该文件有两处需要修改：<br>将 <code>advertiseAddress: 1.2.3.4</code> 修改为本机地址<br>将 <code>imageRepository: k8s.gcr.io 修改为 imageRepository: registry.cn-hangzhou.aliyuncs.com/google_containers</code></p>
-<p>修改完成后的文件如下：</p>
+<p>修改完成后的文件如下：  </p>
 <pre class="language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> kubeadm.k8s.io/v1beta2
 <span class="token key atrule">bootstrapTokens</span><span class="token punctuation">:</span>
 
