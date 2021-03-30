@@ -420,14 +420,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1.5k
+                        1.7k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        7 分
+                        8 分
                     </div>
                     
                 
@@ -643,8 +643,42 @@ kubernetes-dashboard   kubernetes-dashboard-74d688b6bc-x7fqm        <span class=
 <h3 id="安装-KubeEdge-1"><a href="#安装-KubeEdge-1" class="headerlink" title="安装 KubeEdge"></a>安装 KubeEdge</h3><p>在边缘节点下载并解压</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">wget</span> https://github.com/kubeedge/kubeedge/releases/download/v1.6.1/keadm-v1.6.1-linux-amd64.tar.gz
 <span class="token function">tar</span> -xvf keadm-v1.6.1-linux-amd64.tar.gz <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">cd</span> keadm-v1.6.1-linux-amd64/keadm</code></pre>
-<p>根据之前得到的 Token 在边缘节点执行加入操作</p>
+<h3 id="加入云端"><a href="#加入云端" class="headerlink" title="加入云端"></a>加入云端</h3><p>根据之前得到的 Token 在边缘节点执行加入操作</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">./keadm <span class="token function">join</span> --cloudcore-ipport<span class="token operator">=</span><span class="token number">172.31</span>.16.53:10000 --token<span class="token operator">=</span>27a37ef16159f7d3be8fae95d588b79b3adaaf92727b72659eb89758c66ffda2.eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTAyMTYwNzd9.JBj8LLYWXwbbvHKffJBpPd5CyxqapRQYDIXtFZErgYE</code></pre>
+<h2 id="开启-kubectl-logs-功能"><a href="#开启-kubectl-logs-功能" class="headerlink" title="开启 kubectl logs 功能"></a>开启 <code>kubectl logs</code> 功能</h2><p>在云端<br>设置 <code>CLOUDCOREIPS</code> 变量为云端 IP</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">export</span> <span class="token assign-left variable">CLOUDCOREIPS</span><span class="token operator">=</span><span class="token string">"172.31.16.53"</span></code></pre>
+<p>为云端的 CloudStream 生成证书，下载并运行脚本</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> /etc/kubeedge
+<span class="token function">wget</span> https://github.com/kubeedge/kubeedge/raw/master/build/tools/certgen.sh
+<span class="token function">chmod</span> +x certgen.sh
+./certgen.sh stream</code></pre>
+<p>设置 iptables</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">iptables -t nat -A OUTPUT -p tcp --dport <span class="token number">10350</span> -j DNAT --to <span class="token variable">$CLOUDCOREIPS</span>:10003</code></pre>
+<p>修改 cloudcore.yaml 启用 cloudStream</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> /etc/kubeedge/config/cloudcore.yaml</code></pre>
+<p>修改后如下：</p>
+<pre class="language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">cloudStream</span><span class="token punctuation">:</span>
+  <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">streamPort</span><span class="token punctuation">:</span> <span class="token number">10003</span>
+  <span class="token key atrule">tlsStreamCAFile</span><span class="token punctuation">:</span> /etc/kubeedge/ca/streamCA.crt
+  <span class="token key atrule">tlsStreamCertFile</span><span class="token punctuation">:</span> /etc/kubeedge/certs/stream.crt
+  <span class="token key atrule">tlsStreamPrivateKeyFile</span><span class="token punctuation">:</span> /etc/kubeedge/certs/stream.key
+  <span class="token key atrule">tlsTunnelCAFile</span><span class="token punctuation">:</span> /etc/kubeedge/ca/rootCA.crt
+  <span class="token key atrule">tlsTunnelCertFile</span><span class="token punctuation">:</span> /etc/kubeedge/certs/server.crt
+  <span class="token key atrule">tlsTunnelPrivateKeyFile</span><span class="token punctuation">:</span> /etc/kubeedge/certs/server.key
+  <span class="token key atrule">tunnelPort</span><span class="token punctuation">:</span> <span class="token number">10004</span></code></pre>
+<p><del>在边缘端</del>，修改 edgecore.yaml 启用 cloudStream</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> /etc/kubeedge/config/edgecore.yaml</code></pre>
+<p>修改后如下：</p>
+<pre class="language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">edgeStream</span><span class="token punctuation">:</span>
+  <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">handshakeTimeout</span><span class="token punctuation">:</span> <span class="token number">30</span>
+  <span class="token key atrule">readDeadline</span><span class="token punctuation">:</span> <span class="token number">15</span>
+  <span class="token key atrule">server</span><span class="token punctuation">:</span> 192.168.0.139<span class="token punctuation">:</span><span class="token number">10004</span>
+  <span class="token key atrule">tlsTunnelCAFile</span><span class="token punctuation">:</span> /etc/kubeedge/ca/rootCA.crt
+  <span class="token key atrule">tlsTunnelCertFile</span><span class="token punctuation">:</span> /etc/kubeedge/certs/server.crt
+  <span class="token key atrule">tlsTunnelPrivateKeyFile</span><span class="token punctuation">:</span> /etc/kubeedge/certs/server.key
+  <span class="token key atrule">writeDeadline</span><span class="token punctuation">:</span> <span class="token number">15</span></code></pre>
             </div>
             <hr/>
 
