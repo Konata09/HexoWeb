@@ -420,14 +420,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1.7k
+                        1.8k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        8 分
+                        9 分
                     </div>
                     
                 
@@ -588,7 +588,33 @@ centos7vm-master   NotReady   control-plane,master   5d21h   v1.20.0</code></pre
 <h4 id="安装网络插件"><a href="#安装网络插件" class="headerlink" title="安装网络插件"></a>安装网络插件</h4><p>网络插件有很多选择，这里使用 Calico</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">wget</span> https://docs.projectcalico.org/manifests/calico.yaml
 <span class="token function">vim</span> calico.yaml</code></pre>
-<p>找到 <code>CALICO_IPV4POOL_CIDR</code> ，修改 value 为 <code>10.96.0.0/12</code></p>
+<p>搜索 <code>CALICO_IPV4POOL_CIDR</code> ，修改 value 为 <code>10.96.0.0/12</code></p>
+<p>在 <code>DaemonSet</code> 的配置下，添加选择器，只对云端安装 Calico，因为 KubeEdge 目前 (1.6.1) 还不支持 CNI 插件，这部分修改后如下：</p>
+<pre class="language-yaml" data-language="yaml"><code class="language-yaml">···
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> DaemonSet
+<span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> apps/v1
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> calico<span class="token punctuation">-</span>node
+  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> kube<span class="token punctuation">-</span>system
+  <span class="token key atrule">labels</span><span class="token punctuation">:</span>
+    <span class="token key atrule">k8s-app</span><span class="token punctuation">:</span> calico<span class="token punctuation">-</span>node
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">selector</span><span class="token punctuation">:</span>
+    <span class="token key atrule">matchLabels</span><span class="token punctuation">:</span>
+      <span class="token key atrule">k8s-app</span><span class="token punctuation">:</span> calico<span class="token punctuation">-</span>node
+  <span class="token key atrule">updateStrategy</span><span class="token punctuation">:</span>
+    <span class="token key atrule">type</span><span class="token punctuation">:</span> RollingUpdate
+    <span class="token key atrule">rollingUpdate</span><span class="token punctuation">:</span>
+      <span class="token key atrule">maxUnavailable</span><span class="token punctuation">:</span> <span class="token number">1</span>
+  <span class="token key atrule">template</span><span class="token punctuation">:</span>
+    <span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+      <span class="token key atrule">labels</span><span class="token punctuation">:</span>
+        <span class="token key atrule">k8s-app</span><span class="token punctuation">:</span> calico<span class="token punctuation">-</span>node
+    <span class="token key atrule">spec</span><span class="token punctuation">:</span>
+      <span class="token key atrule">nodeSelector</span><span class="token punctuation">:</span>
+        <span class="token key atrule">kubernetes.io/os</span><span class="token punctuation">:</span> linux
+        <span class="token key atrule">kubernetes.io/hostname</span><span class="token punctuation">:</span> kubeedge<span class="token punctuation">-</span>cloud  &lt;<span class="token punctuation">-</span><span class="token punctuation">-</span> 这里改成云端的主机名
+···</code></pre>
 <p>应用网络配置</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">kubectl apply -f calico.yaml</code></pre>
 <p>等待一小段时间，然后查看 node 信息， master 的状态已经是 <code>Ready</code> 了  </p>
@@ -667,18 +693,25 @@ kubernetes-dashboard   kubernetes-dashboard-74d688b6bc-x7fqm        <span class=
   <span class="token key atrule">tlsTunnelCertFile</span><span class="token punctuation">:</span> /etc/kubeedge/certs/server.crt
   <span class="token key atrule">tlsTunnelPrivateKeyFile</span><span class="token punctuation">:</span> /etc/kubeedge/certs/server.key
   <span class="token key atrule">tunnelPort</span><span class="token punctuation">:</span> <span class="token number">10004</span></code></pre>
-<p><del>在边缘端</del>，修改 edgecore.yaml 启用 cloudStream</p>
+<p><strong>在边缘端</strong>，修改 edgecore.yaml 启用 cloudStream</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> /etc/kubeedge/config/edgecore.yaml</code></pre>
 <p>修改后如下：</p>
 <pre class="language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">edgeStream</span><span class="token punctuation">:</span>
   <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
   <span class="token key atrule">handshakeTimeout</span><span class="token punctuation">:</span> <span class="token number">30</span>
   <span class="token key atrule">readDeadline</span><span class="token punctuation">:</span> <span class="token number">15</span>
-  <span class="token key atrule">server</span><span class="token punctuation">:</span> 192.168.0.139<span class="token punctuation">:</span><span class="token number">10004</span>
+  <span class="token key atrule">server</span><span class="token punctuation">:</span> 172.31.16.53<span class="token punctuation">:</span><span class="token number">10004</span>
   <span class="token key atrule">tlsTunnelCAFile</span><span class="token punctuation">:</span> /etc/kubeedge/ca/rootCA.crt
   <span class="token key atrule">tlsTunnelCertFile</span><span class="token punctuation">:</span> /etc/kubeedge/certs/server.crt
   <span class="token key atrule">tlsTunnelPrivateKeyFile</span><span class="token punctuation">:</span> /etc/kubeedge/certs/server.key
   <span class="token key atrule">writeDeadline</span><span class="token punctuation">:</span> <span class="token number">15</span></code></pre>
+<p>重启云端</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">pkill</span> cloudcore
+<span class="token function">nohup</span> cloudcore <span class="token operator">></span> cloudcore.log <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&amp;1</span> <span class="token operator">&amp;</span></code></pre>
+<p>重启边缘端</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">systemctl restart edgecore.service</code></pre>
+<p>如果遇到 kube-proxy 的报错，可以直接删除 kube-proxy，因为 KubeEdge 默认不可以与 kube-proxy 同时使用</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">kubectl -n kube-system delete ds kube-proxy</code></pre>
             </div>
             <hr/>
 
