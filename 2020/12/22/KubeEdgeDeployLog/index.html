@@ -658,6 +658,32 @@ kubernetes-dashboard   kubernetes-dashboard-74d688b6bc-x7fqm        <span class=
 <h3 id="安装-KubeEdge"><a href="#安装-KubeEdge" class="headerlink" title="安装 KubeEdge"></a>安装 KubeEdge</h3><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">wget</span> https://github.com/kubeedge/kubeedge/releases/download/v1.6.1/keadm-v1.6.1-linux-amd64.tar.gz
 <span class="token function">tar</span> -xvf keadm-v1.6.1-linux-amd64.tar.gz <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">cd</span> keadm-v1.6.1-linux-amd64/keadm
 ./keadm init --kube-config<span class="token operator">=</span>/etc/kubernetes/admin.conf --advertise-address<span class="token operator">=</span><span class="token string">"172.31.16.53"</span></code></pre>
+<p>如果遇到 kube-proxy 的报错，可以修改 kube-proxy 的配置，使其不对边缘端生效，因为 KubeEdge 默认不可以与 kube-proxy 同时使用</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">kubectl edit daemonsets.apps -n kube-system kube-proxy</code></pre>
+<p>修改后如下：</p>
+<pre class="language-yaml" data-language="yaml"><code class="language-yaml">···
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">revisionHistoryLimit</span><span class="token punctuation">:</span> <span class="token number">10</span>
+  <span class="token key atrule">selector</span><span class="token punctuation">:</span>
+    <span class="token key atrule">matchLabels</span><span class="token punctuation">:</span>
+      <span class="token key atrule">k8s-app</span><span class="token punctuation">:</span> kube<span class="token punctuation">-</span>proxy
+  <span class="token key atrule">template</span><span class="token punctuation">:</span>
+    <span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+      <span class="token key atrule">creationTimestamp</span><span class="token punctuation">:</span> <span class="token null important">null</span>
+      <span class="token key atrule">labels</span><span class="token punctuation">:</span>
+        <span class="token key atrule">k8s-app</span><span class="token punctuation">:</span> kube<span class="token punctuation">-</span>proxy
+    <span class="token key atrule">spec</span><span class="token punctuation">:</span>
+      <span class="token key atrule">affinity</span><span class="token punctuation">:</span>
+        <span class="token key atrule">nodeAffinity</span><span class="token punctuation">:</span>
+          <span class="token key atrule">requiredDuringSchedulingIgnoredDuringExecution</span><span class="token punctuation">:</span>
+            <span class="token key atrule">nodeSelectorTerms</span><span class="token punctuation">:</span>
+
+            <span class="token punctuation">-</span> <span class="token key atrule">matchExpressions</span><span class="token punctuation">:</span>
+              <span class="token punctuation">-</span> <span class="token key atrule">key</span><span class="token punctuation">:</span> node<span class="token punctuation">-</span>role.kubernetes.io/edge
+
+                <span class="token key atrule">operator</span><span class="token punctuation">:</span> DoesNotExist
+      <span class="token key atrule">containers</span><span class="token punctuation">:</span>
+···</code></pre>
 <h2 id="边缘端-Edge-Side"><a href="#边缘端-Edge-Side" class="headerlink" title="边缘端 (Edge Side)"></a>边缘端 (Edge Side)</h2><p><img src="/images/1617093701864.png" alt="边缘端系统环境"></p>
 <h3 id="安装-docker-1"><a href="#安装-docker-1" class="headerlink" title="安装 docker"></a>安装 docker</h3><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">apt</span> update <span class="token operator">&amp;&amp;</span> <span class="token function">apt</span> <span class="token function">install</span> apt-transport-https ca-certificates <span class="token function">curl</span> gnupg
 <span class="token function">curl</span> -fsSL https://download.docker.com/linux/ubuntu/gpg <span class="token operator">|</span> <span class="token function">sudo</span> gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
@@ -710,32 +736,6 @@ kubernetes-dashboard   kubernetes-dashboard-74d688b6bc-x7fqm        <span class=
 <span class="token function">nohup</span> cloudcore <span class="token operator">></span> cloudcore.log <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&amp;1</span> <span class="token operator">&amp;</span></code></pre>
 <p>重启边缘端</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">systemctl restart edgecore.service</code></pre>
-<p>如果遇到 kube-proxy 的报错，可以修改 kube-proxy 的配置，使其不对边缘端生效，因为 KubeEdge 默认不可以与 kube-proxy 同时使用</p>
-<pre class="language-bash" data-language="bash"><code class="language-bash">kubectl edit daemonsets.apps -n kube-system kube-proxy</code></pre>
-<p>修改后如下：</p>
-<pre class="language-yaml" data-language="yaml"><code class="language-yaml">···
-<span class="token key atrule">spec</span><span class="token punctuation">:</span>
-  <span class="token key atrule">revisionHistoryLimit</span><span class="token punctuation">:</span> <span class="token number">10</span>
-  <span class="token key atrule">selector</span><span class="token punctuation">:</span>
-    <span class="token key atrule">matchLabels</span><span class="token punctuation">:</span>
-      <span class="token key atrule">k8s-app</span><span class="token punctuation">:</span> kube<span class="token punctuation">-</span>proxy
-  <span class="token key atrule">template</span><span class="token punctuation">:</span>
-    <span class="token key atrule">metadata</span><span class="token punctuation">:</span>
-      <span class="token key atrule">creationTimestamp</span><span class="token punctuation">:</span> <span class="token null important">null</span>
-      <span class="token key atrule">labels</span><span class="token punctuation">:</span>
-        <span class="token key atrule">k8s-app</span><span class="token punctuation">:</span> kube<span class="token punctuation">-</span>proxy
-    <span class="token key atrule">spec</span><span class="token punctuation">:</span>
-      <span class="token key atrule">affinity</span><span class="token punctuation">:</span>
-        <span class="token key atrule">nodeAffinity</span><span class="token punctuation">:</span>
-          <span class="token key atrule">requiredDuringSchedulingIgnoredDuringExecution</span><span class="token punctuation">:</span>
-            <span class="token key atrule">nodeSelectorTerms</span><span class="token punctuation">:</span>
-
-            <span class="token punctuation">-</span> <span class="token key atrule">matchExpressions</span><span class="token punctuation">:</span>
-              <span class="token punctuation">-</span> <span class="token key atrule">key</span><span class="token punctuation">:</span> node<span class="token punctuation">-</span>role.kubernetes.io/edge
-
-                <span class="token key atrule">operator</span><span class="token punctuation">:</span> DoesNotExist
-      <span class="token key atrule">containers</span><span class="token punctuation">:</span>
-···</code></pre>
 <h2 id="在云端安装-Metrics-server"><a href="#在云端安装-Metrics-server" class="headerlink" title="在云端安装 Metrics-server"></a>在云端安装 Metrics-server</h2><p>设置 iptables</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">iptables -t nat -A OUTPUT -p tcp --dport <span class="token number">10350</span> -j DNAT --to <span class="token variable">$CLOUDCOREIPS</span>:10003</code></pre>
 <p>下载配置文件</p>
