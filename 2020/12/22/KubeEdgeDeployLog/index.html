@@ -736,11 +736,11 @@ kubernetes-dashboard   kubernetes-dashboard-74d688b6bc-x7fqm        <span class=
 <span class="token function">nohup</span> cloudcore <span class="token operator">></span> cloudcore.log <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&amp;1</span> <span class="token operator">&amp;</span></code></pre>
 <p>重启边缘端</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">systemctl restart edgecore.service</code></pre>
-<h2 id="在云端安装-Metrics-server"><a href="#在云端安装-Metrics-server" class="headerlink" title="在云端安装 Metrics-server"></a>在云端安装 Metrics-server</h2><p>设置 iptables</p>
+<h2 id="安装-Metrics-server"><a href="#安装-Metrics-server" class="headerlink" title="安装 Metrics-server"></a>安装 Metrics-server</h2><p>设置 iptables</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">iptables -t nat -A OUTPUT -p tcp --dport <span class="token number">10350</span> -j DNAT --to <span class="token variable">$CLOUDCOREIPS</span>:10003</code></pre>
 <p>下载配置文件</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">wget</span> https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml</code></pre>
-<p>修改 <code>components.yaml</code> ，使其只在云端部署，修改后的 Deployment 部分如下：</p>
+<p>修改 <code>components.yaml</code> ，修改后的 Deployment 部分如下：</p>
 <pre class="language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> apps/v1
 <span class="token key atrule">kind</span><span class="token punctuation">:</span> Deployment
 <span class="token key atrule">metadata</span><span class="token punctuation">:</span>
@@ -760,23 +760,21 @@ kubernetes-dashboard   kubernetes-dashboard-74d688b6bc-x7fqm        <span class=
       <span class="token key atrule">labels</span><span class="token punctuation">:</span>
         <span class="token key atrule">k8s-app</span><span class="token punctuation">:</span> metrics<span class="token punctuation">-</span>server
     <span class="token key atrule">spec</span><span class="token punctuation">:</span>
-      <span class="token key atrule">affinity</span><span class="token punctuation">:</span> <span class="token comment"># 新添加</span>
+      <span class="token key atrule">affinity</span><span class="token punctuation">:</span>
         <span class="token key atrule">nodeAffinity</span><span class="token punctuation">:</span>
           <span class="token key atrule">requiredDuringSchedulingIgnoredDuringExecution</span><span class="token punctuation">:</span>
             <span class="token key atrule">nodeSelectorTerms</span><span class="token punctuation">:</span>
 
             <span class="token punctuation">-</span> <span class="token key atrule">matchExpressions</span><span class="token punctuation">:</span>
+              <span class="token punctuation">-</span> <span class="token key atrule">key</span><span class="token punctuation">:</span> node<span class="token punctuation">-</span>role.kubernetes.io/master
 
-              <span class="token comment">#Specify which label in [kubectl get nodes --show-labels] you want to match</span>
+                <span class="token key atrule">operator</span><span class="token punctuation">:</span> Exists
+      <span class="token key atrule">tolerations</span><span class="token punctuation">:</span>
 
-              <span class="token punctuation">-</span> <span class="token key atrule">key</span><span class="token punctuation">:</span> kubernetes.io/hostname
+      <span class="token punctuation">-</span> <span class="token key atrule">key</span><span class="token punctuation">:</span> node<span class="token punctuation">-</span>role.kubernetes.io/master
 
-                <span class="token key atrule">operator</span><span class="token punctuation">:</span> In
-                <span class="token key atrule">values</span><span class="token punctuation">:</span>
-                <span class="token comment">#Specify the value in key</span>
-
-                <span class="token punctuation">-</span> kubeedge<span class="token punctuation">-</span>cloud   &lt;<span class="token punctuation">-</span><span class="token punctuation">-</span> 云端主机名
-
+        <span class="token key atrule">operator</span><span class="token punctuation">:</span> Exists
+        <span class="token key atrule">effect</span><span class="token punctuation">:</span> NoSchedule
       <span class="token key atrule">containers</span><span class="token punctuation">:</span>
 
       <span class="token punctuation">-</span> <span class="token key atrule">args</span><span class="token punctuation">:</span>
@@ -834,7 +832,7 @@ kubernetes-dashboard   kubernetes-dashboard-74d688b6bc-x7fqm        <span class=
 <pre class="language-ini" data-language="ini"><code class="language-ini"><span class="token selector">[Service]</span>
 <span class="token constant">Environment</span><span class="token attr-value"><span class="token punctuation">=</span>"HTTP_PROXY=http://127.0.0.1:1080"</span>
 <span class="token constant">Environment</span><span class="token attr-value"><span class="token punctuation">=</span>"HTTPS_PROXY=http://127.0.0.1:1080"</span>
-<span class="token constant">Environment</span><span class="token attr-value"><span class="token punctuation">=</span>"NO_PROXY=10.96.0.0/16,127.0.0.0/8,172.16.0.0/12,9.0.0.0/8,192.168.0.0/16"</span></code></pre>
+<span class="token constant">Environment</span><span class="token attr-value"><span class="token punctuation">=</span>"NO_PROXY=10.0.0.0/8,127.0.0.0/8,172.16.0.0/12,9.0.0.0/8,192.168.0.0/16"</span></code></pre>
 <p>重启 docker 服务</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">systemctl daemon-reload
 systemctl restart docker</code></pre>
