@@ -420,14 +420,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1.8k
+                        2.2k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        9 分
+                        11 分
                     </div>
                     
                 
@@ -671,7 +671,7 @@ kubernetes-dashboard   kubernetes-dashboard-74d688b6bc-x7fqm        <span class=
 <span class="token function">tar</span> -xvf keadm-v1.6.1-linux-amd64.tar.gz <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">cd</span> keadm-v1.6.1-linux-amd64/keadm</code></pre>
 <h3 id="加入云端"><a href="#加入云端" class="headerlink" title="加入云端"></a>加入云端</h3><p>根据之前得到的 Token 在边缘节点执行加入操作</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">./keadm <span class="token function">join</span> --cloudcore-ipport<span class="token operator">=</span><span class="token number">172.31</span>.16.53:10000 --token<span class="token operator">=</span>27a37ef16159f7d3be8fae95d588b79b3adaaf92727b72659eb89758c66ffda2.eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1OTAyMTYwNzd9.JBj8LLYWXwbbvHKffJBpPd5CyxqapRQYDIXtFZErgYE</code></pre>
-<h2 id="开启-kubectl-logs-功能"><a href="#开启-kubectl-logs-功能" class="headerlink" title="开启 kubectl logs 功能"></a>开启 <code>kubectl logs</code> 功能</h2><p>在云端<br>设置 <code>CLOUDCOREIPS</code> 变量为云端 IP</p>
+<h2 id="开启-kubectl-logs-功能"><a href="#开启-kubectl-logs-功能" class="headerlink" title="开启 kubectl logs 功能"></a>开启 <code>kubectl logs</code> 功能</h2><p><strong>在云端</strong>设置 <code>CLOUDCOREIPS</code> 变量为云端 IP</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">export</span> <span class="token assign-left variable">CLOUDCOREIPS</span><span class="token operator">=</span><span class="token string">"172.31.16.53"</span></code></pre>
 <p>为云端的 CloudStream 生成证书，下载并运行脚本</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> /etc/kubeedge
@@ -710,8 +710,136 @@ kubernetes-dashboard   kubernetes-dashboard-74d688b6bc-x7fqm        <span class=
 <span class="token function">nohup</span> cloudcore <span class="token operator">></span> cloudcore.log <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&amp;1</span> <span class="token operator">&amp;</span></code></pre>
 <p>重启边缘端</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">systemctl restart edgecore.service</code></pre>
-<p>如果遇到 kube-proxy 的报错，可以直接删除 kube-proxy，因为 KubeEdge 默认不可以与 kube-proxy 同时使用</p>
-<pre class="language-bash" data-language="bash"><code class="language-bash">kubectl -n kube-system delete ds kube-proxy</code></pre>
+<p>如果遇到 kube-proxy 的报错，可以修改 kube-proxy 的配置，使其不对边缘端生效，因为 KubeEdge 默认不可以与 kube-proxy 同时使用</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">kubectl edit daemonsets.apps -n kube-system kube-proxy</code></pre>
+<p>修改后如下：</p>
+<pre class="language-yaml" data-language="yaml"><code class="language-yaml">···
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">revisionHistoryLimit</span><span class="token punctuation">:</span> <span class="token number">10</span>
+  <span class="token key atrule">selector</span><span class="token punctuation">:</span>
+    <span class="token key atrule">matchLabels</span><span class="token punctuation">:</span>
+      <span class="token key atrule">k8s-app</span><span class="token punctuation">:</span> kube<span class="token punctuation">-</span>proxy
+  <span class="token key atrule">template</span><span class="token punctuation">:</span>
+    <span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+      <span class="token key atrule">creationTimestamp</span><span class="token punctuation">:</span> <span class="token null important">null</span>
+      <span class="token key atrule">labels</span><span class="token punctuation">:</span>
+        <span class="token key atrule">k8s-app</span><span class="token punctuation">:</span> kube<span class="token punctuation">-</span>proxy
+    <span class="token key atrule">spec</span><span class="token punctuation">:</span>
+      <span class="token key atrule">affinity</span><span class="token punctuation">:</span>
+        <span class="token key atrule">nodeAffinity</span><span class="token punctuation">:</span>
+          <span class="token key atrule">requiredDuringSchedulingIgnoredDuringExecution</span><span class="token punctuation">:</span>
+            <span class="token key atrule">nodeSelectorTerms</span><span class="token punctuation">:</span>
+
+            <span class="token punctuation">-</span> <span class="token key atrule">matchExpressions</span><span class="token punctuation">:</span>
+              <span class="token punctuation">-</span> <span class="token key atrule">key</span><span class="token punctuation">:</span> node<span class="token punctuation">-</span>role.kubernetes.io/edge
+
+                <span class="token key atrule">operator</span><span class="token punctuation">:</span> DoesNotExist
+      <span class="token key atrule">containers</span><span class="token punctuation">:</span>
+···</code></pre>
+<h2 id="在云端安装-Metrics-server"><a href="#在云端安装-Metrics-server" class="headerlink" title="在云端安装 Metrics-server"></a>在云端安装 Metrics-server</h2><p>设置 iptables</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">iptables -t nat -A OUTPUT -p tcp --dport <span class="token number">10350</span> -j DNAT --to <span class="token variable">$CLOUDCOREIPS</span>:10003</code></pre>
+<p>下载配置文件</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">wget</span> https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml</code></pre>
+<p>修改 <code>components.yaml</code> ，使其只在云端部署，修改后的 Deployment 部分如下：</p>
+<pre class="language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> apps/v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Deployment
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">labels</span><span class="token punctuation">:</span>
+    <span class="token key atrule">k8s-app</span><span class="token punctuation">:</span> metrics<span class="token punctuation">-</span>server
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> metrics<span class="token punctuation">-</span>server
+  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> kube<span class="token punctuation">-</span>system
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">selector</span><span class="token punctuation">:</span>
+    <span class="token key atrule">matchLabels</span><span class="token punctuation">:</span>
+      <span class="token key atrule">k8s-app</span><span class="token punctuation">:</span> metrics<span class="token punctuation">-</span>server
+  <span class="token key atrule">strategy</span><span class="token punctuation">:</span>
+    <span class="token key atrule">rollingUpdate</span><span class="token punctuation">:</span>
+      <span class="token key atrule">maxUnavailable</span><span class="token punctuation">:</span> <span class="token number">0</span>
+  <span class="token key atrule">template</span><span class="token punctuation">:</span>
+    <span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+      <span class="token key atrule">labels</span><span class="token punctuation">:</span>
+        <span class="token key atrule">k8s-app</span><span class="token punctuation">:</span> metrics<span class="token punctuation">-</span>server
+    <span class="token key atrule">spec</span><span class="token punctuation">:</span>
+      <span class="token key atrule">affinity</span><span class="token punctuation">:</span> <span class="token comment"># 新添加</span>
+        <span class="token key atrule">nodeAffinity</span><span class="token punctuation">:</span>
+          <span class="token key atrule">requiredDuringSchedulingIgnoredDuringExecution</span><span class="token punctuation">:</span>
+            <span class="token key atrule">nodeSelectorTerms</span><span class="token punctuation">:</span>
+
+            <span class="token punctuation">-</span> <span class="token key atrule">matchExpressions</span><span class="token punctuation">:</span>
+
+              <span class="token comment">#Specify which label in [kubectl get nodes --show-labels] you want to match</span>
+
+              <span class="token punctuation">-</span> <span class="token key atrule">key</span><span class="token punctuation">:</span> kubernetes.io/hostname
+
+                <span class="token key atrule">operator</span><span class="token punctuation">:</span> In
+                <span class="token key atrule">values</span><span class="token punctuation">:</span>
+                <span class="token comment">#Specify the value in key</span>
+
+                <span class="token punctuation">-</span> kubeedge<span class="token punctuation">-</span>cloud   &lt;<span class="token punctuation">-</span><span class="token punctuation">-</span> 云端主机名
+
+      <span class="token key atrule">containers</span><span class="token punctuation">:</span>
+
+      <span class="token punctuation">-</span> <span class="token key atrule">args</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> <span class="token punctuation">-</span><span class="token punctuation">-</span>cert<span class="token punctuation">-</span>dir=/tmp
+        <span class="token punctuation">-</span> <span class="token punctuation">-</span><span class="token punctuation">-</span>secure<span class="token punctuation">-</span>port=4443
+        <span class="token punctuation">-</span> <span class="token punctuation">-</span><span class="token punctuation">-</span>kubelet<span class="token punctuation">-</span>preferred<span class="token punctuation">-</span>address<span class="token punctuation">-</span>types=InternalIP<span class="token punctuation">,</span>ExternalIP<span class="token punctuation">,</span>Hostname
+        <span class="token punctuation">-</span> <span class="token punctuation">-</span><span class="token punctuation">-</span>kubelet<span class="token punctuation">-</span>use<span class="token punctuation">-</span>node<span class="token punctuation">-</span>status<span class="token punctuation">-</span>port <span class="token comment"># 确保有此项</span>
+        <span class="token punctuation">-</span> <span class="token punctuation">-</span><span class="token punctuation">-</span>kubelet<span class="token punctuation">-</span>insecure<span class="token punctuation">-</span>tls
+
+        <span class="token key atrule">image</span><span class="token punctuation">:</span> k8s.gcr.io/metrics<span class="token punctuation">-</span>server/metrics<span class="token punctuation">-</span>server<span class="token punctuation">:</span>v0.4.2
+        <span class="token key atrule">imagePullPolicy</span><span class="token punctuation">:</span> IfNotPresent
+        <span class="token key atrule">livenessProbe</span><span class="token punctuation">:</span>
+          <span class="token key atrule">failureThreshold</span><span class="token punctuation">:</span> <span class="token number">3</span>
+          <span class="token key atrule">httpGet</span><span class="token punctuation">:</span>
+            <span class="token key atrule">path</span><span class="token punctuation">:</span> /livez
+            <span class="token key atrule">port</span><span class="token punctuation">:</span> https
+            <span class="token key atrule">scheme</span><span class="token punctuation">:</span> HTTPS
+          <span class="token key atrule">periodSeconds</span><span class="token punctuation">:</span> <span class="token number">10</span>
+        <span class="token key atrule">name</span><span class="token punctuation">:</span> metrics<span class="token punctuation">-</span>server
+        <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+
+        <span class="token punctuation">-</span> <span class="token key atrule">containerPort</span><span class="token punctuation">:</span> <span class="token number">4443</span>
+
+          <span class="token key atrule">name</span><span class="token punctuation">:</span> https
+          <span class="token key atrule">protocol</span><span class="token punctuation">:</span> TCP
+        <span class="token key atrule">readinessProbe</span><span class="token punctuation">:</span>
+          <span class="token key atrule">failureThreshold</span><span class="token punctuation">:</span> <span class="token number">3</span>
+          <span class="token key atrule">httpGet</span><span class="token punctuation">:</span>
+            <span class="token key atrule">path</span><span class="token punctuation">:</span> /readyz
+            <span class="token key atrule">port</span><span class="token punctuation">:</span> https
+            <span class="token key atrule">scheme</span><span class="token punctuation">:</span> HTTPS
+          <span class="token key atrule">periodSeconds</span><span class="token punctuation">:</span> <span class="token number">10</span>
+        <span class="token key atrule">securityContext</span><span class="token punctuation">:</span>
+          <span class="token key atrule">readOnlyRootFilesystem</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+          <span class="token key atrule">runAsNonRoot</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+          <span class="token key atrule">runAsUser</span><span class="token punctuation">:</span> <span class="token number">1000</span>
+        <span class="token key atrule">volumeMounts</span><span class="token punctuation">:</span>
+
+        <span class="token punctuation">-</span> <span class="token key atrule">mountPath</span><span class="token punctuation">:</span> /tmp
+
+          <span class="token key atrule">name</span><span class="token punctuation">:</span> tmp<span class="token punctuation">-</span>dir
+      <span class="token key atrule">nodeSelector</span><span class="token punctuation">:</span>
+        <span class="token key atrule">kubernetes.io/os</span><span class="token punctuation">:</span> linux
+      <span class="token key atrule">priorityClassName</span><span class="token punctuation">:</span> system<span class="token punctuation">-</span>cluster<span class="token punctuation">-</span>critical
+      <span class="token key atrule">serviceAccountName</span><span class="token punctuation">:</span> metrics<span class="token punctuation">-</span>server
+      <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+
+      <span class="token punctuation">-</span> <span class="token key atrule">emptyDir</span><span class="token punctuation">:</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+
+        <span class="token key atrule">name</span><span class="token punctuation">:</span> tmp<span class="token punctuation">-</span>dir
+      <span class="token key atrule">hostNetwork</span><span class="token punctuation">:</span> <span class="token boolean important">true </span><span class="token comment"># 新添加</span></code></pre>
+<p>设置 docker 代理</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> /etc/systemd/system/docker.service.d/proxy.conf</code></pre>
+<p>内容如下：</p>
+<pre class="language-ini" data-language="ini"><code class="language-ini"><span class="token selector">[Service]</span>
+<span class="token constant">Environment</span><span class="token attr-value"><span class="token punctuation">=</span>"HTTP_PROXY=http://127.0.0.1:1080"</span>
+<span class="token constant">Environment</span><span class="token attr-value"><span class="token punctuation">=</span>"HTTPS_PROXY=http://127.0.0.1:1080"</span>
+<span class="token constant">Environment</span><span class="token attr-value"><span class="token punctuation">=</span>"NO_PROXY=10.96.0.0/16,127.0.0.0/8,172.16.0.0/12,9.0.0.0/8,192.168.0.0/16"</span></code></pre>
+<p>重启 docker 服务</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">systemctl daemon-reload
+systemctl restart docker</code></pre>
+<p>应用 <code>components.yaml</code></p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">kubectl apply -f components.yaml</code></pre>
             </div>
             <hr/>
 
