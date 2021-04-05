@@ -658,7 +658,7 @@ kubernetes-dashboard   kubernetes-dashboard-74d688b6bc-x7fqm        <span class=
 <h3 id="安装-KubeEdge"><a href="#安装-KubeEdge" class="headerlink" title="安装 KubeEdge"></a>安装 KubeEdge</h3><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">wget</span> https://github.com/kubeedge/kubeedge/releases/download/v1.6.1/keadm-v1.6.1-linux-amd64.tar.gz
 <span class="token function">tar</span> -xvf keadm-v1.6.1-linux-amd64.tar.gz <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">cd</span> keadm-v1.6.1-linux-amd64/keadm
 ./keadm init --kube-config<span class="token operator">=</span>/etc/kubernetes/admin.conf --advertise-address<span class="token operator">=</span><span class="token string">"172.31.16.53"</span></code></pre>
-<p>如果遇到 kube-proxy 的报错，可以修改 kube-proxy 的配置，使其不对边缘端生效，因为 KubeEdge 默认不可以与 kube-proxy 同时使用</p>
+<p>因为 KubeEdge 默认不可以与 kube-proxy 同时使用，所以要修改 kube-proxy 的配置，使其不对边缘端生效</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">kubectl edit daemonsets.apps -n kube-system kube-proxy</code></pre>
 <p>修改后如下：</p>
 <pre class="language-yaml" data-language="yaml"><code class="language-yaml">···
