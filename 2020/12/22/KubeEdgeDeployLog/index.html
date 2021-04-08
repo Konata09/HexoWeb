@@ -684,6 +684,23 @@ kubernetes-dashboard   kubernetes-dashboard-74d688b6bc-x7fqm        <span class=
                 <span class="token key atrule">operator</span><span class="token punctuation">:</span> DoesNotExist
       <span class="token key atrule">containers</span><span class="token punctuation">:</span>
 ···</code></pre>
+<h3 id="添加-Cloudcore-为系统服务"><a href="#添加-Cloudcore-为系统服务" class="headerlink" title="添加 Cloudcore 为系统服务"></a>添加 Cloudcore 为系统服务</h3><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> /etc/systemd/system/cloudcore.service</code></pre>
+<p>添加以下内容：</p>
+<pre class="language-ini" data-language="ini"><code class="language-ini"><span class="token selector">[Unit]</span>
+<span class="token constant">Description</span><span class="token attr-value"><span class="token punctuation">=</span>cloudcore.service</span>
+
+<span class="token selector">[Service]</span>
+<span class="token constant">Type</span><span class="token attr-value"><span class="token punctuation">=</span>simple</span>
+<span class="token constant">ExecStart</span><span class="token attr-value"><span class="token punctuation">=</span>/usr/local/bin/cloudcore</span>
+<span class="token constant">Restart</span><span class="token attr-value"><span class="token punctuation">=</span>always</span>
+<span class="token constant">RestartSec</span><span class="token attr-value"><span class="token punctuation">=</span>10</span>
+
+<span class="token selector">[Install]</span>
+<span class="token constant">WantedBy</span><span class="token attr-value"><span class="token punctuation">=</span>multi-user.target</span></code></pre>
+<p>启动服务</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">systemctl daemon-reload <span class="token operator">&amp;&amp;</span> systemctl <span class="token builtin class-name">enable</span> cloudcore
+<span class="token function">killall</span> cloudcore
+systemctl start cloudcore</code></pre>
 <h2 id="边缘端-Edge-Side"><a href="#边缘端-Edge-Side" class="headerlink" title="边缘端 (Edge Side)"></a>边缘端 (Edge Side)</h2><p><img src="/images/1617093701864.png" alt="边缘端系统环境"></p>
 <h3 id="安装-docker-1"><a href="#安装-docker-1" class="headerlink" title="安装 docker"></a>安装 docker</h3><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">apt</span> update <span class="token operator">&amp;&amp;</span> <span class="token function">apt</span> <span class="token function">install</span> apt-transport-https ca-certificates <span class="token function">curl</span> gnupg
 <span class="token function">curl</span> -fsSL https://download.docker.com/linux/ubuntu/gpg <span class="token operator">|</span> <span class="token function">sudo</span> gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
@@ -782,7 +799,7 @@ kubernetes-dashboard   kubernetes-dashboard-74d688b6bc-x7fqm        <span class=
         <span class="token punctuation">-</span> <span class="token punctuation">-</span><span class="token punctuation">-</span>secure<span class="token punctuation">-</span>port=4443
         <span class="token punctuation">-</span> <span class="token punctuation">-</span><span class="token punctuation">-</span>kubelet<span class="token punctuation">-</span>preferred<span class="token punctuation">-</span>address<span class="token punctuation">-</span>types=InternalIP<span class="token punctuation">,</span>ExternalIP<span class="token punctuation">,</span>Hostname
         <span class="token punctuation">-</span> <span class="token punctuation">-</span><span class="token punctuation">-</span>kubelet<span class="token punctuation">-</span>use<span class="token punctuation">-</span>node<span class="token punctuation">-</span>status<span class="token punctuation">-</span>port <span class="token comment"># 确保有此项</span>
-        <span class="token punctuation">-</span> <span class="token punctuation">-</span><span class="token punctuation">-</span>kubelet<span class="token punctuation">-</span>insecure<span class="token punctuation">-</span>tls
+        <span class="token punctuation">-</span> <span class="token punctuation">-</span><span class="token punctuation">-</span>kubelet<span class="token punctuation">-</span>insecure<span class="token punctuation">-</span>tls <span class="token comment"># 确保有此项</span>
 
         <span class="token key atrule">image</span><span class="token punctuation">:</span> k8s.gcr.io/metrics<span class="token punctuation">-</span>server/metrics<span class="token punctuation">-</span>server<span class="token punctuation">:</span>v0.4.2
         <span class="token key atrule">imagePullPolicy</span><span class="token punctuation">:</span> IfNotPresent
