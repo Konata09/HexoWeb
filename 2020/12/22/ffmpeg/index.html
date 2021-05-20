@@ -433,7 +433,7 @@ ffmpeg -ss 5990  -i in.aac -t 181 -c co">
 <h3 id="视频转图片序列"><a href="#视频转图片序列" class="headerlink" title="视频转图片序列"></a>视频转图片序列</h3><pre class="language-bash" data-language="bash"><code class="language-bash">ffmpeg -i input.mp4 -vf <span class="token assign-left variable">fps</span><span class="token operator">=</span><span class="token number">30</span>/1.001 %0d.jpg <span class="token comment"># 29.97fps 的视频，每帧都取</span>
 ffmpeg -i input.mp4 -vf <span class="token assign-left variable">fps</span><span class="token operator">=</span><span class="token number">1</span>/60 %0d.png <span class="token comment"># 每 60 帧抽取一幅图片</span></code></pre>
 <h3 id="Opus-转-CAF-封装"><a href="#Opus-转-CAF-封装" class="headerlink" title="Opus 转 CAF 封装"></a>Opus 转 CAF 封装</h3><pre class="language-bash" data-language="bash"><code class="language-bash">ffmpeg -i input.opus -c:a copy output.caf</code></pre>
-<h3 id="局域网直播本地视频设备"><a href="#局域网直播本地视频设备" class="headerlink" title="局域网直播本地视频设备"></a>局域网直播本地视频设备</h3><h2 id="Server"><a href="#Server" class="headerlink" title="Server"></a>Server</h2><pre class="language-bash" data-language="bash"><code class="language-bash">ffmpeg -re -f 捕获驱动 -video_size 640x480 -r <span class="token number">30</span> -i 设备 -acodec none -b:v 1M -fflags nobuffer -f mpegts udp://239.255.1.2:1234
+<h3 id="局域网直播本地视频设备"><a href="#局域网直播本地视频设备" class="headerlink" title="局域网直播本地视频设备"></a>局域网直播本地视频设备</h3><h4 id="Server"><a href="#Server" class="headerlink" title="Server"></a>Server</h4><pre class="language-bash" data-language="bash"><code class="language-bash">ffmpeg -re -f 捕获驱动 -video_size 640x480 -r <span class="token number">30</span> -i 设备 -acodec none -b:v 1M -fflags nobuffer -f mpegts udp://239.255.1.2:1234
                       ^分辨率              ^帧率         ^无音频       ^视频码率                 ^视频编码</code></pre>
 <blockquote>
 <p>macOS 可能需要去掉 <code>-re</code> 选项  </p>
@@ -453,7 +453,7 @@ ffmpeg -i input.mp4 -vf <span class="token assign-left variable">fps</span><span
 <li>Linux: <code>ls -l  /dev | grep video</code></li>
 <li>Windows: <code>ffmpeg -f dshow -list_devices true-i dummy</code></li>
 </ul>
-<h2 id="Client"><a href="#Client" class="headerlink" title="Client"></a>Client</h2><pre class="language-bash" data-language="bash"><code class="language-bash">ffplay -fflags nobuffer -flags low_delay -sync ext udp://239.255.1.2:1234</code></pre>
+<h4 id="Client"><a href="#Client" class="headerlink" title="Client"></a>Client</h4><pre class="language-bash" data-language="bash"><code class="language-bash">ffplay -fflags nobuffer -flags low_delay -sync ext udp://239.255.1.2:1234</code></pre>
             </div>
             <hr/>
 
