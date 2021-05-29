@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://konata.tech/"/>
-  <updated>2021-03-07T05:26:31.377Z</updated>
+  <updated>2021-05-29T11:14:06.662Z</updated>
   <id>http://konata.tech/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ARM Cortex-A9 开发</title>
+    <link href="http://konata.tech/2021/05/29/armEmbedded/"/>
+    <id>http://konata.tech/2021/05/29/armEmbedded/</id>
+    <published>2021-05-29T09:25:47.000Z</published>
+    <updated>2021-05-29T11:14:06.662Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;嵌入式-ARM-技术概论&quot;&gt;&lt;a href=&quot;#嵌入式-ARM-技术概论&quot; class=&quot;headerlink&quot; title=&quot;嵌入式 ARM 技术概论&quot;&gt;&lt;/a&gt;嵌入式 ARM 技术概论&lt;/h2&gt;&lt;h3 id=&quot;Cortex-A9-八种工作模式&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="Miscellaneous" scheme="http://konata.tech/categories/Miscellaneous/"/>
+    
+    
+      <category term="ARM" scheme="http://konata.tech/tags/ARM/"/>
+    
+      <category term="Cortex-A" scheme="http://konata.tech/tags/Cortex-A/"/>
+    
+  </entry>
   
   <entry>
     <title>CentOS 连接 iSCSI 存储</title>
@@ -168,7 +196,7 @@
     <link href="http://konata.tech/2020/11/18/armAssembly/"/>
     <id>http://konata.tech/2020/11/18/armAssembly/</id>
     <published>2020-11-18T05:49:56.000Z</published>
-    <updated>2021-02-02T17:42:06.123Z</updated>
+    <updated>2021-05-29T09:28:39.376Z</updated>
     
     <summary type="html">
     
@@ -182,7 +210,7 @@
     
     </summary>
     
-      <category term="Ops" scheme="http://konata.tech/categories/Ops/"/>
+      <category term="Miscellaneous" scheme="http://konata.tech/categories/Miscellaneous/"/>
     
     
       <category term="ARM" scheme="http://konata.tech/tags/ARM/"/>
@@ -536,32 +564,6 @@
         
           &lt;p&gt;编译器的求值策略通常分为传值调用以及传名调用，Thunk 函数是应用于编译器的传名调用实现，往往是将参数放到一个临时函数之中，再将这个临时函数传入函数体，这个临时函数就叫做 Thunk 函数。  &lt;/p&gt;
 &lt;h2 id=&quot;求值策略&quot;&gt;&lt;a href=&quot;#求值策略&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="JavaScript" scheme="http://konata.tech/categories/JavaScript/"/>
-    
-    
-      <category term="JavaScript" scheme="http://konata.tech/tags/JavaScript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>事件流模型</title>
-    <link href="http://konata.tech/2020/09/11/eventStreamModel/"/>
-    <id>http://konata.tech/2020/09/11/eventStreamModel/</id>
-    <published>2020-09-11T12:31:43.000Z</published>
-    <updated>2020-09-11T13:13:18.696Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;事件捕获 (Event Capturing) 是一种从上而下的传播方式，以 &lt;code&gt;click&lt;/code&gt; 事件为例，其会从最外层根节向内传播到达点击的节点，为从最外层节点逐渐向内传播直到目标节点的方式。&lt;br&gt;事件冒泡 (Event Bubbling)
         
       
     
