@@ -421,14 +421,14 @@ fiq
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        503
+                        614
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        1 分
+                        2 分
                     </div>
                     
                 
@@ -493,7 +493,7 @@ fiq
 <td>可以在安全模式和非安全模式之间进行转换</td>
 </tr>
 </tbody></table>
-<p>除了用户模式之外的其他 7 种处理器模式被称为<strong>特权模式 (Privileged Mode)</strong>，除了用户模式和系统模式之外的 6 种模式被称为<strong>异常模式</strong>。</p>
+<p>除了用户模式之外的其他 7 种处理器模式被称为<strong><em>特权模式 (Privileged Mode)</em></strong>，除了用户模式和系统模式之外的 6 种模式被称为<strong>异常模式</strong>。</p>
 <h3 id="寄存器组织"><a href="#寄存器组织" class="headerlink" title="寄存器组织"></a>寄存器组织</h3><p>Cortex-A 处理器内部有 40 个 32 位寄存器，其中包括：</p>
 <ul>
 <li>32 个通用寄存器</li>
@@ -504,7 +504,26 @@ fiq
 <p>特殊的几个寄存器：<br>​- R13: SP(Stack Pointer) 寄存器（用作堆栈指针）<br>​- R14: LR(Link Register) 寄存器（连接寄存器）<br>​- R15: PC(Program Counter) 寄存器（程序计数器）</p>
 <p><img src="/images/1622286476218.png" alt="Cortex-A 寄存器组织"></p>
 <h3 id="程序状态寄存器"><a href="#程序状态寄存器" class="headerlink" title="程序状态寄存器"></a>程序状态寄存器</h3><p><img src="/images/1622286737769.png" alt="CPSR"></p>
-<p><a href="armAssembly?id=%e7%a8%8b%e5%ba%8f%e7%8a%b6%e6%80%81%e5%af%84%e5%ad%98%e5%99%a8%e8%af%bb%e5%86%99%e6%8c%87%e4%bb%a4">程序状态寄存器读写指令</a></p>
+<p>条件位：</p>
+<ul>
+<li>N = <strong>N</strong>egative result from ALU</li>
+<li>Z = <strong>Z</strong>ero result from ALU</li>
+<li>C = ALU operation <strong>C</strong>arried out or  borrow</li>
+<li>V = ALU operation oVerflowed</li>
+</ul>
+<p>Q 位：</p>
+<ul>
+<li>仅 ARM  v5TE-J 架构支持</li>
+<li>指示饱和状态</li>
+</ul>
+<p>J 位</p>
+<ul>
+<li>仅 ARM  v5TE-J 架构支持</li>
+<li><code>T = 0; J = 1</code> 处理器处于 Jazelle 状态</li>
+<li>也可以和其他位组合</li>
+</ul>
+<p>DNM 位：Do Not  Modify<br>GE[3:0] 大于或等于（当执行 SIMD 指令时有效）<br>IT[7:2]    IF…. THEN…. 指令执行状态位</p>
+<p>关于 PSR 的操作见：<a href="armAssembly?id=%e7%a8%8b%e5%ba%8f%e7%8a%b6%e6%80%81%e5%af%84%e5%ad%98%e5%99%a8%e8%af%bb%e5%86%99%e6%8c%87%e4%bb%a4">程序状态寄存器读写指令</a></p>
 
             </div>
             <hr/>
