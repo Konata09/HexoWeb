@@ -421,14 +421,14 @@ fiq
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        987
+                        4.9k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        3 分
+                        18 分
                     </div>
                     
                 
@@ -569,6 +569,357 @@ fiq
 <li>11111 System mode</li>
 </ul>
 <p>关于 PSR 的操作见：<a href="armAssembly?id=%e7%a8%8b%e5%ba%8f%e7%8a%b6%e6%80%81%e5%af%84%e5%ad%98%e5%99%a8%e8%af%bb%e5%86%99%e6%8c%87%e4%bb%a4">程序状态寄存器读写指令</a></p>
+<h2 id="指令系统"><a href="#指令系统" class="headerlink" title="指令系统"></a><a href="armAssembly?id=arm-%e6%8c%87%e4%bb%a4%e7%9a%84%e5%9f%ba%e6%9c%ac%e6%a0%bc%e5%bc%8f">指令系统</a></h2><h2 id="汇编语言程序设计"><a href="#汇编语言程序设计" class="headerlink" title="汇编语言程序设计"></a>汇编语言程序设计</h2><h3 id="GNU-ARM-内联汇编"><a href="#GNU-ARM-内联汇编" class="headerlink" title="GNU ARM 内联汇编"></a>GNU ARM 内联汇编</h3><p>格式：</p>
+<pre class="language-c" data-language="c"><code class="language-c"><span class="token keyword">asm</span> <span class="token keyword">volatile</span> <span class="token punctuation">(</span><span class="token string">"asm code"</span><span class="token operator">:</span> output<span class="token operator">:</span> input<span class="token operator">:</span> changed<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>如果后面没有任何内容， <code>:</code> 可以省略，前面或中间的 <code>:</code> 不能省略。<br>汇编语句放到字符串中，多个字符串之间只要不加任何符号编译完之后就会变成一个字符串，汇编指令之间必须要换行。</p>
+<pre class="language-c" data-language="c"><code class="language-c"><span class="token string">"mov r0, r0\n\t"</span>
+<span class="token string">"mov r1, r1\n\t"</span>
+<span class="token string">"mov r2, r2"</span></code></pre>
+<h4 id="output-格式"><a href="#output-格式" class="headerlink" title="output 格式"></a>output 格式</h4><pre class="language-c" data-language="c"><code class="language-c"><span class="token keyword">asm</span> <span class="token keyword">volatile</span> <span class="token punctuation">(</span><span class="token string">"asm code"</span><span class="token operator">:</span> <span class="token string">"constraint"</span><span class="token punctuation">(</span>variable<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<ol>
+<li><code>constraint</code>定义<code>variable</code>的存放位置：<ul>
+<li><code>r</code> : 使用任何可用的通用寄存器</li>
+<li><code>m</code> : 使用变量的内存地址</li>
+</ul>
+</li>
+<li><code>output</code>修饰符：<ul>
+<li><code>+</code> : 可读可写</li>
+<li><code>=</code> : 只写</li>
+<li><code>&amp;</code> : 该输出操作数不能使用输出部分使用过的寄存器，只能 <code>+&amp;</code> 或 <code>=&amp;</code> 方式使用</li>
+</ul>
+</li>
+</ol>
+<h4 id="input-格式"><a href="#input-格式" class="headerlink" title="input 格式"></a>input 格式</h4><pre class="language-c" data-language="c"><code class="language-c"><span class="token keyword">asm</span> <span class="token keyword">volatile</span> <span class="token punctuation">(</span><span class="token string">"asm code"</span><span class="token operator">::</span><span class="token string">"constraint"</span> <span class="token punctuation">(</span>variable<span class="token operator">/</span>immediate<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> </code></pre>
+<ol>
+<li><code>constraint</code>定义<code>variable / immediate</code> 的存放位置：<ul>
+<li><code>r</code> : 使用任何可用的通用寄存器（变量和立即数都可以）</li>
+<li><code>m</code> : 使用变量的内存地址（不能用立即数）</li>
+<li><code>i</code> : 使用立即数（不能用变量）</li>
+</ul>
+</li>
+</ol>
+<h4 id="使用占位符"><a href="#使用占位符" class="headerlink" title="使用占位符"></a>使用占位符</h4><pre class="language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">100</span><span class="token punctuation">,</span> b <span class="token operator">=</span> <span class="token number">200</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> result<span class="token punctuation">;</span>
+<span class="token keyword">asm</span> <span class="token keyword">volatile</span><span class="token punctuation">(</span>
+    <span class="token string">"mov %0,%3\n\t"</span>
+    <span class="token string">"ldr r0,%1\n\t"</span>
+    <span class="token string">"ldr r1,%2\n\t"</span>
+    <span class="token string">"str r0,%2\n\t"</span>
+    <span class="token string">"str r1,%1\n\t"</span>
+             <span class="token operator">:</span> <span class="token string">"=r"</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"+m"</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"+m"</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span>
+             <span class="token operator">:</span> <span class="token string">"i"</span><span class="token punctuation">(</span><span class="token number">123</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h4 id="引用占位符"><a href="#引用占位符" class="headerlink" title="引用占位符"></a>引用占位符</h4><pre class="language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> num <span class="token operator">=</span> <span class="token number">100</span><span class="token punctuation">;</span>
+<span class="token keyword">asm</span> <span class="token keyword">volatile</span><span class="token punctuation">(</span>
+ <span class="token string">"add %0,%1,#100\n\t"</span>
+    <span class="token operator">:</span> <span class="token string">"=r"</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span>
+    <span class="token operator">:</span> <span class="token string">"0"</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token comment">// 引用时不能加%，只能是 input 引用 output，引用是为了更能分清输出输入部分</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h4 id="amp-修饰符"><a href="#amp-修饰符" class="headerlink" title="&amp; 修饰符"></a><code>&amp;</code> 修饰符</h4><pre class="language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> num<span class="token punctuation">;</span>
+<span class="token keyword">asm</span> <span class="token keyword">volatile</span><span class="token punctuation">(</span>
+ <span class="token string">"mov %0,%1\n\t"</span>
+    <span class="token operator">:</span> <span class="token string">"=&amp;r"</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span> <span class="token comment">// 输入和输出的寄存器不相同</span>
+    <span class="token operator">:</span> <span class="token string">"r"</span><span class="token punctuation">(</span><span class="token number">123</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h4 id="内联汇编示例"><a href="#内联汇编示例" class="headerlink" title="内联汇编示例"></a>内联汇编示例</h4><pre class="language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<span class="token keyword">unsigned</span> <span class="token keyword">long</span> <span class="token function">ByteSwap</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">long</span> val<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> ch<span class="token punctuation">;</span>
+    <span class="token keyword">asm</span> <span class="token keyword">volatile</span><span class="token punctuation">(</span>
+        <span class="token string">"eor r3, %1, %1, ror #16\n\t"</span>
+        <span class="token string">"bic r3, r3, #0x00FF0000\n\t"</span>
+        <span class="token string">"mov %0, %1, ror, #8\n\t"</span>
+        <span class="token string">"eor %0, %0, r3, lsr #8"</span>
+                 <span class="token operator">:</span> <span class="token string">"=r"</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span>
+                 <span class="token operator">:</span> <span class="token string">"0"</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span>
+                 <span class="token operator">:</span> <span class="token string">"r3"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">unsigned</span> <span class="token keyword">long</span> test_a <span class="token operator">=</span> <span class="token number">0x1234</span><span class="token punctuation">,</span> result<span class="token punctuation">;</span>
+    result <span class="token operator">=</span> <span class="token function">ByteSwap</span><span class="token punctuation">(</span>test_a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Result:%d\r\n"</span><span class="token punctuation">,</span> result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span></code></pre>
+<h3 id="汇编和-C-语言混合编程"><a href="#汇编和-C-语言混合编程" class="headerlink" title="汇编和 C 语言混合编程"></a>汇编和 C 语言混合编程</h3><h4 id="C-程序调用汇编程序"><a href="#C-程序调用汇编程序" class="headerlink" title="C 程序调用汇编程序"></a>C 程序调用汇编程序</h4><pre class="language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<span class="token keyword">extern</span> <span class="token keyword">void</span> <span class="token function">strcopy</span><span class="token punctuation">(</span><span class="token keyword">char</span><span class="token operator">*</span> d<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> s<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> srcstr <span class="token operator">=</span> <span class="token string">"First string - source "</span><span class="token punctuation">;</span>
+    <span class="token keyword">char</span> dststr<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"Second string - destination"</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Before copying:\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%s\n%s\n"</span><span class="token punctuation">,</span> srcstr<span class="token punctuation">,</span> dststr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">strcopy</span><span class="token punctuation">(</span>dststr<span class="token punctuation">,</span> srcstr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"After copying:\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%s\n%s\n"</span><span class="token punctuation">,</span> srcstr<span class="token punctuation">,</span> dststr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+</code></pre>
+<pre class="language-nasm" data-language="nasm"><code class="language-nasm">.<span class="token keyword">global strcopy</span>
+<span class="token label function">strcopy:</span>              <span class="token comment">; R0 指向目的字符串，R1 指向源字符串</span>
+ LDRB <span class="token register variable">R2</span>, <span class="token operator">[</span><span class="token register variable">R1</span><span class="token operator">]</span>, #<span class="token number">1</span>    <span class="token comment">; 加载字节并更新源字符串指针地址</span>
+ STRB <span class="token register variable">R2</span>, <span class="token operator">[</span><span class="token register variable">R2</span><span class="token operator">]</span>, #<span class="token number">1</span>    <span class="token comment">; 存储字节并更新目的字符串指针地址</span>
+ CMP <span class="token register variable">R2</span>, #<span class="token number">0</span>           <span class="token comment">; 判断是否为字符串结尾</span>
+ BNE strcopy          <span class="token comment">; 如果不是，程序跳转到 strcopy 继续复制</span>
+ MOV PC, LR           <span class="token comment">; 程序返回</span></code></pre>
+<h4 id="汇编程序调用-C-程序"><a href="#汇编程序调用-C-程序" class="headerlink" title="汇编程序调用 C 程序"></a>汇编程序调用 C 程序</h4><pre class="language-c" data-language="c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">g</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> b<span class="token punctuation">,</span> <span class="token keyword">int</span> c<span class="token punctuation">,</span> <span class="token keyword">int</span> d<span class="token punctuation">,</span> <span class="token keyword">int</span> e<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> a <span class="token operator">+</span> b <span class="token operator">+</span> c <span class="token operator">+</span> d <span class="token operator">+</span> e<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span></code></pre>
+<pre class="language-nasm" data-language="nasm"><code class="language-nasm"># int f(i)&#123; return g(i, <span class="token number">2</span><span class="token operator">*</span>i, <span class="token number">3</span><span class="token operator">*</span>i, <span class="token number">4</span><span class="token operator">*</span>i, <span class="token number">5</span><span class="token operator">*</span>i)<span class="token comment">; &#125;</span>
+.text
+.<span class="token keyword">global _start</span>
+<span class="token label function">_start:</span>
+ STR LR, <span class="token operator">[</span><span class="token register variable">SP</span>, #<span class="token operator">-</span><span class="token number">4</span><span class="token operator">]</span><span class="token operator">!</span>         <span class="token comment">; 保存返回地址 LR</span>
+ ADD <span class="token register variable">R1</span>, <span class="token register variable">R0</span>, <span class="token register variable">R0</span>             <span class="token comment">; 计算 2*i（第 2 个参数）</span>
+ ADD <span class="token register variable">R2</span>, <span class="token register variable">R1</span>, <span class="token register variable">R0</span>             <span class="token comment">; 计算 3*i（第 3 个参数）</span>
+ ADD <span class="token register variable">R3</span>, <span class="token register variable">R1</span>, <span class="token register variable">R2</span>             <span class="token comment">; 计算 5*i</span>
+ STR <span class="token register variable">R3</span>, <span class="token operator">[</span><span class="token register variable">SP</span>, #<span class="token operator">-</span><span class="token number">4</span><span class="token operator">]</span><span class="token operator">!</span>         <span class="token comment">; 第 5 个参数需要通过堆栈传递</span>
+ ADD <span class="token register variable">R3</span>, <span class="token register variable">R1</span>, <span class="token register variable">R1</span>             <span class="token comment">; 计算 4*i（第 4 个参数）</span>
+ <span class="token register variable">BL</span> g                       <span class="token comment">; 调用 C 程序</span>
+ ADD <span class="token register variable">SP</span>, <span class="token register variable">SP</span>, #<span class="token number">4</span>             <span class="token comment">; 从堆栈中删除第 5 个参数</span>
+ LDR PC, <span class="token operator">[</span><span class="token register variable">SP</span><span class="token operator">]</span>, #<span class="token number">4</span>           <span class="token comment">; 返回</span></code></pre>
+<h2 id="GPIO"><a href="#GPIO" class="headerlink" title="GPIO"></a>GPIO</h2><p>常用寄存器：</p>
+<ol>
+<li>引脚控制寄存器 (GPxCON)</li>
+<li>引脚数据寄存器 (GPxDAT)</li>
+<li>引脚上下拉寄存器 (GPxPUD)</li>
+<li>引脚驱动能力寄存器 (GPxDRV)</li>
+</ol>
+<h2 id="异常及中断处理"><a href="#异常及中断处理" class="headerlink" title="异常及中断处理"></a>异常及中断处理</h2><h3 id="ARM-的-7-种异常类型"><a href="#ARM-的-7-种异常类型" class="headerlink" title="ARM 的 7 种异常类型"></a>ARM 的 7 种异常类型</h3><table>
+<thead>
+<tr>
+<th>异常类型</th>
+<th>处理器模式</th>
+<th>执行低地址</th>
+<th>执行高地址</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>复位异常</td>
+<td>特权模式</td>
+<td>0x00000000</td>
+<td>0xFFFF0000</td>
+</tr>
+<tr>
+<td>未定义指令异常</td>
+<td>未定义指令中止模式</td>
+<td>0x00000004</td>
+<td>0xFFFF0004</td>
+</tr>
+<tr>
+<td>软中断异常</td>
+<td>特权模式</td>
+<td>0x00000008</td>
+<td>0xFFFF0008</td>
+</tr>
+<tr>
+<td>预取异常</td>
+<td>数据访问中止模式</td>
+<td>0x0000000C</td>
+<td>0xFFFF000C</td>
+</tr>
+<tr>
+<td>数据异常</td>
+<td>数据访问中止模式</td>
+<td>0x00000010</td>
+<td>0xFFFF0010</td>
+</tr>
+<tr>
+<td>外部中断异常</td>
+<td>外部中断请求模式</td>
+<td>0x00000018</td>
+<td>0xFFFF0018</td>
+</tr>
+<tr>
+<td>快速中断异常</td>
+<td>快速中断请求模式</td>
+<td>0x0000001C</td>
+<td>0xFFFF001C</td>
+</tr>
+</tbody></table>
+<h3 id="复位异常中断处理"><a href="#复位异常中断处理" class="headerlink" title="复位异常中断处理"></a>复位异常中断处理</h3><ol>
+<li>设置异常中断向量表</li>
+<li>初始化数据栈和寄存器</li>
+<li>初始化存储系统，如系统中的 MMU 等</li>
+<li>初始化关键 I/O 设备</li>
+<li>使能中断</li>
+<li>处理器切换到合适的模式</li>
+<li>初始化 C 变量，跳转到应用程序执行</li>
+</ol>
+<h2 id="FIQ-和-IRQ-中断"><a href="#FIQ-和-IRQ-中断" class="headerlink" title="FIQ 和 IRQ 中断"></a>FIQ 和 IRQ 中断</h2><h3 id="中断软件分支处理-NVIC-和-GIC"><a href="#中断软件分支处理-NVIC-和-GIC" class="headerlink" title="中断软件分支处理 (NVIC 和 GIC)"></a>中断软件分支处理 (NVIC 和 GIC)</h3><p>两个必须处理的步骤：</p>
+<ol>
+<li>现场保护</li>
+<li>将中断控制器中的中断标志位清除</li>
+</ol>
+<h3 id="通用中断控制器-GIC"><a href="#通用中断控制器-GIC" class="headerlink" title="通用中断控制器 (GIC)"></a>通用中断控制器 (GIC)</h3><p>GIC 架构分为 分配器 (Distributor), CPU 接口 (CPU interface), 虚拟 CPU 接口 (Virtual CPU interface)</p>
+<h4 id="GIC-中断控制器中断类型"><a href="#GIC-中断控制器中断类型" class="headerlink" title="GIC 中断控制器中断类型"></a>GIC 中断控制器中断类型</h4><ol>
+<li><p>软中断 (SGI)</p>
+<p>中断号 0-15 为 SGI 保留</p>
+</li>
+<li><p>专用外设中断 (PPI)</p>
+<p>中断号 16-31 为 PPI 保留</p>
+</li>
+<li><p>共享外设中断 (SPI)</p>
+<p>中断号 32-1020 用于共享外设中断</p>
+</li>
+</ol>
+<h4 id="GIC-中断控制器中断状态"><a href="#GIC-中断控制器中断状态" class="headerlink" title="GIC 中断控制器中断状态"></a>GIC 中断控制器中断状态</h4><p>GIC 中断在不同的状态间切换：  </p>
+<ol>
+<li><p>Inactive（无效）</p>
+<p>中断没有发生</p>
+</li>
+<li><p>Pending（待处理）</p>
+<p>中断已经发生，但是等待核心来处理。待处理中断都做为 CPU 接口发送到核心处理的候选者</p>
+</li>
+<li><p>Active（正在处理）</p>
+<p>中断发送给了核心，目前正在进行中断处理</p>
+</li>
+<li><p>Active and pending（处理和待处理）</p>
+<p>一个中断源正在进行中断处理而 GIC 又接收到来自同一中断源的中断触发信号</p>
+</li>
+</ol>
+<h4 id="GIC-寄存器"><a href="#GIC-寄存器" class="headerlink" title="GIC 寄存器"></a>GIC 寄存器</h4><ol>
+<li>CPU 中断通道使能寄存器 (ICCICR_CPUn n=0~3)</li>
+<li>中断使能寄存器 (ICDISERm_CPUn m=0<del>4 n=0</del>3)</li>
+<li>CPU 优先级过滤寄存器 (ICCPMR_CPUn n=0~3)</li>
+<li>GIC 中断使能寄存器 (ICDDCR)</li>
+<li>中断目标 CPU 配置寄存器 (ICDIPTRm_CPUn m=0<del>39 n=0</del>3)</li>
+<li>中断响应寄存器 (ICCIAR_CPUn n=0~3)</li>
+<li>GIC 中断状态清除寄存器 (ICDICPRm_CPUn m=0<del>5 n=0</del>3)</li>
+<li>中断处理结束寄存器 (ICCEOIR_CPUn n=0~3)</li>
+<li>I2C 传输配置寄存器 (I2CCONn n=0~7)</li>
+</ol>
+<h2 id="PWM-定时器"><a href="#PWM-定时器" class="headerlink" title="PWM 定时器"></a>PWM 定时器</h2><p>PWM（脉冲宽度调制）：是利用处理器的数字输出对模拟电路进行控制的一种非常有效的技术，广泛应用在测量、通信、功率控制个变换等多个领域。<br>PWM 控制技术优点：控制简单、灵活、动态响应好；从处理器到被控制系统信号都是数字形式的，在进行数模转换时，可将噪声影响降到最低。<br>实质：定时器的本质就是一个计数器，只不过计数器记录的是处理器外部发生的事情，定时器记录时钟脉冲的个数。</p>
+<h3 id="PWM-定时器寄存器"><a href="#PWM-定时器寄存器" class="headerlink" title="PWM 定时器寄存器"></a>PWM 定时器寄存器</h3><ol>
+<li>定时器配置寄存器 0 (TFCG0)</li>
+<li>定时器配置寄存器 1 (TFCG1)</li>
+<li>定时器控制寄存器 (TCON)</li>
+<li>定时器 n 计数缓冲寄存器 (TCNTBn)</li>
+<li>定时器 n 比较缓冲寄存器 (TCMPBn)</li>
+</ol>
+<h3 id="启动定时器"><a href="#启动定时器" class="headerlink" title="启动定时器"></a>启动定时器</h3><ol>
+<li>向 TCNTBn 和 TCMPBn xie’ru 写入初始值</li>
+<li>置位相应定时器的手动更新位</li>
+<li>置位相应定时器的启动位启动定时器，清除手动更新位</li>
+</ol>
+<h2 id="看门狗定时器"><a href="#看门狗定时器" class="headerlink" title="看门狗定时器"></a>看门狗定时器</h2><h3 id="看门狗定时器作用"><a href="#看门狗定时器作用" class="headerlink" title="看门狗定时器作用"></a>看门狗定时器作用</h3><p>看门狗定时器用于检测程序的正常运行，当微控制器受到干扰进入错误状态后，使系统在一定时间间隔内自动复位重启。因此看门狗是保证系统长期、可靠个稳定运行的有效措施。主要的作用就是防死机。</p>
+<h3 id="看门狗定时器原理"><a href="#看门狗定时器原理" class="headerlink" title="看门狗定时器原理"></a>看门狗定时器原理</h3><p>启动看门狗后，必须在看门狗复位之前向特定寄存器中写入数值，不让看门狗定时器溢出，这样看门狗就会重新计时。当用户程序在规定时间内没有向特定寄存器中依次写入数值，看门狗定时器计数溢出，引起看门狗复位，看门狗产生一个强制系统复位。这样可以使程序重新运行，减少程序跑死的危害。看门狗需要不停的接收信号或者重新设置计数值，保持计数值不为 0，如果一旦一段时间内接收不到信号或者计数值为 0，看门狗就会发出复位信号。</p>
+<h3 id="看门狗定时器特点"><a href="#看门狗定时器特点" class="headerlink" title="看门狗定时器特点"></a>看门狗定时器特点</h3><p>需要不停的接收信号（一些外置看门狗芯片）或重新设置计数值（如 Exynos4412 的看门狗控制器），保持计数值不为 0。一旦一段时间接收不到信号，或计数值为 0，看门狗将发出复位信号复位系统或产生中断。</p>
+<p><img src="/images/1622375782560.png" alt="看门狗功能框图"></p>
+<h3 id="看门狗定时器寄存器"><a href="#看门狗定时器寄存器" class="headerlink" title="看门狗定时器寄存器"></a>看门狗定时器寄存器</h3><ol>
+<li>看门狗定时器控制寄存器 (WTCON)</li>
+<li>看门狗定时器数据寄存器 (WTDAT)</li>
+<li>看门狗计数寄存器 (WTCNT)</li>
+</ol>
+<h3 id="看门狗定时器软件设计"><a href="#看门狗定时器软件设计" class="headerlink" title="看门狗定时器软件设计"></a>看门狗定时器软件设计</h3><ol>
+<li>设置看门狗中断操作，包括全局中断和看门狗中断的使能及看门狗中断向量的定义。如果只是进行复位操作，这一步可以不用设置</li>
+<li>对看门狗控制寄存器（WTCON）进行设置，包括设置预分频比例因子、分频器的分频值、中断使能和复位使能等</li>
+<li>对看门狗数据寄存器（WTDAT）和看门狗计数寄存器（WTCNT）进行设置</li>
+<li>启动看门狗定时器。</li>
+</ol>
+<h2 id="RTC-定时器"><a href="#RTC-定时器" class="headerlink" title="RTC 定时器"></a>RTC 定时器</h2><h3 id="RTC-定时器作用"><a href="#RTC-定时器作用" class="headerlink" title="RTC 定时器作用"></a>RTC 定时器作用</h3><p>为一个嵌入式系统提供可靠的时间，并且要求系统处于关机状态下也能正常工作。</p>
+<h3 id="RTC-定时器寄存器"><a href="#RTC-定时器寄存器" class="headerlink" title="RTC 定时器寄存器"></a>RTC 定时器寄存器</h3><ol>
+<li>RTC 控制寄存器 (RTCCON)</li>
+<li>RTC 时间值寄存器 (BCDSEC、BCDMIN、BCDHOUR 等）</li>
+</ol>
+<h3 id="RTC-定时器软件设计"><a href="#RTC-定时器软件设计" class="headerlink" title="RTC 定时器软件设计"></a>RTC 定时器软件设计</h3><ol>
+<li>设置 RTC 控制寄存器中的 CTLEN 为 1，使能时间值寄存器数据的读/写</li>
+<li>设置 RTC 当前时钟时间</li>
+<li>在掉电前，RTCEN 位应该清除为 0 来预防误写入 RTC 寄存器中</li>
+<li>读取年、月、日等相关寄存器的数据通过串口打印到屏幕上</li>
+</ol>
+<h2 id="I2C-总线"><a href="#I2C-总线" class="headerlink" title="I2C 总线"></a>I2C 总线</h2><p>I2C 总线是两线式串行总线，是同步通信的一种特殊形式。<br>I2C 接口是全双工的，只要求两条总线线路：一条串行数据线 SDA、一条串行时钟线 SCL。</p>
+<h3 id="I2C-总线的优点"><a href="#I2C-总线的优点" class="headerlink" title="I2C 总线的优点"></a>I2C 总线的优点</h3><p>接口线少，控制方式简单，器件封装形式小，通信速率较高。</p>
+<h3 id="I2C-总线术语"><a href="#I2C-总线术语" class="headerlink" title="I2C 总线术语"></a>I2C 总线术语</h3><table>
+<thead>
+<tr>
+<th>术语</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>发送器</td>
+<td>发送数据到总线的器件</td>
+</tr>
+<tr>
+<td>接收器</td>
+<td>从总线接收数据的器件</td>
+</tr>
+<tr>
+<td>主机</td>
+<td>初始化发送，产生时钟信号和终止发送的器件</td>
+</tr>
+<tr>
+<td>从机</td>
+<td>被主机寻址的器件</td>
+</tr>
+<tr>
+<td>多主机</td>
+<td>同时有多于一个主机尝试控制总线但不破坏报文</td>
+</tr>
+<tr>
+<td>仲裁</td>
+<td>是一个在有多于一个主机尝试控制总线，但只允许其中一个控制总线并使报文不被破坏的过程</td>
+</tr>
+<tr>
+<td>同步</td>
+<td>两个或多个器件同步时钟信号的过程</td>
+</tr>
+</tbody></table>
+<h3 id="I2C-总线信号和时序"><a href="#I2C-总线信号和时序" class="headerlink" title="I2C 总线信号和时序"></a>I2C 总线信号和时序</h3><p>I2C 总线传输过程中有三种信号：开始信号（S）、结束信号（P）、应答信号（ACK）  </p>
+<p>开始信号：SCL 为高电平时，SDA 从高电平向低电平跳变，开始发送数据  </p>
+<p>结束信号：SCL 为高电平时，SDA 从低电平向高电平跳变，结束发送数据  </p>
+<p>应答信号：接收设备在接收到 8bit（一个字节）的数据后，在第 9 个时钟周期，向发送设备发送低电平，表示成功收到数据  </p>
+<p><img src="/images/i2c1.png" alt="I2C 总线信号"></p>
+<h3 id="I2C-通信流程"><a href="#I2C-通信流程" class="headerlink" title="I2C 通信流程"></a>I2C 通信流程</h3><ol>
+<li>开始时 SDA 和 SCL 线都是高电平，主机发送开始信号，SDA 向低电平跳变，开始数据传输。</li>
+<li>数据一位一位的进行传输，SCL 时钟为低电平周期时发送器发送数据，SDA 线上数据可以发送变化，SCL 时钟为高电平周期时接收器接收数据，SDA 线上数据必须保持稳定</li>
+<li>当传输到 8bit 时，在第 9 个时钟周期，发送器释放对 SDA 线的控制，SDA 线恢复高电平，若第 9 个时钟周期内，SDA 线始终为高电平，发送器没有接收到 ACK 信号，就会发出停止信号停止本次通信或者重新发送开始信号。如果接收到 ACK 信号就会继续发送下一个字节。</li>
+<li>直到主机发送结束信号，结束本次通信。</li>
+</ol>
+<h3 id="I2C-总线寻址"><a href="#I2C-总线寻址" class="headerlink" title="I2C 总线寻址"></a>I2C 总线寻址</h3><p>I2C 设备用一个 7 位或 10 位的数字唯一标识自己。I2C 设备地址由固定部分和可编程部分组成，这样就可以支持一个 I2C 总线上挂载多个同样的器件，而地址不同。I2C 地址的可编程部分的最大数量就是可以连接到 I2C 总线上相同的数量。  </p>
+<p>通常是开始信号之后的第一个字节决定了主机选择哪一个从机（例外的情况是可以寻址所有器件的广播地址）。第一个字节的前 7 位组成了从机地址，第 8 位决定了数据传输的方向，如果第 8 位是 0 表示主机会向从机写信息，是 1 表示主机会向从机读信息。  </p>
+<p><img src="/images/i2c2.png" alt="I2C 总线地址"></p>
+<p>如果是 10 位编址的话，用开始信号后的两个字节表示地址，第一个字节的前 7 位是 11110XX（XX 是 10 位地址的两个最高位），第一个字节的第 8 位是 R/W 位，决定了数据传输的方向，第二个字节是地址剩下的 8 位。</p>
+<h3 id="I2C-控制器寄存器"><a href="#I2C-控制器寄存器" class="headerlink" title="I2C 控制器寄存器"></a>I2C 控制器寄存器</h3><ol>
+<li>I2C 传输配置寄存器 (I2CCONn  n=0~7)</li>
+<li>I2C 控制状态寄存器 (I2CSTATn  n=0~7)</li>
+<li>I2C 地址寄存器 (I2CADDn  n=0~7)</li>
+<li>I2C 接收发送数据寄存器 (I2CDSn  n=0~7)</li>
+<li>I2C 总线传输配置寄存器 (I2CLCn  n=0~7)</li>
+</ol>
+<h3 id="I2C-控制器操作流程"><a href="#I2C-控制器操作流程" class="headerlink" title="I2C 控制器操作流程"></a>I2C 控制器操作流程</h3><ol>
+<li>配置主机发送模式<ul>
+<li>设置对应的 I2C 引脚的功能为 SDA 和 SCL</li>
+<li>设置 <code>I2CCON[6]</code>，配置 I2C 发送时钟和中断使能</li>
+<li>设置 I2C 发送使能，<code>I2CSTAT[4]=0b1</code></li>
+</ul>
+</li>
+<li>将要通信的 I2C 从机的地址和读写位写入<code>I2CDS</code>寄存器</li>
+<li>将<code>0xF0</code>写入<code>I2CSTAT</code>寄存器<ul>
+<li>I2CSTAT[7:6] = 0b11 设置主机发送模式</li>
+<li>I2CSTAT[5] = 0b1 写 1，发送开始信号</li>
+<li>I2CSTAT[4] = 0b1 使能 I2C 串口发送</li>
+</ul>
+</li>
+<li>I2C 控制器发出开始信号后，在 02 中写入的<code>I2CDS</code>寄存器地址自动发送到 SDA 总线上，用来寻找从机</li>
+<li>在 ACK 周期后，I2C 控制器发生中断，<code>I2CCON[4]</code>被自动置 1，I2C 传输暂停</li>
+<li>I2C 数据通信是否结束，若结束跳转到 10 ，否则跳转到 07</li>
+<li>将要传输的数据写入 I2CDS 寄存器准备发送</li>
+<li>清除中断标志位，通过向<code>I2CCON[4]</code>中写 0 实现</li>
+<li>清除中断标志位后，<code>I2CDS</code>寄存器内的数据就开始发送到 SDA 总线上。发送完成后，跳转到 05</li>
+<li>将 <code>0xD0</code> 写入 <code>I2CSTAT</code> 寄存器<ul>
+<li>I2CSTAT[7:6] = 0b11 设置主机发送模式</li>
+<li>I2CSTAT[5] = 0b0 写 0，发送停止信号</li>
+<li>I2CSTAT[4] = 0b1 使能 I2C 串口发送和接收</li>
+</ul>
+</li>
+<li>清除中断标志位，通过向<code>I2CCON[0]</code>中写 0 实现</li>
+<li>延时等待一段时间，使得停止信号生效，I2C 通信结束</li>
+</ol>
+<p><img src="/images/i2c3.png" alt="I2C 控制器主机发送模式"></p>
+<h2 id="SPI-接口"><a href="#SPI-接口" class="headerlink" title="SPI 接口"></a>SPI 接口</h2><h3 id="SPI-总线引脚定义"><a href="#SPI-总线引脚定义" class="headerlink" title="SPI 总线引脚定义"></a>SPI 总线引脚定义</h3><p>SPI 总线主设备和从设备通信需要 4 条线连接（当单向传输时 3 条线也可以），每个 SPI 设备都有 4 个引脚供通信连接使用。四个引脚是：CLK, MISO, MOSI, CS<br>信号|信号描述<br>—|—<br>CLK 时钟信号|主设备发出，用于控制数据发送和接受的时序<br>MISO 时钟信号|做为主设备时，从从设备接收输入数据；做为从设备时，向主设备发送输出数据<br>MOSI 时钟信号|做为主设备时，向从设备发送输出数据；做为从设备时，从主设备接收输入设备<br>CS 片选信号|从设备选择信号，当 CS 为低电平时，所有的数据发送/接收依次被执行</p>
 
             </div>
             <hr/>
