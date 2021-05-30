@@ -421,14 +421,14 @@ fiq
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        5k
+                        5.2k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        19 分
+                        20 分
                     </div>
                     
                 
@@ -568,8 +568,8 @@ fiq
 <li>11011 Undfined mode</li>
 <li>11111 System mode</li>
 </ul>
-<p>关于 PSR 的操作见：<a href="armAssembly?id=%e7%a8%8b%e5%ba%8f%e7%8a%b6%e6%80%81%e5%af%84%e5%ad%98%e5%99%a8%e8%af%bb%e5%86%99%e6%8c%87%e4%bb%a4">程序状态寄存器读写指令</a></p>
-<h2 id="指令系统"><a href="#指令系统" class="headerlink" title="指令系统"></a><a href="armAssembly?id=arm-%e6%8c%87%e4%bb%a4%e7%9a%84%e5%9f%ba%e6%9c%ac%e6%a0%bc%e5%bc%8f">指令系统</a></h2><h2 id="汇编语言程序设计"><a href="#汇编语言程序设计" class="headerlink" title="汇编语言程序设计"></a>汇编语言程序设计</h2><h3 id="GNU-ARM-内联汇编"><a href="#GNU-ARM-内联汇编" class="headerlink" title="GNU ARM 内联汇编"></a>GNU ARM 内联汇编</h3><p>格式：</p>
+<p>关于 PSR 的操作见：<a target="_blank" rel="noopener" href="https://note.konata.tech/#/armAssembly?id=%e7%a8%8b%e5%ba%8f%e7%8a%b6%e6%80%81%e5%af%84%e5%ad%98%e5%99%a8%e8%af%bb%e5%86%99%e6%8c%87%e4%bb%a4">程序状态寄存器读写指令</a></p>
+<h2 id="指令系统"><a href="#指令系统" class="headerlink" title="指令系统"></a><a target="_blank" rel="noopener" href="https://note.konata.tech/#/armAssembly?id=arm-%e6%8c%87%e4%bb%a4%e7%9a%84%e5%9f%ba%e6%9c%ac%e6%a0%bc%e5%bc%8f">指令系统</a></h2><h2 id="汇编语言程序设计"><a href="#汇编语言程序设计" class="headerlink" title="汇编语言程序设计"></a>汇编语言程序设计</h2><h3 id="GNU-ARM-内联汇编"><a href="#GNU-ARM-内联汇编" class="headerlink" title="GNU ARM 内联汇编"></a>GNU ARM 内联汇编</h3><p>格式：</p>
 <pre class="language-c" data-language="c"><code class="language-c"><span class="token keyword">asm</span> <span class="token keyword">volatile</span> <span class="token punctuation">(</span><span class="token string">"asm code"</span><span class="token operator">:</span> output<span class="token operator">:</span> input<span class="token operator">:</span> changed<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>如果后面没有任何内容， <code>:</code> 可以省略，前面或中间的 <code>:</code> 不能省略。<br>汇编语句放到字符串中，多个字符串之间只要不加任何符号编译完之后就会变成一个字符串，汇编指令之间必须要换行。</p>
 <pre class="language-c" data-language="c"><code class="language-c"><span class="token string">"mov r0, r0\n\t"</span>
@@ -971,6 +971,30 @@ fiq
 </tbody></table>
 <p><img src="/images/spi1.png" alt=""></p>
 <p><img src="/images/spi2.png" alt="SPI 总线 4 种传输模式"></p>
+<h3 id="SPI-控制器时钟源寄存器"><a href="#SPI-控制器时钟源寄存器" class="headerlink" title="SPI 控制器时钟源寄存器"></a>SPI 控制器时钟源寄存器</h3><ol>
+<li>SPI 时钟使能寄存器 (CLK_GATE_IP_PERIL)</li>
+<li>SPI 多路选择时钟输出屏蔽寄存器 (CLK_SRC_MASK_PERIL1)</li>
+<li>SPI 时钟源配置寄存器 (CLK_SRC_PERIL1)</li>
+<li>SPI 时钟分频寄存器 (CLK_DIV_PERILn  n=1, 2)</li>
+<li>SPI 时钟分频状态寄存器 (CLK_DIV_STAT_PERIL1)</li>
+</ol>
+<h3 id="SPI-控制器寄存器"><a href="#SPI-控制器寄存器" class="headerlink" title="SPI 控制器寄存器"></a>SPI 控制器寄存器</h3><ol>
+<li>SPI 传输配置寄存器 (CH_CFGn  n=0~2)</li>
+<li>SPI 模式配置寄存器 (MODE_CFGn  n=0~2)</li>
+<li>SPI 从机选择信号配置寄存器 (CS_REGn  n=0~2)</li>
+<li>SPI 状态寄存器 (SPI_STATUSn  n=0~2)</li>
+<li>SPI 数据发送寄存器 (SPI_TX_DATAn  n=0~2)</li>
+<li>SPI 数据接收寄存器 (SPI_RX_DATAn  n=0~2)</li>
+</ol>
+<h3 id="SPI-控制器软件设计"><a href="#SPI-控制器软件设计" class="headerlink" title="SPI 控制器软件设计"></a>SPI 控制器软件设计</h3><ol>
+<li>设置 SPI 控制器时钟源 (CLK_SRC_PERIL1、CLK_DIV_PERIL1)</li>
+<li>设置 SPI 数据传输格式和通道使能 (CH_CFGn)</li>
+<li>设置 SIP 工作模式 (MODE_CFG)</li>
+<li>设置 SPI 中断 (SPI_INT_ENn 可选）</li>
+<li>设置 SPI 包数量寄存器 (PACKET_CNT_REG 可选）</li>
+<li>发出从设备选择信号</li>
+<li>开始发送和接收数据</li>
+</ol>
 
             </div>
             <hr/>
