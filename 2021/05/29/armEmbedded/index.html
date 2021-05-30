@@ -421,14 +421,14 @@ fiq
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        4.9k
+                        5k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        18 分
+                        19 分
                     </div>
                     
                 
@@ -919,7 +919,56 @@ fiq
 <li>延时等待一段时间，使得停止信号生效，I2C 通信结束</li>
 </ol>
 <p><img src="/images/i2c3.png" alt="I2C 控制器主机发送模式"></p>
-<h2 id="SPI-接口"><a href="#SPI-接口" class="headerlink" title="SPI 接口"></a>SPI 接口</h2><h3 id="SPI-总线引脚定义"><a href="#SPI-总线引脚定义" class="headerlink" title="SPI 总线引脚定义"></a>SPI 总线引脚定义</h3><p>SPI 总线主设备和从设备通信需要 4 条线连接（当单向传输时 3 条线也可以），每个 SPI 设备都有 4 个引脚供通信连接使用。四个引脚是：CLK, MISO, MOSI, CS<br>信号|信号描述<br>—|—<br>CLK 时钟信号|主设备发出，用于控制数据发送和接受的时序<br>MISO 时钟信号|做为主设备时，从从设备接收输入数据；做为从设备时，向主设备发送输出数据<br>MOSI 时钟信号|做为主设备时，向从设备发送输出数据；做为从设备时，从主设备接收输入设备<br>CS 片选信号|从设备选择信号，当 CS 为低电平时，所有的数据发送/接收依次被执行</p>
+<h2 id="SPI-接口"><a href="#SPI-接口" class="headerlink" title="SPI 接口"></a>SPI 接口</h2><h3 id="SPI-总线引脚定义"><a href="#SPI-总线引脚定义" class="headerlink" title="SPI 总线引脚定义"></a>SPI 总线引脚定义</h3><p>SPI 总线主设备和从设备通信需要 4 条线连接（当单向传输时 3 条线也可以），每个 SPI 设备都有 4 个引脚供通信连接使用。四个引脚是：CLK, MISO, MOSI, CS</p>
+<table>
+<thead>
+<tr>
+<th>信号</th>
+<th>信号描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CLK 时钟信号</td>
+<td>主设备发出，用于控制数据发送和接受的时序</td>
+</tr>
+<tr>
+<td>MISO 时钟信号</td>
+<td>做为主设备时，从从设备接收输入数据；做为从设备时，向主设备发送输出数据</td>
+</tr>
+<tr>
+<td>MOSI 时钟信号</td>
+<td>做为主设备时，向从设备发送输出数据；做为从设备时，从主设备接收输入设备</td>
+</tr>
+<tr>
+<td>CS 片选信号</td>
+<td>从设备选择信号，当 CS 为低电平时，所有的数据发送/接收依次被执行</td>
+</tr>
+</tbody></table>
+<h3 id="SPI-总线数据传输格式设置"><a href="#SPI-总线数据传输格式设置" class="headerlink" title="SPI 总线数据传输格式设置"></a>SPI 总线数据传输格式设置</h3><p>通过设置 GPOL（极性）和 GPHA（相位）的值，我们选定当前要使用的 SPI 数据传输格式。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>GPOL</th>
+<th>GPHA</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>功能</td>
+<td>控制时钟极性</td>
+<td>控制时钟相位</td>
+</tr>
+<tr>
+<td>值为 0</td>
+<td>SPI 总线空闲时，SCK 为低电平</td>
+<td>SCK 第一个跳变沿采样</td>
+</tr>
+<tr>
+<td>值为 1</td>
+<td>SPI 总线空闲时，SCK 为高电平</td>
+<td>SCK 第二个跳变沿采样</td>
+</tr>
+</tbody></table>
 
             </div>
             <hr/>
