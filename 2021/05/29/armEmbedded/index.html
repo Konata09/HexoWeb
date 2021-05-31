@@ -421,7 +421,7 @@ fiq
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        5.2k
+                        5.3k
                     </div>
                     
 
@@ -621,7 +621,7 @@ fiq
     <span class="token operator">:</span> <span class="token string">"=&amp;r"</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span> <span class="token comment">// 输入和输出的寄存器不相同</span>
     <span class="token operator">:</span> <span class="token string">"r"</span><span class="token punctuation">(</span><span class="token number">123</span><span class="token punctuation">)</span>
 <span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<h4 id="内联汇编示例"><a href="#内联汇编示例" class="headerlink" title="内联汇编示例"></a>内联汇编示例</h4><pre class="language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<h4 id="内联汇编示例"><a href="#内联汇编示例" class="headerlink" title="内联汇编示例"></a>内联汇编示例</h4><h5 id="实现位交换"><a href="#实现位交换" class="headerlink" title="实现位交换"></a>实现位交换</h5><pre class="language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
 <span class="token keyword">unsigned</span> <span class="token keyword">long</span> <span class="token function">ByteSwap</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">long</span> val<span class="token punctuation">)</span>
 <span class="token punctuation">&#123;</span>
     <span class="token keyword">int</span> ch<span class="token punctuation">;</span>
@@ -642,6 +642,30 @@ fiq
     <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Result:%d\r\n"</span><span class="token punctuation">,</span> result<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span></code></pre>
+<h5 id="求-1-100-的和"><a href="#求-1-100-的和" class="headerlink" title="求 1~100 的和"></a>求 1~100 的和</h5><pre class="language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> b <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> result<span class="token punctuation">;</span>
+<span class="token keyword">asm</span> <span class="token keyword">volatile</span><span class="token punctuation">(</span>
+    <span class="token string">"LOOP:"</span>
+    <span class="token string">"ADD %2, %2, 1"</span>
+    <span class="token string">"ADD %1, %1, %2"</span>
+    <span class="token string">"CMP %2, #100"</span>
+    <span class="token string">"BNE LOOP"</span>
+    <span class="token string">"MOV %0, %1"</span>
+             <span class="token operator">:</span> <span class="token string">"=r"</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span>
+             <span class="token operator">:</span> <span class="token string">"+r"</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"+r"</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h5 id="求-5"><a href="#求-5" class="headerlink" title="求 5"></a>求 5</h5><pre class="language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">,</span> b <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> result<span class="token punctuation">;</span>
+<span class="token keyword">asm</span> <span class="token keyword">volatile</span><span class="token punctuation">(</span>
+    <span class="token string">"LOOP:"</span>
+    <span class="token string">"MUL %1, %1, %2"</span>
+    <span class="token string">"SUB %2, %2, #1"</span>
+    <span class="token string">"CMP %2, #0"</span>
+    <span class="token string">"BNE LOOP"</span>
+    <span class="token string">"MOV %0, %1"</span>
+             <span class="token operator">:</span> <span class="token string">"=r"</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span>
+             <span class="token operator">:</span> <span class="token string">"+r"</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"+r"</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span>
+<span class="token punctuation">)</span></code></pre>
 <h3 id="汇编和-C-语言混合编程"><a href="#汇编和-C-语言混合编程" class="headerlink" title="汇编和 C 语言混合编程"></a>汇编和 C 语言混合编程</h3><h4 id="C-程序调用汇编程序"><a href="#C-程序调用汇编程序" class="headerlink" title="C 程序调用汇编程序"></a>C 程序调用汇编程序</h4><pre class="language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
 <span class="token keyword">extern</span> <span class="token keyword">void</span> <span class="token function">strcopy</span><span class="token punctuation">(</span><span class="token keyword">char</span><span class="token operator">*</span> d<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> s<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -980,7 +1004,7 @@ fiq
 </ol>
 <h3 id="SPI-控制器寄存器"><a href="#SPI-控制器寄存器" class="headerlink" title="SPI 控制器寄存器"></a>SPI 控制器寄存器</h3><ol>
 <li>SPI 传输配置寄存器 (CH_CFGn  n=0~2)</li>
-<li>SPI 模式配置寄存器 (MODE_CFGn  n=0~2)</li>
+<li>SPI 模式配置寄存器 (MODE_CFGn  n=0~2)  </li>
 <li>SPI 从机选择信号配置寄存器 (CS_REGn  n=0~2)</li>
 <li>SPI 状态寄存器 (SPI_STATUSn  n=0~2)</li>
 <li>SPI 数据发送寄存器 (SPI_TX_DATAn  n=0~2)</li>

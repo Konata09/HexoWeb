@@ -1040,6 +1040,28 @@ LDR     <span class="token register variable">R3</span>,<span class="token opera
 <pre class="language-nasm" data-language="nasm"><code class="language-nasm">.<span class="token keyword">global    label</span></code></pre>
 <p>例：</p>
 <pre class="language-nasm" data-language="nasm"><code class="language-nasm">.glabal    _start   @将标号 _start 定义为全局标号</code></pre>
+<h2 id="例子-1"><a href="#例子-1" class="headerlink" title="例子"></a>例子</h2><h3 id="求-1-100-的和"><a href="#求-1-100-的和" class="headerlink" title="求 1~100 的和"></a>求 1~100 的和</h3><pre class="language-nasm" data-language="nasm"><code class="language-nasm"><span class="token label function">START:</span>
+ MOV <span class="token register variable">R0</span>, #<span class="token number">1</span>
+ MOV <span class="token register variable">R1</span>, #<span class="token number">1</span>
+<span class="token label function">LOOP:</span>
+ ADD <span class="token register variable">R1</span>, <span class="token register variable">R1</span>, #<span class="token number">1</span>
+ ADD <span class="token register variable">R0</span>, <span class="token register variable">R0</span>, <span class="token register variable">R1</span>
+ CMP <span class="token register variable">R1</span>, #<span class="token number">100</span>
+ BEQ END
+ BNE LOOP
+<span class="token label function">END:</span>
+ B END      <span class="token comment">; R0 中就是和</span></code></pre>
+<h3 id="求-5"><a href="#求-5" class="headerlink" title="求 5"></a>求 5</h3><pre class="language-nasm" data-language="nasm"><code class="language-nasm"><span class="token label function">START:</span>
+ MOV <span class="token register variable">R0</span>, #<span class="token number">5</span>
+ MOV <span class="token register variable">R1</span>, #<span class="token number">4</span>
+<span class="token label function">LOOP:</span>
+ MUL <span class="token register variable">R0</span>, <span class="token register variable">R0</span>, <span class="token register variable">R1</span>
+ SUB <span class="token register variable">R1</span>, <span class="token register variable">R1</span>, #<span class="token number">1</span>
+ CMP <span class="token register variable">R1</span>, #<span class="token number">0</span>
+ BEQ END
+ BNE LOOP
+<span class="token label function">END:</span>
+ B END      <span class="token comment">; R0 中就是阶乘</span></code></pre>
             </div>
             <hr/>
 
