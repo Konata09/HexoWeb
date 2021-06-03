@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://konata.tech/"/>
-  <updated>2021-05-31T01:52:26.273Z</updated>
+  <updated>2021-06-03T05:16:46.941Z</updated>
   <id>http://konata.tech/</id>
   
   <author>
@@ -17,11 +17,39 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Linux 驱动</title>
+    <link href="http://konata.tech/2021/06/03/linuxDriver/"/>
+    <id>http://konata.tech/2021/06/03/linuxDriver/</id>
+    <published>2021-06-03T05:00:23.000Z</published>
+    <updated>2021-06-03T05:16:46.941Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;字符设备驱动框架&quot;&gt;&lt;a href=&quot;#字符设备驱动框架&quot; class=&quot;headerlink&quot; title=&quot;字符设备驱动框架&quot;&gt;&lt;/a&gt;字符设备驱动框架&lt;/h2&gt;&lt;pre class=&quot;language-cpp&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Miscellaneous" scheme="http://konata.tech/categories/Miscellaneous/"/>
+    
+    
+      <category term="Linux" scheme="http://konata.tech/tags/Linux/"/>
+    
+      <category term="驱动" scheme="http://konata.tech/tags/%E9%A9%B1%E5%8A%A8/"/>
+    
+  </entry>
+  
+  <entry>
     <title>ARM Cortex-A9 开发</title>
     <link href="http://konata.tech/2021/05/29/armEmbedded/"/>
     <id>http://konata.tech/2021/05/29/armEmbedded/</id>
     <published>2021-05-29T09:25:47.000Z</published>
-    <updated>2021-05-31T01:52:26.273Z</updated>
+    <updated>2021-05-31T13:05:11.267Z</updated>
     
     <summary type="html">
     
@@ -546,33 +574,6 @@
     
     
       <category term="Linux" scheme="http://konata.tech/tags/Linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Thunk 函数</title>
-    <link href="http://konata.tech/2020/09/13/thunkFunction/"/>
-    <id>http://konata.tech/2020/09/13/thunkFunction/</id>
-    <published>2020-09-13T14:45:30.000Z</published>
-    <updated>2020-09-13T14:57:03.539Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;编译器的求值策略通常分为传值调用以及传名调用，Thunk 函数是应用于编译器的传名调用实现，往往是将参数放到一个临时函数之中，再将这个临时函数传入函数体，这个临时函数就叫做 Thunk 函数。  &lt;/p&gt;
-&lt;h2 id=&quot;求值策略&quot;&gt;&lt;a href=&quot;#求值策略&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="JavaScript" scheme="http://konata.tech/categories/JavaScript/"/>
-    
-    
-      <category term="JavaScript" scheme="http://konata.tech/tags/JavaScript/"/>
     
   </entry>
   
