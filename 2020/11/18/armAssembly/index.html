@@ -441,8 +441,8 @@ test:
     ADD <span class="token register variable">r0</span>, <span class="token register variable">r0</span>, <span class="token register variable">r1</span>
     MOV pc, lr
 .data   <span class="token operator">/</span><span class="token operator">*</span>定义数据段，即程序运行需要用到的数据<span class="token operator">*</span><span class="token operator">/</span>
-<span class="token label function">stack:</span>  .space <span class="token number">4</span><span class="token operator">*</span><span class="token number">512</span>    @分配 <span class="token number">4</span><span class="token operator">*</span><span class="token number">512</span> 大小的数据空间，缺省值为 <span class="token number">0</span>
-.end                    @汇编文件结束标志，常常省略不用</code></pre>
+<span class="token label function">stack:</span>  .space <span class="token number">4</span><span class="token operator">*</span><span class="token number">512</span>    <span class="token comment">; 分配 4*512 大小的数据空间，缺省值为 0</span>
+.end                    <span class="token comment">; 汇编文件结束标志，常常省略不用</span></code></pre>
 <ul>
 <li>在 GNU ARM 汇编语言程序中，以段 <code>section</code> 为单位组织代码。段是相对独立的指令或数据序列，可以具有特定的名称。</li>
 <li><code>a</code>允许段，<code>w</code>可写段，<code>x</code>执行段</li>
@@ -456,12 +456,12 @@ test:
 <span class="token label function">_start:</span>
     mov <span class="token register variable">r0</span>,#<span class="token number">9</span>
     mov <span class="token register variable">r1</span>,#<span class="token number">15</span>
-    add <span class="token register variable">r1</span>,<span class="token register variable">r1</span>,<span class="token register variable">r0</span> @<span class="token register variable">r1</span><span class="token operator">=</span><span class="token register variable">r0</span><span class="token operator">+</span><span class="token register variable">r1</span>
+    add <span class="token register variable">r1</span>,<span class="token register variable">r1</span>,<span class="token register variable">r0</span> <span class="token comment">;r1=r0+r1</span>
 <span class="token label function">stop:</span>
     b stop
 .data
-<span class="token label function">stack:</span> .space <span class="token number">4</span><span class="token operator">*</span><span class="token number">512</span> @分配 <span class="token number">4</span><span class="token operator">*</span><span class="token number">512</span> 大小的数据空间，缺省值为 <span class="token number">0</span></code></pre>
-<h3 id="语句格式"><a href="#语句格式" class="headerlink" title="语句格式"></a>语句格式</h3><pre class="language-nasm" data-language="nasm"><code class="language-nasm"><span class="token operator">[</span><span class="token operator">&lt;</span>label<span class="token operator">></span>:<span class="token operator">]</span> <span class="token operator">[</span><span class="token operator">&lt;</span>instruction or directive or pseudo<span class="token operator">-</span>instruction<span class="token operator">></span><span class="token operator">]</span> @comment</code></pre>
+<span class="token label function">stack:</span> .space <span class="token number">4</span><span class="token operator">*</span><span class="token number">512</span> <span class="token comment">; 分配 4*512 大小的数据空间，缺省值为 0</span></code></pre>
+<h3 id="语句格式"><a href="#语句格式" class="headerlink" title="语句格式"></a>语句格式</h3><pre class="language-nasm" data-language="nasm"><code class="language-nasm"><span class="token operator">[</span><span class="token operator">&lt;</span>label<span class="token operator">></span>:<span class="token operator">]</span> <span class="token operator">[</span><span class="token operator">&lt;</span>instruction or directive or pseudo<span class="token operator">-</span>instruction<span class="token operator">></span><span class="token operator">]</span> <span class="token comment">;comment</span></code></pre>
 <h4 id="标号-label"><a href="#标号-label" class="headerlink" title="标号 (label)"></a>标号 (label)</h4><ul>
 <li>GNU 汇编中，任何以冒号结尾的标识符都被认为是一个标号，而不一定非要在一行的开始。</li>
 <li>在 ARM 汇编中，标号代表它所在的地址，因此也可以当作变量或者函数来使用。</li>
@@ -490,7 +490,7 @@ test:
 <li>八进制数以 <code>0</code> 开始，如：<code>0456</code>, <code>0123</code></li>
 <li>十六进制数以 <code>0x</code> 开头，如：<code>0xabcd</code>, <code>0X123f</code></li>
 </ul>
-<h4 id="注释域-COMMENT"><a href="#注释域-COMMENT" class="headerlink" title="注释域 (COMMENT)"></a>注释域 (COMMENT)</h4><p>ARM 汇编使用 <code>@</code> 或者 <code>/*...*/</code> 标注注释。</p>
+<h4 id="注释域-COMMENT"><a href="#注释域-COMMENT" class="headerlink" title="注释域 (COMMENT)"></a>注释域 (COMMENT)</h4><p>ARM 汇编使用 <code>;</code> 或者 <code>/*...*/</code> 标注注释。</p>
 <h2 id="ARM-指令的基本格式"><a href="#ARM-指令的基本格式" class="headerlink" title="ARM 指令的基本格式"></a>ARM 指令的基本格式</h2><pre class="language-nasm" data-language="nasm"><code class="language-nasm">opcode &#123;<span class="token operator">&lt;</span>cond<span class="token operator">></span>&#125;&#123;S&#125; <span class="token operator">&lt;</span>Rd<span class="token operator">></span>,<span class="token operator">&lt;</span>Rn<span class="token operator">></span> &#123;,<span class="token operator">&lt;</span>shifter operand2<span class="token operator">></span>&#125;</code></pre>
 <p>其中 <code>&lt;&gt;</code> 中的项是必须的， <code>｛｝</code> 中的项是可选的。<br><code>opcode</code> 表示指令助记符，比如 <code>LDR</code> 、 <code>STR</code> 、 <code>ADD</code> 等。  </p>
 <ul>
@@ -642,15 +642,15 @@ AND <span class="token register variable">R8</span>,<span class="token register 
 <h3 id="寄存器间接寻址"><a href="#寄存器间接寻址" class="headerlink" title="寄存器间接寻址"></a>寄存器间接寻址</h3><p>指令中的地址码给出某一通用寄存器的编号。在被指定的寄存器中存放操作数的有效地址，而操作数则存放在存储单元中，即寄存器为地址指针。<br>指令为 <code>LDR</code> / <code>STR</code></p>
 <h3 id="基址寻址"><a href="#基址寻址" class="headerlink" title="基址寻址"></a>基址寻址</h3><p>变址寻址就是将基址寄存器的内容与指令中给出的位移量相加，形成操作数有效地址。变址寻址用于访问基址附近的存储单元，包括基址加偏移和基址加索引寻址。寄存器间接寻址是偏移量为 0 的基址加偏移寻址。</p>
 <h4 id="前索引寻址方式"><a href="#前索引寻址方式" class="headerlink" title="前索引寻址方式"></a>前索引寻址方式</h4><p>基址需加（或减）最大 4KB 的偏移来计算访问的地址。</p>
-<pre class="language-nasm" data-language="nasm"><code class="language-nasm">LDR <span class="token register variable">R0</span>,<span class="token operator">[</span><span class="token register variable">R1</span>,#<span class="token number">4</span><span class="token operator">]</span>       @<span class="token register variable">R0</span> <span class="token operator">&lt;</span><span class="token operator">-</span> <span class="token operator">[</span><span class="token register variable">R1</span><span class="token operator">+</span><span class="token number">4</span><span class="token operator">]</span></code></pre>
+<pre class="language-nasm" data-language="nasm"><code class="language-nasm">LDR <span class="token register variable">R0</span>,<span class="token operator">[</span><span class="token register variable">R1</span>,#<span class="token number">4</span><span class="token operator">]</span>       <span class="token comment">;R0 &lt;- [R1+4]</span></code></pre>
 <h4 id="后索引寻址方式"><a href="#后索引寻址方式" class="headerlink" title="后索引寻址方式"></a>后索引寻址方式</h4><p>基址不带偏移作为传送的地址，传送后自动索引。</p>
-<pre class="language-nasm" data-language="nasm"><code class="language-nasm">LDR <span class="token register variable">R0</span>,<span class="token operator">[</span><span class="token register variable">R1</span><span class="token operator">]</span>,#<span class="token number">4</span>      @<span class="token register variable">R0</span> <span class="token operator">&lt;</span><span class="token operator">-</span> <span class="token operator">[</span><span class="token register variable">R1</span><span class="token operator">]</span>
-                    @<span class="token register variable">R1</span> <span class="token operator">&lt;</span><span class="token operator">-</span> <span class="token register variable">R1</span><span class="token operator">+</span><span class="token number">4</span></code></pre>
+<pre class="language-nasm" data-language="nasm"><code class="language-nasm">LDR <span class="token register variable">R0</span>,<span class="token operator">[</span><span class="token register variable">R1</span><span class="token operator">]</span>,#<span class="token number">4</span>      <span class="token comment">;R0 &lt;- [R1]</span>
+                    <span class="token comment">;R1 &lt;- R1+4</span></code></pre>
 <h4 id="自动变址的前索引寻址"><a href="#自动变址的前索引寻址" class="headerlink" title="自动变址的前索引寻址"></a>自动变址的前索引寻址</h4><p>基址需加（或减）最大 4KB 的偏移来计算访问的地址，同时更新基址寄存器，并不消耗额外时间。</p>
-<pre class="language-nasm" data-language="nasm"><code class="language-nasm">LDR <span class="token register variable">R0</span>,<span class="token operator">[</span><span class="token register variable">R1</span>,#<span class="token number">4</span><span class="token operator">]</span>！    @<span class="token register variable">R0</span> <span class="token operator">&lt;</span><span class="token operator">-</span> <span class="token operator">[</span><span class="token register variable">R1</span><span class="token operator">+</span><span class="token number">4</span><span class="token operator">]</span>
-                    @<span class="token register variable">R1</span> <span class="token operator">&lt;</span><span class="token operator">-</span> <span class="token register variable">R1</span><span class="token operator">+</span><span class="token number">4</span></code></pre>
+<pre class="language-nasm" data-language="nasm"><code class="language-nasm">LDR <span class="token register variable">R0</span>,<span class="token operator">[</span><span class="token register variable">R1</span>,#<span class="token number">4</span><span class="token operator">]</span>！    <span class="token comment">;R0 &lt;- [R1+4]</span>
+                    <span class="token comment">;R1 &lt;- R1+4</span></code></pre>
 <h4 id="基址加索引寻址"><a href="#基址加索引寻址" class="headerlink" title="基址加索引寻址"></a>基址加索引寻址</h4><p>指令指定一个基址寄存器，再指定另一个寄存器（索引），其值作为位移加到基址上形成存储器地址。</p>
-<pre class="language-nasm" data-language="nasm"><code class="language-nasm">LDR <span class="token register variable">R0</span>,<span class="token operator">[</span><span class="token register variable">R1</span>,<span class="token register variable">R2</span><span class="token operator">]</span>      @<span class="token register variable">R0</span> <span class="token operator">&lt;</span><span class="token operator">-</span> <span class="token operator">[</span><span class="token register variable">R1</span><span class="token operator">+</span><span class="token register variable">R2</span><span class="token operator">]</span></code></pre>
+<pre class="language-nasm" data-language="nasm"><code class="language-nasm">LDR <span class="token register variable">R0</span>,<span class="token operator">[</span><span class="token register variable">R1</span>,<span class="token register variable">R2</span><span class="token operator">]</span>      <span class="token comment">;R0 &lt;- [R1+R2]</span></code></pre>
 <h3 id="多寄存器寻址"><a href="#多寄存器寻址" class="headerlink" title="多寄存器寻址"></a>多寄存器寻址</h3><p>该类指令支持批量数据加载/存储，可以一次在一片连续的存储器单元和多个寄存器之间传送数据。常用的加载/存储指令有 <code>LDM</code> （或 <code>STM</code> ）指令，指令格式为：</p>
 <pre class="language-nasm" data-language="nasm"><code class="language-nasm">LDM(STM)    &#123;类型&#125;  基址寄存器&#123;<span class="token operator">!</span>&#125;, 寄存器列表&#123;∧&#125;</code></pre>
 <p><code>LDM</code> （或 <code>STM</code> ）指令用于从由基址寄存器所指示的一片连续存储器到寄存器列表所指示的多个寄存器之间传送数据，该指令的常见用途是将多个寄存器的内容入栈或出栈。</p>
@@ -696,11 +696,11 @@ AND <span class="token register variable">R8</span>,<span class="token register 
 </tbody></table>
 <p><img src="/images/1605661275399.png" alt="数据块传送"></p>
 <p><img src="/images/1605661335233.png" alt="堆栈寻址"></p>
-<h4 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h4><pre class="language-nasm" data-language="nasm"><code class="language-nasm">LDMIA   <span class="token register variable">R0</span>, &#123;<span class="token register variable">R1</span>,<span class="token register variable">R3</span><span class="token operator">-</span><span class="token register variable">R5</span>&#125;      @<span class="token register variable">R1</span> <span class="token operator">&lt;</span><span class="token operator">-</span> <span class="token operator">[</span><span class="token register variable">R0</span><span class="token operator">]</span>, <span class="token register variable">R3</span> <span class="token operator">&lt;</span><span class="token operator">-</span> <span class="token operator">[</span><span class="token register variable">R0</span><span class="token operator">+</span><span class="token number">4</span><span class="token operator">]</span>
-                            @<span class="token register variable">R4</span> <span class="token operator">&lt;</span><span class="token operator">-</span> <span class="token operator">[</span><span class="token register variable">R0</span><span class="token operator">+</span><span class="token number">8</span><span class="token operator">]</span>, <span class="token register variable">R5</span> <span class="token operator">&lt;</span><span class="token operator">-</span> <span class="token operator">[</span><span class="token register variable">R0</span><span class="token operator">+</span><span class="token number">12</span><span class="token operator">]</span></code></pre>
+<h4 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h4><pre class="language-nasm" data-language="nasm"><code class="language-nasm">LDMIA   <span class="token register variable">R0</span>, &#123;<span class="token register variable">R1</span>,<span class="token register variable">R3</span><span class="token operator">-</span><span class="token register variable">R5</span>&#125;      <span class="token comment">;R1 &lt;- [R0], R3 &lt;- [R0+4]</span>
+                            <span class="token comment">;R4 &lt;- [R0+8], R5 &lt;- [R0+12]</span></code></pre>
 <p>由于传送的数据项总是 32 位的字，基址 R0 应该字对准。这条指令将 R0 指向的连续存储单元的内容送到寄存器 R1、R3、R4、R5 中。</p>
-<pre class="language-nasm" data-language="nasm"><code class="language-nasm">LDMIA   <span class="token register variable">R0</span><span class="token operator">!</span>, &#123;<span class="token register variable">R1</span>,<span class="token register variable">R3</span><span class="token operator">-</span><span class="token register variable">R5</span>&#125;     @<span class="token register variable">R1</span> <span class="token operator">&lt;</span><span class="token operator">-</span> <span class="token operator">[</span><span class="token register variable">R0</span><span class="token operator">]</span>, <span class="token register variable">R3</span> <span class="token operator">&lt;</span><span class="token operator">-</span> <span class="token operator">[</span><span class="token register variable">R0</span><span class="token operator">+</span><span class="token number">4</span><span class="token operator">]</span>
-                            @<span class="token register variable">R4</span> <span class="token operator">&lt;</span><span class="token operator">-</span> <span class="token operator">[</span><span class="token register variable">R0</span><span class="token operator">+</span><span class="token number">8</span><span class="token operator">]</span>, <span class="token register variable">R5</span> <span class="token operator">&lt;</span><span class="token operator">-</span> <span class="token operator">[</span><span class="token register variable">R0</span><span class="token operator">+</span><span class="token number">12</span><span class="token operator">]</span></code></pre>
+<pre class="language-nasm" data-language="nasm"><code class="language-nasm">LDMIA   <span class="token register variable">R0</span><span class="token operator">!</span>, &#123;<span class="token register variable">R1</span>,<span class="token register variable">R3</span><span class="token operator">-</span><span class="token register variable">R5</span>&#125;     <span class="token comment">;R1 &lt;- [R0], R3 &lt;- [R0+4]</span>
+                            <span class="token comment">;R4 &lt;- [R0+8], R5 &lt;- [R0+12]</span></code></pre>
 <blockquote>
 <p>后缀 <code>!</code> 表示最后的地址写回到 R0 中</p>
 </blockquote>
@@ -749,8 +749,8 @@ AND <span class="token register variable">R8</span>,<span class="token register 
 </tbody></table>
 <h3 id="SWP"><a href="#SWP" class="headerlink" title="SWP"></a>SWP</h3><pre class="language-nasm" data-language="nasm"><code class="language-nasm">SWP&#123;cond&#125;&#123;B&#125;    Rd, Rm, <span class="token operator">[</span>Rn<span class="token operator">]</span></code></pre>
 <p>在寄存器和存储器之间，由一次存储器读和一次存储器写组成的原子操作。完成一个字节或字的交换。</p>
-<pre class="language-nasm" data-language="nasm"><code class="language-nasm">SWP <span class="token register variable">R0</span>,<span class="token register variable">R1</span>,<span class="token operator">[</span><span class="token register variable">R2</span><span class="token operator">]</span>       @<span class="token register variable">R0</span> <span class="token operator">&lt;</span><span class="token operator">-</span> <span class="token operator">[</span><span class="token register variable">R2</span><span class="token operator">]</span>, <span class="token operator">[</span><span class="token register variable">R2</span><span class="token operator">]</span> <span class="token operator">&lt;</span><span class="token operator">-</span> <span class="token register variable">R1</span>
-SWP <span class="token register variable">R1</span>,<span class="token register variable">R1</span>,<span class="token operator">[</span><span class="token register variable">R2</span><span class="token operator">]</span>       @<span class="token register variable">R1</span> <span class="token operator">&lt;</span><span class="token operator">-</span> <span class="token operator">[</span><span class="token register variable">R2</span><span class="token operator">]</span>, <span class="token operator">[</span><span class="token register variable">R2</span><span class="token operator">]</span> <span class="token operator">&lt;</span><span class="token operator">-</span> <span class="token register variable">R1</span></code></pre>
+<pre class="language-nasm" data-language="nasm"><code class="language-nasm">SWP <span class="token register variable">R0</span>,<span class="token register variable">R1</span>,<span class="token operator">[</span><span class="token register variable">R2</span><span class="token operator">]</span>       <span class="token comment">;R0 &lt;- [R2], [R2] &lt;- R1</span>
+SWP <span class="token register variable">R1</span>,<span class="token register variable">R1</span>,<span class="token operator">[</span><span class="token register variable">R2</span><span class="token operator">]</span>       <span class="token comment">;R1 &lt;- [R2], [R2] &lt;- R1</span></code></pre>
 <blockquote>
 <p>Rn!=Rm 或 Rd，Rm 可与 Rd 相同，此时 Rd &lt;-&gt; [Rn]<br>字节交换：[Rn] 单元的字节数据 -&gt; Rd（高 24 位清零），Rm 中低 8 位 -&gt; [Rn]</p>
 </blockquote>
@@ -973,8 +973,8 @@ SWP <span class="token register variable">R1</span>,<span class="token register 
 <li><code>label-expr</code>: 程序相对偏移或外部表达式</li>
 </ul>
 <p>例：</p>
-<pre class="language-nasm" data-language="nasm"><code class="language-nasm">LDR     <span class="token register variable">R3</span>,<span class="token operator">=</span><span class="token number">0xFF0</span>   @把立即数 <span class="token number">0xFF0</span> 赋值给 <span class="token register variable">R3</span>
-LDR     <span class="token register variable">R3</span>,<span class="token operator">=</span>place   @把标号 place 对应的地址赋值给 <span class="token register variable">R2</span></code></pre>
+<pre class="language-nasm" data-language="nasm"><code class="language-nasm">LDR     <span class="token register variable">R3</span>,<span class="token operator">=</span><span class="token number">0xFF0</span>   <span class="token comment">; 把立即数 0xFF0 赋值给 R3</span>
+LDR     <span class="token register variable">R3</span>,<span class="token operator">=</span>place   <span class="token comment">; 把标号 place 对应的地址赋值给 R2</span></code></pre>
 <blockquote>
 <p>从指令到文字池的偏移量必须小于 4KB<br>与 ARM 指令的 <code>LDR</code> 相比，伪指令的 <code>LDR</code> 的参数有 <code>=</code> 号</p>
 </blockquote>
@@ -991,7 +991,7 @@ LDR     <span class="token register variable">R3</span>,<span class="token opera
 <tbody><tr>
 <td><code>.byte</code></td>
 <td>定义单字节</td>
-<td><code>.byte0x12</code> @分配一个字节的空间并初始化为 0x12</td>
+<td><code>.byte0x12</code> ; 分配一个字节的空间并初始化为 0x12</td>
 </tr>
 <tr>
 <td><code>.short</code></td>
@@ -1021,7 +1021,7 @@ LDR     <span class="token register variable">R3</span>,<span class="token opera
 <tr>
 <td><code>.space</code></td>
 <td>分配任意的字节空间</td>
-<td><code>.space   4*512,35</code> @分配 4*512 字节的内存空间并初始化为 35</td>
+<td><code>.space   4*512,35</code> ; 分配 4*512 字节的内存空间并初始化为 35</td>
 </tr>
 </tbody></table>
 <h2 id="符号定义伪操作"><a href="#符号定义伪操作" class="headerlink" title="符号定义伪操作"></a>符号定义伪操作</h2><h3 id="equ"><a href="#equ" class="headerlink" title=".equ"></a>.equ</h3><p><code>.equ</code> 伪指令用于为程序中的常量、标号等定义一个等效的字符名称，类似于 C 语言中的 <code>＃define</code> 。</p>
@@ -1031,15 +1031,15 @@ LDR     <span class="token register variable">R3</span>,<span class="token opera
 <li><code>expr</code>: 常量或者标号</li>
 </ul>
 <p>例：</p>
-<pre class="language-nasm" data-language="nasm"><code class="language-nasm">.equ    x,<span class="token number">2020</span>      @将 x 定义为数值 <span class="token number">2020</span>
-.equ    y,_start    @ y<span class="token operator">=</span> 标号 _start 的值</code></pre>
+<pre class="language-nasm" data-language="nasm"><code class="language-nasm">.equ    x,<span class="token number">2020</span>      <span class="token comment">; 将 x 定义为数值 2020</span>
+.equ    y,_start    <span class="token comment">; y= 标号 _start 的值</span></code></pre>
 <blockquote>
 <p>使用等价伪指令 <code>.equ</code> 定义的符号名不会被系统分配存储空间。</p>
 </blockquote>
 <h3 id="global"><a href="#global" class="headerlink" title=".global"></a>.global</h3><p><code>.glabal</code> 伪指令用于在程序中声明一个全局的标号，该标号可在其他的文件中引用。</p>
 <pre class="language-nasm" data-language="nasm"><code class="language-nasm">.<span class="token keyword">global    label</span></code></pre>
 <p>例：</p>
-<pre class="language-nasm" data-language="nasm"><code class="language-nasm">.glabal    _start   @将标号 _start 定义为全局标号</code></pre>
+<pre class="language-nasm" data-language="nasm"><code class="language-nasm">.glabal    _start   <span class="token comment">; 将标号 _start 定义为全局标号</span></code></pre>
 <h2 id="例子-1"><a href="#例子-1" class="headerlink" title="例子"></a>例子</h2><h3 id="求-1-100-的和"><a href="#求-1-100-的和" class="headerlink" title="求 1~100 的和"></a>求 1~100 的和</h3><pre class="language-nasm" data-language="nasm"><code class="language-nasm"><span class="token label function">START:</span>
  MOV <span class="token register variable">R0</span>, #<span class="token number">1</span>
  MOV <span class="token register variable">R1</span>, #<span class="token number">1</span>
@@ -1051,7 +1051,7 @@ LDR     <span class="token register variable">R3</span>,<span class="token opera
  BNE LOOP
 <span class="token label function">END:</span>
  B END      <span class="token comment">; R0 中就是和</span></code></pre>
-<h3 id="求-5"><a href="#求-5" class="headerlink" title="求 5"></a>求 5</h3><pre class="language-nasm" data-language="nasm"><code class="language-nasm"><span class="token label function">START:</span>
+<h3 id="求-5"><a href="#求-5" class="headerlink" title="求 5!"></a>求 <code>5!</code></h3><pre class="language-nasm" data-language="nasm"><code class="language-nasm"><span class="token label function">START:</span>
  MOV <span class="token register variable">R0</span>, #<span class="token number">5</span>
  MOV <span class="token register variable">R1</span>, #<span class="token number">4</span>
 <span class="token label function">LOOP:</span>
