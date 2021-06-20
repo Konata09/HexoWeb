@@ -539,7 +539,7 @@ endef</code></pre>
 </tr>
 </tbody></table>
 <p>示例：<br> <code>$(subst ee, EE, feet on the street)</code></p>
-<p>结果是<br> <code>fEEt on the strEEt</code></p>
+<p>结果值是 <code>fEEt on the strEEt</code></p>
 <h3 id="模式字符串替换函数-patsubst"><a href="#模式字符串替换函数-patsubst" class="headerlink" title="模式字符串替换函数 patsubst"></a>模式字符串替换函数 <code>patsubst</code></h3><p> <code>$(patsubst &lt;pattern&gt;, &lt;replacement&gt;, &lt;text&gt;)</code></p>
 <table>
 <thead>
@@ -563,7 +563,7 @@ endef</code></pre>
 </tbody></table>
 <p>示例：</p>
 <pre class="language-Makefile" data-language="Makefile"><code class="language-Makefile">$(patsubst *.c,*.o,foo.c bar.c)</code></pre>
-<p>结果是<br> <code>foo.o bar.o</code></p>
+<p>结果值是 <code>foo.o bar.o</code></p>
 <h3 id="查找字符串函数-findstring"><a href="#查找字符串函数-findstring" class="headerlink" title="查找字符串函数 findstring"></a>查找字符串函数 <code>findstring</code></h3><p> <code>$(findstring &lt;find&gt;, &lt;in&gt;)</code></p>
 <table>
 <thead>
@@ -638,7 +638,7 @@ cc $(filter %.c %.s,$(sources)) -o foo </code></pre>
 </tbody></table>
 <p>示例：</p>
 <pre class="language-Makefile" data-language="Makefile"><code class="language-Makefile">$(strip a b c )</code></pre>
-<p>结果是<br> <code>a b c</code></p>
+<p>结果值是 <code>a b c</code></p>
 <h3 id="排序函数-sort"><a href="#排序函数-sort" class="headerlink" title="排序函数 sort"></a>排序函数 <code>sort</code></h3><p> <code>$(sort &lt;list&gt;)</code></p>
 <table>
 <thead>
@@ -662,7 +662,7 @@ cc $(filter %.c %.s,$(sources)) -o foo </code></pre>
 </tbody></table>
 <p>示例：</p>
 <pre class="language-Makefile" data-language="Makefile"><code class="language-Makefile">$(sort foo bar lose)</code></pre>
-<p>结果是<br> <code>bar foo lose</code></p>
+<p>结果值是 <code>bar foo lose</code></p>
 <p>备注：sort 函数会去掉其中重复的单词</p>
 <h3 id="取单词函数-word"><a href="#取单词函数-word" class="headerlink" title="取单词函数 word"></a>取单词函数 <code>word</code></h3><p> <code>$(word &lt;n&gt;, &lt;text&gt;)</code></p>
 <table>
@@ -687,7 +687,7 @@ cc $(filter %.c %.s,$(sources)) -o foo </code></pre>
 </tbody></table>
 <p>示例：</p>
 <pre class="language-Makefile" data-language="Makefile"><code class="language-Makefile">$(word 2, foo bar baz)</code></pre>
-<p>返回值是<br> <code>bar</code></p>
+<p>返回值是 <code>bar</code></p>
 <h3 id="去单词串函数-wordlist"><a href="#去单词串函数-wordlist" class="headerlink" title="去单词串函数 wordlist"></a>去单词串函数 <code>wordlist</code></h3><p> <code>$(wordlist &lt;s&gt;, &lt;e&gt;, &lt;text&gt;)</code></p>
 <table>
 <thead>
@@ -711,7 +711,7 @@ cc $(filter %.c %.s,$(sources)) -o foo </code></pre>
 </tbody></table>
 <p>示例：</p>
 <pre class="language-Makefile" data-language="Makefile"><code class="language-Makefile">$(wordlist 2, 3, foo bar baz)</code></pre>
-<p>返回值是<br> <code>bar baz</code></p>
+<p>返回值是 <code>bar baz</code></p>
 <h3 id="单词个数统计函数-words"><a href="#单词个数统计函数-words" class="headerlink" title="单词个数统计函数 words"></a>单词个数统计函数 <code>words</code></h3><p> <code>$(words &lt;text&gt;)</code></p>
 <table>
 <thead>
@@ -735,7 +735,7 @@ cc $(filter %.c %.s,$(sources)) -o foo </code></pre>
 </tbody></table>
 <p>示例：</p>
 <pre class="language-Makefile" data-language="Makefile"><code class="language-Makefile">$(words,foo bar baz）</code></pre>
-<p>返回值是<br> <code>3</code></p>
+<p>返回值是 <code>3</code></p>
 <p>备注：如果我们要取中最后的一个单词，我们可以这样： <code>$(word $(words &lt;text&gt;)，&lt;text&gt;)</code></p>
 <h3 id="首单词函数-firstword"><a href="#首单词函数-firstword" class="headerlink" title="首单词函数 firstword"></a>首单词函数 <code>firstword</code></h3><p> <code>$(firstword &lt;text&gt;)</code></p>
 <table>
@@ -760,7 +760,7 @@ cc $(filter %.c %.s,$(sources)) -o foo </code></pre>
 </tbody></table>
 <p>示例：</p>
 <pre class="language-Makefile" data-language="Makefile"><code class="language-Makefile">$(firstword foo bar)</code></pre>
-<p>返回值是<br> <code>foo</code></p>
+<p>返回值是 <code>foo</code></p>
 <p>备注：这个函数可以用 <code>word</code> 函数来实现： <code>$(word 1，&lt;text&gt;)</code> 。</p>
 <h3 id="取目录函数-dir"><a href="#取目录函数-dir" class="headerlink" title="取目录函数 dir"></a>取目录函数 <code>dir</code></h3><p> <code>$(dir &lt;names&gt;)</code></p>
 <table>
@@ -785,7 +785,7 @@ cc $(filter %.c %.s,$(sources)) -o foo </code></pre>
 </tbody></table>
 <p>示例：</p>
 <pre class="language-Makefile" data-language="Makefile"><code class="language-Makefile">$(dir src&#x2F;foo.c hacks)</code></pre>
-<p>返回值是<br> <code>src/ ./</code></p>
+<p>返回值是 <code>src/ ./</code></p>
 <h3 id="取文件函数-notdir"><a href="#取文件函数-notdir" class="headerlink" title="取文件函数 notdir"></a>取文件函数 <code>notdir</code></h3><p> <code>$(notdir &lt;names&gt;)</code></p>
 <table>
 <thead>
@@ -809,7 +809,7 @@ cc $(filter %.c %.s,$(sources)) -o foo </code></pre>
 </tbody></table>
 <p>示例：</p>
 <pre class="language-Makefile" data-language="Makefile"><code class="language-Makefile">$(notdir src&#x2F;foo.c hacks)</code></pre>
-<p>返回值是<br> <code>foo.c hacks</code></p>
+<p>返回值是 <code>foo.c hacks</code></p>
 <h3 id="取后缀函数-suffix"><a href="#取后缀函数-suffix" class="headerlink" title="取后缀函数 suffix"></a>取后缀函数 <code>suffix</code></h3><p> <code>$(suffix &lt;names&gt;)</code></p>
 <table>
 <thead>
@@ -833,7 +833,7 @@ cc $(filter %.c %.s,$(sources)) -o foo </code></pre>
 </tbody></table>
 <p>示例：</p>
 <pre class="language-Makefile" data-language="Makefile"><code class="language-Makefile">$(suffix src&#x2F;foo.c src-1.0&#x2F;bar.c hacks)</code></pre>
-<p>返回值是<br> <code>.c .c</code></p>
+<p>返回值是 <code>.c .c</code></p>
 <h3 id="取前缀函数-basename"><a href="#取前缀函数-basename" class="headerlink" title="取前缀函数 basename"></a>取前缀函数 <code>basename</code></h3><p> <code>$(basename &lt;names&gt;)</code></p>
 <table>
 <thead>
@@ -857,7 +857,7 @@ cc $(filter %.c %.s,$(sources)) -o foo </code></pre>
 </tbody></table>
 <p>示例：</p>
 <pre class="language-Makefile" data-language="Makefile"><code class="language-Makefile">$(basename src&#x2F;foo.c src-1.0&#x2F;bar.c hacks)</code></pre>
-<p>返回值是<br> <code>src/foo src-1.0/bar hacks</code></p>
+<p>返回值是 <code>src/foo src-1.0/bar hacks</code></p>
 <h3 id="加后缀函数-addsuffix"><a href="#加后缀函数-addsuffix" class="headerlink" title="加后缀函数 addsuffix"></a>加后缀函数 <code>addsuffix</code></h3><p> <code>$(addsuffix &lt;suffix&gt;, &lt;names&gt;)</code></p>
 <table>
 <thead>
@@ -881,7 +881,7 @@ cc $(filter %.c %.s,$(sources)) -o foo </code></pre>
 </tbody></table>
 <p>示例：</p>
 <pre class="language-Makefile" data-language="Makefile"><code class="language-Makefile">$(addsuffix .c, foo bar)</code></pre>
-<p>返回值是<br> <code>foo.c bar.c</code></p>
+<p>返回值是 <code>foo.c bar.c</code></p>
 <h3 id="加前缀函数-addprefix"><a href="#加前缀函数-addprefix" class="headerlink" title="加前缀函数 addprefix"></a>加前缀函数 <code>addprefix</code></h3><p> <code>$(addprefix &lt;prefix&gt;, &lt;names&gt;)</code></p>
 <table>
 <thead>
@@ -905,7 +905,7 @@ cc $(filter %.c %.s,$(sources)) -o foo </code></pre>
 </tbody></table>
 <p>示例：</p>
 <pre class="language-Makefile" data-language="Makefile"><code class="language-Makefile">$(addprefix src&#x2F;,foo bar)</code></pre>
-<p>返回值是<br> <code>src/foo src/bar</code></p>
+<p>返回值是 <code>src/foo src/bar</code></p>
 <h3 id="连接函数-join"><a href="#连接函数-join" class="headerlink" title="连接函数 join"></a>连接函数 <code>join</code></h3><p> <code>$(join &lt;list1&gt;, &lt;list2&gt;)</code></p>
 <table>
 <thead>
@@ -929,7 +929,7 @@ cc $(filter %.c %.s,$(sources)) -o foo </code></pre>
 </tbody></table>
 <p>示例：</p>
 <pre class="language-Makefile" data-language="Makefile"><code class="language-Makefile">$(join aaa bbb，111 222 333)</code></pre>
-<p>返回值是<br> <code>aaa111 bbb222 333</code></p>
+<p>返回值是 <code>aaa111 bbb222 333</code></p>
 <h3 id="遍历函数-foreach"><a href="#遍历函数-foreach" class="headerlink" title="遍历函数 foreach"></a>遍历函数 <code>foreach</code></h3><p> <code>$(foreach &lt;var&gt;, &lt;list&gt;, &lt;text&gt;)</code></p>
 <p>把参数 <code>&lt;list&gt;</code> 中的单词逐一取出放到参数 <code>&lt;var&gt;</code> 所指定的变量中，然后再执行 <code>&lt;text&gt;</code> 所包含的表达式。每一次 <code>&lt;text&gt;</code> 会返回一个字符串，循环过程中 <code>&lt;text&gt;</code> 的所返回的每个字符串会以空格分隔，最后当整个循环结束时， <code>&lt;text&gt;</code> 所返回的每个字符串所组成的整个字符串以空格分隔，将会是 foreach 函数的返回值。所以， <code>&lt;var&gt;</code> 最好是一个变量名， <code>&lt;list&gt;</code> 可以是一个表达式，而 <code>&lt;text&gt;</code> 中一般会使用这个参数来依次枚举中的单词。</p>
 <p>示例：</p>
