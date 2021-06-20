@@ -4,8 +4,11 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="GCC Toolset 的安装和使用, 生命不息 折腾不止">
-    <meta name="description" content="前言常用的 Linux 发行版一般不会自带最新的 GCC 等编译工具，如果我们想体验最新的 C++ 语法特性，就免不了要自己编译 GCC 或者下载预编译版本，这无疑使比较麻烦的。尤其时考虑到许多配套的编译和调试工具也需要升级，如 make、">
+    <meta name="keywords" content="Makefile 详解, 生命不息 折腾不止">
+    <meta name="description" content="Makefile 原理
+make 命令会在当前目录下找名字叫 Makefile 或 makefile 的文件。
+如果找到，它会找文件中的第一个目标文件（target），并把这个文件作为最终的目标文件。
+如果这个目标文件不存在，或是它所依赖的">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +16,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <title>GCC Toolset 的安装和使用 | 生命不息 折腾不止</title>
+    <title>Makefile 详解 | 生命不息 折腾不止</title>
     <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="manifest" href="/site.webmanifest">
@@ -271,13 +274,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/06.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        GCC Toolset 的安装和使用
+                        Makefile 详解
                     </div>
                 </div>
             </div>
@@ -374,12 +377,12 @@
                                 <span class="chip bg-color">C</span>
                             </a>
                         
-                            <a href="/tags/GCC/" target="_blank">
-                                <span class="chip bg-color">GCC</span>
-                            </a>
-                        
                             <a href="/tags/C/" target="_blank">
                                 <span class="chip bg-color">C++</span>
+                            </a>
+                        
+                            <a href="/tags/Makefile/" target="_blank">
+                                <span class="chip bg-color">Makefile</span>
                             </a>
                         
                     </div>
@@ -390,8 +393,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Ops/" class="post-category" target="_blank">
-                                Ops
+                            <a href="/categories/Miscellaneous/" class="post-category" target="_blank">
+                                Miscellaneous
                             </a>
                         
                     </div>
@@ -402,21 +405,21 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-alt fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-08-25
+                    2021-06-20
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        654
+                        3.2k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        3 分
+                        12 分
                     </div>
                     
                 
@@ -432,90 +435,408 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>常用的 Linux 发行版一般不会自带最新的 GCC 等编译工具，如果我们想体验最新的 C++ 语法特性，就免不了要自己编译 GCC 或者下载预编译版本，这无疑使比较麻烦的。尤其时考虑到许多配套的编译和调试工具也需要升级，如 make、GDB 等，就更让人头大了。好在 RedHat 官方提供了  GCC Toolset 软件包，提供了便捷的安装使用体验，让你只需几条命令就可以用上最新的 GCC 版本。</p>
-<h2 id="安装-GCC-Toolset"><a href="#安装-GCC-Toolset" class="headerlink" title="安装 GCC Toolset"></a>安装 GCC Toolset</h2><p>RedHat 从 RHEL 8 开始推出了 GCC Toolset，它是包括了最新开发工具和性能分析工具的一个软件集合，目前最新版本是 GCC Toolset 9，包括了以下工具：</p>
+                <h2 id="Makefile-原理"><a href="#Makefile-原理" class="headerlink" title="Makefile 原理"></a>Makefile 原理</h2><ul>
+<li><code>make</code> 命令会在当前目录下找名字叫 <code>Makefile</code> 或 <code>makefile</code> 的文件。</li>
+<li>如果找到，它会找文件中的第一个目标文件（target），并把这个文件作为最终的目标文件。</li>
+<li>如果这个目标文件不存在，或是它所依赖的后面的 <code>.o</code> 文件的文件修改时间要比这个文件新，那么，他就会执行后面所定义的命令来生成这个文件。</li>
+<li>如果这个文件所依赖的 <code>.o</code> 文件也不存在，那么 <code>make</code> 会在当前文件中找目标为 <code>.o</code> 文件的依赖性，如果找到则再根据那一个规则生成 <code>.o</code> 文件。</li>
+<li>当然，你的 <code>.c</code> 文件和 <code>.h</code> 文件是存在的，于是 <code>make</code> 会生成 <code>.o</code> 文件，然后再用 <code>.o</code> 文件生成 <code>make</code> 的终极任务，也就是可执行文件了。</li>
+</ul>
+<h2 id="清空目标文件的规则"><a href="#清空目标文件的规则" class="headerlink" title="清空目标文件的规则"></a>清空目标文件的规则</h2><pre class="language-Makefile" data-language="Makefile"><code class="language-Makefile">.PHONY : clean
+clean :
+​   rm $(objects)</code></pre>
+<blockquote>
+<p><code>.PHONY</code> 是伪目标的意思</p>
+</blockquote>
+<h2 id="make-的工作方式"><a href="#make-的工作方式" class="headerlink" title="make 的工作方式"></a>make 的工作方式</h2><ol>
+<li>读入所有的 Makefile</li>
+<li>读入被 include 的其它 Makefile</li>
+<li>初始化文件中的变量</li>
+<li>推导隐晦规则，并分析所有规则</li>
+<li>为所有的目标文件创建依赖关系链</li>
+<li>根据依赖关系，决定哪些目标要重新生成</li>
+<li>执行生成命令</li>
+</ol>
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p>变量在声明时需要给予初值，而在使用时，需要给在变量名前加上 <code>$</code> 符号，但最好用小括号 <code>()</code> 或是大括号 <code>&#123;&#125;</code> 把变量给包括起来。如果你要使用真实的 <code>$</code> 字符，那么你需要用 <code>$$</code> 来表示。  </p>
+<h3 id="Makefile-变量的赋值"><a href="#Makefile-变量的赋值" class="headerlink" title="Makefile 变量的赋值"></a>Makefile 变量的赋值</h3><p>立即变量：定义的时候就已经确定了该变量的值。（ <code>:=</code> 、 <code>+=</code> ）</p>
+<p>延时变量：使用该变量的时候，才展开该变量，并确定该变量的值。( <code>=</code> 、 <code>?=</code> 、 <code>define</code> )</p>
 <table>
 <thead>
 <tr>
-<th>名称</th>
-<th>版本</th>
-<th>简介</th>
+<th>符号</th>
+<th>含义</th>
+<th>变量类型</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>GCC</td>
-<td>9.2.1</td>
-<td>A portable compiler suite with support for C, C++, and Fortran.</td>
+<td><code>=</code></td>
+<td>递归赋值，将整个 Makefile 文件展开之后，再决定变量的值</td>
+<td>延时变量</td>
 </tr>
 <tr>
-<td>GDB</td>
-<td>8.3</td>
-<td>A command-line debugger for programs written in C, C++, and Fortran.</td>
+<td><code>:=</code></td>
+<td>直接为变量进行赋值</td>
+<td>立即变量</td>
 </tr>
 <tr>
-<td>Valgrind</td>
-<td>3.15.0</td>
-<td>An instrumentation framework and a number of tools to profile applications in order to detect memory errors, identify memory management problems, and report any use of improper arguments in system calls.</td>
+<td><code>+=</code></td>
+<td>在变量后面追加值</td>
+<td>立即变量</td>
 </tr>
 <tr>
-<td>SystemTap</td>
-<td>4.1</td>
-<td>A tracing and probing tool to monitor the activities of the entire system without the need to instrument, recompile, install, and reboot.</td>
-</tr>
-<tr>
-<td>Dyninst</td>
-<td>10.1.0</td>
-<td>A library for instrumenting and working with user-space executables during their execution.</td>
-</tr>
-<tr>
-<td>binutils</td>
-<td>2.32</td>
-<td>A collection of binary tools and other utilities to inspect and manipulate object files and binaries.</td>
-</tr>
-<tr>
-<td>elfutils</td>
-<td>0.176</td>
-<td>A collection of binary tools and other utilities to inspect and manipulate ELF files.</td>
-</tr>
-<tr>
-<td>dwz</td>
-<td>0.12</td>
-<td>A tool to optimize DWARF debugging information contained in ELF shared libraries and ELF executables for size.</td>
-</tr>
-<tr>
-<td>make</td>
-<td>4.2.1</td>
-<td>A dependency-tracking build automation tool.</td>
-</tr>
-<tr>
-<td>strace</td>
-<td>5.1</td>
-<td>A debugging tool to monitor system calls that a program uses and signals it receives.</td>
-</tr>
-<tr>
-<td>ltrace</td>
-<td>0.7.91</td>
-<td>A debugging tool to display calls to dynamic libraries that a program makes. It can also monitor system calls executed by programs.</td>
-</tr>
-<tr>
-<td>annobin</td>
-<td>9.08</td>
-<td>A build security checking tool.</td>
+<td><code>?=</code></td>
+<td>若前面没有定义该变量，则此处赋值，如果前面已经定义了，则此处不再赋值</td>
+<td>延时变量</td>
 </tr>
 </tbody></table>
-<p>GCC Toolset 在 RadHat 和 CentOS 都可以下载，使用下面的命令安装所有工具：</p>
-<pre class="language-bash" data-language="bash"><code class="language-bash">yum <span class="token function">install</span> gcc-toolset-9</code></pre>
-<p>你也可以只安装其中的某些工具，列出可用的软件包：</p>
-<pre class="language-bash" data-language="bash"><code class="language-bash">yum list available gcc-toolset-9-<span class="token punctuation">\</span>*</code></pre>
-<p>然后安装其中的某些软件：</p>
-<pre class="language-bash" data-language="bash"><code class="language-bash">yum <span class="token function">install</span> package_name</code></pre>
-<h2 id="使用-GCC-Toolset"><a href="#使用-GCC-Toolset" class="headerlink" title="使用 GCC Toolset"></a>使用 GCC Toolset</h2><p>如果你想使用 GCC Toolset 中的某个工具，可以使用下面的命令：</p>
-<pre class="language-bash" data-language="bash"><code class="language-bash">scl <span class="token builtin class-name">enable</span> gcc-toolset-9 ToolName</code></pre>
-<p>如果你想在一个 Shell 中全部使用 GCC Toolset 中的新版本而不是系统预装的旧版本，你可以使用下面的命令启动一个新的 Shell :</p>
-<pre class="language-bash" data-language="bash"><code class="language-bash">scl <span class="token builtin class-name">enable</span> gcc-toolset-9 <span class="token function">bash</span></code></pre>
-<p>在这个 Shell 下直接输入命令就可以执行新版本的编译工具，而不需要 <code>scl</code> 命令。  </p>
-<h2 id="卸载-GCC-Toolset"><a href="#卸载-GCC-Toolset" class="headerlink" title="卸载 GCC Toolset"></a>卸载 GCC Toolset</h2><p>就像卸载普通软件包一样，执行下面的命令即可全部卸载：</p>
-<pre class="language-bash" data-language="bash"><code class="language-bash">yum remove gcc-toolset-N<span class="token punctuation">\</span>*</code></pre>
+<h3 id="自动化变量"><a href="#自动化变量" class="headerlink" title="自动化变量"></a>自动化变量</h3><ul>
+<li><code>$@</code>：表示规则中的目标文件集。在模式规则中，如果有多个目标，那么，<code>$@</code> 就是匹配于目标中模式定义的集合。</li>
+<li><code>$%</code>：仅当目标是函数库文件中，表示规则中的目标成员名。例如，如果一个目标是<code>foo.a(bar.o)</code>，那么，<code>$%</code>就是<code>bar.o</code>，<code>$@</code>就是<code>foo.a</code>。如果目标不是函数库文件（Unix 下是<code>.a</code>，Windows 下是<code>.lib</code>），那么，其值为空。</li>
+<li><code>$&lt;</code>：依赖目标中的第一个目标名字。如果依赖目标是以模式（即<code>%</code>）定义的，那么<code>$&lt;</code>将是符合模式的一系列的文件集。注意，其是一个一个取出来的。（就是依赖中的第一个）</li>
+<li><code>$?</code>：所有比目标新的依赖目标的集合。以空格分隔。</li>
+<li><code>$^</code>：所有的依赖目标的集合。以空格分隔。如果在依赖目标中有多个重复的，那个这个变量会去除重复的依赖目标，只保留一份。</li>
+<li><code>$+</code>：这个变量很像<code>$^</code>，也是所有依赖目标的集合。只是它不去除重复的依赖目标。</li>
+</ul>
+<h3 id="变量值替换"><a href="#变量值替换" class="headerlink" title="变量值替换"></a>变量值替换</h3><p>格式： <code>$(var:a=b)</code> 或 <code>$&#123;var:a=b&#125;</code></p>
+<p>其意思是，把变量 <code>var</code> 中所有以 <code>a</code> 字串结尾的 <code>a</code> 替换成 <code>b</code> 字串。</p>
+<pre class="language-Makefile" data-language="Makefile"><code class="language-Makefile">foo :&#x3D; a.o b.o c.o
+bar :&#x3D; $(foo:.o&#x3D;.c)</code></pre>
+<p><code>$(bar)</code> 的值就是 <code>a.c b.c c.c</code></p>
+<p>或者使用</p>
+<pre class="language-Makefile" data-language="Makefile"><code class="language-Makefile">foo :&#x3D; a.o b.o c.o
+bar :&#x3D; $(foo:%.o&#x3D;%.c)</code></pre>
+<h2 id="Makefile-关键字"><a href="#Makefile-关键字" class="headerlink" title="Makefile 关键字"></a>Makefile 关键字</h2><h3 id="override"><a href="#override" class="headerlink" title="override"></a><code>override</code></h3><p>如果一个变量的值需要在编译选项中指定或由系统传入，那么 makefile 中可以使用 <code>override</code> 关键字来设置，使这个变量的赋值被忽略</p>
+<h3 id="define"><a href="#define" class="headerlink" title="define"></a><code>define</code></h3><p>使用 <code>define</code> 关键字可以定义多行变量</p>
+<pre class="language-Makefile" data-language="Makefile"><code class="language-Makefile">define two-lines
+    echo foo
+    echo $(bar)
+endef</code></pre>
+<h3 id="wildcard"><a href="#wildcard" class="headerlink" title="wildcard"></a><code>wildcard</code></h3><p>作用是让通配符 (Makefile 中的通配符就是 <code>*</code> , <code>%</code> 算 pattern，不是通配符）在变量或函数中展开，通常用于提取指定目录的某一类型文件。因为在 Makefile 的规则中，函数中的通配符是不会被展开的。</p>
+<pre class="language-Makefile" data-language="Makefile"><code class="language-Makefile">all:$(subst .c, .o, $(wildcard *.c))
+%.o:%.c
+    gcc -o $@ $&lt;</code></pre>
+<h3 id="export"><a href="#export" class="headerlink" title="export"></a><code>export</code></h3><p>将变量导出，以便于所有的子 makefile 都可以使用</p>
+<h3 id="include"><a href="#include" class="headerlink" title="include"></a><code>include</code></h3><p>和 C 语言的 <code>#include</code> 一样，将后面的文件展开到当前位置</p>
+<h2 id="Makefile-函数"><a href="#Makefile-函数" class="headerlink" title="Makefile 函数"></a>Makefile 函数</h2><h3 id="字符串替换函数-subst"><a href="#字符串替换函数-subst" class="headerlink" title="字符串替换函数 subst"></a>字符串替换函数 <code>subst</code></h3><p> <code>$(subst &lt;from&gt;, &lt;to&gt;, &lt;text&gt;)</code></p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>名称</td>
+<td>字符串替换函数 <code>subst</code></td>
+</tr>
+<tr>
+<td>功能</td>
+<td>把字串 <code>&lt;text&gt;</code> 中的字符串 <code>&lt;from&gt;</code> 替换成 <code>&lt;to&gt;</code></td>
+</tr>
+<tr>
+<td>返回</td>
+<td>函数返回被替换过后的字符串</td>
+</tr>
+</tbody></table>
+<p>示例：<br> <code>$(subst ee, EE, feet on the street)</code></p>
+<p>结果是<br> <code>fEEt on the strEEt</code></p>
+<h3 id="模式字符串替换函数-patsubst"><a href="#模式字符串替换函数-patsubst" class="headerlink" title="模式字符串替换函数 patsubst"></a>模式字符串替换函数 <code>patsubst</code></h3><p> <code>$(patsubst &lt;pattern&gt;, &lt;replacement&gt;, &lt;text&gt;)</code></p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>名称</td>
+<td>模式字符串替换函数 <code>patsubst</code></td>
+</tr>
+<tr>
+<td>功能</td>
+<td>查找中的单词（单词以“空格”、“Tab”或“回车”“换行”分隔）是否符合模式 <code>&lt;pattern&gt;</code> ，如果匹配的话，则以 <code>&lt;replacement&gt;</code> 替换。 这里 <code>&lt;pattern&gt;</code> 可以包括通配符 <code>%</code> ，表示任意长度的字串。如果 <code>&lt;replacement&gt;</code> 中也包含 <code>%</code> ，那么 <code>&lt;replacement&gt;</code> 中的这个 <code>%</code> 将是 <code>&lt;pattern&gt;</code> 中的那个 <code>%</code> 所代表的字串。（可以用 <code>\</code> 来转义，以 <code>\%</code> 来 表示真实含义的 <code>\%</code> 字符）</td>
+</tr>
+<tr>
+<td>返回</td>
+<td>函数返回被替换过后的字符串</td>
+</tr>
+</tbody></table>
+<p>示例：</p>
+<pre class="language-Makefile" data-language="Makefile"><code class="language-Makefile">$(patsubst *.c,*.o,foo.c bar.c)</code></pre>
+<p>结果是<br> <code>foo.o bar.o</code></p>
+<h3 id="查找字符串函数-findstring"><a href="#查找字符串函数-findstring" class="headerlink" title="查找字符串函数 findstring"></a>查找字符串函数 <code>findstring</code></h3><p> <code>$(findstring &lt;find&gt;, &lt;in&gt;)</code></p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>名称</td>
+<td>查找字符串函数 <code>findstring</code></td>
+</tr>
+</tbody></table>
+<p>功能|在字串 <code>&lt;in&gt;</code> 中查找字串 <code>&lt;find&gt;</code> |</p>
+<p>返回|如果找到，那么返回，否则返回空字符串</p>
+<p>示例：</p>
+<pre class="language-Makefile" data-language="Makefile"><code class="language-Makefile">$(findstring a,a b c) 
+$(findstring a,b c) </code></pre>
+<p>第一个函数返回 <code>a</code> 字符串<br>第二个返回空字符串</p>
+<h3 id="过滤函数-filter"><a href="#过滤函数-filter" class="headerlink" title="过滤函数 filter"></a>过滤函数 <code>filter</code></h3><p> <code>$(filter &lt;patterns&gt;, &lt;text&gt;)</code></p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>名称</td>
+<td>过滤函数 <code>filter</code></td>
+</tr>
+</tbody></table>
+<p>功能|以模式 <code>&lt;patterns&gt;</code> 过滤字符串 <code>&lt;text&gt;</code> 中的单词，保留符合模式 <code>&lt;patterns&gt;</code> 的单词。可以有多个模式<br>返回|返回符合模式 <code>&lt;patterns&gt;</code> 的字串</p>
+<p>示例：</p>
+<pre class="language-Makefile" data-language="Makefile"><code class="language-Makefile">sources :&#x3D; foo.c bar.c baz.s ugh.h 
+foo: $(sources) 
+cc $(filter %.c %.s,$(sources)) -o foo </code></pre>
+<p><code>$(filter %.c %.s, $(sources))</code> 返回的值是<br> <code>foo.c bar.c baz.s</code></p>
+<h3 id="去空格函数-strip"><a href="#去空格函数-strip" class="headerlink" title="去空格函数 strip"></a>去空格函数 <code>strip</code></h3><p> <code>$(strip &lt;string&gt;)</code></p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>名称</td>
+<td>去空格函数 <code>strip</code></td>
+</tr>
+</tbody></table>
+<p>功能|去掉字符串 <code>&lt;string&gt;</code> 开头和结尾的空字符<br>返回|返回被去掉空格的字符串值</p>
+<p>示例：</p>
+<pre class="language-Makefile" data-language="Makefile"><code class="language-Makefile">$(strip a b c )</code></pre>
+<p>结果是<br> <code>a b c</code></p>
+<h3 id="排序函数-sort"><a href="#排序函数-sort" class="headerlink" title="排序函数 sort"></a>排序函数 <code>sort</code></h3><p> <code>$(sort &lt;list&gt;)</code></p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>名称</td>
+<td>排序函数 <code>sort</code></td>
+</tr>
+</tbody></table>
+<p>功能|给字符串 <code>&lt;list&gt;</code> 中的单词排序（升序）<br>返回|返回排序后的字符串</p>
+<p>示例：</p>
+<pre class="language-Makefile" data-language="Makefile"><code class="language-Makefile">$(sort foo bar lose)</code></pre>
+<p>结果是<br> <code>bar foo lose</code></p>
+<p>备注：sort 函数会去掉其中重复的单词</p>
+<h3 id="取单词函数-word"><a href="#取单词函数-word" class="headerlink" title="取单词函数 word"></a>取单词函数 <code>word</code></h3><p> <code>$(word &lt;n&gt;, &lt;text&gt;)</code></p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>名称</td>
+<td>取单词函数 <code>word</code></td>
+</tr>
+</tbody></table>
+<p>功能|取字符串 <code>&lt;text&gt;</code> 中第 <code>&lt;n&gt;</code> 个单词（从 1 开始）<br>返回|返回：返回字符串 <code>&lt;text&gt;</code> 中第 <code>&lt;n&gt;</code> 个单词。如果 n 比其中的单词数要大，返回空字符串。</p>
+<p>示例：</p>
+<pre class="language-Makefile" data-language="Makefile"><code class="language-Makefile">$(word 2, foo bar baz)</code></pre>
+<p>返回值是<br> <code>bar</code></p>
+<h3 id="去单词串函数-wordlist"><a href="#去单词串函数-wordlist" class="headerlink" title="去单词串函数 wordlist"></a>去单词串函数 <code>wordlist</code></h3><p> <code>$(wordlist &lt;s&gt;, &lt;e&gt;, &lt;text&gt;)</code></p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>名称</td>
+<td>去单词串函数 <code>wordlist</code></td>
+</tr>
+</tbody></table>
+<p>功能|从字符串 <code>&lt;text&gt;</code> 中取从 <code>&lt;s&gt;</code> 开始到 <code>&lt;e&gt;</code> 的单词串。 <code>&lt;s&gt;</code> 和 <code>&lt;e&gt;</code> 是一个数字<br>返回|返回字符串 <code>&lt;text&gt;</code> 中从 <code>&lt;s&gt;</code> 到 <code>&lt;e&gt;</code> 的单词串。如果 <code>&lt;s&gt;</code> 比 <code>&lt;text&gt;</code> 中的单词数大，那么返回空字符串。如果 <code>&lt;e&gt;</code> 大于 <code>&lt;text&gt;</code> 的单词数，那么从 <code>&lt;s&gt;</code> 开始，到结束的单词串</p>
+<p>示例：</p>
+<pre class="language-Makefile" data-language="Makefile"><code class="language-Makefile">$(wordlist 2, 3, foo bar baz)</code></pre>
+<p>返回值是<br> <code>bar baz</code></p>
+<h3 id="单词个数统计函数-words"><a href="#单词个数统计函数-words" class="headerlink" title="单词个数统计函数 words"></a>单词个数统计函数 <code>words</code></h3><p> <code>$(words &lt;text&gt;)</code></p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>名称</td>
+<td>单词个数统计函数 <code>words</code></td>
+</tr>
+</tbody></table>
+<p>功能|统计 <code>&lt;text&gt;</code> 中字符串中的单词个数<br>返回|返回 <code>&lt;text&gt;</code> 中的单词数</p>
+<p>示例：</p>
+<pre class="language-Makefile" data-language="Makefile"><code class="language-Makefile">$(words,foo bar baz）</code></pre>
+<p>返回值是<br> <code>3</code></p>
+<p>备注：如果我们要取中最后的一个单词，我们可以这样： <code>$(word $(words &lt;text&gt;)，&lt;text&gt;)</code></p>
+<h3 id="首单词函数-firstword"><a href="#首单词函数-firstword" class="headerlink" title="首单词函数 firstword"></a>首单词函数 <code>firstword</code></h3><p> <code>$(firstword &lt;text&gt;)</code></p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>名称</td>
+<td>首单词函数 <code>firstword</code></td>
+</tr>
+</tbody></table>
+<p>功能|取字符串 <code>&lt;text&gt;</code> 中的第一个单词<br>返回|返回字符串 <code>&lt;text&gt;</code> 的第一个单词</p>
+<p>示例：</p>
+<pre class="language-Makefile" data-language="Makefile"><code class="language-Makefile">$(firstword foo bar)</code></pre>
+<p>返回值是<br> <code>foo</code></p>
+<p>备注：这个函数可以用 <code>word</code> 函数来实现： <code>$(word 1，&lt;text&gt;)</code> 。</p>
+<h3 id="取目录函数-dir"><a href="#取目录函数-dir" class="headerlink" title="取目录函数 dir"></a>取目录函数 <code>dir</code></h3><p> <code>$(dir &lt;names&gt;)</code></p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>名称</td>
+<td>取目录函数 <code>dir</code></td>
+</tr>
+</tbody></table>
+<p>功能|从文件名序列 <code>&lt;names&gt;</code> 中取出目录部分。目录部分是指最后一个反斜杠 <code>/</code> 之前的部分。如果没有反斜杠，那么返回 <code>./</code></p>
+<p>返回|返回文件名序列 <code>&lt;names&gt;</code> 的目录部分</p>
+<p>示例：</p>
+<pre class="language-Makefile" data-language="Makefile"><code class="language-Makefile">$(dir src&#x2F;foo.c hacks)</code></pre>
+<p>返回值是<br> <code>src/ ./</code></p>
+<h3 id="取文件函数-notdir"><a href="#取文件函数-notdir" class="headerlink" title="取文件函数 notdir"></a>取文件函数 <code>notdir</code></h3><p> <code>$(notdir &lt;names&gt;)</code></p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>名称</td>
+<td>取文件函数 <code>notdir</code></td>
+</tr>
+</tbody></table>
+<p>功能|从文件名序列 <code>&lt;names&gt;</code> 中取出非目录部分，非目录部分是指最后一个反斜杠 <code>/</code> 之后的部分<br>返回|返回文件名序列 <code>&lt;names&gt;</code> 的非目录部分</p>
+<p>示例：</p>
+<pre class="language-Makefile" data-language="Makefile"><code class="language-Makefile">$(notdir src&#x2F;foo.c hacks)</code></pre>
+<p>返回值是<br> <code>foo.c hacks</code></p>
+<h3 id="取后缀函数-suffix"><a href="#取后缀函数-suffix" class="headerlink" title="取后缀函数 suffix"></a>取后缀函数 <code>suffix</code></h3><p> <code>$(suffix &lt;names&gt;)</code></p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>名称</td>
+<td>取后缀函数 <code>suffix</code></td>
+</tr>
+</tbody></table>
+<p>功能|从文件名序列 <code>&lt;names&gt;</code> 中获取后缀序列<br>返回|返回文件名序列 <code>&lt;names&gt;</code> 的后缀序列，如果文件没有后缀则返回空字串</p>
+<p>示例：</p>
+<pre class="language-Makefile" data-language="Makefile"><code class="language-Makefile">$(suffix src&#x2F;foo.c src-1.0&#x2F;bar.c hacks)</code></pre>
+<p>返回值是<br> <code>.c .c</code></p>
+<h3 id="取前缀函数-basename"><a href="#取前缀函数-basename" class="headerlink" title="取前缀函数 basename"></a>取前缀函数 <code>basename</code></h3><p> <code>$(basename &lt;names&gt;)</code></p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>名称</td>
+<td>取前缀函数 <code>basename</code></td>
+</tr>
+</tbody></table>
+<p>功能|从文件名序列 <code>&lt;names&gt;</code> 中取出各个文件名的前缀部分<br>返回|返回文件名序列 <code>&lt;names&gt;</code> 的前缀序列，如果文件没有前缀，则返回空字串。</p>
+<p>示例：</p>
+<pre class="language-Makefile" data-language="Makefile"><code class="language-Makefile">$(basename src&#x2F;foo.c src-1.0&#x2F;bar.c hacks)</code></pre>
+<p>返回值是<br> <code>src/foo src-1.0/bar hacks</code></p>
+<h3 id="加后缀函数-addsuffix"><a href="#加后缀函数-addsuffix" class="headerlink" title="加后缀函数 addsuffix"></a>加后缀函数 <code>addsuffix</code></h3><p> <code>$(addsuffix &lt;suffix&gt;, &lt;names&gt;)</code></p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>名称</td>
+<td>加后缀函数 <code>addsuffix</code></td>
+</tr>
+</tbody></table>
+<p>功能|把后缀 <code>&lt;suffix&gt;</code> 加到 <code>&lt;names&gt;</code> 中的每个单词后面<br>返回|返回加过后缀的文件名序列</p>
+<p>示例：</p>
+<pre class="language-Makefile" data-language="Makefile"><code class="language-Makefile">$(addsuffix .c, foo bar)</code></pre>
+<p>返回值是<br> <code>foo.c bar.c</code></p>
+<h3 id="加前缀函数-addprefix"><a href="#加前缀函数-addprefix" class="headerlink" title="加前缀函数 addprefix"></a>加前缀函数 <code>addprefix</code></h3><p> <code>$(addprefix &lt;prefix&gt;, &lt;names&gt;)</code></p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>名称</td>
+<td>加前缀函数 <code>addprefix</code></td>
+</tr>
+</tbody></table>
+<p>功能|把前缀 <code>&lt;prefix&gt;</code> 加到 <code>&lt;names&gt;</code> 中的每个单词前面<br>返回|返回加过前缀的文件名序列</p>
+<p>示例：</p>
+<pre class="language-Makefile" data-language="Makefile"><code class="language-Makefile">$(addprefix src&#x2F;,foo bar)</code></pre>
+<p>返回值是<br> <code>src/foo src/bar</code></p>
+<h3 id="连接函数-join"><a href="#连接函数-join" class="headerlink" title="连接函数 join"></a>连接函数 <code>join</code></h3><p> <code>$(join &lt;list1&gt;, &lt;list2&gt;)</code></p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>名称</td>
+<td>连接函数 <code>join</code></td>
+</tr>
+</tbody></table>
+<p>功能|把 <code>&lt;list2&gt;</code> 中的单词对应地加到的 <code>&lt;list1&gt;</code> 单词后面。如果 <code>&lt;list1&gt;</code> 的单词个数要比 <code>&lt;list2&gt;</code> 的多，那么， <code>&lt;list1&gt;</code> 中的多出来的单词将保持原样。如果的 <code>&lt;list2&gt;</code> 单词个数要比 <code>&lt;list1&gt;</code> 多，那么 <code>&lt;list2&gt;</code> 多出来的单词将被复制到 <code>&lt;list1&gt;</code> 中<br>返回|返回连接过后的字符串</p>
+<p>示例：</p>
+<pre class="language-Makefile" data-language="Makefile"><code class="language-Makefile">$(join aaa bbb，111 222 333)</code></pre>
+<p>返回值是<br> <code>aaa111 bbb222 333</code></p>
+<h3 id="遍历函数-foreach"><a href="#遍历函数-foreach" class="headerlink" title="遍历函数 foreach"></a>遍历函数 <code>foreach</code></h3><p> <code>$(foreach &lt;var&gt;, &lt;list&gt;, &lt;text&gt;)</code></p>
+<p>把参数 <code>&lt;list&gt;</code> 中的单词逐一取出放到参数 <code>&lt;var&gt;</code> 所指定的变量中，然后再执行 <code>&lt;text&gt;</code> 所包含的表达式。每一次 <code>&lt;text&gt;</code> 会返回一个字符串，循环过程中 <code>&lt;text&gt;</code> 的所返回的每个字符串会以空格分隔，最后当整个循环结束时， <code>&lt;text&gt;</code> 所返回的每个字符串所组成的整个字符串以空格分隔，将会是 foreach 函数的返回值。所以， <code>&lt;var&gt;</code> 最好是一个变量名， <code>&lt;list&gt;</code> 可以是一个表达式，而 <code>&lt;text&gt;</code> 中一般会使用这个参数来依次枚举中的单词。</p>
+<p>示例：</p>
+<pre class="language-Makefile" data-language="Makefile"><code class="language-Makefile">names :&#x3D; a b c d 
+files :&#x3D; $(foreach n, $(names), $(n).o）</code></pre>
+<p>上面的例子中， <code>$(name)</code> 中的单词会被挨个取出，并存到变量 <code>n</code> 中， <code>$(n).o</code> 每次根据 <code>$(n)</code> 计算出一个值，这些值以空格分隔，最后作为 <code>foreach</code> 函数的返回，所以， <code>$(files)</code> 的值是 <code>a.o b.o c.o d.o</code> 。  </p>
+<blockquote>
+<p>foreach 中的 <code>&lt;var&gt;</code> 参数是一个临时的局部变量，foreach 函数执行完后，参数 <code>&lt;var&gt;</code> 的变量将不在作用，其作用域只在 foreach 函数当中。</p>
+</blockquote>
+
             </div>
             <hr/>
 
@@ -534,8 +855,8 @@
             <div class="reprintDetail">
                 <div>
                 <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title"
-                      rel="dct:type">《GCC Toolset 的安装和使用》</span> 由
-                    <a xmlns:cc="http://creativecommons.org/ns#" href="/2020/08/25/InstallGCCToolset/" property="cc:attributionName"
+                      rel="dct:type">《Makefile 详解》</span> 由
+                    <a xmlns:cc="http://creativecommons.org/ns#" href="/2021/06/20/Makefile/" property="cc:attributionName"
                        rel="cc:attributionURL">Konata</a>
                     采用
                     <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh">
@@ -590,49 +911,59 @@
         
             <div class="article col s12 m6">
                 <div class="article-badge left-badge text-color">
-                    <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                    <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+                </div>
                 <div class="card">
-                    <a href="/2020/09/01/ajax/">
+                    <a href="/2021/06/20/Makefile/">
                         <div class="card-image">
                             
                                 
                                 <div class="lazy-image-wrapper">
-                                    <img data-src="/medias/featureimages/11.jpg" class="responsive-img lazyload"
-                                         alt="Ajax">
+                                    <img data-src="/medias/featureimages/13.jpg" class="responsive-img lazyload"
+                                         alt="Makefile 详解">
                                 </div>
                             
-                            <span class="card-title">Ajax</span>
+                            <span class="card-title">Makefile 详解</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
                             <center>
-                                Ajax
+                                Makefile 详解
                                 
                             </center>
                         </div>
                         <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-09-01
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-06-20
+                            </span>
                             <span class="publish-author">
                                 
                                     <i class="fa fa-bookmark fa-fw icon-category"></i>
                                     
-                                        <a href="/categories/JavaScript/" class="post-category" target="_blank">
-                                    JavaScript
+                                        <a href="/categories/Miscellaneous/" class="post-category" target="_blank">
+                                    Miscellaneous
                                 </a>
                                     
                                 
                             </span>
                         </div>
                     </div>
+
                     
                         <div class="card-action article-tags">
                             
-                                <a href="/tags/JavaScript/" target="_blank">
-                                    <span class="chip bg-color">JavaScript</span>
+                                <a href="/tags/C/" target="_blank">
+                                    <span class="chip bg-color">C</span>
+                                </a>
+                            
+                                <a href="/tags/C/" target="_blank">
+                                    <span class="chip bg-color">C++</span>
+                                </a>
+                            
+                                <a href="/tags/Makefile/" target="_blank">
+                                    <span class="chip bg-color">Makefile</span>
                                 </a>
                             
                         </div>
@@ -646,36 +977,36 @@
                     下一篇&nbsp;<i class="fa fa-chevron-right"></i>
                 </div>
                 <div class="card">
-                    <a href="/2020/08/12/fetch/">
+                    <a href="/2021/06/03/linuxDriver/">
                         <div class="card-image">
                             
                                 
                                 <div class="lazy-image-wrapper">
-                                    <img data-src="/medias/featureimages/02.jpg" class="responsive-img lazyload"
-                                         alt="Fetch API">
+                                    <img data-src="/medias/featureimages/17.jpg" class="responsive-img lazyload"
+                                         alt="Linux 驱动">
                                 </div>
                             
-                            <span class="card-title">Fetch API</span>
+                            <span class="card-title">Linux 驱动</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
                             <center>
-                                Fetch API
+                                Linux 驱动
                                 
                             </center>
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-08-12
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-06-03
                             </span>
                             <span class="publish-author">
                                 
                                     <i class="fa fa-bookmark fa-fw icon-category"></i>
                                     
-                                        <a href="/categories/JavaScript/" class="post-category" target="_blank">
-                                    JavaScript
+                                        <a href="/categories/Miscellaneous/" class="post-category" target="_blank">
+                                    Miscellaneous
                                 </a>
                                     
                                 
@@ -685,8 +1016,12 @@
                     
                         <div class="card-action article-tags">
                             
-                                <a href="/tags/JavaScript/" target="_blank">
-                                    <span class="chip bg-color">JavaScript</span>
+                                <a href="/tags/Linux/" target="_blank">
+                                    <span class="chip bg-color">Linux</span>
+                                </a>
+                            
+                                <a href="/tags/%E9%A9%B1%E5%8A%A8/" target="_blank">
+                                    <span class="chip bg-color">驱动</span>
                                 </a>
                             
                         </div>
