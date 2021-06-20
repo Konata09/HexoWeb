@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://konata.tech/"/>
-  <updated>2021-06-20T13:35:26.243Z</updated>
+  <updated>2021-06-20T14:31:03.546Z</updated>
   <id>http://konata.tech/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Shell 脚本编程</title>
+    <link href="http://konata.tech/2021/06/20/ShellPrograming/"/>
+    <id>http://konata.tech/2021/06/20/ShellPrograming/</id>
+    <published>2021-06-20T13:53:43.000Z</published>
+    <updated>2021-06-20T14:31:03.546Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;命令&quot;&gt;&lt;a href=&quot;#命令&quot; class=&quot;headerlink&quot; title=&quot;命令&quot;&gt;&lt;/a&gt;命令&lt;/h2&gt;&lt;h3 id=&quot;echo-命令&quot;&gt;&lt;a href=&quot;#echo-命令&quot; class=&quot;headerlink&quot; title=&quot;echo
+        
+      
+    
+    </summary>
+    
+      <category term="Miscellaneous" scheme="http://konata.tech/categories/Miscellaneous/"/>
+    
+    
+      <category term="Linux" scheme="http://konata.tech/tags/Linux/"/>
+    
+      <category term="shell" scheme="http://konata.tech/tags/shell/"/>
+    
+      <category term="bash" scheme="http://konata.tech/tags/bash/"/>
+    
+  </entry>
   
   <entry>
     <title>Makefile 详解</title>
@@ -543,33 +573,6 @@
         
         
           &lt;p&gt;JavaScript 的严格模式 (strict mode)，即在严格的条件下运行。严格模式消除了 Javascript 语法的一些不合理、不严谨之处，减少一些怪异行为；消除代码运行的一些不安全之处，保证代码运行的安全；提高了引擎的效率，增加运行速度；为未来新的
-        
-      
-    
-    </summary>
-    
-      <category term="JavaScript" scheme="http://konata.tech/categories/JavaScript/"/>
-    
-    
-      <category term="JavaScript" scheme="http://konata.tech/tags/JavaScript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JavaScript 中的堆栈</title>
-    <link href="http://konata.tech/2020/09/18/stackAndHeap/"/>
-    <id>http://konata.tech/2020/09/18/stackAndHeap/</id>
-    <published>2020-09-18T07:53:17.000Z</published>
-    <updated>2020-09-18T08:40:57.157Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;堆 (Heap) 是动态分配的内存，大小不定也不会自动释放，栈 (stack) 为自动分配的内存空间，在代码执行过程中自动释放。  &lt;/p&gt;
-&lt;h2 id=&quot;栈&quot;&gt;&lt;a href=&quot;#栈&quot; class=&quot;headerlink&quot;
         
       
     
