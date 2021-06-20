@@ -576,9 +576,15 @@ endef</code></pre>
 <td>名称</td>
 <td>查找字符串函数 <code>findstring</code></td>
 </tr>
+<tr>
+<td>功能</td>
+<td>在字串 <code>&lt;in&gt;</code> 中查找字串 <code>&lt;find&gt;</code></td>
+</tr>
+<tr>
+<td>返回</td>
+<td>如果找到，那么返回，否则返回空字符串</td>
+</tr>
 </tbody></table>
-<p>功能|在字串 <code>&lt;in&gt;</code> 中查找字串 <code>&lt;find&gt;</code> |</p>
-<p>返回|如果找到，那么返回，否则返回空字符串</p>
 <p>示例：</p>
 <pre class="language-Makefile" data-language="Makefile"><code class="language-Makefile">$(findstring a,a b c) 
 $(findstring a,b c) </code></pre>
@@ -595,8 +601,15 @@ $(findstring a,b c) </code></pre>
 <td>名称</td>
 <td>过滤函数 <code>filter</code></td>
 </tr>
+<tr>
+<td>功能</td>
+<td>以模式 <code>&lt;patterns&gt;</code> 过滤字符串 <code>&lt;text&gt;</code> 中的单词，保留符合模式 <code>&lt;patterns&gt;</code> 的单词。可以有多个模式</td>
+</tr>
+<tr>
+<td>返回</td>
+<td>返回符合模式 <code>&lt;patterns&gt;</code> 的字串</td>
+</tr>
 </tbody></table>
-<p>功能|以模式 <code>&lt;patterns&gt;</code> 过滤字符串 <code>&lt;text&gt;</code> 中的单词，保留符合模式 <code>&lt;patterns&gt;</code> 的单词。可以有多个模式<br>返回|返回符合模式 <code>&lt;patterns&gt;</code> 的字串</p>
 <p>示例：</p>
 <pre class="language-Makefile" data-language="Makefile"><code class="language-Makefile">sources :&#x3D; foo.c bar.c baz.s ugh.h 
 foo: $(sources) 
@@ -614,8 +627,15 @@ cc $(filter %.c %.s,$(sources)) -o foo </code></pre>
 <td>名称</td>
 <td>去空格函数 <code>strip</code></td>
 </tr>
+<tr>
+<td>功能</td>
+<td>去掉字符串 <code>&lt;string&gt;</code> 开头和结尾的空字符</td>
+</tr>
+<tr>
+<td>返回</td>
+<td>返回被去掉空格的字符串值</td>
+</tr>
 </tbody></table>
-<p>功能|去掉字符串 <code>&lt;string&gt;</code> 开头和结尾的空字符<br>返回|返回被去掉空格的字符串值</p>
 <p>示例：</p>
 <pre class="language-Makefile" data-language="Makefile"><code class="language-Makefile">$(strip a b c )</code></pre>
 <p>结果是<br> <code>a b c</code></p>
@@ -631,8 +651,15 @@ cc $(filter %.c %.s,$(sources)) -o foo </code></pre>
 <td>名称</td>
 <td>排序函数 <code>sort</code></td>
 </tr>
+<tr>
+<td>功能</td>
+<td>给字符串 <code>&lt;list&gt;</code> 中的单词排序（升序）</td>
+</tr>
+<tr>
+<td>返回</td>
+<td>返回排序后的字符串</td>
+</tr>
 </tbody></table>
-<p>功能|给字符串 <code>&lt;list&gt;</code> 中的单词排序（升序）<br>返回|返回排序后的字符串</p>
 <p>示例：</p>
 <pre class="language-Makefile" data-language="Makefile"><code class="language-Makefile">$(sort foo bar lose)</code></pre>
 <p>结果是<br> <code>bar foo lose</code></p>
@@ -649,8 +676,15 @@ cc $(filter %.c %.s,$(sources)) -o foo </code></pre>
 <td>名称</td>
 <td>取单词函数 <code>word</code></td>
 </tr>
+<tr>
+<td>功能</td>
+<td>取字符串 <code>&lt;text&gt;</code> 中第 <code>&lt;n&gt;</code> 个单词（从 1 开始）</td>
+</tr>
+<tr>
+<td>返回</td>
+<td>返回：返回字符串 <code>&lt;text&gt;</code> 中第 <code>&lt;n&gt;</code> 个单词。如果 n 比其中的单词数要大，返回空字符串。</td>
+</tr>
 </tbody></table>
-<p>功能|取字符串 <code>&lt;text&gt;</code> 中第 <code>&lt;n&gt;</code> 个单词（从 1 开始）<br>返回|返回：返回字符串 <code>&lt;text&gt;</code> 中第 <code>&lt;n&gt;</code> 个单词。如果 n 比其中的单词数要大，返回空字符串。</p>
 <p>示例：</p>
 <pre class="language-Makefile" data-language="Makefile"><code class="language-Makefile">$(word 2, foo bar baz)</code></pre>
 <p>返回值是<br> <code>bar</code></p>
@@ -666,8 +700,15 @@ cc $(filter %.c %.s,$(sources)) -o foo </code></pre>
 <td>名称</td>
 <td>去单词串函数 <code>wordlist</code></td>
 </tr>
+<tr>
+<td>功能</td>
+<td>从字符串 <code>&lt;text&gt;</code> 中取从 <code>&lt;s&gt;</code> 开始到 <code>&lt;e&gt;</code> 的单词串。 <code>&lt;s&gt;</code> 和 <code>&lt;e&gt;</code> 是一个数字</td>
+</tr>
+<tr>
+<td>返回</td>
+<td>返回字符串 <code>&lt;text&gt;</code> 中从 <code>&lt;s&gt;</code> 到 <code>&lt;e&gt;</code> 的单词串。如果 <code>&lt;s&gt;</code> 比 <code>&lt;text&gt;</code> 中的单词数大，那么返回空字符串。如果 <code>&lt;e&gt;</code> 大于 <code>&lt;text&gt;</code> 的单词数，那么从 <code>&lt;s&gt;</code> 开始，到结束的单词串</td>
+</tr>
 </tbody></table>
-<p>功能|从字符串 <code>&lt;text&gt;</code> 中取从 <code>&lt;s&gt;</code> 开始到 <code>&lt;e&gt;</code> 的单词串。 <code>&lt;s&gt;</code> 和 <code>&lt;e&gt;</code> 是一个数字<br>返回|返回字符串 <code>&lt;text&gt;</code> 中从 <code>&lt;s&gt;</code> 到 <code>&lt;e&gt;</code> 的单词串。如果 <code>&lt;s&gt;</code> 比 <code>&lt;text&gt;</code> 中的单词数大，那么返回空字符串。如果 <code>&lt;e&gt;</code> 大于 <code>&lt;text&gt;</code> 的单词数，那么从 <code>&lt;s&gt;</code> 开始，到结束的单词串</p>
 <p>示例：</p>
 <pre class="language-Makefile" data-language="Makefile"><code class="language-Makefile">$(wordlist 2, 3, foo bar baz)</code></pre>
 <p>返回值是<br> <code>bar baz</code></p>
@@ -683,8 +724,15 @@ cc $(filter %.c %.s,$(sources)) -o foo </code></pre>
 <td>名称</td>
 <td>单词个数统计函数 <code>words</code></td>
 </tr>
+<tr>
+<td>功能</td>
+<td>统计 <code>&lt;text&gt;</code> 中字符串中的单词个数</td>
+</tr>
+<tr>
+<td>返回</td>
+<td>返回 <code>&lt;text&gt;</code> 中的单词数</td>
+</tr>
 </tbody></table>
-<p>功能|统计 <code>&lt;text&gt;</code> 中字符串中的单词个数<br>返回|返回 <code>&lt;text&gt;</code> 中的单词数</p>
 <p>示例：</p>
 <pre class="language-Makefile" data-language="Makefile"><code class="language-Makefile">$(words,foo bar baz）</code></pre>
 <p>返回值是<br> <code>3</code></p>
@@ -701,8 +749,15 @@ cc $(filter %.c %.s,$(sources)) -o foo </code></pre>
 <td>名称</td>
 <td>首单词函数 <code>firstword</code></td>
 </tr>
+<tr>
+<td>功能</td>
+<td>取字符串 <code>&lt;text&gt;</code> 中的第一个单词</td>
+</tr>
+<tr>
+<td>返回</td>
+<td>返回字符串 <code>&lt;text&gt;</code> 的第一个单词</td>
+</tr>
 </tbody></table>
-<p>功能|取字符串 <code>&lt;text&gt;</code> 中的第一个单词<br>返回|返回字符串 <code>&lt;text&gt;</code> 的第一个单词</p>
 <p>示例：</p>
 <pre class="language-Makefile" data-language="Makefile"><code class="language-Makefile">$(firstword foo bar)</code></pre>
 <p>返回值是<br> <code>foo</code></p>
@@ -719,9 +774,15 @@ cc $(filter %.c %.s,$(sources)) -o foo </code></pre>
 <td>名称</td>
 <td>取目录函数 <code>dir</code></td>
 </tr>
+<tr>
+<td>功能</td>
+<td>从文件名序列 <code>&lt;names&gt;</code> 中取出目录部分。目录部分是指最后一个反斜杠 <code>/</code> 之前的部分。如果没有反斜杠，那么返回 <code>./</code></td>
+</tr>
+<tr>
+<td>返回</td>
+<td>返回文件名序列 <code>&lt;names&gt;</code> 的目录部分</td>
+</tr>
 </tbody></table>
-<p>功能|从文件名序列 <code>&lt;names&gt;</code> 中取出目录部分。目录部分是指最后一个反斜杠 <code>/</code> 之前的部分。如果没有反斜杠，那么返回 <code>./</code></p>
-<p>返回|返回文件名序列 <code>&lt;names&gt;</code> 的目录部分</p>
 <p>示例：</p>
 <pre class="language-Makefile" data-language="Makefile"><code class="language-Makefile">$(dir src&#x2F;foo.c hacks)</code></pre>
 <p>返回值是<br> <code>src/ ./</code></p>
@@ -737,8 +798,15 @@ cc $(filter %.c %.s,$(sources)) -o foo </code></pre>
 <td>名称</td>
 <td>取文件函数 <code>notdir</code></td>
 </tr>
+<tr>
+<td>功能</td>
+<td>从文件名序列 <code>&lt;names&gt;</code> 中取出非目录部分，非目录部分是指最后一个反斜杠 <code>/</code> 之后的部分</td>
+</tr>
+<tr>
+<td>返回</td>
+<td>返回文件名序列 <code>&lt;names&gt;</code> 的非目录部分</td>
+</tr>
 </tbody></table>
-<p>功能|从文件名序列 <code>&lt;names&gt;</code> 中取出非目录部分，非目录部分是指最后一个反斜杠 <code>/</code> 之后的部分<br>返回|返回文件名序列 <code>&lt;names&gt;</code> 的非目录部分</p>
 <p>示例：</p>
 <pre class="language-Makefile" data-language="Makefile"><code class="language-Makefile">$(notdir src&#x2F;foo.c hacks)</code></pre>
 <p>返回值是<br> <code>foo.c hacks</code></p>
@@ -754,8 +822,15 @@ cc $(filter %.c %.s,$(sources)) -o foo </code></pre>
 <td>名称</td>
 <td>取后缀函数 <code>suffix</code></td>
 </tr>
+<tr>
+<td>功能</td>
+<td>从文件名序列 <code>&lt;names&gt;</code> 中获取后缀序列</td>
+</tr>
+<tr>
+<td>返回</td>
+<td>返回文件名序列 <code>&lt;names&gt;</code> 的后缀序列，如果文件没有后缀则返回空字串</td>
+</tr>
 </tbody></table>
-<p>功能|从文件名序列 <code>&lt;names&gt;</code> 中获取后缀序列<br>返回|返回文件名序列 <code>&lt;names&gt;</code> 的后缀序列，如果文件没有后缀则返回空字串</p>
 <p>示例：</p>
 <pre class="language-Makefile" data-language="Makefile"><code class="language-Makefile">$(suffix src&#x2F;foo.c src-1.0&#x2F;bar.c hacks)</code></pre>
 <p>返回值是<br> <code>.c .c</code></p>
@@ -771,8 +846,15 @@ cc $(filter %.c %.s,$(sources)) -o foo </code></pre>
 <td>名称</td>
 <td>取前缀函数 <code>basename</code></td>
 </tr>
+<tr>
+<td>功能</td>
+<td>从文件名序列 <code>&lt;names&gt;</code> 中取出各个文件名的前缀部分</td>
+</tr>
+<tr>
+<td>返回</td>
+<td>返回文件名序列 <code>&lt;names&gt;</code> 的前缀序列，如果文件没有前缀，则返回空字串。</td>
+</tr>
 </tbody></table>
-<p>功能|从文件名序列 <code>&lt;names&gt;</code> 中取出各个文件名的前缀部分<br>返回|返回文件名序列 <code>&lt;names&gt;</code> 的前缀序列，如果文件没有前缀，则返回空字串。</p>
 <p>示例：</p>
 <pre class="language-Makefile" data-language="Makefile"><code class="language-Makefile">$(basename src&#x2F;foo.c src-1.0&#x2F;bar.c hacks)</code></pre>
 <p>返回值是<br> <code>src/foo src-1.0/bar hacks</code></p>
@@ -788,8 +870,15 @@ cc $(filter %.c %.s,$(sources)) -o foo </code></pre>
 <td>名称</td>
 <td>加后缀函数 <code>addsuffix</code></td>
 </tr>
+<tr>
+<td>功能</td>
+<td>把后缀 <code>&lt;suffix&gt;</code> 加到 <code>&lt;names&gt;</code> 中的每个单词后面</td>
+</tr>
+<tr>
+<td>返回</td>
+<td>返回加过后缀的文件名序列</td>
+</tr>
 </tbody></table>
-<p>功能|把后缀 <code>&lt;suffix&gt;</code> 加到 <code>&lt;names&gt;</code> 中的每个单词后面<br>返回|返回加过后缀的文件名序列</p>
 <p>示例：</p>
 <pre class="language-Makefile" data-language="Makefile"><code class="language-Makefile">$(addsuffix .c, foo bar)</code></pre>
 <p>返回值是<br> <code>foo.c bar.c</code></p>
@@ -805,8 +894,15 @@ cc $(filter %.c %.s,$(sources)) -o foo </code></pre>
 <td>名称</td>
 <td>加前缀函数 <code>addprefix</code></td>
 </tr>
+<tr>
+<td>功能</td>
+<td>把前缀 <code>&lt;prefix&gt;</code> 加到 <code>&lt;names&gt;</code> 中的每个单词前面</td>
+</tr>
+<tr>
+<td>返回</td>
+<td>返回加过前缀的文件名序列</td>
+</tr>
 </tbody></table>
-<p>功能|把前缀 <code>&lt;prefix&gt;</code> 加到 <code>&lt;names&gt;</code> 中的每个单词前面<br>返回|返回加过前缀的文件名序列</p>
 <p>示例：</p>
 <pre class="language-Makefile" data-language="Makefile"><code class="language-Makefile">$(addprefix src&#x2F;,foo bar)</code></pre>
 <p>返回值是<br> <code>src/foo src/bar</code></p>
@@ -822,8 +918,15 @@ cc $(filter %.c %.s,$(sources)) -o foo </code></pre>
 <td>名称</td>
 <td>连接函数 <code>join</code></td>
 </tr>
+<tr>
+<td>功能</td>
+<td>把 <code>&lt;list2&gt;</code> 中的单词对应地加到的 <code>&lt;list1&gt;</code> 单词后面。如果 <code>&lt;list1&gt;</code> 的单词个数要比 <code>&lt;list2&gt;</code> 的多，那么， <code>&lt;list1&gt;</code> 中的多出来的单词将保持原样。如果的 <code>&lt;list2&gt;</code> 单词个数要比 <code>&lt;list1&gt;</code> 多，那么 <code>&lt;list2&gt;</code> 多出来的单词将被复制到 <code>&lt;list1&gt;</code> 中</td>
+</tr>
+<tr>
+<td>返回</td>
+<td>返回连接过后的字符串</td>
+</tr>
 </tbody></table>
-<p>功能|把 <code>&lt;list2&gt;</code> 中的单词对应地加到的 <code>&lt;list1&gt;</code> 单词后面。如果 <code>&lt;list1&gt;</code> 的单词个数要比 <code>&lt;list2&gt;</code> 的多，那么， <code>&lt;list1&gt;</code> 中的多出来的单词将保持原样。如果的 <code>&lt;list2&gt;</code> 单词个数要比 <code>&lt;list1&gt;</code> 多，那么 <code>&lt;list2&gt;</code> 多出来的单词将被复制到 <code>&lt;list1&gt;</code> 中<br>返回|返回连接过后的字符串</p>
 <p>示例：</p>
 <pre class="language-Makefile" data-language="Makefile"><code class="language-Makefile">$(join aaa bbb，111 222 333)</code></pre>
 <p>返回值是<br> <code>aaa111 bbb222 333</code></p>
