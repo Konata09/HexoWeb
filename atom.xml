@@ -5,9 +5,9 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://bronya.moe/"/>
+  <link href="http://konata.tech/"/>
   <updated>2021-06-20T14:31:03.546Z</updated>
-  <id>http://bronya.moe/</id>
+  <id>http://konata.tech/</id>
   
   <author>
     <name>Konata</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Shell 脚本编程</title>
-    <link href="http://bronya.moe/2021/06/20/ShellPrograming/"/>
-    <id>http://bronya.moe/2021/06/20/ShellPrograming/</id>
+    <link href="http://konata.tech/2021/06/20/ShellPrograming/"/>
+    <id>http://konata.tech/2021/06/20/ShellPrograming/</id>
     <published>2021-06-20T13:53:43.000Z</published>
     <updated>2021-06-20T14:31:03.546Z</updated>
     
@@ -35,21 +35,21 @@
     
     </summary>
     
-      <category term="Miscellaneous" scheme="http://bronya.moe/categories/Miscellaneous/"/>
+      <category term="Miscellaneous" scheme="http://konata.tech/categories/Miscellaneous/"/>
     
     
-      <category term="Linux" scheme="http://bronya.moe/tags/Linux/"/>
+      <category term="Linux" scheme="http://konata.tech/tags/Linux/"/>
     
-      <category term="shell" scheme="http://bronya.moe/tags/shell/"/>
+      <category term="shell" scheme="http://konata.tech/tags/shell/"/>
     
-      <category term="bash" scheme="http://bronya.moe/tags/bash/"/>
+      <category term="bash" scheme="http://konata.tech/tags/bash/"/>
     
   </entry>
   
   <entry>
     <title>Makefile 详解</title>
-    <link href="http://bronya.moe/2021/06/20/Makefile/"/>
-    <id>http://bronya.moe/2021/06/20/Makefile/</id>
+    <link href="http://konata.tech/2021/06/20/Makefile/"/>
+    <id>http://konata.tech/2021/06/20/Makefile/</id>
     <published>2021-06-20T12:13:02.000Z</published>
     <updated>2021-06-20T13:35:26.243Z</updated>
     
@@ -66,21 +66,21 @@
     
     </summary>
     
-      <category term="Miscellaneous" scheme="http://bronya.moe/categories/Miscellaneous/"/>
+      <category term="Miscellaneous" scheme="http://konata.tech/categories/Miscellaneous/"/>
     
     
-      <category term="C" scheme="http://bronya.moe/tags/C/"/>
+      <category term="C" scheme="http://konata.tech/tags/C/"/>
     
-      <category term="C++" scheme="http://bronya.moe/tags/C/"/>
+      <category term="C++" scheme="http://konata.tech/tags/C/"/>
     
-      <category term="Makefile" scheme="http://bronya.moe/tags/Makefile/"/>
+      <category term="Makefile" scheme="http://konata.tech/tags/Makefile/"/>
     
   </entry>
   
   <entry>
     <title>Linux 驱动</title>
-    <link href="http://bronya.moe/2021/06/03/linuxDriver/"/>
-    <id>http://bronya.moe/2021/06/03/linuxDriver/</id>
+    <link href="http://konata.tech/2021/06/03/linuxDriver/"/>
+    <id>http://konata.tech/2021/06/03/linuxDriver/</id>
     <published>2021-06-03T05:00:23.000Z</published>
     <updated>2021-06-03T12:08:10.844Z</updated>
     
@@ -96,19 +96,19 @@
     
     </summary>
     
-      <category term="Miscellaneous" scheme="http://bronya.moe/categories/Miscellaneous/"/>
+      <category term="Miscellaneous" scheme="http://konata.tech/categories/Miscellaneous/"/>
     
     
-      <category term="Linux" scheme="http://bronya.moe/tags/Linux/"/>
+      <category term="Linux" scheme="http://konata.tech/tags/Linux/"/>
     
-      <category term="驱动" scheme="http://bronya.moe/tags/%E9%A9%B1%E5%8A%A8/"/>
+      <category term="驱动" scheme="http://konata.tech/tags/%E9%A9%B1%E5%8A%A8/"/>
     
   </entry>
   
   <entry>
     <title>ARM Cortex-A9 开发</title>
-    <link href="http://bronya.moe/2021/05/29/armEmbedded/"/>
-    <id>http://bronya.moe/2021/05/29/armEmbedded/</id>
+    <link href="http://konata.tech/2021/05/29/armEmbedded/"/>
+    <id>http://konata.tech/2021/05/29/armEmbedded/</id>
     <published>2021-05-29T09:25:47.000Z</published>
     <updated>2021-06-03T13:38:14.623Z</updated>
     
@@ -124,19 +124,19 @@
     
     </summary>
     
-      <category term="Miscellaneous" scheme="http://bronya.moe/categories/Miscellaneous/"/>
+      <category term="Miscellaneous" scheme="http://konata.tech/categories/Miscellaneous/"/>
     
     
-      <category term="ARM" scheme="http://bronya.moe/tags/ARM/"/>
+      <category term="ARM" scheme="http://konata.tech/tags/ARM/"/>
     
-      <category term="Cortex-A" scheme="http://bronya.moe/tags/Cortex-A/"/>
+      <category term="Cortex-A" scheme="http://konata.tech/tags/Cortex-A/"/>
     
   </entry>
   
   <entry>
     <title>CentOS 连接 iSCSI 存储</title>
-    <link href="http://bronya.moe/2021/03/07/linuxConnectiSCSI/"/>
-    <id>http://bronya.moe/2021/03/07/linuxConnectiSCSI/</id>
+    <link href="http://konata.tech/2021/03/07/linuxConnectiSCSI/"/>
+    <id>http://konata.tech/2021/03/07/linuxConnectiSCSI/</id>
     <published>2021-03-07T04:13:13.000Z</published>
     <updated>2021-03-07T05:26:31.377Z</updated>
     
@@ -153,23 +153,23 @@
     
     </summary>
     
-      <category term="Ops" scheme="http://bronya.moe/categories/Ops/"/>
+      <category term="Ops" scheme="http://konata.tech/categories/Ops/"/>
     
     
-      <category term="Linux" scheme="http://bronya.moe/tags/Linux/"/>
+      <category term="Linux" scheme="http://konata.tech/tags/Linux/"/>
     
-      <category term="iSCSI" scheme="http://bronya.moe/tags/iSCSI/"/>
+      <category term="iSCSI" scheme="http://konata.tech/tags/iSCSI/"/>
     
-      <category term="CentOS" scheme="http://bronya.moe/tags/CentOS/"/>
+      <category term="CentOS" scheme="http://konata.tech/tags/CentOS/"/>
     
-      <category term="RedHat" scheme="http://bronya.moe/tags/RedHat/"/>
+      <category term="RedHat" scheme="http://konata.tech/tags/RedHat/"/>
     
   </entry>
   
   <entry>
     <title>Linux 编程</title>
-    <link href="http://bronya.moe/2021/01/01/LinuxProgramming/"/>
-    <id>http://bronya.moe/2021/01/01/LinuxProgramming/</id>
+    <link href="http://konata.tech/2021/01/01/LinuxProgramming/"/>
+    <id>http://konata.tech/2021/01/01/LinuxProgramming/</id>
     <published>2021-01-01T09:23:35.000Z</published>
     <updated>2021-01-20T09:10:40.156Z</updated>
     
@@ -185,19 +185,19 @@
     
     </summary>
     
-      <category term="Miscellaneous" scheme="http://bronya.moe/categories/Miscellaneous/"/>
+      <category term="Miscellaneous" scheme="http://konata.tech/categories/Miscellaneous/"/>
     
     
-      <category term="Linux" scheme="http://bronya.moe/tags/Linux/"/>
+      <category term="Linux" scheme="http://konata.tech/tags/Linux/"/>
     
-      <category term="C" scheme="http://bronya.moe/tags/C/"/>
+      <category term="C" scheme="http://konata.tech/tags/C/"/>
     
   </entry>
   
   <entry>
     <title>KubeEdge 部署记录</title>
-    <link href="http://bronya.moe/2020/12/22/KubeEdgeDeployLog/"/>
-    <id>http://bronya.moe/2020/12/22/KubeEdgeDeployLog/</id>
+    <link href="http://konata.tech/2020/12/22/KubeEdgeDeployLog/"/>
+    <id>http://konata.tech/2020/12/22/KubeEdgeDeployLog/</id>
     <published>2020-12-22T08:52:59.000Z</published>
     <updated>2021-04-08T07:45:41.171Z</updated>
     
@@ -213,25 +213,25 @@
     
     </summary>
     
-      <category term="Ops" scheme="http://bronya.moe/categories/Ops/"/>
+      <category term="Ops" scheme="http://konata.tech/categories/Ops/"/>
     
     
-      <category term="Kubernetes" scheme="http://bronya.moe/tags/Kubernetes/"/>
+      <category term="Kubernetes" scheme="http://konata.tech/tags/Kubernetes/"/>
     
-      <category term="KubeEdge" scheme="http://bronya.moe/tags/KubeEdge/"/>
+      <category term="KubeEdge" scheme="http://konata.tech/tags/KubeEdge/"/>
     
-      <category term="K8S" scheme="http://bronya.moe/tags/K8S/"/>
+      <category term="K8S" scheme="http://konata.tech/tags/K8S/"/>
     
-      <category term="边缘云" scheme="http://bronya.moe/tags/%E8%BE%B9%E7%BC%98%E4%BA%91/"/>
+      <category term="边缘云" scheme="http://konata.tech/tags/%E8%BE%B9%E7%BC%98%E4%BA%91/"/>
     
-      <category term="Docker" scheme="http://bronya.moe/tags/Docker/"/>
+      <category term="Docker" scheme="http://konata.tech/tags/Docker/"/>
     
   </entry>
   
   <entry>
     <title>ffmpeg 命令整理</title>
-    <link href="http://bronya.moe/2020/12/22/ffmpeg/"/>
-    <id>http://bronya.moe/2020/12/22/ffmpeg/</id>
+    <link href="http://konata.tech/2020/12/22/ffmpeg/"/>
+    <id>http://konata.tech/2020/12/22/ffmpeg/</id>
     <published>2020-12-21T16:17:37.000Z</published>
     <updated>2021-05-29T09:18:26.775Z</updated>
     
@@ -247,17 +247,17 @@
     
     </summary>
     
-      <category term="Codec" scheme="http://bronya.moe/categories/Codec/"/>
+      <category term="Codec" scheme="http://konata.tech/categories/Codec/"/>
     
     
-      <category term="ffmpeg" scheme="http://bronya.moe/tags/ffmpeg/"/>
+      <category term="ffmpeg" scheme="http://konata.tech/tags/ffmpeg/"/>
     
   </entry>
   
   <entry>
     <title>Windows 批处理中的变量</title>
-    <link href="http://bronya.moe/2020/12/06/windowsBatchVariable/"/>
-    <id>http://bronya.moe/2020/12/06/windowsBatchVariable/</id>
+    <link href="http://konata.tech/2020/12/06/windowsBatchVariable/"/>
+    <id>http://konata.tech/2020/12/06/windowsBatchVariable/</id>
     <published>2020-12-06T08:42:42.000Z</published>
     <updated>2020-12-06T09:22:44.508Z</updated>
     
@@ -273,17 +273,17 @@
     
     </summary>
     
-      <category term="Ops" scheme="http://bronya.moe/categories/Ops/"/>
+      <category term="Ops" scheme="http://konata.tech/categories/Ops/"/>
     
     
-      <category term="Windows" scheme="http://bronya.moe/tags/Windows/"/>
+      <category term="Windows" scheme="http://konata.tech/tags/Windows/"/>
     
   </entry>
   
   <entry>
     <title>ARM 汇编笔记</title>
-    <link href="http://bronya.moe/2020/11/18/armAssembly/"/>
-    <id>http://bronya.moe/2020/11/18/armAssembly/</id>
+    <link href="http://konata.tech/2020/11/18/armAssembly/"/>
+    <id>http://konata.tech/2020/11/18/armAssembly/</id>
     <published>2020-11-18T05:49:56.000Z</published>
     <updated>2021-06-03T08:02:09.915Z</updated>
     
@@ -299,19 +299,19 @@
     
     </summary>
     
-      <category term="Miscellaneous" scheme="http://bronya.moe/categories/Miscellaneous/"/>
+      <category term="Miscellaneous" scheme="http://konata.tech/categories/Miscellaneous/"/>
     
     
-      <category term="ARM" scheme="http://bronya.moe/tags/ARM/"/>
+      <category term="ARM" scheme="http://konata.tech/tags/ARM/"/>
     
-      <category term="Assembly" scheme="http://bronya.moe/tags/Assembly/"/>
+      <category term="Assembly" scheme="http://konata.tech/tags/Assembly/"/>
     
   </entry>
   
   <entry>
     <title>Linux 中配置路由</title>
-    <link href="http://bronya.moe/2020/10/25/routeCommand/"/>
-    <id>http://bronya.moe/2020/10/25/routeCommand/</id>
+    <link href="http://konata.tech/2020/10/25/routeCommand/"/>
+    <id>http://konata.tech/2020/10/25/routeCommand/</id>
     <published>2020-10-25T04:26:36.000Z</published>
     <updated>2020-10-25T05:43:15.585Z</updated>
     
@@ -328,19 +328,19 @@
     
     </summary>
     
-      <category term="Ops" scheme="http://bronya.moe/categories/Ops/"/>
+      <category term="Ops" scheme="http://konata.tech/categories/Ops/"/>
     
     
-      <category term="Linux" scheme="http://bronya.moe/tags/Linux/"/>
+      <category term="Linux" scheme="http://konata.tech/tags/Linux/"/>
     
-      <category term="route" scheme="http://bronya.moe/tags/route/"/>
+      <category term="route" scheme="http://konata.tech/tags/route/"/>
     
   </entry>
   
   <entry>
     <title>给 Windows 驱动签名</title>
-    <link href="http://bronya.moe/2020/10/16/signWindowsDrive/"/>
-    <id>http://bronya.moe/2020/10/16/signWindowsDrive/</id>
+    <link href="http://konata.tech/2020/10/16/signWindowsDrive/"/>
+    <id>http://konata.tech/2020/10/16/signWindowsDrive/</id>
     <published>2020-10-16T09:03:01.000Z</published>
     <updated>2020-12-06T08:43:34.581Z</updated>
     
@@ -356,23 +356,23 @@
     
     </summary>
     
-      <category term="Ops" scheme="http://bronya.moe/categories/Ops/"/>
+      <category term="Ops" scheme="http://konata.tech/categories/Ops/"/>
     
     
-      <category term="驱动" scheme="http://bronya.moe/tags/%E9%A9%B1%E5%8A%A8/"/>
+      <category term="驱动" scheme="http://konata.tech/tags/%E9%A9%B1%E5%8A%A8/"/>
     
-      <category term="证书" scheme="http://bronya.moe/tags/%E8%AF%81%E4%B9%A6/"/>
+      <category term="证书" scheme="http://konata.tech/tags/%E8%AF%81%E4%B9%A6/"/>
     
-      <category term="签名" scheme="http://bronya.moe/tags/%E7%AD%BE%E5%90%8D/"/>
+      <category term="签名" scheme="http://konata.tech/tags/%E7%AD%BE%E5%90%8D/"/>
     
-      <category term="Windows" scheme="http://bronya.moe/tags/Windows/"/>
+      <category term="Windows" scheme="http://konata.tech/tags/Windows/"/>
     
   </entry>
   
   <entry>
     <title>逻辑位移</title>
-    <link href="http://bronya.moe/2020/10/11/logicalShift/"/>
-    <id>http://bronya.moe/2020/10/11/logicalShift/</id>
+    <link href="http://konata.tech/2020/10/11/logicalShift/"/>
+    <id>http://konata.tech/2020/10/11/logicalShift/</id>
     <published>2020-10-11T09:18:25.000Z</published>
     <updated>2020-10-11T09:22:00.687Z</updated>
     
@@ -388,17 +388,17 @@
     
     </summary>
     
-      <category term="Algorithm" scheme="http://bronya.moe/categories/Algorithm/"/>
+      <category term="Algorithm" scheme="http://konata.tech/categories/Algorithm/"/>
     
     
-      <category term="Algorithm" scheme="http://bronya.moe/tags/Algorithm/"/>
+      <category term="Algorithm" scheme="http://konata.tech/tags/Algorithm/"/>
     
   </entry>
   
   <entry>
     <title>JSON Web Token</title>
-    <link href="http://bronya.moe/2020/10/07/JSONWebToken/"/>
-    <id>http://bronya.moe/2020/10/07/JSONWebToken/</id>
+    <link href="http://konata.tech/2020/10/07/JSONWebToken/"/>
+    <id>http://konata.tech/2020/10/07/JSONWebToken/</id>
     <published>2020-10-07T10:51:27.000Z</published>
     <updated>2020-10-07T11:21:45.499Z</updated>
     
@@ -415,17 +415,17 @@
     
     </summary>
     
-      <category term="Tools" scheme="http://bronya.moe/categories/Tools/"/>
+      <category term="Tools" scheme="http://konata.tech/categories/Tools/"/>
     
     
-      <category term="Tools" scheme="http://bronya.moe/tags/Tools/"/>
+      <category term="Tools" scheme="http://konata.tech/tags/Tools/"/>
     
   </entry>
   
   <entry>
     <title>事件冒泡</title>
-    <link href="http://bronya.moe/2020/10/04/eventBubble/"/>
-    <id>http://bronya.moe/2020/10/04/eventBubble/</id>
+    <link href="http://konata.tech/2020/10/04/eventBubble/"/>
+    <id>http://konata.tech/2020/10/04/eventBubble/</id>
     <published>2020-10-04T07:38:38.000Z</published>
     <updated>2020-10-04T07:59:22.609Z</updated>
     
@@ -441,17 +441,17 @@
     
     </summary>
     
-      <category term="JavaScript" scheme="http://bronya.moe/categories/JavaScript/"/>
+      <category term="JavaScript" scheme="http://konata.tech/categories/JavaScript/"/>
     
     
-      <category term="JavaScript" scheme="http://bronya.moe/tags/JavaScript/"/>
+      <category term="JavaScript" scheme="http://konata.tech/tags/JavaScript/"/>
     
   </entry>
   
   <entry>
     <title>XML 与 JSON</title>
-    <link href="http://bronya.moe/2020/10/02/jsonAndXml/"/>
-    <id>http://bronya.moe/2020/10/02/jsonAndXml/</id>
+    <link href="http://konata.tech/2020/10/02/jsonAndXml/"/>
+    <id>http://konata.tech/2020/10/02/jsonAndXml/</id>
     <published>2020-10-02T02:36:01.000Z</published>
     <updated>2020-10-02T03:10:19.277Z</updated>
     
@@ -468,19 +468,19 @@
     
     </summary>
     
-      <category term="Tools" scheme="http://bronya.moe/categories/Tools/"/>
+      <category term="Tools" scheme="http://konata.tech/categories/Tools/"/>
     
     
-      <category term="JSON" scheme="http://bronya.moe/tags/JSON/"/>
+      <category term="JSON" scheme="http://konata.tech/tags/JSON/"/>
     
-      <category term="XML" scheme="http://bronya.moe/tags/XML/"/>
+      <category term="XML" scheme="http://konata.tech/tags/XML/"/>
     
   </entry>
   
   <entry>
     <title>JavaScript 中的继承</title>
-    <link href="http://bronya.moe/2020/10/01/inheritanceInJavaScript/"/>
-    <id>http://bronya.moe/2020/10/01/inheritanceInJavaScript/</id>
+    <link href="http://konata.tech/2020/10/01/inheritanceInJavaScript/"/>
+    <id>http://konata.tech/2020/10/01/inheritanceInJavaScript/</id>
     <published>2020-10-01T05:36:36.000Z</published>
     <updated>2020-10-01T10:00:14.845Z</updated>
     
@@ -497,17 +497,17 @@
     
     </summary>
     
-      <category term="JavaScript" scheme="http://bronya.moe/categories/JavaScript/"/>
+      <category term="JavaScript" scheme="http://konata.tech/categories/JavaScript/"/>
     
     
-      <category term="JavaScript" scheme="http://bronya.moe/tags/JavaScript/"/>
+      <category term="JavaScript" scheme="http://konata.tech/tags/JavaScript/"/>
     
   </entry>
   
   <entry>
     <title>浏览器事件总结</title>
-    <link href="http://bronya.moe/2020/09/28/browserEvent/"/>
-    <id>http://bronya.moe/2020/09/28/browserEvent/</id>
+    <link href="http://konata.tech/2020/09/28/browserEvent/"/>
+    <id>http://konata.tech/2020/09/28/browserEvent/</id>
     <published>2020-09-28T00:11:31.000Z</published>
     <updated>2020-09-28T00:30:20.337Z</updated>
     
@@ -524,19 +524,19 @@
     
     </summary>
     
-      <category term="Browser" scheme="http://bronya.moe/categories/Browser/"/>
+      <category term="Browser" scheme="http://konata.tech/categories/Browser/"/>
     
     
-      <category term="JavaScript" scheme="http://bronya.moe/tags/JavaScript/"/>
+      <category term="JavaScript" scheme="http://konata.tech/tags/JavaScript/"/>
     
-      <category term="Browser" scheme="http://bronya.moe/tags/Browser/"/>
+      <category term="Browser" scheme="http://konata.tech/tags/Browser/"/>
     
   </entry>
   
   <entry>
     <title>防抖与节流</title>
-    <link href="http://bronya.moe/2020/09/24/debounceAndThrottle/"/>
-    <id>http://bronya.moe/2020/09/24/debounceAndThrottle/</id>
+    <link href="http://konata.tech/2020/09/24/debounceAndThrottle/"/>
+    <id>http://konata.tech/2020/09/24/debounceAndThrottle/</id>
     <published>2020-09-24T03:33:19.000Z</published>
     <updated>2020-09-24T03:36:39.389Z</updated>
     
@@ -552,17 +552,17 @@
     
     </summary>
     
-      <category term="JavaScript" scheme="http://bronya.moe/categories/JavaScript/"/>
+      <category term="JavaScript" scheme="http://konata.tech/categories/JavaScript/"/>
     
     
-      <category term="JavaScript" scheme="http://bronya.moe/tags/JavaScript/"/>
+      <category term="JavaScript" scheme="http://konata.tech/tags/JavaScript/"/>
     
   </entry>
   
   <entry>
     <title>JavaScript 严格模式</title>
-    <link href="http://bronya.moe/2020/09/22/strictMode/"/>
-    <id>http://bronya.moe/2020/09/22/strictMode/</id>
+    <link href="http://konata.tech/2020/09/22/strictMode/"/>
+    <id>http://konata.tech/2020/09/22/strictMode/</id>
     <published>2020-09-22T01:18:32.000Z</published>
     <updated>2020-09-22T03:13:41.854Z</updated>
     
@@ -578,10 +578,10 @@
     
     </summary>
     
-      <category term="JavaScript" scheme="http://bronya.moe/categories/JavaScript/"/>
+      <category term="JavaScript" scheme="http://konata.tech/categories/JavaScript/"/>
     
     
-      <category term="JavaScript" scheme="http://bronya.moe/tags/JavaScript/"/>
+      <category term="JavaScript" scheme="http://konata.tech/tags/JavaScript/"/>
     
   </entry>
   
