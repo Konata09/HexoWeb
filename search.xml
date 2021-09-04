@@ -38,7 +38,7 @@
       
       <categories>
           
-          <category> Miscellaneous </category>
+          <category> Ops </category>
           
       </categories>
       
@@ -67,7 +67,7 @@
       
       <categories>
           
-          <category> Miscellaneous </category>
+          <category> Ops </category>
           
       </categories>
       
@@ -181,7 +181,7 @@
       
       <categories>
           
-          <category> Miscellaneous </category>
+          <category> Ops </category>
           
       </categories>
       
@@ -337,8 +337,8 @@
     
     <entry>
       <title>给 Windows 驱动签名</title>
-      <link href="2020/10/16/signWindowsDrive/"/>
-      <url>2020/10/16/signWindowsDrive/</url>
+      <link href="2020/10/16/signWindowsDriver/"/>
+      <url>2020/10/16/signWindowsDriver/</url>
       
         <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>从 Windows 8 开始，微软在操作系统中引入了驱动程序强制签名的安全特性，没有正确签名的驱动将直接无法安装。这毫无疑问的增强了系统的安全性，但同时你可能会遇到老设备装不上驱动、自己修改 <code>INF</code> 文件后校验错误等问题。一个常用的解决方法是禁用驱动程序强制签名，这需要修改引导参数并重新启动系统，而且启动后你会发现屏幕右下角有 <code>Test mode</code> 字样（虽然有办法去除）。最麻烦的是有些游戏厂商<del>miHoYo</del>的反作弊机制会禁止使用测试模式开始游戏，如果你的未签名驱动是阵列卡之类的重要硬件的话，这就很蛋疼了。这时唯一解决办法就是自己给驱动签名，一劳永逸，彻底摆脱测试模式。</p><h2 id="创建证书"><a href="#创建证书" class="headerlink" title="创建证书"></a>创建证书</h2><p>从 Windows PowerShell 3.0 版本（Windows Server 2012、Windows 8 自带）开始你可以执行 <code>New-SelfSignedCertificate</code> 命令来创建自签名证书：</p><pre class="language-powershell" data-language="powershell"><code class="language-powershell"><span class="token variable">$cert</span> = New<span class="token operator">-</span>SelfSignedCertificate <span class="token operator">-</span>DnsName konata<span class="token punctuation">.</span>tech <span class="token operator">-</span><span class="token function">Type</span> CodeSigning <span class="token operator">-</span>CertStoreLocation Cert:\CurrentUser\My<span class="token variable">$CertPassword</span> = ConvertTo<span class="token operator">-</span>SecureString <span class="token operator">-</span>String mypass <span class="token operator">-</span>Force <span class="token operator">-</span>AsPlainTextExport<span class="token operator">-</span>PfxCertificate <span class="token operator">-</span>Cert <span class="token string">"cert:\CurrentUser\My\<span class="token function">$<span class="token punctuation">(</span><span class="token variable">$cert</span><span class="token punctuation">.</span>Thumbprint<span class="token punctuation">)</span></span>"</span> <span class="token operator">-</span>FilePath <span class="token string">"C:\konatacodecer.pfx"</span> <span class="token operator">-</span>Password <span class="token variable">$CertPassword</span></code></pre><h2 id="给驱动签名"><a href="#给驱动签名" class="headerlink" title="给驱动签名"></a>给驱动签名</h2><ol><li><p>下载 <a href="https://www.wosign.com/marketing/2015_WoSign_sign_tools/index.htm">沃通代码签名工具</a>（虽然沃通名声很臭，但这个工具挺好用的）。  </p></li><li><p>打开代码签名工具，选择 <code>CAB/CAT</code> 标签  </p></li><li><p>打开要签名的 <code>INF</code> 文件，将 <code>SourceDisksFiles</code> 等项目内使用到的驱动文件都添加到窗口中  </p></li><li><p>点击创建 <code>CAT</code> 按钮，将 <code>CAT</code> 文件保存到 <code>INF</code> 文件同目录下  </p></li><li><p>点击代码签名标签，选择刚刚生成的 <code>pfx</code> 证书，并输入密码 <code>mypass</code></p></li><li><p>点击签名按钮，完成后可以看到生成的 <code>CAT</code> 文件  </p></li></ol><h2 id="安装证书和驱动"><a href="#安装证书和驱动" class="headerlink" title="安装证书和驱动"></a>安装证书和驱动</h2><p>如果你现在打开上面生成的 <code>CAT</code> 文件，会提示证书目录无效，这是因为我们自己生成的证书还没被信任，需要手动添加证书到信任列表。</p><ol><li>打开第一步生成的 <code>pfx</code> 证书，选择存储位置为 <code>Local Machine</code></li><li>点击下一步输入密码 <code>mypass</code></li><li>点击下一步选择证书存储区域，选择 <code>Place all certificates in the following store</code> ，单击浏览选择 <code>Trusted Root Cerification Authorities</code></li><li>点击下一步完成，我们自己创建的证书就被系统信任了  </li></ol><p>接下来就可以安装驱动了，右键点击 <code>INF</code> 文件选择安装，如果驱动安装成功会显示操作成功完成，这时可以愉快的使用新硬件啦。</p>]]></content>
       
@@ -1565,7 +1565,7 @@
       <link href="2020/04/04/To-Do/"/>
       <url>2020/04/04/To-Do/</url>
       
-        <content type="html"><![CDATA[<h3 id="Blog"><a href="#Blog" class="headerlink" title="Blog"></a>Blog</h3><ul><li><input disabled="" type="checkbox"> 多写博客！</li><li><input checked="" disabled="" type="checkbox"> 为 docsify 适配 dark mode </li><li><input checked="" disabled="" type="checkbox"> 为 Live2D 添加 moc3 模型支持</li><li><input checked="" disabled="" type="checkbox"> 添加新的 Live2D 角色</li><li><input checked="" disabled="" type="checkbox"> 重构 waifu-tips, 抛弃 jquery</li></ul><h3 id="ClassRoom"><a href="#ClassRoom" class="headerlink" title="ClassRoom"></a>ClassRoom</h3><ul><li><input disabled="" type="checkbox"> Go 控制开关机</li><li><input disabled="" type="checkbox"> 角色权限管理</li><li><input disabled="" type="checkbox"> 扫码提交工单</li></ul>]]></content>
+        <content type="html"><![CDATA[<h3 id="Blog"><a href="#Blog" class="headerlink" title="Blog"></a>Blog</h3><ul><li><input disabled="" type="checkbox"> 多写博客！</li><li><input checked="" disabled="" type="checkbox"> 为 docsify 适配 dark mode</li><li><input checked="" disabled="" type="checkbox"> 为 Live2D 添加 moc3 模型支持</li><li><input checked="" disabled="" type="checkbox"> 添加新的 Live2D 角色</li><li><input checked="" disabled="" type="checkbox"> 重构 waifu-tips, 抛弃 jquery</li></ul>]]></content>
       
       
       <categories>
