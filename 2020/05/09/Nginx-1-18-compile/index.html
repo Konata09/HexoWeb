@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Nginx 1.21.1 with HTTP/3 编译记录, 生命不息 折腾不止">
+    <meta name="keywords" content="NGINX 1.21.1 with HTTP/3 编译记录, 生命不息 折腾不止">
     <meta name="description" content="系统环境
 
 安装必要软件包apt install build-essential cmake golang cargo mmdb-bin libmaxminddb-dev libxml2 libxslt-dev libatomic-ops-">
@@ -15,7 +15,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <title>Nginx 1.21.1 with HTTP/3 编译记录 | 生命不息 折腾不止</title>
+    <title>NGINX 1.21.1 with HTTP/3 编译记录 | 生命不息 折腾不止</title>
     <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="manifest" href="/site.webmanifest">
@@ -273,13 +273,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/04.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/05.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Nginx 1.21.1 with HTTP/3 编译记录
+                        NGINX 1.21.1 with HTTP/3 编译记录
                     </div>
                 </div>
             </div>
@@ -372,8 +372,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Nginx/" target="_blank">
-                                <span class="chip bg-color">Nginx</span>
+                            <a href="/tags/NGINX/" target="_blank">
+                                <span class="chip bg-color">NGINX</span>
                             </a>
                         
                     </div>
@@ -485,7 +485,7 @@ patch -p1 <span class="token operator">&lt;</span> <span class="token punctuatio
 &#x2F;usr&#x2F;local&#x2F;lib</code></pre>
 <p>刷新链接缓存：</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">ldconfig</code></pre>
-<h2 id="添加-Nginx-到系统服务"><a href="#添加-Nginx-到系统服务" class="headerlink" title="添加 Nginx 到系统服务"></a>添加 Nginx 到系统服务</h2><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> /lib/systemd/system/nginx.service</code></pre>
+<h2 id="添加-NGINX-到系统服务"><a href="#添加-NGINX-到系统服务" class="headerlink" title="添加 NGINX 到系统服务"></a>添加 NGINX 到系统服务</h2><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> /lib/systemd/system/nginx.service</code></pre>
 <p>添加以下内容：</p>
 <pre class="language-ini" data-language="ini"><code class="language-ini"><span class="token comment"># Stop dance for nginx</span>
 <span class="token comment"># =======================</span>
@@ -518,10 +518,10 @@ patch -p1 <span class="token operator">&lt;</span> <span class="token punctuatio
 <span class="token constant">WantedBy</span><span class="token attr-value"><span class="token punctuation">=</span>multi-user.target</span></code></pre>
 <p>创建日志文件夹</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">mkdir</span> /var/log/nginx</code></pre>
-<p>启用 Nginx 服务</p>
+<p>启用 NGINX 服务</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">systemctl daemon-reload
 systemctl <span class="token builtin class-name">enable</span> nginx</code></pre>
-<h2 id="启动-Nginx"><a href="#启动-Nginx" class="headerlink" title="启动 Nginx"></a>启动 Nginx</h2><p>Nginx 配置文件在 <code>/etc/nginx</code></p>
+<h2 id="启动-NGINX"><a href="#启动-NGINX" class="headerlink" title="启动 NGINX"></a>启动 NGINX</h2><p>NGINX 配置文件在 <code>/etc/nginx</code></p>
 <p>在配置文件中添加 HTTP/3 相关配置</p>
 <pre class="language-nginx" data-language="nginx"><code class="language-nginx"><span class="token keyword">server</span> <span class="token punctuation">&#123;</span>
     <span class="token comment"># Enable QUIC and HTTP/3.</span>
@@ -542,7 +542,7 @@ systemctl <span class="token builtin class-name">enable</span> nginx</code></pre
     <span class="token comment"># Add Alt-Svc header to negotiate HTTP/3.</span>
     <span class="token keyword">add_header</span> alt<span class="token operator">-</span>svc <span class="token string">'h3-29=":443"; ma=86400, h3-28=":443"; ma=86400, h3-27=":443"; ma=86400'</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span></code></pre>
-<p>启动 Nginx</p>
+<p>启动 NGINX</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">systemctl start nginx</code></pre>
 <h2 id="测试-HTTP-3"><a href="#测试-HTTP-3" class="headerlink" title="测试 HTTP/3"></a>测试 HTTP/3</h2><p><img src="/images/1598329086449.png" alt="查看编译参数"></p>
 <p>安装 Firefox Nightly，在 <code>about:config</code> 中打开 <code>network.http.http3.enabled</code> 选项</p>
@@ -570,7 +570,7 @@ systemctl <span class="token builtin class-name">enable</span> nginx</code></pre
             <div class="reprintDetail">
                 <div>
                 <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title"
-                      rel="dct:type">《Nginx 1.21.1 with HTTP/3 编译记录》</span> 由
+                      rel="dct:type">《NGINX 1.21.1 with HTTP/3 编译记录》</span> 由
                     <a xmlns:cc="http://creativecommons.org/ns#" href="/2020/05/09/Nginx-1-18-compile/" property="cc:attributionName"
                        rel="cc:attributionURL">Konata</a>
                     采用

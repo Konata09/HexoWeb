@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="标签: Nginx, 生命不息 折腾不止">
-    <meta name="description" content="标签: Nginx | 生命不息 折腾不止">
+    <meta name="keywords" content="标签: NGINX, 生命不息 折腾不止">
+    <meta name="description" content="标签: NGINX | 生命不息 折腾不止">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <title>标签: Nginx | 生命不息 折腾不止</title>
+    <title>标签: NGINX | 生命不息 折腾不止</title>
     <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="manifest" href="/site.webmanifest">
@@ -367,7 +367,7 @@
         "link": "/tags/AV1/"
     },{
         "text": "Nginx",
-        "size": 40,
+        "size": 20,
         "link": "/tags/Nginx/"
     },{
         "text": "Vorbis",
@@ -505,6 +505,10 @@
         "text": "bash",
         "size": 20,
         "link": "/tags/bash/"
+    },{
+        "text": "NGINX",
+        "size": 20,
+        "link": "/tags/NGINX/"
     },]
     window.wordCloud = true
 </script>
@@ -636,11 +640,11 @@
                     </span>
                     </a>
                 
-                    <a href="/tags/Nginx/" title="Nginx: 2">
+                    <a href="/tags/Nginx/" title="Nginx: 1">
                     <span class="chip center-align waves-effect waves-light
-                             chip-active "
+                             chip-default "
                           data-tagname="Nginx">Nginx
-                        <span class="tag-length">2</span>
+                        <span class="tag-length">1</span>
                     </span>
                     </a>
                 
@@ -916,6 +920,14 @@
                     </span>
                     </a>
                 
+                    <a href="/tags/NGINX/" title="NGINX: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-active "
+                          data-tagname="NGINX">NGINX
+                        <span class="tag-length">1</span>
+                    </span>
+                    </a>
+                
             </div>
         </div>
     </div>
@@ -923,61 +935,23 @@
 
     
     <script>
-        const tagname = "Nginx";
+        const tagname = "NGINX";
     </script>
     <article id="articles" class="container articles">
         <div class="row tags-posts">
             
                 
-                <div class="article tag-post col s12 m6 l4" data-tags="Nginx, Vorbis, Opus, ffmpeg">
-                    <div class="card">
-                        <a href="/2020/05/25/ProvideCAFForSAfari/">
-                            <div class="card-image tag-image">
-                                
-                                    
-                                    <div class="lazy-image-wrapper">
-                                        <img data-src="/medias/featureimages/14.jpg" class="responsive-img lazyload" alt="Safari 使用 Opus 编码">
-                                    </div>
-                                
-                                <span class="card-title">Safari 使用 Opus 编码</span>
-                            </div>
-                        </a>
-                        <div class="card-content article-content">
-                            <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock fa-fw icon-date"></i>2020-05-25
-                            </span>
-                                <span class="publish-author">
-                                    
-                                        <i class="fa fa-bookmark fa-fw icon-category"></i>
-                                        
-                                            <a href="/categories/Ops/" class="post-category" target="_blank">
-                                Ops
-                                </a>
-                                        
-                                            <a href="/categories/Ops/Codec/" class="post-category" target="_blank">
-                                Codec
-                                </a>
-                                        
-                                    
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            
-                
-                <div class="article tag-post col s12 m6 l4" data-tags="Nginx">
+                <div class="article tag-post col s12 m6 l4" data-tags="NGINX">
                     <div class="card">
                         <a href="/2020/05/09/Nginx-1-18-compile/">
                             <div class="card-image tag-image">
                                 
                                     
                                     <div class="lazy-image-wrapper">
-                                        <img data-src="/medias/featureimages/04.jpg" class="responsive-img lazyload" alt="Nginx 1.21.1 with HTTP/3 编译记录">
+                                        <img data-src="/medias/featureimages/05.jpg" class="responsive-img lazyload" alt="NGINX 1.21.1 with HTTP/3 编译记录">
                                     </div>
                                 
-                                <span class="card-title">Nginx 1.21.1 with HTTP/3 编译记录</span>
+                                <span class="card-title">NGINX 1.21.1 with HTTP/3 编译记录</span>
                             </div>
                         </a>
                         <div class="card-content article-content">
@@ -1094,6 +1068,14 @@
 <script type="application/javascript" src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
 <script>
     NProgress.configure({trickle: true, trickleSpeed: 300, speed: 500});
+    NProgress.start();
+    NProgress.set(0.2);
+    document.addEventListener("DOMContentLoaded", () => {
+        NProgress.set(0.4);
+    });
+</script>
+</body>
+</html>gress.configure({trickle: true, trickleSpeed: 300, speed: 500});
     NProgress.start();
     NProgress.set(0.2);
     document.addEventListener("DOMContentLoaded", () => {
