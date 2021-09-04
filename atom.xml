@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://konata.tech/"/>
-  <updated>2021-06-20T14:31:03.546Z</updated>
+  <updated>2021-09-04T02:05:42.081Z</updated>
   <id>http://konata.tech/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>更新日志</title>
+    <link href="http://konata.tech/2021/09/03/UpdateLog/"/>
+    <id>http://konata.tech/2021/09/03/UpdateLog/</id>
+    <published>2021-09-03T13:51:00.000Z</published>
+    <updated>2021-09-04T02:05:42.081Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;ul&gt;
+&lt;li&gt;&lt;p&gt;2019.07.25 框架搭建完成&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;2019.08.02 主题修改完成&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;2019.08.06 崩坏学园 2 LIVE2D 上线 &lt;del&gt;那么崩坏 3 的看板娘什么时候能放上 Web
+        
+      
+    
+    </summary>
+    
+      <category term="Miscellaneous" scheme="http://konata.tech/categories/Miscellaneous/"/>
+    
+    
+      <category term="UpdateLog" scheme="http://konata.tech/tags/UpdateLog/"/>
+    
+  </entry>
   
   <entry>
     <title>Shell 脚本编程</title>
@@ -547,32 +578,6 @@
         
         
           &lt;p&gt;防抖 (debounce) 与节流 (throttle) 都是控制事件处理函数执行频率的方法，当函数会进行 DOM 操作或者具有请求服务器等行为并且作为高频事件例如 &lt;code&gt;onscroll&lt;/code&gt;
-        
-      
-    
-    </summary>
-    
-      <category term="JavaScript" scheme="http://konata.tech/categories/JavaScript/"/>
-    
-    
-      <category term="JavaScript" scheme="http://konata.tech/tags/JavaScript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JavaScript 严格模式</title>
-    <link href="http://konata.tech/2020/09/22/strictMode/"/>
-    <id>http://konata.tech/2020/09/22/strictMode/</id>
-    <published>2020-09-22T01:18:32.000Z</published>
-    <updated>2020-09-22T03:13:41.854Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;JavaScript 的严格模式 (strict mode)，即在严格的条件下运行。严格模式消除了 Javascript 语法的一些不合理、不严谨之处，减少一些怪异行为；消除代码运行的一些不安全之处，保证代码运行的安全；提高了引擎的效率，增加运行速度；为未来新的
         
       
     
