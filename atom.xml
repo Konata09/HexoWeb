@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://konata.tech/"/>
-  <updated>2021-09-04T11:39:21.498Z</updated>
+  <updated>2021-09-11T15:07:39.587Z</updated>
   <id>http://konata.tech/</id>
   
   <author>
@@ -17,11 +17,37 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>JavaScript 中的设计模式</title>
+    <link href="http://konata.tech/2021/09/06/designPattern/"/>
+    <id>http://konata.tech/2021/09/06/designPattern/</id>
+    <published>2021-09-06T02:02:54.000Z</published>
+    <updated>2021-09-11T15:07:39.587Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;设计模式&quot;&gt;&lt;a href=&quot;#设计模式&quot; class=&quot;headerlink&quot; title=&quot;设计模式&quot;&gt;&lt;/a&gt;设计模式&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;设计模式是对软件设计开发过程中反复出现的某类问题的通用解决方案。&lt;/strong&gt;
+        
+      
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://konata.tech/categories/JavaScript/"/>
+    
+    
+      <category term="设计模式" scheme="http://konata.tech/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
     <title>更新日志</title>
     <link href="http://konata.tech/2021/09/03/UpdateLog/"/>
     <id>http://konata.tech/2021/09/03/UpdateLog/</id>
     <published>2021-09-03T13:51:00.000Z</published>
-    <updated>2021-09-04T11:39:21.498Z</updated>
+    <updated>2021-09-04T11:40:43.791Z</updated>
     
     <summary type="html">
     
@@ -561,32 +587,6 @@
       <category term="JavaScript" scheme="http://konata.tech/tags/JavaScript/"/>
     
       <category term="Browser" scheme="http://konata.tech/tags/Browser/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>防抖与节流</title>
-    <link href="http://konata.tech/2020/09/24/debounceAndThrottle/"/>
-    <id>http://konata.tech/2020/09/24/debounceAndThrottle/</id>
-    <published>2020-09-24T03:33:19.000Z</published>
-    <updated>2020-09-24T03:36:39.389Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;防抖 (debounce) 与节流 (throttle) 都是控制事件处理函数执行频率的方法，当函数会进行 DOM 操作或者具有请求服务器等行为并且作为高频事件例如 &lt;code&gt;onscroll&lt;/code&gt;
-        
-      
-    
-    </summary>
-    
-      <category term="JavaScript" scheme="http://konata.tech/categories/JavaScript/"/>
-    
-    
-      <category term="JavaScript" scheme="http://konata.tech/tags/JavaScript/"/>
     
   </entry>
   
