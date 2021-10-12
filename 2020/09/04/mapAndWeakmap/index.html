@@ -430,7 +430,47 @@ Map描述Map 对象类似于">
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p><code>Map</code> 对象用来保存键值对，并且能够记住键的原始插入顺序，任何对象或者原始值都可以作为键或者是值。<br><code>WeakMap</code> 对象同样用来保存键值对，对于键是弱引用的而且必须为一个对象，而值可以是任意的对象或者原始值。  </p>
-<h2 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h2><h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><p><code>Map</code> 对象类似于一个普通的键值对的 <code>Object</code> 对象，也是键值对的集合，但是他们之间有一些重要的区别：<br>| 描述 | Map | Object |<br>|——-|——-|——–|<br>| 意外的键 | <code>Map</code> 默认情况不包含任何键，只包含显式插入的键。 | 一个 <code>Object</code> 有一个原型，原型链上的键名有可能和在对象上的设置的键名产生冲突。 |<br>| 键的类型 | 一个 <code>Map</code> 的键可以是任意值，包括函数、对象或任意基本类型。 | 一个 <code>Object</code> 的键必须是一个 <code>String</code> 或是 <code>Symbol。</code> |<br>| 键的顺序 | <code>Map</code> 中的 <code>key</code> 是有序的，当迭代的时候，一个 <code>Map</code> 对象以插入的顺序返回键值。| 一个 <code>Object</code> 的键的迭代顺序需要通过键的类型与创建的顺序来确定。 |<br>| 键值数量 | <code>Map</code> 的键值对个数可以轻易地通过 <code>size</code> 属性获取。| <code>Object</code> 的键值对个数只能手动计算。 |<br>| 迭代 | <code>Map</code> 是 <code>iterable</code> 的，所以可以直接被迭代。 | 迭代一个 <code>Object</code> 需要以某种方式获取它的键然后才能迭代。 |<br>| 性能 | <code>Map</code> 在频繁增删键值对的场景下表现更好。 | <code>Object</code> 在频繁添加和删除键值对的场景下未作出优化。 |<br>注：关于一个 <code>Object</code> 的键的迭代顺序问题，在 ES6 以后，对象保留了 <code>String</code> 与 <code>Symbol</code> 的创建顺序，当创建的对象仅有 <code>String</code> 或者 <code>Symbol</code> 时，迭代顺序与创建顺序相同，当对象中两种类型都存在时， <code>String</code> 总是在前，当 <code>String</code> 可以被转换为 <code>Number</code> 时，这些键在迭代时处于最前，且会按照数字的顺序进行迭代。</p>
+<h2 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h2><h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><p><code>Map</code> 对象类似于一个普通的键值对的 <code>Object</code> 对象，也是键值对的集合，但是他们之间有一些重要的区别：  </p>
+<table>
+<thead>
+<tr>
+<th>描述</th>
+<th>Map</th>
+<th>Object</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>意外的键</td>
+<td><code>Map</code> 默认情况不包含任何键，只包含显式插入的键。</td>
+<td>一个 <code>Object</code> 有一个原型，原型链上的键名有可能和在对象上的设置的键名产生冲突。</td>
+</tr>
+<tr>
+<td>键的类型</td>
+<td>一个 <code>Map</code> 的键可以是任意值，包括函数、对象或任意基本类型。</td>
+<td>一个 <code>Object</code> 的键必须是一个 <code>String</code> 或是 <code>Symbol。</code></td>
+</tr>
+<tr>
+<td>键的顺序</td>
+<td><code>Map</code> 中的 <code>key</code> 是有序的，当迭代的时候，一个 <code>Map</code> 对象以插入的顺序返回键值。</td>
+<td>一个 <code>Object</code> 的键的迭代顺序需要通过键的类型与创建的顺序来确定。</td>
+</tr>
+<tr>
+<td>键值数量</td>
+<td><code>Map</code> 的键值对个数可以轻易地通过 <code>size</code> 属性获取。</td>
+<td><code>Object</code> 的键值对个数只能手动计算。</td>
+</tr>
+<tr>
+<td>迭代</td>
+<td><code>Map</code> 是 <code>iterable</code> 的，所以可以直接被迭代。</td>
+<td>迭代一个 <code>Object</code> 需要以某种方式获取它的键然后才能迭代。</td>
+</tr>
+<tr>
+<td>性能</td>
+<td><code>Map</code> 在频繁增删键值对的场景下表现更好。</td>
+<td><code>Object</code> 在频繁添加和删除键值对的场景下未作出优化。</td>
+</tr>
+</tbody></table>
+<p>注：关于一个 <code>Object</code> 的键的迭代顺序问题，在 ES6 以后，对象保留了 <code>String</code> 与 <code>Symbol</code> 的创建顺序，当创建的对象仅有 <code>String</code> 或者 <code>Symbol</code> 时，迭代顺序与创建顺序相同，当对象中两种类型都存在时， <code>String</code> 总是在前，当 <code>String</code> 可以被转换为 <code>Number</code> 时，这些键在迭代时处于最前，且会按照数字的顺序进行迭代。</p>
 <h3 id="属性与方法"><a href="#属性与方法" class="headerlink" title="属性与方法"></a>属性与方法</h3><table>
 <thead>
 <tr>
