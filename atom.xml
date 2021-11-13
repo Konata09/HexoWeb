@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://konata.tech/"/>
-  <updated>2021-10-08T08:21:05.954Z</updated>
+  <updated>2021-11-13T09:16:17.821Z</updated>
   <id>http://konata.tech/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>关闭 Spectre 和 Meltdown 漏洞补丁来提升系统性能</title>
+    <link href="http://konata.tech/2021/11/13/disableMitigations/"/>
+    <id>http://konata.tech/2021/11/13/disableMitigations/</id>
+    <published>2021-11-13T07:41:27.000Z</published>
+    <updated>2021-11-13T09:16:17.821Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;虽然自臭名昭著的 Spectre 和 Meltdown 漏洞首次公布已经过去将近 4
+        
+      
+    
+    </summary>
+    
+      <category term="Ops" scheme="http://konata.tech/categories/Ops/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>CSS 基础总结</title>
@@ -557,33 +581,6 @@
       <category term="JSON" scheme="http://konata.tech/tags/JSON/"/>
     
       <category term="XML" scheme="http://konata.tech/tags/XML/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JavaScript 中的继承</title>
-    <link href="http://konata.tech/2020/10/01/inheritanceInJavaScript/"/>
-    <id>http://konata.tech/2020/10/01/inheritanceInJavaScript/</id>
-    <published>2020-10-01T05:36:36.000Z</published>
-    <updated>2020-10-01T10:00:14.845Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;继承是面向对象软件技术当中的一个概念，与多态、封装共为面向对象的三个基本特征。继承可以使得子类具有父类的属性和方法或者重新定义、追加属性和方法等。  &lt;/p&gt;
-&lt;h2 id=&quot;原型链继承&quot;&gt;&lt;a href=&quot;#原型链继承&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="JavaScript" scheme="http://konata.tech/categories/JavaScript/"/>
-    
-    
-      <category term="JavaScript" scheme="http://konata.tech/tags/JavaScript/"/>
     
   </entry>
   
