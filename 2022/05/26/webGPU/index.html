@@ -772,8 +772,8 @@ fn main(
     input[global_id.x].velocity * TIME_STEP;
 &#125;</code></pre>
 <p>我希望现在这个着色器的绝大部分代码没有让你惊讶。  </p>
-<p><video controls width="100%"><source src="/media/webgpu1.webm" type="video/webm"><br></video></p>
-<p><img src="/media/webgpu1.webm" alt="每一帧都被 WebGPU 用来更新球的位置，并使用 Canvas2D 将它们绘制到屏幕上"></p>
+<p><video autoplay><source src="/media/webgpu1.webm" type="video/webm"><br></video></p>
+<p><img src="" alt="每一帧都被 WebGPU 用来更新球的位置，并使用 Canvas2D 将它们绘制到屏幕上"></p>
 <p>最后，我们需要做的是将 <code>output</code> 缓冲区读回 JavaScript，编写一些 Canvas2D 代码来可视化缓冲区的内容，并将其全部放入 <code>requestAnimationFrame()</code> 循环。你可以在这个 <a target="_blank" rel="noopener" href="https://surma.dev/things/webgpu/step3/index.html">demo</a> 中看到效果。  </p>
 <h2 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h2><p>前面的 demo 只是沿着每个球的速度向量移动，并不惊艳或具有很复杂的计算。在看这个作品的性能特性之前，让我在着色器中加入一些适当的物理计算。我不会在这里解释——这篇博文已经够长了——但我想说我采取了最朴素的方法：每个球都检查与<em>其他所有球</em>的碰撞情况。如果你感到好奇，你可以看一下 <a target="_blank" rel="noopener" href="https://surma.dev/things/webgpu/step4/index.html">最终 demo</a> 的源代码，其中还包含我用来编写物理部分的资源链接。  </p>
 <p><img src="https://surma.dev/step4.72bbca77.webm" alt="... 现在有了弹性墙和弹性球！"></p>
