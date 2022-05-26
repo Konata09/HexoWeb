@@ -447,7 +447,7 @@ WebGPU 是一个即将推出的 Web API，让你可以使用低层的、通用�
 <p>我写了一个很长的声明，下面正式开始！  </p>
 <h2 id="WebGL"><a href="#WebGL" class="headerlink" title="WebGL"></a>WebGL</h2><p><a target="_blank" rel="noopener" href="https://www.khronos.org/registry/webgl/specs/latest/1.0/">WebGL</a> 出现在 2011 年，到目前为止，它是唯一可以从 Web 上访问 GPU 的底层的 API。WebGL 的 API 实际上只是 OpenGL ES 2.0，加上一些简单的封装和 helper，使其与 Web 兼容。WebGL 和 OpenGL 都是由 <a target="_blank" rel="noopener" href="https://www.khronos.org/">Khronos 组织</a> 标准化的，该集团基本上是 3D 图形界的 W3C。  </p>
 <p>OpenGL 的 API 本身甚至可以追溯到更早以前，以今天的标准来看，它不是一个很好的 API。该设计以内部的全局状态对象为中心。因为它最大限度地减少了在任何调用中需要传入和传出到 GPU 的数据量，从这个角度来看，这种设计是有道理的。然而，它也带来了很多理解上的困难。  </p>
-<p><img src="/images/1653570377302.png" alt="一个 WebGL 的内部可视化，全局状态对象。来自：[WebGL Fundamentals](https://webglfundamentals.org/webgl/lessons/resources/webgl-state-diagram.html)"></p>
+<p><img src="/images/1653570377302.png" alt="一个 WebGL 的内部可视化，全局状态对象。来自：&lt;a href=&quot;#&quot;&gt; [WebGL Fundamentals]&lt;/a&gt;(https://webglfundamentals.org/webgl/lessons/resources/webgl-state-diagram.html)"></p>
 <p>内部状态对象基本上是一个指针的集合。你的 API 调用可以影响状态对象所指向的对象，但也可以影响状态对象本身。因此，API 调用的顺序是非常重要的，我总觉得这使得抽象和构建库变得很困难。你必须非常细致地理清所有可能干扰你进行 API 调用的指针和状态项，同时还要将指针和值恢复到之前的值，这样你的抽象才能正确生成。我经常发现自己盯着一块黑色的画布（因为几乎所有 WebGL 中的报错都会导致这样），并对哪个指针目前没有正确指向进行粗略的判断。老实说，我不知道 <a target="_blank" rel="noopener" href="https://threejs.org/">ThreeJS</a> 是如何做到如此健壮的，但它确实做到了。我想这是大多数人使用 ThreeJS 而不是直接使用 WebGL 的主要原因之一。  </p>
 <blockquote>
 <p><strong>这不是你的问题，而是我的问题</strong>：说白了，我不能消化 WebGL 可能是我的问题。比我聪明的人都能用 WebGL（以及 Web 之外的 OpenGL）构建出<em>惊人</em>的东西，但对我来说，它不适合我。  </p>
