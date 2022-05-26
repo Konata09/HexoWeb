@@ -796,10 +796,11 @@ fn main(
 &#125;</code></pre>
 <p>我希望现在这个着色器的绝大部分代码没有让你惊讶。  </p>
 <p><video autoplay loop><source src="/media/webgpu1.webm" type="video/webm"><br></video></p>
-<p><img src="/" alt="每一帧都被 WebGPU 用来更新球的位置，并使用 Canvas2D 将它们绘制到屏幕上"></p>
+<p><img src="" alt="每一帧都被 WebGPU 用来更新球的位置，并使用 Canvas2D 将它们绘制到屏幕上"></p>
 <p>最后，我们需要做的是将 <code>output</code> 缓冲区读回 JavaScript，编写一些 Canvas2D 代码来可视化缓冲区的内容，并将其全部放入 <code>requestAnimationFrame()</code> 循环。你可以在这个 <a target="_blank" rel="noopener" href="https://surma.dev/things/webgpu/step3/index.html">demo</a> 中看到效果。  </p>
 <h2 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h2><p>前面的 demo 只是沿着每个球的速度向量移动，并不惊艳或具有很复杂的计算。在看这个作品的性能特性之前，让我在着色器中加入一些适当的物理计算。我不会在这里解释——这篇博文已经够长了——但我想说我采取了最朴素的方法：每个球都检查与<em>其他所有球</em>的碰撞情况。如果你感到好奇，你可以看一下 <a target="_blank" rel="noopener" href="https://surma.dev/things/webgpu/step4/index.html">最终 demo</a> 的源代码，其中还包含我用来编写物理部分的资源链接。  </p>
-<p><video autoplay loop><source src="/media/webgpu2.webm" type="video/webm"><br></video><br><img src="" alt="... 现在有了弹性墙和弹性球！"></p>
+<p><video autoplay loop><source src="/media/webgpu2.webm" type="video/webm"><br></video></p>
+<p><img src="" alt="... 现在有了弹性墙和弹性球！"></p>
 <p>我不想对这个实验进行精确的测量，因为我还没有优化物理算法和 WebGPU 的使用。然而，即使是这种朴素的实现也表现得非常好（在我的 M1 MacBook Air 上），这一点让我印象深刻。维持 60fps 时，大约可以处理 2500 个球。但看一下跟踪，在有 2500 个球时，很明显瓶颈是 Canvas2D 绘制场景，而不是 WebGPU 的计算。  </p>
 <p><img src="/images/1653570917206.png" alt="有 14000 个球时，在 M1 MBA 上 GPU 的纯计算时间大约 16ms"></p>
 <p>为了看看到底多快，我禁用了渲染，使用 <code>performance.measure()</code> 来看看在耗尽每帧 16ms 的时间之前我可以模拟多少个球。在我的机器上，这是 14000 个球左右。这种未经优化的东西运行得如此之快，真让我醉心于 WebGPU 给我提供的强大计算能力。  </p>
