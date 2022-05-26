@@ -661,10 +661,11 @@ fn main(
 </li>
 <li>c:<ul>
 <li><code>local_id=(x=1, y=1, z=0)</code></li>
-<li><code>global_id=(x=5, y=5, z=0)</code><br>在着色器中，我们有 <code>@workgroup_size(64, 1, 1)</code> ，所以 <code>local_id.x</code> 会在 0~63 之间。为了能够检查这两个值，我将它们『编码』成一个数字。请注意，WGSL 是严格类型的： <code>local_id</code> 和 <code>global_id</code> 都是 <code>vec3&lt;u32&gt;</code> ，所以我们必须明确地将它们转换成 <code>f32</code> ，以便分配给 <code>f32</code> 的输出缓冲区。  </li>
+<li><code>global_id=(x=5, y=5, z=0)</code></li>
 </ul>
 </li>
 </ul>
+<p>在着色器中，我们有 <code>@workgroup_size(64, 1, 1)</code> ，所以 <code>local_id.x</code> 会在 0~63 之间。为了能够检查这两个值，我将它们『编码』成一个数字。请注意，WGSL 是严格类型的： <code>local_id</code> 和 <code>global_id</code> 都是 <code>vec3&lt;u32&gt;</code> ，所以我们必须明确地将它们转换成 <code>f32</code> ，以便分配给 <code>f32</code> 的输出缓冲区。  </p>
 <p><img src="/images/1653570665130.png" alt="由 GPU 实际填充的值。注意本地调用的 ID 在 63 后重置，而全局调用的 ID 则继续计数"></p>
 <p>这证明了我们的计算着色器确实是为输出内存中的每一个值调用的，并为其填充了一个唯一的值。我们不会知道这些数据是以何种顺序填入的，这是故意未指定的，并留给 GPU 的调度器决定。  </p>
 <h3 id="过度调用（Overdispatching）"><a href="#过度调用（Overdispatching）" class="headerlink" title="过度调用（Overdispatching）"></a>过度调用（Overdispatching）</h3><p>聪明的读者可能已经注意到，着色器调用的总数（ <code>Math.ceil(BUFFER_SIZE / 64) * 64</code> ）将导致 <code>global_id.x</code> 大于数组的长度，因为每个 <code>f32</code> 占用 4 字节。幸运的是，对数组的访问有一个隐式的保护，所以每一次写过数组的末端都会写入数组的最后一个元素。这就避免了内存访问错误，但仍可能产生无法使用的数据。事实上，如果你检查返回的缓冲区的最后 3 个元素，你会发现数字 247055、248056 和 608032。这就需要我们在着色器代码中提前退出来防止这种情况发生：  </p>
