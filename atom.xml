@@ -128,7 +128,7 @@
     <link href="http://konata.tech/2021/09/03/UpdateLog/"/>
     <id>http://konata.tech/2021/09/03/UpdateLog/</id>
     <published>2021-09-03T13:51:00.000Z</published>
-    <updated>2022-05-26T14:54:05.429Z</updated>
+    <updated>2022-05-27T07:37:23.995Z</updated>
     
     <summary type="html">
     
@@ -137,11 +137,10 @@
         
         
           &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;2019.07.25 框架搭建完成&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;2019.08.02 主题修改完成&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;2019.08.06 崩坏学园 2 LIVE2D 上线 &lt;del&gt;那么崩坏 3 的看板娘什么时候能放上 Web
+&lt;li&gt;&lt;p&gt;2022.05.26&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;更新 Copyright 日期&lt;/li&gt;
+&lt;li&gt;新增：图片 src 为空时只显示 caption，不显示
         
       
     
