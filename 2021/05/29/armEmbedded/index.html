@@ -779,29 +779,22 @@ fiq
 </ol>
 <h3 id="通用中断控制器-GIC"><a href="#通用中断控制器-GIC" class="headerlink" title="通用中断控制器 (GIC)"></a>通用中断控制器 (GIC)</h3><p>GIC 架构分为 分配器 (Distributor), CPU 接口 (CPU interface), 虚拟 CPU 接口 (Virtual CPU interface)</p>
 <h4 id="GIC-中断控制器中断类型"><a href="#GIC-中断控制器中断类型" class="headerlink" title="GIC 中断控制器中断类型"></a>GIC 中断控制器中断类型</h4><ol>
-<li><p>软中断 (SGI)</p>
-<p>中断号 0-15 为 SGI 保留</p>
+<li><p>软中断 (SGI)<br>中断号 0-15 为 SGI 保留</p>
 </li>
-<li><p>专用外设中断 (PPI)</p>
-<p>中断号 16-31 为 PPI 保留</p>
+<li><p>专用外设中断 (PPI)<br>中断号 16-31 为 PPI 保留</p>
 </li>
-<li><p>共享外设中断 (SPI)</p>
-<p>中断号 32-1020 用于共享外设中断</p>
+<li><p>共享外设中断 (SPI)<br>中断号 32-1020 用于共享外设中断</p>
 </li>
 </ol>
 <h4 id="GIC-中断控制器中断状态"><a href="#GIC-中断控制器中断状态" class="headerlink" title="GIC 中断控制器中断状态"></a>GIC 中断控制器中断状态</h4><p>GIC 中断在不同的状态间切换：  </p>
 <ol>
-<li><p>Inactive（无效）</p>
-<p>中断没有发生</p>
+<li><p>Inactive（无效）<br>中断没有发生</p>
 </li>
-<li><p>Pending（待处理）</p>
-<p>中断已经发生，但是等待核心来处理。待处理中断都做为 CPU 接口发送到核心处理的候选者</p>
+<li><p>Pending（待处理）<br>中断已经发生，但是等待核心来处理。待处理中断都做为 CPU 接口发送到核心处理的候选者</p>
 </li>
-<li><p>Active（正在处理）</p>
-<p>中断发送给了核心，目前正在进行中断处理</p>
+<li><p>Active（正在处理）<br>中断发送给了核心，目前正在进行中断处理</p>
 </li>
-<li><p>Active and pending（处理和待处理）</p>
-<p>一个中断源正在进行中断处理而 GIC 又接收到来自同一中断源的中断触发信号</p>
+<li><p>Active and pending（处理和待处理）<br>一个中断源正在进行中断处理而 GIC 又接收到来自同一中断源的中断触发信号</p>
 </li>
 </ol>
 <h4 id="GIC-寄存器"><a href="#GIC-寄存器" class="headerlink" title="GIC 寄存器"></a>GIC 寄存器</h4><ol>
