@@ -4,10 +4,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="NGINX 1.21.1 with HTTP/3 编译记录, 生命不息 折腾不止">
+    <meta name="keywords" content="NGINX 1.21.3 with HTTP/3 编译记录, 生命不息 折腾不止">
     <meta name="description" content="系统环境
 
-安装必要软件包apt install build-essential cmake golang cargo mmdb-bin libmaxminddb-dev libxml2 libxslt-dev libatomic-ops-">
+安装必要软件包apt install build-essential cmake golang mmdb-bin libmaxminddb-dev libxml2 libxslt-dev libatomic-ops-dev li">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -15,7 +15,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <title>NGINX 1.21.1 with HTTP/3 编译记录 | 生命不息 折腾不止</title>
+    <title>NGINX 1.21.3 with HTTP/3 编译记录 | 生命不息 折腾不止</title>
     <link href="https://konata.tech/atom.xml" rel="alternate" type="application/atom+xml">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
@@ -274,13 +274,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/05.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/07.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        NGINX 1.21.1 with HTTP/3 编译记录
+                        NGINX 1.21.3 with HTTP/3 编译记录
                     </div>
                 </div>
             </div>
@@ -404,14 +404,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        855
+                        867
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        4 分
+                        5 分
                     </div>
                     
                 
@@ -429,14 +429,16 @@
             <div id="articleContent">
                 <h2 id="系统环境"><a href="#系统环境" class="headerlink" title="系统环境"></a>系统环境</h2><p><img src="/images/pasted-1.png" alt="Ubuntu 18.04"></p>
 <p><img src="/images/1598284747746.png" alt="CentOS 8.2"></p>
-<h2 id="安装必要软件包"><a href="#安装必要软件包" class="headerlink" title="安装必要软件包"></a>安装必要软件包</h2><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">apt</span> <span class="token function">install</span> build-essential cmake golang cargo mmdb-bin libmaxminddb-dev libxml2 libxslt-dev libatomic-ops-dev libunwind-dev libpcre3 libpcre3-dev</code></pre>
-<pre class="language-bash" data-language="bash"><code class="language-bash">dnf <span class="token function">install</span> cmake gcc gcc-c++ golang cargo libmaxminddb-devel libxml2-devel libxslt-devel libunwind-devel pcre-devel libatomic_ops-devel</code></pre>
+<h2 id="安装必要软件包"><a href="#安装必要软件包" class="headerlink" title="安装必要软件包"></a>安装必要软件包</h2><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">apt</span> <span class="token function">install</span> build-essential cmake golang mmdb-bin libmaxminddb-dev libxml2 libxslt-dev libatomic-ops-dev libunwind-dev libpcre3 libpcre3-dev
+<span class="token function">curl</span> https://sh.rustup.rs -sSf <span class="token operator">|</span> <span class="token function">sh</span></code></pre>
+<pre class="language-bash" data-language="bash"><code class="language-bash">dnf <span class="token function">install</span> cmake gcc gcc-c++ golang libmaxminddb-devel libxml2-devel libxslt-devel libunwind-devel pcre-devel libatomic_ops-devel
+<span class="token function">curl</span> https://sh.rustup.rs -sSf <span class="token operator">|</span> <span class="token function">sh</span></code></pre>
 <h2 id="拉取-Nginx-和相关模块源码"><a href="#拉取-Nginx-和相关模块源码" class="headerlink" title="拉取 Nginx 和相关模块源码"></a>拉取 Nginx 和相关模块源码</h2><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> /home
-<span class="token function">wget</span> https://nginx.org/download/nginx-1.21.1.tar.gz
-<span class="token function">wget</span> https://github.com/openresty/lua-nginx-module/archive/refs/tags/v0.10.20.tar.gz
-<span class="token function">wget</span> https://github.com/openresty/luajit2/archive/refs/tags/v2.1-20210510.tar.gz
-<span class="token function">wget</span> https://github.com/openresty/lua-resty-core/archive/refs/tags/v0.1.22.tar.gz
-<span class="token function">wget</span> https://github.com/openresty/lua-resty-lrucache/archive/refs/tags/v0.11.tar.gz
+<span class="token function">wget</span> https://nginx.org/download/nginx-1.23.3.tar.gz
+<span class="token function">wget</span> https://github.com/openresty/lua-nginx-module/archive/refs/tags/v0.10.23.tar.gz
+<span class="token function">wget</span> https://github.com/openresty/luajit2/archive/refs/tags/v2.1-20230119.tar.gz
+<span class="token function">wget</span> https://github.com/openresty/lua-resty-core/archive/refs/tags/v0.1.25.tar.gz
+<span class="token function">wget</span> https://github.com/openresty/lua-resty-lrucache/archive/refs/tags/v0.13.tar.gz
 
 <span class="token function">git</span> clone --recursive https://github.com/cloudflare/quiche
 <span class="token function">git</span> clone https://github.com/kn007/patch.git
@@ -452,18 +454,18 @@
 <span class="token builtin class-name">cd</span> ngx_brotli
 <span class="token function">git</span> submodule update --init</code></pre>
 <h2 id="解压缩"><a href="#解压缩" class="headerlink" title="解压缩"></a>解压缩</h2><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> /home
-<span class="token function">tar</span> -xvf nginx-1.21.1.tar.gz
-<span class="token function">tar</span> -xvf v0.10.20.tar.gz
-<span class="token function">tar</span> -xvf v2.1-20210510.tar.gz
-<span class="token function">tar</span> -xvf v0.1.22.tar.gz
-<span class="token function">tar</span> -xvf v0.11.tar.gz</code></pre>
-<h2 id="编译-LUAJIT2"><a href="#编译-LUAJIT2" class="headerlink" title="编译 LUAJIT2"></a>编译 LUAJIT2</h2><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> /home/luajit2-2.1-20210510
+<span class="token function">tar</span> -xvf nginx-1.23.3.tar.gz
+<span class="token function">tar</span> -xvf v0.10.23.tar.gz
+<span class="token function">tar</span> -xvf v2.1-20230119.tar.gz
+<span class="token function">tar</span> -xvf v0.1.25.tar.gz
+<span class="token function">tar</span> -xvf v0.13.tar.gz</code></pre>
+<h2 id="编译-LUAJIT2"><a href="#编译-LUAJIT2" class="headerlink" title="编译 LUAJIT2"></a>编译 LUAJIT2</h2><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> /home/luajit2-2.1-20230119
 <span class="token function">make</span> -j4
 <span class="token function">make</span> <span class="token function">install</span>
-<span class="token builtin class-name">cd</span> /home/lua-resty-lrucache-0.11
+<span class="token builtin class-name">cd</span> /home/lua-resty-lrucache-0.13
 <span class="token function">make</span> -j4
 <span class="token function">make</span> <span class="token function">install</span>
-<span class="token builtin class-name">cd</span> /home/lua-resty-core-0.1.22
+<span class="token builtin class-name">cd</span> /home/lua-resty-core-0.1.25
 <span class="token function">make</span> -j4
 <span class="token function">make</span> <span class="token function">install</span>
 <span class="token function">rm</span> -rf /usr/local/share/lua/5.1
@@ -473,11 +475,11 @@
 <h2 id="zlib-要清除之前的编译"><a href="#zlib-要清除之前的编译" class="headerlink" title="zlib 要清除之前的编译"></a>zlib 要清除之前的编译</h2><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> /home/zlib
 <span class="token function">make</span> -f Makefile.in distclean</code></pre>
 <h2 id="编译-Nginx"><a href="#编译-Nginx" class="headerlink" title="编译 Nginx"></a>编译 Nginx</h2><p>先给 Nginx 打支持 HTTP/3 的补丁</p>
-<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> /home/nginx-1.21.1
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> /home/nginx-1.23.3
 patch -p1 <span class="token operator">&lt;</span> <span class="token punctuation">..</span>/patch/nginx_with_quic.patch
 <span class="token comment"># patch -p1 &lt; ../patch/Enable_BoringSSL_OCSP.patch</span></code></pre>
-<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> /home/nginx-1.21.1
-./configure --add-module<span class="token operator">=</span><span class="token punctuation">..</span>/ngx_brotli --with-openssl<span class="token operator">=</span><span class="token punctuation">..</span>/quiche/deps/boringssl --with-quiche<span class="token operator">=</span><span class="token punctuation">..</span>/quiche --with-http_v2_module --with-http_v3_module --with-http_ssl_module --with-http_gzip_static_module --with-http_realip_module --with-threads --with-stream --with-stream_realip_module --with-stream_ssl_module --with-stream_ssl_preread_module --with-zlib<span class="token operator">=</span><span class="token punctuation">..</span>/zlib --add-module<span class="token operator">=</span><span class="token punctuation">..</span>/ngx_devel_kit --add-module<span class="token operator">=</span><span class="token punctuation">..</span>/headers-more-nginx-module --add-module<span class="token operator">=</span><span class="token punctuation">..</span>/lua-nginx-module-0.10.20 --with-file-aio --add-module<span class="token operator">=</span><span class="token punctuation">..</span>/ngx_http_geoip2_module --add-module<span class="token operator">=</span><span class="token punctuation">..</span>/ngx-fancyindex --add-module<span class="token operator">=</span><span class="token punctuation">..</span>/nginx-dav-ext-module --add-module<span class="token operator">=</span><span class="token punctuation">..</span>/ngx_http_substitutions_filter_module --with-libatomic --with-http_dav_module --with-http_stub_status_module 
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> /home/nginx-1.23.3
+./configure --add-module<span class="token operator">=</span><span class="token punctuation">..</span>/ngx_brotli --with-openssl<span class="token operator">=</span><span class="token punctuation">..</span>/quiche/deps/boringssl --with-quiche<span class="token operator">=</span><span class="token punctuation">..</span>/quiche --with-http_v2_module --with-http_v3_module --with-http_ssl_module --with-http_gzip_static_module --with-http_realip_module --with-threads --with-stream --with-stream_realip_module --with-stream_ssl_module --with-stream_ssl_preread_module --with-zlib<span class="token operator">=</span><span class="token punctuation">..</span>/zlib --add-module<span class="token operator">=</span><span class="token punctuation">..</span>/ngx_devel_kit --add-module<span class="token operator">=</span><span class="token punctuation">..</span>/headers-more-nginx-module --add-module<span class="token operator">=</span><span class="token punctuation">..</span>/lua-nginx-module-0.10.23 --with-file-aio --add-module<span class="token operator">=</span><span class="token punctuation">..</span>/ngx_http_geoip2_module --add-module<span class="token operator">=</span><span class="token punctuation">..</span>/ngx-fancyindex --add-module<span class="token operator">=</span><span class="token punctuation">..</span>/nginx-dav-ext-module --add-module<span class="token operator">=</span><span class="token punctuation">..</span>/ngx_http_substitutions_filter_module --with-libatomic --with-http_dav_module --with-http_stub_status_module 
 <span class="token function">make</span> -j4
 <span class="token function">make</span> <span class="token function">install</span></code></pre>
 <h2 id="配置动态链接库"><a href="#配置动态链接库" class="headerlink" title="配置动态链接库"></a>配置动态链接库</h2><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> /etc/ld.so.conf.d/libc.conf</code></pre>
@@ -571,7 +573,7 @@ systemctl <span class="token builtin class-name">enable</span> nginx</code></pre
             <div class="reprintDetail">
                 <div>
                 <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title"
-                      rel="dct:type">《NGINX 1.21.1 with HTTP/3 编译记录》</span> 由
+                      rel="dct:type">《NGINX 1.21.3 with HTTP/3 编译记录》</span> 由
                     <a xmlns:cc="http://creativecommons.org/ns#" href="/2020/05/09/Nginx-1-18-compile/" property="cc:attributionName"
                        rel="cc:attributionURL">Konata</a>
                     采用
