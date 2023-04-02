@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="ffmpeg 命令整理, 生命不息 折腾不止">
+    <meta name="keywords" content="ffmpeg 命令及编译, 生命不息 折腾不止">
     <meta name="description" content="从 MP4 中提取 M4Affmpeg -i input.mp4 -vn -c:a copy output.m4a
 无损切割音频ss : 起始秒t : 持续秒数
 ffmpeg -ss 5990  -i in.aac -t 181 -c co">
@@ -15,7 +15,7 @@ ffmpeg -ss 5990  -i in.aac -t 181 -c co">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <title>ffmpeg 命令整理 | 生命不息 折腾不止</title>
+    <title>ffmpeg 命令及编译 | 生命不息 折腾不止</title>
     <link href="https://konata.tech/atom.xml" rel="alternate" type="application/atom+xml">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
@@ -274,13 +274,13 @@ ffmpeg -ss 5990  -i in.aac -t 181 -c co">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/08.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        ffmpeg 命令整理
+                        ffmpeg 命令及编译
                     </div>
                 </div>
             </div>
@@ -404,14 +404,14 @@ ffmpeg -ss 5990  -i in.aac -t 181 -c co">
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        518
+                        789
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        2 分
+                        4 分
                     </div>
                     
                 
@@ -461,7 +461,14 @@ ffmpeg -i input.mp4 -vf <span class="token assign-left variable">fps</span><span
 <li>OS: Ubuntu 20.04.5 LTS Linux 4.9.253</li>
 </ul>
 <h3 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h3><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">apt</span> <span class="token function">install</span> libchromaprint-dev frei0r-plugins-dev libgnutls28-dev ladspa-sdk libaom-dev liblilv-dev libiec61883-dev libavc1394-dev libass-dev libbluray-dev libbs2b-dev libcaca-dev libcodec2-dev flite1-dev libflite1 libgme-dev libgsm1-dev libmysofa-dev libopenjp2-7-dev libopenmpt-dev libopus-dev libpulse-dev librsvg2-dev librubberband-dev libshine-dev libsnappy-dev libsoxr-dev libssh-dev libspeex-dev libtwolame-dev libvidstab-dev libvpx-dev libwavpack-dev libwebp-dev libx265-dev libzmq3-dev libzvbi-dev libopenal-dev opencl-headers libjack-dev libcdio-paranoia-dev libcdio-dev libcdparanoia-dev libsdl2-dev libfdk-aac-dev</code></pre>
-<h3 id="configure"><a href="#configure" class="headerlink" title="configure"></a>configure</h3><pre class="language-bash" data-language="bash"><code class="language-bash">./configure --prefix<span class="token operator">=</span>/usr --enable-gpl --enable-nonfree --enable-avisynth --enable-gnutls --enable-ladspa --enable-libaom --enable-libass --enable-libbluray --enable-libbs2b --enable-libcaca --enable-libcdio --enable-libcodec2 --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libgme --enable-libgsm --enable-libjack --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-libpulse --enable-librsvg --enable-librubberband --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libssh --enable-libtheora --enable-libtwolame --enable-libvidstab --enable-libvorbis --enable-libvpx --enable-libwavpack --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzmq --enable-libzvbi --enable-lv2 --enable-openal --enable-opengl --enable-sdl2 --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-libx264 --enable-nvmpi --enable-libfdk-aac</code></pre>
+<h3 id="编译配置"><a href="#编译配置" class="headerlink" title="编译配置"></a>编译配置</h3><pre class="language-bash" data-language="bash"><code class="language-bash">./configure --prefix<span class="token operator">=</span>/usr --enable-gpl --enable-nonfree --enable-avisynth --enable-gnutls --enable-ladspa --enable-libaom --enable-libass --enable-libbluray --enable-libbs2b --enable-libcaca --enable-libcdio --enable-libcodec2 --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libgme --enable-libgsm --enable-libjack --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-libpulse --enable-librsvg --enable-librubberband --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libssh --enable-libtheora --enable-libtwolame --enable-libvidstab --enable-libvorbis --enable-libvpx --enable-libwavpack --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzmq --enable-libzvbi --enable-lv2 --enable-openal --enable-opengl --enable-sdl2 --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-libx264 --enable-nvmpi --enable-libfdk-aac</code></pre>
+<h3 id="环境-1"><a href="#环境-1" class="headerlink" title="环境"></a>环境</h3><ul>
+<li>CPU: ARMv8 ARM Cortex-A76 + Cortex-A57 RK3588S</li>
+<li>GPU: Mali-G610 MP4</li>
+<li>OS: Ubuntu 22.04.2 LTS Linux 5.10.110</li>
+</ul>
+<h3 id="依赖-1"><a href="#依赖-1" class="headerlink" title="依赖"></a>依赖</h3><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">apt</span> <span class="token function">install</span> pkg-config cmake libdav1d-dev libdc1394-dev libmp3lame-dev libsmbclient-dev libtheora-dev libx264-dev libxvidcore-dev libzimg-dev libchromaprint-dev frei0r-plugins-dev libgnutls28-dev ladspa-sdk libaom-dev liblilv-dev libiec61883-dev libavc1394-dev libass-dev libbluray-dev libbs2b-dev libcaca-dev libcodec2-dev flite1-dev libflite1 libgme-dev libgsm1-dev libmysofa-dev libopenjp2-7-dev libopenmpt-dev libopus-dev libpulse-dev librsvg2-dev librubberband-dev libshine-dev libsnappy-dev libsoxr-dev libssh-dev libspeex-dev libtwolame-dev libvidstab-dev libvpx-dev libwavpack-dev libwebp-dev libx265-dev libzmq3-dev libzvbi-dev libopenal-dev opencl-headers libjack-dev libcdio-paranoia-dev libcdio-dev libcdparanoia-dev libsdl2-dev libfdk-aac-dev</code></pre>
+<h3 id="编译配置-1"><a href="#编译配置-1" class="headerlink" title="编译配置"></a>编译配置</h3><pre class="language-bash" data-language="bash"><code class="language-bash">./configure --prefix<span class="token operator">=</span>/usr --enable-gpl --enable-nonfree --enable-avisynth --enable-gnutls --enable-ladspa --enable-libaom --enable-libass --enable-libbluray --enable-libbs2b --enable-libcaca --enable-libcdio --enable-libcodec2 --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libgme --enable-libgsm --enable-libjack --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-libpulse --enable-librsvg --enable-librubberband --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libssh --enable-libtheora --enable-libtwolame --enable-libvidstab --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzmq --enable-libzimg --enable-libzvbi --enable-lv2 --enable-openal --enable-opengl --enable-sdl2 --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-libx264 --enable-libsmbclient --enable-version3 --enable-libfdk-aac --enable-libdav1d --enable-rkmpp --enable-librgaf</code></pre>
             </div>
             <hr/>
 
@@ -480,7 +487,7 @@ ffmpeg -i input.mp4 -vf <span class="token assign-left variable">fps</span><span
             <div class="reprintDetail">
                 <div>
                 <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title"
-                      rel="dct:type">《ffmpeg 命令整理》</span> 由
+                      rel="dct:type">《ffmpeg 命令及编译》</span> 由
                     <a xmlns:cc="http://creativecommons.org/ns#" href="/2020/12/22/ffmpeg/" property="cc:attributionName"
                        rel="cc:attributionURL">Konata</a>
                     采用
